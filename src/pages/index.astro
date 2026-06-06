@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+import ContactSectionWithShader from '../block/contact-section-with-shader.tsx';
+import Carousel from '../components/carousel.astro';
+import AppleCardsCarouselDemo from '@/components/ui/apple-cards-carousel-demo.tsx';
+import PlayStoreCarousel from '@/components/PlayStoreCarousel.astro';
+---
+
+<Layout>
+	<main class="min-h-screen bg-slate-50 text-slate-950 flex flex-col gap-24 md:gap-32 pb-24">
+		
+		<!-- Hero Section -->
+		<section class="mx-auto max-w-5xl px-6 pt-16 sm:px-10 w-full">
+			<div class="rounded-3xl border border-slate-200 bg-white/90 p-10 shadow-xl shadow-slate-900/5 backdrop-blur">
+				<h1 class="text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl">Voyaflair</h1>
+				<p class="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
+					A curated travel journal — places chosen for character, stillness, and depth.
+				</p>
+			</div>
+		</section>
+
+		<!-- Play Store Carousel Section -->
+		<PlayStoreCarousel />
+		
+
+		<!-- Apple Cards Carousel Section -->
+		<AppleCardsCarouselDemo client:visible />	
+
+		
+
+		<!-- Carousel Section -->
+		<Carousel />	
+		
+		
+
+
+
+
+<!-- Contact Section with an explicit fallback height -->
+<ContactSectionWithShader client:visible>
+	<!-- This skeleton renders immediately on the server with zero JavaScript -->
+	<div 
+		slot="fallback" 
+		class="w-full h-[500px] rounded-3xl bg-slate-100 animate-pulse border border-slate-200 flex items-center justify-center text-slate-400"
+	>
+		Loading experience...
+	</div>
+</ContactSectionWithShader>
+
+	</main>
+
+	<Footer />
+</Layout>

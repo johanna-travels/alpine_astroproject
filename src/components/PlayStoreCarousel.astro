@@ -1,0 +1,155 @@
+---
+// PlayStoreCarousel.astro
+// Array containing the card data to keep the template clean and modular
+const cards = [
+  {
+    title: "Expressive API",
+    desc: "You don't need to be an expert to use our plugin. Our expressive API is readable and well documented.",
+    bg: "bg-black",
+    textColors: "text-black hover:bg-gray-200",
+    indicators: ["bg-gray-600", "bg-gray-600", "bg-gray-600 w-1/3"]
+  },
+  {
+    title: "UI Components",
+    desc: "Beautifully crafted UI components that integrate seamlessly with your existing workflow and enhance user experience.",
+    bg: "bg-gradient-to-br from-blue-900 to-purple-900",
+    textColors: "text-purple-900 hover:bg-gray-200",
+    indicators: ["bg-blue-400", "bg-purple-400", "bg-pink-400 w-1/3"]
+  },
+  {
+    title: "Performance",
+    desc: "Optimized for speed and efficiency, ensuring your applications run smoothly even under heavy loads.",
+    bg: "bg-gradient-to-br from-green-900 to-teal-900",
+    textColors: "text-teal-900 hover:bg-gray-200",
+    indicators: ["bg-green-400", "bg-teal-400", "bg-emerald-400 w-1/3"]
+  },
+  {
+    title: "Security",
+    desc: "Advanced security features to protect your data and ensure privacy across all your applications and services.",
+    bg: "bg-gradient-to-br from-yellow-900 to-orange-900",
+    textColors: "text-orange-900 hover:bg-gray-200",
+    indicators: ["bg-yellow-400", "bg-orange-400", "bg-amber-400 w-1/3"]
+  },
+  {
+    title: "Integration",
+    desc: "Seamless integration with popular platforms and services to enhance your workflow and productivity.",
+    bg: "bg-gradient-to-br from-indigo-900 to-pink-900",
+    textColors: "text-pink-900 hover:bg-gray-200",
+    indicators: ["bg-indigo-400", "bg-purple-400", "bg-pink-400 w-1/3"]
+  },
+  {
+    title: "Analytics",
+    desc: "Powerful analytics tools to track performance and gain insights to help you make informed decisions.",
+    bg: "bg-gradient-to-br from-red-900 to-gray-900",
+    textColors: "text-gray-900 hover:bg-gray-200",
+    indicators: ["bg-red-400", "bg-gray-400", "bg-slate-400 w-1/3"]
+  }
+];
+
+// Duplicate the first 3 elements for the infinite scroll wrap matching your original logic
+const displayCards = [...cards, ...cards.slice(0, 3)];
+---
+
+<div class="w-full max-w-7xl mx-auto px-4 py-8">
+  <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">Latest Artiles</h1>
+
+  <div class="relative overflow-hidden bg-gray-900 rounded-3xl p-4 sm:p-8">
+    <div 
+      id="carousel" 
+      class="flex overflow-x-auto snap-x snap-mandatory gap-5 p-2 scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+    >
+      {displayCards.map((card) => (
+        <div class={`flex-none w-full sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14.2px)] h-[400px] rounded-3xl p-8 flex flex-col justify-between snap-start transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl hover:shadow-black/40 ${card.bg}`}>
+          
+          <div class="animate-[fadeInUp_0.6s_ease-out]">
+            <h2 class="text-2xl font-bold text-white mb-4">{card.title}</h2>
+            <p class="text-gray-300 text-sm sm:text-base mb-6 line-clamp-5">
+              {card.desc}
+            </p>
+            <button class={`mt-4 bg-white px-6 py-3 rounded-full font-medium flex items-center gap-2 transition-colors ${card.textColors}`}>
+              En savoir plus
+              <span class="text-xl leading-none">↗</span>
+            </button>
+          </div>
+
+          <div class="flex space-x-2">
+            <div class={`h-2 rounded-full flex-1 ${card.indicators[0]}`}></div>
+            <div class={`h-2 rounded-full flex-1 ${card.indicators[1]}`}></div>
+            <div class={`h-2 rounded-full flex-1 ${card.indicators[2]}`}></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="flex justify-center mt-6 space-x-4">
+    <button id="prevBtn" aria-label="previous" class="bg-white shadow-md border border-gray-200 p-2.5 rounded-full hover:bg-gray-50 active:scale-95 transition"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-arrow-narrow-left h-6 w-6 text-gray-500"><path d="M5 12l14 0"></path><path d="M5 12l4 4"></path><path d="M5 12l4 -4"></path></svg>
+    </button>
+    <button id="nextBtn" aria-label="next" class="bg-white shadow-md border border-gray-200 p-2.5 rounded-full hover:bg-gray-50 active:scale-95 transition"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-arrow-narrow-right h-6 w-6 text-gray-500"><path d="M5 12l14 0"></path><path d="M15 16l4 -4"></path><path d="M15 8l4 4"></path></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  // Scoped script handles safe execution context inside Astro framework
+  function initCarousel() {
+    const carousel = document.getElementById('carousel') as HTMLDivElement;
+    const prevBtn = document.getElementById('prevBtn') as HTMLButtonElement;
+    const nextBtn = document.getElementById('nextBtn') as HTMLButtonElement;
+    
+    if (!carousel || !prevBtn || !nextBtn) return;
+
+    let scrollInterval: ReturnType<typeof setInterval>;
+
+    // Calculates widths dynamically to prevent layout breakdown on browser resize
+    function getScrollStep() {
+      const firstCard = carousel.querySelector('.flex-none');
+      if (firstCard) {
+        return firstCard.clientWidth + 20; // width + gap configuration
+      }
+      return 300;
+    }
+
+    function handleAutoScroll() {
+      const cardWidth = getScrollStep();
+      carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
+
+      // Infinite loop alignment check
+      setTimeout(() => {
+        if (carousel.scrollLeft >= (carousel.scrollWidth / 2)) {
+          carousel.scrollTo({ left: 0, behavior: 'auto' });
+        }
+      }, 800);
+    }
+
+    function startAutoPlay() {
+      scrollInterval = setInterval(handleAutoScroll, 3000);
+    }
+
+    function stopAutoPlay() {
+      clearInterval(scrollInterval);
+    }
+
+    // Event Listeners
+    nextBtn.addEventListener('click', () => {
+      carousel.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
+    });
+
+    prevBtn.addEventListener('click', () => {
+      carousel.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
+    });
+
+    carousel.addEventListener('mouseenter', stopAutoPlay);
+    carousel.addEventListener('mouseleave', startAutoPlay);
+
+    // Mobile touch environment stability handling
+    carousel.addEventListener('touchstart', stopAutoPlay, { passive: true });
+    carousel.addEventListener('touchend', startAutoPlay, { passive: true });
+
+    // Initialize Active Run Loops
+    startAutoPlay();
+  }
+
+  // Runs on initial load and view updates (Astro Transitions compatibility setup)
+  document.addEventListener('DOMContentLoaded', initCarousel);
+</script>
