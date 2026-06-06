@@ -1,0 +1,67 @@
+---
+// src/components/GlobalEffects.astro
+---
+<div id="custom-cursor" class="hidden md:block w-5 h-5 bg-white rounded-full fixed pointer-events-none z-[9999] mix-blend-difference transition-transform duration-75 ease-out"></div>
+
+<script>
+    import { gsap } from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Εκτέλεση setup
+    const initEffects = () => {
+        // --- 1. SMART CUSTOM CURSOR ---
+        const cursor = document.getElementById('custom-cursor');
+        
+        if (cursor) {
+            window.addEventListener('mousemove', (e) => {
+                gsap.to(cursor, {
+                    x: e.clientX - 10,
+                    y: e.clientY - 10,
+                    duration: 0.08,
+                    ease: "power2.out"
+                });
+            });
+
+            // Combo με React & Astro components: Ανιχνεύει τα πάντα (links, buttons, κάρτες)
+            const refreshInteractiveListeners = () => {
+                const targets = document.querySelectorAll('a, button, [role="button"], .cursor-pointer, [data-testid="card"]');
+                targets.forEach(el => {
+                    el.addEventListener('mouseenter', () => {
+                        gsap.to(cursor, { scale: 2.8, backgroundColor: "rgba(255,255,255,0.15)" });
+                    });
+                    el.addEventListener('mouseleave', () => {
+                        gsap.to(cursor, { scale: 1, backgroundColor: "#ffffff" });
+                    });
+                });
+            };
+
+            refreshInteractiveListeners();
+            // Μικρό fix σε περίπτωση που τα React components αργήσουν να γίνουν mount
+            setTimeout(refreshInteractiveListeners, 1000);
+        }
+
+        // --- 2. GLOBAL SCROLL REVEAL ---
+        const reveals = document.querySelectorAll('.reveal');
+        reveals.forEach((el) => {
+            gsap.fromTo(el, 
+                { opacity: 0, y: 50 },
+                { 
+                    opacity: 1, 
+                    y: 0, 
+                    duration: 1.2, 
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 86%", // Ενεργοποίηση λίγο πριν μπει στο view
+                        toggleActions: "play none none none"
+                    }
+                }
+            );
+        });
+    };
+
+    // Τρέχει στο αρχικό φόρτωμα
+    document.addEventListener('DOMContentLoaded', initEffects);
+</script>
