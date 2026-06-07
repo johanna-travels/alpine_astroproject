@@ -12,32 +12,37 @@ import GlobalEffects from '../components/GlobalEffects.astro';
 
 <Layout>
     <GlobalEffects />
-            
-    
-    <main class="min-h-screen bg-slate-50 text-slate-950 flex flex-col gap-24 md:gap-32 pb-24">
-        
+
+    <!-- Hero pinned as the bottom layer -->
+    <div class="sticky top-0 z-0">
         <Hero />
+    </div>
 
-        <div class="reveal">
-            <PlayStoreCarousel />
-        </div>
-        
-        <div class="reveal">
-            <AppleCardsCarouselDemo client:visible />   
-        </div>
+    <!-- The rest of the body acts as a curtain that slides up over the hero -->
+    <div class="relative z-10 bg-slate-50 text-slate-950 rounded-t-[20px] md:rounded-t-[40px] shadow-[0_-20px_60px_rgba(0,0,0,0.15)]">
+        <main class="min-h-screen flex flex-col gap-24 md:gap-32 pb-24 pt-24">
 
-        <div class="reveal">
-            <Carousel />    
-        </div>
-        
-        <div class="reveal">
-            <ContactSectionWithShader client:visible>
-                <div slot="fallback" class="w-full h-[500px] rounded-3xl bg-slate-100 animate-pulse border border-slate-200 flex items-center justify-center text-slate-400">
-                    Loading experience...
-                </div>
-            </ContactSectionWithShader>
-        </div>
-    </main>
+            <div class="reveal">
+                <PlayStoreCarousel />
+            </div>
 
-    <Footer />
+            <div class="reveal">
+                <AppleCardsCarouselDemo client:visible />
+            </div>
+
+            <div class="reveal">
+                <Carousel />
+            </div>
+
+            <div class="reveal">
+                <ContactSectionWithShader client:visible>
+                    <div slot="fallback" class="w-full h-[500px] rounded-3xl bg-slate-100 animate-pulse border border-slate-200 flex items-center justify-center text-slate-400">
+                        Loading experience...
+                    </div>
+                </ContactSectionWithShader>
+            </div>
+        </main>
+
+        <Footer />
+    </div>
 </Layout>
