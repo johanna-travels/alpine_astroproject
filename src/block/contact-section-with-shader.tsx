@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { Image } from "astro:assets";
 
 type ContactSectionProps = {
   image?: string;
 };
 
-const defaultImage =
-  "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop";
+const defaultImage = "src/assets/Contact.webp";
 
 type FormValues = {
   name: string;
@@ -38,6 +38,7 @@ function validate(values: FormValues): FormErrors {
 }
 
 // --- MAIN EXPORT COMPONENT ---
+// Connect with the locals
 export default function ContactSectionWithShader({ image = defaultImage }: ContactSectionProps) {
   const [values, setValues] = useState<FormValues>({
     name: "",
@@ -79,7 +80,7 @@ export default function ContactSectionWithShader({ image = defaultImage }: Conta
         {/* Left Column - Single static image */}
         <div className="order-last h-[500px] overflow-hidden rounded-3xl md:order-first lg:h-auto">
           <img
-            src={image}
+            src="/src/assets/Contact.webp"
             alt="Contact us"
             className="h-full w-full object-cover"
           />
