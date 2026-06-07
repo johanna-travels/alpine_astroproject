@@ -1,0 +1,17 @@
+---
+import PageHero from '../PageHero.astro';
+import ContactSectionWithShader from '../../block/contact-section-with-shader.tsx';
+---
+
+<section class="relative w-full">
+  <PageHero title="Contact" eyebrow="Get in touch" />
+
+  <!-- Contact form -->
+  <div class="mx-auto max-w-5xl px-6 py-16 md:py-24">
+    <ContactSectionWithShader client:visible>
+      <div slot="fallback" class="w-full h-[500px] rounded-3xl bg-slate-100 animate-pulse border border-slate-200 flex items-center justify-center text-slate-400">
+        Loading experience...
+      </div>
+    </ContactSectionWithShader>
+  </div>
+</section>

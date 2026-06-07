@@ -34,6 +34,7 @@ type Card = {
   title: string;
   category: string;
   content: React.ReactNode;
+  mediaType?: "video" | "image"; // Added to support videos
 };
 
 export const CarouselContext = createContext<{
@@ -91,7 +92,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
   };
 
   const isMobile = () => {
-    return window && window.innerWidth < 768;
+    return typeof window !== "undefined" && window.innerWidth < 768;
   };
 
   return (
@@ -113,7 +114,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
           <div
             className={cn(
               "flex flex-row justify-start gap-4 pl-4",
-              "mx-auto max-w-7xl", // remove max-w-4xl if you want the carousel to span the full width of its container
+              "mx-auto max-w-7xl", 
             )}
           >
             {items.map((item, index) => (
@@ -171,7 +172,7 @@ export const Card = ({
 }) => {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const { onCardClose, currentIndex } = useContext(CarouselContext);
+  const { onCardClose } = useContext(CarouselContext);
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -263,12 +264,25 @@ export const Card = ({
             {card.title}
           </motion.p>
         </div>
-        <BlurImage
-          src={card.src}
-          alt={card.title}
-          fill
-          className="absolute inset-0 z-10 object-cover"
-        />
+        
+        {/* Conditional Video / Image logic */}
+        {card.mediaType === "video" ? (
+          <video
+            src={card.src}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 z-10 h-full w-full object-cover"
+          />
+        ) : (
+          <BlurImage
+            src={card.src}
+            alt={card.title}
+            fill
+            className="absolute inset-0 z-10 object-cover"
+          />
+        )}
       </motion.button>
     </>
   );
@@ -297,7 +311,7 @@ export const BlurImage = ({
       height={height}
       loading="lazy"
       decoding="async"
-      alt={alt ? alt : "Background of a beautiful view"}
+      alt={alt ? alt : "Background view"}
       {...rest}
     />
   );

@@ -1,5 +1,6 @@
 ---
 // src/components/Hero.astro
+import PageNav from './PageNav.astro';
 ---
 
 <style>
@@ -40,25 +41,10 @@
 
 <div class="bg-white min-h-screen flex flex-col">
 
-    <!-- Header Responsive -->
-    <header class="w-full mx-auto flex justify-between items-center py-4 px-4 md:py-6 md:px-10 fixed top-0 left-0 z-50 bg-white/80 backdrop-blur-sm">
-        <div class="text-xl md:text-2xl font-bold tracking-tight text-gray-900">
-            Linear
-        </div>
+    <!-- Shared responsive navbar -->
+    <PageNav />
 
-        <nav class="hidden md:flex gap-10 text-gray-600 font-medium text-sm">
-            <a href="#" class="hover:text-black transition">About</a>
-            <a href="#" class="hover:text-black transition">Projects</a>
-            <a href="#" class="hover:text-black transition">Pricing</a>
-            <a href="#" class="hover:text-black transition">Blogs</a>
-        </nav>
-
-        <button class="bg-black text-white px-4 py-2 md:px-6 md:py-2.5 rounded-full text-xs md:text-sm font-semibold hover:bg-gray-800 transition">
-            Book a call
-        </button>
-    </header>
-
-    <main class="flex-grow w-full max-w-[1500px] mx-auto px-2 md:px-4 pb-6 pt-20">
+    <main class="flex-grow w-full max-w-[1500px] mx-auto px-2 md:px-4 pb-6">
         
         <div class="relative w-full h-[75vh] md:h-[85vh] rounded-[20px] md:rounded-[40px] overflow-hidden">
             
@@ -78,11 +64,14 @@
                
             </div>
 
-            <div class="absolute bottom-0 left-0 w-full z-10 flex justify-center items-end leading-none pointer-events-none pb-4 md:pb-0">
-                <h1 class="text-white font-bold tracking-tighter text-center uppercase text-[3.5rem] sm:text-[5rem] md:text-[7rem] lg:text-[10rem]">
+            <!-- <div class="absolute bottom-0 left-0 w-full z-10 flex justify-center items-end leading-none pointer-events-none pb-4 md:pb-0">
+                  <div class="absolute bottom-0 left-0 w-full z-10 flex justify-center items-end leading-none pointer-events-none pb-4 md:pb-0">
+                <h1 class="text-white text-7xl md:text-9xl font-serif tracking-wider leading-tight reveal uppercase">
                     VOYA <br class="hidden opacity-40"> FLAIR
                 </h1>
-            </div>
+            </div> -->
+                   
+            
 
         </div>
     </main>

@@ -4,3 +4,107 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* =====================================================================
+   TYPOGRAPHY SYSTEM
+   Fonts: Playfair Display (headings) + Inter (everything else)
+   Breakpoints: base = mobile, md (768px) = tablet, lg (1024px) = desktop
+   ===================================================================== */
+@layer base {
+  :root {
+    --font-serif: "Playfair Display", Georgia, Cambria, serif;
+    --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    color: #111827;
+  }
+
+  /* H1 – Article Title : Playfair Display, Bold, 32 / 40 / 56, lh 1.1 */
+  h1 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    line-height: 1.1;
+    font-size: 32px;
+  }
+
+  /* H2 – Main Section Heading : Playfair Display, SemiBold, 28 / 32 / 40, lh 1.2 */
+  h2 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    line-height: 1.2;
+    font-size: 28px;
+  }
+
+  /* H3 – Subsection Heading : Inter, SemiBold, 22 / 24 / 28, lh 1.3 */
+  h3 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    line-height: 1.3;
+    font-size: 22px;
+  }
+
+  /* H4 – Small Heading : Inter, SemiBold, 18 / 20 / 22, lh 1.3 */
+  h4 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    line-height: 1.3;
+    font-size: 18px;
+  }
+
+  @media (min-width: 768px) {
+    h1 { font-size: 40px; }
+    h2 { font-size: 32px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+  }
+
+  @media (min-width: 1024px) {
+    h1 { font-size: 56px; }
+    h2 { font-size: 40px; }
+    h3 { font-size: 28px; }
+    h4 { font-size: 22px; }
+  }
+}
+
+@layer components {
+  /* Long-form body copy : Inter, Regular, 17 / 18 / 19, lh 1.8 */
+  .prose-body {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.8;
+  }
+  @media (min-width: 768px) {
+    .prose-body { font-size: 18px; }
+  }
+  @media (min-width: 1024px) {
+    .prose-body { font-size: 19px; }
+  }
+
+  /* Image captions : Inter, Regular, 14px, lh 1.5 */
+  .caption {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #6b7280;
+  }
+
+  /* Meta info (date, author, category, reading time) : Inter, Medium, 14px, +0.03em */
+  .meta {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: 0.03em;
+  }
+}

@@ -90,7 +90,7 @@ export default function ContactSectionWithShader({ image = defaultImage }: Conta
         <div className="flex items-center justify-center">
           <div className="w-full max-w-lg rounded-3xl px-4 py-8 md:px-10">
             <div>
-              <h1 className="mt-4 text-2xl font-bold tracking-tight text-black dark:text-white leading-9">
+              <h1 className="mt-4 text-4xl font-bold tracking-tight text-black dark:text-white leading-9">
                 Let's Talk
               </h1>
               <p className="mt-4 max-w-sm text-sm text-neutral-600 dark:text-neutral-400">
