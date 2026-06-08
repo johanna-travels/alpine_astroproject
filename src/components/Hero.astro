@@ -1,6 +1,8 @@
 ---
 // src/components/Hero.astro
+import { Image } from 'astro:assets';
 import PageNav from './PageNav.astro';
+import heroImg from '../assets/Header pink colors (1).webp';
 ---
 
 <style>
@@ -49,10 +51,15 @@ import PageNav from './PageNav.astro';
         <div class="relative w-full h-[75vh] md:h-[85vh] rounded-[20px] md:rounded-[40px] overflow-hidden">
             
             <div class="sticky top-0 w-full h-full">
-                <img src="src/assets/Header pink colors (1).webp" 
-                     alt="Portrait" 
+                <Image
+                     src={heroImg}
+                     alt="Portrait"
                      class="absolute inset-0 w-full h-full object-cover"
-                     id="hero-image">
+                     id="hero-image"
+                     widths={[600, 1200, 1800]}
+                     sizes="100vw"
+                     loading="eager"
+                />
             </div>
             
             <div class="absolute inset-0 bg-black/10 pointer-events-none"></div>
