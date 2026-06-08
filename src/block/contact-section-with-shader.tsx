@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import { Image } from "astro:assets";
+import contactImage from "@/assets/Contact.webp";
 
 type ContactSectionProps = {
   image?: string;
 };
 
-const defaultImage = "src/assets/Contact.webp";
+const defaultImage = contactImage.src;
 
 type FormValues = {
   name: string;
@@ -80,7 +81,7 @@ export default function ContactSectionWithShader({ image = defaultImage }: Conta
         {/* Left Column - Single static image */}
         <div className="order-last h-[500px] overflow-hidden rounded-3xl md:order-first lg:h-auto">
           <img
-            src="/src/assets/Contact.webp"
+            src={image}
             alt="Contact us"
             className="h-full w-full object-cover"
           />
