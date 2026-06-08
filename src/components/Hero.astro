@@ -1,85 +1,27 @@
 ---
 // src/components/Hero.astro
-import { Image } from 'astro:assets';
-import PageNav from './PageNav.astro';
+import { getImage } from 'astro:assets';
 import heroImg from '../assets/Header pink colors (1).webp';
+
+const optimizedHero = await getImage({ src: heroImg, width: 1800, format: 'webp', quality: 85 });
 ---
 
 <style>
-    body { font-family: 'Inter', sans-serif; }
-     h1, h2, .font-serif {
-            font-family: 'Playfair Display', serif;
-        }
-        .parallax-bg {
-            will-change: transform;
-        }
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        .custom-cursor {
-            width: 20px;
-            height: 20px;
-            background: #1a1a1a;
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            mix-blend-mode: difference;
-            transition: transform 0.1s ease;
-        }
-        .nav-link::after {
-            content: '';
-            display: block;
-            width: 0;
-            height: 1px;
-            background: #000;
-            transition: width .3s;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
+    @keyframes heroFadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    .hero-fade {
+        animation: heroFadeIn 1.2s ease-out forwards;
+    }
 </style>
 
-<div class="bg-white min-h-screen flex flex-col">
-
-    <!-- Shared responsive navbar -->
-    <PageNav />
-
-    <main class="flex-grow w-full max-w-[1500px] mx-auto px-2 md:px-4 pb-6">
-        
-        <div class="relative w-full h-[75vh] md:h-[85vh] rounded-[20px] md:rounded-[40px] overflow-hidden">
-            
-            <div class="sticky top-0 w-full h-full">
-                <Image
-                     src={heroImg}
-                     alt="Portrait"
-                     class="absolute inset-0 w-full h-full object-cover"
-                     id="hero-image"
-                     widths={[600, 1200, 1800]}
-                     sizes="100vw"
-                     loading="eager"
-                />
-            </div>
-            
-            <div class="absolute inset-0 bg-black/10 pointer-events-none"></div>
-
-            <div class="absolute top-[30%] md:top-[45%] right-4 md:right-8 lg:right-20 transform -translate-y-1/2 max-w-xs md:max-w-sm text-right z-20">
-                
-                <div class="flex justify-end items-center gap-2 mb-2 md:mb-3">
-                </div>
-               
-            </div>
-
-            <!-- <div class="absolute bottom-0 left-0 w-full z-10 flex justify-center items-end leading-none pointer-events-none pb-4 md:pb-0">
-                  <div class="absolute bottom-0 left-0 w-full z-10 flex justify-center items-end leading-none pointer-events-none pb-4 md:pb-0">
-                <h1 class="text-white text-7xl md:text-9xl font-serif tracking-wider leading-tight reveal uppercase">
-                    VOYA <br class="hidden opacity-40"> FLAIR
-                </h1>
-            </div> -->
-                   
-            
-
-        </div>
-    </main>
+<!-- 4. Portrait Child (The Image): w-full h-full, pt-[30px], bg-cover bg-center, fade-in -->
+<div class="w-full h-full pt-[30px]">
+    <div
+        class="hero-fade relative w-full h-full bg-cover bg-center rounded-[20px] md:rounded-[40px] overflow-hidden"
+        style={`background-image: url('${optimizedHero.src}')`}
+    >
+        <div class="absolute inset-0 bg-black/10 pointer-events-none"></div>
+    </div>
 </div>

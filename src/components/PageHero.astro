@@ -1,6 +1,5 @@
 ---
-import { Image } from 'astro:assets';
-import type { ImageMetadata } from 'astro';
+import { getImage } from 'astro:assets';
 import heroImg from '../assets/Header pink colors (1).webp';
 
 interface Props {
@@ -9,18 +8,13 @@ interface Props {
 }
 
 const { title, eyebrow } = Astro.props;
-const heroImage: ImageMetadata = heroImg;
+const optimizedHero = await getImage({ src: heroImg, width: 1800, format: 'webp', quality: 85 });
 ---
 
-<div class="relative w-full h-[60vh] md:h-[80vh] overflow-hidden rounded-[20px] md:rounded-[40px]">
-  <Image
-    src={heroImage}
-    alt={title}
-    class="absolute inset-0 w-full h-full object-cover"
-    widths={[600, 1200, 1800]}
-    sizes="100vw"
-    loading="eager"
-  />
+<div
+  class="relative w-full h-[60vh] md:h-[80vh] overflow-hidden md:overflow-visible rounded-[20px] md:rounded-[40px] bg-scroll bg-cover bg-center md:bg-fixed"
+  style={`background-image: url('${optimizedHero.src}')`}
+>
   <div class="absolute inset-0 bg-black/20 pointer-events-none"></div>
 
   <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6">

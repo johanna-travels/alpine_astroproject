@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Image } from "astro:assets";
 import contactImage from "@/assets/Contact.webp";
+import { sanitizeInput, sanitizeContactForm, isRateLimited } from "@/lib/security";
 
 type ContactSectionProps = {
   image?: string;
@@ -49,18 +50,25 @@ export default function ContactSectionWithShader({ image = defaultImage }: Conta
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
+  const [rateLimited, setRateLimited] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { id, value } = e.target;
-    setValues((prev) => ({ ...prev, [id]: value }));
+    setValues((prev) => ({ ...prev, [id]: sanitizeInput(value) }));
     setErrors((prev) => ({ ...prev, [id]: undefined }));
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const nextErrors = validate(values);
+    if (isRateLimited("contact-form", 5, 60_000)) {
+      setRateLimited(true);
+      return;
+    }
+    const sanitizedValues = sanitizeContactForm(values);
+    setValues(sanitizedValues);
+    const nextErrors = validate(sanitizedValues);
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length === 0) {
       setSubmitted(true);
@@ -103,7 +111,11 @@ export default function ContactSectionWithShader({ image = defaultImage }: Conta
             </div>
 
             <div className="py-10">
-              {submitted ? (
+              {rateLimited ? (
+                <div className="rounded-md bg-red-50 p-4 text-sm font-medium text-red-700 dark:bg-red-900/30 dark:text-red-300">
+                  Too many submissions. Please wait a minute before trying again.
+                </div>
+              ) : submitted ? (
                 <div className="rounded-md bg-green-50 p-4 text-sm font-medium text-green-700 dark:bg-green-900/30 dark:text-green-300">
                   Thanks! Your message has been sent.
                 </div>

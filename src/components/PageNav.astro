@@ -14,13 +14,13 @@ const links = [
     Voyaflair
   </a>
 
-  <!-- Desktop links (md and up) -->
-  <div class="hidden md:flex gap-10 meta text-neutral-600">
+  <!-- Scroll-slider links (md) → normal layout (lg+) -->
+  <div class="hidden md:flex overflow-x-auto lg:overflow-visible flex-nowrap whitespace-nowrap scrollbar-hide snap-x snap-mandatory gap-6 lg:gap-10 meta text-neutral-600">
     {links.map((link) => (
       <a
         href={link.href}
         class:list={[
-          "uppercase transition-colors hover:text-neutral-900",
+          "snap-center shrink-0 uppercase transition-colors hover:text-neutral-900",
           pathname === link.href && "text-neutral-900",
         ]}
         aria-current={pathname === link.href ? "page" : undefined}
@@ -66,6 +66,16 @@ const links = [
     </a>
   ))}
 </div>
+
+<style>
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+</style>
 
 <script>
   const openBtn = document.getElementById('nav-open');
