@@ -20,7 +20,15 @@ const data = [
   {
     category: "INDONESIA", // Will automatically become uppercase via code
     title: "",
-    src: "/Video/Home-Indonesia.MP4", 
+    src: "/public/Video/Home-Indonesia.MP4", 
+    mediaType: "video",
+    content: <DummyContent />,
+  },  
+
+   {
+    category: "JAPAN", // Will automatically become uppercase via code
+    title: "",
+    src: "/public/Video/Home Japan.mp4", 
     mediaType: "video",
     content: <DummyContent />,
   },  
@@ -44,12 +52,12 @@ export default function AppleCardsCarouselDemo() {
 
   return (
     <div 
-      className="h-full w-full py-20 font-['Inter',_sans-serif] font-semibold
+      className="h-full w-full py-20 font-['Didot',_serif] 
         /* 1. HIGHER LETTER: Targets all paragraphs inside the cards to make them uppercase */
         [&_p]:uppercase 
         
-        /* 2. PX FONT SIZING: Forces category labels to exactly 13px */
-        [&_p]:text-[13px] 
+        /* 2. PX FONT SIZING: Forces category labels to exactly 20px */
+        [&_p]:text-[20px] 
         
         /* 3. PX LETTER SPACING: Adds a clean 2px tracking to the uppercase layout */
         [&_p]:tracking-[2px]"

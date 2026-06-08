@@ -11,6 +11,8 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
+  site: 'https://johanna-travels.github.io',
+  base: '/alpine_astroproject/',
   integrations: [react(), tailwind(), sentry(), spotlightjs()],
   vite: {
     resolve: {

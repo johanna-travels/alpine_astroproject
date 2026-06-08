@@ -1,0 +1,76 @@
+---
+// import { Image } from 'astro:assets';
+
+// // 1. Import the images dynamically from your assets folder
+// const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg,jpg,png,gif,webp}');
+
+// // 2. Define your card data (Notice the path matches your project structure)
+// const cards = [
+//   {
+//     category: "GREECE",
+//     title: "Greece Vacation",
+//     // Ensure this path matches exactly where your image lives in /src/
+//     src: "/src/assets/services 4x3.webp", 
+//     mediaType: "image",
+//     alt: "Beautiful view of Greece",
+//     properties: {
+//       width: 400,
+//       height: 300
+//     }
+//   },
+
+//   {
+//     category: "GREECE",
+//     title: "Greece Vacation",
+//     // Ensure this path matches exactly where your image lives in /src/
+//     src: "/src/assets/services 4x3.webp", 
+//     mediaType: "image",
+//     alt: "Beautiful view of Greece",
+//     properties: {
+//       width: 400,
+//       height: 300
+//     }
+//   },
+
+//   {
+//     category: "GREECE",
+//     title: "Greece Vacation",
+//     // Ensure this path matches exactly where your image lives in /src/
+//     src: "/src/assets/services 4x3.webp", 
+//     mediaType: "image",
+//     alt: "Beautiful view of Greece",
+//     properties: {
+//       width: 400,
+//       height: 300
+//     }
+//   },
+
+//   {
+//     category: "GREECE",
+//     title: "Greece Vacation",
+//     // Ensure this path matches exactly where your image lives in /src/
+//     src: "/src/assets/services 4x3.webp", 
+//     mediaType: "image",
+//     alt: "Beautiful view of Greece",
+//     properties: {
+//       width: 400,
+//       height: 300
+//     }
+//   },
+
+//   {
+//     category: "GREECE",
+//     title: "Greece Vacation",
+//     // Ensure this path matches exactly where your image lives in /src/
+//     src: "/src/assets/services 4x3.webp", 
+//     mediaType: "image",
+//     alt: "Beautiful view of Greece",
+//     properties: {
+//       width: 400,
+//       height: 300
+//     }
+//   },
+//   // Add more cards here...
+// ];
+---
+
