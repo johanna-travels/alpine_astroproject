@@ -1,10 +1,16 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Footer from '../../components/Footer.astro';
+import PageNav from '../../components/PageNav.astro';
+import PageHero from '../../components/PageHero.astro';
 ---
 
 <Layout>
-	<main class="min-h-screen bg-slate-50 text-slate-950">
+	<PageNav />
+	<main class="min-h-screen text-slate-950" style="background-color: var(--color-bg)">
+		<div class="px-4 md:px-10">
+			<PageHero title="Privacy Policy" eyebrow="Legal" />
+		</div>
 		<section class="mx-auto max-w-3xl px-6 py-16 sm:px-10">
 			<div class="rounded-3xl border border-slate-200 bg-white/90 p-10 shadow-xl shadow-slate-900/5 backdrop-blur">
 				<h1 class="text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl">Privacy Policy</h1>

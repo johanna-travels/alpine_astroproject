@@ -12,7 +12,7 @@ const optimizedHero = await getImage({ src: heroImg, width: 1800, format: 'webp'
 ---
 
 <div
-  class="relative w-full h-[60vh] md:h-[80vh] overflow-hidden md:overflow-visible rounded-[20px] md:rounded-[40px] bg-scroll bg-cover bg-center md:bg-fixed"
+  class="relative w-full h-[60vh] md:h-[80vh] overflow-hidden bg-scroll bg-cover bg-center md:bg-fixed"
   style={`background-image: url('${optimizedHero.src}')`}
 >
   <div class="absolute inset-0 bg-black/20 pointer-events-none"></div>

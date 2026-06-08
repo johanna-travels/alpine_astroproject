@@ -8,7 +8,7 @@ const data = [
   {
     category: "GREECE",
     title: "",
-    src: `${baseUrl}Video/Home -Greece.MP4`, 
+    src: `${baseUrl}Video/Home%20-Greece.MP4`, 
     mediaType: "video",
     content: <DummyContent />,
   },
@@ -30,7 +30,7 @@ const data = [
    {
     category: "JAPAN", // Will automatically become uppercase via code
     title: "",
-    src: `${baseUrl}Video/Home Japan.mp4`, 
+    src: `${baseUrl}Video/Home%20Japan.mp4`, 
     mediaType: "video",
     content: <DummyContent />,
   },  
@@ -38,7 +38,7 @@ const data = [
 
 function DummyContent() {
   return (
-    <div className="rounded-3xl bg-[#F5F5F7] p-8 font-['Inter',_sans-serif] md:p-14 dark:bg-neutral-800">
+    <div className="rounded-3xl p-8 font-['Inter',_sans-serif] md:p-14 dark:bg-neutral-800" style={{ backgroundColor: 'var(--color-bg)' }}>
       <p className="mx-auto max-w-3xl text-base text-neutral-600 md:text-2xl dark:text-neutral-400">
         Places chosen for character, stillness, and depth. Scroll through a
         curated set of destinations and tap any card to read more.

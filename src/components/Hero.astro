@@ -17,9 +17,9 @@ const optimizedHero = await getImage({ src: heroImg, width: 1800, format: 'webp'
 </style>
 
 <!-- 4. Portrait Child (The Image): w-full h-full, pt-[30px], bg-cover bg-center, fade-in -->
-<div class="w-full h-full pt-[30px]">
+<div class="w-full h-full">
     <div
-        class="hero-fade relative w-full h-full bg-cover bg-center rounded-[20px] md:rounded-[40px] overflow-hidden"
+        class="hero-fade relative w-full h-full bg-cover bg-center overflow-hidden"
         style={`background-image: url('${optimizedHero.src}')`}
     >
         <div class="absolute inset-0 bg-black/10 pointer-events-none"></div>

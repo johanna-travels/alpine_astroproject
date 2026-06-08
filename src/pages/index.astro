@@ -6,51 +6,32 @@ import Carousel from '../components/carousel.astro';
 import AppleCardsCarouselDemo from '@/components/ui/apple-cards-carousel-demo.tsx';
 import PlayStoreCarousel from '../components/PlayStoreCarousel.astro';
 import PageNav from '../components/PageNav.astro';
+import PageHero from '../components/PageHero.astro';
 import GlobalEffects from '../components/GlobalEffects.astro';
-import { getImage } from 'astro:assets';
-import heroImg from '../assets/Header pink colors (1).webp';
-
-const optimizedHero = await getImage({ src: heroImg, width: 1800, format: 'webp', quality: 85 });
-
 ---
 
 <Layout>
     <GlobalEffects />
+    <PageNav />
 
-    <!-- Background Image Layer: full-screen, edge-to-edge, 100% static -->
-    <div
-        class="fixed inset-0 w-screen h-screen z-0 bg-cover bg-center"
-        style={`background-image: url('${optimizedHero.src}')`}
-    ></div>
-
-    <!-- Navbar: full-width solid band, content centered at 1102px -->
-    <header class="relative z-20 w-full bg-slate-50">
-        <div class="max-w-[1102px] mx-auto w-full px-4 md:px-[10px]">
-            <PageNav />
+    <main class="min-h-screen text-slate-950" style="background-color: var(--color-bg)">
+        <div class="px-4 md:px-10">
+            <PageHero title="Discover Your Next Journey" eyebrow="Welcome to Voyaflair" />
         </div>
-    </header>
 
-    <!-- Hero Spacer: full-width transparent window, fixed bg shines through -->
-    <div class="relative z-10 w-full h-[740px] bg-transparent"></div>
-
-    <!-- Main Content Curtain: full-width solid block, content centered at 1102px -->
-    <div class="relative z-20 w-full bg-slate-50 text-slate-950 shadow-[0_-20px_60px_rgba(0,0,0,0.15)]">
-        <div class="max-w-[1102px] mx-auto w-full px-4 md:px-[10px]">
-
-            <main class="min-h-screen flex flex-col gap-24 md:gap-32 pb-24 pt-12">
-                <div class="reveal"><PlayStoreCarousel /></div>
-                <div class="reveal"><AppleCardsCarouselDemo client:visible /></div>
-                <div class="reveal"><Carousel /></div>
-                <div class="reveal">
-                    <ContactSectionWithShader client:visible>
-                        <div slot="fallback" class="w-full h-[500px] rounded-3xl bg-slate-100 animate-pulse flex items-center justify-center text-slate-400">
-                            Loading experience...
-                        </div>
-                    </ContactSectionWithShader>
-                </div>
-            </main>
-
-            <Footer />
+        <div class="flex flex-col gap-24 md:gap-32 pb-24 pt-12">
+            <div class="reveal"><PlayStoreCarousel /></div>
+            <div class="reveal"><AppleCardsCarouselDemo client:visible /></div>
+            <div class="reveal"><Carousel /></div>
+            <div class="reveal">
+                <ContactSectionWithShader client:visible>
+                    <div slot="fallback" class="w-full h-[500px] rounded-3xl bg-slate-100 animate-pulse flex items-center justify-center text-slate-400">
+                        Loading experience...
+                    </div>
+                </ContactSectionWithShader>
+            </div>
         </div>
-    </div>
+    </main>
+
+    <Footer />
 </Layout>
