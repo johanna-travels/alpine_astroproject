@@ -2,25 +2,27 @@
 import React from "react";
 import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
 
+const baseUrl = import.meta.env.BASE_URL;
+
 const data = [
   {
     category: "GREECE",
     title: "",
-    src: "/Video/Home -Greece.MP4", 
+    src: `${baseUrl}Video/Home -Greece.MP4`, 
     mediaType: "video",
     content: <DummyContent />,
   },
   {
     category: "BELGIUM", // Will automatically become uppercase via code
     title: "",
-    src: "/Video/Home-Bruges.MP4", 
+    src: `${baseUrl}Video/Home-Bruges.MP4`, 
     mediaType: "video",
     content: <DummyContent />,
   },
   {
     category: "INDONESIA", // Will automatically become uppercase via code
     title: "",
-    src: "/public/Video/Home-Indonesia.MP4", 
+    src: `${baseUrl}Video/Home-Indonesia.MP4`, 
     mediaType: "video",
     content: <DummyContent />,
   },  
@@ -28,7 +30,7 @@ const data = [
    {
     category: "JAPAN", // Will automatically become uppercase via code
     title: "",
-    src: "/public/Video/Home Japan.mp4", 
+    src: `${baseUrl}Video/Home Japan.mp4`, 
     mediaType: "video",
     content: <DummyContent />,
   },  
