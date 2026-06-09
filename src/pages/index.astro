@@ -20,8 +20,8 @@ const optimizedHeader = await getImage({ src: headerLightImg, width: 1800, forma
 
     <!-- HERO -->
     <div
-      class="relative rounded-[30px] overflow-hidden bg-cover bg-center bg-scroll lg:bg-fixed flex flex-col justify-end"
-      style={`background-image: url('${optimizedHeader.src}'); margin-left: 8px; margin-right: 8px; min-height: 526px; margin-bottom: 0px; padding-bottom: 150px;`}
+      class="home-hero relative rounded-[30px] overflow-hidden bg-scroll lg:bg-fixed flex flex-col justify-end"
+      style={`background-image: url('${optimizedHeader.src}'); margin-left: 8px; margin-right: 8px; margin-bottom: 0px;`}
     >
       <div class="absolute inset-0 bg-black/40 z-0"></div>
       <div class="relative z-10 flex items-center justify-center p-6 text-center text-white hero-inner" style="padding-left: 44px;">
@@ -39,31 +39,34 @@ const optimizedHeader = await getImage({ src: headerLightImg, width: 1800, forma
             <div class="reveal"><InfiniteText client:visible /></div>
             <div class="reveal"><AppleCardsCarouselDemo client:visible /></div>
             <div class="reveal"><Carousel /></div>
-            <ContactSectionWithShader client:visible>
-                    <div slot="fallback" class="w-full h-[500px] rounded-3xl bg-slate-100 animate-pulse flex items-center justify-center text-slate-400">
-                        Loading experience...
-                    </div>
-                </ContactSectionWithShader>
+            <ContactSectionWithShader client:load />
         </div>
     </main>
 
     <Footer />
 </Layout>
 
-<script>
-  const menuToggle = document.getElementById('menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-  menuToggle?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
-    mobileMenu?.classList.toggle('flex');
-  });
-</script>
 
 <style>
+  .home-hero {
+    min-height: 250px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-size: cover;
+    background-position: center center;
+  }
   @media (min-width: 768px) {
-    .hero-inner { min-height: 660px; }
+    .home-hero {
+      min-height: 300px;
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
   }
   @media (min-width: 1025px) {
-    .hero-inner { min-height: 740px; }
+    .home-hero {
+      min-height: 740px;
+      padding-top: 0;
+      padding-bottom: 150px;
+    }
   }
 </style>

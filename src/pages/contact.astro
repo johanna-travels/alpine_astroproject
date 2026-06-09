@@ -2,19 +2,18 @@
 import Layout from "@/layouts/Layout.astro";
 import PageNav from '../components/PageNav.astro';
 import { getImage } from 'astro:assets';
-import contactImg from '../assets/Contact.webp';
-import headerLightImg from '../assets/HeADER LIGHT.webp';
+import heroImg from '../assets/contac-img.webp';
+import ContactSectionWithShader from '../block/contact-section-with-shader.tsx';
 
-const optimizedContact = await getImage({ src: contactImg, width: 1800, format: 'webp', quality: 85 });
-const optimizedHeader = await getImage({ src: headerLightImg, width: 1800, format: 'webp', quality: 85 });
+const optimizedHeader = await getImage({ src: heroImg, width: 1800, format: 'webp', quality: 85 });
 ---
 
 <Layout>
   
 <PageNav />
   <div 
-    class="relative rounded-[30px] overflow-hidden bg-cover bg-center bg-scroll lg:bg-fixed flex flex-col justify-end"
-    style={`background-image: url('${optimizedHeader.src}'); margin-left: 8px; margin-right: 8px; min-height: 526px; margin-bottom: 0px; padding-bottom: 150px;`}
+    class="contact-hero relative rounded-[30px] overflow-hidden bg-scroll lg:bg-fixed flex flex-col justify-end"
+    style={`background-image: url('${optimizedHeader.src}'); margin-left: 8px; margin-right: 8px; margin-bottom: 0px;`}
   >
     <div class="absolute inset-0 bg-black/40 z-0"></div>
 
@@ -39,21 +38,31 @@ const optimizedHeader = await getImage({ src: headerLightImg, width: 1800, forma
     </div>
   </section>
 
+  <ContactSectionWithShader />
+
 </Layout>
 
 
 <style>
-  /* Tablet */
+  .contact-hero {
+    min-height: 250px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-size: cover;
+    background-position: center center;
+  }
   @media (min-width: 768px) {
-    .hero-inner {
-      min-height: 660px;
+    .contact-hero {
+      min-height: 300px;
+      padding-top: 40px;
+      padding-bottom: 40px;
     }
   }
-  /* Desktop */
   @media (min-width: 1025px) {
-    .hero-inner {
+    .contact-hero {
       min-height: 740px;
+      padding-top: 0;
+      padding-bottom: 150px;
     }
   }
-  /* Mobile default is set inline (526px) */
 </style>

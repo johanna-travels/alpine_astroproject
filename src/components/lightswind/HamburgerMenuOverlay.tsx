@@ -14,6 +14,7 @@ interface HamburgerMenuOverlayProps {
   buttonRight?: string;
   buttonSize?: 'sm' | 'md' | 'lg';
   buttonColor?: string;
+  iconColor?: string;
   overlayBackground?: string;
   textColor?: string;
   fontSize?: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
@@ -36,7 +37,7 @@ interface HamburgerMenuOverlayProps {
 }
 
 const sizeMap = {
-  sm: { button: '40px', icon: '18px' },
+  sm: { button: '40px', icon: '13px' },
   md: { button: '52px', icon: '22px' },
   lg: { button: '64px', icon: '28px' },
 };
@@ -63,6 +64,7 @@ export function HamburgerMenuOverlay({
   buttonRight,
   buttonSize = 'md',
   buttonColor = '#6c8cff',
+  iconColor = '#ffffff',
   overlayBackground = '#6c8cff',
   textColor = '#ffffff',
   fontSize = 'lg',
@@ -137,7 +139,7 @@ export function HamburgerMenuOverlay({
           alignItems: 'center',
           justifyContent: 'center',
           zIndex: zIndex + 1,
-          boxShadow: '0 4px 20px rgba(0,0,0,0.18)',
+          boxShadow: buttonColor === 'transparent' ? 'none' : '0 4px 20px rgba(0,0,0,0.18)',
           transition: `transform ${animationDuration * 0.3}s ease`,
           transform: isOpen ? 'rotate(90deg) scale(1.08)' : 'rotate(0deg) scale(1)',
         }}
@@ -148,7 +150,7 @@ export function HamburgerMenuOverlay({
             height={sizeMap[buttonSize].icon}
             viewBox="0 0 24 24"
             fill="none"
-            stroke="#fff"
+            stroke={iconColor}
             strokeWidth="2.5"
             strokeLinecap="round"
             style={{ transition: `opacity ${animationDuration * 0.2}s` }}

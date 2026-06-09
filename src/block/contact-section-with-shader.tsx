@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Image } from "astro:assets";
-import contactImage from "@/assets/Contact.webp";
+import contactImage from "@/assets/contac-img.webp";
 import { sanitizeInput, sanitizeContactForm, isRateLimited } from "@/lib/security";
 
 type ContactSectionProps = {
