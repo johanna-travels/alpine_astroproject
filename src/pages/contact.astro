@@ -4,65 +4,42 @@ import PageNav from '../components/PageNav.astro';
 import { getImage } from 'astro:assets';
 import heroImg from '../assets/contac-img.webp';
 import ContactSectionWithShader from '../block/contact-section-with-shader.tsx';
+import Footer from '../components/Footer.astro';
 
 const optimizedHeader = await getImage({ src: heroImg, width: 1800, format: 'webp', quality: 85 });
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout>
   
 <PageNav />
-  <div 
-    class="contact-hero relative rounded-[30px] overflow-hidden bg-scroll lg:bg-fixed flex flex-col justify-end"
-    style={`background-image: url('${optimizedHeader.src}'); margin-left: 8px; margin-right: 8px; margin-bottom: 0px;`}
-  >
-    <div class="absolute inset-0 bg-black/40 z-0"></div>
 
-    <div class="relative z-10 flex items-center justify-center p-6 text-center text-white hero-inner" style="padding-left: 44px;">
-      <div class="max-w-2xl">
-        <h1 class="text-4xl md:text-6xl font-black tracking-tight mb-4">
-          Stunning Header Text
-        </h1>
-        <p class="text-lg md:text-xl text-gray-200 font-light">
-          The background image layer is beautifully curved and completely independent of the navigation.
-        </p>
-      </div>
+<div 
+  class="contact-hero relative rounded-[30px] overflow-hidden bg-scroll lg:bg-fixed flex flex-col justify-end mx-2"
+  style={`background-image: url('${optimizedHeader.src}');`}
+>
+  <div class="absolute inset-0 bg-black/20 z-0"></div>
+
+  <div class="relative z-10 w-full flex flex-col justify-end h-[250px] md:h-[300px] lg:h-[592px]">
+    <div class="w-full max-w-[1300px] pl-4 pr-4 md:pl-10 md:pr-10 lg:pl-16 lg:pr-4 text-white pb-6 lg:pb-12">
+      <h1 class="text-4xl md:text-6xl font-black tracking-tight mb-4">
+        Contact
+      </h1>
+      <nav class="flex items-center gap-2 text-sm font-medium text-white/60">
+        <a href={`${base}/`} class="hover:text-white/90 transition-colors">Home</a>
+        <span class="text-white/40">/</span>
+        <a href={`${base}/contact`} class="text-white/90 hover:text-white transition-colors">Contact</a>
+      </nav>
     </div>
   </div>
-
-  <section class="bg-white py-16 px-6 max-w-7xl mx-auto">
-    <div class="max-w-3xl">
-      <h2 class="text-3xl font-bold text-gray-900 mb-4">Continued Content</h2>
-      <p class="text-gray-600 leading-relaxed">
-        This content flows naturally on the white background right under the isolated hero element.
-      </p>
-    </div>
-  </section>
-
-  <ContactSectionWithShader />
+</div> <ContactSectionWithShader client:idle showImage={false} className="mt-10 flex-center" />
+<Footer />
 
 </Layout>
 
-
 <style>
   .contact-hero {
-    min-height: 250px;
-    padding-top: 30px;
-    padding-bottom: 30px;
     background-size: cover;
     background-position: center center;
-  }
-  @media (min-width: 768px) {
-    .contact-hero {
-      min-height: 300px;
-      padding-top: 40px;
-      padding-bottom: 40px;
-    }
-  }
-  @media (min-width: 1025px) {
-    .contact-hero {
-      min-height: 740px;
-      padding-top: 0;
-      padding-bottom: 150px;
-    }
   }
 </style>

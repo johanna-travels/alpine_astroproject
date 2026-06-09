@@ -6,22 +6,25 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const links = [
   { label: "Home", href: `${base}/` },
-  { label: "About", href: `${base}/about` },
+  { label: "About Me", href: `${base}/about` },
   { label: "Services", href: `${base}/services` },
   { label: "Destinations", href: `${base}/destinations` },
   { label: "Contact", href: `${base}/contact` },
+  { label: "Instagram", href: "https://www.instagram.com/voyaflair", variant: "social" as const, iconType: "instagram" as const },
+  { label: "Pinterest", href: "https://pinterest.com/voyaflair/", variant: "social" as const, iconType: "pinterest" as const },
+  { label: "TikTok", href: "https://www.tiktok.com/@voyaflair", variant: "social" as const, iconType: "tiktok" as const },
 ];
 
 const normalize = (p: string) => (p !== "/" ? p.replace(/\/$/, "") : p);
 const isActive = (href: string) => normalize(pathname) === normalize(href);
 ---
 
-<nav class="w-full bg-white text-gray-900 px-4 md:px-10">
+<nav class="w-full text-gray-900 px-4 md:px-10" style="background-color: #F5F2EB;">
   <div class="max-w-[1500px] mx-auto flex items-center justify-between min-h-[61px] md:min-h-[129px] gap-4 md:gap-8">
     <a href={`${base}/`} class="text-xl font-bold tracking-wider" style="color: #69746E;">VF</a>
 
     <div class="hidden md:flex items-center gap-8 font-medium text-gray-600">
-      {links.map((link) => (
+      {links.filter(link => link.variant !== 'social').map((link) => (
         <a
           href={link.href}
           class:list={[
@@ -46,11 +49,11 @@ const isActive = (href: string) => normalize(pathname) === normalize(href);
         iconColor="#111827"
         overlayBackground="#F5F2EB"
         textColor="#111827"
-        fontSize="xl"
+        fontSize="lg"
         fontFamily='"Bodoni Moda", "Playfair Display", serif'
-        fontWeight="bold"
-        animationDuration={0.8}
-        staggerDelay={0.07}
+        fontWeight="normal"
+        animationDuration={0.6}
+        staggerDelay={0.05}
         menuAlignment="left"
         enableBlur={true}
         ariaLabel="Navigation menu"

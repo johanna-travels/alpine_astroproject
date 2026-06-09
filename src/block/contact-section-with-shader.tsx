@@ -6,6 +6,8 @@ import { sanitizeInput, sanitizeContactForm, isRateLimited } from "@/lib/securit
 
 type ContactSectionProps = {
   image?: string;
+  showImage?: boolean;
+  className?: string;
 };
 
 const defaultImage = contactImage.src;
@@ -40,7 +42,7 @@ function validate(values: FormValues): FormErrors {
 
 // --- MAIN EXPORT COMPONENT ---
 // Connect with the locals
-export default function ContactSectionWithShader({ image = defaultImage }: ContactSectionProps) {
+export default function ContactSectionWithShader({ image = defaultImage, showImage = true, className = '' }: ContactSectionProps) {
   const [values, setValues] = useState<FormValues>({
     name: "",
     email: "",
@@ -82,21 +84,24 @@ export default function ContactSectionWithShader({ image = defaultImage }: Conta
     }`;
 
   return (
-    <div className="w-full bg-gray-50 dark:bg-neutral-900">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 py-10 md:px-8 lg:grid-cols-2 lg:py-20">
+    <div className={`w-full dark:bg-neutral-900 ${className}`} style={{ backgroundColor: 'var(--color-bg, #F5F2EB)' }}>
+      <div className={`mx-auto grid max-w-[1300px] gap-8 px-0 py-10 md:px-10 lg:py-20 ${showImage ? 'grid-cols-1 lg:grid-cols-2' : 'grid-cols-1 place-items-center'}`}>
         
         {/* Left Column - Single static image */}
+        {showImage && (
         <div className="order-last h-[500px] overflow-hidden rounded-3xl md:order-first lg:h-auto">
           <img
             src={image}
             alt="Contact us"
             className="h-full w-full object-cover"
+            loading="lazy"
           />
         </div>
+        )}
 
         {/* Right Column - Contact Form */}
-        <div className="flex items-center justify-center">
-          <div className="w-full max-w-lg rounded-3xl px-4 py-8 md:px-10">
+        <div className={`flex items-center justify-center ${!showImage ? 'w-full' : ''}`}>
+          <div className={`w-full ${!showImage ? 'w-full p-[35px] rounded-[10px] bg-white shadow-sm' : 'max-w-lg rounded-3xl px-4 py-8 md:px-10'}`}>
             <div>
               <h1 className="mt-4 text-4xl font-bold tracking-tight text-black dark:text-white leading-9">
                 Let's Talk

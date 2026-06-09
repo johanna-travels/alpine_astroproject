@@ -96,15 +96,6 @@
     .prose-body { font-size: 19px; }
   }
 
-  /* Image captions : Inter, Regular, 14px, lh 1.5 */
-  .caption {
-    font-family: var(--font-sans);
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.5;
-    color: #6b7280;
-  }
-
   /* Meta info (date, author, category, reading time) : Inter, Medium, 14px, +0.03em */
   .meta {
     font-family: var(--font-sans);

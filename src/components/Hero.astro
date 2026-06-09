@@ -13,14 +13,36 @@ const optimizedHero = await getImage({ src: heroImg, width: 1800, format: 'webp'
     }
     .hero-fade {
         animation: heroFadeIn 1.2s ease-out forwards;
+        background-attachment: scroll;
+    }
+    /* Mobile only: portrait snaps to 526px, full phone width */
+    /* Subject is at ~72% horizontal in the file, so anchor right of centre */
+    @media (max-width: 767px) {
+        .hero-fade {
+            min-height: 400px;
+            background-position: 72% center !important;
+        }
+    }
+    /* Tablet only: portrait stretches to 660px */
+    @media (min-width: 768px) and (max-width: 1024px) {
+        .hero-fade {
+            min-height: 660px;
+            background-position: 65% center !important;
+        }
+    }
+    /* Desktop: viewport-anchored background */
+    @media (min-width: 1025px) {
+        .hero-fade {
+            background-attachment: fixed;
+        }
     }
 </style>
 
 <!-- 4. Portrait Child (The Image): w-full h-full, pt-[30px], bg-cover bg-center, fade-in -->
 <div class="w-full h-full">
     <div
-        class="hero-fade relative w-full h-full bg-cover bg-center overflow-hidden"
-        style={`background-image: url('${optimizedHero.src}')`}
+        class="hero-fade relative w-full h-full bg-cover bg-center overflow-hidden rounded-[30px]"
+        style={`background-image: url('${optimizedHero.src}'); background-repeat: no-repeat;`}
     >
         <div class="absolute inset-0 bg-black/10 pointer-events-none"></div>
     </div>
