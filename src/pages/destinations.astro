@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+import PageNav from '../components/PageNav.astro';
+import DestinationsSection from '../components/components/destinations.astro';
+---
+
+<Layout>
+  <PageNav />
+  <main class="min-h-screen text-neutral-900 px-4 md:px-10 pb-24" style="background-color: var(--color-bg)">
+    <DestinationsSection />
+  </main>
+  <Footer />
+</Layout>

@@ -1,34 +1,33 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Footer from '../../components/Footer.astro';
-import PageNav from '../../components/PageNav.astro';
-import PageHero from '../../components/PageHero.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout>
-	<PageNav />
-	<main class="min-h-screen text-slate-950" style="background-color: var(--color-bg)">
-		<div class="px-4 md:px-10">
-			<PageHero title="Terms & Conditions" eyebrow="Legal" />
-		</div>
-		<section class="mx-auto max-w-3xl px-6 py-16 sm:px-10">
-			<div class="rounded-3xl border border-slate-200 bg-white/90 p-10 shadow-xl shadow-slate-900/5 backdrop-blur">
-				<h1 class="text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl">Terms &amp; Conditions</h1>
+	<main class="min-h-screen text-slate-950 pb-24" style="background-color: var(--color-bg)">
+		<section class="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
+			<a href={`${base}/`} class="inline-flex items-center gap-2 mb-6 text-sm text-slate-500 hover:text-slate-900 transition-colors">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/></svg>
+				Back to home
+			</a>
+			<div class="rounded-2xl sm:rounded-3xl border border-slate-200 bg-white/90 p-6 sm:p-10 shadow-xl shadow-slate-900/5 backdrop-blur">
+				<h1 class="text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl md:text-5xl">Terms &amp; Conditions</h1>
 				<p class="mt-4 text-sm text-slate-500">Last updated: June 2026</p>
 
-				<h2 class="mt-10 text-2xl font-semibold tracking-tight text-slate-950">1. Acceptance of Terms</h2>
+				<h2 class="mt-10 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">1. Acceptance of Terms</h2>
 				<p class="mt-4 leading-7 text-slate-600">
 					By accessing and using Voyaflair, you agree to be bound by these Terms &amp; Conditions and all applicable laws
 					and regulations. If you do not agree with any part of these terms, please do not use this website.
 				</p>
 
-				<h2 class="mt-8 text-2xl font-semibold tracking-tight text-slate-950">2. About Voyaflair</h2>
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">2. About Voyaflair</h2>
 				<p class="mt-4 leading-7 text-slate-600">
 					Voyaflair is a curated travel journal that shares destinations, guides, recommendations, and lifestyle
 					content for informational and inspirational purposes only.
 				</p>
 
-				<h2 class="mt-8 text-2xl font-semibold tracking-tight text-slate-950">3. Use of the Website</h2>
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">3. Use of the Website</h2>
 				<p class="mt-4 leading-7 text-slate-600">You agree to use the website only for lawful purposes. You must not:</p>
 				<ul class="mt-3 list-disc space-y-1 pl-6 text-slate-600">
 					<li>Use the website in any way that breaches applicable laws or regulations</li>
@@ -38,7 +37,7 @@ import PageHero from '../../components/PageHero.astro';
 					<li>Transmit malware, spam, or harmful code</li>
 				</ul>
 
-				<h2 class="mt-8 text-2xl font-semibold tracking-tight text-slate-950">4. Intellectual Property</h2>
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">4. Intellectual Property</h2>
 				<p class="mt-4 leading-7 text-slate-600">
 					All content on Voyaflair — including text, images, graphics, logos, and design — is the property of Voyaflair
 					or its content creators and is protected by copyright and intellectual property laws.
@@ -47,7 +46,7 @@ import PageHero from '../../components/PageHero.astro';
 					You may not reproduce, distribute, modify, or republish any material without prior written consent.
 				</p>
 
-				<h2 class="mt-8 text-2xl font-semibold tracking-tight text-slate-950">5. Travel Information Disclaimer</h2>
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">5. Travel Information Disclaimer</h2>
 				<p class="mt-4 leading-7 text-slate-600">
 					Travel information is provided in good faith and for general guidance only. Always verify details such as
 					opening hours, prices, visa requirements, and travel advisories with official sources before making plans.
@@ -56,52 +55,52 @@ import PageHero from '../../components/PageHero.astro';
 					Voyaflair is not responsible for any loss, inconvenience, or damage resulting from reliance on the content.
 				</p>
 
-				<h2 class="mt-8 text-2xl font-semibold tracking-tight text-slate-950">6. Affiliate Links</h2>
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">6. Affiliate Links</h2>
 				<p class="mt-4 leading-7 text-slate-600">
 					Voyaflair may contain affiliate links. If you make a purchase through these links, we may earn a commission at
 					no additional cost to you. This does not influence the integrity of our recommendations.
 				</p>
 
-				<h2 class="mt-8 text-2xl font-semibold tracking-tight text-slate-950">7. Third-Party Links</h2>
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">7. Third-Party Links</h2>
 				<p class="mt-4 leading-7 text-slate-600">
 					The website may contain links to third-party websites. We are not responsible for the content, accuracy, or
 					practices of any external sites and provide such links for convenience only.
 				</p>
 
-				<h2 class="mt-8 text-2xl font-semibold tracking-tight text-slate-950">8. User Content</h2>
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">8. User Content</h2>
 				<p class="mt-4 leading-7 text-slate-600">
 					If you submit comments or other content, you grant Voyaflair a non-exclusive right to use, display, and
 					moderate that content. You are responsible for ensuring your submissions are lawful and not infringing.
 				</p>
 
-				<h2 class="mt-8 text-2xl font-semibold tracking-tight text-slate-950">9. Limitation of Liability</h2>
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">9. Limitation of Liability</h2>
 				<p class="mt-4 leading-7 text-slate-600">
 					The website and its content are provided "as is" without warranties of any kind. To the fullest extent
 					permitted by law, Voyaflair shall not be liable for any direct, indirect, or consequential damages arising
 					from your use of the website.
 				</p>
 
-				<h2 class="mt-8 text-2xl font-semibold tracking-tight text-slate-950">10. Privacy</h2>
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">10. Privacy</h2>
 				<p class="mt-4 leading-7 text-slate-600">
 					Your use of the website is also governed by our
-					<a href="/privacy-policy" class="font-medium text-slate-900 underline underline-offset-4 hover:text-slate-700">Privacy Policy</a>
+					<a href={`${base}/privacy-policy`} class="font-medium text-slate-900 underline underline-offset-4 hover:text-slate-700">Privacy Policy</a>
 					and
-					<a href="/cookie-policy" class="font-medium text-slate-900 underline underline-offset-4 hover:text-slate-700">Cookie Policy</a>.
+					<a href={`${base}/cookie-policy`} class="font-medium text-slate-900 underline underline-offset-4 hover:text-slate-700">Cookie Policy</a>.
 				</p>
 
-				<h2 class="mt-8 text-2xl font-semibold tracking-tight text-slate-950">11. Changes to These Terms</h2>
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">11. Changes to These Terms</h2>
 				<p class="mt-4 leading-7 text-slate-600">
 					We may update these Terms &amp; Conditions from time to time. Continued use of the website after changes are
 					posted constitutes acceptance of the revised terms.
 				</p>
 
-				<h2 class="mt-8 text-2xl font-semibold tracking-tight text-slate-950">12. Governing Law</h2>
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">12. Governing Law</h2>
 				<p class="mt-4 leading-7 text-slate-600">
 					These terms are governed by and construed in accordance with applicable laws, without regard to conflict of
 					law principles.
 				</p>
 
-				<h2 class="mt-8 text-2xl font-semibold tracking-tight text-slate-950">13. Contact Information</h2>
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">13. Contact Information</h2>
 				<p class="mt-4 leading-7 text-slate-600">
 					If you have questions regarding these Terms &amp; Conditions, please contact:
 				</p>

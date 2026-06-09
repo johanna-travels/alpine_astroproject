@@ -1,4 +1,6 @@
 ---
+import { HamburgerMenuOverlay } from '@/components/lightswind/HamburgerMenuOverlay';
+
 const { pathname } = Astro.url;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
@@ -6,7 +8,7 @@ const links = [
   { label: "Home", href: `${base}/` },
   { label: "About", href: `${base}/about` },
   { label: "Services", href: `${base}/services` },
-  { label: "Affiliate", href: `${base}/Affilliate` },
+  { label: "Destinations", href: `${base}/destinations` },
   { label: "Contact", href: `${base}/contact` },
 ];
 
@@ -14,101 +16,44 @@ const normalize = (p: string) => (p !== "/" ? p.replace(/\/$/, "") : p);
 const isActive = (href: string) => normalize(pathname) === normalize(href);
 ---
 
-<nav class="relative z-50 w-full flex justify-between items-center pt-[30px] pb-[15px] px-4 md:px-10">
-  <a href={`${base}/`} class="text-xl md:text-2xl lg:text-3xl font-serif font-bold tracking-tight text-neutral-900">
-    Voyaflair
-  </a>
+<nav class="w-full bg-white text-gray-900 px-4 md:px-10">
+  <div class="max-w-[1500px] mx-auto flex items-center justify-between min-h-[61px] md:min-h-[129px] gap-4 md:gap-8">
+    <a href={`${base}/`} class="text-xl font-bold tracking-wider" style="color: #69746E;">VF</a>
 
-  <!-- Scroll-slider links (md) → normal layout (lg+) -->
-  <div class="hidden md:flex overflow-x-auto lg:overflow-visible flex-nowrap whitespace-nowrap scrollbar-hide snap-x snap-mandatory gap-6 lg:gap-12 meta text-neutral-600 lg:text-base">
-    {links.map((link) => (
-      <a
-        href={link.href}
-        class:list={[
-          "snap-center shrink-0 uppercase transition-colors hover:text-neutral-900",
-          isActive(link.href) && "text-neutral-900",
-        ]}
-        aria-current={isActive(link.href) ? "page" : undefined}
-      >
-        {link.label}
-      </a>
-    ))}
+    <div class="hidden md:flex items-center gap-8 font-medium text-gray-600">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            "hover:text-gray-900 transition-colors",
+            isActive(link.href) && "text-gray-900 font-semibold",
+          ]}
+          aria-current={isActive(link.href) ? "page" : undefined}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+
+    <div class="block md:hidden">
+      <HamburgerMenuOverlay
+        client:load
+        items={links}
+        buttonTop="18px"
+        buttonRight="16px"
+        buttonSize="sm"
+        buttonColor="#69746E"
+        overlayBackground="#F5F2EB"
+        textColor="#111827"
+        fontSize="xl"
+        fontFamily='"Bodoni Moda", "Playfair Display", serif'
+        fontWeight="bold"
+        animationDuration={0.8}
+        staggerDelay={0.07}
+        menuAlignment="left"
+        enableBlur={true}
+        ariaLabel="Navigation menu"
+      />
+    </div>
   </div>
-
-  <!-- Mobile trigger (below md) -->
-  <button
-    id="nav-open"
-    aria-label="Open menu"
-    class="md:hidden meta uppercase text-neutral-900"
-  >
-    Menu
-  </button>
 </nav>
-
-<!-- Mobile full-screen menu -->
-<div
-  id="nav-menu"
-  class="fixed inset-0 z-[60] hidden flex-col items-center justify-center gap-8 opacity-0 transition-opacity duration-300" style="background-color: var(--color-bg)"
->
-  <button
-    id="nav-close"
-    aria-label="Close menu"
-    class="absolute top-6 right-6 text-4xl leading-none text-neutral-900 hover:text-neutral-500 transition-colors"
-  >
-    &times;
-  </button>
-
-  {links.map((link) => (
-    <a
-      href={link.href}
-      class:list={[
-        "nav-mobile-link font-serif text-4xl text-neutral-900",
-        isActive(link.href) && "italic",
-      ]}
-      aria-current={isActive(link.href) ? "page" : undefined}
-    >
-      {link.label}
-    </a>
-  ))}
-</div>
-
-<style>
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-</style>
-
-<script>
-  const openBtn = document.getElementById('nav-open');
-  const closeBtn = document.getElementById('nav-close');
-  const menu = document.getElementById('nav-menu') as HTMLDivElement;
-  const mobileLinks = document.querySelectorAll('.nav-mobile-link');
-
-  const openMenu = () => {
-    if (!menu) return;
-    menu.classList.remove('hidden');
-    menu.classList.add('flex');
-    requestAnimationFrame(() => {
-      menu.classList.remove('opacity-0');
-      menu.classList.add('opacity-100');
-    });
-  };
-
-  const closeMenu = () => {
-    if (!menu) return;
-    menu.classList.remove('opacity-100');
-    menu.classList.add('opacity-0');
-    setTimeout(() => {
-      menu.classList.remove('flex');
-      menu.classList.add('hidden');
-    }, 300);
-  };
-
-  openBtn?.addEventListener('click', openMenu);
-  closeBtn?.addEventListener('click', closeMenu);
-  mobileLinks.forEach((link) => link.addEventListener('click', closeMenu));
-</script>

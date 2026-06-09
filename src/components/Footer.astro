@@ -3,11 +3,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <footer class="p-4 bg-[var(--color-white)]">
-<header class="pt-16 pb-8 w-full bg-[#1E392B] rounded-t-3xl">
+<header class="pt-16 pb-8 w-full bg-[#69746E] rounded-t-3xl">
     <div class="mx-auto w-full max-w-7xl px-6 sm:px-10">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 pb-12 border-b border-white/10">
                 <div class="flex flex-col gap-5">
-                    <a href={`${base}/`} class="font-serif text-2xl tracking-wide" style="color: #69746E;">VF</a>
+                    <a href={`${base}/`} class="font-serif text-2xl tracking-wide" style=" color: white;">VF</a>
                     <p class="text-white/75 text-sm leading-relaxed">Voyaflair is a travel journal by Johanna.</p>
                 </div>
                 <div class="flex flex-col gap-5">
@@ -37,7 +37,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
                 <div class="flex flex-col gap-5">
                     <h3 class="text-white/70 text-xs tracking-[0.3em] uppercase">Newsletter</h3>
                     <p class="text-white/75 text-sm leading-relaxed">Curated places, beautiful stays &amp; stories worth remembering — straight to your inbox.</p>
-                    <a href="https://substack.com/" target="_blank" class="inline-block text-xs tracking-[0.2em] uppercase text-white px-5 py-3 transition-all duration-300 w-fit hover:brightness-110" style="background-color: #69746E;">Subscribe</a>
+               <a 
+                href="https://substack.com/" 
+                target="_blank" 
+                class="inline-block text-xs tracking-[0.2em] uppercase px-5 py-3 transition-all duration-300 w-fit hover:opacity-90 bg-[#F4F1EA] text-[#2D2D2D]"
+                >
+                Subscribe
+                </a>
                 </div>
             </div>
                 <div class="pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">

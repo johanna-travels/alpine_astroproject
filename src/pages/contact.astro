@@ -1,14 +1,59 @@
----
-import Layout from '../layouts/Layout.astro';
-import Footer from '../components/Footer.astro';
+ ---
+import Layout from "@/layouts/Layout.astro";
 import PageNav from '../components/PageNav.astro';
-import ContactSection from '../components/components/contact.astro';
+import { getImage } from 'astro:assets';
+import contactImg from '../assets/Contact.webp';
+import headerLightImg from '../assets/HeADER LIGHT.webp';
+
+const optimizedContact = await getImage({ src: contactImg, width: 1800, format: 'webp', quality: 85 });
+const optimizedHeader = await getImage({ src: headerLightImg, width: 1800, format: 'webp', quality: 85 });
 ---
 
 <Layout>
-  <PageNav />
-  <main class="min-h-screen text-neutral-900 px-4 md:px-10 pb-24" style="background-color: var(--color-bg)">
-    <ContactSection />
-  </main>
-  <Footer />
+  
+<PageNav />
+  <div 
+    class="relative rounded-[30px] overflow-hidden bg-cover bg-center bg-scroll lg:bg-fixed flex flex-col justify-end"
+    style={`background-image: url('${optimizedHeader.src}'); margin-left: 8px; margin-right: 8px; min-height: 526px; margin-bottom: 0px; padding-bottom: 150px;`}
+  >
+    <div class="absolute inset-0 bg-black/40 z-0"></div>
+
+    <div class="relative z-10 flex items-center justify-center p-6 text-center text-white hero-inner" style="padding-left: 44px;">
+      <div class="max-w-2xl">
+        <h1 class="text-4xl md:text-6xl font-black tracking-tight mb-4">
+          Stunning Header Text
+        </h1>
+        <p class="text-lg md:text-xl text-gray-200 font-light">
+          The background image layer is beautifully curved and completely independent of the navigation.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <section class="bg-white py-16 px-6 max-w-7xl mx-auto">
+    <div class="max-w-3xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Continued Content</h2>
+      <p class="text-gray-600 leading-relaxed">
+        This content flows naturally on the white background right under the isolated hero element.
+      </p>
+    </div>
+  </section>
+
 </Layout>
+
+
+<style>
+  /* Tablet */
+  @media (min-width: 768px) {
+    .hero-inner {
+      min-height: 660px;
+    }
+  }
+  /* Desktop */
+  @media (min-width: 1025px) {
+    .hero-inner {
+      min-height: 740px;
+    }
+  }
+  /* Mobile default is set inline (526px) */
+</style>
