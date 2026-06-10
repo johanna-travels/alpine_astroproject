@@ -1,5 +1,4 @@
 ---
-// src/components/Hero.astro
 import { getImage } from 'astro:assets';
 import heroImg from '../assets/Header pink colors (1).webp';
 
@@ -8,42 +7,57 @@ const optimizedHero = await getImage({ src: heroImg, width: 1800, format: 'webp'
 
 <style>
     @keyframes heroFadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
     }
-    .hero-fade {
+    
+    .hero-animate {
         animation: heroFadeIn 1.2s ease-out forwards;
-        background-attachment: scroll;
     }
-    /* Mobile only: portrait snaps to 526px, full phone width */
-    /* Subject is at ~72% horizontal in the file, so anchor right of centre */
+
+    /* Target the background specifically to avoid overriding Tailwind's layout classes */
+    .hero-bg-logic {
+        background-image: var(--bg-image);
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+    }
+
     @media (max-width: 767px) {
-        .hero-fade {
+        .hero-bg-logic {
             min-height: 400px;
-            background-position: 72% center !important;
+            background-position: 82% center; /* Focus on subjects for mobile portrait */
         }
     }
-    /* Tablet only: portrait stretches to 660px */
-    @media (min-width: 768px) and (max-width: 1024px) {
-        .hero-fade {
+
+    @media (min-width: 768px) {
+        .hero-bg-logic {
             min-height: 660px;
-            background-position: 65% center !important;
+            background-position: center center;
         }
     }
-    /* Desktop: viewport-anchored background */
+
     @media (min-width: 1025px) {
-        .hero-fade {
-            background-attachment: fixed;
+        .hero-bg-logic {
+            background-attachment: fixed; /* Parallax effect for desktop */
         }
     }
 </style>
 
-<!-- 4. Portrait Child (The Image): w-full h-full, pt-[30px], bg-cover bg-center, fade-in -->
-<div class="w-full h-full">
+<div class="w-full relative">
     <div
-        class="hero-fade relative w-full h-full bg-cover bg-center overflow-hidden rounded-[30px]"
-        style={`background-image: url('${optimizedHero.src}'); background-repeat: no-repeat;`}
+        class="hero-bg-logic hero-animate overflow-hidden rounded-[30px]"
+        style={`--bg-image: url('${optimizedHero.src}');`}
     >
-        <div class="absolute inset-0 bg-black/10 pointer-events-none"></div>
+        {/* Semi-transparent overlay that covers the entire background */}
+        <div class="absolute inset-0 bg-black/0.5 pointer-events-none z-0"></div>
+        
+        {/* Spacer to ensure proper height across all devices */}
+        <div class="relative z-10 lg:h-[660px] md:h-[500px] h-[400px]">
+            <slot />
+        </div>
     </div>
 </div>

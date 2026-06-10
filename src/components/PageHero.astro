@@ -15,7 +15,7 @@ const optimizedHero = await getImage({ src: heroImg, width: 1800, format: 'webp'
   class="relative w-full h-[60vh] md:h-[80vh] overflow-hidden bg-scroll bg-cover bg-center md:bg-fixed"
   style={`background-image: url('${optimizedHero.src}')`}
 >
-  <div class="absolute inset-0 bg-black/20 pointer-events-none"></div>
+  <div class="absolute inset-0 bg-black/0.5 pointer-events-none z-0"></div>
 
   <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
     {eyebrow && <span class="meta text-white/80 uppercase">{eyebrow}</span>}
