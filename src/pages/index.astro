@@ -20,7 +20,7 @@ const optimizedHeader = await getImage({ src: headerLightImg, width: 1800, forma
     <PageNav />
 
     <!-- HERO: mobile & tablet only -->
-    <div class="block lg:hidden mx-2 sm:mx-auto w-auto sm:w-[400px] max-w-full min-h-[516px] rounded-[30px] overflow-hidden relative">
+    <div class="block lg:hidden mx-2 w-full sm:w-[90%] md:w-[85%] max-w-[1024px] aspect-[16/9] sm:aspect-[16/10] md:aspect-[16/9] rounded-[30px] overflow-hidden relative">
       <Hero>
         <div class="absolute inset-x-0 bottom-0 z-10 p-6 max-w-2xl text-white">
           <p class="text-lg md:text-xl text-gray-200 font-light">Welcome to Voyaflair</p>
@@ -41,11 +41,11 @@ const optimizedHeader = await getImage({ src: headerLightImg, width: 1800, forma
 
     <!-- HERO: desktop only -->
     <div
-      class="home-hero relative rounded-[30px] overflow-hidden bg-scroll lg:bg-fixed hidden lg:flex flex-col justify-end"
-      style={`background-image: url('${optimizedHeader.src}'); margin-left: 8px; margin-right: 8px; margin-bottom: 0px;`}
+      class="home-hero relative rounded-[30px] overflow-hidden bg-scroll lg:bg-fixed hidden lg:flex flex-col justify-end mx-2 aspect-[21/9]"
+      style={`background-image: url('${optimizedHeader.src}');`}
     >
       <div class="absolute inset-0 bg-black/0.5 pointer-events-none z-0"></div>
-      <div class="relative z-10 flex items-center justify-center p-6 text-center text-white hero-inner" style="padding-left: 44px;">
+      <div class="relative z-10 flex items-center justify-center p-6 text-center text-white hero-inner">
         <div class="max-w-2xl">
           <h1 class="text-4xl md:text-6xl font-black tracking-tight mb-4">Discover Your Next Journey</h1>
           <p class="text-lg md:text-xl text-gray-200 font-light">Welcome to Voyaflair</p>
