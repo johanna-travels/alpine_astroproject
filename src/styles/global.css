@@ -23,11 +23,17 @@
     text-rendering: optimizeLegibility;
   }
 
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
   body {
     font-family: var(--font-sans);
     font-weight: 400;
     color: #111827;
-    background-color: var(--color-bg);
+    background-color: #ffffff;
   }
 
   /* H1 – Article Title : Playfair Display, Bold, 32 / 40 / 56, lh 1.1 */
@@ -104,4 +110,20 @@
     line-height: 1.5;
     letter-spacing: 0.03em;
   }
+}
+
+/* =====================================================================
+   COMPONENT: Destinations card carousel
+   Card label typography (uppercase editorial style).
+   Unlayered on purpose: must override utility font sizes on inner <p>,
+   same behavior as the previous [&_p]: arbitrary variants.
+   ===================================================================== */
+.card-container {
+  font-family: var(--font-serif);
+}
+
+.card-container p {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 20px;
 }

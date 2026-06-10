@@ -10,7 +10,7 @@ const countries = [
 
 const InfiniteLogoScroll = () => {
   return (
-    <div className="container mx-auto p-5">
+    <div className="container mx-auto p-5" style={{ backgroundColor: 'var(--color-bg, #F5F2EB)' }}>
     
       {/* Masking container */}
       <div className="flex relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">

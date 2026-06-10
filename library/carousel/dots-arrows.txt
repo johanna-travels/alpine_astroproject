@@ -1,0 +1,250 @@
+================================================================
+VOYAFLAIR COMPONENT LIBRARY — CAROUSEL NAVIGATION
+Backup created from: src/components/PlayStoreCarousel.astro
+                     src/components/CarouselDots.tsx
+================================================================
+
+
+----------------------------------------------------------------
+1. PREV / NEXT ARROW BUTTONS (Astro / plain HTML)
+   - Circular white buttons, centered below the carousel
+   - Requires the JS wiring in section 3
+----------------------------------------------------------------
+
+<div class="flex justify-center mt-12 space-x-4">
+  <button id="prevBtn" aria-label="previous" class="bg-white shadow-md border border-gray-200 p-2.5 rounded-full hover:bg-gray-50 active:scale-95 transition">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-gray-500"><path d="M5 12l14 0"></path><path d="M5 12l4 4"></path><path d="M5 12l4 -4"></path></svg>
+  </button>
+  <button id="nextBtn" aria-label="next" class="bg-white shadow-md border border-gray-200 p-2.5 rounded-full hover:bg-gray-50 active:scale-95 transition">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-gray-500"><path d="M5 12l14 0"></path><path d="M15 16l4 -4"></path><path d="M15 8l4 4"></path></svg>
+  </button>
+</div>
+
+
+----------------------------------------------------------------
+2. PAGINATION DOTS (React island — CarouselDots.tsx)
+   - Swiper-style dots: absolute, top: calc(100% + offset), centered
+   - Click-to-navigate, scroll-synced active state
+   - Touch-friendly tap targets (12px 6px padding around 8px dot)
+   - Usage in Astro:
+     <CarouselDots client:visible carouselId="carousel" count={cards.length} gap={12} />
+   - Mount inside a `position: relative` wrapper around the scroller
+----------------------------------------------------------------
+
+import React, { useCallback, useEffect, useState } from 'react';
+
+interface CarouselDotsProps {
+  carouselId: string;
+  count: number;
+  gap?: number;
+  dotColor?: string;
+  activeColor?: string;
+  verticalOffset?: string;
+}
+
+export default function CarouselDots({
+  carouselId,
+  count,
+  gap = 12,
+  dotColor = 'rgba(25, 30, 35, 0.25)',
+  activeColor = '#191e23',
+  verticalOffset = '0px',
+}: CarouselDotsProps) {
+  const [active, setActive] = useState(0);
+
+  const getStep = useCallback((carousel: HTMLElement) => {
+    const slide = carousel.querySelector<HTMLElement>('.slide');
+    return slide ? slide.clientWidth + gap : 300;
+  }, [gap]);
+
+  useEffect(() => {
+    const carousel = document.getElementById(carouselId);
+    if (!carousel) return;
+
+    const onScroll = () => {
+      const index = Math.round(carousel.scrollLeft / getStep(carousel));
+      setActive(Math.max(0, Math.min(count - 1, index)));
+    };
+
+    carousel.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => carousel.removeEventListener('scroll', onScroll);
+  }, [carouselId, count, getStep]);
+
+  const goTo = (index: number) => {
+    const carousel = document.getElementById(carouselId);
+    if (!carousel) return;
+    carousel.scrollTo({ left: index * getStep(carousel), behavior: 'smooth' });
+  };
+
+  return (
+    <div
+      role="tablist"
+      aria-label="Carousel pagination"
+      style={{
+        position: 'absolute',
+        /* calc(var(--dots-vertical-position) + var(--dots-vertical-offset)) */
+        top: `calc(100% + ${verticalOffset})`,
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: 'max-content',
+        display: 'flex',
+        alignItems: 'center',
+        padding: '6px 0',
+      }}
+    >
+      {Array.from({ length: count }).map((_, i) => (
+        <button
+          key={i}
+          role="tab"
+          aria-label={`Go to slide ${i + 1}`}
+          aria-selected={active === i}
+          onClick={() => goTo(i)}
+          style={{
+            background: 'transparent',
+            border: 'none',
+            padding: '12px 6px', /* Generous tap area for touch devices */
+            margin: 0,
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+          }}
+        >
+          <span
+            style={{
+              display: 'block',
+              width: active === i ? '24px' : '8px',
+              height: '8px',
+              borderRadius: '9999px',
+              background: active === i ? activeColor : dotColor,
+              transition: 'all 0.3s ease',
+            }}
+          />
+        </button>
+      ))}
+    </div>
+  );
+}
+
+
+----------------------------------------------------------------
+3. JS WIRING FOR ARROW BUTTONS + AUTOPLAY (Astro <script>)
+   - Scroll-snap stepping, rewind loop, autoplay pause on hover/touch
+   - Expects: #carousel scroller, .slide children, #prevBtn, #nextBtn
+----------------------------------------------------------------
+
+<script>
+  function initCarousel() {
+    const carousel = document.getElementById('carousel') as HTMLDivElement;
+    const prevBtn = document.getElementById('prevBtn') as HTMLButtonElement;
+    const nextBtn = document.getElementById('nextBtn') as HTMLButtonElement;
+
+    if (!carousel || !prevBtn || !nextBtn) return;
+
+    let scrollInterval: ReturnType<typeof setInterval>;
+
+    function getScrollStep() {
+      const firstCard = carousel.querySelector('.slide');
+      return firstCard ? firstCard.clientWidth + 12 : 300;
+    }
+
+    function scrollToNext() {
+      const cardWidth = getScrollStep();
+      const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
+
+      if (carousel.scrollLeft >= maxScrollLeft - 5) {
+        carousel.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
+      }
+    }
+
+    function scrollToPrevious() {
+      const cardWidth = getScrollStep();
+
+      if (carousel.scrollLeft <= 5) {
+        carousel.scrollTo({ left: carousel.scrollWidth - carousel.clientWidth, behavior: 'smooth' });
+      } else {
+        carousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+      }
+    }
+
+    function startAutoPlay() {
+      scrollInterval = setInterval(scrollToNext, 3500);
+    }
+
+    function stopAutoPlay() {
+      clearInterval(scrollInterval);
+    }
+
+    nextBtn.addEventListener('click', scrollToNext);
+    prevBtn.addEventListener('click', scrollToPrevious);
+
+    carousel.addEventListener('mouseenter', stopAutoPlay);
+    carousel.addEventListener('mouseleave', startAutoPlay);
+    carousel.addEventListener('touchstart', stopAutoPlay, { passive: true });
+    carousel.addEventListener('touchend', startAutoPlay, { passive: true });
+
+    startAutoPlay();
+  }
+
+  document.addEventListener('DOMContentLoaded', initCarousel);
+</script>
+
+
+----------------------------------------------------------------
+4. SCROLL-SNAP CAROUSEL CSS (companion styles)
+   - Centered snap, full-width mobile cards, 3-up desktop
+   - Fixed 410px media height, fluid width, object-fit cover
+----------------------------------------------------------------
+
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.scroll-wrapper {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  gap: 12px;
+  padding: 8px 10px; /* Mobile: 344px container -> 324px child */
+  scrollbar-width: none;
+}
+
+.scroll-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.slide {
+  flex: 0 0 100%;
+  max-width: 100%;
+  scroll-snap-align: center;
+}
+
+.slide-media {
+  border-radius: 24px;
+  overflow: hidden;
+  height: 410px; /* Fixed height on all screens */
+  width: 100%;
+  max-width: 100%;
+}
+
+.slide-media .slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  .scroll-wrapper {
+    padding: 8px 40px;
+  }
+  .slide {
+    flex: 0 0 33.333%;
+  }
+}

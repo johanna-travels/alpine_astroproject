@@ -40,7 +40,7 @@ interface HamburgerMenuOverlayProps {
 
 const sizeMap = {
   sm: { button: '40px', icon: '13px' },
-  md: { button: '52px', icon: '22px' },
+  md: { button: '40px', icon: '24px' },
   lg: { button: '64px', icon: '28px' },
 };
 
@@ -157,9 +157,10 @@ export function HamburgerMenuOverlay({
             viewBox="0 0 24 24"
             fill="none"
             stroke={iconColor}
-            strokeWidth="2.5"
+            strokeWidth="1.2"
             strokeLinecap="round"
-            style={{ transition: `opacity ${animationDuration * 0.2}s` }}
+            strokeLinejoin="round"
+            style={{ opacity: 0.8, transition: `opacity ${animationDuration * 0.2}s` }}
           >
             {isOpen ? (
               <>

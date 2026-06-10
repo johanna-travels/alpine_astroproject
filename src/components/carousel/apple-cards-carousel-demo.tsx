@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
+import { Carousel, Card } from "@/components/carousel/apple-cards-carousel";
 
 const baseUrl = import.meta.env.BASE_URL;
 
@@ -53,19 +53,9 @@ export default function AppleCardsCarouselDemo() {
   ));
 
   return (
-    <div 
-      className="h-full w-full py-20 font-['Didot',_serif] 
-        /* 1. HIGHER LETTER: Targets all paragraphs inside the cards to make them uppercase */
-        [&_p]:uppercase 
-        
-        /* 2. PX FONT SIZING: Forces category labels to exactly 20px */
-        [&_p]:text-[20px] 
-        
-        /* 3. PX LETTER SPACING: Adds a clean 2px tracking to the uppercase layout */
-        [&_p]:tracking-[2px]"
-    >
+    <div className="card-container h-full w-full py-20">
       {/* Main Section Header */}
-      <h2 className="mx-auto max-w-7xl px-4 text-xl font-bold text-neutral-800 md:text-5xl dark:text-neutral-200">
+      <h2 className="text-[clamp(44px,9vw,75px)] font-normal leading-[0.9] text-black m-0 tracking-tight px-[max(1rem,calc((100vw-80rem)/2))]">
         Destinations
       </h2>
       <Carousel items={cards} />
