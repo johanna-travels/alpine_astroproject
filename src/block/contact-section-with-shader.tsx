@@ -17,6 +17,7 @@ type FormValues = {
   email: string;
   subject: string;
   message: string;
+  consent: boolean;
 };
 
 type FormErrors = Partial<Record<keyof FormValues, string>>;
@@ -37,6 +38,7 @@ function validate(values: FormValues): FormErrors {
   } else if (values.message.trim().length < 10) {
     errors.message = "Message should be at least 10 characters.";
   }
+  if (!values.consent) errors.consent = "You must agree to the privacy policy.";
   return errors;
 }
 
@@ -48,6 +50,7 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
     email: "",
     subject: "",
     message: "",
+    consent: false,
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
@@ -57,7 +60,9 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { id, value } = e.target;
-    setValues((prev) => ({ ...prev, [id]: sanitizeInput(value) }));
+    const target = e.target as HTMLInputElement;
+    const newValue = target.type === 'checkbox' ? target.checked : sanitizeInput(value);
+    setValues((prev) => ({ ...prev, [id]: newValue }));
     setErrors((prev) => ({ ...prev, [id]: undefined }));
   };
 
@@ -129,7 +134,7 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
                 {/* Input: Full Name */}
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-neutral-700 dark:text-neutral-400 leading-6">
-                    Full Name
+                    Full Name <span className="text-red-500">*</span>
                   </label>
                   <div className="mt-2">
                     <input id="name" type="text" value={values.name} onChange={handleChange} placeholder="Manu Arora" aria-invalid={!!errors.name} className={inputClass("name")} />
@@ -140,7 +145,7 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
                 {/* Input: Email Address */}
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-neutral-700 dark:text-neutral-400 leading-6">
-                    Email address
+                    Email address <span className="text-red-500">*</span>
                   </label>
                   <div className="mt-2">
                     <input id="email" type="email" value={values.email} onChange={handleChange} placeholder="hello@johndoe.com" aria-invalid={!!errors.email} className={inputClass("email")} />
@@ -151,7 +156,7 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
                 {/* Input: Subject */}
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium text-neutral-700 dark:text-neutral-400 leading-6">
-                    Subject
+                    Subject <span className="text-red-500">*</span>
                   </label>
                   <div className="mt-2">
                     <input id="subject" type="text" value={values.subject} onChange={handleChange} placeholder="How can we help?" aria-invalid={!!errors.subject} className={inputClass("subject")} />
@@ -162,12 +167,34 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
                 {/* Input: Message */}
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-neutral-700 dark:text-neutral-400 leading-6">
-                    Message
+                    Message <span className="text-red-500">*</span>
                   </label>
                   <div className="mt-2">
                     <textarea rows={5} id="message" value={values.message} onChange={handleChange} placeholder="Enter your message here" aria-invalid={!!errors.message} className={inputClass("message")} />
                   </div>
                   {errors.message && <p className="mt-1 text-sm text-red-500">{errors.message}</p>}
+                </div>
+
+                {/* Privacy Consent Checkbox */}
+                <div>
+                  <label className="flex cursor-pointer gap-3 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
+                    <div className="flex h-5 items-center">
+                      <input
+                        id="consent"
+                        type="checkbox"
+                        checked={values.consent}
+                        onChange={handleChange}
+                        className="h-4 w-4 rounded border-gray-300 text-neutral-900 focus:ring-neutral-500 cursor-pointer dark:border-neutral-600 dark:text-white dark:focus:ring-white"
+                      />
+                    </div>
+                    <span className="select-none">
+                      I authorize Voyaflair to store and use the personal data sent, so that they can respond to my request. My personal data will be processed in accordance with the information in the section{' '}
+                      <a href="/privacy-policy" className="text-blue-600 hover:underline dark:text-blue-400">
+                        Privacy Policy
+                      </a>.
+                    </span>
+                  </label>
+                  {errors.consent && <p className="mt-1 text-sm text-red-500">{errors.consent}</p>}
                 </div>
 
                 {/* Button: Submit */}

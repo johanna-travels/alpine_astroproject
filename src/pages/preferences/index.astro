@@ -1,0 +1,172 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Footer from '../../components/Footer.astro';
+import PageNav from '../../components/PageNav.astro';
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseUrl = import.meta.env.SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.SUPABASE_ANON_KEY;
+
+const supabase = supabaseUrl && supabaseAnonKey 
+  ? createClient(supabaseUrl, supabaseAnonKey)
+  : null;
+
+let subscriber = null;
+let error = null;
+
+// Get token from URL
+const token = new URL(Astro.url).searchParams.get('token');
+
+if (token && supabase) {
+  try {
+    const { data, error: fetchError } = await supabase
+      .from('subscribers')
+      .select('*')
+      .eq('confirmation_token', token)
+      .single();
+
+    if (fetchError) {
+      error = 'Invalid or expired token';
+    } else {
+      subscriber = data;
+    }
+  } catch (e) {
+    error = 'An error occurred';
+  }
+}
+---
+
+<Layout>
+  <PageNav />
+
+  <div class="min-h-screen py-16 px-4" style="background-color: var(--color-bg)">
+    <div class="max-w-2xl mx-auto">
+      <h1 class="text-4xl font-bold mb-8 text-neutral-900">Subscription Preferences</h1>
+
+      {error ? (
+        <div class="bg-red-50 border border-red-200 rounded-lg p-6 text-red-800">
+          <p>{error}</p>
+          <a href="/" class="underline mt-2 inline-block">Return to home</a>
+        </div>
+      ) : subscriber ? (
+        <div class="bg-white rounded-lg shadow-lg p-8">
+          <div class="mb-6">
+            <p class="text-sm text-gray-600">Email: <span class="font-medium">{subscriber.email}</span></p>
+            <p class="text-sm text-gray-600">Status: <span class="font-medium capitalize">{subscriber.status}</span></p>
+          </div>
+
+          <form id="preferences-form" class="space-y-6">
+            <div>
+              <h3 class="text-lg font-semibold mb-3">Email Preferences</h3>
+              
+              <label class="flex items-center gap-3 mb-3 cursor-pointer">
+                <input 
+                  type="checkbox" 
+                  name="updates" 
+                  checked={subscriber.preferences?.updates || false}
+                  class="w-5 h-5 rounded border-gray-300"
+                />
+                <span class="text-gray-700">Travel updates and new articles</span>
+              </label>
+
+              <label class="flex items-center gap-3 mb-3 cursor-pointer">
+                <input 
+                  type="checkbox" 
+                  name="promotions" 
+                  checked={subscriber.preferences?.promotions || false}
+                  class="w-5 h-5 rounded border-gray-300"
+                />
+                <span class="text-gray-700">Special offers and promotions</span>
+              </label>
+            </div>
+
+            <div class="flex gap-4">
+              <button 
+                type="submit"
+                class="px-6 py-2 bg-neutral-900 text-white rounded-md hover:bg-neutral-800 transition-colors"
+              >
+                Save Preferences
+              </button>
+
+              <button 
+                type="button"
+                id="unsubscribe-btn"
+                class="px-6 py-2 border border-red-300 text-red-600 rounded-md hover:bg-red-50 transition-colors"
+              >
+                Unsubscribe
+              </button>
+            </div>
+          </form>
+        </div>
+      ) : (
+        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6 text-yellow-800">
+          <p>No valid token provided. Please use the link from your email to access your preferences.</p>
+          <a href="/" class="underline mt-2 inline-block">Return to home</a>
+        </div>
+      )}
+    </div>
+  </div>
+
+  <Footer />
+</Layout>
+
+<script>
+  const form = document.getElementById('preferences-form') as HTMLFormElement;
+  const unsubscribeBtn = document.getElementById('unsubscribe-btn') as HTMLButtonElement;
+  const token = new URLSearchParams(window.location.search).get('token');
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const preferences = {
+        updates: formData.get('updates') === 'on',
+        promotions: formData.get('promotions') === 'on',
+      };
+
+      try {
+        const response = await fetch('/api/preferences', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token, preferences }),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          alert('Preferences saved successfully!');
+          window.location.reload();
+        } else {
+          alert(result.error || 'Failed to save preferences');
+        }
+      } catch (error) {
+        alert('Network error. Please try again.');
+      }
+    });
+  }
+
+  if (unsubscribeBtn) {
+    unsubscribeBtn.addEventListener('click', async () => {
+      if (confirm('Are you sure you want to unsubscribe?')) {
+        try {
+          const response = await fetch('/api/preferences', {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ token }),
+          });
+
+          const result = await response.json();
+
+          if (response.ok) {
+            alert('Successfully unsubscribed');
+            window.location.href = '/';
+          } else {
+            alert(result.error || 'Failed to unsubscribe');
+          }
+        } catch (error) {
+          alert('Network error. Please try again.');
+        }
+      }
+    });
+  }
+</script>

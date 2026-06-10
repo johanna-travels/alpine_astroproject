@@ -12,8 +12,10 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.4.0",
     "@sentry/astro": "^10.56.0",
     "@spotlightjs/astro": "^3.2.6",
+    "@supabase/supabase-js": "^2.108.1",
     "@tabler/icons-react": "^3.44.0",
     "astro": "^6.4.4",
     "clsx": "^2.1.1",
@@ -23,7 +25,10 @@
     "motion": "^12.40.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "tailwind-merge": "^3.6.0"
+    "react-hook-form": "^7.78.0",
+    "resend": "^6.12.4",
+    "tailwind-merge": "^3.6.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@astrojs/react": "^5.0.7",

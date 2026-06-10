@@ -43,6 +43,7 @@ export interface ContactFormValues {
   email: string;
   subject: string;
   message: string;
+  consent: boolean;
 }
 
 export function sanitizeContactForm(values: ContactFormValues): ContactFormValues {
@@ -51,6 +52,7 @@ export function sanitizeContactForm(values: ContactFormValues): ContactFormValue
     email:   sanitizeField(values.email,   254),
     subject: sanitizeField(values.subject, 160),
     message: sanitizeField(values.message, 2000),
+    consent: values.consent,
   };
 }
 
