@@ -2,15 +2,17 @@
 import { Image } from 'astro:assets';
 import CarouselDots from './carousel/CarouselDots.tsx';
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 // 1. Dynamic asset loading wrapper for local images
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg,jpg,png,gif,webp}', { eager: true });
 
 // 2. Uniform Data Structure for all items
 const cards = [
   {
-    category: "GREECE", 
-    title: "Greece Vacation",
-    desc: "Experience the pristine blue waters of the Aegean, historic ruins, and breathtaking Mediterranean sunsets.",
+    category: "JAPAN", 
+    title: "Kyoto 5-Day Itinerary",
+    
     src: "/src/assets/Article Kyoto.webp",
     alt: "Beautiful view of Greece",
     tagColor: "bg-blue-600 text-white",
@@ -19,9 +21,8 @@ const cards = [
     imgHeight: 458,
   },
   {
-    category: "DEVELOPMENT",
-    title: "UI Components",
-    desc: "Beautifully crafted UI components that integrate seamlessly with your existing workflow and enhance user experience.",
+    category: "INDONESIA",
+    title: "My Favorite Cafés in Bali",    
     src: "/src/assets/Article Bali.webp",
     alt: "UI Design interface preview",
     tagColor: "bg-purple-600 text-white",
@@ -30,9 +31,9 @@ const cards = [
     imgHeight: 458,
   },
   {
-    category: "OPTIMIZATION",
-    title: "Performance",
-    desc: "Optimized for speed and efficiency, ensuring your applications run smoothly even under heavy loads.",
+    category: "GREECE",
+    title: "Rhodes 5-Day Itinerary: Beaches, Day Trips & Best Local Food",
+    
     src: "/src/assets/Article Greece 1.webp",
     alt: "Performance optimization metrics dashboard",
     tagColor: "bg-green-600 text-white",
@@ -41,9 +42,9 @@ const cards = [
     imgHeight: 458,
   },
   {
-    category: "SECURITY",
-    title: "Security Layers",
-    desc: "Advanced security features to protect your data and ensure privacy across all your applications and services.",
+    category: "BELGIUM",
+    title: "Bruges Travel guide: Top Attractions and hidden gems",
+   
     src: "/src/assets/Article Bruges.webp",
     alt: "Secure cloud network vault encryption",
     tagColor: "bg-amber-600 text-white",
@@ -62,13 +63,13 @@ const cards = [
   <!-- Heading Section (uid: 389) -->
   <div class="w-auto">
     <h2 class="text-[clamp(44px,9vw,75px)] font-normal leading-[0.9] text-black m-0 p-0 tracking-tight">
-      Blog
+      Articles
     </h2>
   </div>
 
   <!-- Button Wrapper (uid: 390/1166) -->
   <div class="flex items-center">
-    <a href="#" class="inline-block px-[32px] py-[5px] text-black text-[13px] font-medium rounded-full uppercase tracking-widest leading-none transition-all hover:bg-black hover:text-white">
+    <a href={`${base}/destinations`} class="inline-block px-[32px] py-[5px] text-black text-[13px] font-medium  uppercase tracking-widest leading-none transition-all opacity-75 transition-opacity duration-300 hover:opacity-100">
       <span class="flex items-center">
         VIEW ALL 
         <span class="ml-2">→</span>
@@ -87,7 +88,7 @@ const cards = [
         <div class="slide group">
 
           {/* Image block */}
-          <div class="slide-media relative transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-black/30">
+          <div class="slide-media relative">
             {images[card.src] ? (
               <Image 
                 src={images[card.src].default} 
@@ -102,18 +103,15 @@ const cards = [
             )}
 
             {/* Vignette Shadow Overlay */}
-            <div class="absolute inset-0 bg-gradient-to-r from-white/10 to-white/30 transition-opacity duration-500 group-hover:opacity-0 pointer-events-none" />
+            {/* <div class="absolute inset-0 bg-gradient-to-r from-white/10 to-white/30 transition-opacity duration-500 group-hover:opacity-0 pointer-events-none" /> */}
           </div>
 
           {/* Text + link below the image */}
           <div class="pt-4 px-1 animate-[fadeInUp_0.6s_ease-out]">
             <span class="block text-[clamp(12px,1.5vw,14px)] font-normal text-black mb-1">{card.category}</span>
             <h4 class="text-[clamp(22px,5vw,30px)] font-extralight text-[#1e1e1e] leading-tight mb-2">{card.title}</h4>
-            <p class="text-gray-600 text-sm sm:text-base mb-4 line-clamp-3 leading-relaxed">
-              {card.desc}
-            </p>
-            <a href="#" class="text-[clamp(16px,3.5vw,22px)] font-normal text-black inline-flex items-center gap-2 transition-all">
-              Learn more
+            <a href="#" class="text-[0.875rem] font-medium text-black inline-flex items-center gap-2 transition-all" style="font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;">
+              Read more
               <span class="leading-none transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">→</span>
             </a>
           </div>

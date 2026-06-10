@@ -7,7 +7,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 <Layout>
 	<main class="min-h-screen text-slate-950 pb-24" style="background-color: var(--color-bg)">
 		<section class="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
-			<a href={`${base}/`} class="inline-flex items-center gap-2 mb-6 text-sm text-slate-500 hover:text-slate-900 transition-colors">
+			<a href={`${base}/`} class="inline-flex items-center gap-2 mb-6 text-sm text-slate-500 hover:text-slate-900 transition-colors text-[0.875rem]" style="font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;">
 				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/></svg>
 				Back to home
 			</a>
@@ -15,97 +15,276 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 				<h1 class="text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl md:text-5xl">Terms &amp; Conditions</h1>
 				<p class="mt-4 text-sm text-slate-500">Last updated: June 2026</p>
 
-				<h2 class="mt-10 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">1. Acceptance of Terms</h2>
-				<p class="mt-4 leading-7 text-slate-600">
-					By accessing and using Voyaflair, you agree to be bound by these Terms &amp; Conditions and all applicable laws
-					and regulations. If you do not agree with any part of these terms, please do not use this website.
+				<p class="mt-6 leading-7 text-slate-600">
+					Welcome to Voyaflair. These Terms &amp; Conditions govern your use of the Voyaflair website and all content, services, and features made available through it. By accessing or using this website, you agree to be bound by these Terms. If you do not agree with these Terms, please discontinue use of the website.
 				</p>
 
-				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">2. About Voyaflair</h2>
+				<h2 class="mt-10 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">1. About Voyaflair</h2>
 				<p class="mt-4 leading-7 text-slate-600">
-					Voyaflair is a curated travel journal that shares destinations, guides, recommendations, and lifestyle
-					content for informational and inspirational purposes only.
+					Voyaflair is an independent travel blog and content platform providing travel guides, destination information, travel tips, personal experiences, photography, recommendations, and related content.
+				</p>
+				<p class="mt-3 leading-7 text-slate-600">
+					The information published on this website is intended for general informational and educational purposes only.
 				</p>
 
-				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">3. Use of the Website</h2>
-				<p class="mt-4 leading-7 text-slate-600">You agree to use the website only for lawful purposes. You must not:</p>
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">2. Eligibility and Use of the Website</h2>
+				<p class="mt-4 leading-7 text-slate-600">
+					By using this website, you confirm that you are at least 18 years old or are using the website under the supervision of a parent or legal guardian.
+				</p>
+				<p class="mt-3 leading-7 text-slate-600">
+					You agree to use the website only for lawful purposes and in a manner that does not infringe upon the rights of others or restrict their use of the website.
+				</p>
+				<p class="mt-3 leading-7 text-slate-600">You may not:</p>
 				<ul class="mt-3 list-disc space-y-1 pl-6 text-slate-600">
-					<li>Use the website in any way that breaches applicable laws or regulations</li>
-					<li>Attempt to gain unauthorized access to the website or its systems</li>
-					<li>Interfere with or disrupt the website or its servers</li>
-					<li>Use automated systems to scrape or harvest content without permission</li>
-					<li>Transmit malware, spam, or harmful code</li>
+					<li>Use the website for unlawful purposes.</li>
+					<li>Attempt to gain unauthorized access to systems, servers, or databases.</li>
+					<li>Introduce malicious software, viruses, or harmful code.</li>
+					<li>Interfere with the operation or security of the website.</li>
+					<li>Copy or scrape content in bulk without permission.</li>
 				</ul>
 
-				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">4. Intellectual Property</h2>
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">3. Content Accuracy</h2>
 				<p class="mt-4 leading-7 text-slate-600">
-					All content on Voyaflair — including text, images, graphics, logos, and design — is the property of Voyaflair
-					or its content creators and is protected by copyright and intellectual property laws.
+					We strive to provide accurate, current, and useful information. However, travel information changes frequently.
+				</p>
+				<p class="mt-3 leading-7 text-slate-600">This includes but is not limited to:</p>
+				<ul class="mt-3 list-disc space-y-1 pl-6 text-slate-600">
+					<li>Visa requirements</li>
+					<li>Entry regulations</li>
+					<li>Transportation schedules</li>
+					<li>Prices and fees</li>
+					<li>Attraction opening hours</li>
+					<li>Accommodation information</li>
+					<li>Restaurant information</li>
+					<li>Safety recommendations</li>
+					<li>Local laws and regulations</li>
+				</ul>
+				<p class="mt-4 leading-7 text-slate-600">
+					Voyaflair does not guarantee that all information will always be accurate, complete, current, or error-free.
 				</p>
 				<p class="mt-3 leading-7 text-slate-600">
-					You may not reproduce, distribute, modify, or republish any material without prior written consent.
+					Users are responsible for independently verifying any information before making travel, financial, legal, or personal decisions.
 				</p>
 
-				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">5. Travel Information Disclaimer</h2>
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">4. No Professional Advice</h2>
 				<p class="mt-4 leading-7 text-slate-600">
-					Travel information is provided in good faith and for general guidance only. Always verify details such as
-					opening hours, prices, visa requirements, and travel advisories with official sources before making plans.
+					The content published on Voyaflair does not constitute:
+				</p>
+				<ul class="mt-3 list-disc space-y-1 pl-6 text-slate-600">
+					<li>Legal advice</li>
+					<li>Financial advice</li>
+					<li>Tax advice</li>
+					<li>Medical advice</li>
+					<li>Immigration advice</li>
+					<li>Professional travel consulting</li>
+				</ul>
+				<p class="mt-4 leading-7 text-slate-600">
+					Any reliance on information provided by the website is solely at your own risk.
+				</p>
+
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">5. Personal Responsibility</h2>
+				<p class="mt-4 leading-7 text-slate-600">
+					By using this website, you acknowledge that any decisions, purchases, bookings, travel arrangements, or actions taken based on information found on Voyaflair are your own responsibility.
 				</p>
 				<p class="mt-3 leading-7 text-slate-600">
-					Voyaflair is not responsible for any loss, inconvenience, or damage resulting from reliance on the content.
+					Voyaflair shall not be responsible for losses, damages, delays, cancellations, injuries, inconveniences, or other consequences resulting from reliance on website content.
 				</p>
 
-				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">6. Affiliate Links</h2>
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">6. Intellectual Property Rights</h2>
 				<p class="mt-4 leading-7 text-slate-600">
-					Voyaflair may contain affiliate links. If you make a purchase through these links, we may earn a commission at
-					no additional cost to you. This does not influence the integrity of our recommendations.
+					Unless otherwise stated, all content on Voyaflair is protected by intellectual property laws.
+				</p>
+				<p class="mt-3 leading-7 text-slate-600">This includes:</p>
+				<ul class="mt-3 list-disc space-y-1 pl-6 text-slate-600">
+					<li>Articles</li>
+					<li>Travel guides</li>
+					<li>Photography</li>
+					<li>Graphics</li>
+					<li>Videos</li>
+					<li>Logos</li>
+					<li>Branding elements</li>
+					<li>Website design</li>
+					<li>Original written content</li>
+				</ul>
+				<p class="mt-4 leading-7 text-slate-600">You may:</p>
+				<ul class="mt-3 list-disc space-y-1 pl-6 text-slate-600">
+					<li>View content for personal use</li>
+					<li>Share links to articles</li>
+				</ul>
+				<p class="mt-4 leading-7 text-slate-600">You may not:</p>
+				<ul class="mt-3 list-disc space-y-1 pl-6 text-slate-600">
+					<li>Republish content without permission</li>
+					<li>Copy articles in full</li>
+					<li>Reproduce photographs</li>
+					<li>Sell or redistribute content</li>
+					<li>Create derivative works without written consent</li>
+				</ul>
+				<p class="mt-4 leading-7 text-slate-600">
+					Unauthorized use may result in legal action.
 				</p>
 
-				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">7. Third-Party Links</h2>
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">7. User Comments and Community Guidelines</h2>
 				<p class="mt-4 leading-7 text-slate-600">
-					The website may contain links to third-party websites. We are not responsible for the content, accuracy, or
-					practices of any external sites and provide such links for convenience only.
+					Users may have the opportunity to leave comments or submit content.
+				</p>
+				<p class="mt-3 leading-7 text-slate-600">By submitting content, you agree that:</p>
+				<ul class="mt-3 list-disc space-y-1 pl-6 text-slate-600">
+					<li>The content is lawful.</li>
+					<li>The content does not violate third-party rights.</li>
+					<li>The content is not abusive, defamatory, hateful, threatening, discriminatory, or misleading.</li>
+					<li>The content does not contain spam or unauthorized promotions.</li>
+				</ul>
+				<p class="mt-4 leading-7 text-slate-600">
+					Voyaflair reserves the right to review, edit, moderate, or remove comments at its sole discretion.
+				</p>
+				<p class="mt-3 leading-7 text-slate-600">
+					Voyaflair is not responsible for opinions expressed by users in comments or user-generated content.
 				</p>
 
-				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">8. User Content</h2>
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">8. Affiliate Disclosure</h2>
 				<p class="mt-4 leading-7 text-slate-600">
-					If you submit comments or other content, you grant Voyaflair a non-exclusive right to use, display, and
-					moderate that content. You are responsible for ensuring your submissions are lawful and not infringing.
+					Some pages, articles, emails, or other content may contain affiliate links.
+				</p>
+				<p class="mt-3 leading-7 text-slate-600">
+					This means that Voyaflair may earn a commission if you click on certain links and complete a purchase, booking, registration, or other qualifying action.
+				</p>
+				<p class="mt-3 leading-7 text-slate-600">
+					This comes at no additional cost to you.
+				</p>
+				<p class="mt-3 leading-7 text-slate-600">
+					Affiliate relationships may include travel booking platforms, accommodation providers, activity providers, travel services, travel gear companies, software providers, and other relevant businesses.
+				</p>
+				<p class="mt-3 leading-7 text-slate-600">
+					Voyaflair only recommends products, services, or experiences believed to be useful or relevant to readers.
+				</p>
+				<p class="mt-3 leading-7 text-slate-600">
+					However, readers should conduct their own research before making purchasing decisions.
 				</p>
 
-				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">9. Limitation of Liability</h2>
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">9. Sponsored Content</h2>
 				<p class="mt-4 leading-7 text-slate-600">
-					The website and its content are provided "as is" without warranties of any kind. To the fullest extent
-					permitted by law, Voyaflair shall not be liable for any direct, indirect, or consequential damages arising
-					from your use of the website.
+					From time to time, Voyaflair may publish sponsored content, paid partnerships, gifted experiences, media stays, press trips, brand collaborations, or other compensated content.
+				</p>
+				<p class="mt-3 leading-7 text-slate-600">
+					Whenever required by applicable laws or regulations, such content will be appropriately disclosed.
+				</p>
+				<p class="mt-3 leading-7 text-slate-600">
+					Opinions expressed remain the author's own unless otherwise stated.
 				</p>
 
-				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">10. Privacy</h2>
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">10. Advertising</h2>
 				<p class="mt-4 leading-7 text-slate-600">
-					Your use of the website is also governed by our
-					<a href={`${base}/privacy-policy`} class="font-medium text-slate-900 underline underline-offset-4 hover:text-slate-700">Privacy Policy</a>
+					The website may display advertisements from third-party advertising networks.
+				</p>
+				<p class="mt-3 leading-7 text-slate-600">
+					Voyaflair does not control the content of third-party advertisements and is not responsible for products, services, claims, or representations made by advertisers.
+				</p>
+				<p class="mt-3 leading-7 text-slate-600">
+					Any interaction with advertisers is solely between the user and the advertiser.
+				</p>
+
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">11. Third-Party Links</h2>
+				<p class="mt-4 leading-7 text-slate-600">
+					This website may contain links to external websites.
+				</p>
+				<p class="mt-3 leading-7 text-slate-600">
+					These links are provided for convenience and informational purposes.
+				</p>
+				<p class="mt-3 leading-7 text-slate-600">
+					Voyaflair has no control over external websites and assumes no responsibility for:
+				</p>
+				<ul class="mt-3 list-disc space-y-1 pl-6 text-slate-600">
+					<li>Content</li>
+					<li>Availability</li>
+					<li>Security</li>
+					<li>Privacy practices</li>
+					<li>Products or services offered</li>
+				</ul>
+				<p class="mt-4 leading-7 text-slate-600">
+					Users access third-party websites at their own risk.
+				</p>
+
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">12. Newsletter and Email Communications</h2>
+				<p class="mt-4 leading-7 text-slate-600">
+					Users who voluntarily subscribe to the Voyaflair newsletter may receive:
+				</p>
+				<ul class="mt-3 list-disc space-y-1 pl-6 text-slate-600">
+					<li>Travel updates</li>
+					<li>New articles</li>
+					<li>Destination guides</li>
+					<li>Promotional content</li>
+					<li>Affiliate recommendations</li>
+					<li>Special announcements</li>
+				</ul>
+				<p class="mt-4 leading-7 text-slate-600">
+					Users may unsubscribe at any time through the unsubscribe link included in emails.
+				</p>
+				<p class="mt-3 leading-7 text-slate-600">
+					Additional information regarding data collection can be found in the Privacy Policy.
+				</p>
+
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">13. Limitation of Liability</h2>
+				<p class="mt-4 leading-7 text-slate-600">
+					To the maximum extent permitted by applicable law, Voyaflair, its owner, contributors, partners, affiliates, contractors, and representatives shall not be liable for any direct, indirect, incidental, consequential, special, punitive, or exemplary damages arising from:
+				</p>
+				<ul class="mt-3 list-disc space-y-1 pl-6 text-slate-600">
+					<li>Use of the website</li>
+					<li>Inability to use the website</li>
+					<li>Reliance on information published on the website</li>
+					<li>Travel decisions</li>
+					<li>Booking decisions</li>
+					<li>Purchases made through affiliate links</li>
+					<li>Third-party services</li>
+					<li>Website interruptions</li>
+					<li>Technical errors</li>
+				</ul>
+
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">14. Indemnification</h2>
+				<p class="mt-4 leading-7 text-slate-600">
+					You agree to indemnify and hold harmless Voyaflair from any claims, damages, liabilities, costs, expenses, or legal fees arising from your misuse of the website or violation of these Terms.
+				</p>
+
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">15. Website Availability</h2>
+				<p class="mt-4 leading-7 text-slate-600">
+					Voyaflair does not guarantee uninterrupted or error-free operation.
+				</p>
+				<p class="mt-3 leading-7 text-slate-600">
+					The website may be modified, suspended, restricted, or discontinued at any time without notice.
+				</p>
+
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">16. Privacy and Cookies</h2>
+				<p class="mt-4 leading-7 text-slate-600">
+					Your use of the website is also governed by the Voyaflair
+					<a href={`${base}/privacy-policy`} class="font-medium text-slate-900 underline underline-offset-4 hover:text-slate-700 text-[0.875rem]" style="font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;">Privacy Policy</a>
 					and
-					<a href={`${base}/cookie-policy`} class="font-medium text-slate-900 underline underline-offset-4 hover:text-slate-700">Cookie Policy</a>.
+					<a href={`${base}/cookie-policy`} class="font-medium text-slate-900 underline underline-offset-4 hover:text-slate-700 text-[0.875rem]" style="font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;">Cookie Policy</a>.
+				</p>
+				<p class="mt-3 leading-7 text-slate-600">
+					By using the website, you acknowledge that you have read and understood those policies.
 				</p>
 
-				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">11. Changes to These Terms</h2>
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">17. Changes to These Terms</h2>
 				<p class="mt-4 leading-7 text-slate-600">
-					We may update these Terms &amp; Conditions from time to time. Continued use of the website after changes are
-					posted constitutes acceptance of the revised terms.
+					Voyaflair reserves the right to modify these Terms &amp; Conditions at any time.
+				</p>
+				<p class="mt-3 leading-7 text-slate-600">
+					Changes become effective immediately upon publication on this page.
+				</p>
+				<p class="mt-3 leading-7 text-slate-600">
+					Continued use of the website constitutes acceptance of any revised Terms.
 				</p>
 
-				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">12. Governing Law</h2>
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">18. Governing Law</h2>
 				<p class="mt-4 leading-7 text-slate-600">
-					These terms are governed by and construed in accordance with applicable laws, without regard to conflict of
-					law principles.
+					These Terms &amp; Conditions shall be governed and interpreted in accordance with applicable laws of the jurisdiction in which Voyaflair operates, without regard to conflict of law principles.
 				</p>
 
-				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">13. Contact Information</h2>
+				<h2 class="mt-8 text-xl sm:text-2xl font-semibold tracking-tight text-slate-950">19. Contact Information</h2>
 				<p class="mt-4 leading-7 text-slate-600">
-					If you have questions regarding these Terms &amp; Conditions, please contact:
+					For questions regarding these Terms &amp; Conditions, please contact:
 				</p>
 				<p class="mt-3 leading-7">
-					<a href="mailto:voyaflair@gmail.com" class="font-medium text-slate-900 underline underline-offset-4 hover:text-slate-700">voyaflair@gmail.com</a>
+					<a href="mailto:voyaflair@gmail.com" class="font-medium text-slate-900 underline underline-offset-4 hover:text-slate-700 text-[0.875rem]" style="font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;">voyaflair@gmail.com</a>
 				</p>
 			</div>
 		</section>

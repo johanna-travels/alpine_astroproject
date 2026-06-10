@@ -21,16 +21,17 @@ const isActive = (href: string) => normalize(pathname) === normalize(href);
 
 <nav class="w-full text-gray-900 px-4 md:px-10" style="background-color: #ffffff;">
   <div class="max-w-[1500px] mx-auto flex items-center justify-between min-h-[61px] md:min-h-[129px] gap-4 md:gap-8">
-    <a href={`${base}/`} class="text-xl font-bold tracking-wider" style="color: #69746E;">VF</a>
+    <a href={`${base}/`} class="text-xl font-bold tracking-wider text-[0.875rem]" style="color: #69746E; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;">VF</a>
 
     <div class="hidden md:flex items-center gap-8 font-medium text-gray-600">
       {links.filter(link => link.variant !== 'social').map((link) => (
         <a
           href={link.href}
           class:list={[
-            "hover:text-gray-900 transition-colors",
+            "hover:text-gray-900 transition-colors text-[0.875rem]",
             isActive(link.href) && "text-gray-900 font-semibold",
           ]}
+          style="font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;"
           aria-current={isActive(link.href) ? "page" : undefined}
         >
           {link.label}
