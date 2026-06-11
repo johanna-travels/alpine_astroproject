@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+import PageNav from '../components/PageNav.astro';
+---
+
+<Layout>
+  <PageNav />
+  <main class="min-h-screen text-neutral-900 px-4 md:px-10 pb-24 pt-12" style="background-color: var(--color-bg)">
+    <h1 class="text-[clamp(44px,9vw,75px)] font-normal leading-[0.9] text-black tracking-tight mb-8">
+      Greece
+    </h1>
+    <p class="text-lg md:text-xl text-neutral-600 max-w-3xl">
+      Discover the beauty of Greece — from ancient ruins to stunning islands.
+    </p>
+  </main>
+  <Footer />
+</Layout>

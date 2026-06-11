@@ -122,35 +122,42 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 
 export const Card = ({
   card,
+  index,
+  layout,
 }: {
   card: Card;
   index: number;
   layout?: boolean;
 }) => {
-  return (
-    <div className="relative z-10 flex h-card-mobile w-card-mobile flex-col items-start justify-start overflow-hidden rounded-3xl bg-gray-100 md:h-card-desktop md:w-card-desktop dark:bg-neutral-900">
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-full bg-gradient-to-b from-black/50 via-transparent to-transparent" />
-      <div className="relative z-40 p-8">
-        <p className="text-left font-sans text-sm font-medium text-white md:text-base">
-          {card.category}
-        </p>
-        <p className="mt-2 max-w-xs text-left font-sans text-xl font-semibold [text-wrap:balance] text-white md:text-3xl">
-          {card.title}
-        </p>
-      </div>
+  const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+  const slug = card.category.toLowerCase().replace(/\s+/g, '-');
 
-      {/* Conditional Video / Image logic */}
-      {card.mediaType === "video" ? (
-        <LazyVideo src={card.src} />
-      ) : (
-        <BlurImage
-          src={card.src}
-          alt={card.title}
-          fill
-          className="absolute inset-0 z-10 object-cover"
-        />
-      )}
-    </div>
+  return (
+    <a href={`${baseUrl}/${slug}`} className="block h-card-mobile w-card-mobile md:h-card-desktop md:w-card-desktop">
+      <div className="relative z-10 flex h-full w-full flex-col items-start justify-start overflow-hidden rounded-3xl bg-gray-100 dark:bg-neutral-900">
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-full bg-gradient-to-b from-black/50 via-transparent to-transparent" />
+        <div className="relative z-40 p-8">
+          <p className="text-left font-sans text-sm font-medium text-white md:text-base">
+            {card.category}
+          </p>
+          <p className="mt-2 max-w-xs text-left font-sans text-xl font-semibold [text-wrap:balance] text-white md:text-3xl">
+            {card.title}
+          </p>
+        </div>
+
+        {/* Conditional Video / Image logic */}
+        {card.mediaType === "video" ? (
+          <LazyVideo src={card.src} />
+        ) : (
+          <BlurImage
+            src={card.src}
+            alt={card.title}
+            fill
+            className="absolute inset-0 z-10 object-cover"
+          />
+        )}
+      </div>
+    </a>
   );
 };
 
