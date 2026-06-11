@@ -12,6 +12,7 @@ import { getImage } from 'astro:assets';
 import headerLightImg from '@/assets/heroes/HeADER LIGHT.webp';
 
 const optimizedHeader = await getImage({ src: headerLightImg, width: 1800, format: 'webp', quality: 85 });
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout>
@@ -65,7 +66,7 @@ const optimizedHeader = await getImage({ src: headerLightImg, width: 1800, forma
             <div class="reveal"><InfiniteText client:visible /></div>
             <div class="reveal"><AppleCardsCarouselDemo client:visible /></div>
             <div class="reveal"><FeatureSections /></div>
-            <ContactSectionWithShader client:idle />
+            <ContactSectionWithShader client:idle base={base} />
         </div>
     </main>
 

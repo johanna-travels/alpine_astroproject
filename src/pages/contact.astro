@@ -21,6 +21,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     imageSrc={optimizedHeader.src}
   />
 
-  <ContactSectionWithShader client:idle showImage={false} className="mt-10 flex-center" />
+  <ContactSectionWithShader client:idle showImage={false} className="mt-10 flex-center" base={base} />
   <Footer />
 </Layout>

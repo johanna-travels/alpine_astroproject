@@ -17,9 +17,10 @@ type NewsletterFormData = z.infer<typeof newsletterSchema>;
 
 interface NewsletterFormProps {
   className?: string;
+  base?: string;
 }
 
-export default function NewsletterForm({ className = '' }: NewsletterFormProps) {
+export default function NewsletterForm({ className = '', base = '' }: NewsletterFormProps) {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [message, setMessage] = useState('');
 
@@ -102,7 +103,7 @@ export default function NewsletterForm({ className = '' }: NewsletterFormProps) 
           style={{ fontFamily: 'Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;' }}
         >
           I agree to the{' '}
-          <a href="/privacy-policy" className="underline hover:text-white/90">
+          <a href={`${base}/privacy-policy`} className="underline hover:text-white/90">
             Privacy Policy
           </a>{' '}
           and consent to receive emails.

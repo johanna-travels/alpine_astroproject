@@ -10,47 +10,47 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/*.{j
 // 2. Uniform Data Structure for all items
 const cards = [
   {
-    category: "JAPAN", 
+    category: "JAPAN",
     title: "Kyoto 5-Day Itinerary",
-    
+
     src: "/src/assets/articles/Article Kyoto.webp",
     alt: "Beautiful view of Greece",
     tagColor: "bg-blue-600 text-white",
     textColors: "text-blue-900 hover:bg-white",
-    imgWidth: 344,
-    imgHeight: 458,
+    imgWidth: 400,
+    imgHeight: 400,
   },
   {
-    category: "INDONESIA",
-    title: "My Favorite Cafés in Bali",    
+    category: "BALI",
+    title: "My Favorite Cafés in Bali",
     src: "/src/assets/articles/Article Bali.webp",
     alt: "UI Design interface preview",
     tagColor: "bg-purple-600 text-white",
     textColors: "text-purple-900 hover:bg-white",
-    imgWidth: 344,
-    imgHeight: 458,
+    imgWidth: 400,
+    imgHeight: 400,
   },
   {
     category: "GREECE",
     title: "Rhodes 5-Day Itinerary: Beaches, Day Trips & Best Local Food",
-    
-    src: "/src/assets/articles/Article Greece 1.webp",
+
+    src: "/src/assets/articles/Article Greece.webp",
     alt: "Performance optimization metrics dashboard",
     tagColor: "bg-green-600 text-white",
     textColors: "text-teal-900 hover:bg-white",
-    imgWidth: 344,
-    imgHeight: 458,
+    imgWidth: 400,
+    imgHeight: 400,
   },
   {
     category: "BELGIUM",
     title: "Bruges Travel guide: Top Attractions and hidden gems",
-   
+
     src: "/src/assets/articles/Article Bruges.webp",
     alt: "Secure cloud network vault encryption",
     tagColor: "bg-amber-600 text-white",
     textColors: "text-orange-900 hover:bg-white",
-    imgWidth: 344,
-    imgHeight: 458,
+    imgWidth: 400,
+    imgHeight: 400,
   }
 ];
 ---
@@ -230,9 +230,9 @@ const cards = [
   .slide-media {
     border-radius: 24px;
     overflow: hidden;
-    height: 410px; /* Fixed height on all screens (Elementor authored CSS) */
+    aspect-ratio: 1 / 1;
     width: 100%;
-    max-width: 100%; /* Fluid width, restricted to parent */
+    max-width: 100%;
   }
 
   .slide-media :global(.slide-image) {

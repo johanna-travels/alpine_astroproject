@@ -20,9 +20,9 @@ const data = [
     content: <DummyContent />,
   },
   {
-    category: "INDONESIA", // Will automatically become uppercase via code
+    category: "BALI", // Will automatically become uppercase via code
     title: "",
-    src: `${baseUrl}Video/Home-Indonesia.MP4`, 
+    src: `${baseUrl}Video/Home-Indonesia.MP4`,
     mediaType: "video",
     content: <DummyContent />,
   },  
