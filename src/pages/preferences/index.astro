@@ -1,11 +1,12 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Footer from '../../components/Footer.astro';
-import PageNav from '../../components/PageNav.astro';
+import Layout from '@/layouts/Layout.astro';
+import Footer from '@/components/layout/Footer.astro';
+import PageNav from '@/components/layout/PageNav.astro';
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = import.meta.env.SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.SUPABASE_ANON_KEY;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const supabase = supabaseUrl && supabaseAnonKey 
   ? createClient(supabaseUrl, supabaseAnonKey)
@@ -39,14 +40,14 @@ if (token && supabase) {
 <Layout>
   <PageNav />
 
-  <div class="min-h-screen py-16 px-4" style="background-color: var(--color-bg)">
+  <div class="min-h-screen py-16 px-4" style="background-color: var(--color-bg)" data-base-url={base}>
     <div class="max-w-2xl mx-auto">
       <h1 class="text-4xl font-bold mb-8 text-neutral-900">Subscription Preferences</h1>
 
       {error ? (
         <div class="bg-red-50 border border-red-200 rounded-lg p-6 text-red-800">
           <p>{error}</p>
-          <a href="/" class="underline mt-2 inline-block">Return to home</a>
+          <a href={`${base}/`} class="underline mt-2 inline-block">Return to home</a>
         </div>
       ) : subscriber ? (
         <div class="bg-white rounded-lg shadow-lg p-8">
@@ -64,7 +65,7 @@ if (token && supabase) {
                   type="checkbox" 
                   name="updates" 
                   checked={subscriber.preferences?.updates || false}
-                  class="w-5 h-5 rounded border-gray-300"
+                  class="w-5 h-5 rounded border-white"
                 />
                 <span class="text-gray-700">Travel updates and new articles</span>
               </label>
@@ -74,7 +75,7 @@ if (token && supabase) {
                   type="checkbox" 
                   name="promotions" 
                   checked={subscriber.preferences?.promotions || false}
-                  class="w-5 h-5 rounded border-gray-300"
+                  class="w-5 h-5 rounded border-white"
                 />
                 <span class="text-gray-700">Special offers and promotions</span>
               </label>
@@ -101,7 +102,7 @@ if (token && supabase) {
       ) : (
         <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6 text-yellow-800">
           <p>No valid token provided. Please use the link from your email to access your preferences.</p>
-          <a href="/" class="underline mt-2 inline-block">Return to home</a>
+          <a href={`${base}/`} class="underline mt-2 inline-block">Return to home</a>
         </div>
       )}
     </div>
@@ -114,6 +115,8 @@ if (token && supabase) {
   const form = document.getElementById('preferences-form') as HTMLFormElement;
   const unsubscribeBtn = document.getElementById('unsubscribe-btn') as HTMLButtonElement;
   const token = new URLSearchParams(window.location.search).get('token');
+  const container = document.querySelector('[data-base-url]');
+  const baseUrl = container?.getAttribute('data-base-url') || '';
 
   if (form) {
     form.addEventListener('submit', async (e) => {
@@ -159,7 +162,7 @@ if (token && supabase) {
 
           if (response.ok) {
             alert('Successfully unsubscribed');
-            window.location.href = '/';
+            window.location.href = `${baseUrl}/`;
           } else {
             alert(result.error || 'Failed to unsubscribe');
           }

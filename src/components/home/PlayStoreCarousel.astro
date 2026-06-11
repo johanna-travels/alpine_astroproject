@@ -1,11 +1,11 @@
 ---
 import { Image } from 'astro:assets';
-import CarouselDots from './carousel/CarouselDots.tsx';
+import CarouselDots from '@/components/carousel/CarouselDots.tsx';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 // 1. Dynamic asset loading wrapper for local images
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg,jpg,png,gif,webp}', { eager: true });
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/*.{jpeg,jpg,png,gif,webp}', { eager: true });
 
 // 2. Uniform Data Structure for all items
 const cards = [
@@ -13,20 +13,20 @@ const cards = [
     category: "JAPAN", 
     title: "Kyoto 5-Day Itinerary",
     
-    src: "/src/assets/Article Kyoto.webp",
+    src: "/src/assets/articles/Article Kyoto.webp",
     alt: "Beautiful view of Greece",
     tagColor: "bg-blue-600 text-white",
-    textColors: "text-blue-900 hover:bg-gray-200",
+    textColors: "text-blue-900 hover:bg-white",
     imgWidth: 344,
     imgHeight: 458,
   },
   {
     category: "INDONESIA",
     title: "My Favorite Cafés in Bali",    
-    src: "/src/assets/Article Bali.webp",
+    src: "/src/assets/articles/Article Bali.webp",
     alt: "UI Design interface preview",
     tagColor: "bg-purple-600 text-white",
-    textColors: "text-purple-900 hover:bg-gray-200",
+    textColors: "text-purple-900 hover:bg-white",
     imgWidth: 344,
     imgHeight: 458,
   },
@@ -34,10 +34,10 @@ const cards = [
     category: "GREECE",
     title: "Rhodes 5-Day Itinerary: Beaches, Day Trips & Best Local Food",
     
-    src: "/src/assets/Article Greece 1.webp",
+    src: "/src/assets/articles/Article Greece 1.webp",
     alt: "Performance optimization metrics dashboard",
     tagColor: "bg-green-600 text-white",
-    textColors: "text-teal-900 hover:bg-gray-200",
+    textColors: "text-teal-900 hover:bg-white",
     imgWidth: 344,
     imgHeight: 458,
   },
@@ -45,10 +45,10 @@ const cards = [
     category: "BELGIUM",
     title: "Bruges Travel guide: Top Attractions and hidden gems",
    
-    src: "/src/assets/Article Bruges.webp",
+    src: "/src/assets/articles/Article Bruges.webp",
     alt: "Secure cloud network vault encryption",
     tagColor: "bg-amber-600 text-white",
-    textColors: "text-orange-900 hover:bg-gray-200",
+    textColors: "text-orange-900 hover:bg-white",
     imgWidth: 344,
     imgHeight: 458,
   }
@@ -101,6 +101,7 @@ const cards = [
             ) : (
               <div class="absolute inset-0 bg-slate-800" />
             )}
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none z-10"></div>
 
             {/* Vignette Shadow Overlay */}
             {/* <div class="absolute inset-0 bg-gradient-to-r from-white/10 to-white/30 transition-opacity duration-500 group-hover:opacity-0 pointer-events-none" /> */}
@@ -170,6 +171,31 @@ const cards = [
   }
 
   document.addEventListener('DOMContentLoaded', initCarousel);
+
+  function initZoom() {
+    const carousel = document.getElementById('carousel');
+    if (!carousel) return;
+
+    const slides = carousel.querySelectorAll<HTMLElement>('.slide');
+    if (!slides.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.intersectionRatio >= 0.6) {
+            entry.target.classList.add('is-active');
+          } else {
+            entry.target.classList.remove('is-active');
+          }
+        });
+      },
+      { root: carousel, threshold: 0.6 }
+    );
+
+    slides.forEach((slide) => observer.observe(slide));
+  }
+
+  document.addEventListener('DOMContentLoaded', initZoom);
 </script>
 
 <style>
@@ -212,7 +238,14 @@ const cards = [
   .slide-media :global(.slide-image) {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Geometric correctness for images */
+    object-fit: cover;
+    transform: scale(1.08);
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+  }
+
+  .slide.is-active .slide-media :global(.slide-image) {
+    transform: scale(1);
   }
 
   @media (min-width: 768px) {

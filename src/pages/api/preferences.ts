@@ -4,13 +4,17 @@ import type { APIRoute } from 'astro';
 const supabaseUrl = import.meta.env.SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.SUPABASE_ANON_KEY;
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error('Missing Supabase environment variables');
-}
-
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+const supabase = supabaseUrl && supabaseAnonKey
+  ? createClient(supabaseUrl, supabaseAnonKey)
+  : null;
 
 export const POST: APIRoute = async ({ request }) => {
+  if (!supabase) {
+    return new Response(
+      JSON.stringify({ error: 'Service not configured' }),
+      { status: 503, headers: { 'Content-Type': 'application/json' } }
+    );
+  }
   try {
     const { token, preferences } = await request.json();
 
@@ -68,6 +72,12 @@ export const POST: APIRoute = async ({ request }) => {
 };
 
 export const DELETE: APIRoute = async ({ request }) => {
+  if (!supabase) {
+    return new Response(
+      JSON.stringify({ error: 'Service not configured' }),
+      { status: 503, headers: { 'Content-Type': 'application/json' } }
+    );
+  }
   try {
     const { token } = await request.json();
 

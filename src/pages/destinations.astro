@@ -1,33 +1,87 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Footer from '../components/Footer.astro';
-import PageNav from '../components/PageNav.astro';
-import DestinationsSection from '../components/components/destinations.astro';
+import Layout from '@/layouts/Layout.astro';
+import Footer from '@/components/layout/Footer.astro';
+import PageNav from '@/components/layout/PageNav.astro';
+import PageBreadcrumbHero from '@/components/sections/PageBreadcrumbHero.astro';
 import { getImage } from 'astro:assets';
-import heroImg from '../assets/Header pink colors (1).webp';
+import heroImg from '@/assets/heroes/shared196.webp';
+
+const articleImages = import.meta.glob<{ default: ImageMetadata }>('@/assets/articles/*.webp', { eager: true });
+const getArticleImg = (filename: string) =>
+  articleImages[`/src/assets/articles/${filename}`]?.default;
 
 const optimizedHeader = await getImage({ src: heroImg, width: 1800, format: 'webp', quality: 85 });
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const destinations = [
+  {
+    name: 'Bali',
+    href: `${base}/bali`,
+    img: getArticleImg('Article Bali.webp'),
+    description:
+      'Bali moves between calm mornings, busy streets and quiet pockets of nature in a way that feels constant but never repetitive. My time there has been mostly centered around cafés, beaches and smaller local spots that shape how I experienced the island. This page gathers guides and travel notes from Bali.',
+  },
+  {
+    name: 'Belgium',
+    href: `${base}/belgium`,
+    img: getArticleImg('Article Bruges.webp'),
+    description:
+      'Belgium is a country of contrasts, where languages, culture and architecture shift noticeably from one region to another. My experience so far has been focused on Bruges, a city defined by its canals and medieval streets, with a slower rhythm that feels removed from bigger cities. This page focuses mainly on Bruges for now, with more destinations coming as I continue exploring the country.',
+  },
+  {
+    name: 'Greece',
+    href: `${base}/greece`,
+    img: getArticleImg('Article Greece.webp'),
+    description:
+      'Greece is a place where every region feels like a different world, from the energy of Athens to the slower rhythm of the islands and smaller coastal towns. My travels here have been a mix of well-known destinations and quieter places that often leave the strongest impression. This page brings together guides and itineraries from across the country.',
+  },
+  {
+    name: 'Japan',
+    href: `${base}/japan`,
+    img: getArticleImg('Article Kyoto.webp'),
+    description:
+      'Japan shifts between fast-paced cities, quiet temples and highly structured everyday life, creating a contrast that stays with you in every place you visit. From Tokyo to Kyoto and Osaka, my travels across these cities come together through different experiences, guides and itineraries shared here.',
+  },
+];
 ---
 
 <Layout>
   <PageNav />
- <div
-    class="services-hero relative rounded-[30px] overflow-hidden bg-scroll lg:bg-fixed flex flex-col justify-end mx-2"
-    style={`background-image: url('${optimizedHeader.src}');`}
-  >
-    <div class="absolute inset-0 bg-black/0.5 pointer-events-none z-0"></div> 
-    <div class="relative z-10 w-full flex flex-col justify-end h-[250px] md:h-[300px] lg:h-[592px]">
-      <div class="w-full max-w-[1300px] pl-4 pr-4 md:pl-10 md:pr-10 lg:pl-16 lg:pr-16 text-white pb-6 lg:pb-12">
-        <h1 class="text-4xl md:text-6xl font-black tracking-tight mb-4">Destinations</h1>
-        <nav class="flex items-center gap-2 text-sm font-medium text-white/60">
-          <a href={`${base}/`} class="hover:text-white/90 transition-colors text-[0.875rem]" style="font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;">Home</a>
-          <span class="text-white/40">/</span>
-          <a href={`${base}/destinations`} class="text-white/90 hover:text-white transition-colors text-[0.875rem]" style="font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;">Destinations</a>
-        </nav>
-      </div>
+
+  <PageBreadcrumbHero
+    title="Destinations"
+    currentPage="Destinations"
+    currentHref={`${base}/destinations`}
+    imageSrc={optimizedHeader.src}
+  />
+
+  <main class="w-full min-h-screen flex flex-col items-center py-10 bg-white">
+    <p class="text-[11px] uppercase tracking-[0.25em] text-neutral-500 font-sans mb-4">Places worth knowing</p>
+    <h2 class="text-4xl sm:text-5xl md:text-7xl text-center font-bold text-neutral-900 md:mb-16 mb-10">Explore</h2>
+
+    <div class="w-full max-w-[1300px] px-4 md:px-[2rem] xl:px-[6rem] flex flex-col gap-10">
+      {
+        destinations.map((destination) => (
+          <article class="flex flex-col sm:flex-row gap-6 pb-10 border-b border-neutral-200 last:border-b-0">
+            <div class="w-full sm:w-1/2 aspect-[4/3] overflow-hidden rounded-xl">
+              <img
+                src={destination.img?.src ?? ''}
+                alt={destination.name}
+                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                loading="lazy"
+              />
+            </div>
+            <div class="w-full sm:w-1/2 flex flex-col justify-center gap-4">
+              <h3 class="font-serif text-[36px] md:text-[44px] font-light text-neutral-900 leading-tight tracking-wide">
+                <a href={destination.href} class="hover:text-neutral-600 transition-colors">{destination.name}</a>
+              </h3>
+              <p class="text-[15px] sm:text-[16px] md:text-[17px] leading-relaxed text-neutral-500">{destination.description}</p>
+            </div>
+          </article>
+        ))
+      }
     </div>
-  </div>
-  
+  </main>
+
   <Footer />
 </Layout>

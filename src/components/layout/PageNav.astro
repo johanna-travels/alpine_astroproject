@@ -1,0 +1,153 @@
+---
+import { HamburgerMenuOverlay } from '@/components/layout/HamburgerMenuOverlay';
+
+const { pathname } = Astro.url;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+interface DropdownSection {
+  title: string;
+  href?: string;
+  showArrow?: boolean;
+  countries?: { label: string; href: string }[];
+  categories?: { label: string; href: string; count?: number }[];
+  products?: { label: string; href: string }[];
+}
+
+interface NavLink {
+  label: string;
+  href: string;
+  hasDropdown?: boolean;
+  dropdownItems?: DropdownSection[];
+  variant?: 'nav' | 'social';
+  iconType?: 'instagram' | 'pinterest' | 'tiktok';
+}
+
+const links: NavLink[] = [
+  { label: "Home", href: `${base}/` },
+  { label: "About Me", href: `${base}/about` },
+  { label: "Services", href: `${base}/services` },
+  { label: "Destinations", href: `${base}/destinations` },
+  { label: "Contact", href: `${base}/contact` },
+  { label: "Instagram", href: "https://www.instagram.com/voyaflair", variant: "social" as const, iconType: "instagram" as const },
+  { label: "Pinterest", href: "https://pinterest.com/voyaflair/", variant: "social" as const, iconType: "pinterest" as const },
+  { label: "TikTok", href: "https://www.tiktok.com/@voyaflair", variant: "social" as const, iconType: "tiktok" as const },
+];
+
+const normalize = (p: string) => (p !== "/" ? p.replace(/\/$/, "") : p);
+const isActive = (href: string) => normalize(pathname) === normalize(href);
+---
+
+<nav class="w-full text-gray-900 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20" style="background-color: #ffffff;">
+  <div class="w-full md:max-w-[1500px] mx-auto flex items-center justify-between min-h-[120px] md:min-h-[140px] gap-4 md:gap-8">
+    <a href={`${base}/`} class="text-2xl md:text-3xl font-bold tracking-wider" style="color: #69746E; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;">VF</a>
+
+    <div class="hidden md:flex items-center gap-8 font-medium text-gray-600">
+      {links.filter(link => link.variant !== 'social').map((link) => (
+        <div class="relative group">
+          <a
+            href={link.href}
+            class:list={[
+              "hover:text-gray-900 transition-colors text-[0.875rem] flex items-center gap-1",
+              isActive(link.href) && "text-gray-900 font-semibold",
+            ]}
+            style="font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;"
+            aria-current={isActive(link.href) ? "page" : undefined}
+            aria-haspopup={link.hasDropdown ? "true" : undefined}
+            aria-expanded={false}
+          >
+            {link.label}
+            {link.hasDropdown && (
+              <svg class="w-4 h-4 transition-transform group-hover:rotate-180" viewBox="0 0 352 512" fill="currentColor">
+                <path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28l-100.07-100.07c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.19 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.19 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"/>
+              </svg>
+            )}
+          </a>
+          
+          {link.hasDropdown && (
+            <div class="absolute left-0 top-full mt-2 w-full max-w-[600px] bg-white shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 p-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {link.dropdownItems?.map((section) => (
+                  <div class="col-span-1">
+                    {section.title && (
+                      <h3 class="font-semibold text-gray-900 mb-3 text-sm">
+                        {section.href ? (
+                          <a href={section.href} class="hover:text-gray-700 transition-colors flex items-center gap-2">
+                            {section.title}
+                            {section.showArrow && (
+                              <svg class="w-4 h-4" viewBox="0 0 23.268 16.477" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M0 8.239h21.263"/>
+                                <path d="M15.151.067c-.18 2.706 1.19 8.117 8.117 8.117"/>
+                                <path d="M15.151 16.411c-.18-2.706 1.191-8.117 8.113-8.117"/>
+                              </svg>
+                            )}
+                          </a>
+                        ) : (
+                          section.title
+                        )}
+                      </h3>
+                    )}
+                    
+                    {section.countries && (
+                      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {section.countries.map((country) => (
+                          <a href={country.href} class="text-sm text-gray-600 hover:text-gray-900 transition-colors py-1">
+                            {country.label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                    
+                    {section.categories && (
+                      <div class="space-y-2">
+                        {section.categories.map((category) => (
+                          <a href={category.href} class="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900 transition-colors py-1">
+                            {category.label}
+                            {category.count && (
+                              <span class="text-xs text-gray-400">({category.count})</span>
+                            )}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                    
+                    {section.products && (
+                      <div class="space-y-3">
+                        {section.products.map((product) => (
+                          <a href={product.href} class="block text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                            {product.label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <div class="block md:hidden">
+      <HamburgerMenuOverlay
+        client:load
+        items={links}
+        buttonTop="20px"
+        buttonRight="20px"
+        buttonSize="lg"
+        buttonColor="transparent"
+        iconColor="#000000"
+        overlayBackground="#F5F2EB"
+        textColor="#111827"
+        fontSize="xl"
+        fontFamily="Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+        fontWeight="normal"
+        animationDuration={0.6}
+        staggerDelay={0.05}
+        menuAlignment="left"
+        enableBlur={true}
+        ariaLabel="Navigation menu"
+      />
+    </div>
+  </div>
+</nav>
