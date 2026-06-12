@@ -8,11 +8,7 @@ const supabaseAnonKey = import.meta.env.SUPABASE_ANON_KEY;
 const resendApiKey = import.meta.env.RESEND_API_KEY;
 const resendFromEmail = import.meta.env.RESEND_FROM_EMAIL;
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error('Missing Supabase environment variables');
-}
-
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : null;
 const resend = resendApiKey ? new Resend(resendApiKey) : null;
 
 // Simple in-memory rate limiter (for production, use Redis or similar)
@@ -39,6 +35,13 @@ function checkRateLimit(ip: string): boolean {
 
 export const POST: APIRoute = async ({ request }) => {
   try {
+    if (!supabase) {
+      return new Response(
+        JSON.stringify({ error: 'Service unavailable' }),
+        { status: 503, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
     const ip = request.headers.get('x-forwarded-for') || 'unknown';
     
     if (!checkRateLimit(ip)) {
