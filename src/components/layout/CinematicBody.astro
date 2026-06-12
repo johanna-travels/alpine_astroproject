@@ -1,0 +1,64 @@
+---
+// Body-level cinematic scroll effect: blurred top/bottom edges + scroll progress bar.
+// Uses natural window scroll, so it does NOT conflict with GSAP ScrollTrigger.
+interface Props {
+  blurLayers?: number;
+  blurMax?: number;
+  blurSize?: number;
+  accentColor?: string;
+  tintColor?: string;
+}
+
+const {
+  blurLayers = 5,
+  blurMax = 16,
+  blurSize = 70,
+  tintColor = '#F5F2EB',
+} = Astro.props;
+
+const bottomBlurSize = blurSize / 2;
+const layers = Array.from({ length: blurLayers });
+---
+
+<!-- Top blur mask -->
+<div class="cinematic-edge cinematic-top" style={`height:${blurSize}px`} aria-hidden="true">
+  {layers.map((_, i) => (
+    <div
+      class="cinematic-layer"
+      style={`backdrop-filter: blur(${Math.sin(((blurLayers - (i + 1)) / blurLayers) * Math.PI / 2) * blurMax}px); -webkit-backdrop-filter: blur(${Math.sin(((blurLayers - (i + 1)) / blurLayers) * Math.PI / 2) * blurMax}px); mask-image: linear-gradient(to bottom, black, transparent ${((i + 1) / blurLayers) * 100}%); -webkit-mask-image: linear-gradient(to bottom, black, transparent ${((i + 1) / blurLayers) * 100}%);`}
+    />
+  ))}
+  <div class="cinematic-tint" style={`background: linear-gradient(to bottom, ${tintColor} 0%, ${tintColor}99 40%, transparent 100%);`}></div>
+</div>
+
+<!-- Bottom blur mask -->
+<div class="cinematic-edge cinematic-bottom" style={`height:${bottomBlurSize}px`} aria-hidden="true">
+  {layers.map((_, i) => (
+    <div
+      class="cinematic-layer"
+      style={`backdrop-filter: blur(${Math.sin(((blurLayers - (i + 1)) / blurLayers) * Math.PI / 2) * blurMax}px); -webkit-backdrop-filter: blur(${Math.sin(((blurLayers - (i + 1)) / blurLayers) * Math.PI / 2) * blurMax}px); mask-image: linear-gradient(to top, black, transparent ${((i + 1) / blurLayers) * 100}%); -webkit-mask-image: linear-gradient(to top, black, transparent ${((i + 1) / blurLayers) * 100}%);`}
+    />
+  ))}
+  <div class="cinematic-tint" style={`background: linear-gradient(to top, ${tintColor} 0%, ${tintColor}99 40%, transparent 100%);`}></div>
+</div>
+
+<style>
+  .cinematic-edge {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 60;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .cinematic-top { top: 0; }
+  .cinematic-bottom { bottom: 0; }
+  .cinematic-layer {
+    position: absolute;
+    inset: 0;
+  }
+  .cinematic-tint {
+    position: absolute;
+    inset: 0;
+  }
+</style>

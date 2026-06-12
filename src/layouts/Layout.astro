@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import CinematicBody from '../components/layout/CinematicBody.astro';
 
 const csp = [
   "default-src 'self'",
@@ -44,6 +45,7 @@ const permissionsPolicy = [
     />
   </head>
   <body>
+    <CinematicBody />
     <slot />
   </body>
 </html>

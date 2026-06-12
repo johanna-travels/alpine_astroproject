@@ -35,5 +35,6 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('lightswind/plugin'),],
 };
