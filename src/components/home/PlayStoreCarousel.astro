@@ -12,7 +12,7 @@ const cards = [
   {
     category: "JAPAN",
     title: "Kyoto 5-Day Itinerary",
-
+    href: `${base}/japan`,
     src: "/src/assets/articles/Article Kyoto.webp",
     alt: "Beautiful view of Greece",
     tagColor: "bg-blue-600 text-white",
@@ -23,6 +23,7 @@ const cards = [
   {
     category: "BALI",
     title: "My Favorite Cafés in Bali",
+    href: `${base}/bali`,
     src: "/src/assets/articles/Article Bali.webp",
     alt: "UI Design interface preview",
     tagColor: "bg-purple-600 text-white",
@@ -33,7 +34,7 @@ const cards = [
   {
     category: "GREECE",
     title: "Rhodes 5-Day Itinerary: Beaches, Day Trips & Best Local Food",
-
+    href: `${base}/greece`,
     src: "/src/assets/articles/Article Greece.webp",
     alt: "Performance optimization metrics dashboard",
     tagColor: "bg-green-600 text-white",
@@ -44,7 +45,7 @@ const cards = [
   {
     category: "BELGIUM",
     title: "Bruges Travel guide: Top Attractions and hidden gems",
-
+    href: `${base}/belgium`,
     src: "/src/assets/articles/Article Bruges.webp",
     alt: "Secure cloud network vault encryption",
     tagColor: "bg-amber-600 text-white",
@@ -85,14 +86,13 @@ const cards = [
     <div class="pt-carousel-top-sm pb-dot-zone md:pt-carousel-top-md md:px-[40px] lg:pt-carousel-top-lg">
     <div id="carousel" class="scroll-wrapper">
       {cards.map((card) => (
-        <div class="slide group">
-
+        <a href={card.href} class="slide group block">
           {/* Image block */}
           <div class="slide-media relative">
             {images[card.src] ? (
-              <Image 
-                src={images[card.src].default} 
-                alt={card.alt} 
+              <Image
+                src={images[card.src].default}
+                alt={card.alt}
                 width={card.imgWidth}
                 height={card.imgHeight}
                 densities={[1, 2]}
@@ -111,13 +111,12 @@ const cards = [
           <div class="pt-4 px-1 animate-[fadeInUp_0.6s_ease-out]">
             <span class="block text-[clamp(12px,1.5vw,14px)] font-normal text-black mb-1">{card.category}</span>
             <h4 class="text-[clamp(22px,5vw,30px)] font-extralight text-[#1e1e1e] leading-tight mb-2">{card.title}</h4>
-            <a href="#" class="text-[0.875rem] font-medium text-black inline-flex items-center gap-2 transition-all" style="font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;">
+            <span class="text-[0.875rem] font-medium text-black inline-flex items-center gap-2 transition-all" style="font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;">
               Read more
               <span class="leading-none transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">→</span>
-            </a>
+            </span>
           </div>
-
-        </div>
+        </a>
       ))}
     </div>
     </div>
@@ -182,14 +181,14 @@ const cards = [
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.intersectionRatio >= 0.6) {
+          if (entry.intersectionRatio >= 0.3) {
             entry.target.classList.add('is-active');
           } else {
             entry.target.classList.remove('is-active');
           }
         });
       },
-      { root: carousel, threshold: 0.6 }
+      { root: carousel, threshold: 0.3 }
     );
 
     slides.forEach((slide) => observer.observe(slide));
