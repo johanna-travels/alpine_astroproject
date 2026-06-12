@@ -1,0 +1,66 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Footer from '@/components/layout/Footer.astro';
+import PageNav from '@/components/layout/PageNav.astro';
+import PageBreadcrumbHero from '@/components/sections/PageBreadcrumbHero.astro';
+import { getImage } from 'astro:assets';
+import articleImg from '@/assets/articles/Article Kyoto.webp';
+
+const optimizedHeader = await getImage({ src: articleImg, width: 1800, format: 'webp', quality: 85 });
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Layout>
+  <PageNav />
+
+  <PageBreadcrumbHero
+    title="Kyoto 5-Day Itinerary"
+    currentPage="Kyoto Itinerary"
+    currentHref={`${base}/articles/kyoto-itinerary`}
+    imageSrc={optimizedHeader.src}
+  />
+
+  <main class="w-full min-h-screen flex flex-col items-center py-16 bg-white">
+    <article class="w-full max-w-[760px] px-4 md:px-0">
+      <p class="text-[11px] uppercase tracking-[0.25em] text-neutral-500 font-sans mb-4">Japan</p>
+      <h1 class="font-sans text-[36px] md:text-[48px] font-light text-neutral-900 leading-tight tracking-wide mb-8">
+        Kyoto 5-Day Itinerary
+      </h1>
+
+      <p class="font-sans text-base md:text-[17px] text-neutral-600 font-normal italic border-l-2 border-neutral-200 pl-4 leading-relaxed mb-8">
+        Five days in Kyoto, balancing iconic temples with quiet neighbourhoods, slow mornings and the kind of details that make the city stay with you.
+      </p>
+
+      <h2 class="font-sans text-[24px] md:text-[28px] font-light text-neutral-900 leading-tight tracking-wide mb-3">Day 1 — Eastern Kyoto & Higashiyama</h2>
+      <p class="font-sans text-[15px] md:text-[16px] text-neutral-700 font-normal leading-[1.85] mb-8">
+        Start in the historic Higashiyama district, walking the preserved streets toward Kiyomizu-dera. The early hours are calmest, with soft light over the wooden terraces and fewer crowds along the slopes of Sannenzaka and Ninenzaka.
+      </p>
+
+      <h2 class="font-sans text-[24px] md:text-[28px] font-light text-neutral-900 leading-tight tracking-wide mb-3">Day 2 — Arashiyama & Bamboo Grove</h2>
+      <p class="font-sans text-[15px] md:text-[16px] text-neutral-700 font-normal leading-[1.85] mb-8">
+        Head west to Arashiyama for the bamboo grove and the Tenryu-ji gardens. Cross the Togetsukyo bridge and spend the afternoon along the river, where the pace slows and the surrounding hills frame the town.
+      </p>
+
+      <h2 class="font-sans text-[24px] md:text-[28px] font-light text-neutral-900 leading-tight tracking-wide mb-3">Day 3 — Fushimi Inari & Southern Kyoto</h2>
+      <p class="font-sans text-[15px] md:text-[16px] text-neutral-700 font-normal leading-[1.85] mb-8">
+        Climb through the thousands of vermilion torii gates at Fushimi Inari early in the morning. The full loop takes a couple of hours and rewards you with quiet shrines and views over the city the higher you go.
+      </p>
+
+      <h2 class="font-sans text-[24px] md:text-[28px] font-light text-neutral-900 leading-tight tracking-wide mb-3">Day 4 — Gion & Traditional Kyoto</h2>
+      <p class="font-sans text-[15px] md:text-[16px] text-neutral-700 font-normal leading-[1.85] mb-8">
+        Spend the day in Gion, Kyoto's geisha district, with its tea houses and lantern-lit lanes. Visit Yasaka Shrine and end the evening along the Kamo River as the restaurants and bars come to life.
+      </p>
+
+      <h2 class="font-sans text-[24px] md:text-[28px] font-light text-neutral-900 leading-tight tracking-wide mb-3">Day 5 — Golden Pavilion & Departure</h2>
+      <p class="font-sans text-[15px] md:text-[16px] text-neutral-700 font-normal leading-[1.85] mb-10">
+        Finish with Kinkaku-ji, the Golden Pavilion, reflected in its surrounding pond. A calm, fitting close before heading onward, with time for one last café stop and a slow walk through the gardens.
+      </p>
+
+      <a href={`${base}/destinations`} class="inline-block text-black text-[13px] font-medium uppercase tracking-widest leading-none transition-all opacity-75 hover:opacity-100">
+        <span class="flex items-center gap-2">← Back to Destinations</span>
+      </a>
+    </article>
+  </main>
+
+  <Footer />
+</Layout>

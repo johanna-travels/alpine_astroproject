@@ -109,7 +109,7 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
         <div className={`flex items-center justify-center ${!showImage ? 'w-full' : ''}`}>
           <div className={`w-full ${!showImage ? 'w-full p-[35px] rounded-[10px] bg-white shadow-sm' : 'max-w-lg rounded-3xl px-4 py-8 md:px-10'}`}>
             <div>
-              <h1 className="mt-4 text-4xl font-bold tracking-tight text-black dark:text-white leading-9">
+              <h1 className="mt-4 text-4xl font-bold tracking-tight text-black dark:text-white leading-9" style={{ fontFamily: "Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" }}>
                 Let's Talk
               </h1>
               <p className="mt-4 max-w-sm text-sm text-neutral-600 dark:text-neutral-400">

@@ -1,0 +1,61 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Footer from '@/components/layout/Footer.astro';
+import PageNav from '@/components/layout/PageNav.astro';
+import PageBreadcrumbHero from '@/components/sections/PageBreadcrumbHero.astro';
+import { getImage } from 'astro:assets';
+import articleImg from '@/assets/articles/Article Bruges.webp';
+
+const optimizedHeader = await getImage({ src: articleImg, width: 1800, format: 'webp', quality: 85 });
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Layout>
+  <PageNav />
+
+  <PageBreadcrumbHero
+    title="Bruges Travel Guide"
+    currentPage="Bruges Guide"
+    currentHref={`${base}/articles/bruges-guide`}
+    imageSrc={optimizedHeader.src}
+  />
+
+  <main class="w-full min-h-screen flex flex-col items-center py-16 bg-white">
+    <article class="w-full max-w-[760px] px-4 md:px-0">
+      <p class="text-[11px] uppercase tracking-[0.25em] text-neutral-500 font-sans mb-4">Belgium</p>
+      <h1 class="font-sans text-[36px] md:text-[48px] font-light text-neutral-900 leading-tight tracking-wide mb-8">
+        Bruges Travel Guide: Top Attractions and Hidden Gems
+      </h1>
+
+      <p class="font-sans text-base md:text-[17px] text-neutral-600 font-normal italic border-l-2 border-neutral-200 pl-4 leading-relaxed mb-8">
+        Bruges feels like stepping into another century — canals, cobbled squares and medieval architecture, with a slower rhythm that rewards wandering without a plan.
+      </p>
+
+      <h2 class="font-sans text-[24px] md:text-[28px] font-light text-neutral-900 leading-tight tracking-wide mb-3">The Markt & Belfry</h2>
+      <p class="font-sans text-[15px] md:text-[16px] text-neutral-700 font-normal leading-[1.85] mb-8">
+        Start in the Markt, the city's central square, framed by gabled buildings and the towering Belfry. The climb up the bell tower is steep but worth it for the panoramic view over the rooftops and canals.
+      </p>
+
+      <h2 class="font-sans text-[24px] md:text-[28px] font-light text-neutral-900 leading-tight tracking-wide mb-3">Canals & Boat Tours</h2>
+      <p class="font-sans text-[15px] md:text-[16px] text-neutral-700 font-normal leading-[1.85] mb-8">
+        A short boat tour is the classic way to see Bruges from the water, gliding past medieval facades and under low stone bridges. Early or late in the day is best, when the light softens and the crowds thin out.
+      </p>
+
+      <h2 class="font-sans text-[24px] md:text-[28px] font-light text-neutral-900 leading-tight tracking-wide mb-3">Chocolate, Beer & Local Flavours</h2>
+      <p class="font-sans text-[15px] md:text-[16px] text-neutral-700 font-normal leading-[1.85] mb-8">
+        Bruges takes its chocolate and beer seriously. Skip the most touristy shops in favour of smaller chocolatiers, and find a quiet bar to try a local Belgian beer alongside the city's classic comfort food.
+      </p>
+
+      <h2 class="font-sans text-[24px] md:text-[28px] font-light text-neutral-900 leading-tight tracking-wide mb-3">Hidden Gems Away from the Centre</h2>
+      <p class="font-sans text-[15px] md:text-[16px] text-neutral-700 font-normal leading-[1.85] mb-10">
+        Walk toward the Begijnhof and the Minnewater lake for the quietest corners of the city. The further you drift from the main squares, the more Bruges reveals its calmer, residential side.
+      </p>
+
+      <a href={`${base}/destinations`} class="inline-block text-black text-[13px] font-medium uppercase tracking-widest leading-none transition-all opacity-75 hover:opacity-100">
+        <span class="flex items-center gap-2">← Back to Destinations</span>
+      </a>
+    </article>
+  </main>
+
+  <Footer />
+</Layout>

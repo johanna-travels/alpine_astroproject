@@ -1,0 +1,56 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Footer from '@/components/layout/Footer.astro';
+import PageNav from '@/components/layout/PageNav.astro';
+import PageBreadcrumbHero from '@/components/sections/PageBreadcrumbHero.astro';
+import { getImage } from 'astro:assets';
+import articleImg from '@/assets/articles/Article Bali.webp';
+
+const optimizedHeader = await getImage({ src: articleImg, width: 1800, format: 'webp', quality: 85 });
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Layout>
+  <PageNav />
+
+  <PageBreadcrumbHero
+    title="My Favorite Cafés in Bali"
+    currentPage="Bali Cafés"
+    currentHref={`${base}/articles/bali-cafes`}
+    imageSrc={optimizedHeader.src}
+  />
+
+  <main class="w-full min-h-screen flex flex-col items-center py-16 bg-white">
+    <article class="w-full max-w-[760px] px-4 md:px-0">
+      <p class="text-[11px] uppercase tracking-[0.25em] text-neutral-500 font-sans mb-4">Bali</p>
+      <h1 class="font-sans text-[36px] md:text-[48px] font-light text-neutral-900 leading-tight tracking-wide mb-8">
+        My Favorite Cafés in Bali
+      </h1>
+
+      <p class="font-sans text-base md:text-[17px] text-neutral-600 font-normal italic border-l-2 border-neutral-200 pl-4 leading-relaxed mb-8">
+        Bali's café culture is one of the best in the world — thoughtfully designed spaces, excellent coffee and slow mornings that set the tone for the whole day. These are the spots I keep coming back to.
+      </p>
+
+      <h2 class="font-sans text-[24px] md:text-[28px] font-light text-neutral-900 leading-tight tracking-wide mb-3">Canggu — Surf & Specialty Coffee</h2>
+      <p class="font-sans text-[15px] md:text-[16px] text-neutral-700 font-normal leading-[1.85] mb-8">
+        Canggu is the heart of Bali's café scene, with airy, plant-filled spaces just minutes from the beach. Mornings here move slowly, with surfers drifting in for flat whites and brunch that easily stretches into the afternoon.
+      </p>
+
+      <h2 class="font-sans text-[24px] md:text-[28px] font-light text-neutral-900 leading-tight tracking-wide mb-3">Ubud — Jungle Views & Healthy Bowls</h2>
+      <p class="font-sans text-[15px] md:text-[16px] text-neutral-700 font-normal leading-[1.85] mb-8">
+        In Ubud the cafés open onto rice fields and jungle, leaning toward fresh juices, smoothie bowls and quieter corners to work or read. It's a different rhythm from the coast — green, calm and unhurried.
+      </p>
+
+      <h2 class="font-sans text-[24px] md:text-[28px] font-light text-neutral-900 leading-tight tracking-wide mb-3">Seminyak — Polished & Stylish</h2>
+      <p class="font-sans text-[15px] md:text-[16px] text-neutral-700 font-normal leading-[1.85] mb-10">
+        Seminyak's cafés are a little more polished, blending strong design with reliably good coffee. They're perfect for a relaxed mid-morning stop between shopping and the beach clubs nearby.
+      </p>
+
+      <a href={`${base}/destinations`} class="inline-block text-black text-[13px] font-medium uppercase tracking-widest leading-none transition-all opacity-75 hover:opacity-100">
+        <span class="flex items-center gap-2">← Back to Destinations</span>
+      </a>
+    </article>
+  </main>
+
+  <Footer />
+</Layout>

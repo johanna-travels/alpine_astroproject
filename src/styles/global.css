@@ -36,33 +36,33 @@
     background-color: var(--color-bg);
   }
 
-  /* H1 – Article Title : Playfair Display, Bold, 32 / 40 / 56, lh 1.1 */
+  /* H1 – Article Title : Inter, Bold, 32 / 40 / 56, lh 1.1 */
   h1 {
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
     font-weight: 700;
     line-height: 1.1;
     font-size: 32px;
   }
 
-  /* H2 – Main Section Heading : Playfair Display, SemiBold, 28 / 32 / 40, lh 1.2 */
+  /* H2 – Main Section Heading : Inter, SemiBold, 28 / 32 / 40, lh 1.2 */
   h2 {
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
     font-weight: 600;
     line-height: 1.2;
     font-size: 28px;
   }
 
-  /* H3 – Subsection Heading : Bodoni Moda, SemiBold, 22 / 24 / 28, lh 1.3 */
+  /* H3 – Subsection Heading : Inter, SemiBold, 22 / 24 / 28, lh 1.3 */
   h3 {
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
     font-weight: 600;
     line-height: 1.3;
     font-size: 22px;
   }
 
-  /* H4 – Small Heading : Bodoni Moda, SemiBold, 18 / 20 / 22, lh 1.3 */
+  /* H4 – Small Heading : Inter, SemiBold, 18 / 20 / 22, lh 1.3 */
   h4 {
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
     font-weight: 600;
     line-height: 1.3;
     font-size: 18px;
