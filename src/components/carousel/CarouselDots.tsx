@@ -1,4 +1,4 @@
- import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 interface CarouselDotsProps {
   carouselId: string;
