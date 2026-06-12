@@ -2,6 +2,9 @@
 import Layout from '@/layouts/Layout.astro';
 import Footer from '@/components/layout/Footer.astro';
 import PageNav from '@/components/layout/PageNav.astro';
+import { Image } from 'astro:assets';
+import baliArticleImg from '@/assets/articles/Article Bali.webp';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout>
@@ -13,6 +16,32 @@ import PageNav from '@/components/layout/PageNav.astro';
     <p class="text-lg md:text-xl text-neutral-600 max-w-3xl">
       Bali moves between calm mornings, busy streets and quiet pockets of nature in a way that feels constant but never repetitive. My time there has been mostly centered around cafés, beaches and smaller local spots that shape how I experienced the island. This page gathers guides and travel notes from Bali.
     </p>
+
+    <div class="relative lg:ml-[120px] lg:mb-[50px]">
+      <div class="pt-8 pb-8 md:px-[40px]">
+        <a href={`${base}/destinations`} class="slide group block">
+          <div class="slide-media relative aspect-square w-full max-w-[400px] mx-auto overflow-hidden rounded-xl">
+            <Image
+              src={baliArticleImg}
+              alt="Bali article"
+              width={800}
+              height={800}
+              densities={[1, 2]}
+              class="slide-image absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none z-10"></div>
+          </div>
+          <div class="pt-4 px-1 max-w-[400px] mx-auto">
+            <span class="block text-[clamp(12px,1.5vw,14px)] font-normal text-black mb-1">BALI</span>
+            <h4 class="text-[clamp(22px,5vw,30px)] font-extralight text-[#1e1e1e] leading-tight mb-2">Bali Travel Guide</h4>
+            <span class="text-[0.875rem] font-medium text-black inline-flex items-center gap-2 transition-all" style="font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;">
+              Read more
+              <span class="leading-none transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">→</span>
+            </span>
+          </div>
+        </a>
+      </div>
+    </div>
   </main>
   <Footer />
 </Layout>

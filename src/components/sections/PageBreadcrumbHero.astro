@@ -11,12 +11,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const breadcrumbFont = "font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;";
 ---
 
-<div
-  class="page-breadcrumb-hero relative rounded-[30px] overflow-hidden bg-scroll lg:bg-fixed flex flex-col justify-end mx-2"
-  style={`background-image: url('${imageSrc}');`}
->
+<div class="page-breadcrumb-hero relative rounded-[30px] overflow-hidden mx-2 aspect-[16/9] md:aspect-[21/9] lg:aspect-[21/9] bg-fixed" style={`background-image: url('${imageSrc}'); background-size: cover; background-position: center;`}>
   <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none z-0"></div>
-  <div class="relative z-10 w-full flex flex-col justify-end h-[250px] md:h-[300px] lg:h-[592px]">
+  <div class="relative z-10 w-full flex flex-col justify-end h-full">
     <div class="w-full max-w-[1300px] pl-4 pr-4 md:pl-10 md:pr-10 lg:pl-16 lg:pr-16 text-white pb-6 lg:pb-12">
       <h1 class="text-4xl md:text-6xl font-black tracking-tight mb-4">{title}</h1>
       <nav class="flex items-center gap-2 text-sm font-medium text-white/70">
@@ -27,10 +24,3 @@ const breadcrumbFont = "font-family: Inter, system-ui, -apple-system, 'Segoe UI'
     </div>
   </div>
 </div>
-
-<style>
-  .page-breadcrumb-hero {
-    background-size: cover;
-    background-position: center center;
-  }
-</style>
