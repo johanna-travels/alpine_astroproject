@@ -3,12 +3,11 @@ import Layout from '@/layouts/Layout.astro';
 import Footer from '@/components/layout/Footer.astro';
 import PageNav from '@/components/layout/PageNav.astro';
 import PageBreadcrumbHero from '@/components/sections/PageBreadcrumbHero.astro';
-import { getImage } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import heroImg from '@/assets/heroes/about me-img.webp';
 import verticalImg from '@/assets/heroes/about me-vertical.webp';
 
 const optimizedHeader = await getImage({ src: heroImg, width: 1800, format: 'webp', quality: 85 });
-const optimizedVertical = await getImage({ src: verticalImg, width: 900, format: 'webp', quality: 85 });
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
@@ -27,11 +26,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <div class="w-full max-w-[1300px] mx-auto px-4 xl:px-0 flex flex-col md:flex-row gap-y-[20px] md:gap-y-0 md:gap-x-[100px] items-center">
         <div class="w-full md:w-1/2 flex flex-col">
           <div class="overflow-hidden bg-neutral-100 aspect-[3/4] md:aspect-auto">
-            <img
+            <Image
               class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-              src={optimizedVertical.src}
+              src={verticalImg}
               alt="Profile"
-              loading="lazy"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+              widths={[480, 720, 900]}
+              sizes="(min-width: 768px) 50vw, 100vw"
+              format="webp"
+              quality={85}
             />
           </div>
         </div>

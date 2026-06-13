@@ -1,3 +1,6 @@
+
+// @ts-check
+
 "use client";
 
 import { useState } from "react";
@@ -39,7 +42,7 @@ function validate(values: FormValues): FormErrors {
   } else if (values.message.trim().length < 10) {
     errors.message = "Message should be at least 10 characters.";
   }
-  if (!values.consent) errors.consent = "You must agree to the privacy policy.";
+  if (!values.consent) errors.consent = 'You must agree to the privacy policy.';
   return errors;
 }
 
@@ -62,9 +65,10 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
   ) => {
     const { id, value } = e.target;
     const target = e.target as HTMLInputElement;
+    const fieldKey = id === 'contact-consent' ? 'consent' : id;
     const newValue = target.type === 'checkbox' ? target.checked : sanitizeInput(value);
-    setValues((prev) => ({ ...prev, [id]: newValue }));
-    setErrors((prev) => ({ ...prev, [id]: undefined }));
+    setValues((prev) => ({ ...prev, [fieldKey]: newValue }));
+    setErrors((prev) => ({ ...prev, [fieldKey]: undefined }));
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -181,7 +185,7 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
                   <label className="flex cursor-pointer gap-3 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
                     <div className="flex h-5 items-center">
                       <input
-                        id="consent"
+                        id="contact-consent"
                         type="checkbox"
                         checked={values.consent}
                         onChange={handleChange}

@@ -3,7 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import Footer from '@/components/layout/Footer.astro';
 import PageNav from '@/components/layout/PageNav.astro';
 import PageBreadcrumbHero from '@/components/sections/PageBreadcrumbHero.astro';
-import { getImage } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import heroImg from '@/assets/heroes/shared196.webp';
 
 const articleImages = import.meta.glob<{ default: ImageMetadata }>('@/assets/**/*.{webp,JPG,jpg}', { eager: true });
@@ -66,12 +66,17 @@ const destinations = [
         destinations.map((destination) => (
           <article class="flex flex-col sm:flex-row gap-6 pb-10 border-b border-neutral-200 last:border-b-0">
             <div class="w-full sm:w-2/5 lg:w-1/3 aspect-square overflow-hidden rounded-xl">
-              <img
-                src={destination.img?.src ?? ''}
-                alt={destination.name}
-                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                loading="lazy"
-              />
+              {destination.img && (
+                <Image
+                  src={destination.img}
+                  alt={destination.name}
+                  class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                  widths={[320, 480, 640]}
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 40vw, 100vw"
+                />
+              )}
             </div>
             <div class="w-full sm:w-3/5 lg:w-2/3 flex flex-col justify-center gap-4">
               <h3 class="font-sans text-[28px] sm:text-[36px] md:text-[44px] font-light text-neutral-900 leading-tight tracking-wide">

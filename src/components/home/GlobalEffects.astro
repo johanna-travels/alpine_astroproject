@@ -1,34 +1,32 @@
 ---
-// src/components/GlobalEffects.astro
 ---
+<style is:global>
+  .reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1.2s ease, transform 1.2s ease;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
 <script>
-    import { gsap } from 'gsap';
-    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  const revealElements = document.querySelectorAll('.reveal');
 
-    gsap.registerPlugin(ScrollTrigger);
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
 
-    // Εκτέλεση setup
-    const initEffects = () => {
-        // --- GLOBAL SCROLL REVEAL ---
-        const reveals = document.querySelectorAll('.reveal');
-        reveals.forEach((el) => {
-            gsap.fromTo(el, 
-                { opacity: 0, y: 50 },
-                { 
-                    opacity: 1, 
-                    y: 0, 
-                    duration: 1.2, 
-                    ease: "power3.out",
-                    scrollTrigger: {
-                        trigger: el,
-                        start: "top 86%", // Ενεργοποίηση λίγο πριν μπει στο view
-                        toggleActions: "play none none none"
-                    }
-                }
-            );
-        });
-    };
-
-    // Τρέχει στο αρχικό φόρτωμα
-    document.addEventListener('DOMContentLoaded', initEffects);
+  revealElements.forEach((el) => observer.observe(el));
 </script>

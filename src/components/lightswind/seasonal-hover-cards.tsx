@@ -46,6 +46,8 @@ const SeasonCard = ({
         src={imageSrc}
         className="absolute inset-0 w-full h-full object-cover object-center"
         alt={imageAlt || title}
+        loading="lazy"
+        decoding="async"
       />
       {showText && (
         <>
