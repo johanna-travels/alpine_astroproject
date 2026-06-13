@@ -16,11 +16,29 @@ import belgiumImg from '@/assets/heroes/destination belgium.webp';
 import { SeasonalHoverCards } from "@/components/lightswind/seasonal-hover-cards"
 
 
-const optimizedHeader = await getImage({ src: headerLightImg, width: 1800, format: 'webp', quality: 85 });
+const optimizedHeader = await getImage({ src: headerLightImg, width: 1800, format: 'webp', quality: 75 });
+
+const cardWidths = [320, 480, 640, 900];
+const cardSizes = '(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw';
+
+async function buildSrcSet(img: ImageMetadata) {
+  const variants = await Promise.all(
+    cardWidths.map((w) => getImage({ src: img, width: w, format: 'webp', quality: 75 }))
+  );
+  return variants.map((v, i) => `${v.src} ${cardWidths[i]}w`).join(', ');
+}
+
+const baliSrcSet   = await buildSrcSet(baliImg);
+const greeceSrcSet = await buildSrcSet(greeceImg);
+const japanSrcSet  = await buildSrcSet(japanImg);
+const belgiumSrcSet = await buildSrcSet(belgiumImg);
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout>
+  <Fragment slot="head">
+    <link rel="preload" as="image" href={optimizedHeader.src} />
+  </Fragment>
     <GlobalEffects />
     <PageNav />
 
@@ -81,13 +99,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
                 subtitle: "Indonesia",
                 description: "Tropical paradise with stunning beaches and vibrant culture",
                 imageSrc: baliImg.src,
+                imageSrcSet: baliSrcSet,
+                imageSizes: cardSizes,
                 href: `${base}/bali`
               },
               {
                 title: "Greece",
                 subtitle: "Europe",
                 description: "Ancient history meets crystal clear waters",
-                imageSrc: greeceImg.src,
+                imageSrc: greeceSrcSet.split(',')[0].split(' ')[0],
+                imageSrcSet: greeceSrcSet,
+                imageSizes: cardSizes,
                 href: `${base}/greece`
               },
               {
@@ -95,6 +117,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
                 subtitle: "Asia",
                 description: "Where tradition meets modern innovation",
                 imageSrc: japanImg.src,
+                imageSrcSet: japanSrcSet,
+                imageSizes: cardSizes,
                 href: `${base}/japan`
               },
               {
@@ -102,6 +126,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
                 subtitle: "Europe",
                 description: "Medieval charm and culinary delights",
                 imageSrc: belgiumImg.src,
+                imageSrcSet: belgiumSrcSet,
+                imageSizes: cardSizes,
                 href: `${base}/belgium`
               }
             ]} /></div>

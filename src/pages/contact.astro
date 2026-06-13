@@ -7,11 +7,14 @@ import Footer from '@/components/layout/Footer.astro';
 import { getImage } from 'astro:assets';
 import heroImg from '@/assets/heroes/contac-img.webp';
 
-const optimizedHeader = await getImage({ src: heroImg, width: 1800, format: 'webp', quality: 85 });
+const optimizedHeader = await getImage({ src: heroImg, width: 1800, format: 'webp', quality: 75 });
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout>
+  <Fragment slot="head">
+    <link rel="preload" as="image" href={optimizedHeader.src} />
+  </Fragment>
   <PageNav />
 
   <PageBreadcrumbHero

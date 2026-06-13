@@ -194,7 +194,7 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
                     </div>
                     <span className="select-none">
                       I authorize Voyaflair to store and use the personal data sent, so that they can respond to my request. My personal data will be processed in accordance with the information in the section{' '}
-                      <a href={`${base}/privacy-policy`} className="text-blue-600 hover:underline dark:text-blue-400">
+                      <a href={`${base}/privacy-policy`} className="text-blue-700 underline hover:text-blue-900 dark:text-blue-300 dark:hover:text-blue-100">
                         Privacy Policy
                       </a>.
                     </span>

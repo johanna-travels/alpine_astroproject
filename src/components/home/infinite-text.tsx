@@ -26,7 +26,7 @@ const InfiniteLogoScroll = () => {
           {/* Duplicate the array to create the seamless loop */}
           {[...countries, ...countries].map((country, index) => (
             <div key={index} className="flex items-center gap-6">
-              <span className="font-['Inter'] text-[1.35rem] md:text-[1.2rem] font-medium text-black whitespace-nowrap">
+              <span className="font-sans text-[1.35rem] md:text-[1.2rem] font-medium tracking-[0.15em] text-black whitespace-nowrap">
                 {country.toUpperCase()}
               </span>
               <span className="text-black/20">·</span>

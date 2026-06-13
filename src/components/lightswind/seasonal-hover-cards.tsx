@@ -7,6 +7,8 @@ export interface SeasonCardProps {
   subtitle: string;
   description: string;
   imageSrc: string;
+  imageSrcSet?: string;
+  imageSizes?: string;
   imageAlt?: string;
   className?: string;
   href?: string;
@@ -23,6 +25,8 @@ const SeasonCard = ({
   subtitle,
   description,
   imageSrc,
+  imageSrcSet,
+  imageSizes,
   imageAlt,
   className,
   href,
@@ -44,6 +48,8 @@ const SeasonCard = ({
     >
       <img
         src={imageSrc}
+        srcSet={imageSrcSet}
+        sizes={imageSizes}
         className="absolute inset-0 w-full h-full object-cover object-center"
         alt={imageAlt || title}
         loading="lazy"
@@ -78,6 +84,8 @@ export function SeasonalHoverCards({
           subtitle={card.subtitle}
           description={card.description}
           imageSrc={card.imageSrc}
+          imageSrcSet={card.imageSrcSet}
+          imageSizes={card.imageSizes}
           imageAlt={card.imageAlt}
           href={card.href}
         />

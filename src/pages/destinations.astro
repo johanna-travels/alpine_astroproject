@@ -12,7 +12,7 @@ const getArticleImg = (filename: string) => {
   return key ? articleImages[key].default : undefined;
 };
 
-const optimizedHeader = await getImage({ src: heroImg, width: 1800, format: 'webp', quality: 85 });
+const optimizedHeader = await getImage({ src: heroImg, width: 1800, format: 'webp', quality: 75 });
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const destinations = [
@@ -48,6 +48,9 @@ const destinations = [
 ---
 
 <Layout>
+  <Fragment slot="head">
+    <link rel="preload" as="image" href={optimizedHeader.src} />
+  </Fragment>
   <PageNav />
 
   <PageBreadcrumbHero

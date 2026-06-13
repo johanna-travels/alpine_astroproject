@@ -8,7 +8,6 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
-        serif: ['"Playfair Display"', 'Georgia', 'Cambria', 'serif'],
       },
       height: {
         'card-mobile': '600px', // Carousel card height on mobile

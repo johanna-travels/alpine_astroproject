@@ -7,11 +7,14 @@ import { Image, getImage } from 'astro:assets';
 import heroImg from '@/assets/heroes/services-img.webp';
 import verticalImg from '@/assets/heroes/services vertical.webp';
 
-const optimizedHeader = await getImage({ src: heroImg, width: 1800, format: 'webp', quality: 85 });
+const optimizedHeader = await getImage({ src: heroImg, width: 1800, format: 'webp', quality: 75 });
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout>
+  <Fragment slot="head">
+    <link rel="preload" as="image" href={optimizedHeader.src} />
+  </Fragment>
   <PageNav />
 
   <PageBreadcrumbHero
@@ -36,7 +39,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
               widths={[480, 720, 900]}
               sizes="(min-width: 768px) 50vw, 100vw"
               format="webp"
-              quality={85}
+              quality={75}
             />
           </div>
         </div>

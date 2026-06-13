@@ -71,7 +71,7 @@ export default function CarouselDots({
             background: 'transparent',
             border: 'none',
             height: '30px', /* Explicit tap-area height; no padding/flex clash */
-            padding: '0 6px', /* 6px dot + 6px each side = 18px slot (108px for 6 dots) */
+            padding: '0 9px', /* 6px dot + 9px each side = 24px slot — meets 24px touch target */
             margin: 0,
             cursor: 'pointer',
             display: 'flex',

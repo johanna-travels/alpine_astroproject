@@ -71,7 +71,7 @@ export default function NewsletterForm({ className = '', base = '' }: Newsletter
             placeholder="Enter your email"
             {...register('email')}
             disabled={status === 'loading' || status === 'success'}
-            className="w-full px-4 py-2.5 placeholder-white/40 bg-white/10 border border-white/20 rounded-md text-white text-sm focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/40 transition-all disabled:opacity-50"
+            className="w-full px-4 py-2.5 placeholder-white/60 bg-[#4a534f] border border-white/30 rounded-md text-white text-sm focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all disabled:opacity-50"
             style={{ fontFamily: 'Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;' }}
           />
           {errors.email && (
@@ -95,11 +95,11 @@ export default function NewsletterForm({ className = '', base = '' }: Newsletter
           id="consent"
           {...register('consent')}
           disabled={status === 'loading' || status === 'success'}
-          className="mt-0.5 w-4 h-4 rounded border-white/20 bg-white/10 text-white focus:ring-white/30 cursor-pointer"
+          className="mt-0.5 w-4 h-4 rounded border-white/40 bg-[#4a534f] text-white focus:ring-white/50 cursor-pointer"
         />
         <label
           htmlFor="consent"
-          className="text-xs text-white/70 leading-relaxed cursor-pointer"
+          className="text-xs text-white/90 leading-relaxed cursor-pointer"
           style={{ fontFamily: 'Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;' }}
         >
           I agree to the{' '}
