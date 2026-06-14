@@ -17,7 +17,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 export default defineConfig({
   site: 'https://johanna-travels.github.io',
   base: '/alpine_astroproject/',
-  integrations: [react(), tailwind(), sentry(), ...(!isProduction ? [spotlightjs()] : []), sitemap()],
+  integrations: [react(), tailwind(), ...(isProduction ? [sentry()] : []), ...(!isProduction ? [spotlightjs()] : []), sitemap()],
   vite: {
     resolve: {
       alias: {

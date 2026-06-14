@@ -72,7 +72,6 @@ export default function NewsletterForm({ className = '', base = '' }: Newsletter
             {...register('email')}
             disabled={status === 'loading' || status === 'success'}
             className="w-full px-4 py-2.5 placeholder-white/60 bg-[#4a534f] border border-white/30 rounded-md text-white text-sm focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all disabled:opacity-50"
-            style={{ fontFamily: 'Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;' }}
           />
           {errors.email && (
             <p className="text-red-300 text-xs mt-1">{errors.email.message}</p>
