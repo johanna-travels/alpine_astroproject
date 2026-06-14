@@ -7,7 +7,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+        sans: ['ScheherazadeNew', 'Georgia', 'serif'],
+        heading: ['ScheherazadeNew', 'Georgia', 'serif'],
+        logo: ['DoulosSIL', 'Georgia', 'serif'],
       },
       height: {
         'card-mobile': '600px', // Carousel card height on mobile

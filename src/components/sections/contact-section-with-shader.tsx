@@ -3,7 +3,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import contactImage from "@/assets/heroes/contac-img.webp";
 import { sanitizeInput, sanitizeContactForm, isRateLimited } from "@/lib/security";
 
@@ -59,6 +59,9 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
   const [rateLimited, setRateLimited] = useState(false);
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => { setHydrated(true); }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -71,8 +74,7 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
     setErrors((prev) => ({ ...prev, [fieldKey]: undefined }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const runValidation = () => {
     if (isRateLimited("contact-form", 5, 60_000)) {
       setRateLimited(true);
       return;
@@ -84,6 +86,11 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
     if (Object.keys(nextErrors).length === 0) {
       setSubmitted(true);
     }
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    runValidation();
   };
 
   const inputClass = (field: keyof FormValues) =>
@@ -204,7 +211,7 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
 
                 {/* Button: Submit */}
                 <div className="mt-8">
-                  <button type="submit" className="relative z-10 flex w-full items-center justify-center rounded-full bg-black px-4 py-4 text-sm font-medium text-white transition duration-200 hover:bg-black/90 md:text-sm dark:bg-white dark:text-black dark:hover:bg-neutral-100 dark:hover:shadow-xl">
+                  <button type="submit" disabled={!hydrated} onClick={runValidation} className="relative z-10 flex w-full items-center justify-center rounded-full bg-black px-4 py-4 text-sm font-medium text-white transition duration-200 hover:bg-black/90 md:text-sm dark:bg-white dark:text-black dark:hover:bg-neutral-100 dark:hover:shadow-xl disabled:opacity-50">
                     Submit
                   </button>
                 </div>

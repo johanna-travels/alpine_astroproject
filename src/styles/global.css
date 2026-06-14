@@ -7,13 +7,15 @@
 
 /* =====================================================================
    TYPOGRAPHY SYSTEM
-   Font: Inter (single family) — weight variation creates hierarchy
-   H1: 900 Black (impact) → H2: 200 Extralight (elegance) → Body: 400
+   All text: ScheherazadeNew (400–700) · Logo: DoulosSIL · No external fonts
+   H1: 700 Bold · H2: 600 SemiBold · H3: 400 Regular · H4: 500 Medium
    Breakpoints: base = mobile, md (768px) = tablet, lg (1024px) = desktop
    ===================================================================== */
 @layer base {
   :root {
-    --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --font-sans: "ScheherazadeNew", Georgia, serif;
+    --font-heading: "ScheherazadeNew", Georgia, serif;
+    --font-logo: "DoulosSIL", Georgia, serif;
     --color-bg: #F5F2EB;
   }
 
@@ -36,35 +38,35 @@
     background-color: var(--color-bg);
   }
 
-  /* H1 — Inter Black 900 · Hero/page titles · 36px → 75px */
+  /* H1 — ScheherazadeNew Bold 700 · Hero/page titles · 36px → 75px */
   h1 {
-    font-family: var(--font-sans);
-    font-weight: 900;
+    font-family: var(--font-heading);
+    font-weight: 700;
     line-height: 1.05;
     font-size: clamp(36px, 7vw, 75px);
     letter-spacing: -0.02em;
   }
 
-  /* H2 — Inter Extralight 200 · Section/editorial · 24px → 48px */
+  /* H2 — ScheherazadeNew SemiBold 600 · Section/editorial · 24px → 48px */
   h2 {
-    font-family: var(--font-sans);
-    font-weight: 200;
+    font-family: var(--font-heading);
+    font-weight: 600;
     line-height: 1.15;
     font-size: clamp(24px, 4vw, 48px);
     letter-spacing: -0.01em;
   }
 
-  /* H3 — Inter Regular 400 · Subsection labels · 18px → 26px */
+  /* H3 — ScheherazadeNew Regular 400 · Subsection labels · 18px → 26px */
   h3 {
-    font-family: var(--font-sans);
+    font-family: var(--font-heading);
     font-weight: 400;
     line-height: 1.3;
     font-size: clamp(18px, 2.5vw, 26px);
   }
 
-  /* H4 — Inter Medium 500 · Small callouts · 16px → 20px */
+  /* H4 — ScheherazadeNew Medium 500 · Small callouts · 16px → 20px */
   h4 {
-    font-family: var(--font-sans);
+    font-family: var(--font-heading);
     font-weight: 500;
     line-height: 1.4;
     font-size: clamp(16px, 1.8vw, 20px);
