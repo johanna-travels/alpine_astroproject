@@ -9,13 +9,15 @@ import { fileURLToPath } from 'node:url';
 
 import spotlightjs from '@spotlightjs/astro';
 
+import sitemap from '@astrojs/sitemap';
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const isProduction = process.env.NODE_ENV === 'production';
 
 export default defineConfig({
   site: 'https://johanna-travels.github.io',
   base: '/alpine_astroproject/',
-  integrations: [react(), tailwind(), sentry(), ...(!isProduction ? [spotlightjs()] : [])],
+  integrations: [react(), tailwind(), sentry(), ...(!isProduction ? [spotlightjs()] : []), sitemap()],
   vite: {
     resolve: {
       alias: {
