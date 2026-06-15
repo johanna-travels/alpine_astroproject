@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://johanna-travels.github.io/alpine_astroproject/sitemap-index.xml
+Sitemap: https://voyaflair.com/sitemap-index.xml

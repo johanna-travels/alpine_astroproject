@@ -1,64 +1,32 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import Footer from '@/components/layout/Footer.astro';
-import PageNav from '@/components/layout/PageNav.astro';
+import PageShell from '@/components/layout/PageShell.astro';
 import PageBreadcrumbHero from '@/components/sections/PageBreadcrumbHero.astro';
-import { Image, getImage } from 'astro:assets';
+import CtaLink from '@/components/ui/CtaLink.astro';
+import { destinations, destinationHref } from '@/domains/destinations/catalog';
+import { getHeroImage } from '@/lib/images';
+import { pageUrl } from '@/lib/site';
+import { Image } from 'astro:assets';
 import heroImg from '@/assets/heroes/shared196.webp';
-import baliHero from '@/assets/heroes/destination bali.webp';
-import belgiumHero from '@/assets/heroes/destination belgium.webp';
-import greeceHero from '@/assets/heroes/destination greece.webp';
-import japanHero from '@/assets/heroes/destination japan.webp';
 
-const optimizedHeader = await getImage({ src: heroImg, width: 1800, format: 'webp', quality: 75 });
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-
-const destinations = [
-  {
-    name: 'Bali',
-    href: `${base}/bali`,
-    img: baliHero,
-    description:
-      'Bali moves between calm mornings, busy streets and quiet pockets of nature in a way that feels constant but never repetitive. My time there has been mostly centered around cafés, beaches and smaller local spots that shape how I experienced the island. This page gathers guides and travel notes from Bali.',
-  },
-  {
-    name: 'Belgium',
-    href: `${base}/belgium`,
-    img: belgiumHero,
-    description:
-      'Belgium is a country of contrasts, where languages, culture and architecture shift noticeably from one region to another. My experience so far has been focused on Bruges, a city defined by its canals and medieval streets, with a slower rhythm that feels removed from bigger cities. This page focuses mainly on Bruges for now, with more destinations coming as I continue exploring the country.',
-  },
-  {
-    name: 'Greece',
-    href: `${base}/greece`,
-    img: greeceHero,
-    description:
-      'Greece is a place where every region feels like a different world, from the energy of Athens to the slower rhythm of the islands and smaller coastal towns. My travels here have been a mix of well-known destinations and quieter places that often leave the strongest impression. This page brings together guides and itineraries from across the country.',
-  },
-  {
-    name: 'Japan',
-    href: `${base}/japan`,
-    img: japanHero,
-    description:
-      'Japan shifts between fast-paced cities, quiet temples and highly structured everyday life, creating a contrast that stays with you in every place you visit. From Tokyo to Kyoto and Osaka, my travels across these cities come together through different experiences, guides and itineraries shared here.',
-  },
-];
+const optimizedHeader = await getHeroImage(heroImg);
 ---
 
-<Layout>
+<PageShell
+  title="Destinations — Voyaflair"
+  description="Explore travel guides and notes from Bali, Belgium, Greece, Japan, and beyond."
+>
   <Fragment slot="head">
     <link rel="preload" as="image" href={optimizedHeader.src} />
   </Fragment>
-  <PageNav />
 
   <PageBreadcrumbHero
     title="Destinations"
     currentPage="Destinations"
-    currentHref={`${base}/destinations`}
+    currentHref={pageUrl('destinations')}
     imageSrc={optimizedHeader.src}
   />
 
-  <main class="w-full min-h-screen flex flex-col items-center py-10 bg-white">
+  <main class="relative z-10 w-full min-h-screen flex flex-col items-center bg-white py-10">
     <p class="meta text-neutral-500 mb-4">Places worth knowing</p>
     <h2 class="text-center md:mb-16 mb-10">Explore</h2>
 
@@ -67,36 +35,26 @@ const destinations = [
         destinations.map((destination) => (
           <article class="flex flex-col sm:flex-row gap-6 pb-10 border-b border-neutral-200 last:border-b-0">
             <div class="w-full sm:w-2/5 lg:w-1/3 aspect-square overflow-hidden rounded-xl">
-              {destination.img && (
-                <Image
-                  src={destination.img}
-                  alt={destination.name}
-                  class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                  loading="lazy"
-                  decoding="async"
-                  widths={[320, 480, 640]}
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 40vw, 100vw"
-                />
-              )}
+              <Image
+                src={destination.heroImage}
+                alt={destination.name}
+                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                loading="lazy"
+                decoding="async"
+                widths={[320, 480, 640]}
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 40vw, 100vw"
+              />
             </div>
             <div class="w-full sm:w-3/5 lg:w-2/3 flex flex-col justify-center gap-4">
               <h3>
-                <a href={destination.href} class="hover:text-neutral-600 transition-colors">{destination.name}</a>
+                <a href={destinationHref(destination.slug)} class="hover:text-neutral-600 transition-colors">{destination.name}</a>
               </h3>
               <p class="prose-body text-neutral-500">{destination.description}</p>
-              <a href={destination.href} class="inline-block pr-[32px] py-[5px] text-black text-[13px] font-medium uppercase tracking-widest leading-none transition-all opacity-75 transition-opacity duration-300 hover:opacity-100">
-                <span class="flex items-center">
-                  Read more
-                  <span class="ml-2">→</span>
-                </span>
-              </a>
+              <CtaLink href={destinationHref(destination.slug)} label="Explore More" />
             </div>
           </article>
         ))
       }
     </div>
-
   </main>
-
-  <Footer />
-</Layout>
+</PageShell>

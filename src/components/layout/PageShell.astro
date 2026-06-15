@@ -1,0 +1,20 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageNav from '@/components/layout/PageNav.astro';
+import Footer from '@/components/layout/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+}
+
+const { title, description, noindex } = Astro.props;
+---
+
+<Layout title={title} description={description} noindex={noindex}>
+  <Fragment slot="head"><slot name="head" /></Fragment>
+  <PageNav />
+  <slot />
+  <Footer />
+</Layout>

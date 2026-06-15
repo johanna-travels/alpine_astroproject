@@ -20,6 +20,7 @@ const bottomBlurSize = blurSize / 2;
 const layers = Array.from({ length: blurLayers });
 ---
 
+<div transition:animate="none">
 <!-- Top blur mask -->
 <div class="cinematic-edge cinematic-top" style={`height:${blurSize}px`} aria-hidden="true">
   {layers.map((_, i) => (
@@ -40,6 +41,7 @@ const layers = Array.from({ length: blurLayers });
     />
   ))}
   <div class="cinematic-tint" style={`background: linear-gradient(to top, ${tintColor} 0%, ${tintColor}99 40%, transparent 100%);`}></div>
+</div>
 </div>
 
 <style>

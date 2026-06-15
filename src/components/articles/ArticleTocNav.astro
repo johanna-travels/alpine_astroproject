@@ -1,0 +1,174 @@
+---
+import type { TocGroup } from '@/domains/articles/toc';
+
+interface Props {
+  sections: readonly TocGroup[];
+  variant?: 'mobile' | 'desktop';
+}
+
+const { sections, variant = 'desktop' } = Astro.props;
+const isMobile = variant === 'mobile';
+---
+
+<nav aria-label="Table of contents" class:list={['article-toc', isMobile && 'article-toc--mobile']}>
+  {!isMobile && <p class="article-toc__heading meta">Contents</p>}
+  <ul class="article-toc__list">
+    {sections.map((group) => (
+      <li class="article-toc__group" data-toc-group>
+        {group.target ? (
+          <button type="button" data-toc-target={group.target} class="article-toc__link article-toc__link--parent">
+            {group.navTitle}
+          </button>
+        ) : (
+          <span data-toc-parent class="article-toc__parent">{group.navTitle}</span>
+        )}
+        {group.children && (
+          <ul class="article-toc__children">
+            {group.children.map((child) => (
+              <li>
+                <button
+                  type="button"
+                  data-toc-target={child.target}
+                  class="article-toc__link article-toc__link--child"
+                >
+                  {child.navTitle}
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .article-toc__heading {
+    margin-bottom: 0.75rem;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgb(163 163 163);
+  }
+
+  .article-toc__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .article-toc__parent {
+    display: block;
+    padding: 0.125rem 0;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: rgb(64 64 64);
+  }
+
+  .article-toc__children {
+    list-style: none;
+    margin: 0.25rem 0 0;
+    padding: 0 0 0 0.625rem;
+    border-left: 1px solid rgb(229 229 229);
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .article-toc__link {
+    display: block;
+    width: 100%;
+    border: 0;
+    background: transparent;
+    text-align: left;
+    cursor: pointer;
+    font-family: var(--font-logo);
+    transition: color 0.15s ease;
+  }
+
+  .article-toc__link--parent {
+    padding: 0.125rem 0;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: rgb(64 64 64);
+  }
+
+  .article-toc__link--child {
+    padding: 0.25rem 0 0.25rem 0.375rem;
+    font-size: 11px;
+    line-height: 1.45;
+    color: rgb(115 115 115);
+  }
+
+  @media (min-width: 1024px) {
+    .article-toc__link--parent {
+      font-size: 13px;
+    }
+
+    .article-toc__link--child {
+      font-size: 12px;
+    }
+  }
+
+  .article-toc__link:hover {
+    color: rgb(23 23 23);
+  }
+
+  .article-toc__link[aria-current='true'] {
+    color: rgb(23 23 23);
+    font-weight: 500;
+  }
+
+  .article-toc__link--child[aria-current='true'] {
+    border-left: 2px solid rgb(105 116 110);
+    margin-left: -0.625rem;
+    padding-left: calc(0.375rem + 0.625rem - 2px);
+  }
+
+  .article-toc__group:has([data-toc-target][aria-current='true']) .article-toc__parent {
+    color: rgb(23 23 23);
+  }
+
+  .article-toc--mobile .article-toc__list {
+    gap: 0.625rem;
+  }
+
+  .article-toc--mobile .article-toc__children {
+    margin-top: 0.125rem;
+    border-left-color: rgb(255 255 255 / 0.25);
+  }
+
+  .article-toc--mobile .article-toc__parent {
+    color: rgb(255 255 255 / 0.85);
+  }
+
+  .article-toc--mobile .article-toc__link--parent {
+    color: rgb(255 255 255 / 0.92);
+  }
+
+  .article-toc--mobile .article-toc__link--child {
+    color: rgb(255 255 255 / 0.72);
+  }
+
+  .article-toc--mobile .article-toc__link:hover {
+    color: rgb(255 255 255);
+  }
+
+  .article-toc--mobile .article-toc__link[aria-current='true'] {
+    color: rgb(255 255 255);
+    font-weight: 600;
+  }
+
+  .article-toc--mobile .article-toc__link--child[aria-current='true'] {
+    border-left-color: rgb(255 255 255);
+  }
+
+  .article-toc--mobile .article-toc__group:has([data-toc-target][aria-current='true']) .article-toc__parent {
+    color: rgb(255 255 255);
+  }
+</style>

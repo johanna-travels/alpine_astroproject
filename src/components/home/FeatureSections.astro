@@ -1,10 +1,8 @@
 ---
-// FeatureSections.astro — alternating About/Services image+text sections (not a carousel)
 import { Image } from 'astro:assets';
 import aboutImg from '@/assets/marketing/About me - medium 2option.webp';
 import servicesImg from '@/assets/marketing/services 4x3.webp';
-
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+import { pageUrl } from '@/lib/site';
 
 const slides = [
   {
@@ -18,7 +16,7 @@ const slides = [
     img: aboutImg,
     alt: "Architectural detail",
     btnText: "Read More →",
-    href: `${base}/about`
+    href: pageUrl('about'),
   },
   {
     title: "Services",
@@ -30,8 +28,8 @@ const slides = [
     img: servicesImg,
     alt: "Urban landscape",
     btnText: "Learn More →",
-    href: `${base}/services`
-  }
+    href: pageUrl('services'),
+  },
 ];
 ---
 

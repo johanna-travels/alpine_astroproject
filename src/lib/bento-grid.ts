@@ -7,7 +7,7 @@ export function getBentoCellClass(index: number, count: number): string {
   }
 
   if (count === 2) {
-    return `${base} md:col-span-2 h-52 md:h-72`;
+    return `${base} md:col-span-2 aspect-[4/5]`;
   }
 
   if (count === 3) {

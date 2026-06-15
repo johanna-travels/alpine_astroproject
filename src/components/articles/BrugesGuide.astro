@@ -7,8 +7,8 @@ import bonifaceBridge from "@/assets/articles/bruges/boniface-bridge.webp";
 import rozenhoedkaaiSunrise from "@/assets/articles/bruges/bruges-belgium-rozenhoedkaai-sunrise.webp";
 import rozenhoedkaaiSunset from "@/assets/articles/bruges/bruges-belgium-rozenhoedkaai-sunset.webp";
 import bonifaceCanalView from "@/assets/articles/bruges/bruges-boniface-bridge-canal-view.webp";
-import bonifaceChurchView from "@/assets/articles/bruges/bruges-boniface-bridge-church-of-our-lady-view.webp";
-import burgSquare from "@/assets/articles/bruges/bruges-burg-square.webp";
+import bonifaceChurchView from "@/assets/articles/bruges/boniface-bridge-church-of-our-lady-view-bruges.webp";
+import burgSquare from "@/assets/articles/bruges/burg-square-bruges.webp";
 import canalView from "@/assets/articles/bruges/bruges-canal-view.webp";
 import canalViews from "@/assets/articles/bruges/bruges-canal-views.webp";
 import deGastroExterior from "@/assets/articles/bruges/bruges-de-gastro-restaurant.webp";
@@ -21,57 +21,60 @@ import ottoWaffle from "@/assets/articles/bruges/otto-waffle-atelier-bruges.webp
 import chocolateLineDisplay from "@/assets/articles/bruges/the-chocolate-line-bruges.webp";
 import oldChocolateHouse from "@/assets/articles/bruges/the-old-chocolate-house-bruges.webp";
 
-const prose = "max-w-3xl text-base leading-relaxed text-black/80 md:text-lg [&_p]:mb-5 [&_p:last-child]:mb-0";
+const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0";
 ---
 
-<section id="section-0" class="scroll-mt-28">
+<section id="section-0" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
     <h3>1. Explore Markt Square & Climb the Belfry Tower of Bruges</h3>
   </div>
   <div class={prose}>
     <p>The Markt is usually one of the first places visitors find themselves in when arriving in Bruges.</p>
-    <ArticleImage src={marktSquare} alt="Markt Square in Bruges with colourful guild houses" caption="Markt Square, the beating heart of Bruges" />
     <p>Surrounded by colourful historic buildings, cafés, and the famous Belfry Tower rising above the square, it feels like the heart of the city and a natural starting point for exploring.</p>
-    <ArticleImage src={belfryTower} alt="The Belfry Tower of Bruges rising above Markt Square" caption="The Belfry Tower — 366 steps to panoramic views" />
     <p>No matter where I seemed to be heading in Bruges, I somehow kept finding my way back to the Markt. If you're up for climbing the Belfry Tower, you'll be rewarded with panoramic views over the city's rooftops and canals, making it one of the best viewpoints in Bruges.</p>
+    <div class="grid grid-cols-2 gap-3 md:gap-4">
+      <ArticleImage src={marktSquare} alt="Markt Square in Bruges with colourful guild houses" caption="Markt Square, the beating heart of Bruges" />
+      <ArticleImage src={belfryTower} alt="The Belfry Tower of Bruges rising above Markt Square" caption="The Belfry Tower — 366 steps to panoramic views" />
+    </div>
   </div>
 </section>
 
-<section id="section-1" class="scroll-mt-28">
+<section id="section-1" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
     <h3>
       2. Don't miss the most beautiful canal view in Bruges at Rozenhoedkaai
-      <span class="block mt-2 text-sm font-normal text-black/60">
-        Rozenhoedkaai was one of those places I ended up walking past more than once during my time in Bruges.
-      </span>
-    </h3>
-  </div>
+      </h3>
+      </div>
   <div class={prose}>
-    <p>It's one of the most photographed locations in the city, and once you arrive, it's easy to understand why. The canal, the historic buildings, and the reflections on the water create one of Bruges' most recognisable views.</p>
+    <p>Rozenhoedkaai is one of the most photographed locations in the city, and once you arrive, it's easy to understand why. The canal, the historic buildings, and the reflections on the water create one of Bruges' most recognisable views.</p>
+    <p>I visited at sunrise on my first morning in Bruges and later returned around sunset. Seeing the same place under completely different light made it feel like two different locations.</p>
+    <p>If you scroll through the two photos below, you'll see just how different Rozenhoedkaai looks at sunrise and sunset. Personally, sunrise was my favourite moment to be here!</p>
+  </div>
     <BentoGrid items={[
       { src: rozenhoedkaaiSunrise, alt: "Rozenhoedkaai canal view at sunrise in Bruges", title: "Sunrise" },
       { src: rozenhoedkaaiSunset, alt: "Rozenhoedkaai canal view at sunset in Bruges", title: "Sunset" },
     ]} />
-    <p>I visited at sunrise on my first morning in Bruges and later returned around sunset, and seeing the same place at two different times of the day completely changed the atmosphere.</p>
-    <p>I've included both sunrise and sunset photos because I think they show two different sides of Rozenhoedkaai. Personally, sunrise was my favourite moment to be here!</p>
-  </div>
 </section>
 
-<section id="section-2" class="scroll-mt-28">
+<section id="section-2" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
     <h3>3. Experience the Magic of Boniface Bridge</h3>
   </div>
   <div class={prose}>
     <p>If you're looking for one of the most photogenic spots in Bruges, Boniface Bridge should be high on your list.</p>
-    <ArticleImage src={bonifaceBridge} alt="Boniface Bridge over the canal in Bruges" caption="Boniface Bridge — hidden, yet one of the most beautiful spots in Bruges" />
+    <div class="max-w-md">
+      <ArticleImage src={bonifaceBridge} alt="Boniface Bridge over the canal in Bruges" caption="Boniface Bridge — hidden, yet one of the most beautiful spots in Bruges" />
+    </div>
     <p>Hidden just below the Church of Our Lady, this small bridge offers one of the most beautiful canal views in the city and feels surprisingly tucked away despite its popularity.</p>
-    <ArticleImage src={bonifaceChurchView} alt="Church of Our Lady reflected in the canal at Boniface Bridge at sunrise" caption="First light on the Church of Our Lady — one of my favourite photography moments in Bruges" />
+    <div class="max-w-md">
+      <ArticleImage src={bonifaceChurchView} alt="Church of Our Lady reflected in the canal at Boniface Bridge at sunrise" caption="First light on the Church of Our Lady — one of my favourite photography moments in Bruges" />
+    </div>
     <p>I arrived just before sunrise and watched the first light illuminate the Church of Our Lady in the background. The reflections on the water and the warm colours on the historic buildings created one of my favourite photography moments in Bruges.</p>
     <p>For photographers and early risers, sunrise is easily the best time to visit.</p>
   </div>
 </section>
 
-<section id="section-3" class="scroll-mt-28">
+<section id="section-3" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
     <h3>4. Explore Bruges' Canals on Foot</h3>
   </div>
@@ -88,7 +91,7 @@ const prose = "max-w-3xl text-base leading-relaxed text-black/80 md:text-lg [&_p
   </div>
 </section>
 
-<section id="section-4" class="scroll-mt-28">
+<section id="section-4" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
     <h3>5. Take a Walk Around Minnewater, the Lake of Love</h3>
   </div>
@@ -101,51 +104,53 @@ const prose = "max-w-3xl text-base leading-relaxed text-black/80 md:text-lg [&_p
   </div>
 </section>
 
-<section id="section-5" class="scroll-mt-28">
+<section id="section-5" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
     <h3>6. Step into Bruges' History at Burg Square</h3>
   </div>
   <div class={prose}>
     <p>Just a few minutes from the Markt, Burg Square showcases a different side of Bruges.</p>
-    <ArticleImage src={burgSquare} alt="Burg Square in Bruges with the City Hall" caption="Burg Square — home to some of Bruges' most significant historic buildings" />
+    <div class="max-w-sm">
+      <ArticleImage src={burgSquare} alt="Burg Square in Bruges with the City Hall" caption="Burg Square — home to some of Bruges' most significant historic buildings" />
+    </div>
     <p>Home to landmarks such as the City Hall and the Basilica of the Holy Blood, it's one of the city's most historically significant squares.</p>
     <p>Compared to the lively atmosphere of the Markt, Burg Square feels more focused on Bruges' history and architecture, making it a worthwhile stop while exploring the historic centre.</p>
   </div>
 </section>
 
-<section id="section-6" class="scroll-mt-28">
+<section id="section-6" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
     <h3>7. Have a Belgian Waffle by the Canal at Otto Waffle Atelier</h3>
   </div>
   <div class={prose}>
     <p>There are plenty of waffle shops in Bruges, but Otto Waffle Atelier was the one I kept recommending afterwards.</p>
-    <BentoGrid items={[
-      { src: ottoExterior, alt: "Otto Waffle Atelier beside the canal in Bruges", title: "Otto Waffle Atelier" },
-      { src: ottoWaffle, alt: "A Belgian waffle from Otto Waffle Atelier in Bruges", title: "Belgian waffle" },
-    ]} />
+    <div class="grid grid-cols-2 gap-3 md:gap-4">
+      <ArticleImage src={ottoExterior} alt="Otto Waffle Atelier beside the canal in Bruges" caption="Otto Waffle Atelier" />
+      <ArticleImage src={ottoWaffle} alt="A Belgian waffle from Otto Waffle Atelier in Bruges" caption="Belgian waffle" />
+    </div>
     <p>Located right beside the canal, it's the perfect place for a relaxed breakfast or afternoon break while watching the boats pass by.</p>
     <p>What makes Otto different is that their waffles are made using oat flour and alternative ingredients, making them naturally gluten- and dairy-free without sacrificing the texture of a traditional Belgian waffle.</p>
     <p>The canal-side setting makes it a lovely place to take a break while exploring Bruges, and the waffles are a great bonus.</p>
   </div>
 </section>
 
-<section id="section-7" class="scroll-mt-28">
+<section id="section-7" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
     <h3>8. Try Traditional Belgian Food at De Gastro</h3>
   </div>
   <div class={prose}>
     <p>If you're looking to try traditional Belgian food in Bruges, De Gastro is well worth considering.</p>
-    <BentoGrid items={[
-      { src: deGastroExterior, alt: "De Gastro restaurant in Bruges", title: "De Gastro" },
-      { src: deGastroFood, alt: "Flemish beef stew with fries at De Gastro in Bruges", title: "Flemish beef stew" },
-    ]} />
+    <div class="grid grid-cols-2 gap-3 md:gap-4">
+      <ArticleImage src={deGastroFood} alt="Flemish beef stew with fries at De Gastro in Bruges" caption="De Gastro" />
+      <ArticleImage src={deGastroExterior} alt="De Gastro restaurant in Bruges" caption="Flemish beef stew" />
+    </div>
     <p>I ordered the Flemish beef stew, slow-cooked in dark Belgian beer and served with fries, while my husband chose the steak tartare with fries. Both dishes felt exactly like the kind of local food we hoped to try while visiting Belgium.</p>
     <p>The atmosphere is welcoming, the portions are generous, and it's a great place to experience classic Belgian cuisine after a day of exploring the city.</p>
     <p>Reservations are recommended, especially during the evening.</p>
   </div>
 </section>
 
-<section id="section-8" class="scroll-mt-28">
+<section id="section-8" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
     <h3>9. Sip Your Own Belgian Hot Chocolate at The Old Chocolate House</h3>
   </div>
@@ -158,49 +163,49 @@ const prose = "max-w-3xl text-base leading-relaxed text-black/80 md:text-lg [&_p
   </div>
 </section>
 
-<section id="section-9" class="scroll-mt-28">
+<section id="section-9" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
     <h3>10. Treat Yourself to Belgian Pralines at The Chocolate Line</h3>
   </div>
   <div class={prose}>
     <p>The Chocolate Line was easily one of the most memorable chocolate stops during my time in Bruges.</p>
-    <BentoGrid items={[
-      { src: chocolateLineShop, alt: "The Chocolate Line shop in Bruges", title: "The Chocolate Line" },
-      { src: chocolateLineDisplay, alt: "Display of pralines at The Chocolate Line in Bruges", title: "Praline selection" },
-    ]} />
+    <div class="grid grid-cols-2 gap-3 md:gap-4">
+      <ArticleImage src={chocolateLineShop} alt="The Chocolate Line shop in Bruges" caption="The Chocolate Line" />
+      <ArticleImage src={chocolateLineDisplay} alt="Display of pralines at The Chocolate Line in Bruges" caption="Praline selection" />
+    </div>
     <p>Unlike many traditional chocolate shops, this one is known for experimenting with unexpected flavours while still staying true to Belgian chocolate craftsmanship.</p>
     <p>You can build your own box of pralines, which makes it a great place to sample a variety of flavours rather than choosing just one.</p>
     <p>One chocolate in particular stood out to me: the Defender praline, filled with hazelnut praline and popping candy. The crackling texture instantly reminded me of sweets I loved as a child, making it one of the most memorable chocolates I tried in Bruges.</p>
     <p>If you're visiting, I'd definitely recommend building your own selection box and trying a few different flavours for yourself.</p>
-    <p>You can also browse their full praline collection and seasonal flavours on their official website before your visit.</p>
+    <p>You can also explore <a href="https://www.thechocolateline.be/nl/p/assortiment" target="_blank" rel="noopener noreferrer" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">The Chocolate Line’s full praline collection and seasonal flavours</a> before your visit, where you can see the different chocolates and learn more about each one.</p>
   </div>
 </section>
 
-<section id="section-10" class="scroll-mt-28">
+<section id="section-10" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
     <h3>FAQ</h3>
   </div>
   <div class={`${prose} space-y-6`}>
-    <div>
-      <h4 class="mb-2 text-black">Is Bruges worth visiting?</h4>
+    <div id="faq-0" class="scroll-mt-nav">
+      <h4 class="mb-2 text-black">1. Is Bruges worth visiting?</h4>
       <p>Yes, Bruges is absolutely worth visiting if you love walkable cities, canals, historic architecture, and places with a slower atmosphere. For me, the best part of Bruges wasn't only the main sights, but the moments in between: wandering down quiet streets, pausing by the canals, and finding beautiful corners without really looking for them.</p>
     </div>
-    <div>
-      <h4 class="mb-2 text-black">How many days do you need in Bruges?</h4>
+    <div id="faq-1" class="scroll-mt-nav">
+      <h4 class="mb-2 text-black">2. How many days do you need in Bruges?</h4>
       <p>Two days is a great amount of time for Bruges. You can see the main highlights in one full day, but it can feel rushed if you also want time for cafés, chocolate shops, local food, and quieter areas like Minnewater. With two days, you can enjoy the city at a more relaxed pace and experience it early in the morning or later in the evening, when the streets feel much calmer.</p>
     </div>
-    <div>
-      <h4 class="mb-2 text-black">What is the best time to visit Bruges?</h4>
+    <div id="faq-2" class="scroll-mt-nav">
+      <h4 class="mb-2 text-black">3. What is the best time to visit Bruges?</h4>
       <p>Spring and early autumn are some of the best times to visit Bruges, especially from April to June or September to October. The weather is usually pleasant, the city looks beautiful, and the crowds are generally lighter than in peak summer. Winter can also be lovely, especially around Christmas, when Bruges feels extra cozy with lights and festive decorations.</p>
     </div>
-    <div>
-      <h4 class="mb-2 text-black">How do you get to Bruges?</h4>
+    <div id="faq-3" class="scroll-mt-nav">
+      <h4 class="mb-2 text-black">4. How do you get to Bruges?</h4>
       <p>The easiest way to reach Bruges is by train, especially from Brussels. The journey usually takes around one hour, with frequent connections throughout the day. If you're arriving at Brussels Airport, you can travel by train from the airport and connect to Bruges without needing to stay in Brussels first. Buses such as FlixBus can also be a budget-friendly option depending on your route. Once you arrive at Bruges train station, the historic centre is about a 15–20 minute walk away, or you can take a taxi or local bus if you have luggage.</p>
     </div>
   </div>
 </section>
 
-<section id="section-11" class="scroll-mt-28">
+<section id="section-11" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
     <h3>Before you go</h3>
   </div>

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { isActivePath } from '@/lib/site';
 
 export interface MenuItem {
   label: string;
   href?: string;
+  match?: string[];
   onClick?: () => void;
   icon?: React.ReactNode;
   iconType?: 'instagram' | 'pinterest' | 'tiktok';
@@ -11,6 +13,7 @@ export interface MenuItem {
 
 interface HamburgerMenuOverlayProps {
   items: MenuItem[];
+  activePathname?: string;
   buttonTop?: string;
   buttonLeft?: string;
   buttonRight?: string;
@@ -61,6 +64,7 @@ const fontWeightMap = {
 
 export function HamburgerMenuOverlay({
   items,
+  activePathname = '',
   buttonTop = '60px',
   buttonLeft,
   buttonRight,
@@ -199,10 +203,18 @@ export function HamburgerMenuOverlay({
               alignItems: menuAlignment === 'center' ? 'center' : menuAlignment === 'right' ? 'flex-end' : 'flex-start',
             }}
           >
-            {items.filter(item => item.variant !== 'social').map((item, i) => (
+            {items.filter(item => item.variant !== 'social').map((item, i) => {
+              const isActive = Boolean(
+                activePathname &&
+                item.href &&
+                isActivePath(activePathname, [item.href, ...(item.match ?? [])])
+              );
+
+              return (
               <a
                 key={i}
                 href={item.href ?? '#'}
+                aria-current={isActive ? 'page' : undefined}
                 onClick={(e) => {
                   if (!item.href || item.onClick) e.preventDefault();
                   handleItemClick(item);
@@ -212,13 +224,14 @@ export function HamburgerMenuOverlay({
                   color: textColor,
                   fontSize: fontSizeMap[fontSize],
                   fontFamily,
-                  fontWeight: fontWeightMap[fontWeight],
-                  textDecoration: 'none',
+                  fontWeight: isActive ? 600 : fontWeightMap[fontWeight],
+                  textDecoration: isActive ? 'underline' : 'none',
+                  textUnderlineOffset: '0.35em',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '0.75rem',
                   padding: '0.4rem 0.5rem',
-                  opacity: itemsVisible ? 1 : 0,
+                  opacity: itemsVisible ? (isActive ? 1 : 0.72) : 0,
                   transform: itemsVisible ? 'translateX(0)' : 'translateX(-24px)',
                   transition: `opacity ${animationDuration * 0.4}s ease ${i * staggerDelay}s, transform ${animationDuration * 0.4}s ease ${i * staggerDelay}s`,
                   cursor: 'pointer',
@@ -227,7 +240,7 @@ export function HamburgerMenuOverlay({
               >
                 {item.label}
               </a>
-            ))}
+            )})}
             {items.some(item => item.variant === 'social') && (
               <div style={{
                 display: 'flex',

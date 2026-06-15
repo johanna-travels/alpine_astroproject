@@ -3,15 +3,15 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import contactImage from "@/assets/heroes/contac-img.webp";
 import { sanitizeInput, sanitizeContactForm, isRateLimited } from "@/lib/security";
+import { pageUrl } from "@/lib/site";
 
 type ContactSectionProps = {
   image?: string;
   showImage?: boolean;
   className?: string;
-  base?: string;
 };
 
 const defaultImage = contactImage.src;
@@ -48,7 +48,7 @@ function validate(values: FormValues): FormErrors {
 
 // --- MAIN EXPORT COMPONENT ---
 // Connect with the locals
-export default function ContactSectionWithShader({ image = defaultImage, showImage = true, className = '', base = '' }: ContactSectionProps) {
+export default function ContactSectionWithShader({ image = defaultImage, showImage = true, className = '' }: ContactSectionProps) {
   const [values, setValues] = useState<FormValues>({
     name: "",
     email: "",
@@ -59,9 +59,6 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
   const [rateLimited, setRateLimited] = useState(false);
-  const [hydrated, setHydrated] = useState(false);
-
-  useEffect(() => { setHydrated(true); }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -120,7 +117,7 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
         <div className={`flex items-center justify-center ${!showImage ? 'w-full' : ''}`}>
           <div className={`w-full ${!showImage ? 'w-full p-[35px] rounded-[10px] bg-white shadow-sm' : 'max-w-lg rounded-3xl px-4 py-8 md:px-10'}`}>
             <div>
-              <h1 className="mt-4 text-black dark:text-white">
+              <h1 className="mt-4 text-black dark:text-white" style={{ fontSize: "clamp(24px, 4vw, 48px)" }}>
                 Let's Talk
               </h1>
               <p className="mt-4 max-w-sm text-sm text-neutral-600 dark:text-neutral-400">
@@ -201,7 +198,7 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
                     </div>
                     <span className="select-none">
                       I authorize Voyaflair to store and use the personal data sent, so that they can respond to my request. My personal data will be processed in accordance with the information in the section{' '}
-                      <a href={`${base}/privacy-policy`} className="text-blue-700 underline hover:text-blue-900 dark:text-blue-300 dark:hover:text-blue-100">
+                      <a href={pageUrl('privacy-policy')} className="text-blue-700 underline hover:text-blue-900 dark:text-blue-300 dark:hover:text-blue-100">
                         Privacy Policy
                       </a>.
                     </span>
@@ -211,7 +208,7 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
 
                 {/* Button: Submit */}
                 <div className="mt-8">
-                  <button type="submit" disabled={!hydrated} onClick={runValidation} className="relative z-10 flex w-full items-center justify-center rounded-full bg-black px-4 py-4 text-sm font-medium text-white transition duration-200 hover:bg-black/90 md:text-sm dark:bg-white dark:text-black dark:hover:bg-neutral-100 dark:hover:shadow-xl disabled:opacity-50">
+                  <button type="submit" onClick={runValidation} className="relative z-10 flex w-full items-center justify-center rounded-full bg-black px-4 py-4 text-sm font-medium text-white transition duration-200 hover:bg-black/90 md:text-sm dark:bg-white dark:text-black dark:hover:bg-neutral-100 dark:hover:shadow-xl">
                     Submit
                   </button>
                 </div>

@@ -1,30 +1,27 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import Footer from '@/components/layout/Footer.astro';
-import PageNav from '@/components/layout/PageNav.astro';
+import PageShell from '@/components/layout/PageShell.astro';
 import PageBreadcrumbHero from '@/components/sections/PageBreadcrumbHero.astro';
 import { Image, getImage } from 'astro:assets';
 import heroImg from '@/assets/heroes/services-img.webp';
 import verticalImg from '@/assets/heroes/services vertical.webp';
+import { pageUrl } from '@/lib/site';
 
 const optimizedHeader = await getImage({ src: heroImg, width: 1800, format: 'webp', quality: 75 });
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
-<Layout>
+<PageShell title="Services — Voyaflair">
   <Fragment slot="head">
     <link rel="preload" as="image" href={optimizedHeader.src} />
   </Fragment>
-  <PageNav />
 
   <PageBreadcrumbHero
     title="Services"
     currentPage="Services"
-    currentHref={`${base}/services`}
+    currentHref={pageUrl('services')}
     imageSrc={optimizedHeader.src}
   />
 
-  <main class="bg-white text-neutral-900">
+  <main class="relative z-10 bg-white text-neutral-900">
     <div class="w-full py-[100px] px-0 bg-white">
       <div class="w-full max-w-[1300px] mx-auto px-4 xl:px-0 flex flex-col md:flex-row gap-y-[20px] md:gap-y-0 md:gap-x-[100px] items-center">
         <div class="w-full md:w-1/2 flex flex-col">
@@ -74,5 +71,4 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </div>
   </main>
 
-  <Footer />
-</Layout>
+</PageShell>

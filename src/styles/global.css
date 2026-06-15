@@ -7,7 +7,7 @@
 
 /* =====================================================================
    TYPOGRAPHY SYSTEM
-   All text: ScheherazadeNew (400–700) · Logo: DoulosSIL · No external fonts
+   Headings: ScheherazadeNew (400–700) · Body/labels/links: DoulosSIL · Logo: DoulosSIL
    H1: 700 Bold · H2: 600 SemiBold · H3: 400 Regular · H4: 500 Medium
    Breakpoints: base = mobile, md (768px) = tablet, lg (1024px) = desktop
    ===================================================================== */
@@ -17,6 +17,23 @@
     --font-heading: "ScheherazadeNew", Georgia, serif;
     --font-logo: "DoulosSIL", Georgia, serif;
     --color-bg: #F5F2EB;
+    --nav-height: 120px;
+    --toc-width: 100%;
+    --toc-body-max-height: min(420px, calc(100vh - var(--nav-height) - 4rem));
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --nav-height: 140px;
+      --toc-body-max-height: min(520px, calc(100vh - var(--nav-height) - 5rem));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    :root {
+      --toc-width: 370px;
+      --toc-body-max-height: min(613px, calc(100vh - var(--nav-height) - 2.5rem));
+    }
   }
 
   html {
@@ -72,41 +89,72 @@
     font-size: clamp(16px, 1.8vw, 20px);
   }
 
-  /* Body default */
+  /* Body default — article/editorial copy uses DoulosSIL via .prose-body */
   p {
-    font-family: var(--font-sans);
+    font-family: var(--font-logo);
     font-size: 16px;
     line-height: 1.75;
     font-weight: 400;
   }
 
-  a, label, button {
+  a, label {
+    font-family: var(--font-logo);
+  }
+
+  button {
     font-family: var(--font-sans);
   }
 }
 
 @layer components {
-  /* Long-form body copy : ScheherazadeNew, Regular, 17 / 18 / 19, lh 1.8 */
-  .prose-body {
-    font-family: var(--font-sans);
+  /* Long-form body copy — DoulosSIL, Regular, 17 / 18 / 19, lh 1.8 */
+  .prose-body,
+  .article-prose p {
+    font-family: var(--font-logo);
     font-weight: 400;
     font-size: 17px;
     line-height: 1.8;
   }
   @media (min-width: 768px) {
-    .prose-body { font-size: 18px; }
+    .prose-body,
+    .article-prose p { font-size: 18px; }
   }
   @media (min-width: 1024px) {
-    .prose-body { font-size: 19px; }
+    .prose-body,
+    .article-prose p { font-size: 19px; }
   }
 
-  /* Meta info (date, author, category, reading time) : ScheherazadeNew, Medium, 14px, +0.03em */
+  /* Meta info (date, author, category, reading time) — DoulosSIL, Medium, 14px */
   .meta {
-    font-family: var(--font-sans);
+    font-family: var(--font-logo);
     font-weight: 500;
     font-size: 14px;
     line-height: 1.5;
     letter-spacing: 0.03em;
+  }
+
+  /* Hero title — lighter than the default h1 (700 → 500 Medium, nearest available weight) */
+  .hero-title {
+    font-weight: 500;
+  }
+
+  /* Article page title — lighter than default h1 hero */
+  .article-title {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-size: clamp(26px, 4vw, 40px);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .scroll-mt-nav {
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+  }
+
+  @media (min-width: 1024px) {
+    .scroll-mt-nav {
+      scroll-margin-top: calc(var(--nav-height) + 1.5rem);
+    }
   }
 }
 
@@ -143,5 +191,37 @@
 @media (prefers-reduced-motion: reduce) {
   .infinite-marquee {
     animation: none;
+  }
+}
+
+/* =====================================================================
+   PAGE TRANSITIONS (Astro ClientRouter)
+   ===================================================================== */
+@keyframes voya-page-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes voya-page-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
   }
 }

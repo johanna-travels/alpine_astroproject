@@ -1,21 +1,11 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import Footer from '@/components/layout/Footer.astro';
-import PageNav from '@/components/layout/PageNav.astro';
-import { createClient } from '@supabase/supabase-js';
-
-const supabaseUrl = import.meta.env.SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.SUPABASE_ANON_KEY;
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-
-const supabase = supabaseUrl && supabaseAnonKey 
-  ? createClient(supabaseUrl, supabaseAnonKey)
-  : null;
+import PageShell from '@/components/layout/PageShell.astro';
+import { supabase } from '@/lib/supabase';
+import { apiUrl, pageUrl } from '@/lib/site';
 
 let subscriber = null;
 let error = null;
 
-// Get token from URL
 const token = new URL(Astro.url).searchParams.get('token');
 
 if (token && supabase) {
@@ -31,23 +21,22 @@ if (token && supabase) {
     } else {
       subscriber = data;
     }
-  } catch (e) {
+  } catch {
     error = 'An error occurred';
   }
 }
 ---
 
-<Layout>
-  <PageNav />
+<PageShell noindex title="Subscription Preferences — Voyaflair">
 
-  <div class="min-h-screen bg-white py-16 px-4" data-base-url={base}>
+  <div class="min-h-screen bg-white py-16 px-4">
     <div class="max-w-2xl mx-auto">
       <h1 class="mb-8 text-neutral-900">Subscription Preferences</h1>
 
       {error ? (
         <div class="bg-red-50 border border-red-200 rounded-lg p-6 text-red-800">
           <p>{error}</p>
-          <a href={`${base}/`} class="underline mt-2 inline-block">Return to home</a>
+          <a href={pageUrl()} class="underline mt-2 inline-block">Return to home</a>
         </div>
       ) : subscriber ? (
         <div class="bg-white rounded-lg shadow-lg p-8">
@@ -102,74 +91,76 @@ if (token && supabase) {
       ) : (
         <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6 text-yellow-800">
           <p>No valid token provided. Please use the link from your email to access your preferences.</p>
-          <a href={`${base}/`} class="underline mt-2 inline-block">Return to home</a>
+          <a href={pageUrl()} class="underline mt-2 inline-block">Return to home</a>
         </div>
       )}
     </div>
   </div>
 
-  <Footer />
-</Layout>
+</PageShell>
 
-<script>
-  const form = document.getElementById('preferences-form') as HTMLFormElement;
-  const unsubscribeBtn = document.getElementById('unsubscribe-btn') as HTMLButtonElement;
-  const token = new URLSearchParams(window.location.search).get('token');
-  const container = document.querySelector('[data-base-url]');
-  const baseUrl = container?.getAttribute('data-base-url') || '';
+<script define:vars={{ preferencesApi: apiUrl('preferences'), homePath: pageUrl() }}>
+  function initPreferences() {
+    const form = document.getElementById('preferences-form') as HTMLFormElement | null;
+    const unsubscribeBtn = document.getElementById('unsubscribe-btn') as HTMLButtonElement | null;
+    const token = new URLSearchParams(window.location.search).get('token');
 
-  if (form) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const formData = new FormData(form);
-      const preferences = {
-        updates: formData.get('updates') === 'on',
-        promotions: formData.get('promotions') === 'on',
-      };
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const preferences = {
+          updates: formData.get('updates') === 'on',
+          promotions: formData.get('promotions') === 'on',
+        };
 
-      try {
-        const response = await fetch(`${baseUrl}/api/preferences`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ token, preferences }),
-        });
-
-        const result = await response.json();
-
-        if (response.ok) {
-          alert('Preferences saved successfully!');
-          window.location.reload();
-        } else {
-          alert(result.error || 'Failed to save preferences');
-        }
-      } catch (error) {
-        alert('Network error. Please try again.');
-      }
-    });
-  }
-
-  if (unsubscribeBtn) {
-    unsubscribeBtn.addEventListener('click', async () => {
-      if (confirm('Are you sure you want to unsubscribe?')) {
         try {
-          const response = await fetch(`${baseUrl}/api/preferences`, {
-            method: 'DELETE',
+          const response = await fetch(preferencesApi, {
+            method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ token }),
+            body: JSON.stringify({ token, preferences }),
           });
 
           const result = await response.json();
 
           if (response.ok) {
-            alert('Successfully unsubscribed');
-            window.location.href = `${baseUrl}/`;
+            alert('Preferences saved successfully!');
+            window.location.reload();
           } else {
-            alert(result.error || 'Failed to unsubscribe');
+            alert(result.error || 'Failed to save preferences');
           }
-        } catch (error) {
+        } catch {
           alert('Network error. Please try again.');
         }
-      }
-    });
+      });
+    }
+
+    if (unsubscribeBtn) {
+      unsubscribeBtn.addEventListener('click', async () => {
+        if (confirm('Are you sure you want to unsubscribe?')) {
+          try {
+            const response = await fetch(preferencesApi, {
+              method: 'DELETE',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ token }),
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+              alert('Successfully unsubscribed');
+              window.location.href = homePath;
+            } else {
+              alert(result.error || 'Failed to unsubscribe');
+            }
+          } catch {
+            alert('Network error. Please try again.');
+          }
+        }
+      });
+    }
   }
+
+  initPreferences();
+  document.addEventListener('astro:page-load', initPreferences);
 </script>

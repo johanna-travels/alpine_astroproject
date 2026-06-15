@@ -1,69 +1,49 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import Footer from '@/components/layout/Footer.astro';
-import PageNav from '@/components/layout/PageNav.astro';
-import PageBreadcrumbHero from '@/components/sections/PageBreadcrumbHero.astro';
-import { getImage } from 'astro:assets';
-import articleImg from '@/assets/articles/Article Greece.webp';
+import PageShell from '@/components/layout/PageShell.astro';
+import SimpleArticleLayout from '@/components/articles/SimpleArticleLayout.astro';
+import { getArticle, articleHref } from '@/domains/articles/catalog';
+import { getHeroImage } from '@/lib/images';
 
-const optimizedHeader = await getImage({ src: articleImg, width: 1800, format: 'webp', quality: 75 });
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const article = getArticle('rhodes-itinerary')!;
+const optimizedHeader = await getHeroImage(article.image);
 ---
 
-<Layout>
+<PageShell title={article.title}>
   <Fragment slot="head">
     <link rel="preload" as="image" href={optimizedHeader.src} />
   </Fragment>
-  <PageNav />
 
-  <PageBreadcrumbHero
-    title="Rhodes 5-Day Itinerary"
-    currentPage="Rhodes Itinerary"
-    currentHref={`${base}/articles/rhodes-itinerary`}
-    imageSrc={optimizedHeader.src}
-  />
+  <SimpleArticleLayout
+    metaLabel={article.metaLabel}
+    title={article.title}
+    breadcrumbTitle={article.breadcrumbTitle}
+    breadcrumbHref={articleHref(article.slug)}
+    heroSrc={optimizedHeader.src}
+    lead={article.lead}
+  >
+    <h2 class="mb-3">Day 1 — Rhodes Old Town</h2>
+    <p class="prose-body text-neutral-700 mb-8">
+      Begin in the medieval Old Town, one of the best-preserved in Europe. Wander the cobbled lanes within the city walls, visit the Palace of the Grand Master and stop for lunch in a quiet courtyard taverna away from the main streets.
+    </p>
 
-  <main class="w-full min-h-screen flex flex-col items-center py-16 bg-white">
-    <article class="w-full max-w-[760px] px-4 md:px-0">
-      <p class="meta text-neutral-500 mb-4">Greece</p>
-      <h1 class="mb-8">
-        Rhodes 5-Day Itinerary: Beaches, Day Trips & Best Local Food
-      </h1>
+    <h2 class="mb-3">Day 2 — Lindos & the East Coast</h2>
+    <p class="prose-body text-neutral-700 mb-8">
+      Drive south to Lindos, with its whitewashed village and acropolis overlooking the bay. Spend the afternoon swimming at St. Paul's Bay before a slow dinner with views over the rooftops.
+    </p>
 
-      <p class="prose-body text-neutral-600 italic border-l-2 border-neutral-200 pl-4 mb-8">
-        Five days on Rhodes, mixing the medieval old town with quiet beaches, island day trips and the kind of local tavernas that make Greek summers unforgettable.
-      </p>
+    <h2 class="mb-3">Day 3 — Beaches & Hidden Coves</h2>
+    <p class="prose-body text-neutral-700 mb-8">
+      A slower day along the coast, hopping between Tsambika, Anthony Quinn Bay and quieter coves further from the resorts. Pack a picnic or settle in at a beachside taverna for fresh fish.
+    </p>
 
-      <h2 class="mb-3">Day 1 — Rhodes Old Town</h2>
-      <p class="prose-body text-neutral-700 mb-8">
-        Begin in the medieval Old Town, one of the best-preserved in Europe. Wander the cobbled lanes within the city walls, visit the Palace of the Grand Master and stop for lunch in a quiet courtyard taverna away from the main streets.
-      </p>
+    <h2 class="mb-3">Day 4 — Symi Day Trip</h2>
+    <p class="prose-body text-neutral-700 mb-8">
+      Take the ferry to the neighbouring island of Symi, famous for its colourful neoclassical harbour. A half-day is enough to explore the waterfront, climb to the old town and swim in clear water before heading back.
+    </p>
 
-      <h2 class="mb-3">Day 2 — Lindos & the East Coast</h2>
-      <p class="prose-body text-neutral-700 mb-8">
-        Drive south to Lindos, with its whitewashed village and acropolis overlooking the bay. Spend the afternoon swimming at St. Paul's Bay before a slow dinner with views over the rooftops.
-      </p>
-
-      <h2 class="mb-3">Day 3 — Beaches & Hidden Coves</h2>
-      <p class="prose-body text-neutral-700 mb-8">
-        A slower day along the coast, hopping between Tsambika, Anthony Quinn Bay and quieter coves further from the resorts. Pack a picnic or settle in at a beachside taverna for fresh fish.
-      </p>
-
-      <h2 class="mb-3">Day 4 — Symi Day Trip</h2>
-      <p class="prose-body text-neutral-700 mb-8">
-        Take the ferry to the neighbouring island of Symi, famous for its colourful neoclassical harbour. A half-day is enough to explore the waterfront, climb to the old town and swim in clear water before heading back.
-      </p>
-
-      <h2 class="mb-3">Day 5 — Local Food & Slow Departure</h2>
-      <p class="prose-body text-neutral-700 mb-10">
-        Save the last day for food — a morning at the local market, a long lunch of meze and a final swim. Rhodes rewards an unhurried pace, and the best meals are usually the simplest ones.
-      </p>
-
-      <a href={`${base}/destinations`} class="inline-block text-black text-[13px] font-medium uppercase tracking-widest leading-none transition-all opacity-75 hover:opacity-100">
-        <span class="flex items-center gap-2">← Back to Destinations</span>
-      </a>
-    </article>
-  </main>
-
-  <Footer />
-</Layout>
+    <h2 class="mb-3">Day 5 — Local Food & Slow Departure</h2>
+    <p class="prose-body text-neutral-700 mb-10">
+      Save the last day for food — a morning at the local market, a long lunch of meze and a final swim. Rhodes rewards an unhurried pace, and the best meals are usually the simplest ones.
+    </p>
+  </SimpleArticleLayout>
+</PageShell>

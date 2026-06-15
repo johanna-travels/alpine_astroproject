@@ -1,0 +1,23 @@
+---
+interface Props {
+  href: string;
+  label: string;
+  class?: string;
+  showArrow?: boolean;
+}
+
+const { href, label, class: className = '', showArrow = true } = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={[
+    'inline-block px-[32px] py-[5px] text-black text-[13px] font-medium uppercase tracking-widest leading-none transition-all opacity-75 transition-opacity duration-300 hover:opacity-100',
+    className,
+  ]}
+>
+  <span class="flex items-center">
+    {label}
+    {showArrow && <span class="ml-2">→</span>}
+  </span>
+</a>

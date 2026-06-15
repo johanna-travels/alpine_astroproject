@@ -38,17 +38,15 @@ const count = visible.length;
               decoding="async"
             />
             {(item.title || item.description) && (
-              <div class="absolute inset-0 bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <div class="absolute bottom-0 left-0 right-0 p-4">
-                  {item.title && (featured ? (
-                    <h3 class="text-white">{item.title}</h3>
-                  ) : (
-                    <h4 class="text-white">{item.title}</h4>
-                  ))}
-                  {featured && item.description && (
-                    <p class="mt-1 text-sm text-white/90">{item.description}</p>
-                  )}
-                </div>
+              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent p-4">
+                {item.title && (featured ? (
+                  <h3 class="text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">{item.title}</h3>
+                ) : (
+                  <h4 class="text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">{item.title}</h4>
+                ))}
+                {featured && item.description && (
+                  <p class="mt-1 text-sm text-white/90 [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">{item.description}</p>
+                )}
               </div>
             )}
           </div>

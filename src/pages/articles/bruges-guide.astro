@@ -1,64 +1,43 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import Footer from '@/components/layout/Footer.astro';
-import PageNav from '@/components/layout/PageNav.astro';
-import PageBreadcrumbHero from '@/components/sections/PageBreadcrumbHero.astro';
-import { getImage } from 'astro:assets';
-import articleImg from '@/assets/articles/Article Bruges.webp';
+import PageShell from '@/components/layout/PageShell.astro';
+import StickyArticleLayout from '@/components/articles/StickyArticleLayout.astro';
+import BrugesGuideContent from '@/components/articles/BrugesGuide.astro';
+import { brugesNav } from '@/domains/articles/bruges-nav';
+import { getArticle } from '@/domains/articles/catalog';
+import { pageUrl } from '@/lib/site';
 
-const optimizedHeader = await getImage({ src: articleImg, width: 1800, format: 'webp', quality: 75 });
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const article = getArticle('bruges-guide')!;
 ---
 
-<Layout>
-  <Fragment slot="head">
-    <link rel="preload" as="image" href={optimizedHeader.src} />
-  </Fragment>
-  <PageNav />
+<PageShell title={article.seoTitle} description={article.seoDescription}>
+  <main class="min-h-screen bg-white text-neutral-900 px-4 sm:px-6 md:px-8 lg:px-10 pb-16 pt-6 md:pb-20 md:pt-10">
+    <StickyArticleLayout sections={brugesNav}>
+      <Fragment slot="intro">
+        <p class="meta text-neutral-500 mb-4">
+          <a href={pageUrl('belgium')} class="hover:underline">Belgium</a>
+        </p>
 
-  <PageBreadcrumbHero
-    title="Bruges Travel Guide"
-    currentPage="Bruges Guide"
-    currentHref={`${base}/articles/bruges-guide`}
-    imageSrc={optimizedHeader.src}
-  />
+        <h1 class="article-title mb-6 md:mb-8 max-w-3xl text-neutral-900">
+          {article.title}
+        </h1>
 
-  <main class="w-full min-h-screen flex flex-col items-center py-16 bg-white">
-    <article class="w-full max-w-[760px] px-4 md:px-0">
-      <p class="meta text-neutral-500 mb-4">Belgium</p>
-      <h1 class="mb-8">
-        Bruges Travel Guide: Top Attractions and Hidden Gems
-      </h1>
+        <article class="max-w-3xl space-y-5 md:space-y-6">
+          <p class="prose-body text-neutral-700">
+            I still remember walking along the cobblestone streets with my suitcase in hand, completely distracted by how beautiful everything felt.
+          </p>
+          <p class="prose-body text-neutral-700">
+            I visited Bruges last winter for my birthday, and I honestly couldn't have picked a better time. The Christmas markets were on, the city had that festive winter atmosphere, and the whole experience felt even more special because of it.
+          </p>
+          <p class="prose-body text-neutral-700">
+            The lights, the canals, the cold air, and those moments of stopping for a hot Belgian chocolate made everything feel incredibly cozy.
+          </p>
+          <p class="prose-body text-neutral-700">
+            In this article, though, I'm not going to focus on the winter or Christmas side of Bruges. Instead, I'm sharing my top 10 things to do in the city — my favorite cafés, chocolate spots, scenic walks, and places that stayed with me long after I left.
+          </p>
+        </article>
+      </Fragment>
 
-      <p class="prose-body text-neutral-600 italic border-l-2 border-neutral-200 pl-4 mb-8">
-        Bruges feels like stepping into another century — canals, cobbled squares and medieval architecture, with a slower rhythm that rewards wandering without a plan.
-      </p>
-
-      <h2 class="mb-3">The Markt & Belfry</h2>
-      <p class="prose-body text-neutral-700 mb-8">
-        Start in the Markt, the city's central square, framed by gabled buildings and the towering Belfry. The climb up the bell tower is steep but worth it for the panoramic view over the rooftops and canals.
-      </p>
-
-      <h2 class="mb-3">Canals & Boat Tours</h2>
-      <p class="prose-body text-neutral-700 mb-8">
-        A short boat tour is the classic way to see Bruges from the water, gliding past medieval facades and under low stone bridges. Early or late in the day is best, when the light softens and the crowds thin out.
-      </p>
-
-      <h2 class="mb-3">Chocolate, Beer & Local Flavours</h2>
-      <p class="prose-body text-neutral-700 mb-8">
-        Bruges takes its chocolate and beer seriously. Skip the most touristy shops in favour of smaller chocolatiers, and find a quiet bar to try a local Belgian beer alongside the city's classic comfort food.
-      </p>
-
-      <h2 class="mb-3">Hidden Gems Away from the Centre</h2>
-      <p class="prose-body text-neutral-700 mb-10">
-        Walk toward the Begijnhof and the Minnewater lake for the quietest corners of the city. The further you drift from the main squares, the more Bruges reveals its calmer, residential side.
-      </p>
-
-      <a href={`${base}/destinations`} class="inline-block text-black text-[13px] font-medium uppercase tracking-widest leading-none transition-all opacity-75 hover:opacity-100">
-        <span class="flex items-center gap-2">← Back to Destinations</span>
-      </a>
-    </article>
+      <BrugesGuideContent />
+    </StickyArticleLayout>
   </main>
-
-  <Footer />
-</Layout>
+</PageShell>

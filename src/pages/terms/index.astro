@@ -1,19 +1,11 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import Footer from '@/components/layout/Footer.astro';
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+import PageShell from '@/components/layout/PageShell.astro';
+import LegalDocumentLayout from '@/components/legal/LegalDocumentLayout.astro';
+import { pageUrl } from '@/lib/site';
 ---
 
-<Layout>
-	<main class="min-h-screen bg-white text-slate-950 pb-24">
-		<section class="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
-			<a href={`${base}/`} class="inline-flex items-center gap-2 mb-6 text-sm text-slate-500 hover:text-slate-900 transition-colors text-[0.875rem]">
-				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/></svg>
-				Back to home
-			</a>
-			<div class="rounded-2xl sm:rounded-3xl border border-slate-200 bg-white/90 p-6 sm:p-10 shadow-xl shadow-slate-900/5 backdrop-blur">
-				<h1 class="text-slate-950">Terms &amp; Conditions</h1>
-				<p class="mt-4 text-sm text-slate-500">Last updated: June 2026</p>
+<PageShell title="Terms & Conditions — Voyaflair">
+  <LegalDocumentLayout title="Terms &amp; Conditions">
 
 				<p class="mt-6 leading-7 text-slate-600">
 					Welcome to Voyaflair. These Terms &amp; Conditions govern your use of the Voyaflair website and all content, services, and features made available through it. By accessing or using this website, you agree to be bound by these Terms. If you do not agree with these Terms, please discontinue use of the website.
@@ -255,9 +247,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 				<h2 class="mt-8 text-slate-950">16. Privacy and Cookies</h2>
 				<p class="mt-4 leading-7 text-slate-600">
 					Your use of the website is also governed by the Voyaflair
-					<a href={`${base}/privacy-policy`} class="font-medium text-slate-900 underline underline-offset-4 hover:text-slate-700 text-[0.875rem]">Privacy Policy</a>
+					<a href={pageUrl('privacy-policy')} class="font-medium text-slate-900 underline underline-offset-4 hover:text-slate-700 text-[0.875rem]">Privacy Policy</a>
 					and
-					<a href={`${base}/cookie-policy`} class="font-medium text-slate-900 underline underline-offset-4 hover:text-slate-700 text-[0.875rem]">Cookie Policy</a>.
+					<a href={pageUrl('cookie-policy')} class="font-medium text-slate-900 underline underline-offset-4 hover:text-slate-700 text-[0.875rem]">Cookie Policy</a>.
 				</p>
 				<p class="mt-3 leading-7 text-slate-600">
 					By using the website, you acknowledge that you have read and understood those policies.
@@ -286,9 +278,5 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 				<p class="mt-3 leading-7">
 					<a href="mailto:voyaflair@gmail.com" class="font-medium text-slate-900 underline underline-offset-4 hover:text-slate-700 text-[0.875rem]">voyaflair@gmail.com</a>
 				</p>
-			</div>
-		</section>
-	</main>
-
-	<Footer />
-</Layout>
+  </LegalDocumentLayout>
+</PageShell>

@@ -2,7 +2,7 @@
 export default {
   darkMode: 'class', // Site has no dark theme; OS dark mode must not flip text colors on the white background
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-  safelist: ['bg-[rgb(105,116,110)]'],
+  safelist: ['bg-[rgb(105,116,110)]', 'text-[rgb(105,116,110)]'],
   blocklist: ['style', 'script', 'iframe', 'object', 'embed'],
   theme: {
     extend: {

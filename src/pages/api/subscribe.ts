@@ -1,14 +1,11 @@
-import { createClient } from '@supabase/supabase-js';
+import { supabase } from '@/lib/supabase';
+import { absoluteUrl } from '@/lib/site';
 import { Resend } from 'resend';
 import type { APIRoute } from 'astro';
 import crypto from 'crypto';
 
-const supabaseUrl = import.meta.env.SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.SUPABASE_ANON_KEY;
 const resendApiKey = import.meta.env.RESEND_API_KEY;
 const resendFromEmail = import.meta.env.RESEND_FROM_EMAIL;
-
-const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : null;
 const resend = resendApiKey ? new Resend(resendApiKey) : null;
 
 // Simple in-memory rate limiter (for production, use Redis or similar)
@@ -110,8 +107,7 @@ export const POST: APIRoute = async ({ request }) => {
     // Send confirmation email via Resend
     if (resend && resendFromEmail) {
       try {
-        const baseUrl = new URL(request.url).origin;
-        const confirmUrl = `${baseUrl}/preferences?token=${confirmationToken}`;
+        const confirmUrl = `${absoluteUrl('preferences')}?token=${confirmationToken}`;
 
         await resend.emails.send({
           from: resendFromEmail,
