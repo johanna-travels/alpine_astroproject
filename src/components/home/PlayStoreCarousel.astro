@@ -80,6 +80,7 @@ const cards = [
                 densities={[1, 2]}
                 class="slide-image absolute inset-0 transition-opacity duration-300"
                 loading="lazy"
+                draggable={false}
               />
             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none z-10"></div>
 
@@ -129,123 +130,157 @@ const cards = [
 </div>
 
 <script>
-  function initCarousel() {
-    const carousel = document.getElementById('carousel') as HTMLDivElement;
+  function initPlayStoreCarousel() {
+    const carousel = document.getElementById('carousel') as HTMLDivElement | null;
+    const dotsRoot = document.querySelector('[data-carousel-dots]') as HTMLElement | null;
 
-    if (!carousel) return;
+    if (!carousel || carousel.dataset.bound === 'true') return;
+    carousel.dataset.bound = 'true';
 
-    let scrollInterval: ReturnType<typeof setInterval>;
-
-    function getScrollStep() {
-      const firstCard = carousel.querySelector('.slide');
-      return firstCard ? firstCard.clientWidth + 12 : 300;
-    }
-
-    function scrollToNext() {
-      const cardWidth = getScrollStep();
-      const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
-      
-      if (carousel.scrollLeft >= maxScrollLeft - 5) {
-        carousel.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
-      }
-    }
-
-    function handleAutoScroll() {
-      scrollToNext();
-    }
-
-    function startAutoPlay() {
-      scrollInterval = setInterval(handleAutoScroll, 3500);
-    }
-
-    function stopAutoPlay() {
-      clearInterval(scrollInterval);
-    }
-
-    carousel.addEventListener('mouseenter', stopAutoPlay);
-    carousel.addEventListener('mouseleave', startAutoPlay);
-    carousel.addEventListener('touchstart', stopAutoPlay, { passive: true });
-    carousel.addEventListener('touchend', startAutoPlay, { passive: true });
-
-    startAutoPlay();
-  }
-
-  document.addEventListener('DOMContentLoaded', initCarousel);
-
-  function initZoom() {
-    const carousel = document.getElementById('carousel');
-    if (!carousel) return;
-
+    const gap = Number(dotsRoot?.getAttribute('data-carousel-gap') ?? 12);
     const slides = carousel.querySelectorAll<HTMLElement>('.slide');
-    if (!slides.length) return;
+    const dots = dotsRoot?.querySelectorAll('[data-carousel-dot]') ?? [];
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.intersectionRatio >= 0.3) {
-            entry.target.classList.add('is-active');
-          } else {
-            entry.target.classList.remove('is-active');
-          }
-        });
-      },
-      { root: carousel, threshold: 0.3 }
-    );
-
-    slides.forEach((slide) => observer.observe(slide));
-  }
-
-  document.addEventListener('DOMContentLoaded', initZoom);
-
-  function initCarouselDots() {
-    const root = document.querySelector('[data-carousel-dots]');
-    if (!root || root.dataset.bound === 'true') return;
-    root.dataset.bound = 'true';
-
-    const carouselId = root.getAttribute('data-carousel-id');
-    const count = Number(root.getAttribute('data-carousel-count') ?? 0);
-    const gap = Number(root.getAttribute('data-carousel-gap') ?? 12);
-    const carousel = carouselId ? document.getElementById(carouselId) : null;
-    if (!carousel || count === 0) return;
-
-    const dots = root.querySelectorAll('[data-carousel-dot]');
+    let scrollInterval: ReturnType<typeof setInterval> | undefined;
+    let resumeTimeout: ReturnType<typeof setTimeout> | undefined;
+    let rafId = 0;
+    let pointerStartX = 0;
+    let pointerStartY = 0;
+    let isDragging = false;
 
     const getStep = () => {
-      const slide = carousel.querySelector('.slide');
+      const slide = slides[0];
       return slide ? slide.clientWidth + gap : 300;
     };
 
-    const setActive = (index: number) => {
+    const setDotActive = (index: number) => {
       dots.forEach((dot) => {
         const i = Number(dot.getAttribute('data-carousel-dot'));
         const indicator = dot.querySelector('[data-carousel-dot-indicator]');
-        const isActive = i === index;
-        dot.setAttribute('aria-selected', String(isActive));
-        indicator?.classList.toggle('bg-black', isActive);
-        indicator?.classList.toggle('bg-black/20', !isActive);
+        const active = i === index;
+        dot.setAttribute('aria-selected', String(active));
+        indicator?.classList.toggle('bg-black', active);
+        indicator?.classList.toggle('bg-black/20', !active);
       });
     };
 
+    const updateActiveSlide = () => {
+      if (!slides.length) return;
+
+      const carouselRect = carousel.getBoundingClientRect();
+      const center = carouselRect.left + carouselRect.width / 2;
+
+      let closest = slides[0];
+      let closestDistance = Number.POSITIVE_INFINITY;
+
+      slides.forEach((slide) => {
+        const rect = slide.getBoundingClientRect();
+        const slideCenter = rect.left + rect.width / 2;
+        const distance = Math.abs(center - slideCenter);
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closest = slide;
+        }
+      });
+
+      slides.forEach((slide) => slide.classList.toggle('is-active', slide === closest));
+
+      const index = Array.from(slides).indexOf(closest);
+      if (index >= 0) setDotActive(index);
+    };
+
     const onScroll = () => {
-      const index = Math.round(carousel.scrollLeft / getStep());
-      setActive(Math.max(0, Math.min(count - 1, index)));
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(updateActiveSlide);
+    };
+
+    const stopAutoPlay = () => {
+      if (scrollInterval) {
+        clearInterval(scrollInterval);
+        scrollInterval = undefined;
+      }
+      if (resumeTimeout) {
+        clearTimeout(resumeTimeout);
+        resumeTimeout = undefined;
+      }
+    };
+
+    const scrollToNext = () => {
+      const step = getStep();
+      const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
+
+      if (carousel.scrollLeft >= maxScrollLeft - 5) {
+        carousel.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        carousel.scrollBy({ left: step, behavior: 'smooth' });
+      }
+    };
+
+    const startAutoPlay = () => {
+      stopAutoPlay();
+      scrollInterval = setInterval(scrollToNext, 3500);
+    };
+
+    const pauseAutoPlay = (resumeAfterMs = 5000) => {
+      stopAutoPlay();
+      resumeTimeout = setTimeout(startAutoPlay, resumeAfterMs);
     };
 
     dots.forEach((dot) => {
       dot.addEventListener('click', () => {
         const index = Number(dot.getAttribute('data-carousel-dot'));
+        pauseAutoPlay(8000);
         carousel.scrollTo({ left: index * getStep(), behavior: 'smooth' });
       });
     });
 
     carousel.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+
+    carousel.addEventListener('pointerdown', (event) => {
+      pointerStartX = event.clientX;
+      pointerStartY = event.clientY;
+      isDragging = false;
+      pauseAutoPlay();
+    });
+
+    carousel.addEventListener('pointermove', (event) => {
+      const deltaX = Math.abs(event.clientX - pointerStartX);
+      const deltaY = Math.abs(event.clientY - pointerStartY);
+      if (deltaX > 6 && deltaX > deltaY) {
+        isDragging = true;
+        carousel.classList.add('is-dragging');
+      }
+    });
+
+    carousel.addEventListener('pointerup', () => {
+      carousel.classList.remove('is-dragging');
+      if (isDragging) pauseAutoPlay();
+      isDragging = false;
+    });
+
+    carousel.addEventListener('pointercancel', () => {
+      carousel.classList.remove('is-dragging');
+      isDragging = false;
+      pauseAutoPlay();
+    });
+
+    carousel.addEventListener('click', (event) => {
+      if (isDragging) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+    }, true);
+
+    carousel.addEventListener('wheel', () => pauseAutoPlay(), { passive: true });
+    carousel.addEventListener('mouseenter', stopAutoPlay);
+    carousel.addEventListener('mouseleave', () => pauseAutoPlay(2000));
+
+    updateActiveSlide();
+    startAutoPlay();
   }
 
-  document.addEventListener('DOMContentLoaded', initCarouselDots);
-  document.addEventListener('astro:page-load', initCarouselDots);
+  document.addEventListener('DOMContentLoaded', initPlayStoreCarousel);
+  document.addEventListener('astro:page-load', initPlayStoreCarousel);
 </script>
 
 <style>
@@ -259,11 +294,20 @@ const cards = [
   .scroll-wrapper {
     display: flex;
     overflow-x: auto;
-    scroll-snap-type: x mandatory; /* The "Snap" behavior */
-    scroll-behavior: smooth;
+    overflow-y: hidden;
+    scroll-snap-type: x proximity;
+    scroll-behavior: auto;
+    overscroll-behavior-x: contain;
     -webkit-overflow-scrolling: touch;
     gap: 12px;
-    scrollbar-width: none; /* Firefox; padding lives on the parent wrapper */
+    scrollbar-width: none;
+    cursor: grab;
+    touch-action: pan-x;
+  }
+
+  .scroll-wrapper.is-dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
   }
 
   /* Hide scrollbar for Chrome, Safari and Opera */
@@ -272,9 +316,12 @@ const cards = [
   }
 
   .slide {
-    flex: 0 0 100%; /* Full mobile width (344px-style card); wrapper padding provides the peek */
+    flex: 0 0 100%;
     max-width: 100%;
-    scroll-snap-align: center; /* Forces transition to stay center */
+    scroll-snap-align: center;
+    scroll-snap-stop: normal;
+    user-select: none;
+    -webkit-user-drag: none;
   }
 
   .slide-media {
@@ -289,9 +336,9 @@ const cards = [
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transform: scale(1.08);
-    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    will-change: transform;
+    transform: scale(1.04);
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    pointer-events: none;
   }
 
   .slide.is-active .slide-media :global(.slide-image) {
