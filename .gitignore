@@ -27,6 +27,9 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
+# local test project (never deploy)
+LIBRARY-TEXT-TEST--COMPENT/
+
 # Playwright
 /test-results/
 /playwright-report/
