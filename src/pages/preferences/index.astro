@@ -40,9 +40,9 @@ if (token && supabase) {
 <Layout>
   <PageNav />
 
-  <div class="min-h-screen py-16 px-4" style="background-color: var(--color-bg)" data-base-url={base}>
+  <div class="min-h-screen bg-white py-16 px-4" data-base-url={base}>
     <div class="max-w-2xl mx-auto">
-      <h1 class="text-4xl font-bold mb-8 text-neutral-900">Subscription Preferences</h1>
+      <h1 class="mb-8 text-neutral-900">Subscription Preferences</h1>
 
       {error ? (
         <div class="bg-red-50 border border-red-200 rounded-lg p-6 text-red-800">
@@ -58,7 +58,7 @@ if (token && supabase) {
 
           <form id="preferences-form" class="space-y-6">
             <div>
-              <h3 class="text-lg font-semibold mb-3">Email Preferences</h3>
+              <h3 class="mb-3">Email Preferences</h3>
               
               <label class="flex items-center gap-3 mb-3 cursor-pointer">
                 <input 
@@ -128,7 +128,7 @@ if (token && supabase) {
       };
 
       try {
-        const response = await fetch('/api/preferences', {
+        const response = await fetch(`${baseUrl}/api/preferences`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ token, preferences }),
@@ -152,7 +152,7 @@ if (token && supabase) {
     unsubscribeBtn.addEventListener('click', async () => {
       if (confirm('Are you sure you want to unsubscribe?')) {
         try {
-          const response = await fetch('/api/preferences', {
+          const response = await fetch(`${baseUrl}/api/preferences`, {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ token }),

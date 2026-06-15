@@ -9,11 +9,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 <Layout>
   <PageNav />
-  <main class="min-h-screen text-neutral-900 px-4 md:px-10 pb-24 pt-12" style="background-color: var(--color-bg)">
-    <h1 class="text-[clamp(44px,9vw,75px)] font-normal leading-[0.9] text-black tracking-tight mb-8">
-      Greece
-    </h1>
-    <p class="text-lg md:text-xl text-neutral-600 max-w-3xl">
+  <main class="min-h-screen bg-white text-neutral-900 px-4 md:px-10 pb-24 pt-12">
+    <h1 class="mb-8">Greece</h1>
+    <p class="prose-body text-neutral-600 max-w-3xl">
       Discover the beauty of Greece — from ancient ruins to stunning islands.
     </p>
 
@@ -32,8 +30,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none z-10"></div>
           </div>
           <div class="pt-4 px-1 max-w-[400px] mx-auto">
-            <span class="block text-[clamp(12px,1.5vw,14px)] font-normal text-black mb-1">GREECE</span>
-            <h2 class="text-[clamp(22px,5vw,30px)] font-extralight text-[#1e1e1e] leading-tight mb-2">Rhodes 5-Day Itinerary</h2>
+            <span class="meta block text-black mb-1">GREECE</span>
+            <h3 class="text-[#1e1e1e] mb-2">Rhodes 5-Day Itinerary</h3>
             <span class="text-[0.875rem] font-medium text-black inline-flex items-center gap-2 transition-all">
               Read more
               <span class="leading-none transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">→</span>

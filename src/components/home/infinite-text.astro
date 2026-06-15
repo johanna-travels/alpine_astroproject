@@ -1,0 +1,23 @@
+---
+const items = [
+  "TRAVEL JOURNAL",
+  "BEAUTIFUL PLACES",
+  "MEANINGFUL STAYS",
+  "STORIES WORTH REMEMBERING",
+];
+
+const sequence = [...items, ...items];
+---
+
+<div class="container mx-auto p-5 bg-white">
+  <div class="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+    <div class="infinite-marquee flex gap-6 pr-16 items-center">
+      {sequence.map((label) => (
+        <div class="flex items-center gap-6 shrink-0">
+          <span class="meta text-black whitespace-nowrap">{label}</span>
+          <span class="text-black/20" aria-hidden="true">·</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

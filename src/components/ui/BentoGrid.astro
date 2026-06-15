@@ -1,0 +1,59 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import { getBentoCellClass, isBentoFeatured } from "@/lib/bento-grid";
+import { bentoImageSizes, bentoImageWidths } from "@/lib/images";
+
+export interface BentoItem {
+  src: ImageMetadata;
+  alt: string;
+  title?: string;
+  description?: string;
+}
+
+interface Props {
+  items: BentoItem[];
+  class?: string;
+}
+
+const { items, class: className = "" } = Astro.props;
+const visible = items.slice(0, 4);
+const count = visible.length;
+---
+
+{count > 0 && (
+  <div class:list={[className, "my-5 md:my-8"]}>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:auto-rows-fr">
+      {visible.map((item, index) => {
+        const featured = isBentoFeatured(index, count);
+        return (
+          <div class={getBentoCellClass(index, count)}>
+            <Image
+              src={item.src}
+              alt={item.alt}
+              widths={[...bentoImageWidths]}
+              sizes={bentoImageSizes}
+              class="absolute inset-0 h-full w-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+            {(item.title || item.description) && (
+              <div class="absolute inset-0 bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <div class="absolute bottom-0 left-0 right-0 p-4">
+                  {item.title && (featured ? (
+                    <h3 class="text-white">{item.title}</h3>
+                  ) : (
+                    <h4 class="text-white">{item.title}</h4>
+                  ))}
+                  {featured && item.description && (
+                    <p class="mt-1 text-sm text-white/90">{item.description}</p>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  </div>
+)}

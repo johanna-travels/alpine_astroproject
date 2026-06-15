@@ -1,0 +1,165 @@
+---
+interface Section {
+  navTitle: string;
+}
+
+interface Props {
+  sections: readonly Section[];
+}
+
+const { sections } = Astro.props;
+---
+
+<div
+  class="mx-auto flex w-full max-w-7xl flex-col gap-10 bg-white text-black lg:flex-row-reverse lg:gap-16 xl:gap-20"
+  data-article-toc
+>
+  <!-- Mobile jump menu -->
+  <div class="lg:hidden" data-toc-mobile>
+    <button
+      type="button"
+      data-toc-toggle
+      class="flex w-full items-center justify-between rounded-2xl border border-neutral-200 bg-neutral-50 px-5 py-4 text-left text-sm font-medium text-neutral-900 transition-colors hover:bg-white"
+      aria-expanded="false"
+      aria-controls="mobile-toc"
+    >
+      <span>Jump to section</span>
+      <span class="text-neutral-400" data-toc-toggle-icon aria-hidden="true">+</span>
+    </button>
+
+    <div
+      id="mobile-toc"
+      data-toc-panel
+      class="mt-3 hidden rounded-2xl border border-neutral-200 bg-neutral-50 p-4 shadow-sm"
+    >
+      <nav aria-label="Table of contents">
+        <p class="mb-5 meta text-neutral-400">In this guide</p>
+        <ul class="space-y-1">
+          {sections.map((section, index) => (
+            <li>
+              <button
+                type="button"
+                data-toc-link={index}
+                class="group flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition-colors hover:bg-white focus-visible:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(105,116,110)]/30"
+              >
+                <span data-toc-indicator class="h-4 w-[3px] flex-shrink-0 rounded-full bg-transparent transition-colors" aria-hidden="true" />
+                <span data-toc-label class="block text-[13px] leading-snug text-neutral-500 transition-colors group-hover:text-neutral-900">
+                  {section.navTitle}
+                </span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Desktop sidebar -->
+  <aside class="hidden lg:block lg:w-72 xl:w-80 flex-shrink-0">
+    <div class="lg:sticky lg:top-28">
+      <div class="rounded-2xl border border-neutral-200/80 bg-neutral-50/80 p-6 shadow-[0_12px_40px_-24px_rgba(0,0,0,0.25)] backdrop-blur-sm xl:p-8">
+        <nav aria-label="Table of contents">
+          <p class="mb-5 meta text-neutral-400">In this guide</p>
+          <ul class="space-y-1">
+            {sections.map((section, index) => (
+              <li>
+                <button
+                  type="button"
+                  data-toc-link={index}
+                  class="group flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition-colors hover:bg-white focus-visible:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(105,116,110)]/30"
+                >
+                  <span data-toc-indicator class="h-4 w-[3px] flex-shrink-0 rounded-full bg-transparent transition-colors" aria-hidden="true" />
+                  <span data-toc-label class="block text-[13px] leading-snug text-neutral-500 transition-colors group-hover:text-neutral-900">
+                    {section.navTitle}
+                  </span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <div class="min-w-0 flex-1 space-y-20 md:space-y-24 lg:space-y-28">
+    {Astro.slots.intro && (
+      <header class="max-w-3xl border-b border-neutral-200 pb-10 md:pb-12">
+        <slot name="intro" />
+      </header>
+    )}
+    <slot />
+  </div>
+</div>
+
+<script>
+  function initArticleToc() {
+    const root = document.querySelector("[data-article-toc]");
+    if (!root) return;
+
+    const links = root.querySelectorAll<HTMLButtonElement>("[data-toc-link]");
+    const toggle = root.querySelector<HTMLButtonElement>("[data-toc-toggle]");
+    const panel = root.querySelector<HTMLElement>("[data-toc-panel]");
+    const toggleIcon = root.querySelector<HTMLElement>("[data-toc-toggle-icon]");
+
+    const setActive = (index: number) => {
+      links.forEach((link) => {
+        const isActive = Number(link.dataset.tocLink) === index;
+        const indicator = link.querySelector("[data-toc-indicator]");
+        const label = link.querySelector("[data-toc-label]");
+
+        link.classList.toggle("bg-white", isActive);
+        link.setAttribute("aria-current", isActive ? "true" : "false");
+        indicator?.classList.toggle("bg-[rgb(105,116,110)]", isActive);
+        label?.classList.toggle("font-medium", isActive);
+        label?.classList.toggle("text-neutral-900", isActive);
+        label?.classList.toggle("text-neutral-500", !isActive);
+      });
+    };
+
+    links.forEach((link) => {
+      link.addEventListener("click", () => {
+        const index = Number(link.dataset.tocLink);
+        const section = document.getElementById(`section-${index}`);
+        section?.scrollIntoView({ behavior: "smooth" });
+        panel?.classList.add("hidden");
+        toggle?.setAttribute("aria-expanded", "false");
+        if (toggleIcon) toggleIcon.textContent = "+";
+      });
+    });
+
+    toggle?.addEventListener("click", () => {
+      const isOpen = panel?.classList.toggle("hidden") === false;
+      toggle.setAttribute("aria-expanded", String(isOpen));
+      if (toggleIcon) toggleIcon.textContent = isOpen ? "−" : "+";
+    });
+
+    const sections = Array.from(links)
+      .map((link) => document.getElementById(`section-${link.dataset.tocLink}`))
+      .filter((el): el is HTMLElement => el !== null);
+
+    if (sections.length === 0) return;
+
+    // Give the client an immediate focus cue before they start scrolling.
+    setActive(0);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+        if (visible.length === 0) return;
+
+        const index = Number(visible[0].target.id.replace("section-", ""));
+        if (!Number.isNaN(index)) setActive(index);
+      },
+      { rootMargin: "-25% 0px -65% 0px", threshold: 0 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+  }
+
+  initArticleToc();
+  document.addEventListener("astro:page-load", initArticleToc);
+</script>

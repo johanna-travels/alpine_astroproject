@@ -5,7 +5,7 @@ import ContactSectionWithShader from '@/components/sections/contact-section-with
 import FeatureSections from '@/components/home/FeatureSections.astro';
 import PlayStoreCarousel from '@/components/home/PlayStoreCarousel.astro';
 import GlobalEffects from '@/components/home/GlobalEffects.astro';
-import InfiniteText from '@/components/home/infinite-text.tsx';
+import InfiniteText from '@/components/home/infinite-text.astro';
 import PageNav from '@/components/layout/PageNav.astro';
 import { getImage } from 'astro:assets';
 import headerLightImg from '@/assets/heroes/HeADER LIGHT.webp';
@@ -13,7 +13,7 @@ import baliImg from '@/assets/heroes/destination bali.webp';
 import greeceImg from '@/assets/heroes/destination greece.webp';
 import japanImg from '@/assets/heroes/destination japan.webp';
 import belgiumImg from '@/assets/heroes/destination belgium.webp';
-import { SeasonalHoverCards } from "@/components/lightswind/seasonal-hover-cards"
+import SeasonalHoverCards from '@/components/home/SeasonalHoverCards.astro';
 
 
 const optimizedHeader = await getImage({ src: headerLightImg, width: 1800, format: 'webp', quality: 75 });
@@ -35,7 +35,10 @@ const belgiumSrcSet = await buildSrcSet(belgiumImg);
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
-<Layout>
+<Layout
+  title="Voyaflair — Travel Journal"
+  description="Curated travel guides, beautiful stays, and stories worth remembering — by Joanna."
+>
   <Fragment slot="head">
     <link rel="preload" as="image" href={optimizedHeader.src} />
   </Fragment>
@@ -51,7 +54,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
       <div class="relative z-10 w-full flex flex-col justify-end h-full">
         <div class="w-full max-w-[1300px] pl-4 pr-4 md:pl-10 md:pr-10 lg:pl-16 lg:pr-16 text-white pb-6 lg:pb-12">
-          <p class="text-lg md:text-xl text-white/80 font-light">Welcome to Voyaflair</p>
+          <h1 class="text-white mb-2">Discover Your Next Journey</h1>
+          <p class="prose-body text-white/80">Welcome to Voyaflair</p>
           <div class="mt-4 flex items-center gap-5">
             <a href="https://www.instagram.com/voyaflair" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-white/70 hover:text-white transition-colors text-[0.875rem]">
               <svg viewBox="0 0 448 512" width="20" height="20" fill="currentColor"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9-34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
@@ -69,15 +73,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
     <!-- HERO: desktop only -->
     <div
-      class="contact-hero relative rounded-[30px] overflow-hidden hidden lg:flex flex-col justify-end mx-2 aspect-[21/9] max-h-[710px] bg-fixed"
+      class="contact-hero relative rounded-[30px] overflow-hidden hidden lg:flex flex-col justify-end mx-2 aspect-[21/9] max-h-[710px] bg-scroll"
       style={`background-image: url('${optimizedHeader.src}'); background-size: cover; background-position: center;`}
     >
       <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none z-0"></div>
 
       <div class="relative z-10 w-full flex flex-col justify-end h-full">
         <div class="w-full max-w-[1300px] pl-4 pr-4 md:pl-10 md:pr-10 lg:pl-16 lg:pr-16 text-white pb-6 lg:pb-12">
-          <h1 class="text-4xl md:text-6xl font-black tracking-tight mb-4">Discover Your Next Journey</h1>
-          <p class="text-lg md:text-xl text-white/80 font-light">Welcome to Voyaflair</p>
+          <h1 class="text-white mb-4">Discover Your Next Journey</h1>
+          <p class="prose-body text-white/80">Welcome to Voyaflair</p>
           <div class="flex flex-col items-center justify-center mt-8">
             <div class="flex flex-col items-center gap-2 cursor-pointer group animate-bounce">
               <svg class="w-10 h-10 text-white group-hover:text-white/80 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -93,7 +97,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <main class="text-slate-950 bg-white">
         <div class="flex flex-col gap-12 md:gap-20 pb-24 pt-12">
             <div class="reveal"><PlayStoreCarousel /></div>
-            <div class="reveal py-16"><SeasonalHoverCards client:visible cards={[
+            <div class="reveal py-16"><SeasonalHoverCards cards={[
               {
                 title: "Bali",
                 subtitle: "Indonesia",
@@ -131,7 +135,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
                 href: `${base}/belgium`
               }
             ]} /></div>
-            <div class="reveal"><InfiniteText client:visible /></div>
+            <div class="reveal"><InfiniteText /></div>
             <div class="reveal"><FeatureSections /></div>
             
             <ContactSectionWithShader client:idle base={base} />

@@ -1,8 +1,8 @@
 ---
 import { HamburgerMenuOverlay } from '@/components/layout/HamburgerMenuOverlay';
+import { base, isCurrentPath } from '@/lib/site';
 
 const { pathname } = Astro.url;
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 interface DropdownSection {
   title: string;
@@ -33,8 +33,7 @@ const links: NavLink[] = [
   { label: "TikTok", href: "https://www.tiktok.com/@voyaflair", variant: "social" as const, iconType: "tiktok" as const },
 ];
 
-const normalize = (p: string) => (p !== "/" ? p.replace(/\/$/, "") : p);
-const isActive = (href: string) => normalize(pathname) === normalize(href);
+const isActive = (href: string) => isCurrentPath(pathname, href);
 ---
 
 <nav class="w-full text-gray-900 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20" style="background-color: #ffffff;">
@@ -142,7 +141,7 @@ const isActive = (href: string) => normalize(pathname) === normalize(href);
         overlayBackground="#F5F2EB"
         textColor="#111827"
         fontSize="xl"
-        fontFamily="Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+        fontFamily="ScheherazadeNew, Georgia, serif"
         fontWeight="normal"
         animationDuration={0.6}
         staggerDelay={0.05}

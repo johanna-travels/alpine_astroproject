@@ -1,5 +1,5 @@
 ---
-import NewsletterForm from '@/components/forms/NewsletterForm';
+import NewsletterForm from '@/components/forms/NewsletterForm.astro';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
@@ -38,7 +38,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
                 <div class="flex flex-col gap-5 relative">
                     <p class="text-white text-xs tracking-[0.3em] uppercase">Newsletter</p>
                     <p class="text-white text-sm leading-relaxed">Curated places, beautiful stays &amp; stories worth remembering — straight to your inbox.</p>
-                    <NewsletterForm client:visible base={base} />
+                    <NewsletterForm base={base} />
                 </div>
 
 

@@ -2,7 +2,7 @@
 export default {
   darkMode: 'class', // Site has no dark theme; OS dark mode must not flip text colors on the white background
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-  safelist: [],
+  safelist: ['bg-[rgb(105,116,110)]'],
   blocklist: ['style', 'script', 'iframe', 'object', 'embed'],
   theme: {
     extend: {
@@ -36,6 +36,5 @@ export default {
       },
     },
   },
-  plugins: [
-    require('lightswind/plugin'),],
+  plugins: [],
 };

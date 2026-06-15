@@ -35,7 +35,7 @@
     font-family: var(--font-sans);
     font-weight: 400;
     color: #111827;
-    background-color: var(--color-bg);
+    background-color: white;
   }
 
   /* H1 — ScheherazadeNew Bold 700 · Hero/page titles · 36px → 75px */
@@ -74,6 +74,7 @@
 
   /* Body default */
   p {
+    font-family: var(--font-sans);
     font-size: 16px;
     line-height: 1.75;
     font-weight: 400;
@@ -85,7 +86,7 @@
 }
 
 @layer components {
-  /* Long-form body copy : Inter, Regular, 17 / 18 / 19, lh 1.8 */
+  /* Long-form body copy : ScheherazadeNew, Regular, 17 / 18 / 19, lh 1.8 */
   .prose-body {
     font-family: var(--font-sans);
     font-weight: 400;
@@ -99,7 +100,7 @@
     .prose-body { font-size: 19px; }
   }
 
-  /* Meta info (date, author, category, reading time) : Inter, Medium, 14px, +0.03em */
+  /* Meta info (date, author, category, reading time) : ScheherazadeNew, Medium, 14px, +0.03em */
   .meta {
     font-family: var(--font-sans);
     font-weight: 500;
@@ -123,4 +124,24 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 20px;
+}
+
+/* =====================================================================
+   COMPONENT: Infinite text marquee (homepage)
+   CSS-only loop — no JS hydration required.
+   ===================================================================== */
+.infinite-marquee {
+  width: max-content;
+  animation: infinite-marquee 40s linear infinite;
+}
+
+@keyframes infinite-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .infinite-marquee {
+    animation: none;
+  }
 }

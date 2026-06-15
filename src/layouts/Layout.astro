@@ -1,9 +1,23 @@
 ---
 import '../styles/global.css';
 import CinematicBody from '../components/layout/CinematicBody.astro';
+import { homeUrl } from '@/lib/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = 'Voyaflair — Travel Journal',
+  description = 'Curated travel guides, beautiful stays, and stories worth remembering — by Joanna.',
+  noindex = false,
+} = Astro.props;
 
 const isDev = import.meta.env.DEV;
 const fb = import.meta.env.BASE_URL;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? homeUrl).href;
 const csp = [
   "default-src 'self'",
   "base-uri 'self'",
@@ -38,8 +52,17 @@ const permissionsPolicy = [
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta http-equiv="Permissions-Policy" content={permissionsPolicy} />
-    <title>Alpine AstroProject</title>
-    <link rel="icon" href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/favicon.ico`} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta name="theme-color" content="#69746E" />
+    <link rel="preload" href={`${fb}fonts/scheherazade/ScheherazadeNew-Regular.ttf`} as="font" type="font/ttf" crossorigin />
     <Fragment set:html={`<style>
       @font-face {
         font-family: 'ScheherazadeNew';

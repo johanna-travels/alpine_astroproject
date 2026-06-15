@@ -1,0 +1,23 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageNav from '@/components/layout/PageNav.astro';
+import Footer from '@/components/layout/Footer.astro';
+import { homeUrl } from '@/lib/site';
+---
+
+<Layout title="Page not found" noindex>
+  <PageNav />
+  <main class="min-h-[50vh] flex flex-col items-center justify-center px-6 py-24 text-center bg-white">
+    <h1 class="text-neutral-900 mb-4">Page not found</h1>
+    <p class="prose-body text-neutral-600 max-w-md mb-8">
+      This link may be outdated or mistyped. Head back to the homepage to explore Voyaflair.
+    </p>
+    <a
+      href={homeUrl}
+      class="inline-flex items-center px-6 py-3 bg-neutral-900 text-white rounded-md hover:bg-neutral-800 transition-colors text-sm"
+    >
+      Go to homepage
+    </a>
+  </main>
+  <Footer />
+</Layout>

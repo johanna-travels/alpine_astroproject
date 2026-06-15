@@ -1,0 +1,30 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import { articleImageSizes, articleImageWidths } from "@/lib/images";
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  caption?: string;
+}
+
+const { src, alt, caption } = Astro.props;
+---
+
+<figure class="my-5 md:my-8">
+  <Image
+    src={src}
+    alt={alt}
+    widths={[...articleImageWidths]}
+    sizes={articleImageSizes}
+    class="w-full rounded-lg object-cover aspect-[4/3] md:aspect-[16/10]"
+    loading="lazy"
+    decoding="async"
+  />
+  {caption && (
+    <figcaption class="mt-2 text-center text-xs text-black/40 italic sm:text-sm">
+      {caption}
+    </figcaption>
+  )}
+</figure>
