@@ -67,10 +67,10 @@ const cards = [
     <div class="pt-carousel-top-sm pb-dot-zone md:pt-carousel-top-md md:px-[40px] lg:pt-carousel-top-lg">
     <div id="carousel" class="scroll-wrapper">
       {cards.map((card) => (
-        <a href={card.href} class="slide group block">
-          {/* Image block */}
-          <div class="slide-media relative">
-            <Image
+        <article class="slide" data-slide>
+          <a href={card.href} class="slide-link group block" draggable={false}>
+            <div class="slide-media relative">
+              <Image
                 src={card.image}
                 alt={card.alt}
                 width={400}
@@ -78,26 +78,23 @@ const cards = [
                 widths={[320, 400, 640]}
                 sizes="(min-width: 768px) 33vw, 100vw"
                 densities={[1, 2]}
-                class="slide-image absolute inset-0 transition-opacity duration-300"
+                class="slide-image absolute inset-0"
                 loading="lazy"
                 draggable={false}
               />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none z-10"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none z-10" />
+            </div>
 
-            {/* Vignette Shadow Overlay */}
-            {/* <div class="absolute inset-0 bg-gradient-to-r from-white/10 to-white/30 transition-opacity duration-500 group-hover:opacity-0 pointer-events-none" /> */}
-          </div>
-
-          {/* Text + link below the image */}
-          <div class="pt-4 px-1 animate-[fadeInUp_0.6s_ease-out]">
-            <span class="meta block text-black mb-1">{card.category}</span>
-            <h3 class="text-[#1e1e1e] mb-2 group-hover:underline group-active:underline underline-offset-4 decoration-1">{card.title}</h3>
-            <span class="text-[0.875rem] font-medium text-black inline-flex items-center gap-2 transition-all">
-              Read more
-              <span class="leading-none transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">→</span>
-            </span>
-          </div>
-        </a>
+            <div class="pt-4 px-1">
+              <span class="meta block text-black mb-1">{card.category}</span>
+              <h3 class="text-[#1e1e1e] mb-2 group-hover:underline group-active:underline underline-offset-4 decoration-1">{card.title}</h3>
+              <span class="text-[0.875rem] font-medium text-black inline-flex items-center gap-2">
+                Read more
+                <span class="leading-none transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">→</span>
+              </span>
+            </div>
+          </a>
+        </article>
       ))}
     </div>
     </div>
@@ -138,15 +135,15 @@ const cards = [
     carousel.dataset.bound = 'true';
 
     const gap = Number(dotsRoot?.getAttribute('data-carousel-gap') ?? 12);
-    const slides = carousel.querySelectorAll<HTMLElement>('.slide');
+    const slides = carousel.querySelectorAll<HTMLElement>('[data-slide]');
     const dots = dotsRoot?.querySelectorAll('[data-carousel-dot]') ?? [];
 
-    let scrollInterval: ReturnType<typeof setInterval> | undefined;
-    let resumeTimeout: ReturnType<typeof setTimeout> | undefined;
     let rafId = 0;
-    let pointerStartX = 0;
-    let pointerStartY = 0;
-    let isDragging = false;
+    let isPointerDown = false;
+    let didDrag = false;
+    let isMouseDrag = false;
+    let startX = 0;
+    let startScrollLeft = 0;
 
     const getStep = () => {
       const slide = slides[0];
@@ -194,42 +191,9 @@ const cards = [
       rafId = requestAnimationFrame(updateActiveSlide);
     };
 
-    const stopAutoPlay = () => {
-      if (scrollInterval) {
-        clearInterval(scrollInterval);
-        scrollInterval = undefined;
-      }
-      if (resumeTimeout) {
-        clearTimeout(resumeTimeout);
-        resumeTimeout = undefined;
-      }
-    };
-
-    const scrollToNext = () => {
-      const step = getStep();
-      const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
-
-      if (carousel.scrollLeft >= maxScrollLeft - 5) {
-        carousel.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        carousel.scrollBy({ left: step, behavior: 'smooth' });
-      }
-    };
-
-    const startAutoPlay = () => {
-      stopAutoPlay();
-      scrollInterval = setInterval(scrollToNext, 3500);
-    };
-
-    const pauseAutoPlay = (resumeAfterMs = 5000) => {
-      stopAutoPlay();
-      resumeTimeout = setTimeout(startAutoPlay, resumeAfterMs);
-    };
-
     dots.forEach((dot) => {
       dot.addEventListener('click', () => {
         const index = Number(dot.getAttribute('data-carousel-dot'));
-        pauseAutoPlay(8000);
         carousel.scrollTo({ left: index * getStep(), behavior: 'smooth' });
       });
     });
@@ -237,46 +201,54 @@ const cards = [
     carousel.addEventListener('scroll', onScroll, { passive: true });
 
     carousel.addEventListener('pointerdown', (event) => {
-      pointerStartX = event.clientX;
-      pointerStartY = event.clientY;
-      isDragging = false;
-      pauseAutoPlay();
-    });
+      if (event.pointerType === 'mouse' && event.button !== 0) return;
 
-    carousel.addEventListener('pointermove', (event) => {
-      const deltaX = Math.abs(event.clientX - pointerStartX);
-      const deltaY = Math.abs(event.clientY - pointerStartY);
-      if (deltaX > 6 && deltaX > deltaY) {
-        isDragging = true;
+      isPointerDown = true;
+      didDrag = false;
+      isMouseDrag = event.pointerType === 'mouse';
+      startX = event.clientX;
+      startScrollLeft = carousel.scrollLeft;
+
+      if (isMouseDrag) {
         carousel.classList.add('is-dragging');
       }
+
+      window.addEventListener('pointermove', onPointerMove);
+      window.addEventListener('pointerup', onPointerUp);
+      window.addEventListener('pointercancel', onPointerUp);
     });
 
-    carousel.addEventListener('pointerup', () => {
-      carousel.classList.remove('is-dragging');
-      if (isDragging) pauseAutoPlay();
-      isDragging = false;
-    });
+    const onPointerMove = (event: PointerEvent) => {
+      if (!isPointerDown) return;
 
-    carousel.addEventListener('pointercancel', () => {
+      const deltaX = event.clientX - startX;
+      if (Math.abs(deltaX) > 4) {
+        didDrag = true;
+        if (isMouseDrag) {
+          carousel.scrollLeft = startScrollLeft - deltaX;
+        }
+      }
+    };
+
+    const onPointerUp = () => {
+      isPointerDown = false;
+      isMouseDrag = false;
       carousel.classList.remove('is-dragging');
-      isDragging = false;
-      pauseAutoPlay();
-    });
+      window.removeEventListener('pointermove', onPointerMove);
+      window.removeEventListener('pointerup', onPointerUp);
+      window.removeEventListener('pointercancel', onPointerUp);
+    };
 
     carousel.addEventListener('click', (event) => {
-      if (isDragging) {
+      if (didDrag) {
         event.preventDefault();
         event.stopPropagation();
       }
     }, true);
 
-    carousel.addEventListener('wheel', () => pauseAutoPlay(), { passive: true });
-    carousel.addEventListener('mouseenter', stopAutoPlay);
-    carousel.addEventListener('mouseleave', () => pauseAutoPlay(2000));
+    carousel.addEventListener('dragstart', (event) => event.preventDefault());
 
     updateActiveSlide();
-    startAutoPlay();
   }
 
   document.addEventListener('DOMContentLoaded', initPlayStoreCarousel);
@@ -295,19 +267,18 @@ const cards = [
     display: flex;
     overflow-x: auto;
     overflow-y: hidden;
-    scroll-snap-type: x proximity;
-    scroll-behavior: auto;
     overscroll-behavior-x: contain;
     -webkit-overflow-scrolling: touch;
     gap: 12px;
     scrollbar-width: none;
-    cursor: grab;
-    touch-action: pan-x;
   }
 
   .scroll-wrapper.is-dragging {
     cursor: grabbing;
-    scroll-snap-type: none;
+  }
+
+  .scroll-wrapper.is-dragging .slide-link {
+    pointer-events: none;
   }
 
   /* Hide scrollbar for Chrome, Safari and Opera */
@@ -318,10 +289,12 @@ const cards = [
   .slide {
     flex: 0 0 100%;
     max-width: 100%;
-    scroll-snap-align: center;
-    scroll-snap-stop: normal;
     user-select: none;
+  }
+
+  .slide-link {
     -webkit-user-drag: none;
+    user-select: none;
   }
 
   .slide-media {
@@ -336,13 +309,7 @@ const cards = [
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transform: scale(1.04);
-    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     pointer-events: none;
-  }
-
-  .slide.is-active .slide-media :global(.slide-image) {
-    transform: scale(1);
   }
 
   @media (min-width: 768px) {
