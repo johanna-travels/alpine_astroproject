@@ -13,8 +13,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      SITE_URL: https://voyaflair.com
-      BASE_PATH: /
+      # GitHub project sites live under /alpine_astroproject/ — Netlify uses BASE_PATH=/ via netlify.toml
+      SITE_URL: https://johanna-travels.github.io
+      BASE_PATH: /alpine_astroproject/
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
