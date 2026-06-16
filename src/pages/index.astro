@@ -42,8 +42,8 @@ const homeDestinationCards = await Promise.all(
 
     <!-- HERO: mobile & tablet only -->
     <div
-      class="contact-hero relative rounded-[30px] overflow-hidden bg-scroll flex flex-col justify-end mx-2 block lg:hidden"
-      style={`background-image: url('${optimizedHeader.src}'); background-size: cover; background-position: center; min-height: 300px; height: 50vw; max-height: 500px;`}
+      class="contact-hero relative mx-2 min-h-[300px] h-[50vw] max-h-[500px] rounded-[30px] overflow-hidden bg-cover bg-center bg-no-repeat bg-scroll flex flex-col justify-end lg:hidden"
+      style={`background-image: url('${optimizedHeader.src}')`}
     >
       <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none z-0"></div>
 

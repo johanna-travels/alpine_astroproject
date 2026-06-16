@@ -15,9 +15,11 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const isProduction = process.env.NODE_ENV === 'production';
 
 export default defineConfig({
+  output: 'static',
   site: process.env.SITE_URL || 'https://voyaflair.com',
   base: process.env.BASE_PATH ?? '/',
   trailingSlash: 'always',
+  compressHTML: true,
   integrations: [react(), tailwind(), ...(isProduction ? [sentry()] : []), ...(!isProduction ? [spotlightjs()] : []), sitemap({
     filter: (page) => !page.includes('/preferences/'),
   })],

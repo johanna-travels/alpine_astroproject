@@ -6,3 +6,9 @@
   NODE_VERSION = "22.12.0"
   SITE_URL = "https://voyaflair.com"
   BASE_PATH = "/"
+
+# Static HTML is pre-rendered at build time; cache at the edge to cut repeat-visit TTFB.
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Cache-Control = "no-store"

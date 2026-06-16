@@ -8,21 +8,23 @@ interface Props {
   title: string;
   breadcrumbTitle: string;
   breadcrumbHref: string;
-  heroSrc: string;
+  heroSrc?: string;
   lead?: string;
 }
 
 const { metaLabel, title, breadcrumbTitle, breadcrumbHref, heroSrc, lead } = Astro.props;
 ---
 
-<PageBreadcrumbHero
-  title={title}
-  currentPage={breadcrumbTitle}
-  currentHref={breadcrumbHref}
-  imageSrc={heroSrc}
-/>
+{heroSrc && (
+  <PageBreadcrumbHero
+    title={title}
+    currentPage={breadcrumbTitle}
+    currentHref={breadcrumbHref}
+    imageSrc={heroSrc}
+  />
+)}
 
-<main class="relative z-10 w-full min-h-screen flex flex-col items-center bg-white py-16">
+<main class:list={['relative z-10 w-full min-h-screen flex flex-col items-center bg-white py-16', !heroSrc && 'pt-28 md:pt-32']}>
   <article class="w-full max-w-[760px] px-4 md:px-0">
     <p class="meta text-neutral-500 mb-4">{metaLabel}</p>
     <h1 class="mb-8">{title}</h1>

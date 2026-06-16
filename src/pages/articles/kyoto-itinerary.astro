@@ -2,23 +2,16 @@
 import PageShell from '@/components/layout/PageShell.astro';
 import SimpleArticleLayout from '@/components/articles/SimpleArticleLayout.astro';
 import { getArticle, articleHref } from '@/domains/articles/catalog';
-import { getHeroImage } from '@/lib/images';
 
 const article = getArticle('kyoto-itinerary')!;
-const optimizedHeader = await getHeroImage(article.image);
 ---
 
 <PageShell title={article.title}>
-  <Fragment slot="head">
-    <link rel="preload" as="image" href={optimizedHeader.src} />
-  </Fragment>
-
   <SimpleArticleLayout
     metaLabel={article.metaLabel}
     title={article.title}
     breadcrumbTitle={article.breadcrumbTitle}
     breadcrumbHref={articleHref(article.slug)}
-    heroSrc={optimizedHeader.src}
     lead={article.lead}
   >
     <h2 class="mb-3">Day 1 — Eastern Kyoto & Higashiyama</h2>
