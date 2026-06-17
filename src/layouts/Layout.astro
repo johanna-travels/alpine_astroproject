@@ -20,41 +20,6 @@ const isDev = import.meta.env.DEV;
 const fb = import.meta.env.BASE_URL;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? homeUrl).href;
 
-const pageEase = 'cubic-bezier(0.22, 1, 0.36, 1)';
-const pageTransition = {
-  forwards: {
-    old: {
-      name: 'voya-page-out',
-      duration: '0.55s',
-      easing: pageEase,
-      fillMode: 'forwards',
-    },
-    new: {
-      name: 'voya-page-in',
-      duration: '0.95s',
-      easing: pageEase,
-      fillMode: 'backwards',
-      delay: '0.1s',
-    },
-  },
-  backwards: {
-    old: {
-      name: 'voya-page-out',
-      duration: '0.55s',
-      easing: pageEase,
-      fillMode: 'forwards',
-      direction: 'reverse',
-    },
-    new: {
-      name: 'voya-page-in',
-      duration: '0.95s',
-      easing: pageEase,
-      fillMode: 'backwards',
-      direction: 'reverse',
-      delay: '0.1s',
-    },
-  },
-};
 const csp = [
   "default-src 'self'",
   "base-uri 'self'",
@@ -81,7 +46,7 @@ const permissionsPolicy = [
 ---
 
 <!doctype html>
-<html lang="en" transition:animate={pageTransition}>
+<html lang="en" transition:animate="none">
   <head>
     <meta charset="UTF-8" />
     <ClientRouter />
