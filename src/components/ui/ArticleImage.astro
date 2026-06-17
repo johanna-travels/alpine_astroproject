@@ -9,9 +9,10 @@ interface Props {
   caption?: string;
   imgClass?: string;
   figureClass?: string;
+  priority?: boolean;
 }
 
-const { src, alt, caption, imgClass = "", figureClass = "my-5 md:my-8" } = Astro.props;
+const { src, alt, caption, imgClass = "", figureClass = "my-5 md:my-8", priority = false } = Astro.props;
 ---
 
 <figure class={figureClass}>
@@ -21,7 +22,8 @@ const { src, alt, caption, imgClass = "", figureClass = "my-5 md:my-8" } = Astro
     widths={[...articleImageWidths]}
     sizes={articleImageSizes}
     class={`w-full rounded-lg ${imgClass || "h-auto"}`}
-    loading="lazy"
+    loading={priority ? "eager" : "lazy"}
+    fetchpriority={priority ? "high" : undefined}
     decoding="async"
   />
   {caption && (
