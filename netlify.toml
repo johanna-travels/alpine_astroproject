@@ -7,6 +7,11 @@
   SITE_URL = "https://voyaflair.com"
   BASE_PATH = "/"
 
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap-index.xml"
+  status = 301
+
 # Static HTML is pre-rendered at build time; cache at the edge to cut repeat-visit TTFB.
 [[headers]]
   for = "/api/*"
