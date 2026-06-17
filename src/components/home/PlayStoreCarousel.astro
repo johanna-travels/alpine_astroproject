@@ -181,10 +181,6 @@ const cards = articles.map((article) => ({
       startX = event.clientX;
       startScrollLeft = carousel.scrollLeft;
 
-      if (isMouseDrag) {
-        carousel.classList.add('is-dragging');
-      }
-
       window.addEventListener('pointermove', onPointerMove);
       window.addEventListener('pointerup', onPointerUp);
       window.addEventListener('pointercancel', onPointerUp);
@@ -197,6 +193,7 @@ const cards = articles.map((article) => ({
       if (Math.abs(deltaX) > 4) {
         didDrag = true;
         if (isMouseDrag) {
+          carousel.classList.add('is-dragging');
           carousel.scrollLeft = startScrollLeft - deltaX;
         }
       }

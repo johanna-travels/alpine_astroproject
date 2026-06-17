@@ -8,12 +8,13 @@ interface Props {
   alt: string;
   caption?: string;
   imgClass?: string;
+  figureClass?: string;
 }
 
-const { src, alt, caption, imgClass = "" } = Astro.props;
+const { src, alt, caption, imgClass = "", figureClass = "my-5 md:my-8" } = Astro.props;
 ---
 
-<figure class="my-5 md:my-8">
+<figure class={figureClass}>
   <Image
     src={src}
     alt={alt}

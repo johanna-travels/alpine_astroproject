@@ -4,7 +4,6 @@ import StickyArticleLayout from '@/components/articles/StickyArticleLayout.astro
 import RhodesGuideContent from '@/components/articles/RhodesGuide.astro';
 import { rhodesNav } from '@/domains/articles/rhodes-nav';
 import { getArticle } from '@/domains/articles/catalog';
-import { pageUrl } from '@/lib/site';
 
 const article = getArticle('rhodes-itinerary')!;
 ---
@@ -14,7 +13,7 @@ const article = getArticle('rhodes-itinerary')!;
     <StickyArticleLayout sections={rhodesNav}>
       <Fragment slot="intro">
         <p class="meta text-neutral-500 mb-4">
-          <a href={pageUrl('greece')} class="hover:underline">Greece</a>
+          Published · 17 June 2026
         </p>
 
         <h1 class="article-title mb-6 md:mb-8 max-w-3xl text-neutral-900">

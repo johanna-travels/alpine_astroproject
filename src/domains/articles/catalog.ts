@@ -65,7 +65,7 @@ export const articles: readonly Article[] = [
     destinationSlug: 'belgium',
     category: 'BELGIUM',
     title: 'Best Things to Do in Bruges: My Favorite Places, Cafés, Chocolate & Photo Spots',
-    carouselTitle: 'Bruges Travel guide: Top Attractions and hidden gems',
+    carouselTitle: 'Best Things to Do in Bruges: My Favorite Places, Cafés, Chocolate & Photo Spots',
     breadcrumbTitle: 'Bruges Guide',
     metaLabel: 'Belgium',
     alt: 'Bruges travel guide',

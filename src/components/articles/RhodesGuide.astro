@@ -7,6 +7,7 @@ import oldTownKnight from "@/assets/articles/rhodos-images/rhodes-old-town-medie
 import koukosRestaurant from "@/assets/articles/rhodos-images/rhodes-koukos-restaurant.webp";
 import koukosBreakfast from "@/assets/articles/rhodos-images/rhodes-koukos-breakfast.webp";
 import dreamCream from "@/assets/articles/rhodos-images/rhodes-dream-cream.webp";
+import symiHarbour from "@/assets/articles/rhodos-images/symi-island-colourful-harbour.webp";
 import symiShopfront from "@/assets/articles/rhodos-images/symi-town-colourful-shopfront.webp";
 import symiStreetCafes from "@/assets/articles/rhodos-images/symi-town-street-cafes.webp";
 import symiArchitecture from "@/assets/articles/rhodos-images/symi-traditional-architecture.webp";
@@ -15,6 +16,18 @@ import symiYialaBeach2 from "@/assets/articles/rhodos-images/greece-symi-yiala-b
 import lindosTraditionalStreet from "@/assets/articles/rhodos-images/rhodes-lindos-village-traditional-street.webp";
 import lindosWhitewashedStreet from "@/assets/articles/rhodos-images/rhodes-lindos-village-whitewashed-street.webp";
 import lindosExploring from "@/assets/articles/rhodos-images/rhodes-exploring-lindos-village.webp";
+import stPaulsBay from "@/assets/articles/rhodos-images/rhodes-lindos-st-paul's-bay.webp";
+import stPaulsBayBeach from "@/assets/articles/rhodos-images/rhodes-lindos-st-paul's-bay-beach.webp";
+import lindosSunriseViewpoint from "@/assets/articles/rhodos-images/rhodes-lindos-sunrise-viewpoint.webp";
+import lindosAcropolis from "@/assets/articles/rhodos-images/rhodes-lindos-akropolis.webp";
+import kallitheaEntrance from "@/assets/articles/rhodos-images/rhodes-kallithea-springs-entrance.webp";
+import kallitheaSprings from "@/assets/articles/rhodos-images/rhodes-kallithea-springs.webp";
+import kallitheaBeachView from "@/assets/articles/rhodos-images/rhodes-kallithea-springs-beach-view.webp";
+import anthonyQuinnBay from "@/assets/articles/rhodos-images/rhodes-anthony-quinn-bay.webp";
+import kounnaRestoBar from "@/assets/articles/rhodos-images/rhodes-kounna-beach-resto-bar.webp";
+import kounnaCoffeeView from "@/assets/articles/rhodos-images/rhodes-kounna-beach-coffee-with-view.webp";
+import myrovolosRestaurant from "@/assets/articles/rhodos-images/rhodes-myrovolos-restaurant.webp";
+import myrovolosMezedopoleion from "@/assets/articles/rhodos-images/rhodes-myrovolos-restaurant-mezedopoleion.webp";
 
 const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0";
 ---
@@ -73,14 +86,19 @@ const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
     <p>If you're spending 5 days in Rhodes, I think Symi is one of the best day trips you can add to your itinerary.</p>
     <p>When planning my trip, I was deciding between Symi and Halki, as both islands are frequently recommended by locals as day trips from Rhodes. In the end, I chose Symi — and as soon as the ferry started approaching the harbour, I knew I had made the right choice.</p>
     <p>The moment the ferry begins approaching the harbour, it's almost impossible to stop taking photos. The colourful houses climbing up the hillside create one of the most beautiful arrivals I've experienced on a Greek island, and honestly, I don't think photos fully capture how impressive it looks in person.</p>
+    <ArticleImage src={symiHarbour} alt="The colourful harbour of Symi island with houses climbing the hillside" caption="Arriving into Symi's colourful harbour" imgClass="aspect-[4/5] object-cover" />
 
     <h4 class="mb-3 mt-8 text-black">Wander Through the Streets of Symi</h4>
     <p>Before heading anywhere specific, spend some time simply exploring the harbour area and wandering through the small streets.</p>
     <p>One of the things I loved most about Symi was how photogenic the entire island felt. Around almost every corner, you'll find colourful buildings, traditional architecture, and beautiful sea views that make you want to stop and take another photo. Rather than rushing straight to the beach, I would recommend allowing yourself a little time to explore first and soak up the atmosphere.</p>
-    <ArticleImage src={symiShopfront} alt="A colourful shopfront in Symi Town" caption="Colourful shopfronts around every corner in Symi" imgClass="aspect-[16/9] object-cover" />
-    <div class="grid grid-cols-2 gap-3 md:gap-4">
-      <ArticleImage src={symiStreetCafes} alt="Street cafes in Symi Town" caption="Cafes lining the streets of Symi" imgClass="aspect-[4/3] object-cover" />
-      <ArticleImage src={symiArchitecture} alt="Traditional architecture in Symi Town" caption="Traditional Symi architecture" imgClass="aspect-[4/3] object-cover" />
+    <div class="my-5 grid grid-cols-5 items-start gap-3 md:my-8 md:gap-4">
+      <div class="col-span-3">
+        <ArticleImage src={symiArchitecture} alt="Traditional architecture in Symi Town" caption="Traditional Symi architecture" figureClass="m-0" />
+      </div>
+      <div class="col-span-2 flex flex-col gap-3 md:gap-4">
+        <ArticleImage src={symiShopfront} alt="A colourful shopfront in Symi Town" caption="Colourful shopfronts around every corner in Symi" figureClass="m-0" />
+        <ArticleImage src={symiStreetCafes} alt="Street cafes in Symi Town" caption="Cafes lining the streets of Symi" figureClass="m-0" />
+      </div>
     </div>
 
     <h4 class="mb-3 mt-8 text-black">Stop by The Panormitis Bakery (Gialos Branch)</h4>
@@ -118,6 +136,10 @@ const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
     <h4 class="mb-3 mt-8 text-black">Visit St. Paul's Bay</h4>
     <p>A short walk from the village brings you to St. Paul's Bay, one of the most beautiful beaches in Rhodes.</p>
     <p>The combination of crystal-clear water, dramatic cliffs, and views towards the Acropolis creates one of the most photogenic spots on the island. Whether you decide to swim or simply enjoy the scenery, it's a place worth slowing down and appreciating rather than rushing through.</p>
+    <div class="grid grid-cols-2 gap-3 md:gap-4">
+      <ArticleImage src={stPaulsBay} alt="St. Paul's Bay in Lindos with views towards the Acropolis" caption="St. Paul's Bay" />
+      <ArticleImage src={stPaulsBayBeach} alt="The beach at St. Paul's Bay in Lindos" caption="Crystal-clear water at St. Paul's Bay" />
+    </div>
 
     <h4 class="mb-3 mt-8 text-black">Lunch at Tambakio</h4>
     <p>If you're looking for somewhere to stop for lunch, consider Tambakio.</p>
@@ -136,6 +158,7 @@ const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
   <div class={prose}>
     <h4 class="mb-3 text-black">Watch Sunrise Over Lindos</h4>
     <p>If you're willing to wake up early, sunrise is one of the most rewarding times to see Lindos.</p>
+    <ArticleImage src={lindosSunriseViewpoint} alt="Sunrise viewpoint overlooking Lindos" caption="Sunrise over Lindos" imgClass="aspect-[5/4] object-cover" />
     <p>Head to one of the viewpoints overlooking the village before sunrise and watch the first light reach the Acropolis and St. Paul's Bay. The soft morning light completely transforms the landscape and offers a very different experience from the busy daytime atmosphere.</p>
 
     <h4 class="mb-3 mt-8 text-black">Breakfast at Melia</h4>
@@ -144,6 +167,7 @@ const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
 
     <h4 class="mb-3 mt-8 text-black">Visit the Acropolis of Lindos</h4>
     <p>After breakfast, head up to the Acropolis before the temperatures begin to rise.</p>
+    <ArticleImage src={lindosAcropolis} alt="The Acropolis of Lindos overlooking the village and coastline" caption="The Acropolis of Lindos" imgClass="aspect-[5/4] object-cover" />
     <p>This is one of the most important archaeological sites in Rhodes, and visiting early makes the experience much more enjoyable during the summer months. The views from the top over Lindos, St. Paul's Bay, and the coastline are easily among the best on the island.</p>
 
     <h4 class="mb-3 mt-8 text-black">Return to Rhodes Town</h4>
@@ -159,18 +183,36 @@ const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
   <div class={prose}>
     <h4 class="mb-3 text-black">Visit Kallithea Springs</h4>
     <p>Start your final day in Rhodes at Kallithea Springs.</p>
+    <div class="my-5 grid grid-cols-3 items-start gap-3 md:my-8 md:gap-4">
+      <div class="col-span-2">
+        <ArticleImage src={kallitheaEntrance} alt="The entrance to Kallithea Springs in Rhodes" caption="Kallithea Springs" imgClass="aspect-[4/5] object-cover" figureClass="m-0" />
+      </div>
+      <div class="col-span-1 flex flex-col gap-3 md:gap-4">
+        <ArticleImage src={kallitheaSprings} alt="The Italian-inspired architecture of Kallithea Springs" caption="Italian-inspired architecture" imgClass="aspect-[4/5] object-cover" figureClass="m-0" />
+        <ArticleImage src={kallitheaBeachView} alt="The seaside setting and clear water at Kallithea Springs" caption="Crystal-clear waters" imgClass="aspect-[4/5] object-cover" figureClass="m-0" />
+      </div>
+    </div>
     <p>Originally known for its thermal baths, today the site is best known for its beautiful architecture, seaside setting, and crystal-clear waters. The combination of Italian-inspired buildings, stone pathways, and coastal views makes it one of the most photogenic locations on the island.</p>
 
     <h4 class="mb-3 mt-8 text-black">Spend the Afternoon at Anthony Quinn Bay</h4>
     <p>From Kallithea Springs, continue to Anthony Quinn Bay, one of the most famous beaches in Rhodes.</p>
+    <ArticleImage src={anthonyQuinnBay} alt="The turquoise water and rocky surroundings of Anthony Quinn Bay in Rhodes" caption="Anthony Quinn Bay" imgClass="aspect-[5/4] object-cover" />
     <p>Known for its turquoise water and dramatic rocky surroundings, it's easy to understand why this bay has become one of the island's most photographed locations. Seeing it from above gave me a completely different appreciation for its colours and shape. If you're visiting during summer, I would recommend arriving earlier in the day, as the beach tends to get busier later on.</p>
 
     <h4 class="mb-3 mt-8 text-black">Lunch at Kounna</h4>
     <p>If you're looking for somewhere to stop for lunch or a drink, Kounna is an easy recommendation.</p>
+    <div class="grid grid-cols-2 gap-3 md:gap-4">
+      <ArticleImage src={kounnaRestoBar} alt="Kounna beach resto-bar above Anthony Quinn Bay" caption="Kounna" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={kounnaCoffeeView} alt="Coffee with a coastline view at Kounna" caption="Coffee with a view over the coastline" imgClass="aspect-[4/5] object-cover" />
+    </div>
     <p>Perched above Anthony Quinn Bay, it offers beautiful views over the coastline and makes a great place to take a break between swims. Even if you only stop for a coffee, the setting alone makes it worth a visit.</p>
 
     <h4 class="mb-3 mt-8 text-black">Dinner at Myrovolos</h4>
     <p>For your final dinner in Rhodes, I would recommend Myrovolos.</p>
+    <div class="grid grid-cols-2 gap-3 md:gap-4">
+      <ArticleImage src={myrovolosRestaurant} alt="Myrovolos restaurant in Rhodes" caption="Myrovolos" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={myrovolosMezedopoleion} alt="Meze dishes at Myrovolos mezedopoleion in Rhodes" caption="A modern meze spread" imgClass="aspect-[4/5] object-cover" />
+    </div>
     <p>This modern meze restaurant was recommended to me by local friends from Rhodes, which is usually a good sign when choosing where to eat. My husband and I ordered several dishes to share and honestly couldn't pick a favourite. Every plate that arrived at the table was excellent.</p>
     <p>The atmosphere felt warm and welcoming, making it a lovely place to end your time on the island.</p>
   </div>
@@ -188,7 +230,6 @@ const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
     <div id="faq-1" class="scroll-mt-nav">
       <h4 class="mb-2 text-black">2. How to get around Rhodes?</h4>
       <p>I would recommend renting a car, as it gives you the flexibility to explore the island at your own pace and easily reach places such as Lindos, Kallithea Springs, and Anthony Quinn Bay.</p>
-      <p>You can compare rental options and book a car here: [your rental car link]</p>
     </div>
     <div id="faq-2" class="scroll-mt-nav">
       <h4 class="mb-2 text-black">3. Where should you stay in Rhodes?</h4>

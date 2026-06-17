@@ -4,7 +4,6 @@ import StickyArticleLayout from '@/components/articles/StickyArticleLayout.astro
 import BrugesGuideContent from '@/components/articles/BrugesGuide.astro';
 import { brugesNav } from '@/domains/articles/bruges-nav';
 import { getArticle } from '@/domains/articles/catalog';
-import { pageUrl } from '@/lib/site';
 
 const article = getArticle('bruges-guide')!;
 ---
@@ -14,7 +13,7 @@ const article = getArticle('bruges-guide')!;
     <StickyArticleLayout sections={brugesNav}>
       <Fragment slot="intro">
         <p class="meta text-neutral-500 mb-4">
-          <a href={pageUrl('belgium')} class="hover:underline">Belgium</a>
+          Published · 16 June 2026
         </p>
 
         <h1 class="article-title mb-6 md:mb-8 max-w-3xl text-neutral-900">
