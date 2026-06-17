@@ -1,49 +1,40 @@
 ---
 import PageShell from '@/components/layout/PageShell.astro';
-import SimpleArticleLayout from '@/components/articles/SimpleArticleLayout.astro';
-import { getArticle, articleHref } from '@/domains/articles/catalog';
-import { getHeroImage } from '@/lib/images';
+import StickyArticleLayout from '@/components/articles/StickyArticleLayout.astro';
+import RhodesGuideContent from '@/components/articles/RhodesGuide.astro';
+import { rhodesNav } from '@/domains/articles/rhodes-nav';
+import { getArticle } from '@/domains/articles/catalog';
+import { pageUrl } from '@/lib/site';
 
 const article = getArticle('rhodes-itinerary')!;
-const optimizedHeader = await getHeroImage(article.image);
 ---
 
-<PageShell title={article.title}>
-  <Fragment slot="head">
-    <link rel="preload" as="image" href={optimizedHeader.src} />
-  </Fragment>
+<PageShell title={article.seoTitle ?? article.title} description={article.seoDescription ?? article.lead}>
+  <main class="min-h-screen bg-white text-neutral-900 px-4 sm:px-6 md:px-8 lg:px-10 pb-16 pt-6 md:pb-20 md:pt-10">
+    <StickyArticleLayout sections={rhodesNav}>
+      <Fragment slot="intro">
+        <p class="meta text-neutral-500 mb-4">
+          <a href={pageUrl('greece')} class="hover:underline">Greece</a>
+        </p>
 
-  <SimpleArticleLayout
-    metaLabel={article.metaLabel}
-    title={article.title}
-    breadcrumbTitle={article.breadcrumbTitle}
-    breadcrumbHref={articleHref(article.slug)}
-    heroSrc={optimizedHeader.src}
-    lead={article.lead}
-  >
-    <h2 class="mb-3">Day 1 — Rhodes Old Town</h2>
-    <p class="prose-body text-neutral-700 mb-8">
-      Begin in the medieval Old Town, one of the best-preserved in Europe. Wander the cobbled lanes within the city walls, visit the Palace of the Grand Master and stop for lunch in a quiet courtyard taverna away from the main streets.
-    </p>
+        <h1 class="article-title mb-6 md:mb-8 max-w-3xl text-neutral-900">
+          Perfect Rhodes Itinerary: How to Spend 5 Days on the Island
+        </h1>
 
-    <h2 class="mb-3">Day 2 — Lindos & the East Coast</h2>
-    <p class="prose-body text-neutral-700 mb-8">
-      Drive south to Lindos, with its whitewashed village and acropolis overlooking the bay. Spend the afternoon swimming at St. Paul's Bay before a slow dinner with views over the rooftops.
-    </p>
+        <article class="max-w-3xl space-y-5 md:space-y-6">
+          <p class="prose-body text-neutral-700">
+            As the third-largest island in Greece, Rhodes offers far more than beautiful beaches. With its rich history, medieval streets, whitewashed alleys, and countless beaches around the island, it can be surprisingly difficult to decide what to prioritise — especially if it's your first visit.
+          </p>
+          <p class="prose-body text-neutral-700">
+            This itinerary is based on five full days in Rhodes and follows the exact route I took and would happily recommend to first-time visitors. It combines some of the island's most iconic sights with a few personal favourites, while leaving enough room to enjoy each place without feeling like you're constantly rushing from one attraction to the next.
+          </p>
+          <p class="prose-body text-neutral-700">
+            If you're planning your first trip to Rhodes, I hope this itinerary helps you make the most of your time on the island.
+          </p>
+        </article>
+      </Fragment>
 
-    <h2 class="mb-3">Day 3 — Beaches & Hidden Coves</h2>
-    <p class="prose-body text-neutral-700 mb-8">
-      A slower day along the coast, hopping between Tsambika, Anthony Quinn Bay and quieter coves further from the resorts. Pack a picnic or settle in at a beachside taverna for fresh fish.
-    </p>
-
-    <h2 class="mb-3">Day 4 — Symi Day Trip</h2>
-    <p class="prose-body text-neutral-700 mb-8">
-      Take the ferry to the neighbouring island of Symi, famous for its colourful neoclassical harbour. A half-day is enough to explore the waterfront, climb to the old town and swim in clear water before heading back.
-    </p>
-
-    <h2 class="mb-3">Day 5 — Local Food & Slow Departure</h2>
-    <p class="prose-body text-neutral-700 mb-10">
-      Save the last day for food — a morning at the local market, a long lunch of meze and a final swim. Rhodes rewards an unhurried pace, and the best meals are usually the simplest ones.
-    </p>
-  </SimpleArticleLayout>
+      <RhodesGuideContent />
+    </StickyArticleLayout>
+  </main>
 </PageShell>
