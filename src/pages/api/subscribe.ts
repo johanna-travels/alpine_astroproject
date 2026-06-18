@@ -1,4 +1,5 @@
-import { supabaseAdmin } from '@/lib/supabaseAdmin';
+import { getSupabaseAdmin } from '@/lib/supabaseAdmin';
+import { getServerEnv } from '@/lib/serverEnv';
 import { absoluteUrl } from '@/lib/site';
 import { Resend } from 'resend';
 import type { APIRoute } from 'astro';
@@ -6,8 +7,8 @@ import crypto from 'crypto';
 
 export const prerender = false;
 
-const resendApiKey = import.meta.env.RESEND_API_KEY;
-const resendFromEmail = import.meta.env.RESEND_FROM_EMAIL;
+const resendApiKey = getServerEnv('RESEND_API_KEY');
+const resendFromEmail = getServerEnv('RESEND_FROM_EMAIL');
 const resend = resendApiKey ? new Resend(resendApiKey) : null;
 
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -33,6 +34,7 @@ function checkRateLimit(ip: string): boolean {
 
 export const POST: APIRoute = async ({ request }) => {
   try {
+    const supabaseAdmin = getSupabaseAdmin();
     if (!supabaseAdmin) {
       return new Response(
         JSON.stringify({ error: 'Service unavailable' }),

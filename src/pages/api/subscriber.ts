@@ -1,10 +1,11 @@
-import { supabaseAdmin } from '@/lib/supabaseAdmin';
+import { getSupabaseAdmin } from '@/lib/supabaseAdmin';
 import { getSubscriberByToken } from '@/lib/subscribers';
 import type { APIRoute } from 'astro';
 
 export const prerender = false;
 
 export const GET: APIRoute = async ({ url }) => {
+  const supabaseAdmin = getSupabaseAdmin();
   if (!supabaseAdmin) {
     return new Response(JSON.stringify({ error: 'Service unavailable' }), {
       status: 503,

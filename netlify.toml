@@ -6,6 +6,7 @@
   NODE_VERSION = "22.12.0"
   SITE_URL = "https://voyaflair.com"
   BASE_PATH = "/"
+  SECRETS_SCAN_OMIT_KEYS = "SUPABASE_SERVICE_ROLE_KEY,RESEND_API_KEY"
 
 [[redirects]]
   from = "/sitemap.xml"
