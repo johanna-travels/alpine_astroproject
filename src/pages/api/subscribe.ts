@@ -72,16 +72,7 @@ export const POST: APIRoute = async ({ request }) => {
 
     if (existingError) {
       console.error('Supabase lookup error:', existingError);
-      return new Response(
-        JSON.stringify({
-          error: 'Failed to subscribe. Please try again.',
-          detail: existingError.message,
-        }),
-        { status: 500, headers: { 'Content-Type': 'application/json' } }
-      );
-    }
-
-    if (existingSubscriber) {
+    } else if (existingSubscriber) {
       const message =
         existingSubscriber.status === 'unsubscribed'
           ? 'This email was previously unsubscribed. Please contact us to re-subscribe.'
@@ -114,6 +105,7 @@ export const POST: APIRoute = async ({ request }) => {
         JSON.stringify({
           error: 'Failed to subscribe. Please try again.',
           detail: error.message,
+          stage: 'insert',
         }),
         { status: 500, headers: { 'Content-Type': 'application/json' } }
       );
