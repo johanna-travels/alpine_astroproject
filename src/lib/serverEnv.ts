@@ -5,12 +5,14 @@ import {
   SUPABASE_URL,
 } from 'astro:env/server';
 
-const serverEnv = {
+const astroEnv = {
   SUPABASE_URL,
   SUPABASE_SERVICE_ROLE_KEY,
   RESEND_API_KEY,
   RESEND_FROM_EMAIL,
 } as const;
+
+export type ServerEnvName = keyof typeof astroEnv;
 
 function normalize(value: string | undefined): string | undefined {
   if (!value) return undefined;
@@ -18,14 +20,22 @@ function normalize(value: string | undefined): string | undefined {
   return trimmed || undefined;
 }
 
-/** Read server secrets at runtime (Astro env + process.env fallback for local dev). */
-export function getServerEnv(name: keyof typeof serverEnv): string | undefined {
-  const fromAstro = normalize(serverEnv[name]);
+/**
+ * Read server secrets at runtime.
+ * On Netlify, prefer process.env so Functions get live env vars (not build-time inlines).
+ */
+export function getServerEnv(name: ServerEnvName): string | undefined {
+  if (!import.meta.env.DEV) {
+    const fromProcess = normalize(process.env[name]);
+    if (fromProcess) return fromProcess;
+  }
+
+  const fromAstro = normalize(astroEnv[name]);
   if (fromAstro) return fromAstro;
 
   if (import.meta.env.DEV) {
     return normalize((import.meta.env as Record<string, string | undefined>)[name] ?? process.env[name]);
   }
 
-  return normalize(process.env[name]);
+  return undefined;
 }

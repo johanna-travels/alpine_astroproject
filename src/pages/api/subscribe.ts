@@ -101,11 +101,23 @@ export const POST: APIRoute = async ({ request }) => {
           headers: { 'Content-Type': 'application/json' },
         });
       }
+
+      let host: string | null = null;
+      const supabaseUrl = getServerEnv('SUPABASE_URL');
+      if (supabaseUrl) {
+        try {
+          host = new URL(supabaseUrl.replace(/\/+$/, '')).hostname;
+        } catch {
+          host = 'invalid-url';
+        }
+      }
+
       return new Response(
         JSON.stringify({
           error: 'Failed to subscribe. Please try again.',
           detail: error.message,
           stage: 'insert',
+          host,
         }),
         { status: 500, headers: { 'Content-Type': 'application/json' } }
       );
