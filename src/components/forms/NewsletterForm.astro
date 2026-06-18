@@ -143,9 +143,15 @@ const apiPath = apiUrl('subscribe');
           const result = await response.json();
 
           if (response.ok) {
-            setMessage(result.message || "Successfully subscribed!", "success");
-            submitBtn.textContent = "Subscribed!";
-            form.reset();
+            const type = result.emailSent === false ? "error" : "success";
+            setMessage(
+              result.message || (result.emailSent === false
+                ? "Subscribed, but confirmation email could not be sent."
+                : "Successfully subscribed!"),
+              type,
+            );
+            submitBtn.textContent = result.emailSent === false ? "Subscribe" : "Subscribed!";
+            if (result.emailSent !== false) form.reset();
             updateSubmitState();
           } else {
             setMessage(result.error || "Something went wrong. Please try again.", "error");
