@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
+import netlify from '@astrojs/netlify';
 
 import sentry from '@sentry/astro';
 
@@ -16,6 +17,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 export default defineConfig({
   output: 'static',
+  adapter: netlify(),
   site: process.env.SITE_URL || 'https://voyaflair.com',
   base: process.env.BASE_PATH ?? '/',
   trailingSlash: 'always',

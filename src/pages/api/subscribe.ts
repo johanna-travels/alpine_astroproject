@@ -1,16 +1,17 @@
-import { supabase } from '@/lib/supabase';
+import { supabaseAdmin } from '@/lib/supabaseAdmin';
 import { absoluteUrl } from '@/lib/site';
 import { Resend } from 'resend';
 import type { APIRoute } from 'astro';
 import crypto from 'crypto';
 
+export const prerender = false;
+
 const resendApiKey = import.meta.env.RESEND_API_KEY;
 const resendFromEmail = import.meta.env.RESEND_FROM_EMAIL;
 const resend = resendApiKey ? new Resend(resendApiKey) : null;
 
-// Simple in-memory rate limiter (for production, use Redis or similar)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
-const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
+const RATE_LIMIT_WINDOW = 60 * 1000;
 const MAX_REQUESTS = 5;
 
 function checkRateLimit(ip: string): boolean {
@@ -32,7 +33,7 @@ function checkRateLimit(ip: string): boolean {
 
 export const POST: APIRoute = async ({ request }) => {
   try {
-    if (!supabase) {
+    if (!supabaseAdmin) {
       return new Response(
         JSON.stringify({ error: 'Service unavailable' }),
         { status: 503, headers: { 'Content-Type': 'application/json' } }
@@ -40,7 +41,7 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const ip = request.headers.get('x-forwarded-for') || 'unknown';
-    
+
     if (!checkRateLimit(ip)) {
       return new Response(
         JSON.stringify({ error: 'Too many requests. Please try again later.' }),
@@ -50,7 +51,6 @@ export const POST: APIRoute = async ({ request }) => {
 
     const { email, consent } = await request.json();
 
-    // Validation
     if (!email || !consent) {
       return new Response(
         JSON.stringify({ error: 'Email and consent are required' }),
@@ -66,30 +66,31 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // Check if email already exists
-    const { data: existingSubscriber } = await supabase
+    const { data: existingSubscriber } = await supabaseAdmin
       .from('subscribers')
-      .select('id')
+      .select('id, status')
       .eq('email', email)
       .single();
 
     if (existingSubscriber) {
-      return new Response(
-        JSON.stringify({ error: 'Email already subscribed' }),
-        { status: 409, headers: { 'Content-Type': 'application/json' } }
-      );
+      const message =
+        existingSubscriber.status === 'unsubscribed'
+          ? 'This email was previously unsubscribed. Please contact us to re-subscribe.'
+          : 'Email already subscribed';
+      return new Response(JSON.stringify({ error: message }), {
+        status: 409,
+        headers: { 'Content-Type': 'application/json' },
+      });
     }
 
-    // Generate confirmation token
     const confirmationToken = crypto.randomBytes(32).toString('hex');
 
-    // Insert new subscriber
-    const { data, error } = await supabase
+    const { data, error } = await supabaseAdmin
       .from('subscribers')
       .insert({
         email,
         consent: true,
-        status: 'pending', // pending double opt-in
+        status: 'pending',
         confirmation_token: confirmationToken,
         subscribed_at: new Date().toISOString(),
       })
@@ -104,10 +105,9 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // Send confirmation email via Resend
     if (resend && resendFromEmail) {
       try {
-        const confirmUrl = `${absoluteUrl('preferences')}?token=${confirmationToken}`;
+        const confirmUrl = `${absoluteUrl('api/confirm')}?token=${confirmationToken}`;
 
         await resend.emails.send({
           from: resendFromEmail,
@@ -126,23 +126,21 @@ export const POST: APIRoute = async ({ request }) => {
         });
       } catch (emailError) {
         console.error('Email sending error:', emailError);
-        // Don't fail the subscription if email fails, just log it
       }
     }
 
     return new Response(
-      JSON.stringify({ 
+      JSON.stringify({
         message: 'Successfully subscribed! Please check your email for confirmation.',
-        subscriberId: data.id 
+        subscriberId: data.id,
       }),
       { status: 201, headers: { 'Content-Type': 'application/json' } }
     );
-
   } catch (error) {
     console.error('Subscription error:', error);
-    return new Response(
-      JSON.stringify({ error: 'Internal server error' }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ error: 'Internal server error' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 };
