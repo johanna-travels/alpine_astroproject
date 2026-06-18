@@ -99,3 +99,39 @@ export async function getActiveSubscribersForNewsletter(
     })
     .filter((row): row is NewsletterRecipient => Boolean(row.email && row.confirmation_token));
 }
+
+export type SubscriberStats = {
+  total: number;
+  pending: number;
+  active: number;
+  unsubscribed: number;
+  newsletterEligible: number;
+  activeMissingToken: number;
+  activeUpdatesDisabled: number;
+};
+
+export async function getSubscriberStats(client: SupabaseClient): Promise<SubscriberStats | null> {
+  const { data, error } = await client
+    .from('subscribers')
+    .select('status, confirmation_token, preferences');
+
+  if (error || !data) return null;
+
+  const activeRows = data.filter((row) => row.status === 'active');
+
+  return {
+    total: data.length,
+    pending: data.filter((row) => row.status === 'pending').length,
+    active: activeRows.length,
+    unsubscribed: data.filter((row) => row.status === 'unsubscribed').length,
+    newsletterEligible: activeRows.filter((row) => {
+      const preferences = row.preferences as SubscriberPreferences | null;
+      return preferences?.updates !== false && Boolean(row.confirmation_token);
+    }).length,
+    activeMissingToken: activeRows.filter((row) => !row.confirmation_token).length,
+    activeUpdatesDisabled: activeRows.filter((row) => {
+      const preferences = row.preferences as SubscriberPreferences | null;
+      return preferences?.updates === false;
+    }).length,
+  };
+}

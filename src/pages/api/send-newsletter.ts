@@ -2,7 +2,7 @@ import { articles, getArticle, articleHref, type ArticleSlug } from '@/domains/a
 import { buildArticleEmailContent, buildOutgoingNewsletterEmail } from '@/lib/newsletter';
 import { getServerEnv } from '@/lib/serverEnv';
 import { getSupabaseAdmin } from '@/lib/supabaseAdmin';
-import { getActiveSubscribersForNewsletter } from '@/lib/subscribers';
+import { getActiveSubscribersForNewsletter, getSubscriberStats } from '@/lib/subscribers';
 import { absoluteUrl } from '@/lib/site';
 import { Resend } from 'resend';
 import type { APIRoute } from 'astro';
@@ -44,6 +44,9 @@ function articleImageUrl(article: NonNullable<ReturnType<typeof getArticle>>): s
 export const GET: APIRoute = async ({ request }) => {
   if (!isAuthorized(request)) return unauthorized();
 
+  const supabaseAdmin = getSupabaseAdmin();
+  const subscriberStats = supabaseAdmin ? await getSubscriberStats(supabaseAdmin) : null;
+
   return new Response(
     JSON.stringify({
       articles: articles.map((article) => ({
@@ -52,6 +55,7 @@ export const GET: APIRoute = async ({ request }) => {
         category: article.category,
         url: new URL(articleHref(article.slug), absoluteUrl()).href,
       })),
+      subscribers: subscriberStats,
     }),
     { status: 200, headers: { 'Content-Type': 'application/json' } },
   );
@@ -99,6 +103,7 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const recipients = await getActiveSubscribersForNewsletter(supabaseAdmin);
+    const subscriberStats = await getSubscriberStats(supabaseAdmin);
     const articleUrl = new URL(articleHref(article.slug as ArticleSlug), absoluteUrl()).href;
     const emailContent = buildArticleEmailContent(article, articleUrl, articleImageUrl(article));
 
@@ -108,6 +113,8 @@ export const POST: APIRoute = async ({ request }) => {
           message: 'No active subscribers with travel updates enabled.',
           article: article.slug,
           sent: 0,
+          recipients: 0,
+          subscribers: subscriberStats,
           dryRun,
         }),
         { status: 200, headers: { 'Content-Type': 'application/json' } },
@@ -121,6 +128,7 @@ export const POST: APIRoute = async ({ request }) => {
           article: article.slug,
           subject: emailContent.title,
           recipients: recipients.length,
+          subscribers: subscriberStats,
           previewUrl: articleUrl,
           dryRun: true,
         }),
