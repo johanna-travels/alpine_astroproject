@@ -7,10 +7,6 @@ import crypto from 'crypto';
 
 export const prerender = false;
 
-const resendApiKey = getServerEnv('RESEND_API_KEY');
-const resendFromEmail = getServerEnv('RESEND_FROM_EMAIL');
-const resend = resendApiKey ? new Resend(resendApiKey) : null;
-
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
 const RATE_LIMIT_WINDOW = 60 * 1000;
 const MAX_REQUESTS = 5;
@@ -68,11 +64,19 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    const { data: existingSubscriber } = await supabaseAdmin
+    const { data: existingSubscriber, error: existingError } = await supabaseAdmin
       .from('subscribers')
       .select('id, status')
       .eq('email', email)
-      .single();
+      .maybeSingle();
+
+    if (existingError) {
+      console.error('Supabase lookup error:', existingError);
+      return new Response(
+        JSON.stringify({ error: 'Failed to subscribe. Please try again.' }),
+        { status: 500, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
 
     if (existingSubscriber) {
       const message =
@@ -96,16 +100,39 @@ export const POST: APIRoute = async ({ request }) => {
         confirmation_token: confirmationToken,
         subscribed_at: new Date().toISOString(),
       })
-      .select()
-      .single();
+      .select('id')
+      .maybeSingle();
 
     if (error) {
-      console.error('Supabase error:', error);
+      console.error('Supabase insert error:', error);
+      if (error.code === '23505') {
+        return new Response(JSON.stringify({ error: 'Email already subscribed' }), {
+          status: 409,
+          headers: { 'Content-Type': 'application/json' },
+        });
+      }
       return new Response(
-        JSON.stringify({ error: 'Failed to subscribe. Please try again.' }),
+        JSON.stringify({
+          error: 'Failed to subscribe. Please try again.',
+          detail: error.message,
+        }),
         { status: 500, headers: { 'Content-Type': 'application/json' } }
       );
     }
+
+    if (!data) {
+      return new Response(
+        JSON.stringify({
+          error: 'Failed to subscribe. Please try again.',
+          detail: 'Subscriber row was not created.',
+        }),
+        { status: 500, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
+    const resendApiKey = getServerEnv('RESEND_API_KEY');
+    const resendFromEmail = getServerEnv('RESEND_FROM_EMAIL');
+    const resend = resendApiKey ? new Resend(resendApiKey) : null;
 
     if (resend && resendFromEmail) {
       try {

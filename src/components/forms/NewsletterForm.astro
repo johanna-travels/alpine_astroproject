@@ -149,6 +149,9 @@ const apiPath = apiUrl('subscribe');
             updateSubmitState();
           } else {
             setMessage(result.error || "Something went wrong. Please try again.", "error");
+            if (result.detail) {
+              console.error("Subscribe API detail:", result.detail);
+            }
             submitBtn.disabled = false;
             submitBtn.textContent = "Subscribe";
             updateSubmitState();
