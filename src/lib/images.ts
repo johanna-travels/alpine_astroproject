@@ -30,3 +30,7 @@ export async function buildResponsiveSrcSet(
   );
   return variants.map((variant, index) => `${variant.src} ${widths[index]}w`).join(', ');
 }
+
+export async function buildArticleLcpSrcSet(src: ImageMetadata) {
+  return buildResponsiveSrcSet(src, articleImageWidths);
+}

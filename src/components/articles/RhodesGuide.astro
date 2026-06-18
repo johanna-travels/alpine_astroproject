@@ -1,5 +1,5 @@
 ---
-import ArticleImage from "@/components/ui/ArticleImage.astro";
+import ArticleImage from '@/components/ui/ArticleImage.astro';
 
 import oldTownCobblestone from "@/assets/articles/rhodos-images/rhodes-old-town-cobblestone-street.webp";
 import oldTownStreetScene from "@/assets/articles/rhodos-images/rhodes-old-town-street-scene.webp";
@@ -29,7 +29,10 @@ import kounnaCoffeeView from "@/assets/articles/rhodos-images/rhodes-kounna-beac
 import myrovolosRestaurant from "@/assets/articles/rhodos-images/rhodes-myrovolos-restaurant.webp";
 import myrovolosMezedopoleion from "@/assets/articles/rhodos-images/rhodes-myrovolos-restaurant-mezedopoleion.webp";
 
-const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0";
+const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
+const twoColGrid = 'grid grid-cols-2 gap-3 md:gap-4';
+const symiGrid = 'my-5 grid grid-cols-1 items-start gap-3 sm:grid-cols-5 md:my-8 md:gap-4';
+const kallitheaGrid = 'my-5 grid grid-cols-1 items-start gap-3 sm:grid-cols-3 md:my-8 md:gap-4';
 ---
 
 <section id="section-0" class="scroll-mt-nav">
@@ -41,7 +44,7 @@ const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
     <p>I would recommend starting your first day in Rhodes by exploring Rhodes Old Town, one of the best-preserved medieval towns in Europe and a UNESCO World Heritage Site.</p>
     <p>What stood out most to me wasn't a specific attraction, but the atmosphere of the Old Town itself. Walking through the cobblestone streets, passing historic buildings, impressive stone gates, and small local shops genuinely felt like stepping back in time. Many of the buildings, signs, and hotels still reflect the town's medieval heritage, which gives the entire area a character unlike anywhere else on the island.</p>
     <p>I personally started my walk from Saint John's Gate, one of the entrances to the Old Town, before slowly making my way through the medieval streets. Take your time wandering through the side streets and seeing where they lead, and make sure not to miss the Street of the Knights, one of the most famous streets in Rhodes, as well as the area around the Palace of the Grand Master, which remains one of the town's most impressive landmarks.</p>
-    <div class="grid grid-cols-2 gap-3 md:gap-4">
+    <div class={twoColGrid}>
       <ArticleImage src={oldTownCobblestone} alt="Cobblestone street in Rhodes Old Town" caption="Rhodes Old Town — a UNESCO-listed medieval centre" imgClass="aspect-[4/5] object-cover" priority />
       <ArticleImage src={oldTownStreetScene} alt="Street scene in the medieval streets of Rhodes Old Town" caption="Wandering the medieval streets" imgClass="aspect-[4/5] object-cover" />
     </div>
@@ -54,7 +57,7 @@ const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
     <p>After a morning of exploring, head to Koukos for lunch.</p>
     <p>This quickly became one of my favourite places to eat in Rhodes. The menu offers everything from breakfast and brunch to lunch and dinner, making it a great option at almost any time of day. I personally stopped by for both breakfast and lunch on different occasions and had a great experience each time.</p>
     <p>The setting feels relaxed and welcoming, making it the perfect place to take a break before continuing your day.</p>
-    <div class="grid grid-cols-2 gap-3 md:gap-4">
+    <div class={twoColGrid}>
       <ArticleImage src={koukosRestaurant} alt="Koukos restaurant in Rhodes" caption="Koukos" imgClass="aspect-[4/5] object-cover" />
       <ArticleImage src={koukosBreakfast} alt="Breakfast served at Koukos in Rhodes" caption="A relaxed lunch stop" imgClass="aspect-[4/5] object-cover" />
     </div>
@@ -91,11 +94,11 @@ const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
     <h4 class="mb-3 mt-8 text-black">Wander Through the Streets of Symi</h4>
     <p>Before heading anywhere specific, spend some time simply exploring the harbour area and wandering through the small streets.</p>
     <p>One of the things I loved most about Symi was how photogenic the entire island felt. Around almost every corner, you'll find colourful buildings, traditional architecture, and beautiful sea views that make you want to stop and take another photo. Rather than rushing straight to the beach, I would recommend allowing yourself a little time to explore first and soak up the atmosphere.</p>
-    <div class="my-5 grid grid-cols-5 items-start gap-3 md:my-8 md:gap-4">
-      <div class="col-span-3">
+    <div class={symiGrid}>
+      <div class="sm:col-span-3">
         <ArticleImage src={symiArchitecture} alt="Traditional architecture in Symi Town" caption="Traditional Symi architecture" figureClass="m-0" />
       </div>
-      <div class="col-span-2 flex flex-col gap-3 md:gap-4">
+      <div class="flex flex-col gap-3 sm:col-span-2 md:gap-4">
         <ArticleImage src={symiShopfront} alt="A colourful shopfront in Symi Town" caption="Colourful shopfronts around every corner in Symi" figureClass="m-0" />
         <ArticleImage src={symiStreetCafes} alt="Street cafes in Symi Town" caption="Cafes lining the streets of Symi" figureClass="m-0" />
       </div>
@@ -109,7 +112,7 @@ const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
     <p>After exploring Symi Town, spend the rest of the afternoon by the sea.</p>
     <p>I personally walked to Yiala Beach, about 30 minutes from the harbour, and it ended up being one of my favourite moments of the day. The water was incredibly clear, there were very few people around, and it felt like the perfect place to slow down after exploring the town.</p>
     <p>If Yiala feels a little too far, don't worry about reaching a specific beach. One of the things I loved about Symi was that there are plenty of beautiful swimming spots along the coastline, making it easy to stop wherever catches your eye and simply enjoy the afternoon.</p>
-    <div class="grid grid-cols-2 gap-3 md:gap-4">
+    <div class={twoColGrid}>
       <ArticleImage src={symiYialaBeach} alt="The clear water at Yiala Beach in Symi" caption="Yiala Beach — clear water and a quiet afternoon" imgClass="aspect-[4/5] object-cover" />
       <ArticleImage src={symiYialaBeach2} alt="The coastline at Yiala Beach in Symi" caption="Plenty of quiet swimming spots along the coast" imgClass="aspect-[4/5] object-cover" />
     </div>
@@ -127,7 +130,7 @@ const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
     <h4 class="mb-3 text-black">Explore Lindos Village</h4>
     <p>I would highly recommend spending at least one night in Lindos rather than visiting as a day trip. Out of all the places I visited in Rhodes, Lindos was probably the one that gave me the strongest Greek island feeling, with its white houses, narrow streets, and beautiful views around almost every corner.</p>
     <p>Spend the afternoon wandering through the whitewashed streets, exploring the small alleyways, and discovering hidden corners along the way. Once many of the day visitors leave, the village takes on a much calmer atmosphere, making it even more enjoyable to explore.</p>
-    <div class="grid grid-cols-2 gap-3 md:gap-4">
+    <div class={twoColGrid}>
       <ArticleImage src={lindosTraditionalStreet} alt="A traditional street in Lindos Village" caption="Traditional streets of Lindos" imgClass="aspect-[4/5] object-cover" />
       <ArticleImage src={lindosWhitewashedStreet} alt="A whitewashed street in Lindos Village" caption="Whitewashed alleyways and hidden corners" imgClass="aspect-[4/5] object-cover" />
     </div>
@@ -136,7 +139,7 @@ const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
     <h4 class="mb-3 mt-8 text-black">Visit St. Paul's Bay</h4>
     <p>A short walk from the village brings you to St. Paul's Bay, one of the most beautiful beaches in Rhodes.</p>
     <p>The combination of crystal-clear water, dramatic cliffs, and views towards the Acropolis creates one of the most photogenic spots on the island. Whether you decide to swim or simply enjoy the scenery, it's a place worth slowing down and appreciating rather than rushing through.</p>
-    <div class="grid grid-cols-2 gap-3 md:gap-4">
+    <div class={twoColGrid}>
       <ArticleImage src={stPaulsBay} alt="St. Paul's Bay in Lindos with views towards the Acropolis" caption="St. Paul's Bay" />
       <ArticleImage src={stPaulsBayBeach} alt="The beach at St. Paul's Bay in Lindos" caption="Crystal-clear water at St. Paul's Bay" />
     </div>
@@ -183,11 +186,11 @@ const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
   <div class={prose}>
     <h4 class="mb-3 text-black">Visit Kallithea Springs</h4>
     <p>Start your final day in Rhodes at Kallithea Springs.</p>
-    <div class="my-5 grid grid-cols-3 items-start gap-3 md:my-8 md:gap-4">
-      <div class="col-span-2">
+    <div class={kallitheaGrid}>
+      <div class="sm:col-span-2">
         <ArticleImage src={kallitheaEntrance} alt="The entrance to Kallithea Springs in Rhodes" caption="Kallithea Springs" imgClass="aspect-[4/5] object-cover" figureClass="m-0" />
       </div>
-      <div class="col-span-1 flex flex-col gap-3 md:gap-4">
+      <div class="flex flex-col gap-3 sm:col-span-1 md:gap-4">
         <ArticleImage src={kallitheaSprings} alt="The Italian-inspired architecture of Kallithea Springs" caption="Italian-inspired architecture" imgClass="aspect-[4/5] object-cover" figureClass="m-0" />
         <ArticleImage src={kallitheaBeachView} alt="The seaside setting and clear water at Kallithea Springs" caption="Crystal-clear waters" imgClass="aspect-[4/5] object-cover" figureClass="m-0" />
       </div>
@@ -201,7 +204,7 @@ const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
 
     <h4 class="mb-3 mt-8 text-black">Lunch at Kounna</h4>
     <p>If you're looking for somewhere to stop for lunch or a drink, Kounna is an easy recommendation.</p>
-    <div class="grid grid-cols-2 gap-3 md:gap-4">
+    <div class={twoColGrid}>
       <ArticleImage src={kounnaRestoBar} alt="Kounna beach resto-bar above Anthony Quinn Bay" caption="Kounna" imgClass="aspect-[4/5] object-cover" />
       <ArticleImage src={kounnaCoffeeView} alt="Coffee with a coastline view at Kounna" caption="Coffee with a view over the coastline" imgClass="aspect-[4/5] object-cover" />
     </div>
@@ -209,7 +212,7 @@ const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
 
     <h4 class="mb-3 mt-8 text-black">Dinner at Myrovolos</h4>
     <p>For your final dinner in Rhodes, I would recommend Myrovolos.</p>
-    <div class="grid grid-cols-2 gap-3 md:gap-4">
+    <div class={twoColGrid}>
       <ArticleImage src={myrovolosRestaurant} alt="Myrovolos restaurant in Rhodes" caption="Myrovolos" imgClass="aspect-[4/5] object-cover" />
       <ArticleImage src={myrovolosMezedopoleion} alt="Meze dishes at Myrovolos mezedopoleion in Rhodes" caption="A modern meze spread" imgClass="aspect-[4/5] object-cover" />
     </div>
@@ -218,7 +221,7 @@ const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
   </div>
 </section>
 
-<section id="section-faq" class="scroll-mt-nav">
+<section id="section-5" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
     <h3>FAQ</h3>
   </div>
@@ -251,7 +254,7 @@ const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
   </div>
 </section>
 
-<section id="section-before" class="scroll-mt-nav">
+<section id="section-6" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
     <h3>Final Thoughts</h3>
   </div>

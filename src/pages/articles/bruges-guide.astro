@@ -1,42 +1,12 @@
 ---
-import PageShell from '@/components/layout/PageShell.astro';
-import StickyArticleLayout from '@/components/articles/StickyArticleLayout.astro';
-import BrugesGuideContent from '@/components/articles/BrugesGuide.astro';
+import ArticlePage from '@/components/articles/ArticlePage.astro';
+import BrugesGuide from '@/components/articles/BrugesGuide.astro';
 import { brugesNav } from '@/domains/articles/bruges-nav';
 import { getArticle } from '@/domains/articles/catalog';
 
 const article = getArticle('bruges-guide')!;
 ---
 
-<PageShell title={article.seoTitle} description={article.seoDescription}>
-  <main class="min-h-screen bg-white text-neutral-900 px-4 sm:px-6 md:px-8 lg:px-10 pb-16 pt-6 md:pb-20 md:pt-10">
-    <StickyArticleLayout sections={brugesNav}>
-      <Fragment slot="intro">
-        <p class="meta text-neutral-500 mb-4">
-          Published · 16 June 2026
-        </p>
-
-        <h1 class="article-title mb-6 md:mb-8 max-w-3xl text-neutral-900">
-          {article.title}
-        </h1>
-
-        <article class="max-w-3xl space-y-5 md:space-y-6">
-          <p class="prose-body text-neutral-700">
-            I still remember walking along the cobblestone streets with my suitcase in hand, completely distracted by how beautiful everything felt.
-          </p>
-          <p class="prose-body text-neutral-700">
-            I visited Bruges last winter for my birthday, and I honestly couldn't have picked a better time. The Christmas markets were on, the city had that festive winter atmosphere, and the whole experience felt even more special because of it.
-          </p>
-          <p class="prose-body text-neutral-700">
-            The lights, the canals, the cold air, and those moments of stopping for a hot Belgian chocolate made everything feel incredibly cozy.
-          </p>
-          <p class="prose-body text-neutral-700">
-            In this article, though, I'm not going to focus on the winter or Christmas side of Bruges. Instead, I'm sharing my top 10 things to do in the city — my favorite cafés, chocolate spots, scenic walks, and places that stayed with me long after I left.
-          </p>
-        </article>
-      </Fragment>
-
-      <BrugesGuideContent />
-    </StickyArticleLayout>
-  </main>
-</PageShell>
+<ArticlePage article={article} sections={brugesNav}>
+  <BrugesGuide />
+</ArticlePage>

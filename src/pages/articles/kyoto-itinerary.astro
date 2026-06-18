@@ -1,42 +1,12 @@
 ---
-import PageShell from '@/components/layout/PageShell.astro';
-import SimpleArticleLayout from '@/components/articles/SimpleArticleLayout.astro';
-import { getArticle, articleHref } from '@/domains/articles/catalog';
+import ArticlePage from '@/components/articles/ArticlePage.astro';
+import KyotoItinerary from '@/components/articles/KyotoItinerary.astro';
+import { kyotoNav } from '@/domains/articles/kyoto-nav';
+import { getArticle } from '@/domains/articles/catalog';
 
 const article = getArticle('kyoto-itinerary')!;
 ---
 
-<PageShell title={article.title}>
-  <SimpleArticleLayout
-    metaLabel={article.metaLabel}
-    title={article.title}
-    breadcrumbTitle={article.breadcrumbTitle}
-    breadcrumbHref={articleHref(article.slug)}
-    lead={article.lead}
-  >
-    <h2 class="mb-3">Day 1 — Eastern Kyoto & Higashiyama</h2>
-    <p class="prose-body text-neutral-700 mb-8">
-      Start in the historic Higashiyama district, walking the preserved streets toward Kiyomizu-dera. The early hours are calmest, with soft light over the wooden terraces and fewer crowds along the slopes of Sannenzaka and Ninenzaka.
-    </p>
-
-    <h2 class="mb-3">Day 2 — Arashiyama & Bamboo Grove</h2>
-    <p class="prose-body text-neutral-700 mb-8">
-      Head west to Arashiyama for the bamboo grove and the Tenryu-ji gardens. Cross the Togetsukyo bridge and spend the afternoon along the river, where the pace slows and the surrounding hills frame the town.
-    </p>
-
-    <h2 class="mb-3">Day 3 — Fushimi Inari & Southern Kyoto</h2>
-    <p class="prose-body text-neutral-700 mb-8">
-      Climb through the thousands of vermilion torii gates at Fushimi Inari early in the morning. The full loop takes a couple of hours and rewards you with quiet shrines and views over the city the higher you go.
-    </p>
-
-    <h2 class="mb-3">Day 4 — Gion & Traditional Kyoto</h2>
-    <p class="prose-body text-neutral-700 mb-8">
-      Spend the day in Gion, Kyoto's geisha district, with its tea houses and lantern-lit lanes. Visit Yasaka Shrine and end the evening along the Kamo River as the restaurants and bars come to life.
-    </p>
-
-    <h2 class="mb-3">Day 5 — Golden Pavilion & Departure</h2>
-    <p class="prose-body text-neutral-700 mb-10">
-      Finish with Kinkaku-ji, the Golden Pavilion, reflected in its surrounding pond. A calm, fitting close before heading onward, with time for one last café stop and a slow walk through the gardens.
-    </p>
-  </SimpleArticleLayout>
-</PageShell>
+<ArticlePage article={article} sections={kyotoNav}>
+  <KyotoItinerary />
+</ArticlePage>

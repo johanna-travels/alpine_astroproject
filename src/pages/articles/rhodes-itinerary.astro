@@ -1,59 +1,14 @@
 ---
-import { getImage } from 'astro:assets';
-import PageShell from '@/components/layout/PageShell.astro';
-import StickyArticleLayout from '@/components/articles/StickyArticleLayout.astro';
-import RhodesGuideContent from '@/components/articles/RhodesGuide.astro';
+import ArticlePage from '@/components/articles/ArticlePage.astro';
+import RhodesGuide from '@/components/articles/RhodesGuide.astro';
 import { rhodesNav } from '@/domains/articles/rhodes-nav';
 import { getArticle } from '@/domains/articles/catalog';
-import { articleImageSizes, articleImageWidths } from '@/lib/images';
-import oldTownCobblestone from '@/assets/articles/rhodos-images/rhodes-old-town-cobblestone-street.webp';
+import { buildArticleLcpSrcSet } from '@/lib/images';
 
 const article = getArticle('rhodes-itinerary')!;
-
-const lcpImageVariants = await Promise.all(
-  articleImageWidths.map((width) =>
-    getImage({ src: oldTownCobblestone, width, format: 'webp', quality: 75 })
-  )
-);
-const lcpImageSrcSet = lcpImageVariants
-  .map((variant, index) => `${variant.src} ${articleImageWidths[index]}w`)
-  .join(', ');
+const lcpImageSrcSet = article.lcpImage ? await buildArticleLcpSrcSet(article.lcpImage) : undefined;
 ---
 
-<PageShell title={article.seoTitle ?? article.title} description={article.seoDescription ?? article.lead}>
-  <Fragment slot="head">
-    <link
-      rel="preload"
-      as="image"
-      imagesrcset={lcpImageSrcSet}
-      imagesizes={articleImageSizes}
-    />
-  </Fragment>
-  <main class="min-h-screen bg-white text-neutral-900 px-4 sm:px-6 md:px-8 lg:px-10 pb-16 pt-6 md:pb-20 md:pt-10">
-    <StickyArticleLayout sections={rhodesNav}>
-      <Fragment slot="intro">
-        <p class="meta text-neutral-500 mb-4">
-          Published · 17 June 2026
-        </p>
-
-        <h1 class="article-title mb-6 md:mb-8 max-w-3xl text-neutral-900">
-          Perfect Rhodes Itinerary: How to Spend 5 Days on the Island
-        </h1>
-
-        <article class="max-w-3xl space-y-5 md:space-y-6">
-          <p class="prose-body text-neutral-700">
-            As the third-largest island in Greece, Rhodes offers far more than beautiful beaches. With its rich history, medieval streets, whitewashed alleys, and countless beaches around the island, it can be surprisingly difficult to decide what to prioritise — especially if it's your first visit.
-          </p>
-          <p class="prose-body text-neutral-700">
-            This itinerary is based on five full days in Rhodes and follows the exact route I took and would happily recommend to first-time visitors. It combines some of the island's most iconic sights with a few personal favourites, while leaving enough room to enjoy each place without feeling like you're constantly rushing from one attraction to the next.
-          </p>
-          <p class="prose-body text-neutral-700">
-            If you're planning your first trip to Rhodes, I hope this itinerary helps you make the most of your time on the island.
-          </p>
-        </article>
-      </Fragment>
-
-      <RhodesGuideContent />
-    </StickyArticleLayout>
-  </main>
-</PageShell>
+<ArticlePage article={article} sections={rhodesNav} lcpImageSrcSet={lcpImageSrcSet}>
+  <RhodesGuide />
+</ArticlePage>

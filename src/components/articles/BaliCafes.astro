@@ -1,0 +1,159 @@
+---
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+
+import brunchClub from '@/assets/articles/bali/bali-brunch-club-pererenan.webp';
+import brunchClubInterior from '@/assets/articles/bali/bali-restaurant-plant-interior-brunch-club.webp';
+import brunchClubPancakes from '@/assets/articles/bali/brunch-club-pererenan-fluffy-pancakes.webp';
+import blendCafe from '@/assets/articles/bali/bali-ubud-blend-cafe.webp';
+import kyndCafe from '@/assets/articles/bali/bali-kynd-comunity-cafe.webp';
+import milkMadu from '@/assets/articles/bali/bali-canggu-milk-madu-beach-road-cafe.webp';
+import melaliCafe from '@/assets/articles/bali/bali-ubud-melali-cafe.webp';
+import motelMexicola from '@/assets/articles/bali/bali-seminyak-motel-mexicola.webp';
+import museCafe from '@/assets/articles/bali/bali-ubud-muse-cafe-art.webp';
+import singleFin from '@/assets/articles/bali/bali-uluwatu-single-fin.webp';
+import tisCafe from '@/assets/articles/bali/bali-tis-cafe.webp';
+import tisCafeBreakfast from '@/assets/articles/bali/bali-tis-cafe-breakfast.webp';
+import tisCafeRiceTerraceView from '@/assets/articles/bali/bali-tis-cafe-rice-terrace-view.webp';
+import uluwatuFoodSunset from '@/assets/articles/bali/bali-uluwatu-food-sunset-view.webp';
+import uluwatuPool from '@/assets/articles/bali/bali-uluwatu-restaurant-pool-evening-vibes.webp';
+import wedjaRestaurant from '@/assets/articles/bali/bali-ubud-wedja-restaurant.webp';
+
+const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
+const imageGrid = 'my-5 grid grid-cols-1 items-start gap-3 sm:grid-cols-3 md:my-8 md:gap-4';
+---
+
+<section id="section-0" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>1. Tis Café (Tegalalang)</h3>
+  </div>
+  <div class={prose}>
+    <p>If you're looking for a breakfast spot with a view, Tis Café is one of the places I remember most from Bali. Located near the rice terraces of Tegalalang, it offers a peaceful setting surrounded by greenery and makes a great place to start the day.</p>
+    <div class={imageGrid}>
+      <div class="sm:col-span-2">
+        <ArticleImage src={tisCafeBreakfast} alt="Breakfast with a view at Tis Café near Tegalalang, Bali" caption="Breakfast with a view at Tis Café" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      </div>
+      <div class="flex flex-col gap-3 sm:col-span-1 md:gap-4">
+        <ArticleImage src={tisCafeRiceTerraceView} alt="Rice terrace view from Tis Café in Tegalalang, Bali" caption="Overlooking the Tegalalang rice terraces" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+        <ArticleImage src={tisCafe} alt="The peaceful setting at Tis Café in Tegalalang, Bali" caption="The peaceful, greenery-filled setting" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      </div>
+    </div>
+    <p>Before breakfast, I spent some time walking through the nearby Mupu Rice Terrace, which made the whole experience feel even more special. While the food was excellent, it was the combination of the views and the peaceful setting that made Tis Café so memorable.</p>
+  </div>
+</section>
+
+<section id="section-1" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>2. Wedja Restaurant (Ubud)</h3>
+  </div>
+  <div class={prose}>
+    <p>If I had to choose just one place to revisit in Bali, it would probably be Wedja. The atmosphere alone makes it worth visiting, with traditional Balinese design, lush surroundings, and a setting that feels completely different from most cafés and restaurants on the island.</p>
+    <ArticleImage src={wedjaRestaurant} alt="Wedja Restaurant in Ubud, Bali" caption="Wedja Restaurant — traditional Balinese design in Ubud" figureClass="my-5 md:my-8" imgClass="aspect-[5/4] object-cover" />
+    <p>What secured its place on this list, however, was the food. The duck dish ended up being the best meal I had during my two months in Bali, and it's one of the few meals I still remember long after leaving the island.</p>
+  </div>
+</section>
+
+<section id="section-2" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>3. Blend Café (Ubud)</h3>
+  </div>
+  <div class={prose}>
+    <p>Despite being located right in the centre of Ubud, Blend Café feels surprisingly peaceful once you're inside. It became one of the places I found myself returning to whenever I was in Ubud, whether for breakfast, coffee, or one of their beautifully presented smoothie bowls.</p>
+    <ArticleImage src={blendCafe} alt="Blend Café in Ubud, Bali" caption="Blend Café — peaceful even in the heart of Ubud" figureClass="my-5 md:my-8" imgClass="aspect-[5/4] object-cover" />
+    <p>The café feels completely removed from the busy streets outside, making it an easy place to spend an hour or two before continuing your day.</p>
+  </div>
+</section>
+
+<section id="section-3" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>4. Single Fin (Uluwatu)</h3>
+  </div>
+  <div class={prose}>
+    <p>One of the things I appreciated most about Single Fin was that I managed to get a table without a reservation — something that isn't always easy at popular sunset spots in Bali. Perched on the cliffs of Uluwatu, it's one of the best places to watch the sunset while overlooking the ocean and the surfers below.</p>
+    <div class={imageGrid}>
+      <div class="sm:col-span-2">
+        <ArticleImage src={singleFin} alt="Single Fin restaurant overlooking the cliffs of Uluwatu, Bali" caption="Single Fin — cliffside views over Uluwatu" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      </div>
+      <div class="flex flex-col gap-3 sm:col-span-1 md:gap-4">
+        <ArticleImage src={uluwatuFoodSunset} alt="Food and sunset views at Single Fin in Uluwatu, Bali" caption="Sunset dinner overlooking the ocean" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+        <ArticleImage src={uluwatuPool} alt="Pool and evening atmosphere at Single Fin in Uluwatu, Bali" caption="Evening vibes by the pool" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      </div>
+    </div>
+    <p>If I were visiting again, I would arrive earlier, spend some time by the pool, and stay through sunset and dinner.</p>
+  </div>
+</section>
+
+<section id="section-4" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>5. Brunch Club Pererenan (Pererenan)</h3>
+  </div>
+  <div class={prose}>
+    <p>The fluffy pancakes were the reason I first visited Brunch Club, but they ended up being much bigger than I expected. If I were ordering them again, I would probably choose the smaller stack, especially if you're planning to order anything else.</p>
+    <div class={imageGrid}>
+      <div class="sm:col-span-2">
+        <ArticleImage src={brunchClubPancakes} alt="Fluffy pancakes at Brunch Club Pererenan in Bali" caption="The famous fluffy pancakes" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      </div>
+      <div class="flex flex-col gap-3 sm:col-span-1 md:gap-4">
+        <ArticleImage src={brunchClub} alt="Brunch Club Pererenan in Bali" caption="Brunch Club Pererenan" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+        <ArticleImage src={brunchClubInterior} alt="Plant-filled interior at Brunch Club Pererenan in Bali" caption="Bright, plant-filled interior" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      </div>
+    </div>
+    <p>Beyond the food, I loved the interior, which is filled with plants and natural details that make the whole space feel bright and welcoming.</p>
+  </div>
+</section>
+
+<section id="section-5" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>Other Cafés Worth Visiting in Bali</h3>
+  </div>
+  <div class={`${prose} space-y-6`}>
+    <p>While the places above were my personal favourites, there are a few other cafés and restaurants that I also enjoyed during my time in Bali and would happily recommend if you have extra time.</p>
+    <div>
+      <h4 class="mb-2 text-black">Milk &amp; Madu Beach Road (Canggu)</h4>
+      <p>A popular all-day dining spot with a relaxed atmosphere, generous portions, and consistently good food. It's the kind of place that works equally well for breakfast, lunch, or dinner.</p>
+      <ArticleImage src={milkMadu} alt="Milk &amp; Madu Beach Road café in Canggu, Bali" caption="Milk &amp; Madu Beach Road" figureClass="my-4 md:my-5" imgClass="aspect-[5/4] object-cover" />
+    </div>
+    <div>
+      <h4 class="mb-2 text-black">KYND Community (Seminyak, Canggu &amp; Uluwatu)</h4>
+      <p>One of Bali's most Instagrammable cafés, known for its colourful smoothie bowls, creative presentation, and fully plant-based menu. Fortunately, the food is just as enjoyable as the photos.</p>
+      <ArticleImage src={kyndCafe} alt="KYND Community café in Bali" caption="KYND Community" figureClass="my-4 md:my-5" imgClass="aspect-[5/4] object-cover" />
+    </div>
+    <div>
+      <h4 class="mb-2 text-black">Muse Café &amp; Art (Ubud)</h4>
+      <p>A lovely option for anyone looking for healthier food choices in Ubud. The menu focuses on fresh ingredients, and the atmosphere feels calm and welcoming.</p>
+      <ArticleImage src={museCafe} alt="Muse Café &amp; Art in Ubud, Bali" caption="Muse Café &amp; Art" figureClass="my-4 md:my-5" imgClass="aspect-[5/4] object-cover" />
+    </div>
+    <div>
+      <h4 class="mb-2 text-black">Livingstone Holyground (Canggu)</h4>
+      <p>One of the places I would consider if you're looking for somewhere to work remotely for a few hours. The food is excellent, the space is comfortable, and there's plenty of room to settle in with a laptop.</p>
+    </div>
+    <div>
+      <h4 class="mb-2 text-black">Motel Mexicola (Seminyak)</h4>
+      <p>If you're craving Mexican food while in Bali, Motel Mexicola is worth considering. I found it a little pricey compared to some other restaurants on the island, but the food certainly didn't disappoint.</p>
+      <ArticleImage src={motelMexicola} alt="Motel Mexicola restaurant in Seminyak, Bali" caption="Motel Mexicola" figureClass="my-4 md:my-5" imgClass="aspect-[5/4] object-cover" />
+    </div>
+    <div>
+      <h4 class="mb-2 text-black">Melali Ubud (Ubud)</h4>
+      <p>A great spot for a relaxed meal in Ubud. While the front faces a busy road, the seating area further inside feels much quieter and makes it easy to forget about the traffic outside.</p>
+      <ArticleImage src={melaliCafe} alt="Melali Ubud café in Bali" caption="Melali Ubud" figureClass="my-4 md:my-5" imgClass="aspect-[5/4] object-cover" />
+    </div>
+  </div>
+</section>
+
+<section id="section-6" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>Final Thoughts</h3>
+  </div>
+  <div class={prose}>
+    <div class="rounded-2xl border border-amber-200 bg-amber-50 p-5 md:p-6">
+      <span class="mb-3 inline-flex items-center gap-2 rounded-full bg-amber-200/70 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-900">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5" aria-hidden="true">
+          <path d="M12 9v4" /><path d="M12 17h.01" />
+          <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z" />
+        </svg>
+        Final thoughts
+      </span>
+      <p>If I were planning another trip to Bali tomorrow, these are the places I'd add straight back to my list.</p>
+      <p>Some earned their place on this list because of the food, others because of the atmosphere, the views, or the overall experience. Either way, they're the spots I would happily revisit and recommend to friends visiting Bali for the first time.</p>
+    </div>
+  </div>
+</section>

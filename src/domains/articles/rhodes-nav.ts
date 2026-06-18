@@ -18,5 +18,5 @@ export const rhodesNav: readonly TocGroup[] = [
       { navTitle: '7.6 Best time to visit Rhodes?', target: 'faq-5' },
     ],
   },
-  { navTitle: '8. Final Thoughts', target: 'section-before' },
+  { navTitle: '8. Final Thoughts', target: 'section-6' },
 ] as const;

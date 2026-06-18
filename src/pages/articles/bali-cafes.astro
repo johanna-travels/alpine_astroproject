@@ -1,39 +1,12 @@
 ---
-import PageShell from '@/components/layout/PageShell.astro';
-import SimpleArticleLayout from '@/components/articles/SimpleArticleLayout.astro';
-import { getArticle, articleHref } from '@/domains/articles/catalog';
-import { getHeroImage } from '@/lib/images';
+import ArticlePage from '@/components/articles/ArticlePage.astro';
+import BaliCafes from '@/components/articles/BaliCafes.astro';
+import { baliNav } from '@/domains/articles/bali-nav';
+import { getArticle } from '@/domains/articles/catalog';
 
 const article = getArticle('bali-cafes')!;
-const optimizedHeader = await getHeroImage(article.image);
 ---
 
-<PageShell title={article.title}>
-  <Fragment slot="head">
-    <link rel="preload" as="image" href={optimizedHeader.src} />
-  </Fragment>
-
-  <SimpleArticleLayout
-    metaLabel={article.metaLabel}
-    title={article.title}
-    breadcrumbTitle={article.breadcrumbTitle}
-    breadcrumbHref={articleHref(article.slug)}
-    heroSrc={optimizedHeader.src}
-    lead={article.lead}
-  >
-    <h2 class="mb-3">Canggu — Surf & Specialty Coffee</h2>
-    <p class="prose-body text-neutral-700 mb-8">
-      Canggu is the heart of Bali's café scene, with airy, plant-filled spaces just minutes from the beach. Mornings here move slowly, with surfers drifting in for flat whites and brunch that easily stretches into the afternoon.
-    </p>
-
-    <h2 class="mb-3">Ubud — Jungle Views & Healthy Bowls</h2>
-    <p class="prose-body text-neutral-700 mb-8">
-      In Ubud the cafés open onto rice fields and jungle, leaning toward fresh juices, smoothie bowls and quieter corners to work or read. It's a different rhythm from the coast — green, calm and unhurried.
-    </p>
-
-    <h2 class="mb-3">Seminyak — Polished & Stylish</h2>
-    <p class="prose-body text-neutral-700 mb-10">
-      Seminyak's cafés are a little more polished, blending strong design with reliably good coffee. They're perfect for a relaxed mid-morning stop between shopping and the beach clubs nearby.
-    </p>
-  </SimpleArticleLayout>
-</PageShell>
+<ArticlePage article={article} sections={baliNav}>
+  <BaliCafes />
+</ArticlePage>

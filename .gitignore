@@ -36,3 +36,6 @@ LIBRARY-TEXT-TEST--COMPENT/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+
+# Local Netlify folder
+.netlify
