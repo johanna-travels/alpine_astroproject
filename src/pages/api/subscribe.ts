@@ -33,7 +33,9 @@ export const POST: APIRoute = async ({ request }) => {
     const supabaseAdmin = getSupabaseAdmin();
     if (!supabaseAdmin) {
       return new Response(
-        JSON.stringify({ error: 'Service unavailable' }),
+        JSON.stringify({
+          error: 'Service unavailable. Check SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in Netlify.',
+        }),
         { status: 503, headers: { 'Content-Type': 'application/json' } }
       );
     }

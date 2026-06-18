@@ -16,10 +16,10 @@ export function withBase(path = ''): string {
   return `${base}${normalized}`.replace(/\/{2,}/g, '/');
 }
 
-/** API route URL (respects GitHub Pages base path). */
+/** API route URL (respects base path; trailing slash matches Astro config). */
 export function apiUrl(path: string): string {
   const clean = String(path).replace(/^\/+|\/+$/g, '').replace(/^api\/?/, '');
-  return withBase(`api/${clean}`);
+  return `${withBase(`api/${clean}`)}/`;
 }
 
 /** Absolute URL for emails and external references. */

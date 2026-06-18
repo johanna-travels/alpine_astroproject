@@ -10,6 +10,9 @@ function normalizeSupabaseUrl(url: string): string | null {
     if (parsed.protocol !== 'https:' || !parsed.hostname.endsWith('.supabase.co')) {
       return null;
     }
+    if (parsed.hostname === 'xxx.supabase.co' || parsed.hostname.startsWith('your_')) {
+      return null;
+    }
     return `${parsed.protocol}//${parsed.hostname}`;
   } catch {
     return null;
