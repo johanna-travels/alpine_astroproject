@@ -12,6 +12,11 @@ export type SubscriberRecord = {
   preferences: SubscriberPreferences | null;
 };
 
+export type NewsletterRecipient = {
+  email: string;
+  confirmation_token: string;
+};
+
 const defaultPreferences: SubscriberPreferences = {
   updates: true,
   promotions: false,
@@ -75,4 +80,22 @@ export async function unsubscribeSubscriber(
     .eq('id', subscriber.id);
 
   return !error;
+}
+
+export async function getActiveSubscribersForNewsletter(
+  client: SupabaseClient,
+): Promise<NewsletterRecipient[]> {
+  const { data, error } = await client
+    .from('subscribers')
+    .select('email, confirmation_token, preferences')
+    .eq('status', 'active');
+
+  if (error || !data) return [];
+
+  return data
+    .filter((row) => {
+      const preferences = row.preferences as SubscriberPreferences | null;
+      return preferences?.updates !== false;
+    })
+    .filter((row): row is NewsletterRecipient => Boolean(row.email && row.confirmation_token));
 }

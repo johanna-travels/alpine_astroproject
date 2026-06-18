@@ -2,7 +2,8 @@ export type ServerEnvName =
   | 'SUPABASE_URL'
   | 'SUPABASE_SERVICE_ROLE_KEY'
   | 'RESEND_API_KEY'
-  | 'RESEND_FROM_EMAIL';
+  | 'RESEND_FROM_EMAIL'
+  | 'NEWSLETTER_ADMIN_SECRET';
 
 function normalize(value: string | undefined): string | undefined {
   if (!value) return undefined;
