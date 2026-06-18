@@ -2,13 +2,15 @@ import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import { getServerEnv } from '@/lib/serverEnv';
 
 function normalizeSupabaseUrl(url: string): string | null {
-  const normalized = url.replace(/\/+$/, '');
+  let normalized = url.trim().replace(/^['"]|['"]$/g, '').replace(/\/+$/, '');
+  normalized = normalized.replace(/\/rest\/v1\/?$/i, '');
+
   try {
     const parsed = new URL(normalized);
     if (parsed.protocol !== 'https:' || !parsed.hostname.endsWith('.supabase.co')) {
       return null;
     }
-    return normalized;
+    return `${parsed.protocol}//${parsed.hostname}`;
   } catch {
     return null;
   }
