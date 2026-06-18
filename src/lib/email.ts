@@ -1,4 +1,4 @@
-import { absoluteUrl } from '@/lib/site';
+import { absoluteUrl, contactEmail } from '@/lib/site';
 
 export function subscriberUnsubscribeUrl(token: string): string {
   return `${absoluteUrl('api/unsubscribe')}?token=${encodeURIComponent(token)}`;
@@ -20,7 +20,10 @@ export function emailFooterHtml(token: string): string {
       &nbsp;·&nbsp;
       <a href="${unsubscribeUrl}" style="color: #69746E;">Unsubscribe</a>
     </p>
-    <p style="color: #bbb; font-size: 11px; margin: 0;">Voyaflair · <a href="${absoluteUrl()}" style="color: #bbb;">voyaflair.com</a></p>
+    <p style="color: #bbb; font-size: 11px; margin: 0;">
+      Voyaflair · <a href="${absoluteUrl()}" style="color: #bbb;">voyaflair.com</a>
+      · <a href="mailto:${contactEmail}" style="color: #bbb;">${contactEmail}</a>
+    </p>
   `;
 }
 

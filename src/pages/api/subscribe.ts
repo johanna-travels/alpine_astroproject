@@ -1,7 +1,7 @@
 import { getSupabaseAdmin } from '@/lib/supabaseAdmin';
 import { getServerEnv } from '@/lib/serverEnv';
 import { emailFooterHtml, emailListUnsubscribeHeaders } from '@/lib/email';
-import { absoluteUrl } from '@/lib/site';
+import { absoluteUrl, contactEmail } from '@/lib/site';
 import { Resend } from 'resend';
 import type { APIRoute } from 'astro';
 import crypto from 'crypto';
@@ -137,6 +137,7 @@ export const POST: APIRoute = async ({ request }) => {
         await resend.emails.send({
           from: resendFromEmail,
           to: email,
+          replyTo: contactEmail,
           subject: 'Confirm your subscription to Voyaflair',
           headers: emailListUnsubscribeHeaders(confirmationToken),
           html: `

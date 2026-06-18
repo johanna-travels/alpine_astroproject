@@ -4,6 +4,9 @@ export const basePath = import.meta.env.BASE_URL;
 export const base = basePath.replace(/\/$/, '');
 export const homeUrl = new URL(basePath, siteOrigin).href;
 
+/** Public contact email shown on the site and used as reply-to for newsletters. */
+export const contactEmail = 'voyaflair@gmail.com';
+
 /** Internal page URL with trailing slash (matches trailingSlash: 'always'). */
 export function pageUrl(path = ''): string {
   if (!path || path === '/') return `${base}/`;
