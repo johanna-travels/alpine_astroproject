@@ -73,7 +73,10 @@ export const POST: APIRoute = async ({ request }) => {
     if (existingError) {
       console.error('Supabase lookup error:', existingError);
       return new Response(
-        JSON.stringify({ error: 'Failed to subscribe. Please try again.' }),
+        JSON.stringify({
+          error: 'Failed to subscribe. Please try again.',
+          detail: existingError.message,
+        }),
         { status: 500, headers: { 'Content-Type': 'application/json' } }
       );
     }
@@ -91,17 +94,13 @@ export const POST: APIRoute = async ({ request }) => {
 
     const confirmationToken = crypto.randomBytes(32).toString('hex');
 
-    const { data, error } = await supabaseAdmin
-      .from('subscribers')
-      .insert({
-        email,
-        consent: true,
-        status: 'pending',
-        confirmation_token: confirmationToken,
-        subscribed_at: new Date().toISOString(),
-      })
-      .select('id')
-      .maybeSingle();
+    const { error } = await supabaseAdmin.from('subscribers').insert({
+      email,
+      consent: true,
+      status: 'pending',
+      confirmation_token: confirmationToken,
+      subscribed_at: new Date().toISOString(),
+    });
 
     if (error) {
       console.error('Supabase insert error:', error);
@@ -115,16 +114,6 @@ export const POST: APIRoute = async ({ request }) => {
         JSON.stringify({
           error: 'Failed to subscribe. Please try again.',
           detail: error.message,
-        }),
-        { status: 500, headers: { 'Content-Type': 'application/json' } }
-      );
-    }
-
-    if (!data) {
-      return new Response(
-        JSON.stringify({
-          error: 'Failed to subscribe. Please try again.',
-          detail: 'Subscriber row was not created.',
         }),
         { status: 500, headers: { 'Content-Type': 'application/json' } }
       );
@@ -161,7 +150,6 @@ export const POST: APIRoute = async ({ request }) => {
     return new Response(
       JSON.stringify({
         message: 'Successfully subscribed! Please check your email for confirmation.',
-        subscriberId: data.id,
       }),
       { status: 201, headers: { 'Content-Type': 'application/json' } }
     );
