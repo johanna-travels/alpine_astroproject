@@ -1,5 +1,5 @@
 import { getSupabaseAdmin } from '@/lib/supabaseAdmin';
-import { getSubscriberByToken } from '@/lib/subscribers';
+import { getSubscriberByToken, unsubscribeSubscriber } from '@/lib/subscribers';
 import type { APIRoute } from 'astro';
 
 export const prerender = false;
@@ -82,26 +82,10 @@ export const DELETE: APIRoute = async ({ request }) => {
       });
     }
 
-    const subscriber = await getSubscriberByToken(supabaseAdmin, token);
-    if (!subscriber) {
+    const success = await unsubscribeSubscriber(supabaseAdmin, token);
+    if (!success) {
       return new Response(JSON.stringify({ error: 'Invalid token' }), {
         status: 401,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
-
-    const { error: updateError } = await supabaseAdmin
-      .from('subscribers')
-      .update({
-        status: 'unsubscribed',
-        unsubscribed_at: new Date().toISOString(),
-      })
-      .eq('id', subscriber.id);
-
-    if (updateError) {
-      console.error('Unsubscribe error:', updateError);
-      return new Response(JSON.stringify({ error: 'Failed to unsubscribe' }), {
-        status: 500,
         headers: { 'Content-Type': 'application/json' },
       });
     }

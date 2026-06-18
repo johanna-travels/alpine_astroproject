@@ -9,6 +9,11 @@ import { apiUrl, pageUrl } from '@/lib/site';
       <h1 class="mb-8 text-neutral-900">Subscription Preferences</h1>
 
       <div id="preferences-root" class="hidden">
+        <div id="preferences-unsubscribed" class="hidden mb-6 rounded-lg border border-gray-200 bg-gray-50 p-4 text-gray-800">
+          <p class="font-medium">You have been unsubscribed.</p>
+          <p class="mt-1 text-sm">You will no longer receive emails from Voyaflair.</p>
+        </div>
+
         <div id="preferences-confirmed" class="hidden mb-6 rounded-lg border border-green-200 bg-green-50 p-4 text-green-800">
           <p class="font-medium">Your subscription is confirmed.</p>
           <p class="mt-1 text-sm">You can now receive travel updates from Voyaflair.</p>
@@ -86,12 +91,15 @@ import { apiUrl, pageUrl } from '@/lib/site';
     errorBox?.classList.remove('hidden');
   }
 
-  function renderSubscriber(subscriber, confirmed) {
+  function renderSubscriber(subscriber, confirmed, unsubscribed) {
     document.getElementById('preferences-error')?.classList.add('hidden');
     document.getElementById('preferences-empty')?.classList.add('hidden');
     document.getElementById('preferences-root')?.classList.remove('hidden');
 
-    if (confirmed || subscriber.status === 'active') {
+    if (unsubscribed || subscriber.status === 'unsubscribed') {
+      document.getElementById('preferences-unsubscribed')?.classList.remove('hidden');
+      document.getElementById('preferences-form')?.classList.add('hidden');
+    } else if (confirmed || subscriber.status === 'active') {
       document.getElementById('preferences-confirmed')?.classList.remove('hidden');
     }
 
@@ -115,10 +123,16 @@ import { apiUrl, pageUrl } from '@/lib/site';
     const params = new URLSearchParams(window.location.search);
     const token = params.get('token');
     const confirmed = params.get('confirmed') === '1';
+    const unsubscribed = params.get('unsubscribed') === '1';
     const error = params.get('error');
 
     if (error === 'missing-token' || error === 'invalid-token') {
-      showError(error === 'invalid-token' ? 'Invalid or expired confirmation link.' : 'Missing confirmation token.');
+      showError(error === 'invalid-token' ? 'Invalid or expired link.' : 'Missing token.');
+      return;
+    }
+
+    if (error === 'service-unavailable') {
+      showError('Service temporarily unavailable. Please try again later.');
       return;
     }
 
@@ -138,7 +152,7 @@ import { apiUrl, pageUrl } from '@/lib/site';
         return;
       }
 
-      renderSubscriber(result.subscriber, confirmed);
+      renderSubscriber(result.subscriber, confirmed, unsubscribed);
     } catch {
       showError('Network error. Please try again.');
       return;

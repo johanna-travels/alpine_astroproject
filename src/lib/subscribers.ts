@@ -56,3 +56,23 @@ export async function confirmSubscriber(
   if (error || !data) return null;
   return data as SubscriberRecord;
 }
+
+export async function unsubscribeSubscriber(
+  client: SupabaseClient,
+  token: string,
+): Promise<boolean> {
+  const subscriber = await getSubscriberByToken(client, token);
+  if (!subscriber) return false;
+
+  if (subscriber.status === 'unsubscribed') return true;
+
+  const { error } = await client
+    .from('subscribers')
+    .update({
+      status: 'unsubscribed',
+      unsubscribed_at: new Date().toISOString(),
+    })
+    .eq('id', subscriber.id);
+
+  return !error;
+}
