@@ -1,6 +1,6 @@
 ---
 import ArticlePage from '@/components/articles/ArticlePage.astro';
-import KyotoItinerary from '@/components/articles/KyotoItinerary.astro';
+import KyotoItineraryContent from '@/components/articles/KyotoItinerary.astro';
 import { kyotoNav } from '@/domains/articles/kyoto-nav';
 import { getArticle } from '@/domains/articles/catalog';
 
@@ -8,5 +8,5 @@ const article = getArticle('kyoto-itinerary')!;
 ---
 
 <ArticlePage article={article} sections={kyotoNav}>
-  <KyotoItinerary />
+  <KyotoItineraryContent />
 </ArticlePage>

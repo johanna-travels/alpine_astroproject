@@ -1,6 +1,6 @@
 ---
 import ArticlePage from '@/components/articles/ArticlePage.astro';
-import BaliCafes from '@/components/articles/BaliCafes.astro';
+import BaliCafesContent from '@/components/articles/BaliCafes.astro';
 import { baliNav } from '@/domains/articles/bali-nav';
 import { getArticle } from '@/domains/articles/catalog';
 
@@ -8,5 +8,5 @@ const article = getArticle('bali-cafes')!;
 ---
 
 <ArticlePage article={article} sections={baliNav}>
-  <BaliCafes />
+  <BaliCafesContent />
 </ArticlePage>

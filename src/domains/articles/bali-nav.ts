@@ -2,7 +2,7 @@ import type { TocGroup } from '@/domains/articles/toc';
 
 export const baliNav: readonly TocGroup[] = [
   { navTitle: '1. Intro', target: 'section-intro' },
-  { navTitle: '2. Tis Café (Tegalalang)', target: 'section-0' },
+  { navTitle: '2. Tis Café (Tegallalang)', target: 'section-0' },
   { navTitle: '3. Wedja Restaurant (Ubud)', target: 'section-1' },
   { navTitle: '4. Blend Café (Ubud)', target: 'section-2' },
   { navTitle: '5. Single Fin (Uluwatu)', target: 'section-3' },

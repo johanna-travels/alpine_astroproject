@@ -1,58 +1,178 @@
 ---
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+
+import bambooGrove from '@/assets/articles/kyoto/japan-kyoto-arashiyama-bamboo-grove.webp';
+import bambooForestView from '@/assets/articles/kyoto/japan-kyoto-bamboo-forest-view.webp';
+import bambooGroveCanopy from '@/assets/articles/kyoto/japan-kyoto-bamboo-grove-canopy.webp';
+import otagiTemple from '@/assets/articles/kyoto/japan-kyoto-otagi-nenbutsu-ji-temple.webp';
+import yusaTeiWindow from '@/assets/articles/kyoto/japan-kyoto-yusa-tei-gallery-window-view.webp';
+import kinkakuJi from '@/assets/articles/kyoto/japan-kyoto-kinkaku-ji-golden-pavilion.webp';
+import kiyomizuSunset from '@/assets/articles/kyoto/japan-kyoto-kiyomizu-dera-sunset.webp';
+import kiyomizuPagoda from '@/assets/articles/kyoto/japan-kyoto-kiyomizu-dera-three-story-pagoda.webp';
+import yasakaPagoda from '@/assets/articles/kyoto/japan-kyoto-yasaka-pagoda.webp';
+import historicStreet from '@/assets/articles/kyoto/japan-kyoto-historic-street.webp';
+import higashiyamaRooftops from '@/assets/articles/kyoto/japan-kyoto-higashiyama-rooftops.webp';
+import gionSunrise from '@/assets/articles/kyoto/japan-kyoto-gion-at-sunrise.webp';
+import fushimiInari from '@/assets/articles/kyoto/japan-kyoto-fushimi-inari-torii-gates.webp';
+import naraDeer from '@/assets/articles/kyoto/japan-nara-deer-temple.webp';
+import nishikiFoodStalls from '@/assets/articles/kyoto/japan-kyoto-nishiki-market-food-stalls.webp';
+import nishikiStreetFood from '@/assets/articles/kyoto/japan-kyoto-nishiki-market-street-food.webp';
+
 const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
+const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]';
+const threeColGrid = 'my-5 grid grid-cols-1 items-start gap-3 sm:grid-cols-3 md:my-8 md:gap-4';
+const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
 ---
 
 <section id="section-0" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>Day 1 — Eastern Kyoto & Higashiyama</h3>
+    <h3>Day 1: Arashiyama & Kinkaku-ji</h3>
   </div>
   <div class={prose}>
-    <p>
-      Start in the historic Higashiyama district, walking the preserved streets toward Kiyomizu-dera. The early hours are calmest, with soft light over the wooden terraces and fewer crowds along the slopes of Sannenzaka and Ninenzaka.
-    </p>
+    <h4 class="mb-2 text-black">Visit Arashiyama Bamboo Grove</h4>
+    <p>I expected Arashiyama Bamboo Grove to be one of those places that looks better on social media than it does in real life. It turned out to be the exact opposite.</p>
+    <p>Arriving around sunrise completely changed the experience. As the first light of the day filtered through the bamboo, the grove felt peaceful and almost empty — a very different atmosphere from the crowds that arrive later in the morning. If there's one piece of advice I would give, it's to get here as early as possible.</p>
+    <div class={threeColGrid}>
+      <ArticleImage src={bambooGrove} alt="The walkway through Arashiyama Bamboo Grove in Kyoto, Japan" caption="Arashiyama Bamboo Grove at sunrise" figureClass="m-0" imgClass="aspect-[2/3] object-cover" />
+      <ArticleImage src={bambooForestView} alt="View along the towering bamboo path in Arashiyama, Kyoto" caption="The towering bamboo path" figureClass="m-0" imgClass="aspect-[2/3] object-cover" />
+      <ArticleImage src={bambooGroveCanopy} alt="Bamboo stalks leaning overhead to form a canopy in Arashiyama, Kyoto" caption="Looking up at the bamboo canopy" figureClass="m-0" imgClass="aspect-[2/3] object-cover" />
+    </div>
+    <p>One thing many people forget to do is look up. As the bamboo grows taller, the stalks begin to lean towards each other high above the path, creating a view that is just as impressive as the famous walkway itself.</p>
+    <h4 class="mt-8 mb-2 text-black">Visit Otagi Nenbutsu-ji Temple</h4>
+    <p>A short distance from the main Arashiyama area, Otagi Nenbutsu-ji was one of the most unique temples I visited in Kyoto.</p>
+    <ArticleImage src={otagiTemple} alt="Moss-covered stone statues at Otagi Nenbutsu-ji temple in Arashiyama, Kyoto" caption="The expressive stone statues of Otagi Nenbutsu-ji" />
+    <p>The temple is known for its hundreds of stone statues, each with a different facial expression and personality. Some are smiling, others are laughing, and many are doing unexpected things that make walking around the grounds surprisingly entertaining. I expected to spend only a few minutes here, but ended up staying much longer than planned simply because I kept stopping to look at the different statues.</p>
+    <h4 class="mt-8 mb-2 text-black">Take a Break at Yusa-tei Gallery</h4>
+    <p>Yusa-tei is best known for its large windows overlooking the surrounding landscape, which have made it a popular photography spot in Arashiyama, especially during autumn when the colours outside are reflected through the room.</p>
+    <ArticleImage src={yusaTeiWindow} alt="The large window view overlooking the landscape at Yusa-tei gallery in Arashiyama, Kyoto" caption="Yusa-tei's famous window view" imgClass="aspect-[3/2] object-cover" />
+    <p>I almost missed it during my first visit to Arashiyama and only discovered it when I returned to the area on a rainy day. Looking back, the weather probably made the experience even better. After spending some time inside, I headed out to the terrace and sat there listening to the rain for a while.</p>
+    <p>While many visitors come for the famous window view, I ended up enjoying the peaceful atmosphere just as much. If you happen to visit Kyoto on a rainy day, this is one of the places I would recommend most.</p>
+    <h4 class="mt-8 mb-2 text-black">End the Day at Kinkaku-ji</h4>
+    <p>Finish your first day at Kinkaku-ji, one of Kyoto's most recognisable landmarks.</p>
+    <ArticleImage src={kinkakuJi} alt="The golden pavilion of Kinkaku-ji reflected in its pond in Kyoto, Japan" caption="Kinkaku-ji, the Golden Pavilion" />
+    <p>Commonly known as the Golden Pavilion, the temple's gold-covered upper floors reflect beautifully in the surrounding pond, creating one of the most photographed scenes in Japan. Despite the crowds, it's one of Kyoto's most iconic landmarks and an easy addition to a first-time itinerary.</p>
   </div>
 </section>
 
 <section id="section-1" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>Day 2 — Arashiyama & Bamboo Grove</h3>
+    <h3>Day 2: Kiyomizu-dera, Yasaka Pagoda & Gion</h3>
   </div>
   <div class={prose}>
-    <p>
-      Head west to Arashiyama for the bamboo grove and the Tenryu-ji gardens. Cross the Togetsukyo bridge and spend the afternoon along the river, where the pace slows and the surrounding hills frame the town.
-    </p>
+    <h4 class="mb-2 text-black">Visit Kiyomizu-dera</h4>
+    <p>One of Kyoto's most famous landmarks, Kiyomizu-dera is far larger than I expected before visiting.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={kiyomizuSunset} alt="Kiyomizu-dera temple at sunset overlooking Kyoto, Japan" caption="Kiyomizu-dera at sunset" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={kiyomizuPagoda} alt="The three-story pagoda at Kiyomizu-dera in Kyoto, Japan" caption="The three-story pagoda" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <p>I arrived shortly before sunset, hoping to catch the golden light over Kyoto. What nobody had prepared me for was just how big the temple complex actually is. By the time I arrived, I quickly realised I could have spent much longer exploring the grounds. If you're planning to visit, I would either arrive early in the morning when it's generally quieter or give yourself plenty of time before sunset. Either way, be prepared for more walking than you might expect.</p>
+    <h4 class="mt-8 mb-2 text-black">Explore the Historic Streets Around Yasaka Pagoda</h4>
+    <p>This area gave me the strongest sense of what Kyoto might have felt like in the past.</p>
+    <ArticleImage src={yasakaPagoda} alt="The Yasaka Pagoda rising above the historic streets of Higashiyama in Kyoto, Japan" caption="Yasaka Pagoda in Higashiyama" imgClass="aspect-[4/3] object-cover" />
+    <p>Walking through the narrow streets around Yasaka Pagoda ended up being one of my favourite parts of Kyoto. Between the traditional wooden buildings and small local shops, this was the area that felt most connected to the city's past.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={historicStreet} alt="A traditional historic street lined with wooden buildings near Yasaka Pagoda in Kyoto, Japan" caption="Traditional streets near Yasaka Pagoda" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={higashiyamaRooftops} alt="Traditional rooftops across the Higashiyama district in Kyoto, Japan" caption="Higashiyama rooftops" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <p>One thing worth remembering, however, is that many of the houses are still private homes. You'll notice signs asking visitors not to take photos on certain streets, and I think it's important to respect those requests while exploring the neighbourhood.</p>
+    <h4 class="mt-8 mb-2 text-black">Spend the Evening in Gion</h4>
+    <p>Gion is one of the places most visitors picture when they think of Kyoto.</p>
+    <ArticleImage src={gionSunrise} alt="The traditional streets of Gion at sunrise in Kyoto, Japan" caption="Gion at sunrise" imgClass="aspect-[5/4] object-cover" />
+    <p>Known as Kyoto's most famous geisha district, Gion is one of those places where simply walking around is part of the experience. The traditional architecture, lantern-lined streets, and quieter side alleys create a completely different atmosphere from the more modern parts of the city. I would recommend taking your time here rather than rushing through with a checklist of places to see.</p>
   </div>
 </section>
 
 <section id="section-2" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>Day 3 — Fushimi Inari & Southern Kyoto</h3>
+    <h3>Day 3: Fushimi Inari, Nara & Nishiki Market</h3>
   </div>
   <div class={prose}>
-    <p>
-      Climb through the thousands of vermilion torii gates at Fushimi Inari early in the morning. The full loop takes a couple of hours and rewards you with quiet shrines and views over the city the higher you go.
-    </p>
+    <h4 class="mb-2 text-black">Arrive Early at Fushimi Inari</h4>
+    <p>Fushimi Inari is one of Kyoto's most iconic sights, but don't expect to have it all to yourself — even early in the morning.</p>
+    <ArticleImage src={fushimiInari} alt="The vermilion torii gates winding up the mountain at Fushimi Inari in Kyoto, Japan" caption="The torii gates of Fushimi Inari" imgClass="aspect-[3/2] object-cover" />
+    <p>I arrived shortly after sunrise and was surprised by how many people were already there. Another thing that caught me off guard was the amount of walking involved. Many visitors photograph the first section of torii gates and turn back, but the shrine complex extends much further up the mountain. If you want to explore beyond the busiest areas, allow yourself more time than you think you'll need and wear comfortable shoes.</p>
+    <h4 class="mt-8 mb-2 text-black">Visit Nara Park & Todai-ji</h4>
+    <p>If it's your first time in Kyoto, I think Nara is well worth including in your itinerary.</p>
+    <p>I'll be honest — I mainly visited because I wanted to see the famous deer. Like most visitors, I was also hoping to buy some of the crackers sold throughout the park, but several stalls had already sold out by the time I arrived. Fortunately, after walking further towards Todai-ji Temple, I found another stand that still had plenty available.</p>
+    <ArticleImage src={naraDeer} alt="A deer in front of a temple in Nara Park, Japan" caption="The famous deer of Nara Park" imgClass="aspect-[4/5] object-cover" />
+    <p>One thing that surprised me was how different the atmosphere felt as I continued deeper into Nara Park. While many of the deer near the entrances were surrounded by visitors, I found some of the calmer and more timid deer further inside the park. If you've seen viral videos of deer chasing people for crackers, don't worry too much. I quickly learned that showing your empty palms is usually enough for them to realise you've run out of food, and they'll often lose interest and move on.</p>
+    <h4 class="mt-8 mb-2 text-black">End the Evening at Nishiki Market</h4>
+    <p>Known as "Kyoto's Kitchen", Nishiki Market is a great place to spend your final evening in the city.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={nishikiFoodStalls} alt="Food stalls lining the covered street of Nishiki Market in Kyoto, Japan" caption="The food stalls of Nishiki Market" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={nishikiStreetFood} alt="Street food on display at Nishiki Market in Kyoto, Japan" caption="Sampling the street food" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <p>The market stretches through a long covered street filled with food stalls, small shops, and local specialities. Even if you're not planning a full meal, it's a fun place to wander, try a few different snacks, and experience a different side of Kyoto after three days of temples, shrines, and historic streets.</p>
   </div>
 </section>
 
 <section id="section-3" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>Day 4 — Gion & Traditional Kyoto</h3>
+    <h3>Where to Stay in Kyoto for First-Time Visitors</h3>
   </div>
   <div class={prose}>
-    <p>
-      Spend the day in Gion, Kyoto's geisha district, with its tea houses and lantern-lit lanes. Visit Yasaka Shrine and end the evening along the Kamo River as the restaurants and bars come to life.
-    </p>
+    <p>If it's your first time visiting Kyoto, I would recommend staying near Kyoto Station.</p>
+    <p>While areas like Higashiyama offer a more traditional atmosphere, Kyoto is much larger than many visitors expect. Staying near Kyoto Station makes it easier to reach many of Kyoto's main attractions, including Arashiyama, Fushimi Inari, and day trips such as Nara. It also provides direct access to the Shinkansen, which can be especially helpful if you're arriving from or continuing on to Tokyo.</p>
+    <p>For a first visit, I think the convenience outweighs the benefits of staying in a more scenic area.</p>
   </div>
 </section>
 
 <section id="section-4" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>Day 5 — Golden Pavilion & Departure</h3>
+    <h3>Where to Eat in Kyoto</h3>
   </div>
   <div class={prose}>
-    <p>
-      Finish with Kinkaku-ji, the Golden Pavilion, reflected in its surrounding pond. A calm, fitting close before heading onward, with time for one last café stop and a slow walk through the gardens.
-    </p>
+    <p>If you're looking for restaurant recommendations, these are some of the places I enjoyed during my time in Kyoto.</p>
+    <ul class="list-disc pl-5 space-y-2 marker:text-black/40">
+      <li class="prose-body"><a href="https://maps.app.goo.gl/8vg6zrPdSAv9KRLX6?g_st=ic" target="_blank" rel="noopener noreferrer" class={mapLink}>Sushizen</a> – Sushi</li>
+      <li class="prose-body"><a href="https://maps.app.goo.gl/yQbsLsVaxAanqvcg9?g_st=ic" target="_blank" rel="noopener noreferrer" class={mapLink}>YOSAKURA Kyoto Gion</a> – Unagi (grilled eel)</li>
+      <li class="prose-body"><a href="https://maps.google.com?q=Okonomiyaki%20Mr%20Young%20Men,%20%EF%BC%AD%EF%BD%92%EF%BC%8E%EF%BC%B9%EF%BD%8F%EF%BD%95%EF%BD%8E%EF%BD%87%EF%BC%AD%EF%BD%85%EF%BD%8E%20Higashidaimonjicho,%20Nakagyo%20Ward,%20Kyoto,%20Japan&ftid=0x600108942d033ff7:0x4fe6128b929fa857&entry=gps&shh=CAE&lucs=,94297699,94231188,94280568,47071704,94218641,94282134,100813469,94286869&g_st=ic" target="_blank" rel="noopener noreferrer" class={mapLink}>Okonomiyaki Mr Young Men</a> – Traditional Kyoto-style okonomiyaki</li>
+      <li class="prose-body"><a href="https://maps.app.goo.gl/bZN9oyrC2DNDGeFM8?g_st=ic" target="_blank" rel="noopener noreferrer" class={mapLink}>Omitsu</a> – Okonomiyaki</li>
+      <li class="prose-body"><a href="https://maps.app.goo.gl/RWotoVFr6fE9ZUTR6?g_st=ic" target="_blank" rel="noopener noreferrer" class={mapLink}>Kyoto Tonkatsu Katsuda Shijokarasuma</a> – Tonkatsu</li>
+      <li class="prose-body"><a href="https://maps.app.goo.gl/eu7YduGd2nNnJdyZ7?g_st=ic" target="_blank" rel="noopener noreferrer" class={mapLink}>GYUKATSU Kyoto Katsugyu Kyoto Ekimae</a> – Gyukatsu</li>
+      <li class="prose-body"><a href="https://maps.app.goo.gl/GQxMz4JzdRMXD4W19?g_st=ic" target="_blank" rel="noopener noreferrer" class={mapLink}>GYUMON Nishiki Market</a> – Halal Wagyu & Vegan Ramen</li>
+      <li class="prose-body"><a href="https://maps.app.goo.gl/xz3SAujhmhsmP5F57?g_st=ic" target="_blank" rel="noopener noreferrer" class={mapLink}>Gyumabushi Miyama</a> – Wagyu beef</li>
+      <li class="prose-body"><a href="https://maps.app.goo.gl/3GPN8ARptwtZjudF8?g_st=ic" target="_blank" rel="noopener noreferrer" class={mapLink}>Arashiyama Miyoshitei</a> – Wagyu dining in Arashiyama</li>
+    </ul>
+  </div>
+</section>
+
+<section id="section-5" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>FAQ</h3>
+  </div>
+  <div class={prose}>
+    <h4 class="mb-2 text-black">Is 3 Days Enough in Kyoto?</h4>
+    <p>Yes, I think three days is enough to see many of Kyoto's most famous sights if it's your first visit. While I personally spent almost a week in the city, I believe three well-planned days allow you to experience Kyoto's highlights without feeling rushed.</p>
+    <h4 class="mt-8 mb-2 text-black">What Time Should You Visit Arashiyama Bamboo Grove?</h4>
+    <p>As early as possible.</p>
+    <p>I visited around sunrise and it ended up being one of my favourite experiences in Japan. The grove becomes much busier later in the morning, so arriving early gives you a chance to enjoy the atmosphere before most visitors arrive.</p>
+    <h4 class="mt-8 mb-2 text-black">Is Nara Worth a Day Trip from Kyoto?</h4>
+    <p>Absolutely. If you're visiting Japan for the first time, I think Nara is one of the best day trips you can take from Kyoto. Beyond the famous deer, the city offers beautiful temple grounds, peaceful park areas, and a completely different atmosphere from Kyoto itself.</p>
+    <h4 class="mt-8 mb-2 text-black">Is Kyoto Easy to Get Around?</h4>
+    <p>Kyoto is much larger than many first-time visitors expect.</p>
+    <p>I think a lot of the frustration people experience comes from trying to fit too many attractions into a single day rather than from the city itself. Grouping nearby sights together, like in this itinerary, makes Kyoto much easier and more enjoyable to explore.</p>
+    <h4 class="mt-8 mb-2 text-black">Is Kyoto Worth Visiting for First-Time Visitors to Japan?</h4>
+    <p>Without question.</p>
+    <p>Between the historic temples, traditional streets, bamboo forests, and nearby day trips like Nara, Kyoto offers a side of Japan that feels completely different from cities such as Tokyo or Osaka. If it's your first trip to Japan, I would consider Kyoto an essential stop.</p>
+  </div>
+</section>
+
+<section id="section-6" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>Final Thoughts</h3>
+  </div>
+  <div class={prose}>
+    <div class="rounded-2xl border border-amber-200 bg-amber-50 p-5 md:p-6">
+      <span class="mb-3 inline-flex items-center gap-2 rounded-full bg-amber-200/70 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-900">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5" aria-hidden="true">
+          <path d="M12 9v4" /><path d="M12 17h.01" />
+          <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z" />
+        </svg>
+        Final thoughts
+      </span>
+      <p>After spending almost a week in Kyoto, the moments I remember most aren't necessarily the city's most famous attractions. They're the quieter ones — watching the sunrise in Arashiyama, wandering through the streets around Yasaka Pagoda, or sitting on a terrace listening to the rain at Yusa-tei.</p>
+      <p>If it's your first visit, my advice would be to focus on a few key areas each day rather than trying to see everything. Kyoto rewards slow exploration far more than a packed itinerary, and sometimes the places you remember most aren't the ones you originally planned to visit.</p>
+    </div>
   </div>
 </section>

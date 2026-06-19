@@ -6,6 +6,7 @@ import brunchClubInterior from '@/assets/articles/bali/bali-restaurant-plant-int
 import brunchClubPancakes from '@/assets/articles/bali/brunch-club-pererenan-fluffy-pancakes.webp';
 import blendCafe from '@/assets/articles/bali/bali-ubud-blend-cafe.webp';
 import kyndCafe from '@/assets/articles/bali/bali-kynd-comunity-cafe.webp';
+import livingstoneCafe from '@/assets/articles/bali/bali-ubud-livingstone-holyground-cafe.webp';
 import milkMadu from '@/assets/articles/bali/bali-canggu-milk-madu-beach-road-cafe.webp';
 import melaliCafe from '@/assets/articles/bali/bali-ubud-melali-cafe.webp';
 import motelMexicola from '@/assets/articles/bali/bali-seminyak-motel-mexicola.webp';
@@ -16,25 +17,83 @@ import tisCafeBreakfast from '@/assets/articles/bali/bali-tis-cafe-breakfast.web
 import tisCafeRiceTerraceView from '@/assets/articles/bali/bali-tis-cafe-rice-terrace-view.webp';
 import uluwatuFoodSunset from '@/assets/articles/bali/bali-uluwatu-food-sunset-view.webp';
 import uluwatuPool from '@/assets/articles/bali/bali-uluwatu-restaurant-pool-evening-vibes.webp';
-import wedjaRestaurant from '@/assets/articles/bali/bali-ubud-wedja-restaurant.webp';
+import wedjaEntrance from '@/assets/articles/bali/ubud-wedja-restaurant-balinese-entrance.webp';
+import wedjaWaterGarden from '@/assets/articles/bali/ubud-wedja-water-garden-lotus-path.webp';
+import wedjaDining from '@/assets/articles/bali/wedja-restaurant-ubud-dining-experience.webp';
 
 const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
 const imageGrid = 'my-5 grid grid-cols-1 items-start gap-3 sm:grid-cols-3 md:my-8 md:gap-4';
+const cafeGallery = 'mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 md:mt-10 md:gap-4';
+
+const otherCafes = [
+  {
+    title: 'Milk & Madu Beach Road (Canggu)',
+    description:
+      "A popular all-day dining spot with a relaxed atmosphere, generous portions, and consistently good food. It's the kind of place that works equally well for breakfast, lunch, or dinner.",
+    image: milkMadu,
+    alt: 'Milk & Madu Beach Road café in Canggu, Bali',
+    caption: 'Milk & Madu Beach Road',
+  },
+  {
+    title: 'KYND Community (Seminyak, Canggu & Uluwatu)',
+    description:
+      "One of Bali's most Instagrammable cafés, known for its colourful smoothie bowls, creative presentation, and fully plant-based menu. Fortunately, the food is just as enjoyable as the photos.",
+    image: kyndCafe,
+    alt: 'KYND Community café in Bali',
+    caption: 'KYND Community',
+  },
+  {
+    title: 'Muse Café & Art (Ubud)',
+    description:
+      'A lovely option for anyone looking for healthier food choices in Ubud. The menu focuses on fresh ingredients, and the atmosphere feels calm and welcoming.',
+    image: museCafe,
+    alt: 'Muse Café & Art in Ubud, Bali',
+    caption: 'Muse Café & Art',
+  },
+  {
+    title: 'Livingstone Holyground (Ubud)',
+    description:
+      "One of the places I would consider if you're looking for somewhere to work remotely for a few hours. The food is excellent, the space is comfortable, and there's plenty of room to settle in with a laptop.",
+    image: livingstoneCafe,
+    alt: 'Livingstone Holyground café in Ubud, Bali',
+    caption: 'Livingstone Holyground',
+  },
+  {
+    title: 'Motel Mexicola (Seminyak, Canggu)',
+    description:
+      "If you're craving Mexican food while in Bali, Motel Mexicola is worth considering. I found it a little pricey compared to some other restaurants on the island, but the food certainly didn't disappoint.",
+    image: motelMexicola,
+    alt: 'Motel Mexicola restaurant in Canggu, Bali',
+    caption: 'Motel Mexicola',
+  },
+  {
+    title: 'Melali Ubud (Ubud)',
+    description:
+      'A great spot for a relaxed meal in Ubud. While the front faces a busy road, the seating area further inside feels much quieter and makes it easy to forget about the traffic outside.',
+    image: melaliCafe,
+    alt: 'Melali Ubud café in Bali',
+    caption: 'Melali Ubud',
+  },
+] as const;
+
+const otherCafeGallery = otherCafes.flatMap((cafe) =>
+  'image' in cafe ? [{ src: cafe.image, alt: cafe.alt, caption: cafe.caption }] : []
+);
 ---
 
 <section id="section-0" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>1. Tis Café (Tegalalang)</h3>
+    <h3>1. Tis Café (Tegallalang)</h3>
   </div>
   <div class={prose}>
-    <p>If you're looking for a breakfast spot with a view, Tis Café is one of the places I remember most from Bali. Located near the rice terraces of Tegalalang, it offers a peaceful setting surrounded by greenery and makes a great place to start the day.</p>
+    <p>If you're looking for a breakfast spot with a view, Tis Café is one of the places I remember most from Bali. Located near the rice terraces of Tegallalang, it offers a peaceful setting surrounded by greenery and makes a great place to start the day.</p>
     <div class={imageGrid}>
       <div class="sm:col-span-2">
-        <ArticleImage src={tisCafeBreakfast} alt="Breakfast with a view at Tis Café near Tegalalang, Bali" caption="Breakfast with a view at Tis Café" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+        <ArticleImage src={tisCafeBreakfast} alt="Breakfast with a view at Tis Café near Tegallalang, Bali" caption="Breakfast with a view at Tis Café" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
       </div>
       <div class="flex flex-col gap-3 sm:col-span-1 md:gap-4">
-        <ArticleImage src={tisCafeRiceTerraceView} alt="Rice terrace view from Tis Café in Tegalalang, Bali" caption="Overlooking the Tegalalang rice terraces" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
-        <ArticleImage src={tisCafe} alt="The peaceful setting at Tis Café in Tegalalang, Bali" caption="The peaceful, greenery-filled setting" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+        <ArticleImage src={tisCafeRiceTerraceView} alt="Rice terrace view from Tis Café in Tegallalang, Bali" caption="Overlooking the Tegallalang rice terraces" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+        <ArticleImage src={tisCafe} alt="The peaceful setting at Tis Café in Tegallalang, Bali" caption="The peaceful, greenery-filled setting" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
       </div>
     </div>
     <p>Before breakfast, I spent some time walking through the nearby Mupu Rice Terrace, which made the whole experience feel even more special. While the food was excellent, it was the combination of the views and the peaceful setting that made Tis Café so memorable.</p>
@@ -47,7 +106,15 @@ const imageGrid = 'my-5 grid grid-cols-1 items-start gap-3 sm:grid-cols-3 md:my-
   </div>
   <div class={prose}>
     <p>If I had to choose just one place to revisit in Bali, it would probably be Wedja. The atmosphere alone makes it worth visiting, with traditional Balinese design, lush surroundings, and a setting that feels completely different from most cafés and restaurants on the island.</p>
-    <ArticleImage src={wedjaRestaurant} alt="Wedja Restaurant in Ubud, Bali" caption="Wedja Restaurant — traditional Balinese design in Ubud" figureClass="my-5 md:my-8" imgClass="aspect-[5/4] object-cover" />
+    <div class={imageGrid}>
+      <div class="sm:col-span-2">
+        <ArticleImage src={wedjaEntrance} alt="Traditional Balinese entrance at Wedja Restaurant in Ubud, Bali" caption="Wedja's traditional Balinese entrance" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      </div>
+      <div class="flex flex-col gap-3 sm:col-span-1 md:gap-4">
+        <ArticleImage src={wedjaWaterGarden} alt="Water garden and lotus path at Wedja Restaurant in Ubud, Bali" caption="The lotus-lined water garden path" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+        <ArticleImage src={wedjaDining} alt="Dining experience at Wedja Restaurant in Ubud, Bali" caption="The dining experience at Wedja" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      </div>
+    </div>
     <p>What secured its place on this list, however, was the food. The duck dish ended up being the best meal I had during my two months in Bali, and it's one of the few meals I still remember long after leaving the island.</p>
   </div>
 </section>
@@ -105,37 +172,31 @@ const imageGrid = 'my-5 grid grid-cols-1 items-start gap-3 sm:grid-cols-3 md:my-
   <div class="mb-5 max-w-3xl text-black md:mb-6">
     <h3>Other Cafés Worth Visiting in Bali</h3>
   </div>
-  <div class={`${prose} space-y-6`}>
+  <div class={prose}>
     <p>While the places above were my personal favourites, there are a few other cafés and restaurants that I also enjoyed during my time in Bali and would happily recommend if you have extra time.</p>
-    <div>
-      <h4 class="mb-2 text-black">Milk &amp; Madu Beach Road (Canggu)</h4>
-      <p>A popular all-day dining spot with a relaxed atmosphere, generous portions, and consistently good food. It's the kind of place that works equally well for breakfast, lunch, or dinner.</p>
-      <ArticleImage src={milkMadu} alt="Milk &amp; Madu Beach Road café in Canggu, Bali" caption="Milk &amp; Madu Beach Road" figureClass="my-4 md:my-5" imgClass="aspect-[5/4] object-cover" />
+    <div class="mt-6 divide-y divide-neutral-100">
+      {
+        otherCafes.map((cafe) => (
+          <div class="py-5 first:pt-0 last:pb-0">
+            <h4 class="mb-2 text-black">{cafe.title}</h4>
+            <p class="!mb-0">{cafe.description}</p>
+          </div>
+        ))
+      }
     </div>
-    <div>
-      <h4 class="mb-2 text-black">KYND Community (Seminyak, Canggu &amp; Uluwatu)</h4>
-      <p>One of Bali's most Instagrammable cafés, known for its colourful smoothie bowls, creative presentation, and fully plant-based menu. Fortunately, the food is just as enjoyable as the photos.</p>
-      <ArticleImage src={kyndCafe} alt="KYND Community café in Bali" caption="KYND Community" figureClass="my-4 md:my-5" imgClass="aspect-[5/4] object-cover" />
-    </div>
-    <div>
-      <h4 class="mb-2 text-black">Muse Café &amp; Art (Ubud)</h4>
-      <p>A lovely option for anyone looking for healthier food choices in Ubud. The menu focuses on fresh ingredients, and the atmosphere feels calm and welcoming.</p>
-      <ArticleImage src={museCafe} alt="Muse Café &amp; Art in Ubud, Bali" caption="Muse Café &amp; Art" figureClass="my-4 md:my-5" imgClass="aspect-[5/4] object-cover" />
-    </div>
-    <div>
-      <h4 class="mb-2 text-black">Livingstone Holyground (Canggu)</h4>
-      <p>One of the places I would consider if you're looking for somewhere to work remotely for a few hours. The food is excellent, the space is comfortable, and there's plenty of room to settle in with a laptop.</p>
-    </div>
-    <div>
-      <h4 class="mb-2 text-black">Motel Mexicola (Seminyak)</h4>
-      <p>If you're craving Mexican food while in Bali, Motel Mexicola is worth considering. I found it a little pricey compared to some other restaurants on the island, but the food certainly didn't disappoint.</p>
-      <ArticleImage src={motelMexicola} alt="Motel Mexicola restaurant in Seminyak, Bali" caption="Motel Mexicola" figureClass="my-4 md:my-5" imgClass="aspect-[5/4] object-cover" />
-    </div>
-    <div>
-      <h4 class="mb-2 text-black">Melali Ubud (Ubud)</h4>
-      <p>A great spot for a relaxed meal in Ubud. While the front faces a busy road, the seating area further inside feels much quieter and makes it easy to forget about the traffic outside.</p>
-      <ArticleImage src={melaliCafe} alt="Melali Ubud café in Bali" caption="Melali Ubud" figureClass="my-4 md:my-5" imgClass="aspect-[5/4] object-cover" />
-    </div>
+  </div>
+  <div class={cafeGallery}>
+    {
+      otherCafeGallery.map((photo) => (
+        <ArticleImage
+          src={photo.src}
+          alt={photo.alt}
+          caption={photo.caption}
+          figureClass="m-0"
+          imgClass="aspect-[4/5] object-cover"
+        />
+      ))
+    }
   </div>
 </section>
 

@@ -1,8 +1,8 @@
 name: Deploy to GitHub Pages
 
+# Paused: pushes stay on Git only. Run manually from Actions when you want to deploy.
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read

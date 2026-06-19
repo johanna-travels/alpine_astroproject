@@ -65,8 +65,12 @@ const permissionsPolicy = [
     <meta name="twitter:card" content="summary" />
     {noindex && <meta name="robots" content="noindex" />}
     <meta name="theme-color" content="#69746E" />
+    <link rel="icon" href={`${fb}favicon.ico`} sizes="any" />
     <link rel="icon" href={`${fb}favicon.svg`} type="image/svg+xml" />
-    <link rel="apple-touch-icon" href={`${fb}favicon.svg`} />
+    <link rel="icon" type="image/png" sizes="32x32" href={`${fb}favicon-32x32.png`} />
+    <link rel="icon" type="image/png" sizes="16x16" href={`${fb}favicon-16x16.png`} />
+    <link rel="apple-touch-icon" sizes="180x180" href={`${fb}apple-touch-icon.png`} />
+    <link rel="manifest" href={`${fb}site.webmanifest`} />
     <link rel="preload" href={`${fb}fonts/scheherazade/ScheherazadeNew-Regular.ttf`} as="font" type="font/ttf" crossorigin />
     <Fragment set:html={`<style>
       @font-face {

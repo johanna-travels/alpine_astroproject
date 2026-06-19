@@ -1,6 +1,6 @@
 ---
 import ArticlePage from '@/components/articles/ArticlePage.astro';
-import BrugesGuide from '@/components/articles/BrugesGuide.astro';
+import BrugesGuideContent from '@/components/articles/BrugesGuide.astro';
 import { brugesNav } from '@/domains/articles/bruges-nav';
 import { getArticle } from '@/domains/articles/catalog';
 
@@ -8,5 +8,5 @@ const article = getArticle('bruges-guide')!;
 ---
 
 <ArticlePage article={article} sections={brugesNav}>
-  <BrugesGuide />
+  <BrugesGuideContent />
 </ArticlePage>
