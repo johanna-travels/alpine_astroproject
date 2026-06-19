@@ -13,7 +13,7 @@
 
 1. Go to [resend.com](https://resend.com) and create an account
 2. Create an API key in your dashboard
-3. Verify your sender domain (e.g., noreply@voyaflair.com)
+3. Verify your sender domain (e.g., noreply@yourdomain.com)
 4. Get your `RESEND_API_KEY`
 
 ## 3. Configure Environment Variables
@@ -27,7 +27,7 @@ SUPABASE_ANON_KEY=your_supabase_anon_key
 
 # Resend Configuration
 RESEND_API_KEY=your_resend_api_key
-RESEND_FROM_EMAIL=noreply@voyaflair.com
+RESEND_FROM_EMAIL=noreply@yourdomain.com
 ```
 
 Replace the placeholder values with your actual credentials.
