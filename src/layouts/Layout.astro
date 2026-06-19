@@ -19,6 +19,14 @@ const {
 const isDev = import.meta.env.DEV;
 const fb = import.meta.env.BASE_URL;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? homeUrl).href;
+const logoUrl = new URL(`${fb}icon-512.png`, Astro.site ?? homeUrl).href;
+const organizationSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Voyaflair',
+  url: homeUrl,
+  logo: logoUrl,
+});
 
 const csp = [
   "default-src 'self'",
@@ -51,6 +59,7 @@ const permissionsPolicy = [
     <meta charset="UTF-8" />
     <ClientRouter />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="google-site-verification" content="icYMHuGBR9GDv3N7DZD8dzaDuw9CatrWoh4R9iYcLF4" />
     <meta http-equiv="Content-Security-Policy" content={csp} />
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
@@ -62,15 +71,21 @@ const permissionsPolicy = [
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:type" content="website" />
+    <meta property="og:image" content={logoUrl} />
+    <meta property="og:image:alt" content="Voyaflair logo — VF monogram" />
     <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content={logoUrl} />
     {noindex && <meta name="robots" content="noindex" />}
     <meta name="theme-color" content="#69746E" />
+    <link rel="icon" type="image/png" sizes="96x96" href={`${fb}favicon-96x96.png`} />
+    <link rel="icon" type="image/png" sizes="48x48" href={`${fb}favicon-48x48.png`} />
     <link rel="icon" href={`${fb}favicon.ico`} sizes="any" />
-    <link rel="icon" href={`${fb}favicon.svg`} type="image/svg+xml" />
     <link rel="icon" type="image/png" sizes="32x32" href={`${fb}favicon-32x32.png`} />
     <link rel="icon" type="image/png" sizes="16x16" href={`${fb}favicon-16x16.png`} />
+    <link rel="icon" href={`${fb}favicon.svg`} type="image/svg+xml" />
     <link rel="apple-touch-icon" sizes="180x180" href={`${fb}apple-touch-icon.png`} />
     <link rel="manifest" href={`${fb}site.webmanifest`} />
+    <script type="application/ld+json" set:html={organizationSchema} />
     <link rel="preload" href={`${fb}fonts/scheherazade/ScheherazadeNew-Regular.ttf`} as="font" type="font/ttf" crossorigin />
     <Fragment set:html={`<style>
       @font-face {

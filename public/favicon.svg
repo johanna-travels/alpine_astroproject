@@ -1,14 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Voyaflair">
   <circle cx="24" cy="24" r="22" fill="#F5F2EB" stroke="#6b7280" stroke-width="1.5"/>
-  <text
-    x="24"
-    y="24.5"
-    text-anchor="middle"
-    dominant-baseline="middle"
-    font-family="Georgia, 'Times New Roman', serif"
-    font-size="13"
-    font-weight="700"
-    fill="#1a1a1a"
-    letter-spacing="0.08em"
-  >VF</text>
+  <g fill="#1a1a1a" transform="translate(24 24.5)">
+    <!-- V -->
+    <path d="M-6.1 -6.4 L-2.4 5.8 L-0.9 5.8 L2.8 -6.4 L1.1 -6.4 L-1.6 3.9 L-4.3 -6.4 Z"/>
+    <!-- F -->
+    <path d="M4.2 -6.4 H9.8 V-4.8 H5.8 V-0.4 H9.2 V1.2 H5.8 V5.8 H4.2 Z"/>
+  </g>
 </svg>

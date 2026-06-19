@@ -57,9 +57,12 @@ async function main() {
   const png16 = await renderPng(16);
   const png32 = await renderPng(32);
   const png48 = await renderPng(48);
+  const png96 = await renderPng(96);
 
   fs.writeFileSync(path.join(publicDir, 'favicon-16x16.png'), png16);
   fs.writeFileSync(path.join(publicDir, 'favicon-32x32.png'), png32);
+  fs.writeFileSync(path.join(publicDir, 'favicon-48x48.png'), png48);
+  fs.writeFileSync(path.join(publicDir, 'favicon-96x96.png'), png96);
 
   // Classic .ico fallback (used by search results & legacy browsers)
   const ico = buildIco([

@@ -75,7 +75,7 @@ test.describe('Voyaflair Site Tests', () => {
     await page.waitForLoadState('networkidle');
     await page.waitForSelector('#carousel');
 
-    const links = page.locator('#carousel a.slide');
+    const links = page.locator('#carousel article.slide a');
     const count = await links.count();
     expect(count).toBeGreaterThan(0);
 
@@ -97,5 +97,20 @@ test.describe('Voyaflair Site Tests', () => {
     await page.goto('/');
     await page.waitForLoadState('domcontentloaded');
     await expect(page.locator('[data-testid="desktop-logo"]')).toBeVisible();
+  });
+
+  test('VF favicon assets are linked for browsers and search engines', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForLoadState('domcontentloaded');
+
+    await expect(page.locator('link[rel="icon"][sizes="48x48"]')).toHaveAttribute('href', /favicon-48x48\.png$/);
+    await expect(page.locator('link[rel="icon"][sizes="96x96"]')).toHaveAttribute('href', /favicon-96x96\.png$/);
+    await expect(page.locator('link[rel="icon"][href$="favicon.ico"]')).toHaveCount(1);
+    await expect(page.locator('script[type="application/ld+json"]')).toHaveCount(1);
+
+    for (const asset of ['favicon-48x48.png', 'favicon-96x96.png', 'favicon.ico', 'icon-512.png']) {
+      const response = await page.request.get(`/${asset}`);
+      expect(response.ok(), `${asset} should be reachable`).toBeTruthy();
+    }
   });
 });

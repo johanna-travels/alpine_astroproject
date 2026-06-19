@@ -40,11 +40,9 @@ export const articles: readonly Article[] = [
     image: articleKyoto,
     publishedDate: '19 June 2026',
     intro: [
-      "Kyoto is one of the most popular destinations in Japan, but it's also much larger than many first-time visitors expect. One of the biggest mistakes people make is trying to fit too much into a short trip, often spending more time moving around the city than actually enjoying it.",
-      "While I spent almost a week in Kyoto, I don't think you need seven days to experience the city's highlights. If it's your first visit, three well-planned days are enough to see many of Kyoto's most iconic sights without turning your trip into a race from one attraction to the next.",
-      'This itinerary focuses on the places I would personally prioritise on a first visit to Kyoto, combining famous landmarks with a few quieter spots that are easy to overlook on a first visit.',
+      'Five days in Kyoto, balancing iconic temples with quiet neighbourhoods, slow mornings and the kind of details that make the city stay with you.',
     ],
-    lead: 'A three-day Kyoto itinerary for first-time visitors, combining the city\u2019s most iconic temples and landmarks with a few quieter spots that are easy to overlook.',
+    lead: 'Five days in Kyoto, balancing iconic temples with quiet neighbourhoods, slow mornings and the kind of details that make the city stay with you.',
   },
   {
     slug: 'bali-cafes',

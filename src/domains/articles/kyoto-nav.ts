@@ -8,5 +8,4 @@ export const kyotoNav: readonly TocGroup[] = [
   { navTitle: '5. Where to Stay in Kyoto', target: 'section-3' },
   { navTitle: '6. Where to Eat in Kyoto', target: 'section-4' },
   { navTitle: '7. FAQ', target: 'section-5' },
-  { navTitle: '8. Final Thoughts', target: 'section-6' },
 ] as const;
