@@ -1,0 +1,142 @@
+---
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import { articleHref } from '@/domains/articles/catalog';
+
+import nakatanidouShow from '@/assets/articles/kyoto/nara-nakatanidou-mochi-making-show.webp';
+import nakatanidouMochi from '@/assets/articles/kyoto/nara-nakatanidou-yomogi-mochi.webp';
+import isuienGarden from '@/assets/articles/kyoto/nara-traditional-japanese-garden-isuien.webp';
+import todaiji from '@/assets/articles/kyoto/nara-todai-ji-temple.webp';
+import deerTodaiji from '@/assets/articles/kyoto/nara-deer-outside-todai-ji.webp';
+import deerByPond from '@/assets/articles/kyoto/nara-deer-by-the-pond.webp';
+import deerBow from '@/assets/articles/kyoto/nara-the-famous-bow.webp';
+
+const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
+const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]';
+const threeColGrid = 'my-5 grid grid-cols-1 items-start gap-3 sm:grid-cols-3 md:my-8 md:gap-4';
+const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
+---
+
+<section id="section-0" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>Start at Nakatanidou for Fresh Mochi</h3>
+  </div>
+  <div class={prose}>
+    <p>Nakatanidou is a small shop in Nara known for its freshly made yomogi mochi and the popular mochi-pounding show that regularly attracts crowds of visitors.</p>
+    <p>This was my first stop after arriving in Nara. Since I got there quite early, I asked the staff when the next show would take place. If you're hoping to see it, I would recommend doing the same rather than relying on a schedule you found online.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={nakatanidouShow} alt="Staff performing the mochi-pounding show at Nakatanidou in Nara, Japan" caption="The famous mochi-pounding show" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={nakatanidouMochi} alt="Freshly made yomogi mochi at Nakatanidou in Nara, Japan" caption="Freshly made yomogi mochi" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <p>One thing I quickly learned is not to arrive exactly at the time you're given. I got there about ten minutes early and ended up being lucky because the show started sooner than expected.</p>
+    <p>I also tried the mochi afterwards and loved it. Even if you're not planning to stay long in this part of Nara, I think it's a fun first stop before heading towards Nara Park.</p>
+  </div>
+</section>
+
+<section id="section-1" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>Walk Through Isuien Garden</h3>
+  </div>
+  <div class={prose}>
+    <p>Isuien Garden is a traditional Japanese garden located near Nara Park and Todai-ji Temple. Known for its ponds, seasonal landscapes, and peaceful atmosphere, it offers a quieter experience compared to some of Nara's busiest attractions.</p>
+    <ArticleImage src={isuienGarden} alt="A traditional Japanese garden with ponds and seasonal landscapes at Isuien Garden in Nara, Japan" caption="The peaceful Isuien Garden" imgClass="aspect-[7/5] object-cover" />
+    <p>I stopped by on my way towards Nara Park and found it to be a pleasant break before reaching the areas where most visitors gather to see the deer. If you enjoy Japanese gardens or simply want to escape the crowds for a while, it's an easy stop to add to your route.</p>
+  </div>
+</section>
+
+<section id="section-2" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>Head Towards Todai-ji Temple</h3>
+  </div>
+  <div class={prose}>
+    <p>As you continue towards Nara Park, you'll eventually reach Todai-ji, one of Japan's most important Buddhist temples and one of the city's best-known landmarks.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={deerTodaiji} alt="Deer roaming outside Todai-ji Temple in Nara, Japan" caption="Deer outside Todai-ji" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={todaiji} alt="Todai-ji Temple, one of Japan's most important Buddhist temples, in Nara, Japan" caption="Todai-ji Temple" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <p>The temple is best known for its Great Buddha Hall, which houses one of the largest bronze Buddha statues in the world. Even if you're simply exploring the surrounding area, it's a stop that's difficult to miss during a visit to Nara.</p>
+    <p>The area around Todai-ji was also where I finally found a stall that still had deer crackers available after noticing that several others had already sold out earlier in the day.</p>
+  </div>
+</section>
+
+<section id="section-4" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>Feeding the Deer in Nara Park</h3>
+  </div>
+  <div class={prose}>
+    <p>Nara Park is home to hundreds of free-roaming deer and is one of the main reasons many visitors choose to visit Nara.</p>
+    <p>Most of the deer I encountered were around the area near Todai-ji, where visitors gather to feed them using special deer crackers sold throughout the park. Some seemed happy to wait for people to approach, while others were clearly keeping an eye out for anyone carrying food.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={deerBow} alt="A deer performing the famous bow in Nara Park, Japan" caption="The famous Nara deer bow" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={deerByPond} alt="A deer resting by the pond in Nara Park, Japan" caption="A deer by the pond in Nara Park" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <p>One thing I learned very quickly is to put the crackers inside your bag after buying them. If you keep them visible in your hands, it usually doesn't take long before several deer start making their way towards you.</p>
+    <p>I found it much easier to walk to a quieter spot before taking out a few crackers. As I continued exploring, I also started noticing calmer and more timid deer away from the busiest areas. If you have enough time, it's worth wandering a little further instead of staying only where most visitors gather.</p>
+  </div>
+</section>
+
+<section id="section-3" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>Useful Tips for Visiting Nara</h3>
+  </div>
+  <div class={prose}>
+    <ul class="list-disc pl-5 space-y-2 marker:text-black/40">
+      <li class="prose-body">Arrive earlier in the day if you want to avoid the busiest crowds.</li>
+      <li class="prose-body">Wear comfortable shoes. You'll probably walk more than you expect, just as you do in many other parts of Japan.</li>
+      <li class="prose-body">Keep some cash with you if you plan to buy deer crackers or try local snacks such as mochi.</li>
+      <li class="prose-body">If you're planning to feed the deer, keep the crackers in your bag until you're ready to use them.</li>
+      <li class="prose-body">Show your empty palms once you've run out of crackers. The deer usually understand and move on.</li>
+      <li class="prose-body">Allow at least half a day to explore Nara at a relaxed pace.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="section-7" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>Places to Eat or Take a Break Near Nara Park</h3>
+  </div>
+  <div class={prose}>
+    <p>Whether you're looking for a quick coffee, a traditional Japanese meal, or a place to relax after exploring Nara Park, these are a few spots worth saving before your visit.</p>
+    <ul class="list-disc pl-5 space-y-2 marker:text-black/40">
+      <li class="prose-body"><a href="https://maps.app.goo.gl/XDWGVrwmRYJDxP7Z6?g_st=ic" target="_blank" rel="noopener noreferrer" class={mapLink}>Nakatanidou</a> – Fresh yomogi mochi and the famous mochi-pounding show</li>
+      <li class="prose-body"><a href="https://maps.app.goo.gl/EVLZ376cEyw4Co5e7?g_st=ic" target="_blank" rel="noopener noreferrer" class={mapLink}>Omitsu</a> – Traditional okonomiyaki</li>
+      <li class="prose-body"><a href="https://maps.app.goo.gl/U5bfznJjnp9Wwhvt9?g_st=ic" target="_blank" rel="noopener noreferrer" class={mapLink}>Daibutsu Ichigo</a> – Popular for strawberry desserts and sweet treats</li>
+      <li class="prose-body"><a href="https://maps.app.goo.gl/aNKgmM1WKoSXS9WW8?g_st=ic" target="_blank" rel="noopener noreferrer" class={mapLink}>CONCE Cafe</a> – Coffee, desserts, and a relaxing atmosphere</li>
+      <li class="prose-body"><a href="https://maps.app.goo.gl/ucFngNJDCyKpEn4T6?g_st=ic" target="_blank" rel="noopener noreferrer" class={mapLink}>Gyumabushi Miyama</a> – Wagyu beef specialties</li>
+    </ul>
+  </div>
+</section>
+
+<section id="section-5" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>FAQ</h3>
+  </div>
+  <div class={prose}>
+    <h4 class="mb-2 text-black">Is Nara Worth Visiting from Kyoto?</h4>
+    <p>Absolutely. Between the free-roaming deer, historic temples, traditional gardens, and relaxed atmosphere, Nara is one of the best day trips you can take from Kyoto.</p>
+    <h4 class="mt-8 mb-2 text-black">How Long Do You Need in Nara?</h4>
+    <p>For this route, I would allow at least half a day. If you want to enter Todai-ji, visit more temples, or spend more time exploring the gardens, a full day would feel more relaxed.</p>
+    <h4 class="mt-8 mb-2 text-black">How Do You Get to Nara from Kyoto?</h4>
+    <p>Nara is easy to reach from Kyoto by train, and the journey takes less than an hour. Once you arrive, many of the main attractions around Nara Park can be explored on foot, making it one of the easiest day trips from Kyoto.</p>
+    <p>One thing I appreciated throughout my trip to Japan was how well Google Maps worked with public transport. I used it regularly to plan routes and found it surprisingly accurate.</p>
+    <h4 class="mt-8 mb-2 text-black">Can You Visit Nara and Fushimi Inari on the Same Day?</h4>
+    <p>Yes, and many visitors choose to combine them into the same day. I would recommend starting early, especially if you want to visit Fushimi Inari before the biggest crowds arrive.</p>
+    <h4 class="mt-8 mb-2 text-black">Where Can You Buy Deer Crackers in Nara?</h4>
+    <p>Deer crackers are sold at stalls throughout Nara Park and around popular areas such as Todai-ji. If one stall has sold out, keep walking, as another one may still have stock available.</p>
+    <h4 class="mt-8 mb-2 text-black">Do the Deer in Nara Bite?</h4>
+    <p>Some deer can become pushy when they know you have food. During my visit, I never felt uncomfortable, but I would recommend keeping crackers in your bag and showing your empty palms once you are done feeding them.</p>
+    <h4 class="mt-8 mb-2 text-black">Do Nara Deer Really Bow?</h4>
+    <p>Yes. Many of the deer in Nara have learned to bow in exchange for deer crackers, making it one of the most memorable experiences for visitors. If you're planning to feed them, there's a good chance you'll see the famous bow for yourself.</p>
+  </div>
+</section>
+
+<section id="section-6" class="scroll-mt-nav">
+  <div class={prose}>
+    <div class="rounded-2xl border border-amber-200 bg-amber-50 p-5 md:p-6">
+      <span class="mb-3 inline-flex items-center gap-2 rounded-full bg-amber-200/70 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-900">
+        ✦ Before you go
+      </span>
+      <p>Nara ended up being much more than a chance to see Japan's famous deer. Between the traditional gardens, historic temples, and the relaxed atmosphere around Nara Park, it felt like a completely different experience from Kyoto.</p>
+      <p>If you're planning a few days in Kyoto, Nara is an easy and worthwhile day trip to add to your itinerary. You may also enjoy my <a href={articleHref('kyoto-itinerary')} class={mapLink}>Kyoto 3-Day Itinerary for First-Time Visitors</a>, where I share how I combined this Nara day trip with Fushimi Inari, Gion, Arashiyama, and some of Kyoto's most iconic sights.</p>
+    </div>
+  </div>
+</section>

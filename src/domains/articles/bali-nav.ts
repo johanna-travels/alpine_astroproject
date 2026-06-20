@@ -8,5 +8,5 @@ export const baliNav: readonly TocGroup[] = [
   { navTitle: '5. Single Fin (Uluwatu)', target: 'section-3' },
   { navTitle: '6. Brunch Club Pererenan', target: 'section-4' },
   { navTitle: '7. Other Cafés Worth Visiting', target: 'section-5' },
-  { navTitle: '8. Final Thoughts', target: 'section-6' },
+  { navTitle: '8. Before You Go', target: 'section-6' },
 ] as const;

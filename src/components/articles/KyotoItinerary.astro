@@ -1,5 +1,6 @@
 ---
 import ArticleImage from '@/components/ui/ArticleImage.astro';
+import { articleHref } from '@/domains/articles/catalog';
 
 import bambooGrove from '@/assets/articles/kyoto/japan-kyoto-arashiyama-bamboo-grove.webp';
 import bambooForestView from '@/assets/articles/kyoto/japan-kyoto-bamboo-forest-view.webp';
@@ -93,6 +94,7 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
     <p>I arrived shortly after sunrise and was surprised by how many people were already there. Another thing that caught me off guard was the amount of walking involved. Many visitors photograph the first section of torii gates and turn back, but the shrine complex extends much further up the mountain. If you want to explore beyond the busiest areas, allow yourself more time than you think you'll need and wear comfortable shoes.</p>
     <h4 class="mt-8 mb-2 text-black">Visit Nara Park & Todai-ji</h4>
     <p>If it's your first time in Kyoto, I think Nara is well worth including in your itinerary.</p>
+    <p>If you're planning your visit, I've also written a detailed <a href={articleHref('nara-day-trip-from-kyoto')} class={mapLink}>Nara Day Trip from Kyoto</a> guide, where I share the exact route I followed, practical tips, and what I'd recommend to first-time visitors.</p>
     <p>I'll be honest — I mainly visited because I wanted to see the famous deer. Like most visitors, I was also hoping to buy some of the crackers sold throughout the park, but several stalls had already sold out by the time I arrived. Fortunately, after walking further towards Todai-ji Temple, I found another stand that still had plenty available.</p>
     <ArticleImage src={naraDeer} alt="A deer in front of a temple in Nara Park, Japan" caption="The famous deer of Nara Park" imgClass="aspect-[4/5] object-cover" />
     <p>One thing that surprised me was how different the atmosphere felt as I continued deeper into Nara Park. While many of the deer near the entrances were surrounded by visitors, I found some of the calmer and more timid deer further inside the park. If you've seen viral videos of deer chasing people for crackers, don't worry too much. I quickly learned that showing your empty palms is usually enough for them to realise you've run out of food, and they'll often lose interest and move on.</p>
@@ -159,17 +161,10 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
 </section>
 
 <section id="section-6" class="scroll-mt-nav">
-  <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>Final Thoughts</h3>
-  </div>
   <div class={prose}>
     <div class="rounded-2xl border border-amber-200 bg-amber-50 p-5 md:p-6">
       <span class="mb-3 inline-flex items-center gap-2 rounded-full bg-amber-200/70 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-900">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5" aria-hidden="true">
-          <path d="M12 9v4" /><path d="M12 17h.01" />
-          <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z" />
-        </svg>
-        Final thoughts
+        ✦ Final thoughts
       </span>
       <p>After spending almost a week in Kyoto, the moments I remember most aren't necessarily the city's most famous attractions. They're the quieter ones — watching the sunrise in Arashiyama, wandering through the streets around Yasaka Pagoda, or sitting on a terrace listening to the rain at Yusa-tei.</p>
       <p>If it's your first visit, my advice would be to focus on a few key areas each day rather than trying to see everything. Kyoto rewards slow exploration far more than a packed itinerary, and sometimes the places you remember most aren't the ones you originally planned to visit.</p>

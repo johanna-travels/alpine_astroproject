@@ -3,11 +3,12 @@ import articleBali from '@/assets/articles/Article Bali.webp';
 import articleBruges from '@/assets/articles/Article Bruges.webp';
 import articleGreece from '@/assets/articles/Article Greece.webp';
 import articleKyoto from '@/assets/articles/Article Kyoto.webp';
+import articleNara from '@/assets/articles/kyoto/nara-the-famous-bow.webp';
 import rhodesLcpImage from '@/assets/articles/rhodos-images/rhodes-old-town-cobblestone-street.webp';
 import type { DestinationSlug } from '@/domains/destinations/catalog';
 import { pageUrl } from '@/lib/site';
 
-export type ArticleSlug = 'bali-cafes' | 'bruges-guide' | 'kyoto-itinerary' | 'rhodes-itinerary';
+export type ArticleSlug = 'bali-cafes' | 'bruges-guide' | 'kyoto-itinerary' | 'nara-day-trip-from-kyoto' | 'rhodes-itinerary';
 
 export interface Article {
   slug: ArticleSlug;
@@ -40,9 +41,29 @@ export const articles: readonly Article[] = [
     image: articleKyoto,
     publishedDate: '19 June 2026',
     intro: [
-      'Five days in Kyoto, balancing iconic temples with quiet neighbourhoods, slow mornings and the kind of details that make the city stay with you.',
+      "Kyoto is one of the most popular destinations in Japan, but it's also much larger than many first-time visitors expect. One of the biggest mistakes people make is trying to fit too much into a short trip, often spending more time moving around the city than actually enjoying it.",
+      "While I spent almost a week in Kyoto, I don't think you need seven days to experience the city's highlights. If it's your first visit, three well-planned days are enough to see many of Kyoto's most iconic sights without turning your trip into a race from one attraction to the next.",
+      'This itinerary focuses on the places I would personally prioritise on a first visit to Kyoto, combining famous landmarks with a few quieter spots that are easy to overlook on a first visit.',
     ],
     lead: 'Five days in Kyoto, balancing iconic temples with quiet neighbourhoods, slow mornings and the kind of details that make the city stay with you.',
+  },
+  {
+    slug: 'nara-day-trip-from-kyoto',
+    destinationSlug: 'japan',
+    category: 'JAPAN',
+    title: 'Nara Day Trip from Kyoto: Deer, Temples & Tips for First-Time Visitors',
+    carouselTitle: 'Nara Day Trip from Kyoto: Deer, Temples & Tips for First-Time Visitors',
+    breadcrumbTitle: 'Nara Day Trip',
+    metaLabel: 'Japan',
+    alt: 'Nara day trip travel guide',
+    image: articleNara,
+    publishedDate: '20 June 2026',
+    intro: [
+      "If you're visiting Kyoto for the first time, Nara is one of the easiest day trips you can add to your itinerary.",
+      'Most people, myself included, first become interested in Nara because of the famous deer that roam freely around Nara Park. But once you arrive, you quickly realise there is more to the area than just feeding the deer.',
+      'During my visit, I stopped for freshly made mochi, walked through a peaceful Japanese garden, explored the area around Todai-ji Temple, and spent time with the deer in different parts of the park. This guide follows the route I personally took and includes a few practical tips I wish I had known before visiting.',
+    ],
+    lead: "If you're visiting Kyoto for the first time, Nara is one of the easiest day trips you can add to your itinerary.",
   },
   {
     slug: 'bali-cafes',

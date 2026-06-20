@@ -1,0 +1,12 @@
+---
+import ArticlePage from '@/components/articles/ArticlePage.astro';
+import NaraDayTripContent from '@/components/articles/NaraDayTrip.astro';
+import { naraDayTripNav } from '@/domains/articles/nara-day-trip-nav';
+import { getArticle } from '@/domains/articles/catalog';
+
+const article = getArticle('nara-day-trip-from-kyoto')!;
+---
+
+<ArticlePage article={article} sections={naraDayTripNav}>
+  <NaraDayTripContent />
+</ArticlePage>
