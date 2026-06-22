@@ -12,7 +12,7 @@ Do **not** use an `email_list` table or migrations from other repos.
    - `SUPABASE_URL` — Project URL (e.g. `https://YOUR_REF.supabase.co`)
    - `SUPABASE_SERVICE_ROLE_KEY` — **service role** key (server-only, never in client code)
 
-**Production project (voyaflair.com):** `https://oczppokwotctpxnmojud.supabase.co`
+Use your project URL from **Project Settings → API** (same value as `SUPABASE_URL` in Netlify env vars).
 
 The API routes use `getSupabaseAdmin()` with the service role key. The anon key is **not** required.
 
@@ -20,7 +20,7 @@ The API routes use `getSupabaseAdmin()` with the service role key. The anon key 
 
 1. [resend.com](https://resend.com) → API key → `RESEND_API_KEY`
 2. Add domain `voyaflair.com` and verify DNS (DKIM, SPF, MX on `send`)
-3. Set sender: `RESEND_FROM_EMAIL=noreply@voyaflair.com`
+3. Set sender: `RESEND_FROM_EMAIL=noreply@yourdomain.com` (must match your verified Resend domain)
 
 ## 3. Environment variables
 
@@ -31,7 +31,7 @@ SUPABASE_URL=https://YOUR_REF.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 
 RESEND_API_KEY=re_...
-RESEND_FROM_EMAIL=noreply@voyaflair.com
+RESEND_FROM_EMAIL=noreply@yourdomain.com
 
 NEWSLETTER_ADMIN_SECRET=your_long_random_secret
 ```
@@ -66,7 +66,7 @@ Expected:
   "ok": true,
   "supabase": {
     "configured": true,
-    "host": "oczppokwotctpxnmojud.supabase.co",
+    "host": "YOUR_REF.supabase.co",
     "connected": true,
     "error": null
   }
@@ -77,7 +77,7 @@ Expected:
 
 1. Footer form → email + consent → `POST /api/subscribe/`
 2. Row in `subscribers` with `status: pending`
-3. Confirmation email from `noreply@voyaflair.com`
+3. Confirmation email from your `RESEND_FROM_EMAIL` address
 4. Click link → `GET /api/confirm/` → `status: active`
 5. Admin sends article newsletter manually via `/api/send-newsletter/` (not automatic on deploy)
 
