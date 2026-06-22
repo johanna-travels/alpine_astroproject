@@ -1,0 +1,12 @@
+---
+import ArticlePage from '@/components/articles/ArticlePage.astro';
+import KatsuojiTempleContent from '@/components/articles/KatsuojiTemple.astro';
+import { katsuojiNav } from '@/domains/articles/katsuoji-nav';
+import { getArticle } from '@/domains/articles/catalog';
+
+const article = getArticle('katsuoji-temple-from-osaka')!;
+---
+
+<ArticlePage article={article} sections={katsuojiNav}>
+  <KatsuojiTempleContent />
+</ArticlePage>

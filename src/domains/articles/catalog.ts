@@ -4,11 +4,12 @@ import articleBruges from '@/assets/articles/Article Bruges.webp';
 import articleGreece from '@/assets/articles/Article Greece.webp';
 import articleKyoto from '@/assets/articles/Article Kyoto.webp';
 import articleNara from '@/assets/articles/kyoto/nara-the-famous-bow.webp';
+import articleKatsuoji from '@/assets/articles/osaka/katsuoji-temple.webp';
 import rhodesLcpImage from '@/assets/articles/rhodos-images/rhodes-old-town-cobblestone-street.webp';
 import type { DestinationSlug } from '@/domains/destinations/catalog';
 import { pageUrl } from '@/lib/site';
 
-export type ArticleSlug = 'bali-cafes' | 'bruges-guide' | 'kyoto-itinerary' | 'nara-day-trip-from-kyoto' | 'rhodes-itinerary';
+export type ArticleSlug = 'bali-cafes' | 'bruges-guide' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'nara-day-trip-from-kyoto' | 'rhodes-itinerary';
 
 export interface Article {
   slug: ArticleSlug;
@@ -64,6 +65,24 @@ export const articles: readonly Article[] = [
       'During my visit, I stopped for freshly made mochi, walked through a peaceful Japanese garden, explored the area around Todai-ji Temple, and spent time with the deer in different parts of the park. This guide follows the route I personally took and includes a few practical tips I wish I had known before visiting.',
     ],
     lead: "If you're visiting Kyoto for the first time, Nara is one of the easiest day trips you can add to your itinerary.",
+  },
+  {
+    slug: 'katsuoji-temple-from-osaka',
+    destinationSlug: 'japan',
+    category: 'JAPAN',
+    title: 'Katsuoji Temple from Osaka: What to Know Before You Go',
+    carouselTitle: 'Katsuoji Temple from Osaka: What to Know Before You Go',
+    breadcrumbTitle: 'Katsuoji Temple',
+    metaLabel: 'Japan',
+    alt: 'Katsuoji Temple travel guide',
+    image: articleKatsuoji,
+    publishedDate: '22 June 2026',
+    intro: [
+      "If you search for day trips from Osaka, you'll probably come across Katsuoji Temple and its thousands of daruma dolls. What I didn't expect was for it to become one of my favourite experiences in Japan.",
+      'Located in the hills north of Osaka, Katsuoji is a Buddhist temple best known for its daruma dolls, which are associated with perseverance, good luck, and achieving personal goals. Today, thousands of daruma can be found throughout the temple grounds, making it one of the most distinctive temples in Japan.',
+      "In this guide, I'll share what to expect from a visit to Katsuoji Temple, how to get there from Osaka, the unique stamp card experience, and a few practical tips I wish I had known before visiting.",
+    ],
+    lead: 'Katsuoji Temple is a Buddhist temple in the hills north of Osaka, famous for the thousands of daruma dolls scattered across its peaceful grounds.',
   },
   {
     slug: 'bali-cafes',

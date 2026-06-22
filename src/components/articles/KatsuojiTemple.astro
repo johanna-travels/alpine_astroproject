@@ -1,0 +1,107 @@
+---
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import templeViewNearEntrance from '@/assets/articles/osaka/katsuoji-temple-view-near-entrance.webp';
+import collectingFirstStamp from '@/assets/articles/osaka/katsuoji-temple-collecting-the-first-stamp.webp';
+import finishedStampCard from '@/assets/articles/osaka/the-finished-katsuoji-stamp-card.webp';
+import darumaInEveryCorner from '@/assets/articles/osaka/katsuoji-temple-daruma-in-every-corner.webp';
+import darumaEverywhereYouLook from '@/assets/articles/osaka/katsuoji-temple-daruma-everywhere-you-look.webp';
+import mostPopularPhotoSpot from '@/assets/articles/osaka/katsuoji-temple-most-popular-photo-spot.webp';
+import viewsFromTheTop from '@/assets/articles/osaka/katsuoji-temple-views-from-the-top.webp';
+import templeSpring from '@/assets/articles/osaka/katsuoji-temple-spring.webp';
+
+const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
+const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
+---
+
+<ArticleImage
+  src={templeViewNearEntrance}
+  alt="View of Katsuoji Temple near the entrance, surrounded by trees"
+  caption="Katsuoji Temple view near the entrance"
+/>
+
+<section id="section-0" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>How to Get to Katsuoji Temple from Osaka</h3>
+  </div>
+  <div class={prose}>
+    <p>Getting to Katsuoji Temple from Osaka is easier than it may seem and takes around one hour. To get there, take the train to Minoh-Kayano Station and then transfer to bus line 30, which goes directly to Katsuoji Temple. The bus stop is located just outside the station, making the journey straightforward once you arrive.</p>
+    <p>One thing I would recommend is carrying some cash, as you'll need to buy your bus ticket before boarding. I visited on a weekday and buses were running approximately every 10 minutes, making the connection very convenient. If you're visiting on a weekend or during a busy season, it's worth checking the latest timetable before you go.</p>
+  </div>
+</section>
+
+<section id="section-1" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>Arriving at Katsuoji Temple</h3>
+  </div>
+  <div class={prose}>
+    <p>Once you arrive at Katsuoji, you'll purchase your entrance ticket before entering the temple grounds.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={collectingFirstStamp} alt="Collecting the first stamp on the Katsuoji Temple stamp card" caption="Collecting the first stamp" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={finishedStampCard} alt="The finished Katsuoji Temple stamp card with a complete illustration" caption="The finished stamp card" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <p>This is also where you'll receive one of my favourite parts of the whole visit: a stamp card. As you explore the temple, you can collect stamps from numbered stations throughout the grounds, gradually revealing a complete illustration. It turns the visit into a bit of a treasure hunt and ended up being one of my favourite parts of the experience. Honestly, this card is the only souvenir you need from Osaka!</p>
+  </div>
+</section>
+
+<section id="section-2" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>Exploring the Temple Grounds</h3>
+  </div>
+  <div class={prose}>
+    <p>No matter where you look, there always seems to be another daruma waiting to be discovered. You'll find them near the main temple buildings, along pathways, tucked into stone walls, and hidden in some of the most unexpected corners of the grounds. I honestly couldn't stop taking photos.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={darumaInEveryCorner} alt="Daruma dolls tucked into every corner of Katsuoji Temple" caption="Daruma in every corner" figureClass="m-0" imgClass="aspect-[3/4] object-cover" />
+      <ArticleImage src={darumaEverywhereYouLook} alt="Daruma dolls visible everywhere you look across the Katsuoji Temple grounds" caption="Daruma everywhere you look" figureClass="m-0" imgClass="aspect-[3/4] object-cover" />
+    </div>
+    <p>One area that quickly caught my attention was the display of giant daruma dolls. It's one of the temple's most popular photo spots and understandably so. Even after spending the morning photographing daruma around the grounds, I still found myself stopping here for more photos.</p>
+    <ArticleImage src={mostPopularPhotoSpot} alt="The giant daruma dolls at Katsuoji Temple's most popular photo spot" caption="The temple's most popular photo spot" imgClass="aspect-[5/4] object-cover" />
+    <p>One thing I noticed during my visit is that very few people continued all the way to the highest parts of the temple grounds. By the time I reached the top, I was completely alone and had the views all to myself. If you have the time, I would definitely recommend continuing all the way up, as the views are beautiful and the atmosphere feels much more peaceful.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={viewsFromTheTop} alt="Views over the surrounding hills from the top of Katsuoji Temple" caption="Views from the top" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={templeSpring} alt="Katsuoji Temple surrounded by cherry blossoms in spring" caption="Katsuoji Temple in spring" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
+  </div>
+</section>
+
+<section id="section-3" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>Useful Tips for Visiting Katsuoji Temple</h3>
+  </div>
+  <div class={prose}>
+    <ul class="list-disc pl-5 space-y-2 marker:text-black/40">
+      <li class="prose-body">Bring cash for transport, tickets, and small purchases.</li>
+      <li class="prose-body">Allow around two hours for the temple grounds.</li>
+      <li class="prose-body">Arrive early if you want softer light and a calmer atmosphere.</li>
+      <li class="prose-body">Do not rush through the lower areas only — continue further up if you can.</li>
+      <li class="prose-body">Keep your stamp card safe, as it makes a lovely souvenir from the visit.</li>
+      <li class="prose-body">Wear comfortable shoes, as the temple grounds are larger than they first appear.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="section-4" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>FAQ</h3>
+  </div>
+  <div class={prose}>
+    <h4 class="mb-2 text-black">How Long Do You Need at Katsuoji Temple?</h4>
+    <p>I would allow around two hours for Katsuoji Temple. That gives you enough time to explore the grounds, collect the stamps, take photos, and enjoy the experience without rushing. If you're anything like me, you'll probably spend longer than planned simply because you keep stopping to photograph another daruma.</p>
+    <h4 class="mt-8 mb-2 text-black">Is Katsuoji Temple Worth Visiting?</h4>
+    <p>Katsuoji is not the quickest place to reach from central Osaka, but it's easily one of the most memorable places I visited in Japan. With its thousands of daruma dolls, unique stamp card experience, beautiful views, and peaceful atmosphere, it offers a completely different side of Osaka and is well worth the journey.</p>
+    <h4 class="mt-8 mb-2 text-black">When Is the Best Time to Visit Katsuoji?</h4>
+    <p>I visited Katsuoji in spring, and the cherry blossoms made the experience even more memorable. Seeing the pink blossoms alongside the thousands of red daruma made the temple feel even more photogenic and gave some of my favourite photos from Japan.</p>
+    <p>Because of that, I would happily recommend visiting during cherry blossom season. I haven't visited in autumn, but with all the trees around the temple, I imagine the red and orange leaves would make the scenery just as impressive.</p>
+  </div>
+</section>
+
+<section id="section-5" class="scroll-mt-nav">
+  <div class={prose}>
+    <div class="rounded-2xl border border-amber-200 bg-amber-50 p-5 md:p-6">
+      <span class="mb-3 inline-flex items-center gap-2 rounded-full bg-amber-200/70 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-900">
+        ✦ Before you go
+      </span>
+      <p>Katsuoji Temple ended up being far more memorable than I expected. What started as a visit to see the famous daruma dolls quickly became one of my favourite experiences in Japan, thanks to the peaceful atmosphere, beautiful surroundings, and the fun of collecting stamps around the grounds.</p>
+      <p>If you're looking for a day trip from Osaka that feels completely different from the city itself, Katsuoji is well worth the journey. Just make sure you leave enough time to explore beyond the main paths—you never know where you'll find your next daruma.</p>
+    </div>
+  </div>
+</section>

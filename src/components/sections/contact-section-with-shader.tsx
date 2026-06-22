@@ -146,7 +146,7 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
                     Full Name <span className="text-red-500">*</span>
                   </label>
                   <div className="mt-2">
-                    <input id="name" type="text" value={values.name} onChange={handleChange} placeholder="Manu Arora" aria-invalid={!!errors.name} className={inputClass("name")} />
+                    <input id="name" name="name" type="text" autoComplete="name" value={values.name} onChange={handleChange} placeholder="Manu Arora" aria-invalid={!!errors.name} className={inputClass("name")} />
                   </div>
                   {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name}</p>}
                 </div>
@@ -157,7 +157,7 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
                     Email address <span className="text-red-500">*</span>
                   </label>
                   <div className="mt-2">
-                    <input id="email" type="email" value={values.email} onChange={handleChange} placeholder="hello@johndoe.com" aria-invalid={!!errors.email} className={inputClass("email")} />
+                    <input id="email" name="email" type="email" autoComplete="email" value={values.email} onChange={handleChange} placeholder="hello@johndoe.com" aria-invalid={!!errors.email} className={inputClass("email")} />
                   </div>
                   {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
                 </div>
@@ -168,7 +168,7 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
                     Subject <span className="text-red-500">*</span>
                   </label>
                   <div className="mt-2">
-                    <input id="subject" type="text" value={values.subject} onChange={handleChange} placeholder="How can we help?" aria-invalid={!!errors.subject} className={inputClass("subject")} />
+                    <input id="subject" name="subject" type="text" autoComplete="off" value={values.subject} onChange={handleChange} placeholder="How can we help?" aria-invalid={!!errors.subject} className={inputClass("subject")} />
                   </div>
                   {errors.subject && <p className="mt-1 text-sm text-red-500">{errors.subject}</p>}
                 </div>
@@ -179,7 +179,7 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
                     Message <span className="text-red-500">*</span>
                   </label>
                   <div className="mt-2">
-                    <textarea rows={5} id="message" value={values.message} onChange={handleChange} placeholder="Enter your message here" aria-invalid={!!errors.message} className={inputClass("message")} />
+                    <textarea rows={5} id="message" name="message" autoComplete="off" value={values.message} onChange={handleChange} placeholder="Enter your message here" aria-invalid={!!errors.message} className={inputClass("message")} />
                   </div>
                   {errors.message && <p className="mt-1 text-sm text-red-500">{errors.message}</p>}
                 </div>
@@ -190,7 +190,9 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
                     <div className="flex h-5 items-center">
                       <input
                         id="contact-consent"
+                        name="consent"
                         type="checkbox"
+                        autoComplete="off"
                         checked={values.consent}
                         onChange={handleChange}
                         className="h-4 w-4 rounded border-gray-300 text-neutral-900 focus:ring-neutral-500 cursor-pointer dark:border-neutral-600 dark:text-white dark:focus:ring-white"

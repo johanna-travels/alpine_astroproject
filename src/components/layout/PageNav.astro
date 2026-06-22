@@ -3,6 +3,7 @@ import { HamburgerMenuOverlay } from '@/components/layout/HamburgerMenuOverlay';
 import { isActivePath, pageUrl } from '@/lib/site';
 import { primaryNavLinks } from '@/domains/site/navigation';
 import { socialLinks } from '@/domains/site/social';
+import type { SocialIcon } from '@/domains/site/social';
 
 const { pathname } = Astro.url;
 
@@ -19,7 +20,7 @@ type NavLink = (typeof primaryNavLinks)[number] & {
   hasDropdown?: boolean;
   dropdownItems?: DropdownSection[];
   variant?: 'nav' | 'social';
-  iconType?: 'instagram' | 'pinterest' | 'tiktok';
+  iconType?: SocialIcon;
 };
 
 const links: NavLink[] = [
@@ -133,8 +134,6 @@ const isActive = (link: NavLink) => isActivePath(pathname, [link.href, ...(link.
         client:idle
         activePathname={pathname}
         items={links}
-        buttonTop="20px"
-        buttonRight="20px"
         buttonSize="lg"
         buttonColor="transparent"
         iconColor="#000000"

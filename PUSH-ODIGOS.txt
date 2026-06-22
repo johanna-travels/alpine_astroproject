@@ -1,0 +1,93 @@
+🟦🟦🟦 VOYAFLAIR — ΤΙ ΚΑΝΩ ΚΑΘΕ ΦΟΡΑ 🟦🟦🟦
+(γράψ' το σαν checklist — ένα βήμα τη φορά)
+
+
+🔑 ΤΟ ΚΛΕΙΔΙ ΣΟΥ (μην το χάσεις):
+7ed8b5e17586396290fac5a3c4bbcdecc1f68ae669cb3cba181a5ecaf73d6efa
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🟢 ΒΗΜΑ 1 — ΒΑΛΕ ΤΟ ARTICLE ΣΤΟ SITE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Άνοιξε Terminal. Copy-paste ΟΛΟ αυτό:
+
+cd /Users/johanna/Desktop/alpine_astroproject
+npx netlify-cli deploy --prod
+
+Περίμενε μέχρι να δεις:
+   Deploy is live!
+
+✅ Τέλος βήμα 1.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🟡 ΒΗΜΑ 2 — ΔΕΣ ΠΟΣΟΥΣ ΘΑ ΠΑΡΟΥΝ EMAIL
+         (ΔΕΝ ΣΤΕΛΝΕΙ ΤΙΠΟΤΑ ΑΚΟΜΑ!)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Άλλαξε ΜΟΝΟ το όνομα μέσα στα quotes:
+
+   "nara-day-trip-from-kyoto"   ← Nara
+   "kyoto-itinerary"            ← Kyoto
+   "rhodes-itinerary"           ← Rhodes
+   "bali-cafes"                 ← Bali
+   "bruges-guide"               ← Bruges
+
+Copy-paste (βάλε το σωστό slug):
+
+curl -X POST https://voyaflair.com/api/send-newsletter/ -H "Authorization: Bearer 7ed8b5e17586396290fac5a3c4bbcdecc1f68ae669cb3cba181a5ecaf73d6efa" -H "Content-Type: application/json" -d '{"articleSlug":"nara-day-trip-from-kyoto","dryRun":true}'
+
+Καλό = βλέπεις:
+   "Dry run complete"
+   "recipients": 4   (ή όσοι active)
+
+Κακό = βλέπεις:
+   "Unauthorized"   → λάθος secret ή ξέχασες deploy
+
+✅ Τέλος βήμα 2.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔴 ΒΗΜΑ 3 — ΣΤΕΙΛΕ ΤΟ EMAIL (ΓΙΑ ΠΡΑΓΜΑ!)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Copy-paste (ίδιο slug, ΧΩΡΙΣ dryRun):
+
+curl -X POST https://voyaflair.com/api/send-newsletter/ -H "Authorization: Bearer 7ed8b5e17586396290fac5a3c4bbcdecc1f68ae669cb3cba181a5ecaf73d6efa" -H "Content-Type: application/json" -d '{"articleSlug":"nara-day-trip-from-kyoto"}'
+
+Καλό = βλέπεις:
+   "Newsletter sent successfully."
+   "sent": 4
+
+✅ ΤΕΛΟΣ! Έφυγαν τα emails.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔ ΜΗΝ ΚΑΝΕΙΣ ΑΥΤΑ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+❌ Μην βάζεις link (https://...) — μόνο slug
+❌ Μην γράφεις YOUR_NEWSLETTER_ADMIN_SECRET
+❌ Publish στο site ≠ email — χρειάζεσαι και βήμα 3
+❌ Pending subscribers ΔΕΝ παίρνουν — μόνο active
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🟣 ΓΡΗΓΟΡΟ CHECK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+curl -s https://voyaflair.com/api/health/
+
+Πρέπει: "connected": true
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 CHECKLIST (τσεκάρε με το χέρι)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[ ] Βήμα 1 deploy
+[ ] Βήμα 2 dry run — είδα recipients
+[ ] Βήμα 3 send — είδα sent successfully
+
+Done! 🎉

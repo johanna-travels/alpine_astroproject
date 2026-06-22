@@ -22,6 +22,7 @@ const apiPath = apiUrl('subscribe');
       <input
         type="email"
         name="email"
+        autocomplete="email"
         placeholder="Enter your email"
         required
         class="w-full px-4 py-2.5 placeholder-white/60 bg-[#4a534f] border border-white/30 rounded-md text-white text-sm focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all disabled:opacity-50"
@@ -44,6 +45,7 @@ const apiPath = apiUrl('subscribe');
       type="checkbox"
       id={`${formId}-consent`}
       name="consent"
+      autocomplete="off"
       required
       class="mt-0.5 w-4 h-4 rounded border-white/40 bg-[#4a534f] text-white focus:ring-white/50 cursor-pointer"
       data-newsletter-consent

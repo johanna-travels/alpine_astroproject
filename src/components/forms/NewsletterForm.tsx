@@ -68,6 +68,7 @@ export default function NewsletterForm({ className = '', base = '' }: Newsletter
         <div className="flex-1 relative">
           <input
             type="email"
+            autoComplete="email"
             placeholder="Enter your email"
             {...register('email')}
             disabled={status === 'loading' || status === 'success'}
@@ -93,6 +94,7 @@ export default function NewsletterForm({ className = '', base = '' }: Newsletter
         <input
           type="checkbox"
           id="consent"
+          autoComplete="off"
           {...register('consent')}
           disabled={status === 'loading' || status === 'success'}
           className="mt-0.5 w-4 h-4 rounded border-white/20 bg-white/10 text-white focus:ring-white/30 cursor-pointer"

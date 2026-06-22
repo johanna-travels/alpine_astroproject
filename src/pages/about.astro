@@ -4,22 +4,32 @@ import PageBreadcrumbHero from '@/components/sections/PageBreadcrumbHero.astro';
 import { Image, getImage } from 'astro:assets';
 import heroImg from '@/assets/heroes/about me-img.webp';
 import verticalImg from '@/assets/heroes/about me-vertical.webp';
+import { getResponsiveHero, heroImageSizes } from '@/lib/images';
 import { pageUrl } from '@/lib/site';
 
-const optimizedHeader = await getImage({ src: heroImg, width: 1800, format: 'webp', quality: 75 });
+const hero = await getResponsiveHero(heroImg);
 ---
 
 <PageShell title="About — Voyaflair">
   <Fragment slot="head">
-    <link rel="preload" as="image" href={optimizedHeader.src} />
+    <link
+      rel="preload"
+      as="image"
+      href={hero.src}
+      imagesrcset={hero.srcSet}
+      imagesizes={heroImageSizes}
+      fetchpriority="high"
+    />
   </Fragment>
 
   <PageBreadcrumbHero
     title="About Me"
     currentPage="About Me"
     currentHref={pageUrl('about')}
-    imageSrc={optimizedHeader.src}
-    imageClass="bg-right lg:bg-center"
+    imageSrc={hero.src}
+    imageSrcSet={hero.srcSet}
+    imageSizes={hero.sizes}
+    imageClass="object-right lg:object-center"
   />
 
   <main class="relative z-10 bg-white text-neutral-900">
@@ -31,8 +41,7 @@ const optimizedHeader = await getImage({ src: heroImg, width: 1800, format: 'web
               class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               src={verticalImg}
               alt="Profile"
-              loading="eager"
-              fetchpriority="high"
+              loading="lazy"
               decoding="async"
               widths={[480, 720, 900]}
               sizes="(min-width: 768px) 50vw, 100vw"

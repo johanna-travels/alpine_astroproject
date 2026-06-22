@@ -3,7 +3,9 @@ import { Image } from 'astro:assets';
 import { articles, articleHref } from '@/domains/articles/catalog';
 import { pageUrl } from '@/lib/site';
 
-const cards = articles.map((article) => ({
+const cards = articles
+  .filter((article) => article.slug !== 'katsuoji-temple-from-osaka')
+  .map((article) => ({
   category: article.category,
   title: article.carouselTitle,
   href: articleHref(article.slug),
