@@ -4,6 +4,7 @@ import CinematicBody from '../components/layout/CinematicBody.astro';
 import GoogleAnalytics from '../components/analytics/GoogleAnalytics.astro';
 import { googleAnalyticsCsp, getGaMeasurementId, isGoogleAnalyticsEnabled } from '@/lib/analytics';
 import { homeUrl } from '@/lib/site';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
   title?: string;
@@ -60,6 +61,7 @@ const permissionsPolicy = [
 <html lang="en" transition:animate="none">
   <head>
     <meta charset="UTF-8" />
+    <ClientRouter />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="google-site-verification" content="icYMHuGBR9GDv3N7DZD8dzaDuw9CatrWoh4R9iYcLF4" />
     {googleAnalyticsEnabled && gaMeasurementId && (
