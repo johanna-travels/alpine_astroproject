@@ -5,11 +5,13 @@ import articleGreece from '@/assets/articles/Article Greece.webp';
 import articleKyoto from '@/assets/articles/Article Kyoto.webp';
 import articleNara from '@/assets/articles/kyoto/nara-the-famous-bow.webp';
 import articleKatsuoji from '@/assets/articles/osaka/katsuoji-temple.webp';
+import articleKatsuojiSpring from '@/assets/articles/osaka/spring-colours-at-katsuoji-temple.webp';
+import articleOsaka from '@/assets/articles/osaka/namba-yasaka.webp';
 import rhodesLcpImage from '@/assets/articles/rhodos-images/rhodes-old-town-cobblestone-street.webp';
 import type { DestinationSlug } from '@/domains/destinations/catalog';
 import { pageUrl } from '@/lib/site';
 
-export type ArticleSlug = 'bali-cafes' | 'bruges-guide' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'nara-day-trip-from-kyoto' | 'rhodes-itinerary';
+export type ArticleSlug = 'bali-cafes' | 'bruges-guide' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'rhodes-itinerary';
 
 export interface Article {
   slug: ArticleSlug;
@@ -75,7 +77,7 @@ export const articles: readonly Article[] = [
     breadcrumbTitle: 'Katsuoji Temple',
     metaLabel: 'Japan',
     alt: 'Katsuoji Temple travel guide',
-    image: articleKatsuoji,
+    image: articleKatsuojiSpring,
     publishedDate: '22 June 2026',
     intro: [
       "If you search for day trips from Osaka, you'll probably come across Katsuoji Temple and its thousands of daruma dolls. What I didn't expect was for it to become one of my favourite experiences in Japan.",
@@ -83,6 +85,24 @@ export const articles: readonly Article[] = [
       "In this guide, I'll share what to expect from a visit to Katsuoji Temple, how to get there from Osaka, the unique stamp card experience, and a few practical tips I wish I had known before visiting.",
     ],
     lead: 'Katsuoji Temple is a Buddhist temple in the hills north of Osaka, famous for the thousands of daruma dolls scattered across its peaceful grounds.',
+  },
+  {
+    slug: 'osaka-1-day-itinerary',
+    destinationSlug: 'japan',
+    category: 'JAPAN',
+    title: 'Osaka 1-Day Itinerary',
+    carouselTitle: 'Osaka 1-Day Itinerary',
+    breadcrumbTitle: 'Osaka Itinerary',
+    metaLabel: 'Japan',
+    alt: 'Osaka itinerary travel guide',
+    image: articleOsaka,
+    publishedDate: '23 June 2026',
+    intro: [
+      'Osaka is often known for its neon lights, street food, and lively atmosphere, but some of my favourite memories from the city came from places that felt completely different.',
+      'While I spent more than one day in Osaka, this is the itinerary I would recommend if you only have one day to explore. It combines one of the city\'s most unique shrines, my favourite day trip from Osaka, a couple of memorable food stops, and an evening in the bright lights of Dotonbori.',
+      "If you're looking for a mix of iconic sights, local food, and a slightly different side of Osaka, this itinerary is a great place to start.",
+    ],
+    lead: 'A relaxed one-day Osaka itinerary combining a peaceful morning shrine with the daruma-filled grounds of Katsuoji Temple.',
   },
   {
     slug: 'bali-cafes',

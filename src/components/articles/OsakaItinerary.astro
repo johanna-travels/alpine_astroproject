@@ -1,0 +1,105 @@
+---
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import { articleHref } from '@/domains/articles/catalog';
+import nambaYasakaShrine from '@/assets/articles/osaka/osaka-namba-yasaka-shrine.webp';
+import springColours from '@/assets/articles/osaka/spring-colours-at-katsuoji-temple.webp';
+import katsuojiStampCard from '@/assets/articles/osaka/katsuoji-stamp-card.webp';
+import ichiranDiningBooths from '@/assets/articles/osaka/osaka-the-famous-ichiran-dining-booths.webp';
+import ichiranRamen from '@/assets/articles/osaka/osaka-lunch-at-ichiran-ramen.webp';
+import toichiBrulee from '@/assets/articles/osaka/osaka-toichi-brulee-pancakes.webp';
+import toichiStrawberry from '@/assets/articles/osaka/osaka-toichi-strawberry-pancakes.webp';
+import dotonboriSunset from '@/assets/articles/osaka/osaka-dotonbori-sunset.webp';
+import dotonboriAfterSunset from '@/assets/articles/osaka/osaka-dotonbori-after-sunset.webp';
+import tenYenSnack from '@/assets/articles/osaka/osaka-the-famous-10-yen-coin-snack.webp';
+import takoyaki from '@/assets/articles/osaka/osaka-takoyaki.webp';
+import uniqueStorefronts from '@/assets/articles/osaka/osaka-unique-storefronts.webp';
+
+const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
+const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]';
+const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
+---
+
+<section id="section-0" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>Start Your Day at Namba Yasaka Shrine</h3>
+  </div>
+  <div class={prose}>
+    <p>Namba Yasaka Shrine is best known for its giant lion-shaped stage, which is said to swallow evil spirits and bring good fortune. It was one of the places I was most excited to visit in Osaka after seeing photos of the famous lion head while planning my trip to Japan, and it looked just as impressive in person.</p>
+    <ArticleImage src={nambaYasakaShrine} alt="The giant lion-shaped stage at Namba Yasaka Shrine in Osaka" caption="The lion-shaped stage at Namba Yasaka Shrine" imgClass="aspect-square object-cover" />
+    <p>I arrived shortly after sunrise, and the soft morning light made the shrine even more beautiful. If you'd like to take photos without large crowds, I think the early wake-up call is absolutely worth it.</p>
+  </div>
+</section>
+
+<section id="section-1" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>Continue to Katsuoji Temple</h3>
+  </div>
+  <div class={prose}>
+    <p>Katsuoji Temple is a Buddhist temple located in the hills north of Osaka and is best known for the thousands of daruma dolls displayed throughout the grounds. These traditional Japanese dolls are associated with perseverance, good luck, and achieving personal goals.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={springColours} alt="Spring colours surrounding Katsuoji Temple" caption="Spring colours at Katsuoji Temple" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={katsuojiStampCard} alt="The Katsuoji Temple stamp card" caption="The Katsuoji stamp card" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <p>Although Katsuoji is located outside the city centre, it ended up being one of my favourite experiences in Japan. The peaceful setting, colourful daruma displays, and slower pace felt completely different from the busy streets of Osaka.</p>
+    <p>If you're interested in visiting, I've also written a detailed <a href={articleHref('katsuoji-temple-from-osaka')} class={mapLink}>guide to Katsuoji Temple</a>, where I share more photos, practical information, and everything you need to know before your visit.</p>
+  </div>
+</section>
+
+<section id="section-2" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>Lunch at Ichiran Ramen</h3>
+  </div>
+  <div class={prose}>
+    <p>After a morning spent exploring Katsuoji Temple and making the journey back to Osaka, Ichiran felt like the perfect place to slow down for a while.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={ichiranDiningBooths} alt="The famous individual dining booths at Ichiran Ramen in Osaka" caption="The famous Ichiran dining booths" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={ichiranRamen} alt="A bowl of customisable ramen at Ichiran in Osaka" caption="Lunch at Ichiran Ramen" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <p>Known for its individual dining booths and customisable ramen, it's one of Japan's most famous ramen chains. What I appreciated most, however, was the sense of privacy. After several hours surrounded by crowds on public transport, having my own little space to sit down, relax, and enjoy a bowl of ramen felt surprisingly refreshing.</p>
+  </div>
+</section>
+
+<section id="section-3" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>Treat Yourself to Pancakes at Toichi</h3>
+  </div>
+  <div class={prose}>
+    <p>If you still have room for dessert, I would highly recommend stopping by Toichi in Kitahorie.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={toichiBrulee} alt="Brûlée pancakes at Toichi in Kitahorie, Osaka" caption="Toichi's brûlée pancakes" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={toichiStrawberry} alt="Strawberry pancakes with chocolate mousse at Toichi in Kitahorie, Osaka" caption="Toichi's strawberry pancakes" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <p>The pancakes ended up being some of the best I tried during my time in Japan. I ordered the strawberry version, which came with a rich chocolate mousse that somehow made them even better. Between the fluffy pancakes and the generous toppings, this is one of those places I would happily return to on my next trip to Osaka.</p>
+  </div>
+</section>
+
+<section id="section-4" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>Spend the Evening in Dotonbori</h3>
+  </div>
+  <div class={prose}>
+    <p>No first visit to Osaka feels complete without spending some time in Dotonbori.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={dotonboriSunset} alt="Dotonbori in Osaka at sunset" caption="Dotonbori at sunset" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={dotonboriAfterSunset} alt="The neon lights of Dotonbori in Osaka after sunset" caption="Dotonbori after sunset" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <p>I visited both during the day and again later in the evening, and the atmosphere after sunset was on a completely different level. As the neon lights begin to reflect on the canal and the streets fill with people, the area feels energetic in a way that's difficult to describe until you experience it for yourself.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={tenYenSnack} alt="The famous 10-yen coin-shaped cheese snack in Osaka" caption="The famous 10-yen coin snack" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={takoyaki} alt="Freshly made takoyaki in Osaka" caption="Osaka takoyaki" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <ArticleImage src={uniqueStorefronts} alt="The unique, creative storefronts of Dotonbori in Osaka" caption="Dotonbori's unique storefronts" imgClass="aspect-[3/2] object-cover" />
+    <p>While many visitors head straight for the famous Glico Runner sign, one thing that caught my attention was the giant animated dog billboard nearby. I honestly found it even more charming than some of Dotonbori's better-known attractions. Before leaving, make sure to walk across the bridge and explore the surrounding streets, where you'll find restaurants and shops with some of the most creative storefronts in Osaka. I genuinely lost count of how many times I stopped to take another photo.</p>
+  </div>
+</section>
+
+<section id="section-5" class="scroll-mt-nav">
+  <div class={prose}>
+    <div class="rounded-2xl border border-amber-200 bg-amber-50 p-5 md:p-6">
+      <span class="mb-3 inline-flex items-center gap-2 rounded-full bg-amber-200/70 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-900">
+        ✦ Final thoughts
+      </span>
+      <p>Before visiting Osaka, I expected my favourite memories to come from places like Dotonbori. Instead, some of the moments I remember most came from quieter places such as Namba Yasaka Shrine and Katsuoji Temple. If you only have one day in the city, this itinerary offers a chance to experience both sides of Osaka — the lively atmosphere it's famous for and a slower side that many visitors never see.</p>
+    </div>
+  </div>
+</section>

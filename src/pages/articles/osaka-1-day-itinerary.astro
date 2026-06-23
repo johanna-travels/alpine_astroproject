@@ -1,0 +1,12 @@
+---
+import ArticlePage from '@/components/articles/ArticlePage.astro';
+import OsakaItineraryContent from '@/components/articles/OsakaItinerary.astro';
+import { osakaItineraryNav } from '@/domains/articles/osaka-itinerary-nav';
+import { getArticle } from '@/domains/articles/catalog';
+
+const article = getArticle('osaka-1-day-itinerary')!;
+---
+
+<ArticlePage article={article} sections={osakaItineraryNav}>
+  <OsakaItineraryContent />
+</ArticlePage>

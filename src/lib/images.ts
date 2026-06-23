@@ -28,8 +28,10 @@ export async function getHeroImage(src: ImageMetadata) {
 export async function getResponsiveHero(src: ImageMetadata) {
   const srcSet = await buildResponsiveSrcSet(src, heroImageWidths);
   const fallback = await getImage({ src, width: heroImageWidths[0], format: 'webp', quality: 75 });
+  const large = await getImage({ src, ...heroImageOptions });
   return {
     src: fallback.src,
+    largeSrc: large.src,
     srcSet,
     sizes: heroImageSizes,
   };

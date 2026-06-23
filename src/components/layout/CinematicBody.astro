@@ -64,10 +64,8 @@ const layers = Array.from({ length: blurLayers });
     inset: 0;
   }
 
-  /* backdrop-filter on fixed layers is very expensive on mobile — keep tint only */
-  @media (max-width: 1023px), (hover: none) and (pointer: coarse) {
-    .cinematic-layer {
-      display: none;
-    }
+  /* backdrop-filter on fixed layers repaints every scroll frame — tint only */
+  .cinematic-layer {
+    display: none;
   }
 </style>

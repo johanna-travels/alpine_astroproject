@@ -27,6 +27,7 @@ const hero = await getResponsiveHero(heroImg);
     currentPage="About Me"
     currentHref={pageUrl('about')}
     imageSrc={hero.src}
+    desktopImageSrc={hero.largeSrc}
     imageSrcSet={hero.srcSet}
     imageSizes={hero.sizes}
     imageClass="object-right lg:object-center"
