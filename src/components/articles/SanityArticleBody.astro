@@ -1,0 +1,36 @@
+---
+import { toHTML } from '@portabletext/to-html';
+import type { PortableTextBlock } from '@portabletext/types';
+import { sanityImageSrc } from '@/lib/sanity/image';
+
+interface Props {
+  blocks: PortableTextBlock[];
+}
+
+const { blocks } = Astro.props;
+
+const html = toHTML(blocks, {
+  components: {
+    types: {
+      image: ({ value }) => {
+        const alt = value.alt || '';
+        const caption = value.caption || '';
+        const src = sanityImageSrc(value, 1400);
+        const captionHtml = caption
+          ? `<figcaption class="mt-2 text-center text-sm text-neutral-500">${caption}</figcaption>`
+          : '';
+        return `<figure class="my-5 md:my-8"><img src="${src}" alt="${alt}" loading="lazy" decoding="async" class="w-full rounded-lg object-cover" />${captionHtml}</figure>`;
+      },
+    },
+    marks: {
+      link: ({ children, value }) => {
+        const href = value?.href || '#';
+        const rel = href.startsWith('http') ? ' rel="noopener noreferrer"' : '';
+        return `<a href="${href}" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]"${rel}>${children}</a>`;
+      },
+    },
+  },
+});
+---
+
+<div class="article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0 [&_h3]:mb-3 [&_h3]:text-black [&_h4]:mb-2 [&_h4]:text-black" set:html={html} />
