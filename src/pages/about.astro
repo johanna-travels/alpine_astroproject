@@ -10,7 +10,10 @@ import { pageUrl } from '@/lib/site';
 const hero = await getResponsiveHero(heroImg);
 ---
 
-<PageShell title="About — Voyaflair">
+<PageShell
+  title="About — Voyaflair"
+  description="Meet Joanna, creator of Voyaflair — a personal travel journal sharing destinations, stays, and experiences worth remembering."
+>
   <Fragment slot="head">
     <link
       rel="preload"
@@ -31,6 +34,7 @@ const hero = await getResponsiveHero(heroImg);
     imageSrcSet={hero.srcSet}
     imageSizes={hero.sizes}
     imageClass="object-right lg:object-center"
+    imageAlt="Joanna at a scenic travel destination — About Voyaflair"
   />
 
   <main class="relative z-10 bg-white text-neutral-900">

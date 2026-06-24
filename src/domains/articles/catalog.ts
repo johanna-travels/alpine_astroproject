@@ -8,10 +8,11 @@ import articleKatsuoji from '@/assets/articles/osaka/katsuoji-temple.webp';
 import articleKatsuojiSpring from '@/assets/articles/osaka/spring-colours-at-katsuoji-temple.webp';
 import articleOsaka from '@/assets/articles/osaka/namba-yasaka.webp';
 import rhodesLcpImage from '@/assets/articles/rhodos-images/rhodes-old-town-cobblestone-street.webp';
+import articleParga from '@/assets/parga/parga-from-above.webp';
 import type { DestinationSlug } from '@/domains/destinations/catalog';
 import { pageUrl } from '@/lib/site';
 
-export type ArticleSlug = 'bali-cafes' | 'bruges-guide' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'rhodes-itinerary';
+export type ArticleSlug = 'bali-cafes' | 'bruges-guide' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary';
 
 export interface Article {
   slug: ArticleSlug;
@@ -140,6 +141,24 @@ export const articles: readonly Article[] = [
     ],
     lead: 'Five days on Rhodes, mixing the medieval old town with quiet beaches, island day trips and the kind of local tavernas that make Greek summers unforgettable.',
     lcpImage: rhodesLcpImage,
+  },
+  {
+    slug: 'parga-1-day',
+    destinationSlug: 'greece',
+    category: 'GREECE',
+    title: 'How to spend 1 day in Parga',
+    carouselTitle: 'How to spend 1 day in Parga',
+    breadcrumbTitle: 'Parga in 1 Day',
+    metaLabel: 'Greece',
+    alt: 'Parga travel guide',
+    image: articleParga,
+    publishedDate: '24 June 2026',
+    intro: [
+      "I've visited Parga twice so far. The first time I spent four days here enjoying a slower pace of travel, while the second time I visited as a day trip from Preveza.",
+      "It's still one of my favourite places in Greece. With beautiful beaches, colourful streets, and a rich history, it offers a combination that's hard to find elsewhere on the Greek mainland.",
+      "In this guide, I'll share how I would spend one day in Parga, including some of my favourite spots for breakfast, sightseeing, swimming, and dinner.",
+    ],
+    lead: 'A relaxed one-day guide to Parga, from its hillside old town to the beaches below the Venetian castle.',
   },
   {
     slug: 'bruges-guide',

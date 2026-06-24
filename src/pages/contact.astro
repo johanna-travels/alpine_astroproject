@@ -10,7 +10,10 @@ import { pageUrl } from '@/lib/site';
 const hero = await getResponsiveHero(heroImg);
 ---
 
-<PageShell title="Contact — Voyaflair">
+<PageShell
+  title="Contact — Voyaflair"
+  description="Contact Voyaflair for collaborations, travel questions, or general enquiries."
+>
   <Fragment slot="head">
     <link
       rel="preload"
@@ -30,6 +33,7 @@ const hero = await getResponsiveHero(heroImg);
     desktopImageSrc={hero.largeSrc}
     imageSrcSet={hero.srcSet}
     imageSizes={hero.sizes}
+    imageAlt="Scenic travel landscape — contact Voyaflair"
   />
 
   <ContactSectionWithShader client:idle showImage={false} className="relative z-10 mt-10 bg-white" />

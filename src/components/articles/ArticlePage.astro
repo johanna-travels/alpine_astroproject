@@ -45,6 +45,8 @@ const pageDescription = article.seoDescription ?? article.lead;
             <p class="prose-body text-neutral-700">{paragraph}</p>
           ))}
         </article>
+
+        <slot name="intro-media" />
       </Fragment>
 
       <slot />
