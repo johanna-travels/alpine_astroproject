@@ -1,5 +1,6 @@
 import type { ImageMetadata } from 'astro';
 import articleBali from '@/assets/articles/Article Bali.webp';
+import articleBaliBelly from '@/assets/articles/bali/bali.belly.article.webp';
 import articleBruges from '@/assets/articles/Article Bruges.webp';
 import articleGreece from '@/assets/articles/Article Greece.webp';
 import articleKyoto from '@/assets/articles/Article Kyoto.webp';
@@ -12,7 +13,7 @@ import articleParga from '@/assets/parga/parga-from-above.webp';
 import type { DestinationSlug } from '@/domains/destinations/catalog';
 import { pageUrl } from '@/lib/site';
 
-export type ArticleSlug = 'bali-cafes' | 'bruges-guide' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary';
+export type ArticleSlug = 'bali-cafes' | 'bali-belly' | 'bruges-guide' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary';
 
 export interface Article {
   slug: ArticleSlug;
@@ -122,6 +123,24 @@ export const articles: readonly Article[] = [
       'These are the places that stood out most during my time on the island — from cafés overlooking rice terraces and some of my favourite brunch spots to the restaurant that served the best meal I had in Bali.',
     ],
     lead: "Bali's café culture is one of the best in the world — thoughtfully designed spaces, excellent coffee and slow mornings that set the tone for the whole day. These are the spots I keep coming back to.",
+  },
+  {
+    slug: 'bali-belly',
+    destinationSlug: 'bali',
+    category: 'BALI',
+    title: 'Bali Belly: My Experience and What Helped Me Recover',
+    carouselTitle: 'Bali Belly: My Experience and What Helped Me Recover',
+    breadcrumbTitle: 'Bali Belly',
+    metaLabel: 'Bali',
+    alt: 'Bali Belly: My Experience and What Helped Me Recover',
+    image: articleBaliBelly,
+    publishedDate: '26 June 2026',
+    intro: [
+      "Before travelling to Bali, I'd heard plenty of stories about Bali Belly, but I never expected to experience it myself.",
+      "Bali Belly is the common name for traveller's diarrhoea that affects some visitors to Bali. It's usually caused by bacteria, viruses, or parasites found in contaminated food or water.",
+      'In most cases, symptoms last between one and three days and improve with rest, proper hydration, and the right treatment. However, if your symptoms last longer than three days, become severe, or you struggle to stay hydrated, it is important to seek medical attention.',
+    ],
+    lead: 'My honest experience with Bali Belly — what it is, the symptoms I had, and what actually helped me recover.',
   },
   {
     slug: 'rhodes-itinerary',

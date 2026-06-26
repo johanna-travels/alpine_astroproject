@@ -1,0 +1,21 @@
+---
+import ArticlePage from '@/components/articles/ArticlePage.astro';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import BaliBellyContent from '@/components/articles/BaliBelly.astro';
+import { baliBellyNav } from '@/domains/articles/bali-belly-nav';
+import { getArticle } from '@/domains/articles/catalog';
+import baliBellyExperience from '@/assets/articles/bali/bali-belly-experience.webp';
+
+const article = getArticle('bali-belly')!;
+---
+
+<ArticlePage article={article} sections={baliBellyNav}>
+  <ArticleImage
+    slot="intro-media"
+    src={baliBellyExperience}
+    alt="Bali Belly: My Experience and What Helped Me Recover"
+    figureClass="mt-6 max-w-3xl md:mt-8"
+    imgClass="aspect-[7/5] object-cover"
+  />
+  <BaliBellyContent />
+</ArticlePage>
