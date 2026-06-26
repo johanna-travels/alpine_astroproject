@@ -18,13 +18,16 @@ CREATE INDEX idx_subscribers_email ON subscribers(email);
 CREATE INDEX idx_subscribers_status ON subscribers(status);
 
 -- Function to automatically update updated_at timestamp
-CREATE OR REPLACE FUNCTION update_updated_at_column()
-RETURNS TRIGGER AS $$
+CREATE OR REPLACE FUNCTION public.update_updated_at_column()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SET search_path = ''
+AS $$
 BEGIN
-  NEW.updated_at = NOW();
+  NEW.updated_at = now();
   RETURN NEW;
 END;
-$$ language 'plpgsql';
+$$;
 
 -- Trigger to automatically update updated_at
 CREATE TRIGGER update_subscribers_updated_at
