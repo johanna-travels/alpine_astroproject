@@ -1,0 +1,12 @@
+---
+import ArticlePage from '@/components/articles/ArticlePage.astro';
+import BaliTravelTipsContent from '@/components/articles/BaliTravelTips.astro';
+import { baliTravelTipsNav } from '@/domains/articles/bali-travel-tips-nav';
+import { getArticle } from '@/domains/articles/catalog';
+
+const article = getArticle('bali-travel-tips')!;
+---
+
+<ArticlePage article={article} sections={baliTravelTipsNav}>
+  <BaliTravelTipsContent />
+</ArticlePage>

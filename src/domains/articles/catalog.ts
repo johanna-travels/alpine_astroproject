@@ -1,6 +1,7 @@
 import type { ImageMetadata } from 'astro';
 import articleBali from '@/assets/articles/Article Bali.webp';
 import articleBaliBelly from '@/assets/articles/bali/bali.belly.article.webp';
+import articleBaliTips from '@/assets/articles/bali/bali-travel-tips.webp';
 import articleBruges from '@/assets/articles/Article Bruges.webp';
 import articleGreece from '@/assets/articles/Article Greece.webp';
 import articleKyoto from '@/assets/articles/Article Kyoto.webp';
@@ -13,7 +14,7 @@ import articleParga from '@/assets/parga/parga-from-above.webp';
 import type { DestinationSlug } from '@/domains/destinations/catalog';
 import { pageUrl } from '@/lib/site';
 
-export type ArticleSlug = 'bali-cafes' | 'bali-belly' | 'bruges-guide' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary';
+export type ArticleSlug = 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bruges-guide' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary';
 
 export interface Article {
   slug: ArticleSlug;
@@ -141,6 +142,23 @@ export const articles: readonly Article[] = [
       'In most cases, symptoms last between one and three days and improve with rest, proper hydration, and the right treatment. However, if your symptoms last longer than three days, become severe, or you struggle to stay hydrated, it is important to seek medical attention.',
     ],
     lead: 'My honest experience with Bali Belly — what it is, the symptoms I had, and what actually helped me recover.',
+  },
+  {
+    slug: 'bali-travel-tips',
+    destinationSlug: 'bali',
+    category: 'BALI',
+    title: 'What to Know Before Travelling to Bali',
+    carouselTitle: 'What to Know Before Travelling to Bali',
+    breadcrumbTitle: 'Bali Travel Tips',
+    metaLabel: 'Bali',
+    alt: 'What to Know Before Travelling to Bali',
+    image: articleBaliTips,
+    publishedDate: '26 June 2026',
+    intro: [
+      "I spent almost two months travelling around Bali, and by the end of my trip there were a few things I was really glad I'd done.",
+      "In this guide, I'll share a few practical tips that I think are worth knowing before travelling to Bali, from getting your Visa on Arrival and choosing an eSIM to the travel essentials I always pack and a few things I'd do exactly the same way again.",
+    ],
+    lead: 'A few practical tips worth knowing before travelling to Bali — from your Visa on Arrival and eSIM to the travel essentials I always pack.',
   },
   {
     slug: 'rhodes-itinerary',

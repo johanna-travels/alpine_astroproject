@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css';
-import CinematicBody from '../components/layout/CinematicBody.astro';
 import GoogleAnalytics from '../components/analytics/GoogleAnalytics.astro';
 import { googleAnalyticsCsp, getGaMeasurementId, isGoogleAnalyticsEnabled } from '@/lib/analytics';
 import { homeUrl } from '@/lib/site';
@@ -122,7 +121,6 @@ const permissionsPolicy = [
     <slot name="head" />
   </head>
   <body>
-    <CinematicBody />
     <slot />
   </body>
 </html>

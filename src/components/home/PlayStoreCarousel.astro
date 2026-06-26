@@ -4,7 +4,7 @@ import { articles, articleHref } from '@/domains/articles/catalog';
 import { pageUrl } from '@/lib/site';
 
 const cards = articles
-  .filter((article) => article.slug !== 'katsuoji-temple-from-osaka' && article.slug !== 'osaka-1-day-itinerary')
+  .filter((article) => article.slug !== 'katsuoji-temple-from-osaka' && article.slug !== 'osaka-1-day-itinerary' && article.slug !== 'bali-belly' && article.slug !== 'bali-travel-tips')
   .map((article) => ({
   category: article.category,
   title: article.carouselTitle,
