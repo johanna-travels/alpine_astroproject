@@ -9,4 +9,5 @@ export const pargaNav: readonly TocGroup[] = [
   { navTitle: '6. Spend the Afternoon at Valtos Beach', target: 'section-4' },
   { navTitle: '7. End the Day at Petros Restaurant', target: 'section-5' },
   { navTitle: '8. FAQ About Visiting Parga', target: 'section-6' },
+  { navTitle: '9. Final Thoughts', target: 'section-7' },
 ] as const;

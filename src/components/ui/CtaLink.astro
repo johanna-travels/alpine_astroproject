@@ -6,13 +6,13 @@ interface Props {
   showArrow?: boolean;
 }
 
-const { href, label, class: className = '', showArrow = true } = Astro.props;
+const { href, label, class: className = 'px-[32px]', showArrow = true } = Astro.props;
 ---
 
 <a
   href={href}
   class:list={[
-    'inline-block px-[32px] py-[5px] text-black text-[13px] font-medium uppercase tracking-widest leading-none transition-all opacity-75 transition-opacity duration-300 hover:opacity-100',
+    'inline-block py-[5px] text-black text-[13px] font-medium uppercase tracking-widest leading-none transition-all opacity-75 transition-opacity duration-300 hover:opacity-100',
     className,
   ]}
 >

@@ -1,4 +1,5 @@
 ---
+import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
 
 import greenBakery from '@/assets/parga/parga-the-green-bakery.webp';
@@ -140,11 +141,8 @@ const imageGrid = 'my-5 grid grid-cols-1 items-start gap-3 sm:grid-cols-2 md:my-
 
 <section id="section-7" class="scroll-mt-nav">
   <div class={prose}>
-    <div class="rounded-2xl border border-amber-200 bg-amber-50 p-5 md:p-6">
-      <span class="mb-3 inline-flex items-center gap-2 rounded-full bg-amber-200/70 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-900">
-        ✦ Final thoughts
-      </span>
+    <ArticleClosingNote label="Final thoughts">
       <p>After visiting Parga twice, it's still one of my favourite places in Greece. It's the kind of town where you can spend the day wandering through the streets, stopping for a swim, enjoying good food, and never really needing a plan. If you're travelling around Epirus or looking for one of the most beautiful towns on the Greek mainland, Parga is well worth adding to your itinerary.</p>
-    </div>
+    </ArticleClosingNote>
   </div>
 </section>

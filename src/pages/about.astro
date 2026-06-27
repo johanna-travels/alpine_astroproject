@@ -1,18 +1,24 @@
 ---
 import PageShell from '@/components/layout/PageShell.astro';
 import PageBreadcrumbHero from '@/components/sections/PageBreadcrumbHero.astro';
-import { Image, getImage } from 'astro:assets';
+import ContactSectionWithShader from '@/components/sections/contact-section-with-shader.tsx';
+import { Image } from 'astro:assets';
 import heroImg from '@/assets/heroes/about me-img.webp';
 import verticalImg from '@/assets/heroes/about me-vertical.webp';
-import { getResponsiveHero, heroImageSizes } from '@/lib/images';
+import { getResponsiveHero, getSocialShareImage, heroImageSizes } from '@/lib/images';
 import { pageUrl } from '@/lib/site';
 
 const hero = await getResponsiveHero(heroImg);
+const shareImage = await getSocialShareImage(heroImg);
 ---
 
 <PageShell
   title="About — Voyaflair"
   description="Meet Joanna, creator of Voyaflair — a personal travel journal sharing destinations, stays, and experiences worth remembering."
+  image={shareImage.src}
+  imageAlt="Joanna at a scenic travel destination — About Voyaflair"
+  imageWidth={shareImage.width}
+  imageHeight={shareImage.height}
 >
   <Fragment slot="head">
     <link
@@ -38,51 +44,55 @@ const hero = await getResponsiveHero(heroImg);
   />
 
   <main class="relative z-10 bg-white text-neutral-900">
-    <div class="w-full py-[100px] px-0">
-      <div class="w-full max-w-[1300px] mx-auto px-4 xl:px-0 flex flex-col md:flex-row gap-y-[20px] md:gap-y-0 md:gap-x-[100px] items-center">
-        <div class="w-full md:w-1/2 flex flex-col">
-          <div class="overflow-hidden bg-neutral-100 aspect-[3/4] md:aspect-auto">
-            <Image
-              class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-              src={verticalImg}
-              alt="Profile"
-              loading="lazy"
-              decoding="async"
-              widths={[480, 720, 900]}
-              sizes="(min-width: 768px) 50vw, 100vw"
-              format="webp"
-              quality={75}
-            />
+    <div class="flex flex-col gap-8 pb-16 pt-8 md:gap-8 md:pb-16 md:pt-10 lg:gap-12 lg:pb-24 lg:pt-12 xl:gap-16 xl:pt-16">
+      <section>
+        <div class="section-gutter">
+          <div class="grid w-full grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-x-12 xl:gap-x-[100px]">
+            <div class="relative aspect-[3/4] min-h-0 overflow-hidden bg-neutral-100 lg:aspect-auto lg:h-full">
+              <Image
+                class="h-full w-full object-cover transition-transform duration-700 hover:scale-105 lg:absolute lg:inset-0"
+                  src={verticalImg}
+                  alt="Profile"
+                  loading="lazy"
+                  decoding="async"
+                  widths={[480, 720, 900]}
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  format="webp"
+                  quality={75}
+                />
+            </div>
+
+            <article class="flex w-full flex-col gap-y-4 lg:gap-y-5">
+              <div class="h-[1px] w-10 bg-neutral-900 opacity-20"></div>
+              <p class="meta text-neutral-500">About Me</p>
+              <h2>My Little Story</h2>
+              <p class="prose-body border-l-2 border-white pl-4 italic text-neutral-600">
+                Hi, I'm Joanna — originally from Greece and now based in Oslo. I created Voyaflair as a place to document and share destinations that stay with you long after the trip is over.
+              </p>
+              <p class="prose-body text-neutral-700">
+                I first started sharing travel content on <a href="https://www.instagram.com/voyaflair?igsh=eTc2YnVldXlneHB2&utm_source=qr" target="_blank" rel="noopener noreferrer" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Instagram</a>, but I quickly realised that some stories deserve more than a few seconds on a screen. While social media is a wonderful place for inspiration, it doesn't always leave room for the details, impressions, and practical insights that help travellers truly connect with a destination.
+              </p>
+              <p class="prose-body text-neutral-700">
+                That's why I created Voyaflair — a space where I can go beyond short captions and share the places, experiences, and recommendations that I believe are genuinely worth remembering.
+              </p>
+              <p class="prose-body text-neutral-600">
+                I'm drawn to destinations with character: thoughtfully designed hotels, memorable cafés, local food, hidden corners, and places that reveal something unique about the culture and identity of a destination.
+              </p>
+              <p class="prose-body text-neutral-600">
+                For me, travel isn't about ticking off as many sights as possible. It's about experiencing a place through its atmosphere, details, and everyday moments — discovered while wandering through an unfamiliar street, stumbling upon a beautiful café, or finding a place you never planned to visit.
+              </p>
+              <p class="prose-body text-neutral-600">
+                Through Voyaflair, I share curated destinations, thoughtful stays, travel guides, and experiences designed to help travellers explore more intentionally.
+              </p>
+              <p class="prose-body border-t border-white pt-2 italic text-neutral-400">
+                Voyaflair is my personal travel journal — a collection of beautiful places, meaningful experiences, and destinations worth remembering.
+              </p>
+            </article>
           </div>
         </div>
+      </section>
 
-        <article class="w-full md:w-1/2 flex flex-col gap-y-5">
-          <div class="w-10 h-[1px] bg-neutral-900 opacity-20"></div>
-          <p class="meta text-neutral-500">About Me</p>
-          <h2>My Little Story</h2>
-          <p class="prose-body text-neutral-600 italic border-l-2 border-white pl-4">
-            Hi, I'm Joanna — originally from Greece and now based in Oslo. I created Voyaflair as a place to document and share destinations that stay with you long after the trip is over.
-          </p>
-          <p class="prose-body text-neutral-700">
-            I first started sharing travel content on Instagram, but I quickly realised that some stories deserve more than a few seconds on a screen. While social media is a wonderful place for inspiration, it doesn't always leave room for the details, impressions, and practical insights that help travellers truly connect with a destination.
-          </p>
-          <p class="prose-body text-neutral-700">
-            That's why I created Voyaflair — a space where I can go beyond short captions and share the places, experiences, and recommendations that I believe are genuinely worth remembering.
-          </p>
-          <p class="prose-body text-neutral-600">
-            I'm drawn to destinations with character: thoughtfully designed hotels, memorable cafés, local food, hidden corners, and places that reveal something unique about the culture and identity of a destination.
-          </p>
-          <p class="prose-body text-neutral-600">
-            For me, travel isn't about ticking off as many sights as possible. It's about experiencing a place through its atmosphere, details, and everyday moments — discovered while wandering through an unfamiliar street, stumbling upon a beautiful café, or finding a place you never planned to visit.
-          </p>
-          <p class="prose-body text-neutral-600">
-            Through Voyaflair, I share curated destinations, thoughtful stays, travel guides, and experiences designed to help travellers explore more intentionally.
-          </p>
-          <p class="prose-body text-neutral-400 italic pt-2 border-t border-white">
-            Voyaflair is my personal travel journal — a collection of beautiful places, meaningful experiences, and destinations worth remembering.
-          </p>
-        </article>
-      </div>
+      <ContactSectionWithShader client:idle stacked />
     </div>
   </main>
 

@@ -11,11 +11,12 @@ import SectionHeader from '@/components/ui/SectionHeader.astro';
 import SocialLinks from '@/components/ui/SocialLinks.astro';
 import SeasonalHoverCards from '@/components/home/SeasonalHoverCards.astro';
 import { destinations, destinationHref } from '@/domains/destinations/catalog';
-import { buildResponsiveSrcSet, cardImageSizes, getHeroImage } from '@/lib/images';
+import { buildResponsiveSrcSet, cardImageSizes, getHeroImage, getSocialShareImage } from '@/lib/images';
 import { pageUrl } from '@/lib/site';
 import headerLightImg from '@/assets/heroes/HeADER LIGHT.webp';
 
 const optimizedHeader = await getHeroImage(headerLightImg);
+const shareImage = await getSocialShareImage(headerLightImg);
 
 const homeDestinationCards = await Promise.all(
   destinations.map(async (destination) => ({
@@ -33,6 +34,10 @@ const homeDestinationCards = await Promise.all(
 <Layout
   title="Voyaflair — Travel Journal"
   description="Curated travel guides, beautiful stays, and stories worth remembering — by Joanna."
+  image={shareImage.src}
+  imageAlt="Sunset beach scene — Voyaflair travel journal"
+  imageWidth={shareImage.width}
+  imageHeight={shareImage.height}
 >
   <Fragment slot="head">
     <link rel="preload" as="image" href={optimizedHeader.src} />
@@ -42,13 +47,13 @@ const homeDestinationCards = await Promise.all(
 
     <!-- HERO: mobile & tablet only -->
     <div
-      class="contact-hero relative mx-2 min-h-[300px] h-[50vw] max-h-[500px] rounded-[30px] overflow-hidden bg-cover bg-center bg-no-repeat bg-scroll flex flex-col justify-end lg:hidden"
+      class="contact-hero relative mx-[10px] min-h-[300px] h-[50vw] max-h-[500px] rounded-[30px] overflow-hidden bg-cover bg-center bg-no-repeat bg-scroll flex flex-col justify-end lg:hidden"
       style={`background-image: url('${optimizedHeader.src}')`}
     >
       <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none z-0"></div>
 
       <div class="relative z-10 w-full flex flex-col justify-end h-full">
-        <div class="w-full max-w-[1300px] pl-4 pr-4 md:pl-10 md:pr-10 lg:pl-16 lg:pr-16 text-white pb-6 lg:pb-12">
+        <div class="w-full max-w-[1300px] pl-4 pr-4 md:pl-6 md:pr-6 text-white pb-6">
           <h1 class="hero-title text-white mb-2">Where Places Become Stories</h1>
           <p class="prose-body text-white/80">Welcome to Voyaflair</p>
           <SocialLinks class="mt-4" />
@@ -58,13 +63,13 @@ const homeDestinationCards = await Promise.all(
 
     <!-- HERO: desktop only -->
     <div
-      class="contact-hero relative rounded-[30px] overflow-hidden hidden lg:flex flex-col justify-end mx-2 aspect-[21/9] max-h-[710px] bg-fixed"
+      class="contact-hero relative rounded-[30px] overflow-hidden hidden lg:flex flex-col justify-end mx-[10px] aspect-[21/9] max-h-[710px] bg-fixed"
       style={`background-image: url('${optimizedHeader.src}'); background-size: cover; background-position: center;`}
     >
       <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none z-0"></div>
 
       <div class="relative z-10 w-full flex flex-col justify-end h-full">
-        <div class="w-full max-w-[1300px] pl-4 pr-4 md:pl-10 md:pr-10 lg:pl-16 lg:pr-16 text-white pb-6 lg:pb-12">
+        <div class="w-full max-w-[1300px] pl-4 pr-4 lg:pl-16 lg:pr-16 xl:pl-20 xl:pr-20 text-white pb-6 lg:pb-12">
           <h1 class="hero-title text-white mb-4">Where Places Become Stories</h1>
           <p class="prose-body text-white/80">Welcome to Voyaflair</p>
           <div class="flex flex-col items-center justify-center mt-8">
@@ -78,21 +83,57 @@ const homeDestinationCards = await Promise.all(
       </div>
     </div>
 
-    <!-- CONTENT -->
-    <main class="text-slate-950 bg-white">
-        <div class="flex flex-col gap-12 md:gap-20 pb-24 pt-12">
+    <!--
+      INDEX PAGE STRUCTURE (main sections)
 
-            <div class="reveal is-visible"><PlayStoreCarousel /></div>
-            <div class="reveal py-16 px-[10px] lg:px-0">
-              <SectionHeader title="Destinations" href={pageUrl('destinations')} />
-              <div class="relative lg:ml-[120px] lg:mb-[50px] md:px-[40px]">
-                <SeasonalHoverCards cards={homeDestinationCards} />
-              </div>
+      Layout
+      ├── GlobalEffects, PageNav
+      ├── Hero (mobile/tablet, lg:hidden)
+      ├── Hero (desktop, lg+)
+      ├── <main>
+      │   └── page stack (mobile · md UX tablet · lg desktop)
+
+      MOBILE (<768px)
+      · hero mx 10px · gutter px 10px · header py 24px
+      · page pt 32px · gap 32px · pb 64px
+
+      MD (768–1023px) — UX tablet
+      · hero inner px 24px · gutter px 24px
+      · page pt 40px · gap 32px · pb 64px · contact px 24px
+
+      LG (1024–1279px) — UX desktop
+      · gutter px 64px · header py 48/32px · hero inner px 64px
+      · page pt 48px · gap 48px · pb 96px · contact px 64px
+
+      XL (1280px+) — UX wide desktop
+      · gutter px 80px · page pt 64px · gap 64px · contact px 80px
+
+      Rule: one owner per axis — .section-gutter (x) · .section-header (y) · page gap
+    -->
+    <main class="text-slate-950 bg-white">
+        <div class="flex flex-col gap-8 pb-16 pt-8 md:gap-8 md:pb-16 md:pt-10 lg:gap-12 lg:pb-24 lg:pt-12 xl:gap-16 xl:pt-16">
+
+            <!-- [1] Articles -->
+            <div class="reveal is-visible">
+                <PlayStoreCarousel />
             </div>
-            <div class="reveal"><InfiniteText /></div>
-            <div class="reveal"><FeatureSections /></div>
-            
-            <ContactSectionWithShader client:idle />
+
+            <!-- [2] Destinations (marquee → title → cards) -->
+            <div class="reveal">
+                <InfiniteText />
+                <SectionHeader title="Destinations" href={pageUrl('destinations')} />
+                <div class="section-gutter relative">
+                    <SeasonalHoverCards cards={homeDestinationCards} />
+                </div>
+            </div>
+
+            <!-- [3] About + Services -->
+            <div class="reveal">
+                <FeatureSections />
+            </div>
+
+            <!-- [4] Contact -->
+            <ContactSectionWithShader client:idle stacked />
         </div>
     </main>
 

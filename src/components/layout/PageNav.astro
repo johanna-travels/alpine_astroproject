@@ -41,7 +41,7 @@ const isActive = (link: NavLink) => isActivePath(pathname, [link.href, ...(link.
     <!-- Mobile decorative logo -->
     <a href={pageUrl()} data-testid="mobile-logo" class="md:hidden inline-flex items-center justify-center w-12 h-12 rounded-full border border-gray-500 text-xl sm:text-2xl font-bold tracking-wider" style="color: #1a1a1a; font-family: var(--font-logo); border-width: 1.5px;">VF</a>
     <!-- Desktop simple logo -->
-    <a href={pageUrl()} data-testid="desktop-logo" class="hidden md:block text-[1.35rem] md:text-[1.6875rem] font-bold tracking-wider" style="color: #1a1a1a; font-family: var(--font-logo);">VOYAFLAIR</a>
+    <a href={pageUrl()} data-testid="desktop-logo" class="hidden md:block text-[calc(1.35rem*0.9)] md:text-[calc(1.6875rem*0.9)] font-bold tracking-wider" style="color: #1a1a1a; font-family: var(--font-logo);">VOYAFLAIR</a>
 
     <div class="hidden md:flex items-center gap-8 font-medium text-gray-600">
       {links.filter(link => link.variant !== 'social').map((link) => (

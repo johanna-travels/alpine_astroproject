@@ -10,14 +10,13 @@ interface Props {
 const { title, href, ctaLabel = 'VIEW ALL' } = Astro.props;
 ---
 
-<div class="flex flex-row flex-nowrap items-center pt-[30px] pb-[30px] gap-2 w-full pl-4 md:pl-[56px] lg:pt-[70px] lg:pl-[176px]">
-  <div class="w-auto">
+<div class="section-gutter section-header flex w-full min-w-0 flex-row flex-nowrap items-center justify-between gap-2">
+  <div class="shrink-0">
     <h2 class="text-black m-0 p-0">{title}</h2>
   </div>
   {href && (
-    <div class="flex items-center">
-      <CtaLink href={href} label={ctaLabel} />
+    <div class="flex shrink-0 items-center">
+      <CtaLink href={href} label={ctaLabel} class="px-0 md:px-[32px]" />
     </div>
   )}
 </div>
-

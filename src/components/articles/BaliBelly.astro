@@ -1,4 +1,6 @@
 ---
+import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
+
 const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
 ---
 
@@ -25,12 +27,9 @@ const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
 
 <section id="section-2" class="scroll-mt-nav">
   <div class={prose}>
-    <div class="rounded-2xl border border-amber-200 bg-amber-50 p-5 md:p-6">
-      <span class="mb-3 inline-flex items-center gap-2 rounded-full bg-amber-200/70 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-900">
-        ✦ Before you go
-      </span>
+    <ArticleClosingNote label="Before you go">
       <p>Just because someone had a bad experience with ice, salads, or any other food in Bali doesn't mean the same thing will happen to you. Everybody reacts differently, and that's always worth remembering.</p>
       <p>As a pharmacist, I always keep that in mind whenever I travel outside Europe. During the first few days, I pay a little more attention to what I eat so I can understand how my body reacts before trying everything. It's a simple habit that's helped me on many trips, and one I'd recommend if you're visiting Bali for the first time.</p>
-    </div>
+    </ArticleClosingNote>
   </div>
 </section>

@@ -11,18 +11,7 @@ export default {
         heading: ['ScheherazadeNew', 'Georgia', 'serif'],
         logo: ['DoulosSIL', 'Georgia', 'serif'],
       },
-      height: {
-        'card-mobile': '600px', // Carousel card height on mobile
-        'card-desktop': '40rem', // Carousel card height on md+
-      },
-      width: {
-        'card-mobile': 'calc(100vw - 2rem)', // Full-width mobile card inside 1rem gutters
-        'card-desktop': '24rem', // md:w-96 equivalent
-      },
       spacing: {
-        'carousel-top-sm': '24px', // Carousel breathing padding-top, mobile
-        'carousel-top-md': '40px', // Carousel breathing padding-top, tablet
-        'carousel-top-lg': '56px', // Carousel breathing padding-top, desktop
         'dot-zone': '70px', // Bottom zone reserved for pagination dots
       },
       keyframes: {

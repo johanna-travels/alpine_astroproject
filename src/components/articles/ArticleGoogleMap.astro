@@ -1,0 +1,124 @@
+---
+import { googleMapsEmbedHeaderColor, googleMapsShareCover } from '@/lib/maps';
+import { articlePanelInlineStyle } from '@/lib/articlePanel';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Google My Maps `mid` parameter */
+  mapId: string;
+  /** Google embed header hex without `#` — defaults to brand sage */
+  embedHeaderColor?: string;
+  sectionId?: string;
+}
+
+const {
+  title,
+  description,
+  mapId,
+  embedHeaderColor = googleMapsEmbedHeaderColor,
+  sectionId = 'section-google-map',
+} = Astro.props;
+
+const embedSrc = `https://www.google.com/maps/d/embed?mid=${mapId}&ehbc=${embedHeaderColor}`;
+const viewerSrc = `https://www.google.com/maps/d/viewer?mid=${mapId}&usp=sharing`;
+
+const coverStyle = {
+  '--share-cover-top': `${googleMapsShareCover.top}px`,
+  '--share-cover-right': `${googleMapsShareCover.right}px`,
+  '--share-cover-width': `${googleMapsShareCover.width}px`,
+  '--share-cover-height': `${googleMapsShareCover.height}px`,
+  '--share-cover-bg': `#${embedHeaderColor}`,
+  '--tw-ring-color': 'rgb(105 116 110 / 0.12)',
+} as Record<string, string>;
+---
+
+<section id={sectionId} class="article-google-map scroll-mt-nav max-w-3xl">
+  <div
+    class="article-panel article-google-map__panel rounded-2xl border px-5 py-6 md:px-8 md:py-8"
+    style={articlePanelInlineStyle}
+  >
+    <h3 class="article-google-map__title mb-4 text-black">{title}</h3>
+
+    <hr class="article-panel__divider article-google-map__divider mb-5 border-0 border-t" />
+
+    <p class="article-google-map__description prose-body mb-6 text-black/80">{description}</p>
+
+    <div class="article-google-map__frame overflow-hidden rounded-xl ring-1" style={coverStyle}>
+      <iframe
+        src={embedSrc}
+        title={title}
+        width="640"
+        height="480"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen
+        class="article-google-map__iframe"
+      />
+      <div class="article-google-map__share-cover" aria-hidden="true"></div>
+    </div>
+
+    <p class="article-google-map__footer mt-4 meta text-neutral-600">
+      <a
+        href={viewerSrc}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]"
+      >
+        Open map in Google Maps
+      </a>
+      to save places or download the map.
+    </p>
+  </div>
+</section>
+
+<style is:global>
+  .article-panel {
+    background-color: #F5F2EB !important;
+    border-color: #E5DFD4 !important;
+    box-shadow:
+      0 10px 32px rgb(105 116 110 / 0.1),
+      0 2px 8px rgb(0 0 0 / 0.04);
+  }
+
+  .article-panel__divider {
+    border-color: #E5DFD4 !important;
+  }
+</style>
+
+<style>
+  .article-google-map__frame {
+    position: relative;
+  }
+
+  .article-google-map__iframe {
+    display: block;
+    width: 100%;
+    height: min(70vw, 480px);
+    min-height: 320px;
+    border: 0;
+  }
+
+  @media (min-width: 768px) {
+    .article-google-map__iframe {
+      height: 420px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .article-google-map__iframe {
+      height: 480px;
+    }
+  }
+
+  .article-google-map__share-cover {
+    position: absolute;
+    top: var(--share-cover-top, 0);
+    right: var(--share-cover-right, 44px);
+    z-index: 2;
+    width: var(--share-cover-width, 110px);
+    height: var(--share-cover-height, 56px);
+    background-color: var(--share-cover-bg, #69746E);
+    pointer-events: auto;
+  }
+</style>

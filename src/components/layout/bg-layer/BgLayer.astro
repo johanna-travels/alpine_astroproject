@@ -1,0 +1,34 @@
+---
+import {
+  resolveBgLayerConfig,
+  getEdgeHeight,
+  getTintGradient,
+  buildBgLayerInlineStyle,
+  createBgLayerIndices,
+  type BgLayerConfig,
+  type BgLayerEdge,
+} from '@/components/layout/bg-layer/test';
+
+interface Props extends BgLayerConfig {
+  edges?: BgLayerEdge[];
+  zIndex?: number;
+}
+
+const { edges = ['top', 'bottom'], zIndex = 30, ...overrides } = Astro.props;
+const config = resolveBgLayerConfig(overrides);
+const layerIndices = createBgLayerIndices(config.blurLayers);
+---
+
+{edges.map((edge) => (
+  <div
+    class="bg-layer"
+    data-edge={edge}
+    aria-hidden="true"
+    style={`position:fixed; left:0; right:0; ${edge}:0; height:${getEdgeHeight(edge, config.blurSize)}px; pointer-events:none; z-index:${zIndex};`}
+  >
+    {layerIndices.map((layerIndex) => (
+      <div class="bg-layer__blur" style={`position:absolute; inset:0; ${buildBgLayerInlineStyle(layerIndex, edge, config)};`} />
+    ))}
+    <div class="bg-layer__tint" style={`position:absolute; inset:0; background:${getTintGradient(edge, config.tintColor)};`} />
+  </div>
+))}

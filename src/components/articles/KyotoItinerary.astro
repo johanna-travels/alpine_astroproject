@@ -1,4 +1,5 @@
 ---
+import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
 import { articleHref } from '@/domains/articles/catalog';
 
@@ -162,12 +163,9 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
 
 <section id="section-6" class="scroll-mt-nav">
   <div class={prose}>
-    <div class="rounded-2xl border border-amber-200 bg-amber-50 p-5 md:p-6">
-      <span class="mb-3 inline-flex items-center gap-2 rounded-full bg-amber-200/70 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-900">
-        ✦ Final thoughts
-      </span>
+    <ArticleClosingNote label="Final thoughts">
       <p>After spending almost a week in Kyoto, the moments I remember most aren't necessarily the city's most famous attractions. They're the quieter ones — watching the sunrise in Arashiyama, wandering through the streets around Yasaka Pagoda, or sitting on a terrace listening to the rain at Yusa-tei.</p>
       <p>If it's your first visit, my advice would be to focus on a few key areas each day rather than trying to see everything. Kyoto rewards slow exploration far more than a packed itinerary, and sometimes the places you remember most aren't the ones you originally planned to visit.</p>
-    </div>
+    </ArticleClosingNote>
   </div>
 </section>

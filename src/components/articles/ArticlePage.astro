@@ -4,7 +4,7 @@ import ArticleMobileBack from '@/components/articles/ArticleMobileBack.astro';
 import StickyArticleLayout from '@/components/articles/StickyArticleLayout.astro';
 import type { Article } from '@/domains/articles/catalog';
 import type { TocGroup } from '@/domains/articles/toc';
-import { articleImageSizes } from '@/lib/images';
+import { articleImageSizes, getSocialShareImage } from '@/lib/images';
 
 interface Props {
   article: Article;
@@ -15,9 +15,17 @@ interface Props {
 const { article, sections, lcpImageSrcSet } = Astro.props;
 const pageTitle = article.seoTitle ?? article.title;
 const pageDescription = article.seoDescription ?? article.lead;
+const shareImage = await getSocialShareImage(article.lcpImage ?? article.image);
 ---
 
-<PageShell title={pageTitle} description={pageDescription}>
+<PageShell
+  title={pageTitle}
+  description={pageDescription}
+  image={shareImage.src}
+  imageAlt={article.alt}
+  imageWidth={shareImage.width}
+  imageHeight={shareImage.height}
+>
   {lcpImageSrcSet && (
     <Fragment slot="head">
       <link

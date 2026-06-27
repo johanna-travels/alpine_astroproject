@@ -1,4 +1,5 @@
 ---
+import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
 import { articleHref } from '@/domains/articles/catalog';
 
 const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
@@ -75,11 +76,8 @@ const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f
 
 <section id="section-6" class="scroll-mt-nav">
   <div class={prose}>
-    <div class="rounded-2xl border border-amber-200 bg-amber-50 p-5 md:p-6">
-      <span class="mb-3 inline-flex items-center gap-2 rounded-full bg-amber-200/70 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-900">
-        ✦ Before you go
-      </span>
+    <ArticleClosingNote label="Before you go">
       <p>Every traveller has a different experience, but these are the things that worked well for me during my time in Bali. I hope they help you feel a little more prepared and make your trip a little easier.</p>
-    </div>
+    </ArticleClosingNote>
   </div>
 </section>

@@ -1,4 +1,5 @@
 ---
+import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
 import { articleHref } from '@/domains/articles/catalog';
 import nambaYasakaShrine from '@/assets/articles/osaka/osaka-namba-yasaka-shrine.webp';
@@ -95,11 +96,8 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
 
 <section id="section-5" class="scroll-mt-nav">
   <div class={prose}>
-    <div class="rounded-2xl border border-amber-200 bg-amber-50 p-5 md:p-6">
-      <span class="mb-3 inline-flex items-center gap-2 rounded-full bg-amber-200/70 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-900">
-        ✦ Final thoughts
-      </span>
+    <ArticleClosingNote label="Final thoughts">
       <p>Before visiting Osaka, I expected my favourite memories to come from places like Dotonbori. Instead, some of the moments I remember most came from quieter places such as Namba Yasaka Shrine and Katsuoji Temple. If you only have one day in the city, this itinerary offers a chance to experience both sides of Osaka — the lively atmosphere it's famous for and a slower side that many visitors never see.</p>
-    </div>
+    </ArticleClosingNote>
   </div>
 </section>

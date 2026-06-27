@@ -12,6 +12,8 @@ type ContactSectionProps = {
   image?: string;
   showImage?: boolean;
   className?: string;
+  /** Homepage stack: skip top padding — parent flex gap handles section spacing */
+  stacked?: boolean;
 };
 
 const defaultImage = contactImage.src;
@@ -48,7 +50,7 @@ function validate(values: FormValues): FormErrors {
 
 // --- MAIN EXPORT COMPONENT ---
 // Connect with the locals
-export default function ContactSectionWithShader({ image = defaultImage, showImage = true, className = '' }: ContactSectionProps) {
+export default function ContactSectionWithShader({ image = defaultImage, showImage = true, className = '', stacked = false }: ContactSectionProps) {
   const [values, setValues] = useState<FormValues>({
     name: "",
     email: "",
@@ -99,8 +101,9 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
 
   return (
     <div className={`w-full dark:bg-neutral-900 ${className}`} style={{ backgroundColor: '#F5F2EB' }}>
-      <div className={`mx-auto grid max-w-[1300px] gap-8 px-0 py-10 md:px-10 lg:py-20 ${showImage ? 'grid-cols-1 lg:grid-cols-2' : 'grid-cols-1 place-items-center'}`}>
-        
+      <div
+        className={`mx-auto grid max-w-[1300px] gap-8 px-0 md:px-6 md:py-8 lg:gap-12 lg:px-16 lg:py-16 xl:gap-16 xl:px-20 ${stacked ? 'pb-10 pt-0' : 'py-10'} ${showImage ? 'grid-cols-1 lg:grid-cols-2' : 'grid-cols-1 place-items-center'}`}
+      >
         {/* Left Column - Single static image */}
         {showImage && (
         <div className="order-last h-[500px] overflow-hidden rounded-3xl md:order-first lg:h-auto">
@@ -115,9 +118,9 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
 
         {/* Right Column - Contact Form */}
         <div className={`flex items-center justify-center ${!showImage ? 'w-full' : ''}`}>
-          <div className={`w-full ${!showImage ? 'w-full p-[35px] rounded-[10px] bg-white shadow-sm' : 'max-w-lg rounded-3xl px-4 py-8 md:px-10'}`}>
+          <div className={`${!showImage ? 'w-full rounded-[10px] bg-white px-[35px] pb-[35px] pt-8 shadow-sm md:px-6 lg:px-8 xl:px-10' : 'max-w-lg rounded-3xl px-4 pb-8 pt-8 md:px-6 lg:px-8 xl:px-10'}`}>
             <div>
-              <h1 className="mt-4 text-black dark:text-white" style={{ fontSize: "clamp(24px, 4vw, 48px)" }}>
+              <h1 className="m-0 text-black dark:text-white" style={{ fontSize: "clamp(24px, 4vw, 48px)" }}>
                 Let's Talk
               </h1>
               <p className="mt-4 max-w-sm text-sm text-neutral-600 dark:text-neutral-400">
@@ -128,7 +131,7 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
               </p>
             </div>
 
-            <div className="py-10">
+            <div className="pt-8">
               {rateLimited ? (
                 <div className="rounded-md bg-red-50 p-4 text-sm font-medium text-red-700 dark:bg-red-900/30 dark:text-red-300">
                   Too many submissions. Please wait a minute before trying again.

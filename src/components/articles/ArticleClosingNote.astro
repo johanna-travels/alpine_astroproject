@@ -1,0 +1,27 @@
+---
+import {
+  articlePanelBadgeInlineStyle,
+  articlePanelInlineStyle,
+} from '@/lib/articlePanel';
+
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
+---
+
+<div
+  class="article-panel !bg-[#F5F2EB] rounded-2xl border !border-[#E5DFD4] p-5 md:p-6"
+  style={articlePanelInlineStyle}
+>
+  <span
+    class="article-panel__badge mb-3 inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide"
+    style={articlePanelBadgeInlineStyle}
+  >
+    ✦ {label}
+  </span>
+  <div class="article-panel__content text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0 [&_p]:prose-body">
+    <slot />
+  </div>
+</div>

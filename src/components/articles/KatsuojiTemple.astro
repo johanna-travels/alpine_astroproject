@@ -1,4 +1,5 @@
 ---
+import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
 import templeViewNearEntrance from '@/assets/articles/osaka/katsuoji-temple-view-near-entrance.webp';
 import collectingFirstStamp from '@/assets/articles/osaka/katsuoji-temple-collecting-the-first-stamp.webp';
@@ -96,12 +97,9 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
 
 <section id="section-5" class="scroll-mt-nav">
   <div class={prose}>
-    <div class="rounded-2xl border border-amber-200 bg-amber-50 p-5 md:p-6">
-      <span class="mb-3 inline-flex items-center gap-2 rounded-full bg-amber-200/70 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-900">
-        ✦ Before you go
-      </span>
+    <ArticleClosingNote label="Before you go">
       <p>Katsuoji Temple ended up being far more memorable than I expected. What started as a visit to see the famous daruma dolls quickly became one of my favourite experiences in Japan, thanks to the peaceful atmosphere, beautiful surroundings, and the fun of collecting stamps around the grounds.</p>
       <p>If you're looking for a day trip from Osaka that feels completely different from the city itself, Katsuoji is well worth the journey. Just make sure you leave enough time to explore beyond the main paths—you never know where you'll find your next daruma.</p>
-    </div>
+    </ArticleClosingNote>
   </div>
 </section>

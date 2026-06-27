@@ -1,7 +1,8 @@
 ---
 import PageShell from '@/components/layout/PageShell.astro';
 import PageBreadcrumbHero from '@/components/sections/PageBreadcrumbHero.astro';
-import { Image, getImage } from 'astro:assets';
+import ContactSectionWithShader from '@/components/sections/contact-section-with-shader.tsx';
+import { Image } from 'astro:assets';
 import heroImg from '@/assets/heroes/services-img.webp';
 import verticalImg from '@/assets/heroes/services vertical.webp';
 import { getResponsiveHero, heroImageSizes } from '@/lib/images';
@@ -37,51 +38,55 @@ const hero = await getResponsiveHero(heroImg);
   />
 
   <main class="relative z-10 bg-white text-neutral-900">
-    <div class="w-full py-[100px] px-0 bg-white">
-      <div class="w-full max-w-[1300px] mx-auto px-4 xl:px-0 flex flex-col md:flex-row gap-y-[20px] md:gap-y-0 md:gap-x-[100px] items-center">
-        <div class="w-full md:w-1/2 flex flex-col">
-          <div class="overflow-hidden bg-neutral-100 aspect-[3/4] md:aspect-[4/5] lg:aspect-[3/4]">
-            <Image
-              class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-              src={verticalImg}
-              alt="Services"
-              loading="lazy"
-              decoding="async"
-              widths={[480, 720, 900]}
-              sizes="(min-width: 768px) 50vw, 100vw"
-              format="webp"
-              quality={75}
-            />
+    <div class="flex flex-col gap-8 pb-16 pt-8 md:gap-8 md:pb-16 md:pt-10 lg:gap-12 lg:pb-24 lg:pt-12 xl:gap-16 xl:pt-16">
+      <section>
+        <div class="section-gutter">
+          <div class="grid w-full grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-x-12 xl:gap-x-[100px]">
+            <div class="relative aspect-[3/4] min-h-0 overflow-hidden bg-neutral-100 lg:aspect-auto lg:h-full">
+              <Image
+                class="h-full w-full object-cover transition-transform duration-700 hover:scale-105 lg:absolute lg:inset-0"
+                src={verticalImg}
+                alt="Services"
+                loading="lazy"
+                decoding="async"
+                widths={[480, 720, 900]}
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                format="webp"
+                quality={75}
+              />
+            </div>
+
+            <article class="flex w-full flex-col gap-y-4 lg:gap-y-5">
+              <div class="mb-2 h-[1px] w-full bg-neutral-900 opacity-20 lg:w-20"></div>
+              <p class="meta text-neutral-500">LET'S CREATE SOMETHING BEAUTIFUL</p>
+              <h2>Work With Me</h2>
+              <p class="prose-body border-l-2 border-white pl-4 italic text-neutral-600">
+                Voyaflair partners with hotels, tourism boards, travel brands, and hospitality businesses to create thoughtful visual content that captures the essence of a destination.
+              </p>
+              <p class="prose-body text-neutral-700">
+                With a focus on atmosphere, design, and storytelling, each collaboration is crafted to highlight what makes a place memorable — from boutique hotels and unique stays to immersive travel experiences and local culture.
+              </p>
+              <p class="prose-body text-neutral-700">
+                Through photography, video, and editorial-style content, I help brands connect with travelers in a way that feels authentic, inspiring, and visually engaging.
+              </p>
+              <div class="pt-4">
+                <h3 class="mb-3">Social Media Collaboration</h3>
+                <p class="prose-body text-neutral-600">
+                  Authentic promotion across Instagram, TikTok, and other digital platforms through carefully curated content, including reels, stories, and posts designed to inspire travel and showcase destinations in a meaningful way.
+                </p>
+              </div>
+              <div class="pt-2">
+                <h3 class="mb-3">Content Creation</h3>
+                <p class="prose-body text-neutral-600">
+                  Professional photography and video content created for hotels, travel brands, and tourism campaigns. Designed to elevate your visual presence across websites, social media, marketing materials, and digital platforms.
+                </p>
+              </div>
+            </article>
           </div>
         </div>
+      </section>
 
-        <article class="w-full md:w-1/2 flex flex-col gap-y-5">
-          <div class="w-full md:w-20 h-[1px] bg-neutral-900 opacity-20 mb-2"></div>
-          <p class="meta text-neutral-500">LET'S CREATE SOMETHING BEAUTIFUL</p>
-          <h2>Work With Me</h2>
-          <p class="prose-body text-neutral-600 italic border-l-2 border-white pl-4">
-            Voyaflair partners with hotels, tourism boards, travel brands, and hospitality businesses to create thoughtful visual content that captures the essence of a destination.
-          </p>
-          <p class="prose-body text-neutral-700">
-            With a focus on atmosphere, design, and storytelling, each collaboration is crafted to highlight what makes a place memorable — from boutique hotels and unique stays to immersive travel experiences and local culture.
-          </p>
-          <p class="prose-body text-neutral-700">
-            Through photography, video, and editorial-style content, I help brands connect with travelers in a way that feels authentic, inspiring, and visually engaging.
-          </p>
-          <div class="pt-4">
-            <h3 class="mb-3">Social Media Collaboration</h3>
-            <p class="prose-body text-neutral-600">
-              Authentic promotion across Instagram, TikTok, and other digital platforms through carefully curated content, including reels, stories, and posts designed to inspire travel and showcase destinations in a meaningful way.
-            </p>
-          </div>
-          <div class="pt-2">
-            <h3 class="mb-3">Content Creation</h3>
-            <p class="prose-body text-neutral-600">
-              Professional photography and video content created for hotels, travel brands, and tourism campaigns. Designed to elevate your visual presence across websites, social media, marketing materials, and digital platforms.
-            </p>
-          </div>
-        </article>
-      </div>
+      <ContactSectionWithShader client:idle stacked />
     </div>
   </main>
 

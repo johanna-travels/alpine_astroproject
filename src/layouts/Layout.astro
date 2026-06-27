@@ -1,19 +1,29 @@
 ---
 import '../styles/global.css';
+import BgLayer from '@/components/layout/bg-layer/BgLayer.astro';
 import GoogleAnalytics from '../components/analytics/GoogleAnalytics.astro';
 import { googleAnalyticsCsp, getGaMeasurementId, isGoogleAnalyticsEnabled } from '@/lib/analytics';
+import { googleMapsCsp } from '@/lib/maps';
 import { homeUrl } from '@/lib/site';
 
 interface Props {
   title?: string;
   description?: string;
   noindex?: boolean;
+  image?: string;
+  imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
 }
 
 const {
   title = 'Voyaflair — Travel Journal',
   description = 'Curated travel guides, beautiful stays, and stories worth remembering — by Joanna.',
   noindex = false,
+  image,
+  imageAlt,
+  imageWidth,
+  imageHeight,
 } = Astro.props;
 
 const isDev = import.meta.env.DEV;
@@ -21,7 +31,11 @@ const fb = import.meta.env.BASE_URL;
 const gaMeasurementId = getGaMeasurementId();
 const googleAnalyticsEnabled = isGoogleAnalyticsEnabled();
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? homeUrl).href;
-const logoUrl = new URL(`${fb}icon-512.png`, Astro.site ?? homeUrl).href;
+const siteOrigin = Astro.site ?? homeUrl;
+const logoUrl = new URL(`${fb}icon-512.png`, siteOrigin).href;
+const ogImageUrl = image ? new URL(image, siteOrigin).href : logoUrl;
+const ogImageAlt = imageAlt ?? 'Voyaflair logo — VF monogram';
+const twitterCard = image ? 'summary_large_image' : 'summary';
 const organizationSchema = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -40,7 +54,8 @@ const csp = [
   "style-src 'self' 'unsafe-inline'",
   `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''}${googleAnalyticsEnabled ? ` ${googleAnalyticsCsp.scriptSrc}` : ''}`,
   `connect-src 'self'${isDev ? " ws://localhost:* wss://localhost:*" : ''}${googleAnalyticsEnabled ? ` ${googleAnalyticsCsp.connectSrc}` : ''}`,
-  "form-action 'self'",
+  `frame-src 'self' ${googleMapsCsp.frameSrc}`,
+  `form-action ${googleMapsCsp.formAction}`,
   "upgrade-insecure-requests",
 ].join('; ');
 
@@ -50,7 +65,7 @@ const permissionsPolicy = [
   "geolocation=()",
   "payment=()",
   "usb=()",
-  "fullscreen=(self)",
+  'fullscreen=(self "https://www.google.com")',
 ].join(', ');
 
 ---
@@ -71,21 +86,28 @@ const permissionsPolicy = [
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
+    <meta property="og:site_name" content="Voyaflair" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content={logoUrl} />
-    <meta property="og:image:alt" content="Voyaflair logo — VF monogram" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:image" content={logoUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:alt" content={ogImageAlt} />
+    {imageWidth && <meta property="og:image:width" content={String(imageWidth)} />}
+    {imageHeight && <meta property="og:image:height" content={String(imageHeight)} />}
+    <meta name="twitter:card" content={twitterCard} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
     {noindex && <meta name="robots" content="noindex" />}
     <meta name="theme-color" content="#69746E" />
-    <link rel="icon" type="image/png" sizes="96x96" href={`${fb}favicon-96x96.png`} />
     <link rel="icon" type="image/png" sizes="48x48" href={`${fb}favicon-48x48.png`} />
     <link rel="icon" href={`${fb}favicon.ico`} sizes="any" />
+    <link rel="shortcut icon" href={`${fb}favicon.ico`} />
     <link rel="icon" type="image/png" sizes="32x32" href={`${fb}favicon-32x32.png`} />
     <link rel="icon" type="image/png" sizes="16x16" href={`${fb}favicon-16x16.png`} />
+    <link rel="icon" type="image/png" sizes="96x96" href={`${fb}favicon-96x96.png`} />
     <link rel="icon" href={`${fb}favicon.svg`} type="image/svg+xml" />
     <link rel="apple-touch-icon" sizes="180x180" href={`${fb}apple-touch-icon.png`} />
     <link rel="manifest" href={`${fb}site.webmanifest`} />
@@ -117,10 +139,25 @@ const permissionsPolicy = [
         src: url('${fb}fonts/doulos/DoulosSIL-Regular.ttf') format('truetype');
         font-weight: 400; font-style: normal; font-display: swap;
       }
+      .article-panel {
+        background-color: #F5F2EB !important;
+        border-color: #E5DFD4 !important;
+        box-shadow:
+          0 10px 32px rgb(105 116 110 / 0.1),
+          0 2px 8px rgb(0 0 0 / 0.04);
+      }
+      .article-panel__badge {
+        background-color: rgb(105 116 110 / 0.12) !important;
+        color: #4a534f !important;
+      }
+      .article-panel__divider {
+        border-color: #E5DFD4 !important;
+      }
     </style>`} />
     <slot name="head" />
   </head>
   <body>
+    <BgLayer />
     <slot />
   </body>
 </html>

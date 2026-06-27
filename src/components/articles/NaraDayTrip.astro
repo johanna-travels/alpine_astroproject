@@ -1,4 +1,5 @@
 ---
+import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
 import { articleHref } from '@/domains/articles/catalog';
 
@@ -131,12 +132,9 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
 
 <section id="section-6" class="scroll-mt-nav">
   <div class={prose}>
-    <div class="rounded-2xl border border-amber-200 bg-amber-50 p-5 md:p-6">
-      <span class="mb-3 inline-flex items-center gap-2 rounded-full bg-amber-200/70 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-900">
-        ✦ Before you go
-      </span>
+    <ArticleClosingNote label="Before you go">
       <p>Nara ended up being much more than a chance to see Japan's famous deer. Between the traditional gardens, historic temples, and the relaxed atmosphere around Nara Park, it felt like a completely different experience from Kyoto.</p>
       <p>If you're planning a few days in Kyoto, Nara is an easy and worthwhile day trip to add to your itinerary. You may also enjoy my <a href={articleHref('kyoto-itinerary')} class={mapLink}>Kyoto 3-Day Itinerary for First-Time Visitors</a>, where I share how I combined this Nara day trip with Fushimi Inari, Gion, Arashiyama, and some of Kyoto's most iconic sights.</p>
-    </div>
+    </ArticleClosingNote>
   </div>
 </section>

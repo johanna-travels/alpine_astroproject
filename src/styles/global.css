@@ -189,3 +189,64 @@
   }
 }
 
+/* Homepage gutters — agent spec: src/styles/AGENT-LAYOUT.md */
+.section-gutter {
+  box-sizing: border-box;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+@media (min-width: 768px) {
+  .section-gutter {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-gutter {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .section-gutter {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}
+
+/* Section title row — 24px vertical; horizontal from .section-gutter */
+.section-header {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+@media (min-width: 1024px) {
+  .section-header {
+    padding-top: 48px;
+    padding-bottom: 32px;
+  }
+}
+
+/* =====================================================================
+   COMPONENT: Article panels (map cards, closing notes)
+   ===================================================================== */
+.article-panel {
+  background-color: #F5F2EB !important;
+  border-color: #E5DFD4 !important;
+  box-shadow:
+    0 10px 32px rgb(105 116 110 / 0.1),
+    0 2px 8px rgb(0 0 0 / 0.04);
+}
+
+.article-panel__badge {
+  background-color: rgb(105 116 110 / 0.12);
+  color: #4a534f;
+}
+
+.article-panel__divider {
+  border-color: #E5DFD4 !important;
+}
+

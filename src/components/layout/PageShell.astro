@@ -7,12 +7,24 @@ interface Props {
   title?: string;
   description?: string;
   noindex?: boolean;
+  image?: string;
+  imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
 }
 
-const { title, description, noindex } = Astro.props;
+const { title, description, noindex, image, imageAlt, imageWidth, imageHeight } = Astro.props;
 ---
 
-<Layout title={title} description={description} noindex={noindex}>
+<Layout
+  title={title}
+  description={description}
+  noindex={noindex}
+  image={image}
+  imageAlt={imageAlt}
+  imageWidth={imageWidth}
+  imageHeight={imageHeight}
+>
   <Fragment slot="head"><slot name="head" /></Fragment>
   <PageNav />
   <slot />

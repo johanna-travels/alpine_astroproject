@@ -1,6 +1,7 @@
 ---
 import PageShell from '@/components/layout/PageShell.astro';
 import PageBreadcrumbHero from '@/components/sections/PageBreadcrumbHero.astro';
+import ContactSectionWithShader from '@/components/sections/contact-section-with-shader.tsx';
 import CtaLink from '@/components/ui/CtaLink.astro';
 import { destinations, destinationHref } from '@/domains/destinations/catalog';
 import { getResponsiveHero, heroImageSizes, cardImageQuality, cardImageWidths } from '@/lib/images';
@@ -37,36 +38,44 @@ const hero = await getResponsiveHero(heroImg);
     imageAlt="Travel destinations around the world — Voyaflair"
   />
 
-  <main class="relative z-10 w-full min-h-screen flex flex-col items-center bg-white py-10">
-    <p class="meta text-neutral-500 mb-4">Places worth knowing</p>
-    <h2 class="text-center md:mb-16 mb-10">Explore</h2>
+  <main class="relative z-10 bg-white text-neutral-900">
+    <div class="flex flex-col gap-8 pb-16 pt-8 md:gap-8 md:pb-16 md:pt-10 lg:gap-12 lg:pb-24 lg:pt-12 xl:gap-16 xl:pt-16">
+      <section>
+        <div class="section-gutter">
+          <p class="meta mb-4 text-neutral-500">Places worth knowing</p>
+          <h2 class="mb-10 text-center md:mb-16">Explore</h2>
 
-    <div class="w-full max-w-[1300px] px-4 md:px-[2rem] xl:px-[6rem] flex flex-col gap-10">
-      {
-        destinations.map((destination) => (
-          <article class="flex flex-col sm:flex-row gap-6 pb-10 border-b border-neutral-200 last:border-b-0">
-            <div class="w-full sm:w-2/5 lg:w-1/3 aspect-square overflow-hidden rounded-xl">
-              <Image
-                src={destination.heroImage}
-                alt={destination.name}
-                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                loading="lazy"
-                decoding="async"
-                widths={[...cardImageWidths]}
-                quality={cardImageQuality}
-                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 40vw, 100vw"
-              />
-            </div>
-            <div class="w-full sm:w-3/5 lg:w-2/3 flex flex-col justify-center gap-4">
-              <h3>
-                <a href={destinationHref(destination.slug)} class="hover:text-neutral-600 transition-colors">{destination.name}</a>
-              </h3>
-              <p class="prose-body text-neutral-500">{destination.description}</p>
-              <CtaLink href={destinationHref(destination.slug)} label="Explore More" />
-            </div>
-          </article>
-        ))
-      }
+          <div class="flex flex-col gap-10">
+            {
+              destinations.map((destination) => (
+                <article class="flex flex-col gap-6 border-b border-neutral-200 pb-10 last:border-b-0 sm:flex-row">
+                  <div class="aspect-square w-full overflow-hidden rounded-xl sm:w-2/5 lg:w-1/3">
+                    <Image
+                      src={destination.heroImage}
+                      alt={destination.name}
+                      class="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
+                      widths={[...cardImageWidths]}
+                      quality={cardImageQuality}
+                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 40vw, 100vw"
+                    />
+                  </div>
+                  <div class="flex w-full flex-col justify-center gap-4 sm:w-3/5 lg:w-2/3">
+                    <h3>
+                      <a href={destinationHref(destination.slug)} class="transition-colors hover:text-neutral-600">{destination.name}</a>
+                    </h3>
+                    <p class="prose-body text-neutral-500">{destination.description}</p>
+                    <CtaLink href={destinationHref(destination.slug)} label="Explore More" />
+                  </div>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <ContactSectionWithShader client:idle stacked />
     </div>
   </main>
 </PageShell>

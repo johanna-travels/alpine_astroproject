@@ -38,7 +38,7 @@ const desktopBgPosition = imageClass.includes('lg:object-right')
 ---
 
 <!-- Mobile & tablet: scrolling img -->
-<div class="page-breadcrumb-hero relative mx-2 flex min-h-[300px] h-[50vw] max-h-[500px] flex-col justify-end overflow-hidden rounded-[30px] lg:hidden">
+<div class="page-breadcrumb-hero relative mx-[10px] flex min-h-[300px] h-[50vw] max-h-[500px] flex-col justify-end overflow-hidden rounded-[30px] lg:hidden">
   <img
     src={imageSrc}
     srcset={imageSrcSet}
@@ -50,7 +50,7 @@ const desktopBgPosition = imageClass.includes('lg:object-right')
   />
   <div class="pointer-events-none absolute inset-0 z-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
   <div class="relative z-10 flex h-full w-full flex-col justify-end">
-    <div class="w-full max-w-[1300px] pl-4 pr-4 pb-6 text-white md:pl-10 md:pr-10 md:pb-8">
+    <div class="w-full max-w-[1300px] pl-4 pr-4 pb-6 text-white md:pl-6 md:pr-6 md:pb-8">
       <h1 class="hero-title mb-4 text-white">{title}</h1>
       <nav class="flex items-center gap-2 text-sm font-medium text-white/70">
         <a href={pageUrl()} class="text-[0.875rem] transition-colors hover:text-white">Home</a>
@@ -63,12 +63,12 @@ const desktopBgPosition = imageClass.includes('lg:object-right')
 
 <!-- Desktop: fixed bg so scroll layers slide over (matches homepage hero) -->
 <div
-  class="page-breadcrumb-hero contact-hero relative mx-2 hidden aspect-[21/9] max-h-[710px] flex-col justify-end overflow-hidden rounded-[30px] bg-fixed bg-no-repeat lg:flex"
+  class="page-breadcrumb-hero contact-hero relative mx-[10px] hidden aspect-[21/9] max-h-[710px] flex-col justify-end overflow-hidden rounded-[30px] bg-fixed bg-no-repeat lg:flex"
   style={`background-image: url('${desktopImageSrc}'); background-size: cover; background-position: ${desktopBgPosition};`}
 >
   <div class="pointer-events-none absolute inset-0 z-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
   <div class="relative z-10 flex h-full w-full flex-col justify-end">
-    <div class="w-full max-w-[1300px] pl-4 pr-4 pb-6 text-white md:pl-10 md:pr-10 lg:pl-16 lg:pr-16 lg:pb-12">
+    <div class="w-full max-w-[1300px] pl-4 pr-4 pb-6 text-white md:pl-6 md:pr-6 lg:pl-16 lg:pr-16 xl:pl-20 xl:pr-20 lg:pb-12">
       <h1 class="hero-title mb-4 text-white">{title}</h1>
       <nav class="flex items-center gap-2 text-sm font-medium text-white/70">
         <a href={pageUrl()} class="text-[0.875rem] transition-colors hover:text-white">Home</a>

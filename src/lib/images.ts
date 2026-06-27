@@ -25,6 +25,16 @@ export async function getHeroImage(src: ImageMetadata) {
   return getImage({ src, ...heroImageOptions });
 }
 
+/** 1200px-wide image for link previews (Messenger, WhatsApp, email, etc.) */
+export async function getSocialShareImage(src: ImageMetadata) {
+  const image = await getImage({ src, width: 1200, format: 'jpg', quality: 85 });
+  return {
+    src: image.src,
+    width: image.attributes.width,
+    height: image.attributes.height,
+  };
+}
+
 export async function getResponsiveHero(src: ImageMetadata) {
   const srcSet = await buildResponsiveSrcSet(src, heroImageWidths);
   const fallback = await getImage({ src, width: heroImageWidths[0], format: 'webp', quality: 75 });
