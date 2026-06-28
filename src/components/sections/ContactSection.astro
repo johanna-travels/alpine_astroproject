@@ -1,0 +1,24 @@
+---
+import ContactSectionWithShader from './contact-section-with-shader.tsx';
+import contactImg from '@/assets/heroes/contac-img.webp';
+import { getResponsiveContactImage } from '@/lib/images';
+
+interface Props {
+  showImage?: boolean;
+  className?: string;
+  stacked?: boolean;
+}
+
+const { showImage = true, className = '', stacked = false } = Astro.props;
+const contactImage = showImage ? await getResponsiveContactImage(contactImg) : null;
+---
+
+<ContactSectionWithShader
+  client:idle
+  showImage={showImage}
+  className={className}
+  stacked={stacked}
+  image={contactImage?.src}
+  imageSrcSet={contactImage?.srcSet}
+  imageSizes={contactImage?.sizes}
+/>

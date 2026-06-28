@@ -1,7 +1,7 @@
 ---
 import PageShell from '@/components/layout/PageShell.astro';
 import PageBreadcrumbHero from '@/components/sections/PageBreadcrumbHero.astro';
-import ContactSectionWithShader from '@/components/sections/contact-section-with-shader.tsx';
+import ContactSection from '@/components/sections/ContactSection.astro';
 import CtaLink from '@/components/ui/CtaLink.astro';
 import { destinations, destinationHref } from '@/domains/destinations/catalog';
 import { getResponsiveHero, heroImageSizes, cardImageQuality, cardImageWidths } from '@/lib/images';
@@ -75,7 +75,7 @@ const hero = await getResponsiveHero(heroImg);
         </div>
       </section>
 
-      <ContactSectionWithShader client:idle stacked />
+      <ContactSection stacked />
     </div>
   </main>
 </PageShell>

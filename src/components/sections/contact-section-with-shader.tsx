@@ -4,19 +4,18 @@
 "use client";
 
 import { useState } from "react";
-import contactImage from "@/assets/heroes/contac-img.webp";
 import { sanitizeInput, sanitizeContactForm, isRateLimited } from "@/lib/security";
 import { pageUrl } from "@/lib/site";
 
 type ContactSectionProps = {
   image?: string;
+  imageSrcSet?: string;
+  imageSizes?: string;
   showImage?: boolean;
   className?: string;
   /** Homepage stack: skip top padding — parent flex gap handles section spacing */
   stacked?: boolean;
 };
-
-const defaultImage = contactImage.src;
 
 type FormValues = {
   name: string;
@@ -50,7 +49,7 @@ function validate(values: FormValues): FormErrors {
 
 // --- MAIN EXPORT COMPONENT ---
 // Connect with the locals
-export default function ContactSectionWithShader({ image = defaultImage, showImage = true, className = '', stacked = false }: ContactSectionProps) {
+export default function ContactSectionWithShader({ image, imageSrcSet, imageSizes, showImage = true, className = '', stacked = false }: ContactSectionProps) {
   const [values, setValues] = useState<FormValues>({
     name: "",
     email: "",
@@ -109,9 +108,12 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
         <div className="order-last h-[500px] overflow-hidden rounded-3xl md:order-first lg:h-auto">
           <img
             src={image}
+            srcSet={imageSrcSet}
+            sizes={imageSizes}
             alt="Contact us"
             className="h-full w-full object-cover"
             loading="lazy"
+            decoding="async"
           />
         </div>
         )}

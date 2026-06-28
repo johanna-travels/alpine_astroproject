@@ -1,7 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import Footer from '@/components/layout/Footer.astro';
-import ContactSectionWithShader from '@/components/sections/contact-section-with-shader.tsx';
+import ContactSection from '@/components/sections/ContactSection.astro';
 import FeatureSections from '@/components/home/FeatureSections.astro';
 import PlayStoreCarousel from '@/components/home/PlayStoreCarousel.astro';
 import GlobalEffects from '@/components/home/GlobalEffects.astro';
@@ -133,7 +133,7 @@ const homeDestinationCards = await Promise.all(
             </div>
 
             <!-- [4] Contact -->
-            <ContactSectionWithShader client:idle stacked />
+            <ContactSection stacked />
         </div>
     </main>
 

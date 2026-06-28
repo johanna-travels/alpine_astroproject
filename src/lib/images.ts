@@ -21,6 +21,9 @@ export const cardImageWidths = [320, 400, 480, 640] as const;
 export const cardImageSizes = '(min-width: 1024px) 33vw, (min-width: 640px) 40vw, 100vw';
 export const cardImageQuality = 70;
 
+export const contactImageWidths = [400, 800, 1200] as const;
+export const contactImageSizes = '(max-width: 1024px) 100vw, 50vw';
+
 export async function getHeroImage(src: ImageMetadata) {
   return getImage({ src, ...heroImageOptions });
 }
@@ -59,4 +62,14 @@ export async function buildResponsiveSrcSet(
 
 export async function buildArticleLcpSrcSet(src: ImageMetadata) {
   return buildResponsiveSrcSet(src, articleImageWidths);
+}
+
+export async function getResponsiveContactImage(src: ImageMetadata) {
+  const srcSet = await buildResponsiveSrcSet(src, contactImageWidths);
+  const fallback = await getImage({ src, width: contactImageWidths[0], format: 'webp', quality: 75 });
+  return {
+    src: fallback.src,
+    srcSet,
+    sizes: contactImageSizes,
+  };
 }
