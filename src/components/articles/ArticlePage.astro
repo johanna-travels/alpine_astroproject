@@ -41,7 +41,7 @@ const shareImage = await getSocialShareImage(article.lcpImage ?? article.image);
     <StickyArticleLayout sections={sections}>
       <Fragment slot="intro">
         <p class="meta text-neutral-500 mb-4">
-          Published · {article.publishedDate}
+          {article.dateLabel ?? 'Published'} · {article.publishedDate}
         </p>
 
         <h1 class="article-title mb-6 md:mb-8 max-w-3xl text-neutral-900">

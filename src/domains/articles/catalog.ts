@@ -27,6 +27,7 @@ export interface Article {
   alt: string;
   image: ImageMetadata;
   publishedDate: string;
+  dateLabel?: string;
   intro: readonly string[];
   lead?: string;
   seoTitle?: string;
@@ -207,12 +208,12 @@ export const articles: readonly Article[] = [
     metaLabel: 'Belgium',
     alt: 'Bruges travel guide',
     image: articleBruges,
-    publishedDate: '16 June 2026',
+    publishedDate: '28 June 2026',
+    dateLabel: 'Last updated',
     intro: [
-      'I still remember walking along the cobblestone streets with my suitcase in hand, completely distracted by how beautiful everything felt.',
-      "I visited Bruges last winter for my birthday, and I honestly couldn't have picked a better time. The Christmas markets were on, the city had that festive winter atmosphere, and the whole experience felt even more special because of it.",
-      'The lights, the canals, the cold air, and those moments of stopping for a hot Belgian chocolate made everything feel incredibly cozy.',
-      "In this article, though, I'm not going to focus on the winter or Christmas side of Bruges. Instead, I'm sharing my top 10 things to do in the city — my favorite cafés, chocolate spots, scenic walks, and places that stayed with me long after I left.",
+      "Bruges is one of the most beautiful medieval cities I've visited in Europe. With its charming canals, historic buildings, cobblestone streets, and peaceful atmosphere, it's easy to see why it's often called the \"Venice of the North.\" Whether you're visiting for a day or spending a weekend here, Bruges is a city that's best explored on foot.",
+      "In this guide, I've included the places I highly recommend visiting if it's your first time in Bruges. You'll also find a map below with all the places mentioned in this guide, along with extra restaurant recommendations, waffle shops, cafés, and a selection of hotels and B&Bs to make planning your trip even easier.",
+      "Before you leave, don't miss the FAQ section at the end of this guide, where I've answered some of the most common questions about visiting Bruges.",
     ],
     seoTitle: 'Bruges Travel Guide — Voyaflair',
     seoDescription:

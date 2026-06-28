@@ -29,13 +29,17 @@ export const brugesNav: readonly TocGroup[] = [
     ],
   },
   {
-    navTitle: '6. FAQ',
+    navTitle: '6. Where to Stay in Bruges',
+    target: 'section-10',
+  },
+  {
+    navTitle: '7. FAQ',
     children: [
-      { navTitle: '6.1 Is Bruges worth visiting?', target: 'faq-0' },
-      { navTitle: '6.2 How many days do you need in Bruges?', target: 'faq-1' },
-      { navTitle: '6.3 What is the best time to visit Bruges?', target: 'faq-2' },
-      { navTitle: '6.4 How to get to Bruges?', target: 'faq-3' },
+      { navTitle: '7.1 How to get to Bruges?', target: 'faq-0' },
+      { navTitle: '7.2 What is the best time to visit Bruges?', target: 'faq-1' },
+      { navTitle: '7.3 How many days do you need in Bruges?', target: 'faq-2' },
+      { navTitle: '7.4 Is Bruges worth visiting?', target: 'faq-3' },
     ],
   },
-  { navTitle: '7. Before You Go', target: 'section-11' },
+  { navTitle: '8. Before You Go', target: 'section-12' },
 ] as const;
