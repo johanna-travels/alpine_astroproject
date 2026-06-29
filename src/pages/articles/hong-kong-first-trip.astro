@@ -1,0 +1,24 @@
+---
+import ArticleGoogleMap from '@/components/articles/ArticleGoogleMap.astro';
+import ArticlePage from '@/components/articles/ArticlePage.astro';
+import HongKongGuideContent from '@/components/articles/HongKongGuide.astro';
+import { hongKongNav } from '@/domains/articles/hongkong-nav';
+import { getArticle } from '@/domains/articles/catalog';
+
+const article = getArticle('hong-kong-first-trip')!;
+---
+
+<ArticlePage article={article} sections={hongKongNav}>
+  <aside
+    slot="intro-media"
+    class="mt-6 max-w-3xl rounded-lg bg-[#F5F2EB] px-4 py-3 text-sm leading-relaxed text-black/80"
+  >
+    <span class="font-medium text-black">💡 Pro Tip:</span> Before your trip, I'd recommend setting up an eSIM so you'll have internet access as soon as you arrive. I use Airalo whenever I travel abroad, and having mobile data made it easy to access this map, use Google Maps, and navigate the city from the moment I landed.
+  </aside>
+  <ArticleGoogleMap
+    title="Google Map of Hong Kong"
+    description="You'll find every place mentioned in this guide pinned on my Map, including cafés, restaurants and recommended hotels."
+    mapId="1U0T_d1wuHGUIuWa4ShyR1lEGLUZDkP0"
+  />
+  <HongKongGuideContent />
+</ArticlePage>

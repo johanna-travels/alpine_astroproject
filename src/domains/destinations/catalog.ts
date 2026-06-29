@@ -1,11 +1,12 @@
 import type { ImageMetadata } from 'astro';
-import baliHero from '@/assets/heroes/destination bali.webp';
-import belgiumHero from '@/assets/heroes/destination belgium.webp';
-import greeceHero from '@/assets/heroes/destination greece.webp';
-import japanHero from '@/assets/heroes/destination japan.webp';
+import baliHero from '@/assets/heroes/destination-bali.webp';
+import belgiumHero from '@/assets/heroes/destination-belgium.webp';
+import greeceHero from '@/assets/heroes/destination-greece.webp';
+import japanHero from '@/assets/heroes/destination-japan.webp';
+import hongKongHero from '@/assets/articles/hong-kong/hong-kong-victoria.webp';
 import { pageUrl } from '@/lib/site';
 
-export type DestinationSlug = 'bali' | 'belgium' | 'greece' | 'japan';
+export type DestinationSlug = 'bali' | 'belgium' | 'greece' | 'hong-kong' | 'japan';
 
 export interface Destination {
   slug: DestinationSlug;
@@ -54,6 +55,18 @@ export const destinations: readonly Destination[] = [
     seoTitle: 'Greece — Voyaflair',
     seoDescription:
       'Travel guides and notes from Greece — islands, history, and local food worth remembering.',
+  },
+  {
+    slug: 'hong-kong',
+    name: 'Hong Kong',
+    region: 'Asia',
+    cardDescription: 'Where skyline views meet buzzing street life',
+    description:
+      'Hong Kong moves between towering skylines, busy harbours and quiet corners tucked away from the crowds. From the views over Victoria Harbour to its markets, temples and food, the city packs an incredible amount into a small space. This page gathers guides and travel notes from Hong Kong.',
+    heroImage: hongKongHero,
+    seoTitle: 'Hong Kong — Voyaflair',
+    seoDescription:
+      'Travel guides and notes from Hong Kong — skyline views, harbour walks, markets, and local food worth discovering.',
   },
   {
     slug: 'japan',

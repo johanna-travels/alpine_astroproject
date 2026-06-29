@@ -4,7 +4,7 @@
 "use client";
 
 import { useState } from "react";
-import contactImage from "@/assets/heroes/contac-img.webp";
+import contactImage from "@/assets/heroes/contact.webp";
 import { sanitizeInput, sanitizeContactForm, isRateLimited } from "@/lib/security";
 import { pageUrl } from "@/lib/site";
 

@@ -8,5 +8,12 @@ const article = getArticle('nara-day-trip-from-kyoto')!;
 ---
 
 <ArticlePage article={article} sections={naraDayTripNav}>
+  <aside
+    slot="intro-media"
+    class="mt-6 max-w-3xl rounded-lg bg-[#F5F2EB] px-4 py-3 text-sm leading-relaxed text-black/80"
+  >
+    📍 Interactive Map
+    You'll find every stop mentioned in this guide pinned on my Kyoto 3-Day Itinerary Map, making it easy to follow the same route during your visit. 
+  </aside>
   <NaraDayTripContent />
 </ArticlePage>

@@ -8,27 +8,24 @@ import GlobalEffects from '@/components/home/GlobalEffects.astro';
 import InfiniteText from '@/components/home/infinite-text.astro';
 import PageNav from '@/components/layout/PageNav.astro';
 import SectionHeader from '@/components/ui/SectionHeader.astro';
+import PageHero from '@/components/sections/PageHero.astro';
 import SocialLinks from '@/components/ui/SocialLinks.astro';
 import SeasonalHoverCards from '@/components/home/SeasonalHoverCards.astro';
 import { destinations, destinationHref } from '@/domains/destinations/catalog';
-import { buildResponsiveSrcSet, cardImageSizes, getHeroImage, getSocialShareImage } from '@/lib/images';
+import { getResponsiveHero, getSocialShareImage } from '@/lib/images';
 import { pageUrl } from '@/lib/site';
-import headerLightImg from '@/assets/heroes/HeADER LIGHT.webp';
+import headerLightImg from '@/assets/heroes/header-light.webp';
 
-const optimizedHeader = await getHeroImage(headerLightImg);
+const hero = await getResponsiveHero(headerLightImg);
 const shareImage = await getSocialShareImage(headerLightImg);
 
-const homeDestinationCards = await Promise.all(
-  destinations.map(async (destination) => ({
-    title: destination.name,
-    subtitle: destination.region,
-    description: destination.cardDescription,
-    imageSrc: destination.heroImage.src,
-    imageSrcSet: await buildResponsiveSrcSet(destination.heroImage),
-    imageSizes: cardImageSizes,
-    href: destinationHref(destination.slug),
-  }))
-);
+const homeDestinationCards = destinations.map((destination) => ({
+  title: destination.name,
+  subtitle: destination.region,
+  description: destination.cardDescription,
+  image: destination.heroImage,
+  href: destinationHref(destination.slug),
+}));
 ---
 
 <Layout
@@ -40,56 +37,30 @@ const homeDestinationCards = await Promise.all(
   imageHeight={shareImage.height}
 >
   <Fragment slot="head">
-    <link rel="preload" as="image" href={optimizedHeader.src} />
+    <link rel="preload" as="image" href={hero.largeSrc} />
   </Fragment>
     <GlobalEffects />
     <PageNav />
 
-    <!-- HERO: mobile & tablet only -->
-    <div
-      class="contact-hero relative mx-[10px] min-h-[300px] h-[50vw] max-h-[500px] rounded-[30px] overflow-hidden bg-cover bg-center bg-no-repeat bg-scroll flex flex-col justify-end lg:hidden"
-      style={`background-image: url('${optimizedHeader.src}')`}
+    <PageHero
+      title="Where Places Become Stories"
+      subtitle="Welcome to Voyaflair"
+      imageSrc={hero.src}
+      desktopImageSrc={hero.largeSrc}
+      imageSrcSet={hero.srcSet}
+      imageSizes={hero.sizes}
+      imageAlt="Sunset beach scene — Voyaflair travel journal"
+      showScrollHint
     >
-      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none z-0"></div>
-
-      <div class="relative z-10 w-full flex flex-col justify-end h-full">
-        <div class="w-full max-w-[1300px] pl-4 pr-4 md:pl-6 md:pr-6 text-white pb-6">
-          <h1 class="hero-title text-white mb-2">Where Places Become Stories</h1>
-          <p class="prose-body text-white/80">Welcome to Voyaflair</p>
-          <SocialLinks class="mt-4" />
-        </div>
-      </div>
-    </div>
-
-    <!-- HERO: desktop only -->
-    <div
-      class="contact-hero relative rounded-[30px] overflow-hidden hidden lg:flex flex-col justify-end mx-[10px] aspect-[21/9] max-h-[710px] bg-fixed"
-      style={`background-image: url('${optimizedHeader.src}'); background-size: cover; background-position: center;`}
-    >
-      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none z-0"></div>
-
-      <div class="relative z-10 w-full flex flex-col justify-end h-full">
-        <div class="w-full max-w-[1300px] pl-4 pr-4 lg:pl-16 lg:pr-16 xl:pl-20 xl:pr-20 text-white pb-6 lg:pb-12">
-          <h1 class="hero-title text-white mb-4">Where Places Become Stories</h1>
-          <p class="prose-body text-white/80">Welcome to Voyaflair</p>
-          <div class="flex flex-col items-center justify-center mt-8">
-            <div class="flex flex-col items-center gap-2 cursor-pointer group animate-bounce">
-              <svg class="w-10 h-10 text-white group-hover:text-white/80 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      <SocialLinks class="mt-4 lg:hidden" />
+    </PageHero>
 
     <!--
       INDEX PAGE STRUCTURE (main sections)
 
       Layout
       ├── GlobalEffects, PageNav
-      ├── Hero (mobile/tablet, lg:hidden)
-      ├── Hero (desktop, lg+)
+      ├── PageHero
       ├── <main>
       │   └── page stack (mobile · md UX tablet · lg desktop)
 

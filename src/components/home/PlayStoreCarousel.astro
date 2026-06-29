@@ -4,8 +4,14 @@ import SectionHeader from '@/components/ui/SectionHeader.astro';
 import { articles, articleHref } from '@/domains/articles/catalog';
 import { pageUrl } from '@/lib/site';
 
-const cards = articles
-  .filter((article) => article.slug !== 'katsuoji-temple-from-osaka' && article.slug !== 'osaka-1-day-itinerary' && article.slug !== 'bali-belly' && article.slug !== 'bali-travel-tips')
+const carouselArticles = articles
+  .filter((article) => article.slug !== 'katsuoji-temple-from-osaka' && article.slug !== 'osaka-1-day-itinerary' && article.slug !== 'bali-belly' && article.slug !== 'bali-travel-tips' && article.slug !== 'hong-kong-first-trip');
+
+const cards = [
+  ...carouselArticles.filter((article) => article.slug === 'bruges-guide'),
+  ...carouselArticles.filter((article) => article.slug === 'rhodes-itinerary'),
+  ...carouselArticles.filter((article) => article.slug !== 'bruges-guide' && article.slug !== 'rhodes-itinerary'),
+]
   .map((article) => ({
   category: article.category,
   title: article.carouselTitle,

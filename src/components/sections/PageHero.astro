@@ -1,0 +1,87 @@
+---
+import { heroImageSizes } from '@/lib/images';
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  imageSrc: string;
+  desktopImageSrc?: string;
+  imageSrcSet?: string;
+  imageSizes?: string;
+  imageAlt?: string;
+  imageClass?: string;
+  showScrollHint?: boolean;
+}
+
+const {
+  title,
+  subtitle,
+  imageSrc,
+  desktopImageSrc = imageSrc,
+  imageSrcSet,
+  imageSizes = heroImageSizes,
+  imageAlt = '',
+  imageClass = 'object-center',
+  showScrollHint = false,
+} = Astro.props;
+
+const desktopBgPosition = imageClass.includes('lg:object-right')
+  ? 'right center'
+  : imageClass.includes('lg:object-left')
+    ? 'left center'
+    : imageClass.includes('object-right') && !imageClass.includes('lg:object-center')
+      ? 'right center'
+      : imageClass.includes('object-left') && !imageClass.includes('lg:object-center')
+        ? 'left center'
+        : 'center';
+
+const mobileImageClass = imageClass.replace(/\blg:\S+/g, '').trim() || 'object-center';
+---
+
+<div
+  class="page-hero relative mx-[10px] flex min-h-[300px] h-[50vw] max-h-[500px] flex-col justify-end overflow-hidden rounded-[30px] bg-cover bg-no-repeat lg:aspect-[21/9] lg:h-auto lg:max-h-[710px] lg:bg-fixed"
+  style={`--hero-desktop-image: url('${desktopImageSrc}'); --hero-desktop-position: ${desktopBgPosition};`}
+>
+  <img
+    src={imageSrc}
+    srcset={imageSrcSet}
+    sizes={imageSizes}
+    alt={imageAlt}
+    fetchpriority="high"
+    decoding="async"
+    class:list={['pointer-events-none absolute inset-0 z-0 h-full w-full object-cover lg:hidden', mobileImageClass]}
+  />
+  <div class="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+
+  <div class="relative z-10 flex h-full w-full flex-col justify-end">
+    <div class="w-full max-w-[1300px] pl-4 pr-4 pb-6 text-white md:pl-6 md:pr-6 lg:pl-16 lg:pr-16 xl:pl-20 xl:pr-20 lg:pb-12">
+      <h1 class:list={['hero-title text-white', subtitle ? 'mb-2 lg:mb-4' : 'mb-4']}>{title}</h1>
+      {subtitle && <p class="prose-body text-white/80">{subtitle}</p>}
+      <slot />
+      {showScrollHint && (
+        <div class="mt-8 hidden flex-col items-center justify-center lg:flex">
+          <div class="flex flex-col items-center gap-2 group animate-bounce" aria-hidden="true">
+            <svg
+              class="h-10 w-10 text-white transition-colors group-hover:text-white/80"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+</div>
+
+<style>
+  @media (min-width: 1024px) {
+    .page-hero {
+      background-image: var(--hero-desktop-image);
+      background-size: cover;
+      background-position: var(--hero-desktop-position);
+    }
+  }
+</style>

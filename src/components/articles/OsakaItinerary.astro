@@ -14,35 +14,43 @@ import dotonboriAfterSunset from '@/assets/articles/osaka/osaka-dotonbori-after-
 import tenYenSnack from '@/assets/articles/osaka/osaka-the-famous-10-yen-coin-snack.webp';
 import takoyaki from '@/assets/articles/osaka/osaka-takoyaki.webp';
 import uniqueStorefronts from '@/assets/articles/osaka/osaka-unique-storefronts.webp';
+import ArticleGoogleMap from '@/components/articles/ArticleGoogleMap.astro';
 
 const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
 const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]';
 const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
----
+const mapId = '1DIvaJpYXYGz4VNKzcCK100oeSaBFc6E';
 
+--- 
+
+
+<ArticleGoogleMap
+  title="Google Map of Osaka"
+  description="You'll find every stop mentioned in this guide pinned on the interactive map, making it easy to follow the same route during your visit."
+  mapId={mapId}
+/>
 <section id="section-0" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
     <h3>Start Your Day at Namba Yasaka Shrine</h3>
   </div>
   <div class={prose}>
-    <p>Namba Yasaka Shrine is best known for its giant lion-shaped stage, which is said to swallow evil spirits and bring good fortune. It was one of the places I was most excited to visit in Osaka after seeing photos of the famous lion head while planning my trip to Japan, and it looked just as impressive in person.</p>
+    <p>Namba Yasaka Shrine is best known for its giant lion-shaped stage, which is said to swallow evil spirits and bring good fortune. It's one of Osaka's most unique landmarks and an easy first stop before the city starts to get busy.</p>
     <ArticleImage src={nambaYasakaShrine} alt="The giant lion-shaped stage at Namba Yasaka Shrine in Osaka" caption="The lion-shaped stage at Namba Yasaka Shrine" imgClass="aspect-square object-cover" />
-    <p>I arrived shortly after sunrise, and the soft morning light made the shrine even more beautiful. If you'd like to take photos without large crowds, I think the early wake-up call is absolutely worth it.</p>
+    <p>I arrived shortly after sunrise, and the soft morning light made the shrine even more impressive. If you're planning to take photos, I'd definitely recommend getting there early before the crowds arrive.</p>
   </div>
 </section>
 
 <section id="section-1" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>Continue to Katsuoji Temple</h3>
+    <h3>Visit Katsuoji Temple</h3>
   </div>
   <div class={prose}>
-    <p>Katsuoji Temple is a Buddhist temple located in the hills north of Osaka and is best known for the thousands of daruma dolls displayed throughout the grounds. These traditional Japanese dolls are associated with perseverance, good luck, and achieving personal goals.</p>
+    <p>Katsuoji Temple is a Buddhist temple in the hills north of Osaka, famous for the thousands of daruma dolls displayed throughout the grounds. Although it's outside the city centre, it's one of the most memorable places I visited in Japan and well worth the journey if you have the time.</p>
     <div class={twoColGrid}>
       <ArticleImage src={springColours} alt="Spring colours surrounding Katsuoji Temple" caption="Spring colours at Katsuoji Temple" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
       <ArticleImage src={katsuojiStampCard} alt="The Katsuoji Temple stamp card" caption="The Katsuoji stamp card" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
     </div>
-    <p>Although Katsuoji is located outside the city centre, it ended up being one of my favourite experiences in Japan. The peaceful setting, colourful daruma displays, and slower pace felt completely different from the busy streets of Osaka.</p>
-    <p>If you're interested in visiting, I've also written a detailed <a href={articleHref('katsuoji-temple-from-osaka')} class={mapLink}>guide to Katsuoji Temple</a>, where I share more photos, practical information, and everything you need to know before your visit.</p>
+    <p>If you're planning a visit, I've also written a complete <a href={articleHref('katsuoji-temple-from-osaka')} class={mapLink}>Katsuoji Temple Guide</a>, where I share how to get there, the best photo spots and everything I wish I'd known before visiting.</p>
   </div>
 </section>
 
@@ -51,12 +59,11 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
     <h3>Lunch at Ichiran Ramen</h3>
   </div>
   <div class={prose}>
-    <p>After a morning spent exploring Katsuoji Temple and making the journey back to Osaka, Ichiran felt like the perfect place to slow down for a while.</p>
+    <p>Ichiran is one of Japan's most famous ramen chains, known for its individual dining booths and customisable tonkotsu ramen. After visiting Katsuoji Temple and making the journey back into Osaka, it's an easy and satisfying place to stop for lunch. The individual booths give you a quiet space to sit down, customise your ramen and enjoy a proper break before continuing with the rest of the day.</p>
     <div class={twoColGrid}>
       <ArticleImage src={ichiranDiningBooths} alt="The famous individual dining booths at Ichiran Ramen in Osaka" caption="The famous Ichiran dining booths" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
       <ArticleImage src={ichiranRamen} alt="A bowl of customisable ramen at Ichiran in Osaka" caption="Lunch at Ichiran Ramen" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
     </div>
-    <p>Known for its individual dining booths and customisable ramen, it's one of Japan's most famous ramen chains. What I appreciated most, however, was the sense of privacy. After several hours surrounded by crowds on public transport, having my own little space to sit down, relax, and enjoy a bowl of ramen felt surprisingly refreshing.</p>
   </div>
 </section>
 
@@ -65,12 +72,11 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
     <h3>Treat Yourself to Pancakes at Toichi</h3>
   </div>
   <div class={prose}>
-    <p>If you still have room for dessert, I would highly recommend stopping by Toichi in Kitahorie.</p>
+    <p>If you still have room for dessert, I'd definitely recommend stopping by Toichi in Kitahorie. I ordered the strawberry pancakes with chocolate mousse, and they ended up being some of the best pancakes I tried during my trip to Japan. If you're looking for a dessert worth making a small detour for, this is it.</p>
     <div class={twoColGrid}>
       <ArticleImage src={toichiBrulee} alt="Brûlée pancakes at Toichi in Kitahorie, Osaka" caption="Toichi's brûlée pancakes" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
       <ArticleImage src={toichiStrawberry} alt="Strawberry pancakes with chocolate mousse at Toichi in Kitahorie, Osaka" caption="Toichi's strawberry pancakes" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
     </div>
-    <p>The pancakes ended up being some of the best I tried during my time in Japan. I ordered the strawberry version, which came with a rich chocolate mousse that somehow made them even better. Between the fluffy pancakes and the generous toppings, this is one of those places I would happily return to on my next trip to Osaka.</p>
   </div>
 </section>
 
@@ -79,25 +85,47 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
     <h3>Spend the Evening in Dotonbori</h3>
   </div>
   <div class={prose}>
-    <p>No first visit to Osaka feels complete without spending some time in Dotonbori.</p>
+    <p>No first visit to Osaka feels complete without spending some time in Dotonbori. Once the sun goes down, the neon lights reflect on the canal, the streets fill with people and the whole area comes to life.</p>
     <div class={twoColGrid}>
       <ArticleImage src={dotonboriSunset} alt="Dotonbori in Osaka at sunset" caption="Dotonbori at sunset" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
       <ArticleImage src={dotonboriAfterSunset} alt="The neon lights of Dotonbori in Osaka after sunset" caption="Dotonbori after sunset" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
     </div>
-    <p>I visited both during the day and again later in the evening, and the atmosphere after sunset was on a completely different level. As the neon lights begin to reflect on the canal and the streets fill with people, the area feels energetic in a way that's difficult to describe until you experience it for yourself.</p>
+    <p>Most visitors head straight for the famous Glico Runner sign, but don't stop there. Walk across the bridge, explore the surrounding streets and keep an eye out for the giant animated dog billboard, which ended up being one of my favourite discoveries in the area. I lost count of how many times I stopped to take another photo.</p>
     <div class={twoColGrid}>
       <ArticleImage src={tenYenSnack} alt="The famous 10-yen coin-shaped cheese snack in Osaka" caption="The famous 10-yen coin snack" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
       <ArticleImage src={takoyaki} alt="Freshly made takoyaki in Osaka" caption="Osaka takoyaki" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
     </div>
     <ArticleImage src={uniqueStorefronts} alt="The unique, creative storefronts of Dotonbori in Osaka" caption="Dotonbori's unique storefronts" imgClass="aspect-[3/2] object-cover" />
-    <p>While many visitors head straight for the famous Glico Runner sign, one thing that caught my attention was the giant animated dog billboard nearby. I honestly found it even more charming than some of Dotonbori's better-known attractions. Before leaving, make sure to walk across the bridge and explore the surrounding streets, where you'll find restaurants and shops with some of the most creative storefronts in Osaka. I genuinely lost count of how many times I stopped to take another photo.</p>
   </div>
 </section>
 
 <section id="section-5" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>FAQ</h3>
+  </div>
+  <div class={prose}>
+    <h4 class="mb-2 text-black">Is Osaka Worth Visiting on Your First Trip to Japan?</h4>
+    <p>Yes, Osaka is definitely worth visiting on your first trip to Japan. It has a completely different feel from Tokyo and Kyoto, with incredible food, lively neighbourhoods and easy access to nearby places like Nara.</p>
+    <p>Even if you only have one day, Osaka is still worth adding to your itinerary. Between Namba Yasaka Shrine, Dotonbori and Katsuoji Temple, the city gives you a very different experience from the rest of Japan's classic first-time route.</p>
+    <h4 class="mt-8 mb-2 text-black">Is One Day Enough for Osaka?</h4>
+    <p>Yes, one day is enough to see many of Osaka's main highlights. That said, whether you should stay longer really depends on the kind of trip you're planning.</p>
+    <p>If you're not planning to stay in Kyoto, Osaka can be an excellent base instead. Hotels are often more affordable, and it's easy to take day trips to Kyoto, Nara or Universal Studios Japan while staying in the city. If that's your plan, spending a few extra days in Osaka makes perfect sense.</p>
+    <h4 class="mt-8 mb-2 text-black">Where Should You Stay in Osaka?</h4>
+    <p>If it's your first time visiting Osaka, I'd recommend staying in either Namba or Umeda. Namba puts you within walking distance of Dotonbori, restaurants and many of the city's main attractions, while Umeda is a great choice if you're planning day trips or travelling between Osaka and Kyoto.</p>
+    <h4 class="mt-8 mb-2 text-black">How Do You Get Around Osaka?</h4>
+    <p>Getting around Osaka is really easy. During my trip, I used a Suica card on trains and the Osaka Metro, while Google Maps made planning every journey simple and surprisingly accurate.</p>
+    <p>Many of Osaka's main attractions are also within walking distance of each other, especially around Namba and Dotonbori. Walking ended up being one of my favourite ways to explore the city, as it gave me the chance to discover streets, shops and restaurants I would have otherwise missed. If it's your first time visiting Japan, I'd recommend picking up a Suica card as soon as you arrive—it'll make travelling around Osaka and other cities much more convenient.</p>
+    <h4 class="mt-8 mb-2 text-black">How Do You Get to Osaka?</h4>
+    <p>Getting to Osaka is really easy. If you're already travelling around Japan, you'll probably be using the country's excellent rail network. Kyoto is less than 30 minutes away by train, while the Shinkansen from Tokyo takes around 2.5 hours.</p>
+    <p>If you're flying into Japan, you'll most likely arrive at Kansai International Airport, which is well connected to the city by train and bus. Throughout my trip, I found Google Maps to be the easiest way to plan every journey.</p>
+  </div>
+</section>
+
+<section id="section-6" class="scroll-mt-nav">
   <div class={prose}>
     <ArticleClosingNote label="Final thoughts">
-      <p>Before visiting Osaka, I expected my favourite memories to come from places like Dotonbori. Instead, some of the moments I remember most came from quieter places such as Namba Yasaka Shrine and Katsuoji Temple. If you only have one day in the city, this itinerary offers a chance to experience both sides of Osaka — the lively atmosphere it's famous for and a slower side that many visitors never see.</p>
+      <p>If you only have one day in Osaka, don't feel like you have to fit everything in. Some of my favourite memories came from places like Namba Yasaka Shrine and Katsuoji Temple rather than the city's busiest attractions. I hope this itinerary helps you discover a side of Osaka that stays with you long after your trip.</p>
+      <p>Before your trip, don't forget to save the interactive map so you can easily follow this itinerary once you're in Osaka. Have an amazing trip, and I hope you create some unforgettable memories of your own.</p>
     </ArticleClosingNote>
   </div>
 </section>

@@ -50,7 +50,7 @@ const shareImage = await getSocialShareImage(article.lcpImage ?? article.image);
 
         <article class="max-w-3xl space-y-5 md:space-y-6">
           {article.intro.map((paragraph) => (
-            <p class="prose-body text-neutral-700">{paragraph}</p>
+            <p class="prose-body text-neutral-700" set:html={paragraph} />
           ))}
         </article>
 

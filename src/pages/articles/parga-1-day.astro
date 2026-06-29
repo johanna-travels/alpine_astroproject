@@ -1,22 +1,12 @@
 ---
 import ArticlePage from '@/components/articles/ArticlePage.astro';
-import ArticleImage from '@/components/ui/ArticleImage.astro';
 import PargaGuide from '@/components/articles/PargaGuide.astro';
 import { pargaNav } from '@/domains/articles/parga-nav';
 import { getArticle } from '@/domains/articles/catalog';
-import pargaIntroImage from '@/assets/parga/the-beauty-of-parga.webp';
 
 const article = getArticle('parga-1-day')!;
 ---
 
 <ArticlePage article={article} sections={pargaNav}>
-  <ArticleImage
-    slot="intro-media"
-    src={pargaIntroImage}
-    alt="The colourful houses and harbour of Parga, Greece"
-    caption="The beauty of Parga"
-    figureClass="mt-6 md:mt-8 max-w-3xl"
-    imgClass="aspect-[2/1] object-cover"
-  />
   <PargaGuide />
 </ArticlePage>

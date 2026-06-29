@@ -1,33 +1,40 @@
 ---
 import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
+import ArticleGoogleMap from '@/components/articles/ArticleGoogleMap.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
 
-import greenBakery from '@/assets/parga/parga-the-green-bakery.webp';
-import greenBakeryBreakfast from '@/assets/parga/parga-breakfast-the-green-bakery.webp';
-import petrosTaverna from '@/assets/parga/parga-taverna-petros.webp';
-import petrosFood from '@/assets/parga/parga-petros-taverna-greek-traditional-food.webp';
-import venetianCastle from '@/assets/parga/parga-venetian-castle.webp';
-import valtosBeach from '@/assets/parga/parga-valtos-beach.webp';
-import pargaHarbour from '@/assets/parga/parga-harbour.webp';
-import viewOfParga from '@/assets/parga/views-of-parga-and-the-venetian-castle.webp';
-import streetsOfParga from '@/assets/parga/the-streets-of-parga.webp';
-import coloursOfParga from '@/assets/parga/colours-of-parga.webp';
+import greenBakery from '@/assets/articles/parga/parga-the-green-bakery.webp';
+import greenBakeryBreakfast from '@/assets/articles/parga/parga-breakfast-the-green-bakery.webp';
+import petrosTaverna from '@/assets/articles/parga/parga-taverna-petros.webp';
+import petrosFood from '@/assets/articles/parga/parga-petros-taverna-greek-traditional-food.webp';
+import venetianCastle from '@/assets/articles/parga/parga-venetian-castle.webp';
+import valtosBeach from '@/assets/articles/parga/parga-valtos-beach.webp';
+import pargaHarbour from '@/assets/articles/parga/parga-harbour.webp';
+import viewOfParga from '@/assets/articles/parga/views-of-parga-and-the-venetian-castle.webp';
+import streetsOfParga from '@/assets/articles/parga/the-streets-of-parga.webp';
+import coloursOfParga from '@/assets/articles/parga/colours-of-parga.webp';
 
 const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
 const imageGrid = 'my-5 grid grid-cols-1 items-start gap-3 sm:grid-cols-2 md:my-8 md:gap-4';
+const mapId = '1IJX1t2jyV8zuX-Ak3UhGyNSo_pJm1hg';
 ---
 
+<ArticleGoogleMap
+  title="Google Map of Parga"
+  description="You'll find every stop mentioned in this guide pinned on the interactive map, making it easy to follow the same route during your visit."
+  mapId={mapId}
+/>
 <section id="section-0" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>Start Your Morning at the View of Parga</h3>
+    <h3>Start Your Morning at Parga Harbour</h3>
   </div>
   <div class={prose}>
-    <p>One of the best ways to start your day in Parga is by heading to the View of Parga early in the morning.</p>
+    <p>Start your day at Parga Harbour, where you'll get one of the best views of the town. From here, you can see the colourful houses climbing the hillside, the Venetian Castle overlooking the bay and the boats gently bobbing in the water.</p>
     <div class={imageGrid}>
       <ArticleImage src={pargaHarbour} alt="The harbour of Parga in the early morning, Greece" caption="Parga's harbour" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
       <ArticleImage src={viewOfParga} alt="Views of Parga and the Venetian Castle, Greece" caption="Views of Parga and the Venetian Castle" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
     </div>
-    <p>This spot offers one of the most beautiful views over the town, with the colourful houses, the harbour, and the Venetian Castle all in sight. If you visit shortly after sunrise, you'll find far fewer people around, making it a great time for photos and a peaceful moment before the town starts to get busy.</p>
+    <p>I'd recommend getting here shortly after sunrise if you're planning to take photos. The harbour is much quieter early in the morning, before the cafés open and the town begins to fill with visitors.</p>
   </div>
 </section>
 
@@ -36,12 +43,11 @@ const imageGrid = 'my-5 grid grid-cols-1 items-start gap-3 sm:grid-cols-2 md:my-
     <h3>Have Breakfast at The Green Bakery</h3>
   </div>
   <div class={prose}>
-    <p>Afterwards, make your way to The Green Bakery for breakfast.</p>
+    <p>I'd recommend stopping at The Green Bakery before exploring the town. It's split into two separate spaces: one side is a traditional bakery where you can grab pastries, bread and coffee to go, while the other offers table service with a breakfast menu. Whether you're after something quick or want to sit down for breakfast, it's an easy first stop before wandering through Parga.</p>
     <div class={imageGrid}>
       <ArticleImage src={greenBakery} alt="The Green Bakery in Parga, Greece" caption="The Green Bakery" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
       <ArticleImage src={greenBakeryBreakfast} alt="Breakfast at The Green Bakery in Parga, Greece" caption="Breakfast at The Green Bakery" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
     </div>
-    <p>The bakery is divided into two different spaces. One side operates as a bakery where you can grab pastries, bread, and coffee to go, while the neighbouring space offers table service and a separate breakfast menu.</p>
   </div>
 </section>
 
@@ -50,12 +56,12 @@ const imageGrid = 'my-5 grid grid-cols-1 items-start gap-3 sm:grid-cols-2 md:my-
     <h3>Wander Through the Streets of Parga</h3>
   </div>
   <div class={prose}>
-    <p>One of the things I enjoyed most about Parga was simply walking through its narrow streets.</p>
+    <p>Before heading to the Venetian Castle, take some time to wander through Parga's colourful streets without a plan. Some of my favourite moments weren't at a specific landmark—they came from getting lost among the narrow alleyways, colourful houses, little shops and flowers spilling from the balconies.</p>
     <div class={imageGrid}>
       <ArticleImage src={streetsOfParga} alt="The narrow streets of Parga, Greece" caption="The streets of Parga" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
       <ArticleImage src={coloursOfParga} alt="Colourful buildings and flowers in Parga, Greece" caption="The colours of Parga" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
     </div>
-    <p>The colourful buildings, small shops, flowers hanging from balconies, and hidden corners give the town a unique character that feels different from many other destinations in mainland Greece. My advice? Don't rush from one attraction to another. Take some time to wander without a plan, get lost in the small alleyways, and enjoy the little details that make Parga so special.</p>
+    <p>If there's one piece of advice I'd give you, it's not to rush from one attraction to the next. Explore the side streets and enjoy the little details. That's where Parga really won me over.</p>
   </div>
 </section>
 
@@ -64,10 +70,9 @@ const imageGrid = 'my-5 grid grid-cols-1 items-start gap-3 sm:grid-cols-2 md:my-
     <h3>Visit the Venetian Castle</h3>
   </div>
   <div class={prose}>
-    <p>As you continue exploring, make your way up to the Venetian Castle of Parga.</p>
-    <p>Standing above the town, the castle has played an important role in protecting the area throughout its history. Today, it's one of the most popular landmarks in Parga and offers incredible views over the coastline and the Ionian Sea.</p>
+    <p>Before leaving the old town, make your way up to the Venetian Castle. It's one of Parga's most recognisable landmarks and the best place to enjoy panoramic views over the colourful harbour and the Ionian Sea.</p>
     <ArticleImage src={venetianCastle} alt="The Venetian Castle of Parga overlooking the coastline, Greece" caption="The Venetian Castle of Parga" imgClass="aspect-[5/4] object-cover" />
-    <p>Walk around the castle grounds, enjoy the scenery, and if you need a short break, there's also a café inside where you can sit down, relax, and enjoy the scenery before continuing your day.</p>
+    <p>Take your time exploring the castle grounds and don't miss the different viewpoints along the walls. If you feel like taking a break, there's also a café inside where you can sit for a while before continuing your day.</p>
   </div>
 </section>
 
@@ -76,9 +81,8 @@ const imageGrid = 'my-5 grid grid-cols-1 items-start gap-3 sm:grid-cols-2 md:my-
     <h3>Spend the Afternoon at Valtos Beach</h3>
   </div>
   <div class={prose}>
-    <p>After exploring the town and the castle, head to Valtos Beach.</p>
+    <p>Whether you feel like going for a swim, relaxing on the beach or enjoying a drink by the sea, Valtos Beach is the perfect place to spend a few hours after visiting the Venetian Castle. With its crystal-clear waters, it's a great way to cool off before heading back into town for dinner.</p>
     <ArticleImage src={valtosBeach} alt="Valtos Beach in Parga with crystal-clear waters, Greece" caption="Valtos Beach" imgClass="aspect-[5/4] object-cover" />
-    <p>Known for its crystal-clear waters and long stretch of coastline, it's one of the most popular beaches in Parga and a great place to relax for a few hours.</p>
   </div>
 </section>
 
@@ -87,54 +91,43 @@ const imageGrid = 'my-5 grid grid-cols-1 items-start gap-3 sm:grid-cols-2 md:my-
     <h3>End the Day at Petros Restaurant</h3>
   </div>
   <div class={prose}>
-    <p>For dinner, I highly recommend Petros Restaurant.</p>
-    <p>Every time I visit Parga, this is one of the places I always return to. The restaurant serves high-quality Greek cuisine, with excellent meat dishes and a variety of traditional flavours that showcase the best of Greek food.</p>
+    <p>If you're looking for somewhere to have dinner, I'd recommend Petros Restaurant. I've eaten here several times during my visits to Parga, and it's one of the few places I always make time for whenever I'm back. The menu focuses on traditional Greek cuisine, with excellent meat dishes and plenty of local flavours.</p>
     <div class={imageGrid}>
       <ArticleImage src={petrosTaverna} alt="Petros Restaurant in Parga, Greece" caption="Petros Restaurant" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
       <ArticleImage src={petrosFood} alt="Traditional Greek food at Petros Restaurant in Parga, Greece" caption="Traditional Greek dishes at Petros" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
     </div>
-    <p>If you're looking for an authentic meal after a day of exploring, Petros is a place that consistently delivers both quality and flavour.</p>
   </div>
 </section>
 
 <section id="section-6" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>FAQ About Visiting Parga</h3>
+    <h3>FAQ</h3>
   </div>
   <div class={`${prose} space-y-6`}>
     <div id="faq-0" class="scroll-mt-nav">
-      <h4 class="mb-2 text-black">How do you get to Parga?</h4>
-      <p>The easiest way to visit Parga is by car.</p>
-      <p>If you're travelling from Athens, the drive takes approximately 4.5 hours, making Parga a great option for a long weekend or a road trip through Epirus.</p>
-      <p>If you're flying into the region, the closest airport is Aktion National Airport near Preveza. From there, the drive to Parga takes approximately one hour.</p>
-      <p>Having a car gives you the most flexibility, especially if you're exploring other parts of Epirus during your trip.</p>
+      <h4 class="mb-2 text-black">How Do You Get to Parga?</h4>
+      <p>The easiest way to get to Parga is by car, especially if you're planning to explore more of Epirus during your trip. If you're travelling from Athens, the drive takes around 4.5 hours, making Parga a great destination for a long weekend or a road trip.</p>
+      <p>If you're flying, the closest airport is Aktion National Airport near Preveza. From there, it's about a one-hour drive to Parga.</p>
     </div>
     <div id="faq-1" class="scroll-mt-nav">
-      <h4 class="mb-2 text-black">How do you get around Parga?</h4>
-      <p>Walking is the best way to experience the town.</p>
-      <p>Don't let that discourage you if you're arriving by car. The streets are incredibly picturesque, filled with colourful buildings, flowers, small cafés, and hidden corners waiting to be discovered.</p>
-      <p>One of my favourite things about Parga is simply wandering through its narrow streets without a specific destination. It's the kind of place where the walk itself becomes part of the experience.</p>
+      <h4 class="mb-2 text-black">How Do You Get Around Parga?</h4>
+      <p>The best way to explore Parga is on foot. Once you've parked your car, you'll be able to reach the town's main sights, restaurants and beaches by walking through its colourful streets.</p>
+      <p>One of my favourite things about Parga is that you don't really need a plan. Some of my favourite moments came from wandering through the narrow alleyways, discovering little shops and simply taking in the atmosphere.</p>
     </div>
     <div id="faq-2" class="scroll-mt-nav">
-      <h4 class="mb-2 text-black">Is parking easy in Parga?</h4>
-      <p>Parking can be challenging during the summer months.</p>
-      <p>You'll either need to find a parking spot near the entrance of the town or use one of the private parking areas available nearby. Once you've parked, you can continue exploring on foot.</p>
+      <h4 class="mb-2 text-black">Is Parking Easy in Parga?</h4>
+      <p>Parking can be a little challenging during the summer months, especially in peak season. During both of my visits, I managed to find a parking space near the entrance to town, but I'd recommend arriving earlier in the day if you're visiting during the busiest months.</p>
+      <p>From there, it's an easy walk into the centre, making it a convenient place to leave your car while you explore Parga.</p>
     </div>
     <div id="faq-3" class="scroll-mt-nav">
-      <h4 class="mb-2 text-black">When is the best time to visit Parga?</h4>
-      <p>If you ask me, May and September are the best months to visit Parga. The temperatures are pleasant, the town is less crowded than during peak summer, and you'll be able to enjoy both the beaches and the town at a more relaxed pace. September is especially great if you're planning to swim, as the sea is still beautifully warm after the summer months.</p>
+      <h4 class="mb-2 text-black">When Is the Best Time to Visit Parga?</h4>
+      <p>If I were planning another trip to Parga, I'd choose May or September. The weather is warm, the town is less crowded than during the peak summer months, and it's the perfect time to enjoy both the beaches and the old town.</p>
+      <p>September is especially great if you're planning to swim, as the sea is still beautifully warm after the summer months.</p>
     </div>
     <div id="faq-4" class="scroll-mt-nav">
-      <h4 class="mb-2 text-black">Is Parga worth visiting?</h4>
-      <p>Absolutely.</p>
-      <p>I've visited Parga twice, and it's still one of my favourite destinations in Greece. What makes it special is the combination of colourful architecture, beautiful beaches, rich history, and a relaxed atmosphere that feels more like an island than a mainland town.</p>
-      <p>Whether you're looking for a relaxing getaway or simply want to explore one of the most beautiful towns in Epirus, Parga is a destination that's easy to fall in love with.</p>
-    </div>
-    <div id="faq-5" class="scroll-mt-nav">
-      <h4 class="mb-2 text-black">Is one day in Parga enough?</h4>
-      <p>Yes, if you're already staying somewhere nearby.</p>
-      <p>During my second visit, I took a day trip from Preveza and managed to see the main highlights of the town, visit the Venetian Castle, spend some time at Valtos Beach, and enjoy a great meal before heading back.</p>
-      <p>That said, if you have the time, I would recommend staying for at least two or three nights. My first visit lasted four days, and it gave me the chance to enjoy the town at a much slower pace.</p>
+      <h4 class="mb-2 text-black">Is One Day in Parga Enough?</h4>
+      <p>Yes, if you're already staying nearby, one day is enough to see Parga's main highlights. During my second visit, I came on a day trip from Preveza and had plenty of time to explore the town, visit the castle, spend a few hours at Valtos Beach and enjoy dinner before heading back.</p>
+      <p>If I were planning another trip, though, I'd stay for at least four nights. Parga is a great base for exploring the area, with places like Paxos, Antipaxos and the Acheron River all close enough for day trips. Having a few extra days also means you can enjoy the town itself without feeling like you have to fit everything into a single day.</p>
     </div>
   </div>
 </section>
@@ -142,7 +135,8 @@ const imageGrid = 'my-5 grid grid-cols-1 items-start gap-3 sm:grid-cols-2 md:my-
 <section id="section-7" class="scroll-mt-nav">
   <div class={prose}>
     <ArticleClosingNote label="Final thoughts">
-      <p>After visiting Parga twice, it's still one of my favourite places in Greece. It's the kind of town where you can spend the day wandering through the streets, stopping for a swim, enjoying good food, and never really needing a plan. If you're travelling around Epirus or looking for one of the most beautiful towns on the Greek mainland, Parga is well worth adding to your itinerary.</p>
+      <p>If you only have one day in Parga, you'll still have enough time to see what makes it so special. But if I could give you one piece of advice, it would be not to rush your visit. If you have the time, stay a few extra nights and use Parga as a base to explore the surrounding area.</p>
+      <p>Before your trip, don't forget to save <a href="#section-google-map" class="underline underline-offset-2 text-[#5B6560] hover:text-[#3d4441]">the interactive map</a> so you can easily follow this itinerary while you're in Parga. Have an amazing trip, and I hope Parga becomes one of your favourite places in Greece too.</p>
     </ArticleClosingNote>
   </div>
 </section>

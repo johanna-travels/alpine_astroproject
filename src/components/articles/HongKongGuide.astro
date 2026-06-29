@@ -1,0 +1,220 @@
+---
+import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+
+import viewFromBus from '@/assets/articles/hong-kong/view-from-the-bus-to-victoria-peak.webp';
+import bakehouseCoffeePeakTram from '@/assets/articles/hong-kong/bakehouse-coffee-the-peak-tram-view.webp';
+import wayDownFromPeak from '@/assets/articles/hong-kong/way-down-from-the-victory-peak.webp';
+import bakehouseEggTart from '@/assets/articles/hong-kong/hong-kong-bakehouse-egg-tart.webp';
+import bakehouseBeefRendangPie from '@/assets/articles/hong-kong/hong-kong-bakehouse-beef-redang-pie.webp';
+import basketballCourt from '@/assets/articles/hong-kong/hong-kong-basketball-court.webp';
+import colourfulBasketballCourt from '@/assets/articles/hong-kong/hong-kong-colourful-basketball-court.webp';
+import hongKongStreet from '@/assets/articles/hong-kong/hong-kong.webp';
+import hongKongTram from '@/assets/articles/hong-kong/hong-kong-tram.webp';
+import hongKongParkLakeSkyline from '@/assets/articles/hong-kong/hong-kong-park-lake-skyline.webp';
+import hongKongParkLippoCentre from '@/assets/articles/hong-kong/hong-kong-park-lippo-centre.webp';
+import nanLianGarden from '@/assets/articles/hong-kong/hong-kong-nan-lian-garden.webp';
+import nanLianHiddenRestaurant from '@/assets/articles/hong-kong/nan-lian-garden-hidden-restaurant-behind-waterfall.webp';
+import chiLinMainHall from '@/assets/articles/hong-kong/chi-lin-nunnery-main-hall.webp';
+import chiLinCourtyard from '@/assets/articles/hong-kong/chi-lin-nunnery-courtyard.webp';
+import victoriaHarbourView from '@/assets/articles/hong-kong/hong-kong-victoria-harbour-view.webp';
+import monsterBuildings from '@/assets/articles/hong-kong/hong-kong-monster-buildings.webp';
+
+const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
+const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]';
+const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
+---
+
+<section id="section-0" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>The Victoria Peak</h3>
+  </div>
+  <div class={prose}>
+    <p>I couldn't think of a better place to start this guide than Victoria Peak. It's one of Hong Kong's most famous landmarks and offers some of the best views over the city's skyline and Victoria Harbour.</p>
+    <p>Most people choose to take the Peak Tram to the top, but I'd actually recommend taking the bus instead. The journey up the mountain offers incredible views along the way, and it drops you off just a short walk from the tram's final stop.</p>
+    <ArticleImage src={viewFromBus} alt="The view over Hong Kong from the bus on the way up to Victoria Peak" caption="The view from the bus on the way up to Victoria Peak" imgClass="aspect-[4/3] object-cover" />
+    <p>Once you arrive, you can either continue walking to the highest viewpoints or simply enjoy the scenery from the viewing areas. I decided to save my energy for the walk back down, and it was worth it 1000%. The whole route felt like walking through a tropical forest, and it ended up being one of my favourite experiences in Hong Kong.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={bakehouseCoffeePeakTram} alt="Coffee from Bakehouse with a view of the Peak Tram in Hong Kong" caption="Coffee at the Peak with a view of the tram" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={wayDownFromPeak} alt="The forested walk back down from Victoria Peak in Hong Kong" caption="The walk back down from Victoria Peak" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <p>Before heading back, take some time to explore the shopping centre at the Peak. There are plenty of cafés and shops, and it's actually where I found some of the best souvenirs to bring home.</p>
+  </div>
+</section>
+
+<section id="section-1" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>Bakehouse</h3>
+  </div>
+  <div class={prose}>
+    <p>You simply can't leave Hong Kong without visiting Bakehouse at least once.</p>
+    <p>I originally went there for the famous egg tarts, but they weren't the only thing that impressed me. If you only try one more thing, make it the Beef Rendang Pie. Guilty! I went back three more times just for that pie.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={bakehouseEggTart} alt="A famous egg tart from Bakehouse in Hong Kong" caption="Bakehouse's famous egg tart" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={bakehouseBeefRendangPie} alt="The Beef Rendang Pie from Bakehouse in Hong Kong" caption="The Beef Rendang Pie — worth going back for" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <p>If you're planning to visit Victoria Peak, there's also a Bakehouse inside the Peak Tower. Order your favourite coffee, have a seat outside or by the window, and enjoy the view over Hong Kong while watching the Peak Tram make its way up and down the mountain.</p>
+  </div>
+</section>
+
+<section id="section-2" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>Monster Building</h3>
+  </div>
+  <div class={prose}>
+    <p>This is much more than just a photo spot.</p>
+    <p>The famous Monster Building (listed as Montane Mansion on Google Maps) is actually a residential complex made up of five connected buildings that's home to more than 10,000 people. It's only when you stand beneath these towering buildings that you truly understand how it got its name.</p>
+    <ArticleImage src={monsterBuildings} alt="Looking up at the densely packed Monster Building in Hong Kong" caption="Standing beneath the towering Monster Building" imgClass="aspect-[4/3] object-cover" />
+    <p>If you decide to visit, remember that people actually live here. Be respectful, keep the noise down, and follow any signs or rules around the building to respect the residents' privacy.</p>
+  </div>
+</section>
+
+<section id="section-3" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>Choi Hung Estate Rooftop Basketball Court</h3>
+  </div>
+  <div class={prose}>
+    <p>This is probably the most colourful basketball court you'll ever see.</p>
+    <p>Surrounded by brightly coloured apartment buildings, it's become one of Hong Kong's most popular photo spots. Despite its popularity, it's still a functioning basketball court, so be respectful if people are playing when you visit.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={basketballCourt} alt="The rooftop basketball court at Choi Hung Estate in Hong Kong" caption="The rooftop basketball court at Choi Hung Estate" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={colourfulBasketballCourt} alt="The colourful apartment buildings surrounding Choi Hung Estate basketball court" caption="The colourful buildings surrounding the court" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <p>The basketball court is located on the rooftop of the car park, so don't worry if you can't find it straight away. I made the same mistake and spent a few minutes wondering where it was before realising I needed to head upstairs.</p>
+    <p>Getting there is easy, as it's just a short walk from Choi Hung MTR Station. Once you reach the rooftop, you'll understand why this place has become such a popular stop for photographers and travellers visiting Hong Kong.</p>
+  </div>
+</section>
+
+<section id="section-4" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>Take a Ride on Hong Kong's Tram</h3>
+  </div>
+  <div class={prose}>
+    <p>Believe it or not, riding the tram is an attraction in itself.</p>
+    <p>Hong Kong's iconic double-decker trams have been running since 1904 and are home to the world's largest fleet of double-decker trams. Taking a ride on one is an experience you shouldn't miss.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={hongKongStreet} alt="A Hong Kong street scene with double-decker trams" caption="Hong Kong's busy tram-lined streets" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={hongKongTram} alt="An iconic Hong Kong double-decker tram" caption="One of Hong Kong's iconic double-decker trams" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <p>My advice? Wait for a tram that isn't too crowded, head upstairs, and grab one of the front seats if you can. Watching the city pass by while trams travel just inches from each other is something that's hard to describe until you experience it yourself.</p>
+  </div>
+</section>
+
+<section id="section-5" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>Hong Kong Park</h3>
+  </div>
+  <div class={prose}>
+    <p>Hong Kong Park is one of the most unique places to take photos in the city.</p>
+    <p>With waterfalls, ponds, lush gardens, and even an aviary, it feels like a peaceful escape from the busy streets of Hong Kong. What makes this park so special, though, is the contrast. As you walk through the greenery, towering skyscrapers suddenly appear in the background, creating a view that's hard to find anywhere else.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={hongKongParkLakeSkyline} alt="A lake in Hong Kong Park with the city skyline rising behind it" caption="The lake at Hong Kong Park against the skyline" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={hongKongParkLippoCentre} alt="The Lippo Centre towers seen from Hong Kong Park" caption="The Lippo Centre rising above the greenery" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <p>One thing I found fascinating is that Hong Kong isn't built on completely flat ground. Because of its hilly landscape, many of the city's skyscrapers stand at different elevations. Once you notice it, the skyline feels even more impressive and gives this park an even more unique backdrop.</p>
+  </div>
+</section>
+
+<section id="section-6" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>Nan Lian Garden</h3>
+  </div>
+  <div class={prose}>
+    <p>If you'd like to experience a different side of Hong Kong, don't miss Nan Lian Garden. Built in the style of a classical Chinese garden, it's filled with peaceful ponds, traditional wooden pavilions, beautifully landscaped paths, and carefully shaped trees that make you forget you're in the middle of one of the world's busiest cities.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={nanLianGarden} alt="The classical Chinese landscaping of Nan Lian Garden in Hong Kong" caption="The classical Chinese gardens of Nan Lian" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={nanLianHiddenRestaurant} alt="The vegetarian restaurant hidden behind a waterfall at Nan Lian Garden" caption="The restaurant hidden behind a waterfall" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <p>You'll also find a vegetarian restaurant hidden behind a waterfall. If you're planning to eat there, I'd recommend taking a few photos of the building before heading inside. It's one of the most beautiful spots in the garden. Since Chi Lin Nunnery is right next door, I'd definitely recommend visiting both at the same time.</p>
+  </div>
+</section>
+
+<section id="section-7" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>Chi Lin Nunnery</h3>
+  </div>
+  <div class={prose}>
+    <p>Right next to Nan Lian Garden is Chi Lin Nunnery, one of the world's largest hand-built wooden Buddhist temple complexes, constructed without the use of a single nail.</p>
+    <p>From the moment you walk through the main entrance, you'll be surrounded by stunning traditional architecture, lotus ponds, and a sense of peace that's hard to put into words. As you explore the grounds, keep an eye out for the signs in certain areas where photography isn't allowed. It's important to respect both the rules and the people who come here to pray.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={chiLinMainHall} alt="The main hall of Chi Lin Nunnery in Hong Kong" caption="The main hall of Chi Lin Nunnery" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={chiLinCourtyard} alt="The courtyard and lotus ponds at Chi Lin Nunnery in Hong Kong" caption="The peaceful courtyard and lotus ponds" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <p>Out of all the places I visited during my trip to Asia, including Japan, this is the one that stayed with me the most. I've never experienced such a deep sense of calm anywhere else, and I genuinely hope it makes you feel the same way. If you ever visit, I'd love to hear what you thought of it.</p>
+  </div>
+</section>
+
+<section id="section-8" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>Victoria Harbour & Bruce Lee Statue</h3>
+  </div>
+  <div class={prose}>
+    <p>No first trip to Hong Kong is complete without visiting Victoria Harbour and the Bruce Lee Statue.</p>
+    <p>This is one of the best places to admire Hong Kong's famous skyline, especially in the evening when the skyscrapers begin to light up. Take your time to walk along the waterfront, enjoy the atmosphere, and don't miss the Bruce Lee Statue, which pays tribute to one of Hong Kong's most iconic figures.</p>
+    <ArticleImage src={victoriaHarbourView} alt="The Hong Kong skyline seen across Victoria Harbour" caption="The Hong Kong skyline across Victoria Harbour" imgClass="aspect-[5/4] object-cover" />
+    <p>If your schedule allows, visit around sunset. Watching the skyline slowly light up as day turns into night is an experience that's hard to forget.</p>
+  </div>
+</section>
+
+<section id="section-9" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>Where to Stay in Hong Kong</h3>
+  </div>
+  <div class={prose}>
+    <p>For most first-time visitors, Hong Kong Island and Kowloon are the two most convenient areas to stay. Both offer excellent public transport, plenty of restaurants, and easy access to many of the city's main attractions.</p>
+    <p>I personally stayed in Wan Chai, on Hong Kong Island, and I'd happily stay there again. It was easy to reach from the airport by direct bus, and both the MTR and the historic tram were just a short walk away, making it incredibly easy to explore the city.</p>
+    <p>To make planning a little easier, I've also pinned a few hotels on <a href="#section-google-map" class={mapLink}>the interactive map</a> at the beginning of this guide. They're all located in areas I'd consider for a future trip.</p>
+    <h4 class="mt-8 mb-2 text-black">Luxury</h4>
+    <ul class="list-disc pl-5 space-y-2 marker:text-black/40">
+      <li class="prose-body"><a href="https://www.booking.com/searchresults.html?ss=The+Upper+House+Hong+Kong" target="_blank" rel="noopener noreferrer" class={mapLink}>The Upper House</a> – Panoramic harbour views and exceptional service.</li>
+    </ul>
+    <h4 class="mt-8 mb-2 text-black">Mid-range</h4>
+    <ul class="list-disc pl-5 space-y-2 marker:text-black/40">
+      <li class="prose-body"><a href="https://www.booking.com/searchresults.html?ss=Novotel+Century+Hong+Kong" target="_blank" rel="noopener noreferrer" class={mapLink}>Novotel Century Hong Kong</a> – Great location with excellent transport links.</li>
+      <li class="prose-body"><a href="https://www.booking.com/searchresults.html?ss=The+Royal+Garden+Hong+Kong" target="_blank" rel="noopener noreferrer" class={mapLink}>The Royal Garden</a> – An elegant hotel in Tsim Sha Tsui with a rooftop pool and an excellent location.</li>
+      <li class="prose-body"><a href="https://www.booking.com/searchresults.html?ss=The+Fleming+Hong+Kong" target="_blank" rel="noopener noreferrer" class={mapLink}>The Fleming</a> – Beautiful boutique hotel with unique design.</li>
+    </ul>
+    <h4 class="mt-8 mb-2 text-black">Budget</h4>
+    <ul class="list-disc pl-5 space-y-2 marker:text-black/40">
+      <li class="prose-body"><a href="https://www.booking.com/searchresults.html?ss=iclub+Fortress+Hill+Hotel+Hong+Kong" target="_blank" rel="noopener noreferrer" class={mapLink}>iclub Fortress Hill</a> – Modern rooms close to the MTR.</li>
+      <li class="prose-body"><a href="https://www.booking.com/searchresults.html?ss=Booth+Lodge+Hong+Kong" target="_blank" rel="noopener noreferrer" class={mapLink}>Booth Lodge</a> – Excellent value in a central location.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="section-10" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>FAQ</h3>
+  </div>
+  <div class={prose}>
+    <h4 class="mb-2 text-black">How Do You Get Around Hong Kong?</h4>
+    <p>One of the things that impressed me most about Hong Kong was how easy it was to get around. The city has an excellent public transport system, and I never felt the need to use a taxi.</p>
+    <p>Most visitors choose to buy an Octopus Card, which can be used on the MTR, buses, trams, ferries, and even in some shops.</p>
+    <p>Personally, I used my phone with my Revolut card added to my mobile wallet throughout the entire trip. It worked perfectly on buses, trams, and the MTR. Just look for the contactless payment gates, tap your phone, and you're good to go.</p>
+    <p>One important thing to keep in mind if you're travelling with someone else: each person needs to use their own payment card or device. You can't tap the same phone twice for two different passengers.</p>
+    <p>Whether you choose an Octopus Card or contactless payments, getting around Hong Kong is incredibly easy. In fact, it's one of the best public transport systems I've ever used.</p>
+    <h4 class="mt-8 mb-2 text-black">Do You Need Cash in Hong Kong?</h4>
+    <p>The local currency is the Hong Kong Dollar (HKD).</p>
+    <p>I'd recommend carrying a small amount of cash, just in case, even though you'll probably use your card most of the time.</p>
+    <p>During my trip, I was able to pay by card almost everywhere, including on public transport. However, I did come across a few cafés, restaurants, and small local businesses that only accepted cash. There's no need to carry a large amount, but having a few Hong Kong dollars with you will make things much easier whenever card payments aren't available.</p>
+    <h4 class="mt-8 mb-2 text-black">What is the Best Time to Visit Hong Kong?</h4>
+    <p>Hong Kong is known for its high humidity, especially from late spring through summer, so if you're planning to spend a lot of time exploring the city on foot, I'd recommend visiting between October and December or March and April. These months usually offer the most comfortable temperatures and are much more enjoyable for sightseeing.</p>
+    <p>I visited in April and found the weather ideal for exploring the city. It was warm enough to spend the entire day outside without the intense heat and humidity that Hong Kong is known for later in the year.</p>
+    <h4 class="mt-8 mb-2 text-black">How Many Days Do You Need in Hong Kong?</h4>
+    <p>I'd absolutely recommend spending at least three full days in Hong Kong. That gives you enough time to visit the main attractions at a relaxed pace and really enjoy everything the city has to offer.</p>
+    <p>I made the mistake of underestimating just how beautiful and unique Hong Kong is, so I only planned to stay for two days. I still managed to see many of the places on my list, but looking back, one more day would have made the trip feel complete.</p>
+    <h4 class="mt-8 mb-2 text-black">Is Hong Kong Safe?</h4>
+    <p>From my personal experience, yes. Hong Kong is one of the safest cities I've ever visited, and I felt comfortable walking around both during the day and at night. The public transport is excellent, the streets are well lit, and I never found myself in a situation where I felt unsafe. Hong Kong is also widely regarded as having a very low rate of violent crime.</p>
+    <p>That said, it's always worth taking the same precautions you would in any major city. Keep an eye on your belongings in crowded areas, especially on public transport and in busy markets, and you'll most likely have a very enjoyable trip.</p>
+  </div>
+</section>
+
+<section id="section-11" class="scroll-mt-nav">
+  <div class={prose}>
+    <ArticleClosingNote label="Before you go">
+      <p>I hope this guide helps you plan an unforgettable first trip to Hong Kong. Take your time, explore beyond the obvious, and don't be surprised if the city ends up exceeding your expectations, just like it did mine.</p>
+      <p>If you have any questions that aren't covered in this guide, feel free to send me an email. I'll be happy to help if I can.</p>
+      <p>Have a wonderful trip!</p>
+    </ArticleClosingNote>
+  </div>
+</section>

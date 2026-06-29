@@ -1,5 +1,6 @@
 ---
 import ArticlePage from '@/components/articles/ArticlePage.astro';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
 import RhodesGuide from '@/components/articles/RhodesGuide.astro';
 import { rhodesNav } from '@/domains/articles/rhodes-nav';
 import { getArticle } from '@/domains/articles/catalog';
@@ -10,5 +11,16 @@ const lcpImageSrcSet = article.lcpImage ? await buildArticleLcpSrcSet(article.lc
 ---
 
 <ArticlePage article={article} sections={rhodesNav} lcpImageSrcSet={lcpImageSrcSet}>
+  {article.lcpImage && (
+    <ArticleImage
+      slot="intro-media"
+      src={article.lcpImage}
+      alt="Cobblestone street in Rhodes Old Town"
+      caption="Rhodes Old Town — a UNESCO-listed medieval centre"
+      figureClass="mt-6 max-w-3xl md:mt-8"
+      imgClass="aspect-[7/5] object-cover"
+      priority
+    />
+  )}
   <RhodesGuide />
 </ArticlePage>

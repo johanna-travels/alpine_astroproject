@@ -8,9 +8,12 @@ interface Props {
   category: string;
   title: string;
   alt: string;
+  /** First visible row — eager load; set fetchPriority="high" on the LCP candidate only. */
+  priority?: boolean;
+  fetchPriority?: 'high' | 'auto' | 'low';
 }
 
-const { href, image, category, title, alt } = Astro.props;
+const { href, image, category, title, alt, priority = false, fetchPriority } = Astro.props;
 ---
 
 <a href={href} class="group block">
@@ -18,9 +21,13 @@ const { href, image, category, title, alt } = Astro.props;
     <Image
       src={image}
       alt={alt}
-      width={800}
-      height={800}
-      densities={[1, 2]}
+      width={image.width}
+      height={image.height}
+      widths={[640, 750, 800]}
+      sizes="(min-width: 800px) 800px, 100vw"
+      loading={priority ? 'eager' : 'lazy'}
+      fetchpriority={fetchPriority}
+      decoding="async"
       class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
     />
     <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent pointer-events-none z-10" />

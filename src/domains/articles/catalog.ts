@@ -1,20 +1,21 @@
 import type { ImageMetadata } from 'astro';
-import articleBali from '@/assets/articles/Article Bali.webp';
+import articleBali from '@/assets/articles/cards/bali.webp';
 import articleBaliBelly from '@/assets/articles/bali/bali.belly.article.webp';
 import articleBaliTips from '@/assets/articles/bali/bali-travel-tips.webp';
-import articleBruges from '@/assets/articles/Article Bruges.webp';
-import articleGreece from '@/assets/articles/Article Greece.webp';
-import articleKyoto from '@/assets/articles/Article Kyoto.webp';
+import articleBruges from '@/assets/articles/cards/bruges.webp';
+import articleGreece from '@/assets/articles/cards/greece.webp';
+import articleHongKong from '@/assets/articles/hong-kong/hong-kong.webp';
+import articleKyoto from '@/assets/articles/cards/kyoto.webp';
 import articleNara from '@/assets/articles/kyoto/nara-the-famous-bow.webp';
 import articleKatsuoji from '@/assets/articles/osaka/katsuoji-temple.webp';
 import articleKatsuojiSpring from '@/assets/articles/osaka/spring-colours-at-katsuoji-temple.webp';
 import articleOsaka from '@/assets/articles/osaka/namba-yasaka.webp';
-import rhodesLcpImage from '@/assets/articles/rhodos-images/rhodes-old-town-cobblestone-street.webp';
-import articleParga from '@/assets/parga/parga-from-above.webp';
+import rhodesLcpImage from '@/assets/articles/rhodes/rhodes-old-town-cobblestone-street.webp';
+import articleParga from '@/assets/articles/parga/parga-from-above.webp';
 import type { DestinationSlug } from '@/domains/destinations/catalog';
 import { pageUrl } from '@/lib/site';
 
-export type ArticleSlug = 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bruges-guide' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary';
+export type ArticleSlug = 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary';
 
 export interface Article {
   slug: ArticleSlug;
@@ -46,11 +47,12 @@ export const articles: readonly Article[] = [
     metaLabel: 'Japan',
     alt: 'Kyoto travel guide',
     image: articleKyoto,
-    publishedDate: '19 June 2026',
+    publishedDate: '29 June 2026',
+    dateLabel: 'Last updated',
     intro: [
-      "Kyoto is one of the most popular destinations in Japan, but it's also much larger than many first-time visitors expect. One of the biggest mistakes people make is trying to fit too much into a short trip, often spending more time moving around the city than actually enjoying it.",
-      "While I spent almost a week in Kyoto, I don't think you need seven days to experience the city's highlights. If it's your first visit, three well-planned days are enough to see many of Kyoto's most iconic sights without turning your trip into a race from one attraction to the next.",
-      'This itinerary focuses on the places I would personally prioritise on a first visit to Kyoto, combining famous landmarks with a few quieter spots that are easy to overlook on a first visit.',
+      "Kyoto is one of Japan's most rewarding cities to explore, but it's also much larger than many first-time visitors expect. Trying to see everything in just a couple of days usually means spending more time travelling between attractions than actually enjoying them.",
+      "I spent five days in Kyoto, but if I were planning my first trip again, I'd dedicate three full days to the city. That's enough time to visit many of Kyoto's most famous sights while still leaving room to slow down and enjoy the places in between.",
+      "This is the exact route I'd recommend for a first visit to Kyoto. It combines iconic landmarks with a few quieter places that ended up becoming some of my favourite memories from the trip. And if you're still planning your visit, I'd also recommend having a look at the <a href='#section-5' class='underline underline-offset-2 text-[#5B6560] hover:text-[#3d4441]'>FAQ section</a> at the end of this guide, where I've answered some of the questions I wish I'd known the answers to before arriving in Kyoto.",
     ],
     lead: 'Five days in Kyoto, balancing iconic temples with quiet neighbourhoods, slow mornings and the kind of details that make the city stay with you.',
   },
@@ -64,11 +66,12 @@ export const articles: readonly Article[] = [
     metaLabel: 'Japan',
     alt: 'Nara day trip travel guide',
     image: articleNara,
-    publishedDate: '20 June 2026',
+    publishedDate: '29 June 2026',
+    dateLabel: 'Last updated',
     intro: [
-      "If you're visiting Kyoto for the first time, Nara is one of the easiest day trips you can add to your itinerary.",
-      'Most people, myself included, first become interested in Nara because of the famous deer that roam freely around Nara Park. But once you arrive, you quickly realise there is more to the area than just feeding the deer.',
-      'During my visit, I stopped for freshly made mochi, walked through a peaceful Japanese garden, explored the area around Todai-ji Temple, and spent time with the deer in different parts of the park. This guide follows the route I personally took and includes a few practical tips I wish I had known before visiting.',
+      "If you're visiting Kyoto for the first time, Nara is one of the easiest and most rewarding day trips you can add to your itinerary. Located less than an hour away by train, it's best known for its free-roaming deer, historic temples and peaceful parks, making it a completely different experience from Kyoto.",
+      "Most people, myself included, first become interested in Nara because of the famous deer. But once I arrived, I quickly realised Nara had much more to offer than just its famous deer. During my visit, I watched the famous mochi-pounding show, wandered through a traditional Japanese garden, explored Todai-ji Temple and spent time with the deer in different parts of Nara Park.",
+      "If you're following my <a href='/articles/kyoto-itinerary/' class='underline underline-offset-2 text-[#5B6560] hover:text-[#3d4441]'>Kyoto 3-Day Itinerary</a>, this is the exact route I'd recommend for your day trip to Nara, along with a few practical tips I wish I'd known before visiting.",
     ],
     lead: "If you're visiting Kyoto for the first time, Nara is one of the easiest day trips you can add to your itinerary.",
   },
@@ -100,11 +103,12 @@ export const articles: readonly Article[] = [
     metaLabel: 'Japan',
     alt: 'Osaka itinerary travel guide',
     image: articleOsaka,
-    publishedDate: '23 June 2026',
+    publishedDate: '29 June 2026',
+    dateLabel: 'Last updated',
     intro: [
-      'Osaka is often known for its neon lights, street food, and lively atmosphere, but some of my favourite memories from the city came from places that felt completely different.',
-      'While I spent more than one day in Osaka, this is the itinerary I would recommend if you only have one day to explore. It combines one of the city\'s most unique shrines, my favourite day trip from Osaka, a couple of memorable food stops, and an evening in the bright lights of Dotonbori.',
-      "If you're looking for a mix of iconic sights, local food, and a slightly different side of Osaka, this itinerary is a great place to start.",
+      "If you're visiting Japan for the first time, Osaka is a city that's well worth adding to your itinerary. Known for its incredible food, lively neighbourhoods and bright neon lights, it offers a completely different experience from both Tokyo and Kyoto.",
+      "While I spent more than one day in Osaka, this is the itinerary I'd recommend if you only have one day to explore. It combines one of the city's most unique shrines, my favourite day trip from Osaka, a couple of memorable food stops and an evening in Dotonbori.",
+      "If you're looking for a mix of iconic sights, local food and a slightly different side of Osaka, this itinerary is a great place to start.",
     ],
     lead: 'A relaxed one-day Osaka itinerary combining a peaceful morning shrine with the daruma-filled grounds of Katsuoji Temple.',
   },
@@ -190,13 +194,36 @@ export const articles: readonly Article[] = [
     metaLabel: 'Greece',
     alt: 'Parga travel guide',
     image: articleParga,
-    publishedDate: '24 June 2026',
+    publishedDate: '29 June 2026',
+    dateLabel: 'Last updated',
     intro: [
-      "I've visited Parga twice so far. The first time I spent four days here enjoying a slower pace of travel, while the second time I visited as a day trip from Preveza.",
-      "It's still one of my favourite places in Greece. With beautiful beaches, colourful streets, and a rich history, it offers a combination that's hard to find elsewhere on the Greek mainland.",
-      "In this guide, I'll share how I would spend one day in Parga, including some of my favourite spots for breakfast, sightseeing, swimming, and dinner.",
+      "Parga is one of the most beautiful seaside towns in Greece, known for its colourful houses, crystal-clear beaches and the Venetian Castle overlooking the harbour. Although it's located on the mainland, it has an island-like atmosphere that makes it feel unlike anywhere else in Epirus.",
+      "I've visited Parga twice so far. The first time, I spent four days exploring the town at a relaxed pace, while my second visit was a day trip from Preveza. Both trips were completely different, but they confirmed one thing—Parga is still one of my favourite places in Greece.",
+      "If you only have one day to explore, this is the itinerary I'd recommend. It includes some of my favourite places for breakfast, sightseeing, swimming and dinner, along with a few tips I picked up during my visits.",
     ],
     lead: 'A relaxed one-day guide to Parga, from its hillside old town to the beaches below the Venetian castle.',
+  },
+  {
+    slug: 'hong-kong-first-trip',
+    destinationSlug: 'hong-kong',
+    category: 'HONG KONG',
+    title: "Places You Shouldn't Miss on Your First Trip to Hong Kong",
+    carouselTitle: "Places You Shouldn't Miss on Your First Trip to Hong Kong",
+    breadcrumbTitle: 'First Trip to Hong Kong',
+    metaLabel: 'Hong Kong',
+    alt: 'Hong Kong travel guide',
+    image: articleHongKong,
+    publishedDate: '30 June 2026',
+    intro: [
+      "Hong Kong is one of the most unique cities I've ever visited. Although it's part of China, its history has created a fascinating blend of Eastern traditions and Western influences that you notice almost everywhere. Towering skyscrapers stand next to traditional temples, historic trams pass through busy streets, and peaceful gardens offer a quiet escape from the city's fast pace. It's this contrast between old and new that makes Hong Kong feel unlike anywhere else.",
+      "In this guide, I've included the places I highly recommend to anyone planning their first trip to the city. You'll also find a map below with all the places mentioned in this guide, along with a few hotel recommendations.",
+      "I stayed at Novotel Century Hong Kong and found it to be a great base for exploring the city. Getting there from the airport was easy with a direct bus, and both the MTR and the tram were just a short walk away. One of the things that impressed me most about Hong Kong was how easy it was to get around thanks to its excellent public transport system.",
+      "Before you leave, don't miss the <a href='#section-10' class='underline underline-offset-2 text-[#5B6560] hover:text-[#3d4441]'>FAQ section</a> at the end of this guide, where I've answered some of the most common questions about visiting Hong Kong.",
+    ],
+    lead: 'A first-timer\u2019s guide to Hong Kong, from skyline views over Victoria Harbour to markets, temples and unforgettable food.',
+    seoTitle: 'Hong Kong Travel Guide — Voyaflair',
+    seoDescription:
+      "The places you shouldn't miss on your first trip to Hong Kong — skyline views, markets, temples and local food from a personal travel guide.",
   },
   {
     slug: 'bruges-guide',

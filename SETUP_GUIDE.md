@@ -1,13 +1,13 @@
 # Newsletter System Setup Guide
 
-This project uses the **`subscribers`** table in Supabase (see `supabase-schema.sql`).  
+This project uses the **`subscribers`** table in Supabase (see `supabase/schema.sql`).  
 Do **not** use an `email_list` table or migrations from other repos.
 
 ## 1. Supabase
 
 1. Create or open your project at [supabase.com](https://supabase.com)
-2. **SQL Editor** → run `supabase-schema.sql` once
-3. If subscribe returns 500 on insert/update, also run `supabase-fix.sql`
+2. **SQL Editor** → run `supabase/schema.sql` once
+3. If subscribe returns 500 on insert/update, also run `supabase/fix.sql`
 4. **Project Settings → API** → copy:
    - `SUPABASE_URL` — Project URL (e.g. `https://YOUR_REF.supabase.co`)
    - `SUPABASE_SERVICE_ROLE_KEY` — **service role** key (server-only, never in client code)

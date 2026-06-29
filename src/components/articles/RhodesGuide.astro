@@ -2,33 +2,32 @@
 import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
 
-import oldTownCobblestone from "@/assets/articles/rhodos-images/rhodes-old-town-cobblestone-street.webp";
-import oldTownStreetScene from "@/assets/articles/rhodos-images/rhodes-old-town-street-scene.webp";
-import oldTownKnight from "@/assets/articles/rhodos-images/rhodes-old-town-medieval-knight.webp";
-import koukosRestaurant from "@/assets/articles/rhodos-images/rhodes-koukos-restaurant.webp";
-import koukosBreakfast from "@/assets/articles/rhodos-images/rhodes-koukos-breakfast.webp";
-import dreamCream from "@/assets/articles/rhodos-images/rhodes-dream-cream.webp";
-import symiHarbour from "@/assets/articles/rhodos-images/symi-island-colourful-harbour.webp";
-import symiShopfront from "@/assets/articles/rhodos-images/symi-town-colourful-shopfront.webp";
-import symiStreetCafes from "@/assets/articles/rhodos-images/symi-town-street-cafes.webp";
-import symiArchitecture from "@/assets/articles/rhodos-images/symi-traditional-architecture.webp";
-import symiYialaBeach from "@/assets/articles/rhodos-images/symi-yiala-beach.webp";
-import symiYialaBeach2 from "@/assets/articles/rhodos-images/greece-symi-yiala-beach.webp";
-import lindosTraditionalStreet from "@/assets/articles/rhodos-images/rhodes-lindos-village-traditional-street.webp";
-import lindosWhitewashedStreet from "@/assets/articles/rhodos-images/rhodes-lindos-village-whitewashed-street.webp";
-import lindosExploring from "@/assets/articles/rhodos-images/rhodes-exploring-lindos-village.webp";
-import stPaulsBay from "@/assets/articles/rhodos-images/rhodes-lindos-st-paul's-bay.webp";
-import stPaulsBayBeach from "@/assets/articles/rhodos-images/rhodes-lindos-st-paul's-bay-beach.webp";
-import lindosSunriseViewpoint from "@/assets/articles/rhodos-images/rhodes-lindos-sunrise-viewpoint.webp";
-import lindosAcropolis from "@/assets/articles/rhodos-images/rhodes-lindos-akropolis.webp";
-import kallitheaEntrance from "@/assets/articles/rhodos-images/rhodes-kallithea-springs-entrance.webp";
-import kallitheaSprings from "@/assets/articles/rhodos-images/rhodes-kallithea-springs.webp";
-import kallitheaBeachView from "@/assets/articles/rhodos-images/rhodes-kallithea-springs-beach-view.webp";
-import anthonyQuinnBay from "@/assets/articles/rhodos-images/rhodes-anthony-quinn-bay.webp";
-import kounnaRestoBar from "@/assets/articles/rhodos-images/rhodes-kounna-beach-resto-bar.webp";
-import kounnaCoffeeView from "@/assets/articles/rhodos-images/rhodes-kounna-beach-coffee-with-view.webp";
-import myrovolosRestaurant from "@/assets/articles/rhodos-images/rhodes-myrovolos-restaurant.webp";
-import myrovolosMezedopoleion from "@/assets/articles/rhodos-images/rhodes-myrovolos-restaurant-mezedopoleion.webp";
+import oldTownStreetScene from "@/assets/articles/rhodes/rhodes-old-town-street-scene.webp";
+import oldTownKnight from "@/assets/articles/rhodes/rhodes-old-town-medieval-knight.webp";
+import koukosRestaurant from "@/assets/articles/rhodes/rhodes-koukos-restaurant.webp";
+import koukosBreakfast from "@/assets/articles/rhodes/rhodes-koukos-breakfast.webp";
+import dreamCream from "@/assets/articles/rhodes/rhodes-dream-cream.webp";
+import symiHarbour from "@/assets/articles/rhodes/symi-island-colourful-harbour.webp";
+import symiShopfront from "@/assets/articles/rhodes/symi-town-colourful-shopfront.webp";
+import symiStreetCafes from "@/assets/articles/rhodes/symi-town-street-cafes.webp";
+import symiArchitecture from "@/assets/articles/rhodes/symi-traditional-architecture.webp";
+import symiYialaBeach from "@/assets/articles/rhodes/symi-yiala-beach.webp";
+import symiYialaBeach2 from "@/assets/articles/rhodes/greece-symi-yiala-beach.webp";
+import lindosTraditionalStreet from "@/assets/articles/rhodes/rhodes-lindos-village-traditional-street.webp";
+import lindosWhitewashedStreet from "@/assets/articles/rhodes/rhodes-lindos-village-whitewashed-street.webp";
+import lindosExploring from "@/assets/articles/rhodes/rhodes-exploring-lindos-village.webp";
+import stPaulsBay from "@/assets/articles/rhodes/rhodes-lindos-st-paul's-bay.webp";
+import stPaulsBayBeach from "@/assets/articles/rhodes/rhodes-lindos-st-paul's-bay-beach.webp";
+import lindosSunriseViewpoint from "@/assets/articles/rhodes/rhodes-lindos-sunrise-viewpoint.webp";
+import lindosAcropolis from "@/assets/articles/rhodes/rhodes-lindos-akropolis.webp";
+import kallitheaEntrance from "@/assets/articles/rhodes/rhodes-kallithea-springs-entrance.webp";
+import kallitheaSprings from "@/assets/articles/rhodes/rhodes-kallithea-springs.webp";
+import kallitheaBeachView from "@/assets/articles/rhodes/rhodes-kallithea-springs-beach-view.webp";
+import anthonyQuinnBay from "@/assets/articles/rhodes/rhodes-anthony-quinn-bay.webp";
+import kounnaRestoBar from "@/assets/articles/rhodes/rhodes-kounna-beach-resto-bar.webp";
+import kounnaCoffeeView from "@/assets/articles/rhodes/rhodes-kounna-beach-coffee-with-view.webp";
+import myrovolosRestaurant from "@/assets/articles/rhodes/rhodes-myrovolos-restaurant.webp";
+import myrovolosMezedopoleion from "@/assets/articles/rhodes/rhodes-myrovolos-restaurant-mezedopoleion.webp";
 
 const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
 const twoColGrid = 'grid grid-cols-2 gap-3 md:gap-4';
@@ -45,8 +44,7 @@ const kallitheaGrid = 'my-5 grid grid-cols-1 items-start gap-3 sm:grid-cols-3 md
     <p>I would recommend starting your first day in Rhodes by exploring Rhodes Old Town, one of the best-preserved medieval towns in Europe and a UNESCO World Heritage Site.</p>
     <p>What stood out most to me wasn't a specific attraction, but the atmosphere of the Old Town itself. Walking through the cobblestone streets, passing historic buildings, impressive stone gates, and small local shops genuinely felt like stepping back in time. Many of the buildings, signs, and hotels still reflect the town's medieval heritage, which gives the entire area a character unlike anywhere else on the island.</p>
     <p>I personally started my walk from Saint John's Gate, one of the entrances to the Old Town, before slowly making my way through the medieval streets. Take your time wandering through the side streets and seeing where they lead, and make sure not to miss the Street of the Knights, one of the most famous streets in Rhodes, as well as the area around the Palace of the Grand Master, which remains one of the town's most impressive landmarks.</p>
-    <div class={twoColGrid}>
-      <ArticleImage src={oldTownCobblestone} alt="Cobblestone street in Rhodes Old Town" caption="Rhodes Old Town — a UNESCO-listed medieval centre" imgClass="aspect-[4/5] object-cover" priority />
+    <div class="max-w-md">
       <ArticleImage src={oldTownStreetScene} alt="Street scene in the medieval streets of Rhodes Old Town" caption="Wandering the medieval streets" imgClass="aspect-[4/5] object-cover" />
     </div>
     <p>Near the Palace area, I even came across someone dressed as a medieval knight, which added an extra touch to the whole experience and made the city's history feel even more alive.</p>
