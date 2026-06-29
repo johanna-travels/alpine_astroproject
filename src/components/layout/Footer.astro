@@ -35,8 +35,30 @@ import { pageUrl } from '@/lib/site';
                     {footerLegalLinks.map((link) => (
                       <li><a href={link.href} class="text-white/90 text-xs hover:text-white transition-colors duration-300 text-[0.875rem]">{link.label}</a></li>
                     ))}
+                    <li>
+                      <button
+                        type="button"
+                        id="cookie-preferences-link"
+                        class="text-white/90 text-xs hover:text-white transition-colors duration-300 text-[0.875rem]"
+                      >
+                        Cookie Preferences
+                      </button>
+                    </li>
                 </ul>
             </div>
         </div>
     </header>
 </footer>
+
+<script>
+  function bindCookiePreferencesLink() {
+    const link = document.getElementById('cookie-preferences-link');
+    if (!link || link.dataset.bound === 'true') return;
+    link.dataset.bound = 'true';
+    link.addEventListener('click', () => {
+      document.dispatchEvent(new CustomEvent('voyaflair:open-cookie-preferences'));
+    });
+  }
+
+  bindCookiePreferencesLink();
+</script>

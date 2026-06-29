@@ -1,6 +1,6 @@
 import { getSupabaseAdmin } from '@/lib/supabaseAdmin';
 import { getServerEnv } from '@/lib/serverEnv';
-import { emailFooterHtml, emailListUnsubscribeHeaders } from '@/lib/email';
+import { emailFooterHtml, emailListUnsubscribeHeaders, getResendSender } from '@/lib/email';
 import { absoluteUrl, contactEmail } from '@/lib/site';
 import { Resend } from 'resend';
 import type { APIRoute } from 'astro';
@@ -127,17 +127,17 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const resendApiKey = getServerEnv('RESEND_API_KEY');
-    const resendFromEmail = getServerEnv('RESEND_FROM_EMAIL');
+    const resendSender = getResendSender();
     const resend = resendApiKey ? new Resend(resendApiKey) : null;
 
     let emailSent = false;
     let emailSendError: { message: string } | null = null;
 
-    if (resend && resendFromEmail) {
+    if (resend && resendSender) {
       const confirmUrl = `${absoluteUrl('api/confirm')}?token=${confirmationToken}`;
 
       const { error } = await resend.emails.send({
-        from: resendFromEmail,
+        from: resendSender,
         to: email,
         replyTo: contactEmail,
         subject: 'Confirm your subscription to Voyaflair',

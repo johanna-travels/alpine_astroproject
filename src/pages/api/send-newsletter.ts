@@ -1,5 +1,6 @@
 import { articles, getArticle, articleHref, type ArticleSlug } from '@/domains/articles/catalog';
 import { buildArticleEmailContent, buildOutgoingNewsletterEmail } from '@/lib/newsletter';
+import { getResendSender } from '@/lib/email';
 import { getServerEnv } from '@/lib/serverEnv';
 import { getSupabaseAdmin } from '@/lib/supabaseAdmin';
 import { getActiveSubscribersForNewsletter, getSubscriberStats } from '@/lib/subscribers';
@@ -66,7 +67,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   const adminSecret = getServerEnv('NEWSLETTER_ADMIN_SECRET');
   const resendApiKey = getServerEnv('RESEND_API_KEY');
-  const resendFromEmail = getServerEnv('RESEND_FROM_EMAIL');
+  const resendSender = getResendSender();
   const supabaseAdmin = getSupabaseAdmin();
 
   if (!adminSecret) {
@@ -75,7 +76,7 @@ export const POST: APIRoute = async ({ request }) => {
   if (!supabaseAdmin) {
     return serviceUnavailable('Supabase is not configured.');
   }
-  if (!resendApiKey || !resendFromEmail) {
+  if (!resendApiKey || !resendSender) {
     return serviceUnavailable('Resend is not configured.');
   }
 
@@ -139,7 +140,7 @@ export const POST: APIRoute = async ({ request }) => {
     const resend = new Resend(resendApiKey);
     const outgoing = recipients.map((recipient) =>
       buildOutgoingNewsletterEmail(
-        resendFromEmail,
+        resendSender,
         recipient.email,
         recipient.confirmation_token,
         emailContent,

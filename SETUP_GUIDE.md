@@ -20,7 +20,7 @@ The API routes use `getSupabaseAdmin()` with the service role key. The anon key 
 
 1. [resend.com](https://resend.com) → API key → `RESEND_API_KEY`
 2. Add domain `voyaflair.com` and verify DNS (DKIM, SPF, MX on `send`)
-3. Set sender: `RESEND_FROM_EMAIL=noreply@yourdomain.com` (must match your verified Resend domain)
+3. Set sender: `RESEND_FROM_EMAIL=hello@yourdomain.com` (or `newsletter@` — avoid `noreply@`, some inboxes show the local part). Code always sends as **Voyaflair** regardless.
 
 ## 3. Environment variables
 

@@ -1,4 +1,25 @@
 import { absoluteUrl, contactEmail } from '@/lib/site';
+import { getServerEnv } from '@/lib/serverEnv';
+
+const SENDER_DISPLAY_NAME = 'Voyaflair';
+
+/** Extract bare email from plain address or "Name <email@domain.com>" env value. */
+export function parseSenderEmail(raw: string): string {
+  const trimmed = raw.trim().replace(/^['"]|['"]$/g, '');
+  const match = trimmed.match(/<([^>]+)>/);
+  return (match ? match[1] : trimmed).trim();
+}
+
+/** Resend "from" — always shows "Voyaflair" in the inbox. */
+export function formatResendSender(fromEmail: string): string {
+  return `${SENDER_DISPLAY_NAME} <${parseSenderEmail(fromEmail)}>`;
+}
+
+export function getResendSender(): string | undefined {
+  const email = getServerEnv('RESEND_FROM_EMAIL');
+  if (!email) return undefined;
+  return formatResendSender(email);
+}
 
 export function subscriberUnsubscribeUrl(token: string): string {
   return `${absoluteUrl('api/unsubscribe')}?token=${encodeURIComponent(token)}`;

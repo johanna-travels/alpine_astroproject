@@ -113,4 +113,62 @@ test.describe('Voyaflair Site Tests', () => {
       expect(response.ok(), `${asset} should be reachable`).toBeTruthy();
     }
   });
+
+  test('cookie consent banner appears and can be accepted', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForLoadState('domcontentloaded');
+
+    const banner = page.getByTestId('cookie-banner');
+    await expect(banner).toBeVisible();
+
+    await page.getByRole('button', { name: 'Accept', exact: true }).click();
+    await expect(banner).toBeHidden();
+
+    const consent = await page.evaluate(() => localStorage.getItem('voyaflair_cookie_consent'));
+    expect(consent).toBe('accepted');
+
+    await page.reload();
+    await page.waitForLoadState('domcontentloaded');
+    await expect(banner).toBeHidden();
+  });
+
+  test('cookie consent can be declined', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForLoadState('domcontentloaded');
+
+    const banner = page.getByTestId('cookie-banner');
+    await expect(banner).toBeVisible();
+
+    await page.getByRole('button', { name: 'Decline', exact: true }).click();
+    await expect(banner).toBeHidden();
+
+    const consent = await page.evaluate(() => localStorage.getItem('voyaflair_cookie_consent'));
+    expect(consent).toBe('declined');
+
+    await page.reload();
+    await page.waitForLoadState('domcontentloaded');
+    await expect(banner).toBeHidden();
+  });
+
+  test('cookie preferences can be managed and reopened from footer', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForLoadState('domcontentloaded');
+
+    await page.getByRole('button', { name: 'Manage', exact: true }).click();
+    await expect(page.getByTestId('cookie-banner').getByText('Cookie preferences')).toBeVisible();
+
+    await page.locator('#cookie-analytics-toggle').check();
+    await page.getByRole('button', { name: 'Save', exact: true }).click();
+    await expect(page.getByTestId('cookie-banner')).toBeHidden();
+
+    const stored = await page.evaluate(() => ({
+      consent: localStorage.getItem('voyaflair_cookie_consent'),
+      preferences: localStorage.getItem('voyaflair_cookie_preferences'),
+    }));
+    expect(stored.consent).toBe('custom');
+    expect(stored.preferences).toBe(JSON.stringify({ analytics: true }));
+
+    await page.getByRole('button', { name: 'Cookie Preferences' }).click();
+    await expect(page.getByTestId('cookie-banner').getByText('Cookie preferences')).toBeVisible();
+  });
 });
