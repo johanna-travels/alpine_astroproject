@@ -1,6 +1,6 @@
 ---
 import ArticlePage from '@/components/articles/ArticlePage.astro';
-import ArticleImage from '@/components/ui/ArticleImage.astro';
+import ArticleGoogleMap from '@/components/articles/ArticleGoogleMap.astro';
 import RhodesGuide from '@/components/articles/RhodesGuide.astro';
 import { rhodesNav } from '@/domains/articles/rhodes-nav';
 import { getArticle } from '@/domains/articles/catalog';
@@ -11,16 +11,10 @@ const lcpImageSrcSet = article.lcpImage ? await buildArticleLcpSrcSet(article.lc
 ---
 
 <ArticlePage article={article} sections={rhodesNav} lcpImageSrcSet={lcpImageSrcSet}>
-  {article.lcpImage && (
-    <ArticleImage
-      slot="intro-media"
-      src={article.lcpImage}
-      alt="Cobblestone street in Rhodes Old Town"
-      caption="Rhodes Old Town — a UNESCO-listed medieval centre"
-      figureClass="mt-6 max-w-3xl md:mt-8"
-      imgClass="aspect-[7/5] object-cover"
-      priority
-    />
-  )}
+  <ArticleGoogleMap
+    title="Google Map of Rhodes"
+    description="Here's a Google Map with all the locations mentioned in this Rhodes guide, plus a few extra spots to help you plan your trip."
+    mapId="1YFXsWDA2ndUArdMJWw_RF-Dce4kqDV4"
+  />
   <RhodesGuide />
 </ArticlePage>

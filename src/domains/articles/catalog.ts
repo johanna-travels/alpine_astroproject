@@ -175,11 +175,12 @@ export const articles: readonly Article[] = [
     metaLabel: 'Greece',
     alt: 'Rhodes travel guide',
     image: articleGreece,
-    publishedDate: '17 June 2026',
+    publishedDate: '30 June 2026',
+    dateLabel: 'Last updated',
     intro: [
-      "As the third-largest island in Greece, Rhodes offers far more than beautiful beaches. With its rich history, medieval streets, whitewashed alleys, and countless beaches around the island, it can be surprisingly difficult to decide what to prioritise — especially if it's your first visit.",
-      "This itinerary is based on five full days in Rhodes and follows the exact route I took and would happily recommend to first-time visitors. It combines some of the island's most iconic sights with a few personal favourites, while leaving enough room to enjoy each place without feeling like you're constantly rushing from one attraction to the next.",
-      "If you're planning your first trip to Rhodes, I hope this itinerary helps you make the most of your time on the island.",
+      "If you're looking for a Greek island that combines history, beaches and great food, Rhodes is hard to beat. I was surprised to learn it's the third-largest island in Greece, and after spending five days there, it finally made sense why so many people return more than once.",
+      "I spent five days exploring the island, and this is the exact route I'd recommend if I were planning the trip again. It includes the places I believe every first-time visitor should see, while leaving plenty of reasons to come back.",
+      "Before you start planning your trip, I'd also recommend checking the <a href='#section-6' class='underline underline-offset-2 text-[#5B6560] hover:text-[#3d4441]'>FAQ section</a> at the end of this guide, where I've answered some of the most common questions about visiting Rhodes.",
     ],
     lead: 'Five days on Rhodes, mixing the medieval old town with quiet beaches, island day trips and the kind of local tavernas that make Greek summers unforgettable.',
     lcpImage: rhodesLcpImage,
@@ -240,7 +241,7 @@ export const articles: readonly Article[] = [
     intro: [
       "Bruges is one of the most beautiful medieval cities I've visited in Europe. With its charming canals, historic buildings, cobblestone streets, and peaceful atmosphere, it's easy to see why it's often called the \"Venice of the North.\" Whether you're visiting for a day or spending a weekend here, Bruges is a city that's best explored on foot.",
       "In this guide, I've included the places I highly recommend visiting if it's your first time in Bruges. You'll also find a map below with all the places mentioned in this guide, along with extra restaurant recommendations, waffle shops, cafés, and a selection of hotels and B&Bs to make planning your trip even easier.",
-      "Before you leave, don't miss the FAQ section at the end of this guide, where I've answered some of the most common questions about visiting Bruges.",
+      "Before you leave, don't miss the <a href='#section-11' class='underline underline-offset-2 text-[#5B6560] hover:text-[#3d4441]'>FAQ section</a> at the end of this guide, where I've answered some of the most common questions about visiting Bruges.",
     ],
     seoTitle: 'Bruges Travel Guide — Voyaflair',
     seoDescription:

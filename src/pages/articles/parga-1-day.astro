@@ -1,5 +1,6 @@
 ---
 import ArticlePage from '@/components/articles/ArticlePage.astro';
+import ArticleGoogleMap from '@/components/articles/ArticleGoogleMap.astro';
 import PargaGuide from '@/components/articles/PargaGuide.astro';
 import { pargaNav } from '@/domains/articles/parga-nav';
 import { getArticle } from '@/domains/articles/catalog';
@@ -8,5 +9,11 @@ const article = getArticle('parga-1-day')!;
 ---
 
 <ArticlePage article={article} sections={pargaNav}>
+  <ArticleGoogleMap
+    slot="intro-media"
+    title="Google Map of Parga"
+    description="You'll find every stop mentioned in this guide pinned on the interactive map, making it easy to follow the same route during your visit."
+    mapId="1IJX1t2jyV8zuX-Ak3UhGyNSo_pJm1hg"
+  />
   <PargaGuide />
 </ArticlePage>

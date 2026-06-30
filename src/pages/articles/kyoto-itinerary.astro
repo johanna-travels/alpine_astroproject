@@ -8,11 +8,5 @@ const article = getArticle('kyoto-itinerary')!;
 ---
 
 <ArticlePage article={article} sections={kyotoNav}>
-  <aside
-    slot="intro-media"
-    class="mt-6 max-w-3xl rounded-lg bg-[#F5F2EB] px-4 py-3 text-sm leading-relaxed text-black/80"
-  >
-    <span class="font-medium text-black">💡 Pro Tip:</span> Before your trip, I'd recommend setting up an eSIM so you'll have internet access as soon as you arrive. I use Airalo whenever I travel abroad, and having mobile data made it easy to access the interactive map, use Google Maps and navigate Kyoto from the moment I landed.
-  </aside>
   <KyotoItineraryContent />
 </ArticlePage>

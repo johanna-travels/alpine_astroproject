@@ -1,6 +1,5 @@
 ---
 import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
-import ArticleGoogleMap from '@/components/articles/ArticleGoogleMap.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
 
 import greenBakery from '@/assets/articles/parga/parga-the-green-bakery.webp';
@@ -16,14 +15,8 @@ import coloursOfParga from '@/assets/articles/parga/colours-of-parga.webp';
 
 const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
 const imageGrid = 'my-5 grid grid-cols-1 items-start gap-3 sm:grid-cols-2 md:my-8 md:gap-4';
-const mapId = '1IJX1t2jyV8zuX-Ak3UhGyNSo_pJm1hg';
 ---
 
-<ArticleGoogleMap
-  title="Google Map of Parga"
-  description="You'll find every stop mentioned in this guide pinned on the interactive map, making it easy to follow the same route during your visit."
-  mapId={mapId}
-/>
 <section id="section-0" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
     <h3>Start Your Morning at Parga Harbour</h3>

@@ -55,6 +55,7 @@ const coverStyle = {
         allowfullscreen
         class="article-google-map__iframe"
       />
+      <div class="article-google-map__share-cover" aria-hidden="true"></div>
     </div>
 
     <p class="article-google-map__footer mt-4 meta text-neutral-600">
@@ -83,13 +84,24 @@ const coverStyle = {
   .article-panel__divider {
     border-color: #E5DFD4 !important;
   }
-</style>
 
-<style>
   .article-google-map__frame {
     position: relative;
   }
 
+  .article-google-map__share-cover {
+    position: absolute;
+    top: var(--share-cover-top, 0);
+    right: var(--share-cover-right, 44px);
+    z-index: 2;
+    width: var(--share-cover-width, 110px);
+    height: var(--share-cover-height, 56px);
+    background-color: var(--share-cover-bg, #69746E);
+    pointer-events: auto;
+  }
+</style>
+
+<style>
   .article-google-map__iframe {
     display: block;
     width: 100%;
@@ -108,16 +120,5 @@ const coverStyle = {
     .article-google-map__iframe {
       height: 480px;
     }
-  }
-
-  .article-google-map__share-cover {
-    position: absolute;
-    top: var(--share-cover-top, 0);
-    right: var(--share-cover-right, 44px);
-    z-index: 2;
-    width: var(--share-cover-width, 110px);
-    height: var(--share-cover-height, 56px);
-    background-color: var(--share-cover-bg, #69746E);
-    pointer-events: auto;
   }
 </style>
