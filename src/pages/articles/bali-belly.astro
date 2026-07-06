@@ -2,23 +2,26 @@
 import ArticlePage from '@/components/articles/ArticlePage.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
 import BaliBellyContent from '@/components/articles/BaliBelly.astro';
+import BaliBeforeFooter from '@/components/articles/BaliBeforeFooter.astro';
 import { baliBellyNav } from '@/domains/articles/bali-belly-nav';
 import { getArticle } from '@/domains/articles/catalog';
 import { buildArticleLcpSrcSet } from '@/lib/images';
-import baliBellyExperience from '@/assets/articles/bali/bali-belly-experience.webp';
+import baliBellyCard from '@/assets/articles/bali/bali-belly-card.webp';
 
 const article = getArticle('bali-belly')!;
-const lcpImageSrcSet = await buildArticleLcpSrcSet(baliBellyExperience);
+const lcpImageSrcSet = await buildArticleLcpSrcSet(baliBellyCard);
 ---
 
 <ArticlePage article={article} sections={baliBellyNav} lcpImageSrcSet={lcpImageSrcSet}>
   <ArticleImage
-    slot="intro-media"
-    src={baliBellyExperience}
-    alt="Bali Belly: What It Is, My Experience & Recovery"
-    figureClass="mt-6 max-w-3xl md:mt-8"
-    imgClass="aspect-[7/5] object-cover"
+    slot="title-media"
+    src={baliBellyCard}
+    alt="Misty Bali rice terraces lined with palm trees at sunrise, with a volcano on the horizon"
+    caption="Sunrise over palm-lined rice terraces in Bali, with a volcano in the distance"
+    figureClass="mb-6 max-w-3xl md:mb-8"
+    imgClass="aspect-[5/4] object-cover"
     priority
   />
   <BaliBellyContent />
+  <BaliBeforeFooter slot="before-footer" currentSlug={article.slug} />
 </ArticlePage>

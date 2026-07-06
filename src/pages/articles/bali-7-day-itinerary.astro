@@ -1,0 +1,27 @@
+---
+import ArticlePage from '@/components/articles/ArticlePage.astro';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import Bali7DayItineraryContent from '@/components/articles/Bali7DayItinerary.astro';
+import BaliBeforeFooter from '@/components/articles/BaliBeforeFooter.astro';
+import { bali7DayItineraryNav } from '@/domains/articles/bali-7-day-itinerary-nav';
+import { getArticle } from '@/domains/articles/catalog';
+import { buildArticleLcpSrcSet } from '@/lib/images';
+import ulunDanuBeratan from '@/assets/articles/bali/bali-ulun-danu-beratan-temple.webp';
+
+const article = getArticle('bali-7-day-itinerary')!;
+const lcpImageSrcSet = await buildArticleLcpSrcSet(ulunDanuBeratan);
+---
+
+<ArticlePage article={article} sections={bali7DayItineraryNav} lcpImageSrcSet={lcpImageSrcSet}>
+  <ArticleImage
+    slot="title-media"
+    src={ulunDanuBeratan}
+    alt="The tiered shrines of Ulun Danu Beratan temple rising from the lake against a misty mountain backdrop in Bali"
+    caption="The lakeside temple of Ulun Danu Beratan, one of Bali's most iconic sights"
+    figureClass="mb-6 max-w-3xl md:mb-8"
+    imgClass="aspect-[5/4] object-cover"
+    priority
+  />
+  <Bali7DayItineraryContent />
+  <BaliBeforeFooter slot="before-footer" currentSlug={article.slug} />
+</ArticlePage>

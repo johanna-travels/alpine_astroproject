@@ -1,0 +1,30 @@
+---
+import ArticlePreviewCard from '@/components/ui/ArticlePreviewCard.astro';
+import { articlesForDestination, articleHref } from '@/domains/articles/catalog';
+
+interface Props {
+  /** Slug of the current article, so it's excluded from the list. */
+  currentSlug?: string;
+}
+
+const { currentSlug } = Astro.props;
+
+const baliArticles = articlesForDestination('bali')
+  .filter((article) => article.slug !== currentSlug)
+  .map((article) => ({
+    href: articleHref(article.slug),
+    image: article.image,
+    category: article.category,
+    title: article.title,
+    alt: article.alt,
+  }));
+---
+
+<section class="mx-auto w-full max-w-6xl px-4 md:pr-10 md:pl-0 pb-16 md:pb-20">
+  <h2 class="mb-8 md:mb-10">Continue Exploring Bali</h2>
+  <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3">
+    {baliArticles.map((article) => (
+      <ArticlePreviewCard {...article} />
+    ))}
+  </div>
+</section>

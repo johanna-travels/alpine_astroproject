@@ -1,12 +1,25 @@
 ---
 import ArticlePage from '@/components/articles/ArticlePage.astro';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
 import BaliTravelTipsContent from '@/components/articles/BaliTravelTips.astro';
+import BaliBeforeFooter from '@/components/articles/BaliBeforeFooter.astro';
 import { baliTravelTipsNav } from '@/domains/articles/bali-travel-tips-nav';
 import { getArticle } from '@/domains/articles/catalog';
+import baliTravelTipsHero from '@/assets/articles/bali/bali-travel-tips-article.webp';
 
 const article = getArticle('bali-travel-tips')!;
 ---
 
 <ArticlePage article={article} sections={baliTravelTipsNav}>
+  <ArticleImage
+    slot="title-media"
+    src={baliTravelTipsHero}
+    alt="Woman in a white dress and straw hat standing before the lush green Jatiluwah rice terraces in Bali"
+    caption="Standing above Bali's lush green rice terraces on a cloudy day"
+    figureClass="mb-6 max-w-3xl md:mb-8"
+    imgClass="aspect-[5/4] object-cover"
+    priority
+  />
   <BaliTravelTipsContent />
+  <BaliBeforeFooter slot="before-footer" currentSlug={article.slug} />
 </ArticlePage>

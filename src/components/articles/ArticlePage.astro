@@ -48,10 +48,18 @@ const shareImage = await getSocialShareImage(article.lcpImage ?? article.image);
           {article.title}
         </h1>
 
+        <slot name="title-media" />
+
         <article class="max-w-3xl space-y-5 md:space-y-6">
           {article.intro.map((paragraph) => (
             <p class="prose-body text-neutral-700" set:html={paragraph} />
           ))}
+
+          {!article.hideAffiliateDisclaimer && (
+          <p class="prose-body border-t border-white pt-2 italic text-neutral-400">
+This article may contain affiliate links, meaning I may earn a small commission at no extra cost to you if you book or purchase through them. Thank you for supporting and helping me continue creating travel guides and inspiration.
+</p>
+          )}
         </article>
 
         <slot name="intro-media" />
@@ -60,4 +68,5 @@ const shareImage = await getSocialShareImage(article.lcpImage ?? article.image);
       <slot />
     </StickyArticleLayout>
   </main>
+  <Fragment slot="before-footer"><slot name="before-footer" /></Fragment>
 </PageShell>

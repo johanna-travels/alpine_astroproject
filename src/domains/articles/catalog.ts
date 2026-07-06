@@ -1,7 +1,8 @@
 import type { ImageMetadata } from 'astro';
 import articleBali from '@/assets/articles/cards/bali.webp';
-import articleBaliBelly from '@/assets/articles/bali/bali.belly.article.webp';
-import articleBaliTips from '@/assets/articles/bali/bali-travel-tips.webp';
+import articleBaliItinerary from '@/assets/articles/bali/bali-itinerary-card.webp';
+import articleBaliBelly from '@/assets/articles/bali/bali-belly-card-square.webp';
+import articleBaliTips from '@/assets/articles/bali/bali-travel-tips-aricle.webp';
 import articleBruges from '@/assets/articles/cards/bruges.webp';
 import articleGreece from '@/assets/articles/cards/greece.webp';
 import articleHongKong from '@/assets/articles/hong-kong/hong-kong.webp';
@@ -15,7 +16,7 @@ import articleParga from '@/assets/articles/parga/parga-from-above.webp';
 import type { DestinationSlug } from '@/domains/destinations/catalog';
 import { pageUrl } from '@/lib/site';
 
-export type ArticleSlug = 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary';
+export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary';
 
 export interface Article {
   slug: ArticleSlug;
@@ -34,6 +35,7 @@ export interface Article {
   seoTitle?: string;
   seoDescription?: string;
   lcpImage?: ImageMetadata;
+  hideAffiliateDisclaimer?: boolean;
 }
 
 export const articles: readonly Article[] = [
@@ -114,6 +116,7 @@ export const articles: readonly Article[] = [
   },
   {
     slug: 'bali-cafes',
+    hideAffiliateDisclaimer: true,
     destinationSlug: 'bali',
     category: 'BALI',
     title: 'Best Cafés in Bali After 2 Months on the Island',
@@ -132,6 +135,7 @@ export const articles: readonly Article[] = [
   },
   {
     slug: 'bali-belly',
+    hideAffiliateDisclaimer: true,
     destinationSlug: 'bali',
     category: 'BALI',
     title: 'Bali Belly: What It Is, My Experience & Recovery',
@@ -158,12 +162,31 @@ export const articles: readonly Article[] = [
     metaLabel: 'Bali',
     alt: 'What to Know Before Travelling to Bali',
     image: articleBaliTips,
-    publishedDate: '26 June 2026',
+    publishedDate: '6 July 2026',
+    dateLabel: 'Last updated',
     intro: [
       "I spent almost two months travelling around Bali, and by the end of my trip there were a few things I was really glad I'd done.",
       "In this guide, I'll share a few practical tips that I think are worth knowing before travelling to Bali, from getting your Visa on Arrival and choosing an eSIM to the travel essentials I always pack and a few things I'd do exactly the same way again.",
     ],
     lead: 'A few practical tips worth knowing before travelling to Bali — from your Visa on Arrival and eSIM to the travel essentials I always pack.',
+  },
+  {
+    slug: 'bali-7-day-itinerary',
+    destinationSlug: 'bali',
+    category: 'BALI',
+    title: 'The Perfect 7-Day Bali Itinerary for First-Time Visitors (2026)',
+    carouselTitle: 'The Perfect 7-Day Bali Itinerary for First-Time Visitors (2026)',
+    breadcrumbTitle: 'Bali 7-Day Itinerary',
+    metaLabel: 'Bali',
+    alt: 'The Perfect 7-Day Bali Itinerary for First-Time Visitors (2026)',
+    image: articleBaliItinerary,
+    publishedDate: '6 July 2026',
+    intro: [
+      "Bali is one of those places that's almost impossible to experience in just one trip. Between ancient temples, lush rice terraces, beautiful beaches and incredible cafés, there's far more to see than most first-time visitors expect. The biggest mistake people make is trying to fit everything into one itinerary. Bali is much larger than it looks on a map, and getting around often takes longer than Google Maps suggests. Instead of constantly moving hotels, I'd recommend choosing just two bases and exploring from there.",
+      "That's exactly how this 7-day itinerary is designed. You'll split your stay between Nusa Dua and Ubud, with a few carefully planned day trips along the way. It's the same approach I followed during my own trip, and it made exploring Bali far more enjoyable.",
+      "Before you start planning, I'd also recommend reading my <a href='/articles/bali-travel-tips/' class='underline underline-offset-2 text-[#5B6560] hover:text-[#3d4441]'>What to Know Before Travelling to Bali</a> guide. And before you leave this article, don't forget to check the <a href='#section-faq' class='underline underline-offset-2 text-[#5B6560] hover:text-[#3d4441]'>FAQ section</a> at the end, where I've answered some of the most common questions first-time visitors have - such as the best way to get around Bali, the best time to visit and whether 7 days are enough to explore the island.",
+    ],
+    lead: 'A complete 7-day Bali itinerary for first-time visitors, split between Nusa Dua and Ubud with carefully planned day trips along the way.',
   },
   {
     slug: 'rhodes-itinerary',

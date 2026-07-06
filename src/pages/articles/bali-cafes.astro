@@ -1,6 +1,7 @@
 ---
 import ArticlePage from '@/components/articles/ArticlePage.astro';
 import BaliCafesContent from '@/components/articles/BaliCafes.astro';
+import BaliBeforeFooter from '@/components/articles/BaliBeforeFooter.astro';
 import { baliNav } from '@/domains/articles/bali-nav';
 import { getArticle } from '@/domains/articles/catalog';
 
@@ -9,4 +10,5 @@ const article = getArticle('bali-cafes')!;
 
 <ArticlePage article={article} sections={baliNav}>
   <BaliCafesContent />
+  <BaliBeforeFooter slot="before-footer" currentSlug={article.slug} />
 </ArticlePage>

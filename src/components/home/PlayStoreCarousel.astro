@@ -5,7 +5,7 @@ import { articles, articleHref } from '@/domains/articles/catalog';
 import { pageUrl } from '@/lib/site';
 
 const carouselArticles = articles
-  .filter((article) => article.slug !== 'katsuoji-temple-from-osaka' && article.slug !== 'osaka-1-day-itinerary' && article.slug !== 'bali-belly' && article.slug !== 'bali-travel-tips' && article.slug !== 'hong-kong-first-trip');
+  .filter((article) => article.slug !== 'katsuoji-temple-from-osaka' && article.slug !== 'osaka-1-day-itinerary' && article.slug !== 'bali-belly' && article.slug !== 'bali-travel-tips' && article.slug !== 'bali-7-day-itinerary' && article.slug !== 'hong-kong-first-trip');
 
 const cards = [
   ...carouselArticles.filter((article) => article.slug === 'bruges-guide'),

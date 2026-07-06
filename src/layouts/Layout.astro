@@ -4,6 +4,7 @@ import BgLayer from '@/components/layout/bg-layer/BgLayer.astro';
 import CookieConsent from '@/components/layout/CookieConsent.astro';
 import { googleAnalyticsCsp, getGaMeasurementId, isGoogleAnalyticsEnabled } from '@/lib/analytics';
 import { googleMapsCsp } from '@/lib/maps';
+import { getYourGuideCsp } from '@/lib/getyourguide';
 import { homeUrl } from '@/lib/site';
 
 interface Props {
@@ -48,13 +49,13 @@ const csp = [
   "default-src 'self'",
   "base-uri 'self'",
   "object-src 'none'",
-  `img-src 'self' data: blob:${googleAnalyticsEnabled ? ` ${googleAnalyticsCsp.imgSrc}` : ''}`,
+  `img-src 'self' data: blob: ${getYourGuideCsp.imgSrc}${googleAnalyticsEnabled ? ` ${googleAnalyticsCsp.imgSrc}` : ''}`,
   "media-src 'self' blob:",
   "font-src 'self' data:",
   "style-src 'self' 'unsafe-inline'",
-  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''}${googleAnalyticsEnabled ? ` ${googleAnalyticsCsp.scriptSrc}` : ''}`,
-  `connect-src 'self'${isDev ? " ws://localhost:* wss://localhost:*" : ''}${googleAnalyticsEnabled ? ` ${googleAnalyticsCsp.connectSrc}` : ''}`,
-  `frame-src 'self' ${googleMapsCsp.frameSrc}`,
+  `script-src 'self' 'unsafe-inline' ${getYourGuideCsp.scriptSrc}${isDev ? " 'unsafe-eval'" : ''}${googleAnalyticsEnabled ? ` ${googleAnalyticsCsp.scriptSrc}` : ''}`,
+  `connect-src 'self' ${getYourGuideCsp.connectSrc}${isDev ? " ws://localhost:* wss://localhost:*" : ''}${googleAnalyticsEnabled ? ` ${googleAnalyticsCsp.connectSrc}` : ''}`,
+  `frame-src 'self' ${googleMapsCsp.frameSrc} ${getYourGuideCsp.frameSrc}`,
   `form-action ${googleMapsCsp.formAction}`,
   "upgrade-insecure-requests",
 ].join('; ');

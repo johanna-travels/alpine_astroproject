@@ -1,0 +1,42 @@
+---
+interface Props {
+  /** GetYourGuide tour id (e.g. 123935). */
+  tourId: string;
+  /** GetYourGuide location id (e.g. 347 for Bali). */
+  locationId: string;
+  /** Your GetYourGuide partner id. */
+  partnerId: string;
+  /** Locale code shown in the widget. */
+  localeCode?: string;
+  /** Optional wrapper classes. */
+  class?: string;
+}
+
+const {
+  tourId,
+  locationId,
+  partnerId,
+  localeCode = 'en-US',
+  class: className = 'my-6 max-w-3xl md:my-8',
+} = Astro.props;
+---
+
+<div class={className}>
+  <div
+    data-gyg-href="https://widget.getyourguide.com/default/activity.frame"
+    data-gyg-widget="activity"
+    data-gyg-tour-id={tourId}
+    data-gyg-location-id={locationId}
+    data-gyg-locale-code={localeCode}
+    data-gyg-partner-id={partnerId}
+  >
+  </div>
+</div>
+
+<script
+  is:inline
+  async
+  defer
+  src="https://widget.getyourguide.com/dist/pa.umd.production.min.js"
+  data-gyg-partner-id={partnerId}
+></script>

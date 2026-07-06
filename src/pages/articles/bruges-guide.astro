@@ -1,14 +1,24 @@
 ---
 import ArticleGoogleMap from '@/components/articles/ArticleGoogleMap.astro';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
 import ArticlePage from '@/components/articles/ArticlePage.astro';
 import BrugesGuideContent from '@/components/articles/BrugesGuide.astro';
 import { brugesNav } from '@/domains/articles/bruges-nav';
 import { getArticle } from '@/domains/articles/catalog';
+import brugesFromAbove from '@/assets/articles/bruges/bruges-from-above.webp';
 
 const article = getArticle('bruges-guide')!;
 ---
 
 <ArticlePage article={article} sections={brugesNav}>
+  <ArticleImage
+    slot="title-media"
+    src={brugesFromAbove}
+    alt="View over the rooftops and canals of Bruges from above"
+    figureClass="mb-6 max-w-3xl md:mb-8"
+    imgClass="aspect-[11/8.5] object-cover"
+    priority
+  />
   <ArticleGoogleMap
     title="Google Map of Bruges"
     description="Here's a Google Map with all the locations mentioned in this Bruges guide, plus a few extra spots to help you plan your visit."

@@ -1,6 +1,7 @@
 ---
 import ArticlePage from '@/components/articles/ArticlePage.astro';
 import NaraDayTripContent from '@/components/articles/NaraDayTrip.astro';
+import JapanBeforeFooter from '@/components/articles/JapanBeforeFooter.astro';
 import { naraDayTripNav } from '@/domains/articles/nara-day-trip-nav';
 import { getArticle } from '@/domains/articles/catalog';
 
@@ -10,10 +11,11 @@ const article = getArticle('nara-day-trip-from-kyoto')!;
 <ArticlePage article={article} sections={naraDayTripNav}>
   <aside
     slot="intro-media"
-    class="mt-6 max-w-3xl rounded-lg bg-[#F5F2EB] px-4 py-3 text-sm leading-relaxed text-black/80"
+    class="mt-6 max-w-3xl rounded-lg bg-[#F5F2EB] px-4 py-3 text-md leading-relaxed text-black/80"
   >
     📍 Interactive Map
     You'll find every stop mentioned in this guide pinned on my Kyoto 3-Day Itinerary Map, making it easy to follow the same route during your visit. 
   </aside>
   <NaraDayTripContent />
+  <JapanBeforeFooter slot="before-footer" currentSlug={article.slug} />
 </ArticlePage>
