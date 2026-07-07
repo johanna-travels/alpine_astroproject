@@ -2,6 +2,8 @@
 import ArticlePage from '@/components/articles/ArticlePage.astro';
 import KatsuojiTempleContent from '@/components/articles/KatsuojiTemple.astro';
 import JapanBeforeFooter from '@/components/articles/JapanBeforeFooter.astro';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import templeViewNearEntrance from '@/assets/articles/osaka/katsuoji-temple-view-near-entrance.webp';
 import { katsuojiNav } from '@/domains/articles/katsuoji-nav';
 import { getArticle } from '@/domains/articles/catalog';
 
@@ -9,6 +11,12 @@ const article = getArticle('katsuoji-temple-from-osaka')!;
 ---
 
 <ArticlePage article={article} sections={katsuojiNav}>
+  <ArticleImage
+    slot="title-media"
+    src={templeViewNearEntrance}
+    alt="View of Katsuoji Temple near the entrance, surrounded by trees"
+    caption="Katsuoji Temple view near the entrance"
+  />
   <KatsuojiTempleContent />
   <JapanBeforeFooter slot="before-footer" currentSlug={article.slug} />
 </ArticlePage>

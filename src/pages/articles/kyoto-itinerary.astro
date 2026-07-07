@@ -2,6 +2,8 @@
 import ArticlePage from '@/components/articles/ArticlePage.astro';
 import KyotoItineraryContent from '@/components/articles/KyotoItinerary.astro';
 import JapanBeforeFooter from '@/components/articles/JapanBeforeFooter.astro';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import kyotoMostIconicPhotoSpot from '@/assets/articles/kyoto/kyoto\'s-most-iconic-photo-spot.webp';
 import { kyotoNav } from '@/domains/articles/kyoto-nav';
 import { getArticle } from '@/domains/articles/catalog';
 
@@ -9,6 +11,13 @@ const article = getArticle('kyoto-itinerary')!;
 ---
 
 <ArticlePage article={article} sections={kyotoNav}>
+  <ArticleImage
+    slot="title-media"
+    src={kyotoMostIconicPhotoSpot}
+    alt="Kyoto's most iconic photo spot"
+    caption="Kyoto's most iconic photo spot"
+    imgClass="aspect-[5/4] object-cover"
+  />
   <aside
     slot="intro-media"
     class="mt-6 max-w-3xl rounded-lg bg-[#F5F2EB] px-4 py-3 text-md leading-relaxed text-black/80"

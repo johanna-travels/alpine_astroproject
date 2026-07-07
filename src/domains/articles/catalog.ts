@@ -6,7 +6,7 @@ import articleBaliTips from '@/assets/articles/bali/bali-travel-tips-aricle.webp
 import articleBruges from '@/assets/articles/cards/bruges.webp';
 import articleGreece from '@/assets/articles/cards/greece.webp';
 import articleHongKong from '@/assets/articles/hong-kong/hong-kong.webp';
-import articleKyoto from '@/assets/articles/cards/kyoto.webp';
+import articleKyoto from '@/assets/articles/kyoto/kyoto-five-story-pagoda.webp';
 import articleNara from '@/assets/articles/kyoto/nara-the-famous-bow.webp';
 import articleKatsuoji from '@/assets/articles/osaka/katsuoji-temple.webp';
 import articleKatsuojiSpring from '@/assets/articles/osaka/spring-colours-at-katsuoji-temple.webp';

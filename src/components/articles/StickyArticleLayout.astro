@@ -11,49 +11,6 @@ const tocTargets = flattenTocTargets(sections);
 ---
 
 <div class="article-layout mx-auto w-full max-w-6xl" data-article-toc>
-  <!-- Mobile / tablet: collapsible TOC bar (Elementor-style, lg and below only) -->
-  <div class="article-layout__mobile lg:hidden" data-toc-mobile>
-    <div class="article-toc-mobile" data-toc-mobile-root>
-      <div class="article-toc-mobile__header">
-        <h4 class="article-toc-mobile__title">
-          <span data-toc-current>Table of Contents</span>
-        </h4>
-        <div class="article-toc-mobile__toggles">
-          <button
-            type="button"
-            data-toc-expand
-            class="article-toc-mobile__toggle article-toc-mobile__toggle--expand"
-            aria-label="Expand table of contents"
-            aria-controls="mobile-toc"
-            aria-expanded="false"
-          >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </button>
-          <button
-            type="button"
-            data-toc-collapse
-            class="article-toc-mobile__toggle article-toc-mobile__toggle--collapse hidden"
-            aria-label="Collapse table of contents"
-            aria-controls="mobile-toc"
-            aria-expanded="true"
-          >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M4 10l4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <div class="article-toc-mobile__content-wrap">
-        <div id="mobile-toc" data-toc-panel class="article-toc-mobile__content">
-          <ArticleTocNav sections={sections} variant="mobile" />
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div class="article-layout__body">
     <!-- Desktop: slim sticky sidebar -->
     <aside class="article-layout__aside hidden lg:block">

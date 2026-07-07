@@ -2,6 +2,7 @@
 import PageShell from '@/components/layout/PageShell.astro';
 import ArticleMobileBack from '@/components/articles/ArticleMobileBack.astro';
 import StickyArticleLayout from '@/components/articles/StickyArticleLayout.astro';
+import ArticleTocNav from '@/components/articles/ArticleTocNav.astro';
 import type { Article } from '@/domains/articles/catalog';
 import type { TocGroup } from '@/domains/articles/toc';
 import { articleImageSizes, getSocialShareImage } from '@/lib/images';
@@ -40,17 +41,61 @@ const shareImage = await getSocialShareImage(article.lcpImage ?? article.image);
     <ArticleMobileBack destinationSlug={article.destinationSlug} />
     <StickyArticleLayout sections={sections}>
       <Fragment slot="intro">
-        <p class="meta text-neutral-500 mb-4">
-          {article.dateLabel ?? 'Published'} · {article.publishedDate}
-        </p>
-
         <h1 class="article-title mb-6 md:mb-8 max-w-3xl text-neutral-900">
           {article.title}
         </h1>
 
+        <p class="meta text-neutral-500 mb-4">
+          {article.dateLabel ?? 'Published'} · {article.publishedDate}
+        </p>
+
         <slot name="title-media" />
 
+        <!-- Mobile / tablet: collapsible TOC bar (lg and below only) -->
+        <div class="lg:hidden mb-6">
+          <div class="article-toc-mobile" data-toc-mobile-root>
+            <div class="article-toc-mobile__header">
+              <h4 class="article-toc-mobile__title">
+                <span data-toc-current>Table of Contents</span>
+              </h4>
+              <div class="article-toc-mobile__toggles">
+                <button
+                  type="button"
+                  data-toc-expand
+                  class="article-toc-mobile__toggle article-toc-mobile__toggle--expand"
+                  aria-label="Expand table of contents"
+                  aria-controls="mobile-toc"
+                  aria-expanded="false"
+                >
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  data-toc-collapse
+                  class="article-toc-mobile__toggle article-toc-mobile__toggle--collapse hidden"
+                  aria-label="Collapse table of contents"
+                  aria-controls="mobile-toc"
+                  aria-expanded="true"
+                >
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M4 10l4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="article-toc-mobile__content-wrap">
+              <div id="mobile-toc" data-toc-panel class="article-toc-mobile__content">
+                <ArticleTocNav sections={sections} variant="mobile" />
+              </div>
+            </div>
+          </div>
+        </div>
+
         <article class="max-w-3xl space-y-5 md:space-y-6">
+          <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Introduction</h2>
           {article.intro.map((paragraph) => (
             <p class="prose-body text-neutral-700" set:html={paragraph} />
           ))}
@@ -70,3 +115,214 @@ This article may contain affiliate links, meaning I may earn a small commission 
   </main>
   <Fragment slot="before-footer"><slot name="before-footer" /></Fragment>
 </PageShell>
+
+<button
+  id="to-top-button"
+  title="Go To Top"
+  class="lg:hidden fixed z-50 bottom-10 right-10 p-4 border-0 w-14 h-14 rounded-full shadow-md bg-black hover:bg-neutral-800 text-white text-lg font-semibold transition-colors duration-300"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+    <path d="M12 4l8 8h-6v8h-4v-8H4l8-8z" />
+  </svg>
+  <span class="sr-only">Go to top</span>
+</button>
+
+<script>
+  function initToTopButton() {
+    const toTopButton = document.getElementById("to-top-button");
+    if (!toTopButton) return;
+
+    window.onscroll = function() {
+      if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+        toTopButton.classList.remove("hidden");
+      } else {
+        toTopButton.classList.add("hidden");
+      }
+    };
+
+    toTopButton.onclick = function() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    };
+  }
+
+  initToTopButton();
+  document.addEventListener("astro:page-load", initToTopButton);
+</script>
+
+<style>
+  .article-toc-mobile {
+    --box-background-color: rgb(105 116 110);
+    position: static;
+    height: auto;
+    background-color: var(--box-background-color);
+    transition: min-height 0.4s ease;
+  }
+
+  .article-toc-mobile__header {
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    padding: 20px;
+    background: transparent;
+  }
+
+  .article-toc-mobile__title {
+    margin: 0;
+    margin-right: auto;
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: rgb(255 255 255);
+  }
+
+  .article-toc-mobile__toggles {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex-shrink: 0;
+  }
+
+  .article-toc-mobile__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border: 0;
+    border-radius: 0.25rem;
+    background: transparent;
+    color: rgb(255 255 255);
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+  }
+
+  .article-toc-mobile__toggle:hover,
+  .article-toc-mobile__toggle:focus-visible {
+    background: rgb(255 255 255 / 0.12);
+    outline: none;
+  }
+
+  .article-toc-mobile__content-wrap {
+    position: static;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s ease;
+  }
+
+  .article-toc-mobile.is-expanded .article-toc-mobile__content-wrap {
+    grid-template-rows: 1fr;
+  }
+
+  .article-toc-mobile__content {
+    position: static;
+    display: block;
+    overflow: hidden;
+    min-height: 0;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0;
+  }
+
+  .article-toc-mobile.is-expanded .article-toc-mobile__content {
+    padding: 20px;
+    max-height: var(--toc-body-max-height);
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  @media (max-width: 767px) {
+    .article-toc-mobile__title {
+      font-size: 14px;
+    }
+  }
+</style>
+
+<script define:vars={{ sections }}>
+  import { flattenTocTargets } from '@/domains/articles/toc';
+
+  function initArticleToc() {
+    const root = document.querySelector("[data-article-toc]");
+    if (!root || root.dataset.bound === "true") return;
+    root.dataset.bound = "true";
+
+    const tocTargets = flattenTocTargets(sections);
+
+    const mobileRoot = root.querySelector("[data-toc-mobile-root]");
+    const expandBtn = root.querySelector("[data-toc-expand]");
+    const collapseBtn = root.querySelector("[data-toc-collapse]");
+    const setPanelOpen = (open) => {
+      mobileRoot?.classList.toggle("is-expanded", open);
+      expandBtn?.classList.toggle("hidden", open);
+      collapseBtn?.classList.toggle("hidden", !open);
+      expandBtn?.setAttribute("aria-expanded", String(open));
+      collapseBtn?.setAttribute("aria-expanded", String(open));
+    };
+
+    const setActive = (targetId) => {
+      root.querySelectorAll("[data-toc-target]").forEach((link) => {
+        const isActive = link.dataset.tocTarget === targetId;
+        link.setAttribute("aria-current", isActive ? "true" : "false");
+      });
+    };
+
+    root.addEventListener("click", (event) => {
+      const link = event.target.closest("[data-toc-target]");
+      if (!link) return;
+
+      const targetId = link.dataset.tocTarget;
+      if (!targetId) return;
+
+      document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth" });
+      setPanelOpen(false);
+      setActive(targetId);
+    });
+
+    expandBtn?.addEventListener("click", () => setPanelOpen(true));
+    collapseBtn?.addEventListener("click", () => setPanelOpen(false));
+
+    const observed = tocTargets
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+
+    if (observed.length === 0) return;
+
+    const pickActiveSection = () => {
+      const marker = window.innerHeight * 0.35;
+      let activeTarget = observed[0].id;
+
+      for (const section of observed) {
+        if (section.getBoundingClientRect().top <= marker) {
+          activeTarget = section.id;
+        }
+      }
+
+      setActive(activeTarget);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+        if (visible.length === 0) return;
+        setActive(visible[0].target.id);
+      },
+      { rootMargin: "-25% 0px -65% 0px", threshold: 0 }
+    );
+
+    observed.forEach((section) => observer.observe(section));
+    pickActiveSection();
+    window.addEventListener("pageshow", pickActiveSection);
+  }
+
+  initArticleToc();
+  document.addEventListener("astro:page-load", initArticleToc);
+</script>

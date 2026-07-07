@@ -1,7 +1,6 @@
 ---
 import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
-import templeViewNearEntrance from '@/assets/articles/osaka/katsuoji-temple-view-near-entrance.webp';
 import collectingFirstStamp from '@/assets/articles/osaka/katsuoji-temple-collecting-the-first-stamp.webp';
 import finishedStampCard from '@/assets/articles/osaka/the-finished-katsuoji-stamp-card.webp';
 import darumaInEveryCorner from '@/assets/articles/osaka/katsuoji-temple-daruma-in-every-corner.webp';
@@ -13,12 +12,6 @@ import templeSpring from '@/assets/articles/osaka/katsuoji-temple-spring.webp';
 const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
 const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
 ---
-
-<ArticleImage
-  src={templeViewNearEntrance}
-  alt="View of Katsuoji Temple near the entrance, surrounded by trees"
-  caption="Katsuoji Temple view near the entrance"
-/>
 
 <section id="section-0" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
@@ -84,14 +77,20 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
   <div class="mb-5 max-w-3xl text-black md:mb-6">
     <h3>FAQ</h3>
   </div>
-  <div class={prose}>
-    <h4 class="mb-2 text-black">How Long Do You Need at Katsuoji Temple?</h4>
-    <p>I would allow around two hours for Katsuoji Temple. That gives you enough time to explore the grounds, collect the stamps, take photos, and enjoy the experience without rushing. If you're anything like me, you'll probably spend longer than planned simply because you keep stopping to photograph another daruma.</p>
-    <h4 class="mt-8 mb-2 text-black">Is Katsuoji Temple Worth Visiting?</h4>
-    <p>Katsuoji is not the quickest place to reach from central Osaka, but it's easily one of the most memorable places I visited in Japan. With its thousands of daruma dolls, unique stamp card experience, beautiful views, and peaceful atmosphere, it offers a completely different side of Osaka and is well worth the journey.</p>
-    <h4 class="mt-8 mb-2 text-black">When Is the Best Time to Visit Katsuoji?</h4>
-    <p>I visited Katsuoji in spring, and the cherry blossoms made the experience even more memorable. Seeing the pink blossoms alongside the thousands of red daruma made the temple feel even more photogenic and gave some of my favourite photos from Japan.</p>
-    <p>Because of that, I would happily recommend visiting during cherry blossom season. I haven't visited in autumn, but with all the trees around the temple, I imagine the red and orange leaves would make the scenery just as impressive.</p>
+  <div class={`${prose} space-y-6`}>
+    <div id="faq-0" class="scroll-mt-nav">
+      <h4 class="mb-2 text-black">1. How Long Do You Need at Katsuoji Temple?</h4>
+      <p>I would allow around two hours for Katsuoji Temple. That gives you enough time to explore the grounds, collect the stamps, take photos, and enjoy the experience without rushing. If you're anything like me, you'll probably spend longer than planned simply because you keep stopping to photograph another daruma.</p>
+    </div>
+    <div id="faq-1" class="scroll-mt-nav">
+      <h4 class="mb-2 text-black">2. Is Katsuoji Temple Worth Visiting?</h4>
+      <p>Katsuoji is not the quickest place to reach from central Osaka, but it's easily one of the most memorable places I visited in Japan. With its thousands of daruma dolls, unique stamp card experience, beautiful views, and peaceful atmosphere, it offers a completely different side of Osaka and is well worth the journey.</p>
+    </div>
+    <div id="faq-2" class="scroll-mt-nav">
+      <h4 class="mb-2 text-black">3. When Is the Best Time to Visit Katsuoji?</h4>
+      <p>I visited Katsuoji in spring, and the cherry blossoms made the experience even more memorable. Seeing the pink blossoms alongside the thousands of red daruma made the temple feel even more photogenic and gave some of my favourite photos from Japan.</p>
+      <p>Because of that, I would happily recommend visiting during cherry blossom season. I haven't visited in autumn, but with all the trees around the temple, I imagine the red and orange leaves would make the scenery just as impressive.</p>
+    </div>
   </div>
 </section>
 
