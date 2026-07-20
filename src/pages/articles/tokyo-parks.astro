@@ -1,0 +1,24 @@
+---
+import ArticlePage from '@/components/articles/ArticlePage.astro';
+import TokyoParksContent from '@/components/articles/TokyoParks.astro';
+import JapanBeforeFooter from '@/components/articles/JapanBeforeFooter.astro';
+import { tokyoParksNav } from '@/domains/articles/tokyo-parks-nav';
+import { getArticle } from '@/domains/articles/catalog';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import tokyoParksHero from '@/assets/articles/tokyo/tokyo-parks-gardens.webp';
+
+const article = getArticle('tokyo-parks')!;
+---
+
+<ArticlePage article={article} sections={tokyoParksNav}>
+  <figure slot="title-media">
+    <ArticleImage
+      src={tokyoParksHero}
+      alt="Cherry blossom path in a Tokyo park during sakura season"
+      caption="Cherry blossoms in Tokyo"
+      imgClass="aspect-[5/4] object-cover"
+    />
+  </figure>
+  <TokyoParksContent />
+  <JapanBeforeFooter slot="before-footer" currentSlug={article.slug} />
+</ArticlePage>

@@ -4,11 +4,16 @@ import BaliCafesContent from '@/components/articles/BaliCafes.astro';
 import BaliBeforeFooter from '@/components/articles/BaliBeforeFooter.astro';
 import { baliNav } from '@/domains/articles/bali-nav';
 import { getArticle } from '@/domains/articles/catalog';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import baliCafeScene from '@/assets/articles/bali/a-glimpse-of-bali’s-vibrant-café-scene.webp';
 
 const article = getArticle('bali-cafes')!;
 ---
 
 <ArticlePage article={article} sections={baliNav}>
+  <figure slot="title-media">
+    <ArticleImage src={baliCafeScene} alt="A glimpse of Bali's vibrant café scene" caption="A glimpse of Bali's vibrant café scene" imgClass="aspect-[5/4] object-cover" />
+  </figure>
   <BaliCafesContent />
   <BaliBeforeFooter slot="before-footer" currentSlug={article.slug} />
 </ArticlePage>

@@ -1,0 +1,24 @@
+---
+import ArticlePage from '@/components/articles/ArticlePage.astro';
+import KamakuraDayTripContent from '@/components/articles/KamakuraDayTrip.astro';
+import JapanBeforeFooter from '@/components/articles/JapanBeforeFooter.astro';
+import { kamakuraDayTripNav } from '@/domains/articles/kamakura-day-trip-nav';
+import { getArticle } from '@/domains/articles/catalog';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import kamakuraStation from '@/assets/articles/tokyo/kamakura-gokurakuji-station.webp';
+
+const article = getArticle('kamakura-day-trip-from-tokyo')!;
+---
+
+<ArticlePage article={article} sections={kamakuraDayTripNav}>
+  <figure slot="title-media">
+    <ArticleImage
+      src={kamakuraStation}
+      alt="Gokurakuji Station in Kamakura with cherry blossoms"
+      caption="Gokurakuji Station"
+      imgClass="aspect-[5/4] object-cover"
+    />
+  </figure>
+  <KamakuraDayTripContent />
+  <JapanBeforeFooter slot="before-footer" currentSlug={article.slug} />
+</ArticlePage>

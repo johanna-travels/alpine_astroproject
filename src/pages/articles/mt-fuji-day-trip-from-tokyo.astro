@@ -1,0 +1,19 @@
+---
+import ArticlePage from '@/components/articles/ArticlePage.astro';
+import MtFujiDayTripContent from '@/components/articles/MtFujiDayTrip.astro';
+import JapanBeforeFooter from '@/components/articles/JapanBeforeFooter.astro';
+import { mtFujiDayTripNav } from '@/domains/articles/mt-fuji-day-trip-nav';
+import { getArticle } from '@/domains/articles/catalog';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import mtFuji from '@/assets/articles/tokyo/mt-fuji-japan.webp';
+
+const article = getArticle('mt-fuji-day-trip-from-tokyo')!;
+---
+
+<ArticlePage article={article} sections={mtFujiDayTripNav}>
+  <figure slot="title-media">
+    <ArticleImage src={mtFuji} alt="Mount Fuji" caption="Mount Fuji" imgClass="aspect-[5/4] object-cover" />
+  </figure>
+  <MtFujiDayTripContent />
+  <JapanBeforeFooter slot="before-footer" currentSlug={article.slug} />
+</ArticlePage>

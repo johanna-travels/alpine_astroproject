@@ -1,0 +1,24 @@
+---
+import ArticlePage from '@/components/articles/ArticlePage.astro';
+import TokyoTemplesContent from '@/components/articles/TokyoTemples.astro';
+import JapanBeforeFooter from '@/components/articles/JapanBeforeFooter.astro';
+import { tokyoTemplesNav } from '@/domains/articles/tokyo-temples-nav';
+import { getArticle } from '@/domains/articles/catalog';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import tokyoTemplesHero from '@/assets/articles/tokyo/tokyo-temples-shrines.webp';
+
+const article = getArticle('tokyo-temples')!;
+---
+
+<ArticlePage article={article} sections={tokyoTemplesNav}>
+  <figure slot="title-media">
+    <ArticleImage
+      src={tokyoTemplesHero}
+      alt="Kaminarimon Gate lantern at Sensō-ji Temple in Asakusa, Tokyo"
+      caption="Kaminarimon Gate at Sensō-ji"
+      imgClass="aspect-[5/4] object-cover"
+    />
+  </figure>
+  <TokyoTemplesContent />
+  <JapanBeforeFooter slot="before-footer" currentSlug={article.slug} />
+</ArticlePage>

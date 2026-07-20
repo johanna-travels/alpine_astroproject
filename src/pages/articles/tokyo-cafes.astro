@@ -1,0 +1,24 @@
+---
+import ArticlePage from '@/components/articles/ArticlePage.astro';
+import TokyoCafesContent from '@/components/articles/TokyoCafes.astro';
+import JapanBeforeFooter from '@/components/articles/JapanBeforeFooter.astro';
+import { tokyoCafesNav } from '@/domains/articles/tokyo-cafes-nav';
+import { getArticle } from '@/domains/articles/catalog';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import tokyoCafeHero from '@/assets/articles/tokyo/best-cafe-tokyo-1.webp';
+
+const article = getArticle('tokyo-cafes')!;
+---
+
+<ArticlePage article={article} sections={tokyoCafesNav}>
+  <figure slot="title-media">
+    <ArticleImage
+      src={tokyoCafeHero}
+      alt="3D cat latte art in a pink teacup at a Tokyo café"
+      caption="3D latte art in Tokyo"
+      imgClass="aspect-[5/4] object-cover"
+    />
+  </figure>
+  <TokyoCafesContent />
+  <JapanBeforeFooter slot="before-footer" currentSlug={article.slug} />
+</ArticlePage>

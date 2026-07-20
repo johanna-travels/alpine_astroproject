@@ -11,12 +11,19 @@ import articleNara from '@/assets/articles/kyoto/nara-the-famous-bow.webp';
 import articleKatsuoji from '@/assets/articles/osaka/katsuoji-temple.webp';
 import articleKatsuojiSpring from '@/assets/articles/osaka/spring-colours-at-katsuoji-temple.webp';
 import articleOsaka from '@/assets/articles/osaka/namba-yasaka.webp';
+import articleOsakaNew from '@/assets/articles/osaka/osaka.webp';
+import articleMtFuji from '@/assets/articles/tokyo/mt-fuji-japan.webp';
+import articleKamakura from '@/assets/articles/tokyo/kamakura-gokurakuji-station.webp';
+import articleTokyoCafes from '@/assets/articles/tokyo/best-cafe-tokyo-1.webp';
+import articleTokyoParks from '@/assets/articles/tokyo/tokyo-parks-gardens.webp';
+import articleTokyoTemples from '@/assets/articles/tokyo/tokyo-temples-shrines.webp';
+import articleTokyoItinerary from '@/assets/articles/tokyo/tokyo-5-day-itinerary.webp';
 import rhodesLcpImage from '@/assets/articles/rhodes/rhodes-old-town-cobblestone-street.webp';
 import articleParga from '@/assets/articles/parga/parga-from-above.webp';
 import type { DestinationSlug } from '@/domains/destinations/catalog';
 import { pageUrl } from '@/lib/site';
 
-export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary';
+export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'mt-fuji-day-trip-from-tokyo' | 'kamakura-day-trip-from-tokyo' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary' | 'tokyo-cafes' | 'tokyo-parks' | 'tokyo-temples' | 'tokyo-5-day-itinerary';
 
 export interface Article {
   slug: ArticleSlug;
@@ -104,7 +111,7 @@ export const articles: readonly Article[] = [
     breadcrumbTitle: 'Osaka Itinerary',
     metaLabel: 'Japan',
     alt: 'Osaka itinerary travel guide',
-    image: articleOsaka,
+    image: articleOsakaNew,
     publishedDate: '29 June 2026',
     dateLabel: 'Last updated',
     intro: [
@@ -113,6 +120,112 @@ export const articles: readonly Article[] = [
       "If you're looking for a mix of iconic sights, local food and a slightly different side of Osaka, this itinerary is a great place to start.",
     ],
     lead: 'A relaxed one-day Osaka itinerary combining a peaceful morning shrine with the daruma-filled grounds of Katsuoji Temple.',
+  },
+  {
+    slug: 'mt-fuji-day-trip-from-tokyo',
+    destinationSlug: 'japan',
+    category: 'JAPAN',
+    title: 'Mount Fuji Day Trip from Tokyo',
+    carouselTitle: 'Mount Fuji Day Trip from Tokyo',
+    breadcrumbTitle: 'Mount Fuji Day Trip',
+    metaLabel: 'Japan',
+    alt: 'Mount Fuji day trip travel guide',
+    image: articleMtFuji,
+    publishedDate: '20 July 2026',
+    intro: [
+      "A Mount Fuji day trip from Tokyo is one of the most popular experiences you can add to a Japan itinerary, but it is also one of the most weather-dependent. Clouds can hide the mountain completely, even if you are already in the area, so it is important to keep your expectations realistic. Still, if you only have room for one day trip from Tokyo, Mount Fuji is definitely worth considering.",
+      "I booked my bus ticket for my Mount Fuji day trip at the last minute because I kept checking the weather forecast and did not want to risk going on a day with poor visibility. It felt a little stressful at the time, but the views made it absolutely worth it.",
+      "In this guide, I'll share the exact stops I visited, what to know before you go, and the easiest ways to plan a Mount Fuji day trip from Tokyo.",
+    ],
+    lead: 'A complete guide to visiting Mount Fuji as a day trip from Tokyo, including the best viewing spots and practical travel tips.',
+  },
+  {
+    slug: 'kamakura-day-trip-from-tokyo',
+    destinationSlug: 'japan',
+    category: 'JAPAN',
+    title: 'Kamakura Day Trip from Tokyo: Temples, Hidden Gems & Seaside Views',
+    carouselTitle: 'Kamakura Day Trip from Tokyo: Temples, Hidden Gems & Seaside Views',
+    breadcrumbTitle: 'Kamakura Day Trip',
+    metaLabel: 'Japan',
+    alt: 'Gokurakuji Station in Kamakura with cherry blossoms',
+    image: articleKamakura,
+    publishedDate: '20 July 2026',
+    intro: [
+      'Kamakura is one of the best day trips from Tokyo if you want to experience a different side of Japan without traveling too far. It has temples, shrines, traditional streets, local food, sea views, and a much calmer atmosphere than central Tokyo.',
+      'You can visit Kamakura as a half-day trip if you only want to see the main highlights, but it also works beautifully as a full-day escape if you want more time for temples, food, and coastal views. For a first visit, I would focus on Hasedera, Kotoku-in, and Komachi Street, then add extra stops like Goryo Shrine, Hokokuji Temple, or Shichirigahama Beach depending on your time, energy, and the weather.',
+    ],
+    lead: 'A Kamakura day trip from Tokyo covering temples, hidden gems, and seaside views.',
+  },
+  {
+    slug: 'tokyo-5-day-itinerary',
+    destinationSlug: 'japan',
+    category: 'JAPAN',
+    title: '5 Days in Tokyo: The Perfect Itinerary for First-Time Visitors',
+    carouselTitle: '5 Days in Tokyo: The Perfect Itinerary for First-Time Visitors',
+    breadcrumbTitle: 'Tokyo 5-Day Itinerary',
+    metaLabel: 'Japan',
+    alt: 'Five-story pagoda at Sensō-ji Temple in Asakusa, Tokyo',
+    image: articleTokyoItinerary,
+    publishedDate: '20 July 2026',
+    intro: [
+      'Tokyo is huge, exciting, and overwhelming — especially if it is your first time visiting. Distances are bigger than they look on the map, train stations can feel like small cities, and trying to see everything in one trip can quickly become exhausting.',
+      'This 5-day Tokyo itinerary is based on my own 6-night stay in the city and is organized by area to help you see the highlights without spending your whole trip moving back and forth across town. It includes traditional temples, futuristic museums, food experiences, shopping streets, neon neighborhoods, and two easy day trips from Tokyo, while still leaving enough flexibility to adjust each day to your own pace.',
+      'Before you go, don’t miss the practical <a href="#section-6" class="underline underline-offset-2 text-[#5B6560] hover:text-[#3d4441]">FAQ section</a> at the end of this article, where I answer the most important questions for planning your first trip to Tokyo.',
+    ],
+    lead: 'A 5-day Tokyo itinerary organized by area — temples, neon neighborhoods, food, and easy day trips without constant cross-city travel.',
+  },
+  {
+    slug: 'tokyo-cafes',
+    destinationSlug: 'japan',
+    category: 'JAPAN',
+    title: '5 Best Cafés in Tokyo to Add to Your Itinerary',
+    carouselTitle: '5 Best Cafés in Tokyo to Add to Your Itinerary',
+    breadcrumbTitle: 'Tokyo Cafés',
+    metaLabel: 'Japan',
+    alt: '3D cat latte art in a pink teacup at a Tokyo café',
+    image: articleTokyoCafes,
+    publishedDate: '20 July 2026',
+    intro: [
+      'Tokyo is a dream city for coffee lovers. Beyond the temples, neon streets, sushi counters, and ramen shops, the city has an incredible café scene filled with specialty coffee, creative latte art, cozy interiors, and unique experiences you will not find everywhere else.',
+      'During my trip to Tokyo, I dedicated part of one day to café hopping and visited some of the coffee spots that had been sitting on my list for months. Some were worth visiting for the coffee, while others stood out for their atmosphere.',
+      'One thing to know before planning your own Tokyo café crawl is that many cafés do not open very early. Unlike some cities where coffee shops are busy from sunrise, a lot of Tokyo cafés open around 10:00 AM, 11:00 AM, or even later depending on the day. Always check the opening hours before you go, especially if you are planning your itinerary around a specific café.',
+      'If you are looking for unique cafés in Tokyo, these are five coffee spots I recommend adding to your itinerary.',
+    ],
+    lead: 'Tokyo is a dream city for coffee lovers — five unique café spots worth adding to your itinerary.',
+  },
+  {
+    slug: 'tokyo-parks',
+    destinationSlug: 'japan',
+    category: 'JAPAN',
+    title: 'Best Parks and Gardens in Tokyo to Add to Your Itinerary',
+    carouselTitle: 'Best Parks and Gardens in Tokyo to Add to Your Itinerary',
+    breadcrumbTitle: 'Tokyo Parks',
+    metaLabel: 'Japan',
+    alt: 'Cherry blossom path in a Tokyo park during sakura season',
+    image: articleTokyoParks,
+    publishedDate: '20 July 2026',
+    intro: [
+      'Tokyo may be known for neon streets, busy stations, shopping districts, and endless food spots, but the city also has some beautiful green spaces that are worth adding to your itinerary. This guide is for you if you love nature, enjoy peaceful city corners, or simply want a green place to take a break while exploring Tokyo.',
+      'I’ve pinned the parks and gardens mentioned in this guide on my Ultimate Tokyo Map, which you can find inside my 5-day Tokyo itinerary. You can save the map for your trip and use it to see if there is a park or garden near the area you are exploring that day — perfect for taking a break from Tokyo’s busy streets.',
+    ],
+    lead: 'Tokyo’s best parks and gardens for a green break from neon streets, busy stations, and endless food spots.',
+  },
+  {
+    slug: 'tokyo-temples',
+    destinationSlug: 'japan',
+    category: 'JAPAN',
+    title: 'Best Temples and Shrines in Tokyo to Add to Your Itinerary',
+    carouselTitle: 'Best Temples and Shrines in Tokyo to Add to Your Itinerary',
+    breadcrumbTitle: 'Tokyo Temples',
+    metaLabel: 'Japan',
+    alt: 'Kaminarimon Gate lantern at Sensō-ji Temple in Asakusa, Tokyo',
+    image: articleTokyoTemples,
+    publishedDate: '20 July 2026',
+    intro: [
+      'You have probably already heard of famous Tokyo temples and shrines like Sensō-ji and Meiji Jingu, and of course, they deserve a place on this list. But Tokyo also has a few beautiful hidden gems that many visitors still overlook, from the red torii gates of Hie Shrine to the lucky cats of Gotokuji Temple.',
+      'I’ve pinned all the temples and shrines mentioned in this guide on my Ultimate Tokyo Map, which you can find inside my 5-day Tokyo itinerary. You can save the map for your trip and use it to see which stops fit naturally into the area you are exploring that day.',
+    ],
+    lead: 'Famous Tokyo temples and quieter hidden gems — from Sensō-ji and Meiji Jingu to Hie Shrine and Gotokuji.',
   },
   {
     slug: 'bali-cafes',

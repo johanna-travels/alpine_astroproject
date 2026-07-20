@@ -4,11 +4,16 @@ import OsakaItineraryContent from '@/components/articles/OsakaItinerary.astro';
 import JapanBeforeFooter from '@/components/articles/JapanBeforeFooter.astro';
 import { osakaItineraryNav } from '@/domains/articles/osaka-itinerary-nav';
 import { getArticle } from '@/domains/articles/catalog';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import experienceOsaka from '@/assets/articles/osaka/experience-the-best-of-osaka-in-a-single-day.webp';
 
 const article = getArticle('osaka-1-day-itinerary')!;
 ---
 
 <ArticlePage article={article} sections={osakaItineraryNav}>
+  <figure slot="title-media">
+    <ArticleImage src={experienceOsaka} alt="Experience the best of Osaka in a single day" caption="Experience the best of Osaka in a single day" imgClass="aspect-[5/4] object-cover" />
+  </figure>
   <aside
     slot="intro-media"
     class="mt-6 max-w-3xl rounded-lg bg-[#F5F2EB] px-4 py-3 text-md leading-relaxed text-black/80"

@@ -1,0 +1,24 @@
+---
+import ArticlePage from '@/components/articles/ArticlePage.astro';
+import Tokyo5DayItineraryContent from '@/components/articles/Tokyo5DayItinerary.astro';
+import JapanBeforeFooter from '@/components/articles/JapanBeforeFooter.astro';
+import { tokyo5DayItineraryNav } from '@/domains/articles/tokyo-5-day-itinerary-nav';
+import { getArticle } from '@/domains/articles/catalog';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import tokyoItineraryHero from '@/assets/articles/tokyo/tokyo-5-day-itinerary.webp';
+
+const article = getArticle('tokyo-5-day-itinerary')!;
+---
+
+<ArticlePage article={article} sections={tokyo5DayItineraryNav}>
+  <figure slot="title-media">
+    <ArticleImage
+      src={tokyoItineraryHero}
+      alt="Five-story pagoda at Sensō-ji Temple in Asakusa, Tokyo"
+      caption="Sensō-ji pagoda, Asakusa"
+      imgClass="aspect-[5/4] object-cover"
+    />
+  </figure>
+  <Tokyo5DayItineraryContent />
+  <JapanBeforeFooter slot="before-footer" currentSlug={article.slug} />
+</ArticlePage>
