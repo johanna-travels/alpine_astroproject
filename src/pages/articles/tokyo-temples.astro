@@ -5,7 +5,7 @@ import JapanBeforeFooter from '@/components/articles/JapanBeforeFooter.astro';
 import { tokyoTemplesNav } from '@/domains/articles/tokyo-temples-nav';
 import { getArticle } from '@/domains/articles/catalog';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
-import tokyoTemplesHero from '@/assets/articles/tokyo/tokyo-temples-shrines.webp';
+import tokyoTemplesHero from '@/assets/articles/tokyo/tokyo-5-day-itinerary.webp';
 
 const article = getArticle('tokyo-temples')!;
 ---
@@ -14,8 +14,8 @@ const article = getArticle('tokyo-temples')!;
   <figure slot="title-media">
     <ArticleImage
       src={tokyoTemplesHero}
-      alt="Kaminarimon Gate lantern at Sensō-ji Temple in Asakusa, Tokyo"
-      caption="Kaminarimon Gate at Sensō-ji"
+      alt="Five-story pagoda at Sensō-ji Temple in Asakusa, Tokyo"
+      caption="Sensō-ji pagoda, Asakusa"
       imgClass="aspect-[5/4] object-cover"
     />
   </figure>

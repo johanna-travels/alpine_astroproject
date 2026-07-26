@@ -1,0 +1,55 @@
+---
+import type { ImageMetadata } from 'astro';
+import {
+  buildArticleShareItems,
+  getShareItemIcon,
+} from '@/lib/articleShareLinks';
+
+interface Props {
+  title: string;
+  pinImage?: ImageMetadata;
+  class?: string;
+}
+
+const { title, pinImage, class: className = '' } = Astro.props;
+
+const shareItems = await buildArticleShareItems({
+  title,
+  pathname: Astro.url.pathname,
+  pinImage,
+});
+
+const linkClass =
+  'inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#69746E] text-white transition-opacity duration-200 hover:opacity-20 focus-visible:opacity-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#69746E]';
+---
+
+<div class:list={['article-share', className]}>
+  <h3 class="mb-3 text-sm font-semibold tracking-wide text-[#69746E]">Share this:</h3>
+  <ul class="m-0 flex list-none flex-wrap items-center gap-2 p-0">
+    {
+      shareItems.map((item) => {
+        const icon = getShareItemIcon(item.icon);
+        return (
+          <li>
+            <a
+              href={item.href}
+              class={linkClass}
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+              aria-label={item.label}
+            >
+              <svg
+                class="h-[18px] w-[18px]"
+                viewBox={icon.viewBox}
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path d={icon.path} />
+              </svg>
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</div>

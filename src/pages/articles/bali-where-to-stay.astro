@@ -1,0 +1,25 @@
+---
+import ArticlePage from '@/components/articles/ArticlePage.astro';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import BaliWhereToStayContent from '@/components/articles/BaliWhereToStay.astro';
+import BaliBeforeFooter from '@/components/articles/BaliBeforeFooter.astro';
+import { baliWhereToStayNav } from '@/domains/articles/bali-where-to-stay-nav';
+import { getArticle } from '@/domains/articles/catalog';
+import baliUdayaResort from '@/assets/articles/bali/bali-the-udaya-resort.webp';
+
+const article = getArticle('bali-where-to-stay')!;
+---
+
+<ArticlePage article={article} sections={baliWhereToStayNav}>
+  <ArticleImage
+    slot="title-media"
+    src={baliUdayaResort}
+    alt="The Udaya Resort in Bali"
+    caption="The Udaya Resort in Bali"
+    figureClass="mb-6 max-w-3xl md:mb-8"
+    imgClass="aspect-[5/4] object-cover"
+    priority
+  />
+  <BaliWhereToStayContent />
+  <BaliBeforeFooter slot="before-footer" currentSlug={article.slug} />
+</ArticlePage>

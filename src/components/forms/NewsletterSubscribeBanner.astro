@@ -1,0 +1,124 @@
+---
+import NewsletterForm from '@/components/forms/NewsletterForm.astro';
+
+interface Props {
+  class?: string;
+  title?: string;
+  description?: string;
+  /** localStorage key for dismiss state (use unique keys if multiple banners on one site) */
+  storageKey?: string;
+}
+
+const {
+  class: className = '',
+  title = 'Subscribe to the newsletter',
+  description =
+    'Curated places, beautiful stays and stories worth remembering — straight to your inbox when new guides go live.',
+  storageKey = 'voyaflair_newsletter_banner_dismissed',
+} = Astro.props;
+
+const bannerId = `newsletter-banner-${crypto.randomUUID().slice(0, 8)}`;
+---
+
+<div
+  class:list={['newsletter-subscribe-banner w-full', className]}
+  data-newsletter-banner-root
+  data-storage-key={storageKey}
+>
+  <section
+    id={bannerId}
+    class="newsletter-subscribe-banner__panel"
+    aria-labelledby={`${bannerId}-title`}
+    data-newsletter-banner-panel
+  >
+    <div
+      class="relative mx-auto flex w-full max-w-5xl flex-wrap items-center rounded-xl border border-[#E5DFD4] bg-[#F5F2EB] p-5 text-left md:p-8 lg:flex-nowrap"
+    >
+      <button
+        type="button"
+        class="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full text-[#69746E] transition-opacity duration-200 hover:opacity-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#69746E] md:right-4 md:top-4"
+        aria-label="Close newsletter signup"
+        aria-controls={bannerId}
+        data-newsletter-banner-close
+      >
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path
+            d="M4 4l8 8M12 4l-8 8"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          />
+        </svg>
+      </button>
+
+      <div class="mb-5 w-full flex-1 pr-8 md:mb-0 md:w-1/2 md:pr-5 lg:pr-10">
+        <h3 id={`${bannerId}-title`} class="mb-2 text-neutral-900">
+          {title}
+        </h3>
+        <p class="prose-body text-black/70">{description}</p>
+      </div>
+      <div class="w-full flex-1 px-0 md:w-auto lg:w-1/2">
+        <NewsletterForm variant="banner" />
+      </div>
+    </div>
+  </section>
+
+  <button
+    type="button"
+    class="newsletter-subscribe-banner__toggle hidden text-sm text-[#69746E] underline underline-offset-2 transition-opacity duration-200 hover:opacity-20"
+    aria-expanded="false"
+    aria-controls={bannerId}
+    data-newsletter-banner-open
+  >
+    Subscribe to the newsletter
+  </button>
+</div>
+
+<script>
+  function initNewsletterBanners() {
+    document.querySelectorAll('[data-newsletter-banner-root]').forEach((root) => {
+      if (root.dataset.bound === 'true') return;
+      root.dataset.bound = 'true';
+
+      const storageKey = root.dataset.storageKey || 'voyaflair_newsletter_banner_dismissed';
+      const panel = root.querySelector('[data-newsletter-banner-panel]');
+      const closeBtn = root.querySelector('[data-newsletter-banner-close]');
+      const openBtn = root.querySelector('[data-newsletter-banner-open]');
+
+      if (!panel || !closeBtn || !openBtn) return;
+
+      const setOpen = (open, persist = true) => {
+        panel.classList.toggle('hidden', !open);
+        openBtn.classList.toggle('hidden', open);
+        openBtn.setAttribute('aria-expanded', String(open));
+        if (persist) {
+          try {
+            if (open) {
+              localStorage.removeItem(storageKey);
+            } else {
+              localStorage.setItem(storageKey, '1');
+            }
+          } catch {
+            /* ignore */
+          }
+        }
+      };
+
+      let dismissed = false;
+      try {
+        dismissed = localStorage.getItem(storageKey) === '1';
+      } catch {
+        dismissed = false;
+      }
+      if (dismissed) {
+        setOpen(false, false);
+      }
+
+      closeBtn.addEventListener('click', () => setOpen(false));
+      openBtn.addEventListener('click', () => setOpen(true));
+    });
+  }
+
+  initNewsletterBanners();
+  document.addEventListener('astro:page-load', initNewsletterBanners);
+</script>

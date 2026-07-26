@@ -1,11 +1,12 @@
 ---
 import ArticlePage from '@/components/articles/ArticlePage.astro';
+import ArticleGoogleMap from '@/components/articles/ArticleGoogleMap.astro';
 import Tokyo5DayItineraryContent from '@/components/articles/Tokyo5DayItinerary.astro';
 import JapanBeforeFooter from '@/components/articles/JapanBeforeFooter.astro';
 import { tokyo5DayItineraryNav } from '@/domains/articles/tokyo-5-day-itinerary-nav';
 import { getArticle } from '@/domains/articles/catalog';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
-import tokyoItineraryHero from '@/assets/articles/tokyo/tokyo-5-day-itinerary.webp';
+import tokyoItineraryHero from '@/assets/articles/tokyo/tokyo-temples-shrines.webp';
 
 const article = getArticle('tokyo-5-day-itinerary')!;
 ---
@@ -14,11 +15,16 @@ const article = getArticle('tokyo-5-day-itinerary')!;
   <figure slot="title-media">
     <ArticleImage
       src={tokyoItineraryHero}
-      alt="Five-story pagoda at Sensō-ji Temple in Asakusa, Tokyo"
-      caption="Sensō-ji pagoda, Asakusa"
+      alt="Kaminarimon Gate lantern at Sensō-ji Temple in Asakusa, Tokyo"
+      caption="Kaminarimon Gate at Sensō-ji"
       imgClass="aspect-[5/4] object-cover"
     />
   </figure>
+  <ArticleGoogleMap
+    title="Google Map of Tokyo"
+    description="You'll find every place mentioned in this guide pinned on my Ultimate Tokyo Map, including attractions, cafés, restaurants, photo spots, hotel areas, and day trip ideas — making it easy to follow the same route during your visit."
+    mapId="1AQZNKssNk4vIyfdUcInuploIbuNpTzQ"
+  />
   <Tokyo5DayItineraryContent />
   <JapanBeforeFooter slot="before-footer" currentSlug={article.slug} />
 </ArticlePage>

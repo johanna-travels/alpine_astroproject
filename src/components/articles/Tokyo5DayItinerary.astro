@@ -2,12 +2,56 @@
 import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
 import { articleHref } from '@/domains/articles/catalog';
-import sensojiPagoda from '@/assets/articles/tokyo/tokyo-5-day-itinerary.webp';
-import sensojiGate from '@/assets/articles/tokyo/tokyo-temples-shrines.webp';
+
+import benizuruChocolate from '@/assets/articles/tokyo/benizuru-chocolate-banana-pancakes.webp';
+import benizuruSavory from '@/assets/articles/tokyo/benizuru-savory-pancakes-bacon-eggs.webp';
+import sensojiGate from '@/assets/articles/tokyo/asakusa-sensoji-kaminarimon-gate-tokyo.webp';
+import sensojiPagoda from '@/assets/articles/tokyo/asakusa-sensoji-five-story-pagoda-tokyo.webp';
+import sensojiNakamise from '@/assets/articles/tokyo/asakusa-sensoji-nakamise-street-early-morning-tokyo.webp';
+import sensojiLantern from '@/assets/articles/tokyo/asakusa-sensoji-temple-lantern-tokyo.webp';
+import shiraiwaCooking from '@/assets/articles/tokyo/asakusa-shiraiwa-okonomiyaki-tokyo-cooking.webp';
+import shiraiwaMonja from '@/assets/articles/tokyo/asakusa-shiraiwa-okonomiyaki-monja-tokyo.webp';
+import omoideYokocho from '@/assets/articles/tokyo/shinjuku-omoide-yokocho-tokyo.webp';
+import shinjukuCat from '@/assets/articles/tokyo/shinjuku-3d-cat-billboard-tokyo.webp';
+
+import teamlabBorderless from '@/assets/articles/tokyo/teamlab-borderless-tokyo.webp';
+import teamlabDigitalArt from '@/assets/articles/tokyo/teamlab-borderless-digital-art-tokyo.webp';
+import hillsHouseCafe from '@/assets/articles/tokyo/hills-house-sky-room-cafe-bar-tokyo.webp';
+import tokyoTowerHillsView from '@/assets/articles/tokyo/tokyo-tower-view-hills-house-sky-room.webp';
+import tokyoTowerHillsViewAlt from '@/assets/articles/tokyo/tokyo-tower-hills-house-sky-room-view.webp';
+import tokyoTowerStairs from '@/assets/articles/tokyo/tokyo-tower-staircase-photo-spot.webp';
+import hieToriiStairs from '@/assets/articles/tokyo/hie-shrine-torii-stairs-tokyo.webp';
+import hieToriiWalk from '@/assets/articles/tokyo/walking-through-hie-shrine-torii-gates-tokyo.webp';
+import akasakaHarryPotter from '@/assets/articles/tokyo/akasaka-station-harry-potter-tokyo.webp';
+import akasakaOwl from '@/assets/articles/tokyo/akasaka-station-harry-potter-owl-display-tokyo.webp';
+import harryPotterCafe from '@/assets/articles/tokyo/harry-potter-cafe-akasaka-tokyo.webp';
+
+import meijiTorii from '@/assets/articles/tokyo/meiji-jingu-torii-gate-tokyo.webp';
+import meijiSakeBarrels from '@/assets/articles/tokyo/meiji-jingu-sake-barrels-tokyo.webp';
+import meijiSakeBarrelsWide from '@/assets/articles/tokyo/sake-barrels-meiji-jingu-shrine-tokyo.webp';
+import takeshitaStreet from '@/assets/articles/tokyo/takeshita-street-harajuku-tokyo.webp';
+import sweetBoxCrepes from '@/assets/articles/tokyo/sweet-box-crepes-harajuku-tokyo.webp';
+import uniDonuts from '@/assets/articles/tokyo/uni-donuts-harajuku-tokyo.webp';
+import shibuyaCrossing from '@/assets/articles/tokyo/shibuya-crossing-view-mags-park-tokyo.webp';
+import hachikoStatue from '@/assets/articles/tokyo/shibuya-hachiko-statue-tokyo.webp';
+import shibuyaSkyDeck from '@/assets/articles/tokyo/shibuya-sky-observation-deck-tokyo.webp';
+import shibuyaSkyView from '@/assets/articles/tokyo/shibuya-sky-tokyo-view.webp';
+
+import kamakuraGoryo from '@/assets/articles/tokyo/kamakura-goryo-shrine.webp';
+import kamakuraHasederaEntrance from '@/assets/articles/tokyo/kamakura-hasedera-temple-entrance.webp';
+import kamakuraHasederaBamboo from '@/assets/articles/tokyo/kamakura-hasedera-temple-bamboo.webp';
+import kamakuraBuddha from '@/assets/articles/tokyo/kamakura-great-buddha-kotokuin.webp';
+import kamakuraKomachi from '@/assets/articles/tokyo/kamakura-komachi-dori-street.webp';
+
+import fujiHoncho from '@/assets/articles/tokyo/mount-fuji-honcho-2-chome-shopping-street-fujiyoshida.webp';
+import fujiChureito from '@/assets/articles/tokyo/chureito-pagoda-mount-fuji-arakurayama-sengen-park.webp';
+import fujiTrainTracks from '@/assets/articles/tokyo/mount-fuji-train-tracks-arakurayama-sengen-park.webp';
 
 const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
 const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]';
 const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
+const infoBox =
+  'my-5 max-w-3xl rounded-lg bg-[#F5F2EB] px-6 py-5 text-md leading-relaxed text-black/80 md:my-8';
 ---
 
 <section id="section-0" class="scroll-mt-nav">
@@ -18,8 +62,9 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
     <p>Sensō-ji Temple is a perfect place to begin your first full day in Tokyo, with traditional gates, temple grounds, and the historic streets of Asakusa. Later in the day, Shinjuku brings a completely different side of the city, with neon signs, tiny alleyways, and late-night energy.</p>
   </div>
 
-  <div class="my-5 max-w-3xl rounded-lg bg-[#F5F2EB] px-6 py-5 text-md leading-relaxed text-black/80 md:my-8">
-    <p class="mb-3"><span class="font-medium text-black">📍 Neighborhoods:</span> Asakusa & Shinjuku</p>
+  <div class={infoBox}>
+    <p class="mb-3 font-medium text-black">Info Box</p>
+    <p class="mb-3"><span class="font-medium text-black">📍 Areas:</span> Asakusa & Shinjuku</p>
     <p class="mb-3"><span class="font-medium text-black">🚶 Walking between attractions:</span> ~4 km, excluding walking to and from your hotel or train stations</p>
     <p class="mb-3"><span class="font-medium text-black">⏱️ Estimated sightseeing time:</span> ~3–4 hours, excluding food, café breaks, and hotel transfers</p>
     <p class="mb-3"><span class="font-medium text-black">🚇 Main transport:</span> Tokyo Metro + walking</p>
@@ -31,37 +76,41 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
     <p>If you’re dreaming of trying the famous fluffy pancakes at Benizuru, make this your first stop of the day. Same-day reservations usually start at 7:00 AM, but the queue can begin forming much earlier — often around 5:30 AM on busy days. Only around 120 pancakes are served per day, and each person can order just one plate, so this is not a casual walk-in breakfast spot.</p>
     <p>If Benizuru is high on your Tokyo food list, be prepared to arrive early, wait in line, leave a ¥1,000 deposit per person/per dish, and return later for your assigned time slot. If you prefer a more relaxed start, skip the queue and begin your day directly in Asakusa instead.</p>
     <p>We ordered two different plates: I chose the chocolate and banana pancakes, while my husband went for the savory version with eggs and bacon. The savory one ended up being one of our favorite dishes of the trip — and if it weren’t so difficult to get a table here, we would honestly return just for that.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={benizuruChocolate} alt="Chocolate and banana fluffy pancakes at Benizuru in Tokyo" caption="Benizuru's chocolate & banana pancakes" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={benizuruSavory} alt="Savory fluffy pancakes with bacon and eggs at Benizuru in Tokyo" caption="Benizuru's savory bacon & eggs pancakes" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
 
     <h4 class="mt-8 mb-2 text-black">Sensō-ji Temple</h4>
     <p>Sensō-ji is one of Tokyo’s oldest and most famous Buddhist temples, and one of the best places to experience the city’s traditional side. The visit usually begins at Kaminarimon Gate, with its huge red lantern, before continuing along Nakamise-dori, the historic shopping street lined with small stalls selling souvenirs, sweets, and traditional snacks.</p>
     <div class={twoColGrid}>
-      <ArticleImage
-        src={sensojiGate}
-        alt="Kaminarimon Gate lantern at Sensō-ji Temple in Asakusa, Tokyo"
-        caption="Kaminarimon Gate"
-        figureClass="m-0"
-        imgClass="aspect-[4/5] object-cover"
-      />
-      <ArticleImage
-        src={sensojiPagoda}
-        alt="Five-story pagoda at Sensō-ji Temple in Asakusa, Tokyo"
-        caption="The five-storied pagoda"
-        figureClass="m-0"
-        imgClass="aspect-[4/5] object-cover"
-      />
+      <ArticleImage src={sensojiGate} alt="Kaminarimon Gate lantern at Sensō-ji Temple in Asakusa, Tokyo" caption="Kaminarimon Gate at Sensō-ji" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={sensojiPagoda} alt="Five-story pagoda at Sensō-ji Temple in Asakusa, Tokyo" caption="The five-storied pagoda" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
     </div>
     <p>Inside the temple grounds, you’ll find the impressive Hōzōmon Gate, the main hall, and the five-storied pagoda, all of which make Sensō-ji feel much more atmospheric than just a quick photo stop. I recommend visiting either early in the morning or later in the evening if your schedule allows, as both times offer a completely different experience.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={sensojiNakamise} alt="Nakamise-dori shopping street near Sensō-ji Temple early in the morning" caption="Nakamise-dori early in the morning" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={sensojiLantern} alt="Traditional lantern at Sensō-ji Temple in Asakusa, Tokyo" caption="A lantern at Sensō-ji Temple" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
     <p>In the morning, the area feels calmer and more peaceful, giving you the chance to enjoy the temple grounds before the biggest crowds arrive. In the evening, Sensō-ji becomes beautifully atmospheric, with glowing lanterns, illuminated buildings, and a more cinematic feeling that makes it especially lovely for photos.</p>
 
     <h4 class="mt-8 mb-2 text-black">Lunch: Try Local Japanese Cuisine</h4>
     <p>After exploring Sensō-ji Temple, this is the perfect time to enjoy a local food experience in Asakusa.</p>
     <p><span class="font-medium text-black">Option 1: Okonomiyaki Monja Shiraiwa Asakusa</span><br />Located just a short walk from Sensō-ji, this cozy restaurant is a great place to try okonomiyaki and monjayaki. The staff was incredibly welcoming and helpful, especially since it was my first time trying this style of Japanese cuisine.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={shiraiwaCooking} alt="Okonomiyaki being cooked at Shiraiwa in Asakusa, Tokyo" caption="Okonomiyaki cooking at Shiraiwa" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={shiraiwaMonja} alt="Okonomiyaki and monjayaki at Shiraiwa in Asakusa, Tokyo" caption="Okonomiyaki and monjayaki" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
     <p><span class="font-medium text-black">Option 2: Sushi-Making Experience (if you prefer a hands-on activity)</span><br />If you’d like to turn lunch into a memorable cultural experience, consider joining a sushi-making class near Kaminarimon Gate. You’ll learn how to prepare your own sushi with guidance from a chef — and enjoy eating what you create afterward.</p>
     <p>👉 <a href="https://gyg.me/IzvC0tTc" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Book your sushi-making experience here</a>.</p>
 
     <h4 class="mt-8 mb-2 text-black">Shinjuku: Omoide Yokocho & The Giant 3D Cat</h4>
     <p>Shinjuku is where the day shifts from traditional Tokyo to full neon energy. After the calm atmosphere of Asakusa, the area feels louder, brighter, and more intense, with giant screens, busy streets, restaurants, bars, and lights in every direction.</p>
     <p>Walk through Omoide Yokocho, a narrow alleyway near Shinjuku Station filled with tiny eateries, glowing lanterns, and an old Tokyo atmosphere. Then stop by the Giant 3D Cat Billboard near Shinjuku Station’s East Exit for one of the area’s most fun and recognizable modern Tokyo moments.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={omoideYokocho} alt="Lantern-lit alleyway of Omoide Yokocho in Shinjuku, Tokyo" caption="Omoide Yokocho in Shinjuku" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={shinjukuCat} alt="Giant 3D cat billboard near Shinjuku Station in Tokyo" caption="The giant 3D cat billboard" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
   </div>
 </section>
 
@@ -73,35 +122,55 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
     <p>This day brings together some of Tokyo’s most modern and elegant sides: immersive digital art, skyline views, Tokyo Tower, quiet green spaces, and one of the city’s most beautiful shrine stops.</p>
   </div>
 
-  <div class="my-5 max-w-3xl rounded-lg bg-[#F5F2EB] px-6 py-5 text-md leading-relaxed text-black/80 md:my-8">
-    <p class="mb-3"><span class="font-medium text-black">📍 Neighborhoods:</span> Azabudai Hills, Shibakoen, Nagatachō & Akasaka</p>
+  <div class={infoBox}>
+    <p class="mb-3 font-medium text-black">Info Box</p>
+    <p class="mb-3"><span class="font-medium text-black">📍 Areas:</span> Azabudai Hills, Minato City, Akasaka & Chiyoda City</p>
     <p class="mb-3"><span class="font-medium text-black">🚶 Walking between attractions:</span> ~4–5 km, excluding walking to and from your hotel or train stations</p>
     <p class="mb-3"><span class="font-medium text-black">⏱️ Estimated sightseeing time:</span> ~4–5 hours, excluding food, café breaks, and hotel transfers</p>
-    <p class="mb-3"><span class="font-medium text-black">🚇 Main transport:</span> Tokyo Metro + Walking</p>
+    <p class="mb-3"><span class="font-medium text-black">🚇 Main transport:</span> Tokyo Metro + walking</p>
     <p><span class="font-medium text-black">⭐ Highlights:</span> teamLab Borderless, Tokyo Tower, Hie Shrine</p>
   </div>
 
   <div class={prose}>
     <h4 class="mt-8 mb-2 text-black">teamLab Borderless</h4>
     <p>Step into a world of moving light, color, and sound at teamLab Borderless, one of Tokyo’s most immersive digital art experiences. The rooms transform around you, with artworks flowing from one space into another, making the entire museum feel alive.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={teamlabBorderless} alt="Immersive digital art installation at teamLab Borderless in Tokyo" caption="Inside teamLab Borderless" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={teamlabDigitalArt} alt="Colorful digital art room at teamLab Borderless in Tokyo" caption="Moving light and color" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
     <p>Since this is one of the city’s most popular attractions, I recommend booking one of the earliest time slots of the day. It will still be busy, but arriving close to opening usually gives you a better chance to enjoy the rooms in a calmer atmosphere and take photos before the crowds build up.</p>
     <p>There is no fixed route through teamLab Borderless, which is exactly what makes it feel so immersive. The artworks move between rooms, change throughout your visit, and connect with each other, so instead of following a map, you simply wander and let the museum reveal itself as you go.</p>
 
     <h4 class="mt-8 mb-2 text-black">Hills House Sky Room Café & Bar</h4>
     <p>With large windows overlooking the Tokyo skyline and Tokyo Tower, Hills House Sky Room Café & Bar is one of the best places in Azabudai Hills for a coffee, dessert, or light bite with a view. It’s located on the 34th floor of Azabudai Hills Mori JP Tower, just a short walk from teamLab Borderless.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={hillsHouseCafe} alt="Interior of Hills House Sky Room Café & Bar in Azabudai Hills, Tokyo" caption="Hills House Sky Room Café & Bar" figureClass="m-0" imgClass="aspect-[3/4] object-cover" />
+      <ArticleImage src={tokyoTowerHillsViewAlt} alt="Looking out at Tokyo Tower from inside Hills House Sky Room Café & Bar" caption="The view from inside Hills House Sky Room" figureClass="m-0" imgClass="aspect-[3/4] object-cover" />
+    </div>
     <p>It’s not a full observation deck experience, but rather a stylish café and bar with beautiful city views. Seating can be limited, so I would treat it as a quick scenic stop rather than a place to spend a long time.</p>
+    <ArticleImage src={tokyoTowerHillsView} alt="Tokyo Tower and Minato City skyline viewed from Hills House Sky Room Café & Bar" caption="Tokyo Tower from Hills House Sky Room" imgClass="aspect-[5/4] object-cover" />
 
     <h4 class="mt-8 mb-2 text-black">Tokyo Tower & Prince Shiba Park</h4>
     <p>Tokyo Tower is one of the city’s most recognizable landmarks. Standing 333 meters tall and inspired by the Eiffel Tower, it has been a symbol of Tokyo since 1958.</p>
+    <ArticleImage src={tokyoTowerStairs} alt="Famous staircase photo spot near Tokyo Tower" caption="The staircase photo spot near Tokyo Tower" imgClass="aspect-[3/2] object-cover" />
     <p>On my interactive map, I’ve also marked the famous staircase photo spot near Tokyo Tower. It’s a beautiful angle, but to be honest, you don’t need to wait in line for ages just to get one photo. If you walk around Prince Shiba Park instead, you’ll find plenty of lovely spots to photograph Tokyo Tower from a more relaxed viewpoint, with trees, open green spaces, and the city skyline in the background.</p>
     <p>This part of Minato blends some of Tokyo’s classic landmarks with peaceful park paths, temple grounds, sleek hotels, and modern city streets.</p>
 
     <h4 class="mt-8 mb-2 text-black">Hie Shrine</h4>
     <p>Hie Shrine is one of those places that feels like a hidden gem, even though it sits right in central Tokyo. Its most beautiful feature is the tunnel of red torii gates, which offers a smaller and quieter version of the famous torii gate paths you might associate with Kyoto.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={hieToriiStairs} alt="Red torii gate stairs at Hie Shrine in Tokyo" caption="Torii stairs at Hie Shrine" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={hieToriiWalk} alt="Walking through the red torii tunnel at Hie Shrine in Tokyo" caption="Walking through the torii gates" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
     <p>The shrine is also connected to the Sanno Matsuri, one of Tokyo’s major traditional festivals, which gives the place more meaning than just a quick photo stop. It’s a short visit, but a memorable one — especially if you want a peaceful shrine experience without leaving the city.</p>
 
     <h4 class="mt-8 mb-2 text-black">Akasaka Station</h4>
     <p>Harry Potter fans may enjoy a quick look around Akasaka Station, as the area has several themed touches linked to the Harry Potter and the Cursed Child stage production, including decorations near the station and the Harry Potter Cafe inside Akasaka Biz Tower.</p>
+    <ArticleImage src={akasakaHarryPotter} alt="Harry Potter themed decorations at Akasaka Station in Tokyo" caption="Harry Potter details at Akasaka Station" imgClass="aspect-[5/4] object-cover" />
+    <div class={twoColGrid}>
+      <ArticleImage src={akasakaOwl} alt="Harry Potter owl display with Hogwarts letter wreath at Akasaka Station in Tokyo" caption="Harry Potter owl display at Akasaka Station" figureClass="m-0" imgClass="aspect-[3/4] object-cover" />
+      <ArticleImage src={harryPotterCafe} alt="Harry Potter Cafe in Akasaka Biz Tower, Tokyo" caption="Harry Potter Cafe in Akasaka" figureClass="m-0" imgClass="aspect-[3/4] object-cover" />
+    </div>
   </div>
 </section>
 
@@ -113,10 +182,11 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
     <p>This is one of the most classic first-timer days in Tokyo, combining nature, youth culture, pop culture, and one of the world’s most famous crossings. Meiji Jingu brings a peaceful start to the day, Harajuku adds color and energy, and Shibuya finishes it with crowds, city lights, and skyline views.</p>
   </div>
 
-  <div class="my-5 max-w-3xl rounded-lg bg-[#F5F2EB] px-6 py-5 text-md leading-relaxed text-black/80 md:my-8">
-    <p class="mb-3"><span class="font-medium text-black">📍 Neighborhoods:</span> Harajuku & Shibuya</p>
+  <div class={infoBox}>
+    <p class="mb-3 font-medium text-black">Info Box</p>
+    <p class="mb-3"><span class="font-medium text-black">📍 Areas:</span> Harajuku & Shibuya</p>
     <p class="mb-3"><span class="font-medium text-black">🚶 Walking between attractions:</span> ~4–5 km, excluding walking to and from your hotel or train stations</p>
-    <p class="mb-3"><span class="font-medium text-black">⏱️ Estimated sightseeing time:</span> ~5-6 hours, excluding food, café breaks, hotel transfers, and optional activities</p>
+    <p class="mb-3"><span class="font-medium text-black">⏱️ Estimated sightseeing time:</span> ~5–6 hours, excluding food, café breaks, and hotel transfers</p>
     <p class="mb-3"><span class="font-medium text-black">🚇 Main transport:</span> JR Yamanote Line + walking</p>
     <p><span class="font-medium text-black">⭐ Highlights:</span> Meiji Jingu, Takeshita Street, Shibuya Crossing, Hachiko Statue, Shibuya Sky</p>
   </div>
@@ -124,17 +194,35 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
   <div class={prose}>
     <h4 class="mt-8 mb-2 text-black">Meiji Jingu</h4>
     <p>Just a few minutes from the color, noise, and fashion of Harajuku, Meiji Jingu feels like stepping into another version of Tokyo. One moment you’re near one of the city’s busiest areas, and the next you’re walking beneath a massive wooden torii gate into a quiet forest where the sounds of the city begin to fade.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={meijiTorii} alt="Large wooden torii gate at Meiji Jingu in Tokyo" caption="The torii gate at Meiji Jingu" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={meijiSakeBarrels} alt="Rows of traditional sake barrels at Meiji Jingu in Tokyo" caption="Sake barrels at Meiji Jingu" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
     <p>This is what makes Meiji Jingu so special. It’s not only about visiting a shrine — it’s about the transition. The long forest path, the towering gates, the rows of traditional sake barrels, and the peaceful main shrine create one of the most beautiful contrasts in Tokyo.</p>
     <p>The shrine is dedicated to Emperor Meiji and Empress Shoken, and its surrounding forest was planted with around 100,000 trees donated from across Japan. Take your time here before heading into the completely different energy of Harajuku and Shibuya.</p>
+    <ArticleImage src={meijiSakeBarrelsWide} alt="Rows of traditional sake barrels at Meiji Jingu shrine in Tokyo" caption="Sake barrels at Meiji Jingu" imgClass="aspect-[5/4] object-cover" />
 
     <h4 class="mt-8 mb-2 text-black">Takeshita Street</h4>
     <p>Takeshita Street is loud, colorful, and usually packed with people — but that’s exactly what makes it such a classic Harajuku experience. This narrow pedestrian street is known for its youth fashion, playful food stalls, character shops, accessory stores, and the kind of pop culture energy that feels completely different from the peaceful atmosphere of Meiji Jingu.</p>
+    <ArticleImage src={takeshitaStreet} alt="Crowded Takeshita Street in Harajuku, Tokyo" caption="Takeshita Street in Harajuku" imgClass="aspect-[3/2] object-cover" />
     <p>This is where you’ll find some of Harajuku’s most iconic snacks and shops, from oversized rainbow cotton candy and sweet crepes to quirky fashion boutiques, souvenir stores, and kawaii character goods. It’s a fun stop if you want to see Tokyo’s more playful, trend-driven side in one compact, energetic street.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={sweetBoxCrepes} alt="Sweet Box crepes on Takeshita Street in Harajuku, Tokyo" caption="Sweet Box crepes in Harajuku" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={uniDonuts} alt="Uni Donuts treat in Harajuku, Tokyo" caption="Uni Donuts in Harajuku" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
 
     <h4 class="mt-8 mb-2 text-black">Shibuya: Crossing, Hachiko & Shibuya Sky</h4>
     <p>Shibuya is where Tokyo feels at its most electric. Giant screens, packed sidewalks, bright lights, shopping streets, and crowds moving in every direction make this one of the best places to experience the city’s modern energy.</p>
     <p>Around Shibuya Station, you’ll find two of the area’s most famous landmarks: the Hachiko Statue and Shibuya Crossing. The Hachiko Statue is a quick but meaningful stop, especially if you know the story of one of Japan’s most loyal dogs, while Shibuya Crossing is one of those Tokyo moments that feels just as impressive in real life as it does in photos and films.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={hachikoStatue} alt="Hachiko statue outside Shibuya Station in Tokyo" caption="The Hachiko statue in Shibuya" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={shibuyaCrossing} alt="View of Shibuya Crossing from Mag's Park in Tokyo" caption="Shibuya Crossing from Mag's Park" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
     <p>For one of the best views of the city, book tickets for Shibuya Sky in advance, especially if you want to visit around sunset. From the open-air observation deck, you can look down over Shibuya Crossing and across the Tokyo skyline as the city slowly lights up for the evening.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={shibuyaSkyDeck} alt="Open-air observation deck at Shibuya Sky in Tokyo" caption="The Shibuya Sky observation deck" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={shibuyaSkyView} alt="Tokyo skyline view from Shibuya Sky observation deck" caption="Tokyo from Shibuya Sky" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
     <p>🎟️ <a href="https://www.shibuya-scramble-square.com/sky/ticket/" target="_blank" rel="noopener noreferrer" class={mapLink}>Book your Shibuya Sky ticket in advance here</a>.</p>
     <p>If you want to add something more unusual to your day, you can also book a street go-kart experience around Shibuya. It’s definitely more of a fun, touristy activity than a cultural must-do, but it can be a memorable way to see the city streets from a completely different perspective.</p>
     <p>🏎️ <a href="https://gyg.me/2EE6OBfq" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Book your Shibuya street kart experience here</a>.</p>
@@ -147,9 +235,29 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
   </div>
   <div class={prose}>
     <p>Kamakura is an easy day trip from Tokyo and a great way to see a different side of Japan without traveling too far. The town is known for its temples, shrines, seaside views, and traditional streets, making it a nice break from the busy pace of Tokyo.</p>
+  </div>
+
+  <div class={infoBox}>
+    <p class="mb-3"><span class="font-medium text-black">📍 Areas:</span> Kamakura</p>
+    <p class="mb-3"><span class="font-medium text-black">🚶 Walking between attractions:</span> ~3–5 km, excluding walking to and from your hotel or train stations</p>
+    <p class="mb-3"><span class="font-medium text-black">⏱️ Estimated sightseeing time:</span> ~5–7 hours, excluding food, café breaks, and hotel transfers</p>
+    <p class="mb-3"><span class="font-medium text-black">🚇 Main transport:</span> JR Yokosuka Line + Enoden Line + walking</p>
+    <p><span class="font-medium text-black">⭐ Highlights:</span> Goryo Shrine, Hasedera, Kotoku-in, Komachi Street</p>
+  </div>
+
+  <div class={prose}>
     <p>Breakfast at Yoridokoro is a great way to begin the day, followed by Goryo Shrine, Hasedera, and Kotoku-in, where you’ll find Kamakura’s famous Great Buddha.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={kamakuraGoryo} alt="Goryo Shrine in Kamakura, Japan" caption="Goryo Shrine in Kamakura" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={kamakuraBuddha} alt="Great Buddha at Kotoku-in Temple in Kamakura" caption="The Great Buddha at Kotoku-in" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
     <p>Goryo Shrine was one of my favorite stops in Kamakura. It feels quiet and local, and photography is not allowed inside the shrine grounds, which makes the experience feel very different from many popular sightseeing spots in Japan.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={kamakuraHasederaEntrance} alt="Entrance to Hasedera Temple in Kamakura" caption="Hasedera Temple entrance" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={kamakuraHasederaBamboo} alt="Bamboo at Hasedera Temple in Kamakura" caption="Bamboo at Hasedera Temple" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
     <p>Komachi Street, near Kamakura Station, is the best area for street food, cafés, souvenir shops, and small local stores, so it’s a good place to walk around before heading back to Tokyo.</p>
+    <ArticleImage src={kamakuraKomachi} alt="Komachi-dori shopping street near Kamakura Station" caption="Komachi-dori near Kamakura Station" imgClass="aspect-[3/2] object-cover" />
     <p>If you have extra time, Hokokuji Temple is a beautiful optional stop, especially if you want to see its bamboo garden. And if the weather is good, Shichirigahama Beach is a lovely place to end the day with sea views and, if you’re lucky, a sunset.</p>
     <p>👉 <a href={articleHref('kamakura-day-trip-from-tokyo')} class={mapLink}>Read my full Kamakura day trip guide here</a>.</p>
   </div>
@@ -161,7 +269,24 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
   </div>
   <div class={prose}>
     <p>The most important thing to know before planning this day is that Mount Fuji is very weather-dependent. Clouds can hide the mountain completely, even if you are already in the area, so it’s best to keep your expectations realistic. If the forecast looks clear, this can easily become one of the most memorable days of your trip — but even then, seeing Fuji is never guaranteed.</p>
+  </div>
+
+  <div class={infoBox}>
+    <p class="mb-3"><span class="font-medium text-black">📍 Areas:</span> Fujiyoshida & Kawaguchiko</p>
+    <p class="mb-3"><span class="font-medium text-black">🚶 Walking between attractions:</span> ~2–4 km (including stairs at Chureito Pagoda), excluding walking to and from your hotel or train stations</p>
+    <p class="mb-3"><span class="font-medium text-black">⏱️ Estimated sightseeing time:</span> ~6–8 hours, excluding food, café breaks, and hotel transfers</p>
+    <p class="mb-3"><span class="font-medium text-black">🚇 Main transport:</span> Highway bus or organized day trip from Tokyo</p>
+    <p><span class="font-medium text-black">⭐ Highlights:</span> Honcho 2-chome, Chureito Pagoda, Kawaguchiko area</p>
+  </div>
+
+  <div class={prose}>
     <p>For my own Mount Fuji day trip, I focused on the Fujiyoshida and Kawaguchiko areas. I visited Honcho 2-chome Shopping District, one of the most famous photo spots for capturing Mount Fuji rising behind the town, followed by Chureito Pagoda at Arakurayama Sengen Park, one of the classic postcard views of Mount Fuji. I also stopped for ramen at Ramen Hachiyo and made a quick photo stop at the Lawson near Kawaguchiko Station, another well-known Mount Fuji viewpoint.</p>
+    <p>👉 <a href={articleHref('mt-fuji-day-trip-from-tokyo')} class={mapLink}>Read my complete Mount Fuji day trip guide here</a>.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={fujiHoncho} alt="Mount Fuji rising behind Honcho 2-chome shopping street in Fujiyoshida" caption="Honcho 2-chome in Fujiyoshida" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={fujiChureito} alt="Chureito Pagoda with Mount Fuji at Arakurayama Sengen Park" caption="Chureito Pagoda and Mount Fuji" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <ArticleImage src={fujiTrainTracks} alt="Mount Fuji viewed from train tracks near Arakurayama Sengen Park" caption="The train tracks viewpoint near Mount Fuji" imgClass="aspect-[3/2] object-cover" />
     <p>If you want to keep this day simple and stress-free, I recommend booking an organized Mount Fuji day trip from Tokyo. The area is quite spread out, and having transport arranged makes it much easier to visit several viewpoints in one day without worrying about train and bus connections.</p>
     <p>🎟️ <a href="https://gyg.me/kJKUZBsy" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Book your Mount Fuji day trip from Tokyo here</a>.</p>
     <p>If Mount Fuji is visible, the views around Fujiyoshida and Kawaguchiko can be unforgettable. If not, the area still offers a beautiful scenic break from Tokyo, with lakeside views, small-town streets, and a completely different atmosphere from the city.</p>
@@ -181,8 +306,8 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
       – A stylish luxury hotel in Ginza, close to high-end shopping, restaurants, and easy transport connections. A great choice if you want a polished, modern base in one of Tokyo’s most elegant neighborhoods.
     </p>
     <p>
-      <a href="https://www.booking.com/searchresults.html?ss=Aman+Tokyo" target="_blank" rel="noopener noreferrer" class={mapLink}>Aman Tokyo</a>
-      – A beautiful high-end stay in the Otemachi/Tokyo Station area, ideal if you want spacious rooms, city views, and a calmer luxury atmosphere while still staying very central.
+      <a href="https://www.booking.com/searchresults.el.html?ss=The+Okura+Tokyo%2C+Tokyo%2C+Tokyo-to%2C+Japan&efdco=1&label=gen173nr-10CAEoggI46AdIM1gEaKoBiAEBmAEzuAEHyAEM2AED6AEB-AEBiAIBqAIBuALAnonTBsACAdICJGE3MDU3NWRlLTBkOWYtNGIyYi05NDZjLWU2MTY1YjQwNjAyMdgCAeACAQ&aid=304142&lang=el&sb=1&src_elem=sb&src=index&dest_id=4469577&dest_type=hotel&ac_position=0&ac_click_type=b&ac_langcode=xu&ac_suggestion_list_length=3&search_selected=true&search_pageview_id=07cc7ae09f520230&ac_meta=GhAwN2NjN2FlMDlmNTIwMjMwIAAoATICeHU6D1RoZSBPa3VyYSBUb2t5bw%3D%3D&group_adults=2&no_rooms=1&group_children=0" target="_blank" rel="noopener noreferrer" class={mapLink}>The Okura Tokyo</a>
+      blends timeless Japanese elegance with contemporary luxury, offering one of the city’s most refined hospitality experiences. Its iconic design, exceptional service, and serene atmosphere make it an unforgettable stay in the heart of Tokyo.
     </p>
 
     <h4 class="mt-8 mb-2 text-black">Mid-range</h4>

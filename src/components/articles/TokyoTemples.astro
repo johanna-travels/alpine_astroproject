@@ -1,7 +1,16 @@
 ---
 import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
-import sensojiGate from '@/assets/articles/tokyo/tokyo-temples-shrines.webp';
+import hozomonGate from '@/assets/articles/tokyo/senso-ji-hozomon-gate-asakusa.webp';
+import templeInterior from '@/assets/articles/tokyo/senso-ji-temple-interior-details.webp';
+import fiveStoryPagoda from '@/assets/articles/tokyo/senso-ji-five-story-pagoda-asakusa.webp';
+import meijiSakeBarrels1 from '@/assets/articles/tokyo/sake-barrels-meiji-jingu-shrine-tokyo.webp';
+import meijiToriiGate from '@/assets/articles/tokyo/meiji-jingu-torii-gate-tokyo.webp';
+import meijiSakeBarrels2 from '@/assets/articles/tokyo/meiji-jingu-sake-barrels-tokyo.webp';
+import hieToriiStairs from '@/assets/articles/tokyo/hie-shrine-torii-stairs-tokyo.webp';
+import hieToriiGates from '@/assets/articles/tokyo/walking-through-hie-shrine-torii-gates-tokyo.webp';
+import gotokujiTemple from '@/assets/articles/tokyo/gotokuji-temple-tokyo.webp';
+import gotokujiCats from '@/assets/articles/tokyo/gotokuji-temple-lucky-cat-statues.webp';
 
 const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
 ---
@@ -12,13 +21,29 @@ const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
   </div>
   <div class={prose}>
     <p>Sensō-ji is one of the most iconic temples in Tokyo and one of the best places to experience the city’s traditional side. The visit usually begins at Kaminarimon Gate, with its huge red lantern, before continuing along Nakamise-dori, a historic shopping street lined with stalls selling souvenirs, sweets, and traditional snacks. Inside the temple grounds, you’ll also find Hōzōmon Gate, the main hall, and the five-storied pagoda, making Sensō-ji much more than just a quick photo stop.</p>
-    <ArticleImage
-      src={sensojiGate}
-      alt="Kaminarimon Gate lantern at Sensō-ji Temple in Asakusa, Tokyo"
-      caption="Kaminarimon Gate at Sensō-ji"
-      figureClass="my-5 md:my-8"
-      imgClass="aspect-[5/4] object-cover"
-    />
+    <div class="my-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <ArticleImage
+        src={hozomonGate}
+        alt="Hozomon Gate at Sensō-ji Temple in Asakusa, Tokyo"
+        caption="Hozomon Gate"
+        figureClass="m-0"
+        imgClass="aspect-[3/4] object-cover"
+      />
+      <ArticleImage
+        src={templeInterior}
+        alt="Interior details at Sensō-ji Temple in Asakusa, Tokyo"
+        caption="Temple interior"
+        figureClass="m-0"
+        imgClass="aspect-[4/5] object-cover"
+      />
+      <ArticleImage
+        src={fiveStoryPagoda}
+        alt="Five-story pagoda at Sensō-ji Temple in Asakusa, Tokyo"
+        caption="Five-story pagoda"
+        figureClass="m-0"
+        imgClass="aspect-[4/5] object-cover"
+      />
+    </div>
     <p><span class="font-medium text-black">Location:</span> Asakusa</p>
     <p><span class="font-medium text-black">Best for:</span> traditional Tokyo atmosphere, temple grounds, souvenir streets, and evening photos</p>
   </div>
@@ -31,6 +56,31 @@ const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
   <div class={prose}>
     <p>Meiji Jingu is one of the most peaceful places you can visit in central Tokyo. It sits inside a large forested area between Harajuku and Shibuya, and the walk toward the shrine feels like a complete change of pace from the busy streets nearby.</p>
     <p>What makes Meiji Jingu special is not only the shrine itself, but the transition. One moment you are near Harajuku, and the next you are walking under a massive torii gate, surrounded by tall trees and quiet forest paths. It is one of the best places in Tokyo to experience a Shinto shrine without leaving the city center.</p>
+    
+    <div class="my-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <ArticleImage
+        src={meijiSakeBarrels1}
+        alt="Sake barrels at Meiji Jingu Shrine in Tokyo"
+        caption="Sake barrels"
+        figureClass="m-0 sm:col-span-2"
+        imgClass="aspect-[5/4] object-cover"
+      />
+      <ArticleImage
+        src={meijiToriiGate}
+        alt="Torii gate at Meiji Jingu Shrine in Tokyo"
+        caption="Torii gate"
+        figureClass="m-0"
+        imgClass="aspect-[4/5] object-cover"
+      />
+      <ArticleImage
+        src={meijiSakeBarrels2}
+        alt="Sake barrels display at Meiji Jingu Shrine in Tokyo"
+        caption="Sake barrels display"
+        figureClass="m-0"
+        imgClass="aspect-[4/5] object-cover"
+      />
+    </div>
+    
     <p><span class="font-medium text-black">Location:</span> Harajuku / Yoyogi</p>
     <p><span class="font-medium text-black">Best for:</span> forest paths, peaceful atmosphere, shrine rituals, and pairing with Harajuku or Yoyogi Park</p>
   </div>
@@ -42,6 +92,22 @@ const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
   </div>
   <div class={prose}>
     <p>Hie Shrine feels like a hidden gem, even though it is located right in central Tokyo. It is not as famous as Sensō-ji or Meiji Jingu, but that is exactly what makes it worth adding to your itinerary. The highlight here is the tunnel of red torii gates, which feels like a smaller and quieter version of the torii gate paths many people associate with Kyoto. The shrine is also connected to Sanno Matsuri, one of Tokyo’s major traditional festivals, giving it more meaning than just being a pretty photo stop.</p>
+    <div class="my-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <ArticleImage
+        src={hieToriiStairs}
+        alt="Red torii gate stairs at Hie Shrine in Akasaka, Tokyo"
+        caption="Torii stairs at Hie Shrine"
+        figureClass="m-0"
+        imgClass="aspect-[4/5] object-cover"
+      />
+      <ArticleImage
+        src={hieToriiGates}
+        alt="Walking through the red torii tunnel at Hie Shrine in Akasaka, Tokyo"
+        caption="Walking through the torii gates"
+        figureClass="m-0"
+        imgClass="aspect-[4/5] object-cover"
+      />
+    </div>
     <p><span class="font-medium text-black">Location:</span> Akasaka / Nagatachō</p>
     <p><span class="font-medium text-black">Best for:</span> red torii gates, a quieter shrine experience, and a beautiful hidden stop in central Tokyo</p>
   </div>
@@ -54,6 +120,22 @@ const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
   <div class={prose}>
     <p>If you love cats, unique temples, or photo-worthy places, Gotokuji Temple is worth adding to your Tokyo itinerary. It is one of the cutest temples in Tokyo and is best known for its many maneki-neko, or lucky cat figures, which make the temple instantly recognizable.</p>
     <p>The temple is located in Setagaya, a quieter residential area away from Tokyo’s busiest neighborhoods. From Shinjuku Station, you can take the Odakyu Line to Gotokuji Station and walk from there, so plan for around 25–30 minutes in total depending on connections.</p>
+    <div class="my-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <ArticleImage
+        src={gotokujiCats}
+        alt="Rows of maneki-neko lucky cat statues at Gotokuji Temple in Setagaya, Tokyo"
+        caption="Lucky cat statues"
+        figureClass="m-0"
+        imgClass="aspect-[4/5] object-cover"
+      />
+      <ArticleImage
+        src={gotokujiTemple}
+        alt="Gotokuji Temple grounds in Setagaya, Tokyo"
+        caption="Gotokuji Temple"
+        figureClass="m-0"
+        imgClass="aspect-[4/5] object-cover"
+      />
+    </div>
     <p><span class="font-medium text-black">Location:</span> Setagaya</p>
     <p><span class="font-medium text-black">Best for:</span> lucky cats, cute photos, and a quieter local neighborhood feel</p>
   </div>

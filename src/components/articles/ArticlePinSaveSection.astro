@@ -1,0 +1,41 @@
+---
+import ArticlePinSaveIntro from '@/components/articles/ArticlePinSaveIntro.astro';
+import NewsletterSubscribeBanner from '@/components/forms/NewsletterSubscribeBanner.astro';
+
+interface Props {
+  class?: string;
+  /** Newsletter banner — off until launch; set true to re-enable. */
+  showNewsletter?: boolean;
+}
+
+const { class: className = '', showNewsletter = false } = Astro.props;
+---
+
+<section
+  class:list={[
+    'article-pin-save-section w-full max-w-3xl border-t border-[#E5DFD4]',
+    'pt-6 pb-8 md:pt-8 md:pb-10',
+    'mt-8 md:mt-10',
+    className,
+  ]}
+>
+  <ArticlePinSaveIntro />
+  <div class="article-pin-save-section__body">
+    <slot />
+    {showNewsletter && (
+      <NewsletterSubscribeBanner class="mt-8 md:mt-10 max-w-none" />
+    )}
+  </div>
+</section>
+
+<style>
+  .article-pin-save-section__body > :global(*:first-child) {
+    margin-top: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .article-pin-save-section__body > :global(*:first-child) {
+      margin-top: 1.25rem;
+    }
+  }
+</style>

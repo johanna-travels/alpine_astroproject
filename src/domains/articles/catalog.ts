@@ -3,6 +3,7 @@ import articleBali from '@/assets/articles/cards/bali.webp';
 import articleBaliItinerary from '@/assets/articles/bali/bali-itinerary-card.webp';
 import articleBaliBelly from '@/assets/articles/bali/bali-belly-card-square.webp';
 import articleBaliTips from '@/assets/articles/bali/bali-travel-tips-aricle.webp';
+import articleBaliWhereToStay from '@/assets/articles/bali/bali-the-udaya-resort.webp';
 import articleBruges from '@/assets/articles/cards/bruges.webp';
 import articleGreece from '@/assets/articles/cards/greece.webp';
 import articleHongKong from '@/assets/articles/hong-kong/hong-kong.webp';
@@ -13,9 +14,9 @@ import articleKatsuojiSpring from '@/assets/articles/osaka/spring-colours-at-kat
 import articleOsaka from '@/assets/articles/osaka/namba-yasaka.webp';
 import articleOsakaNew from '@/assets/articles/osaka/osaka.webp';
 import articleMtFuji from '@/assets/articles/tokyo/mt-fuji-japan.webp';
-import articleKamakura from '@/assets/articles/tokyo/kamakura-gokurakuji-station.webp';
+import articleKamakura from '@/assets/articles/tokyo/kamakura-japan.webp';
 import articleTokyoCafes from '@/assets/articles/tokyo/best-cafe-tokyo-1.webp';
-import articleTokyoParks from '@/assets/articles/tokyo/tokyo-parks-gardens.webp';
+import articleTokyoParks from '@/assets/articles/tokyo/greenery-areas-tokyo.webp';
 import articleTokyoTemples from '@/assets/articles/tokyo/tokyo-temples-shrines.webp';
 import articleTokyoItinerary from '@/assets/articles/tokyo/tokyo-5-day-itinerary.webp';
 import rhodesLcpImage from '@/assets/articles/rhodes/rhodes-old-town-cobblestone-street.webp';
@@ -23,7 +24,7 @@ import articleParga from '@/assets/articles/parga/parga-from-above.webp';
 import type { DestinationSlug } from '@/domains/destinations/catalog';
 import { pageUrl } from '@/lib/site';
 
-export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'mt-fuji-day-trip-from-tokyo' | 'kamakura-day-trip-from-tokyo' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary' | 'tokyo-cafes' | 'tokyo-parks' | 'tokyo-temples' | 'tokyo-5-day-itinerary';
+export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bali-where-to-stay' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'mt-fuji-day-trip-from-tokyo' | 'kamakura-day-trip-from-tokyo' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary' | 'tokyo-cafes' | 'tokyo-parks' | 'tokyo-temples' | 'tokyo-5-day-itinerary';
 
 export interface Article {
   slug: ArticleSlug;
@@ -131,7 +132,7 @@ export const articles: readonly Article[] = [
     metaLabel: 'Japan',
     alt: 'Mount Fuji day trip travel guide',
     image: articleMtFuji,
-    publishedDate: '20 July 2026',
+    publishedDate: '23 July 2026',
     intro: [
       "A Mount Fuji day trip from Tokyo is one of the most popular experiences you can add to a Japan itinerary, but it is also one of the most weather-dependent. Clouds can hide the mountain completely, even if you are already in the area, so it is important to keep your expectations realistic. Still, if you only have room for one day trip from Tokyo, Mount Fuji is definitely worth considering.",
       "I booked my bus ticket for my Mount Fuji day trip at the last minute because I kept checking the weather forecast and did not want to risk going on a day with poor visibility. It felt a little stressful at the time, but the views made it absolutely worth it.",
@@ -147,9 +148,9 @@ export const articles: readonly Article[] = [
     carouselTitle: 'Kamakura Day Trip from Tokyo: Temples, Hidden Gems & Seaside Views',
     breadcrumbTitle: 'Kamakura Day Trip',
     metaLabel: 'Japan',
-    alt: 'Gokurakuji Station in Kamakura with cherry blossoms',
+    alt: 'Great Buddha of Kamakura at Kotoku-in Temple',
     image: articleKamakura,
-    publishedDate: '20 July 2026',
+    publishedDate: '23 July 2026',
     intro: [
       'Kamakura is one of the best day trips from Tokyo if you want to experience a different side of Japan without traveling too far. It has temples, shrines, traditional streets, local food, sea views, and a much calmer atmosphere than central Tokyo.',
       'You can visit Kamakura as a half-day trip if you only want to see the main highlights, but it also works beautifully as a full-day escape if you want more time for temples, food, and coastal views. For a first visit, I would focus on Hasedera, Kotoku-in, and Komachi Street, then add extra stops like Goryo Shrine, Hokokuji Temple, or Shichirigahama Beach depending on your time, energy, and the weather.',
@@ -164,9 +165,9 @@ export const articles: readonly Article[] = [
     carouselTitle: '5 Days in Tokyo: The Perfect Itinerary for First-Time Visitors',
     breadcrumbTitle: 'Tokyo 5-Day Itinerary',
     metaLabel: 'Japan',
-    alt: 'Five-story pagoda at Sensō-ji Temple in Asakusa, Tokyo',
-    image: articleTokyoItinerary,
-    publishedDate: '20 July 2026',
+    alt: 'Kaminarimon Gate lantern at Sensō-ji Temple in Asakusa, Tokyo',
+    image: articleTokyoTemples,
+    publishedDate: '23 July 2026',
     intro: [
       'Tokyo is huge, exciting, and overwhelming — especially if it is your first time visiting. Distances are bigger than they look on the map, train stations can feel like small cities, and trying to see everything in one trip can quickly become exhausting.',
       'This 5-day Tokyo itinerary is based on my own 6-night stay in the city and is organized by area to help you see the highlights without spending your whole trip moving back and forth across town. It includes traditional temples, futuristic museums, food experiences, shopping streets, neon neighborhoods, and two easy day trips from Tokyo, while still leaving enough flexibility to adjust each day to your own pace.',
@@ -184,7 +185,7 @@ export const articles: readonly Article[] = [
     metaLabel: 'Japan',
     alt: '3D cat latte art in a pink teacup at a Tokyo café',
     image: articleTokyoCafes,
-    publishedDate: '20 July 2026',
+    publishedDate: '23 July 2026',
     intro: [
       'Tokyo is a dream city for coffee lovers. Beyond the temples, neon streets, sushi counters, and ramen shops, the city has an incredible café scene filled with specialty coffee, creative latte art, cozy interiors, and unique experiences you will not find everywhere else.',
       'During my trip to Tokyo, I dedicated part of one day to café hopping and visited some of the coffee spots that had been sitting on my list for months. Some were worth visiting for the coffee, while others stood out for their atmosphere.',
@@ -201,9 +202,9 @@ export const articles: readonly Article[] = [
     carouselTitle: 'Best Parks and Gardens in Tokyo to Add to Your Itinerary',
     breadcrumbTitle: 'Tokyo Parks',
     metaLabel: 'Japan',
-    alt: 'Cherry blossom path in a Tokyo park during sakura season',
+    alt: 'Pond and cherry blossoms in a green Tokyo park and garden',
     image: articleTokyoParks,
-    publishedDate: '20 July 2026',
+    publishedDate: '23 July 2026',
     intro: [
       'Tokyo may be known for neon streets, busy stations, shopping districts, and endless food spots, but the city also has some beautiful green spaces that are worth adding to your itinerary. This guide is for you if you love nature, enjoy peaceful city corners, or simply want a green place to take a break while exploring Tokyo.',
       'I’ve pinned the parks and gardens mentioned in this guide on my Ultimate Tokyo Map, which you can find inside my 5-day Tokyo itinerary. You can save the map for your trip and use it to see if there is a park or garden near the area you are exploring that day — perfect for taking a break from Tokyo’s busy streets.',
@@ -218,9 +219,9 @@ export const articles: readonly Article[] = [
     carouselTitle: 'Best Temples and Shrines in Tokyo to Add to Your Itinerary',
     breadcrumbTitle: 'Tokyo Temples',
     metaLabel: 'Japan',
-    alt: 'Kaminarimon Gate lantern at Sensō-ji Temple in Asakusa, Tokyo',
-    image: articleTokyoTemples,
-    publishedDate: '20 July 2026',
+    alt: 'Five-story pagoda at Sensō-ji Temple in Asakusa, Tokyo',
+    image: articleTokyoItinerary,
+    publishedDate: '23 July 2026',
     intro: [
       'You have probably already heard of famous Tokyo temples and shrines like Sensō-ji and Meiji Jingu, and of course, they deserve a place on this list. But Tokyo also has a few beautiful hidden gems that many visitors still overlook, from the red torii gates of Hie Shrine to the lucky cats of Gotokuji Temple.',
       'I’ve pinned all the temples and shrines mentioned in this guide on my Ultimate Tokyo Map, which you can find inside my 5-day Tokyo itinerary. You can save the map for your trip and use it to see which stops fit naturally into the area you are exploring that day.',
@@ -300,6 +301,24 @@ export const articles: readonly Article[] = [
       "Before you start planning, I'd also recommend reading my <a href='/articles/bali-travel-tips/' class='underline underline-offset-2 text-[#5B6560] hover:text-[#3d4441]'>What to Know Before Travelling to Bali</a> guide. And before you leave this article, don't forget to check the <a href='#section-faq' class='underline underline-offset-2 text-[#5B6560] hover:text-[#3d4441]'>FAQ section</a> at the end, where I've answered some of the most common questions first-time visitors have - such as the best way to get around Bali, the best time to visit and whether 7 days are enough to explore the island.",
     ],
     lead: 'A complete 7-day Bali itinerary for first-time visitors, split between Nusa Dua and Ubud with carefully planned day trips along the way.',
+  },
+  {
+    slug: 'bali-where-to-stay',
+    destinationSlug: 'bali',
+    category: 'BALI',
+    title: 'Where to Stay in Bali',
+    carouselTitle: 'Where to Stay in Bali',
+    breadcrumbTitle: 'Where to Stay in Bali',
+    metaLabel: 'Bali',
+    alt: 'Where to Stay in Bali accommodation guide',
+    image: articleBaliWhereToStay,
+    publishedDate: '26 July 2026',
+    intro: [
+      'Once you decide to visit Bali, the biggest challenge is not what to see — it is deciding where to stay. The island is much bigger than most people expect, and choosing the right area can completely change your experience.',
+      "If you have read any of my other Bali guides, you may already know that I spent almost two months exploring the island. That gave me the chance to stay in several different resorts and experience what each area is really like, beyond the photos you see online.",
+      'In this guide, you will find my favorite areas to stay in Bali, along with the resorts I would personally recommend in each one. I have also included a few extra hotels that stand out for their location, atmosphere, or overall experience, so you can choose the area that best fits your trip.',
+    ],
+    lead: 'A guide to the best areas to stay in Bali, from Ubud and Seminyak to Nusa Dua and beyond, with tips on choosing the right base for your trip.',
   },
   {
     slug: 'rhodes-itinerary',

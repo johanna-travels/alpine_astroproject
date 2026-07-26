@@ -56,26 +56,26 @@ function loadLocalEnvFile(): void {
 }
 
 /**
- * Read server secrets at runtime via static process.env access.
- * Static property names are required so Vite injects .env values in local dev.
- * loadLocalEnvFile() ensures the on-disk .env is used when the dev server started
- * with stale or placeholder values.
+ * Read server secrets at runtime.
+ * Use dynamic process.env[name] so Vite/esbuild cannot replace values at build time
+ * (static process.env.FOO access gets inlined during `astro build`, which breaks
+ * Netlify function runtime secrets after env:set + redeploy).
+ * loadLocalEnvFile() still loads on-disk .env for local API routes.
  */
 export function getServerEnv(name: ServerEnvName): string | undefined {
   loadLocalEnvFile();
 
-  switch (name) {
-    case 'SUPABASE_URL':
-      return normalize(process.env.SUPABASE_URL);
-    case 'SUPABASE_SERVICE_ROLE_KEY':
-      return normalize(process.env.SUPABASE_SERVICE_ROLE_KEY);
-    case 'RESEND_API_KEY':
-      return normalize(process.env.RESEND_API_KEY);
-    case 'RESEND_FROM_EMAIL':
-      return normalize(process.env.RESEND_FROM_EMAIL);
-    case 'NEWSLETTER_ADMIN_SECRET':
-      return normalize(process.env.NEWSLETTER_ADMIN_SECRET);
+  const fromProcess = normalize(process.env[name]);
+  if (fromProcess) return fromProcess;
+
+  // Netlify Functions runtime (when available on the SSR handler).
+  const netlifyEnv = (globalThis as { Netlify?: { env?: { get?: (key: string) => string | undefined } } })
+    .Netlify?.env;
+  if (netlifyEnv?.get) {
+    return normalize(netlifyEnv.get(name));
   }
+
+  return undefined;
 }
 
 export function hasResendConfig(): boolean {

@@ -1,7 +1,15 @@
 ---
 import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import tokyuPlazaRooftopView from '@/assets/articles/tokyo/tokyu-plaza-omotesando-harajuku-rooftop-view.webp';
+import tokyuPlazaRooftopGarden from '@/assets/articles/tokyo/tokyu-plaza-omotesando-rooftop-garden-harajuku.webp';
+import yoyogiPark from '@/assets/articles/tokyo/yoyogi-park-tokyo.webp';
+import yoyogiParkCherryBlossoms from '@/assets/articles/tokyo/yoyogi-park-cherry-blossoms-tokyo.webp';
+import uenoPark from '@/assets/articles/tokyo/ueno-park-tokyo.webp';
+import shinjukuGyoenLake from '@/assets/articles/tokyo/shinjuku-gyoen-national-garden-lake.webp';
 
 const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
+const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
 ---
 
 <section id="section-0" class="scroll-mt-nav">
@@ -9,6 +17,22 @@ const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
     <h3>1. Tokyu Plaza Omokado Rooftop Garden</h3>
   </div>
   <div class={prose}>
+    <div class={twoColGrid}>
+      <ArticleImage
+        src={tokyuPlazaRooftopView}
+        alt="Tokyu Plaza Omokado glass building and rooftop garden above Omotesando Harajuku in Tokyo"
+        caption="Tokyu Plaza Omokado from the street"
+        figureClass="m-0"
+        imgClass="aspect-[4/5]"
+      />
+      <ArticleImage
+        src={tokyuPlazaRooftopGarden}
+        alt="Rooftop garden seating and greenery at Tokyu Plaza Omokado in Harajuku, Tokyo"
+        caption="Omokado rooftop garden"
+        figureClass="m-0"
+        imgClass="aspect-[4/5]"
+      />
+    </div>
     <p>Tokyu Plaza Omokado Rooftop Garden is a great stop if you are exploring Harajuku or Omotesando and want a quick break above the busy streets. It is not a traditional park, but the rooftop has greenery, seating, and city views, making it a nice place to rest for a few minutes between shopping, cafés, and sightseeing.</p>
   </div>
 </section>
@@ -18,6 +42,22 @@ const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
     <h3>2. Yoyogi Park</h3>
   </div>
   <div class={prose}>
+    <div class={twoColGrid}>
+      <ArticleImage
+        src={yoyogiPark}
+        alt="Green lawn and cherry blossoms at Yoyogi Park in Tokyo with Shinjuku skyline beyond the trees"
+        caption="Yoyogi Park lawn"
+        figureClass="m-0"
+        imgClass="aspect-[4/5]"
+      />
+      <ArticleImage
+        src={yoyogiParkCherryBlossoms}
+        alt="Cherry blossom path through Yoyogi Park in Tokyo during sakura season"
+        caption="Cherry blossoms in Yoyogi Park"
+        figureClass="m-0"
+        imgClass="aspect-[4/5]"
+      />
+    </div>
     <p>Yoyogi Park is one of the easiest green spaces to add to a Tokyo itinerary, especially if you are already visiting Meiji Jingu or Harajuku. It is spacious, relaxed, and easy to explore without needing much planning, making it a good place to walk around, take a break, or simply enjoy a quieter moment between busier stops.</p>
   </div>
 </section>
@@ -27,6 +67,13 @@ const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
     <h3>3. Ueno Park</h3>
   </div>
   <div class={prose}>
+    <ArticleImage
+      src={uenoPark}
+      alt="Cherry blossom path and weeping willows in Ueno Park, Tokyo"
+      caption="Ueno Park in spring"
+      figureClass="my-5 md:my-8"
+      imgClass="aspect-[3/4]"
+    />
     <p>Ueno Park is a classic Tokyo park and a good choice if you want more than just a green space. The area is home to museums, temples, ponds, and seasonal cherry blossoms, so it works well if you want to combine a park visit with other nearby attractions.</p>
   </div>
 </section>
@@ -36,6 +83,13 @@ const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
     <h3>4. Shinjuku Gyoen National Garden</h3>
   </div>
   <div class={prose}>
+    <ArticleImage
+      src={shinjukuGyoenLake}
+      alt="Pond, bridge, and city skyline at Shinjuku Gyoen National Garden in Tokyo"
+      caption="Shinjuku Gyoen National Garden"
+      figureClass="my-5 md:my-8"
+      imgClass="aspect-[3/4]"
+    />
     <p>Right near one of Tokyo’s busiest areas, Shinjuku Gyoen National Garden feels like a proper escape from the city. It has wide lawns, landscaped gardens, ponds, and seasonal flowers, making it one of the best places in Tokyo for a calmer break near Shinjuku. There is a small entrance fee to visit, currently ¥500 for adults.</p>
   </div>
 </section>

@@ -1,7 +1,22 @@
 ---
 import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import { articleHref } from '@/domains/articles/catalog';
+
+import gokurakujiStation from '@/assets/articles/tokyo/gokurakuji-station-kamakura.webp';
+import enodenTrain from '@/assets/articles/tokyo/enoden-train-goryo-shrine.webp';
+import yoridokoroRestaurant from '@/assets/articles/tokyo/yoridokoro-restaurant-kamakura.webp';
+import yoridokoroBreakfast from '@/assets/articles/tokyo/yoridokoro-breakfast-kamakura.webp';
+import goryoShrine from '@/assets/articles/tokyo/goryo-shrine-kamakura.webp';
+import hasederaTemple from '@/assets/articles/tokyo/hasedera-temple-kamakura.webp';
+import hasederaBamboo from '@/assets/articles/tokyo/hasedera-bamboo-grove.webp';
+import greatBuddha from '@/assets/articles/tokyo/great-buddha-kamakura.webp';
+import komachiStreet from '@/assets/articles/tokyo/komachi-street-kamakura.webp';
+import buddhaCake from '@/assets/articles/tokyo/buddha-cake-komachi-street.webp';
 
 const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
+const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]';
+const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
 ---
 
 <section id="section-0" class="scroll-mt-nav">
@@ -25,6 +40,10 @@ const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
   <div class={prose}>
     <p>Kamakura is easy to reach from Tokyo by train, which makes it one of the most convenient day trips from the city. The exact route depends on where you are staying, but most visitors arrive at Kamakura Station first.</p>
     <p>From Kamakura Station, you can take the Enoden Line toward your first stop. This is what I did for my own Kamakura trip, and Google Maps made it easy to check train times, platforms, and connections along the way.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={gokurakujiStation} alt="Gokurakuji Station on the Enoden Line in Kamakura" caption="Gokurakuji Station" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={enodenTrain} alt="Enoden train near Goryo Shrine in Kamakura" caption="Enoden train near Goryo Shrine" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
   </div>
 </section>
 
@@ -34,6 +53,10 @@ const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
   </div>
   <div class={prose}>
     <p>Yoridokoro is a lovely place to start your Kamakura day trip, especially if you want something more local than a quick convenience store breakfast. It is known for its Japanese-style breakfast, usually served with grilled fish, rice, miso soup, pickles, and a fresh egg, but what makes it especially popular is its location right beside the Enoden train line.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={yoridokoroRestaurant} alt="Exterior of Yoridokoro restaurant in Kamakura" caption="Yoridokoro in Kamakura" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={yoridokoroBreakfast} alt="Japanese breakfast at Yoridokoro in Kamakura" caption="Breakfast at Yoridokoro" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
     <p>If you get one of the counter seats by the window, you can watch the Enoden train pass right in front of you while you eat. These seats are limited, so I recommend making a reservation if the train view is important to you. We visited around opening time and did not have to wait long, but Yoridokoro is a popular stop, so I would still arrive early.</p>
     <p>To be honest, I never expected to enjoy fish for breakfast as much as I did here, and that is exactly why I would absolutely recommend it.</p>
   </div>
@@ -45,6 +68,7 @@ const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
   </div>
   <div class={prose}>
     <p>Goryo Shrine is not a place you visit for taking photos, as photography is not allowed inside the shrine grounds. This is one of the reasons it felt so quiet, local, and much less crowded than some of the more famous temples nearby, and it ended up being one of the most memorable experiences of my Kamakura trip.</p>
+    <ArticleImage src={goryoShrine} alt="Goryo Shrine exterior in Kamakura" caption="Goryo Shrine" imgClass="aspect-[4/5] object-cover" />
   </div>
 </section>
 
@@ -54,6 +78,10 @@ const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
   </div>
   <div class={prose}>
     <p>Hasedera is one of Kamakura's most beautiful temple stops, and it is definitely worth adding to your day. The temple grounds are lovely to explore, with gardens, small statues, wooden buildings, and viewpoints over Kamakura and the sea. Be prepared to spend more time here than you might expect, especially if the weather is nice. There is enough to see that you will probably want to wander for a while before moving on.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={hasederaTemple} alt="Entrance to Hasedera Temple in Kamakura" caption="Hasedera Temple entrance" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={hasederaBamboo} alt="Bamboo at Hasedera Temple in Kamakura" caption="Bamboo at Hasedera Temple" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
     <p>There is a small entrance fee to visit Hasedera, currently ¥400 for adults, but you do not need to book tickets in advance.</p>
   </div>
 </section>
@@ -64,6 +92,7 @@ const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
   </div>
   <div class={prose}>
     <p>Kotoku-in is home to the famous Great Buddha of Kamakura, one of the most iconic sights in the area. The temple grounds felt quite small to me, so this does not need to be a long stop, but the Great Buddha is still absolutely worth seeing in person, especially if it is your first time visiting Kamakura. There is a small entrance fee to visit Kotoku-in, currently ¥300 for adults.</p>
+    <ArticleImage src={greatBuddha} alt="Great Buddha at Kotoku-in Temple in Kamakura" caption="The Great Buddha of Kamakura" imgClass="aspect-[4/5] object-cover" />
   </div>
 </section>
 
@@ -73,6 +102,10 @@ const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
   </div>
   <div class={prose}>
     <p>Komachi Street, near Kamakura Station, is the best place to go later in the day for street food, cafés, sweets, souvenirs, and small local shops. It feels much livelier than the temple areas, so it is a good place to browse, grab a snack, and enjoy a different side of Kamakura before heading back to Tokyo.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={komachiStreet} alt="Komachi Street in Kamakura lined with shops and food stalls" caption="Komachi Street" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={buddhaCake} alt="Buddha-shaped cake from a shop on Komachi Street in Kamakura" caption="Buddha cake on Komachi Street" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
   </div>
 </section>
 
@@ -98,7 +131,7 @@ const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
   <div class={prose}>
     <ArticleClosingNote label="Before you go">
       <p>If you are planning your own Kamakura day trip, I recommend choosing your main stops first, then adding any optional places depending on your time, energy, and the weather. That way, the day feels manageable instead of rushed.</p>
-      <p>I've pinned the places mentioned in this guide, along with extra cafés, food spots, attractions, and day trip ideas, on my Ultimate Tokyo Map. You can find it inside my 5-day Tokyo itinerary, save it for your trip, and use it to see where everything is located so you can plan your route more easily.</p>
+      <p>I've pinned the places mentioned in this guide, along with extra cafés, food spots, attractions, and day trip ideas, on my Ultimate Tokyo Map. You can find it inside my <a href={articleHref('tokyo-5-day-itinerary')} class={mapLink}>5-day Tokyo itinerary</a>, save it for your trip, and use it to see where everything is located so you can plan your route more easily.</p>
     </ArticleClosingNote>
   </div>
 </section>

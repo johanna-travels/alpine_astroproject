@@ -5,7 +5,7 @@ import JapanBeforeFooter from '@/components/articles/JapanBeforeFooter.astro';
 import { tokyoParksNav } from '@/domains/articles/tokyo-parks-nav';
 import { getArticle } from '@/domains/articles/catalog';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
-import tokyoParksHero from '@/assets/articles/tokyo/tokyo-parks-gardens.webp';
+import tokyoParksHero from '@/assets/articles/tokyo/greenery-areas-tokyo.webp';
 
 const article = getArticle('tokyo-parks')!;
 ---
@@ -14,8 +14,8 @@ const article = getArticle('tokyo-parks')!;
   <figure slot="title-media">
     <ArticleImage
       src={tokyoParksHero}
-      alt="Cherry blossom path in a Tokyo park during sakura season"
-      caption="Cherry blossoms in Tokyo"
+      alt="Pond and cherry blossoms in a green Tokyo park and garden"
+      caption="Greenery in Tokyo"
       imgClass="aspect-[5/4] object-cover"
     />
   </figure>

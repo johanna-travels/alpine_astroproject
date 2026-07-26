@@ -1,9 +1,21 @@
 ---
 import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
+import { articleHref } from '@/domains/articles/catalog';
+
+import chureitoPagoda from '@/assets/articles/tokyo/chureito-pagoda-mount-fuji.webp';
+import trainTracks from '@/assets/articles/tokyo/train-tracks-mount-fuji-fujiyoshida.webp';
+import honchoStreet from '@/assets/articles/tokyo/honcho-street-mount-fuji.webp';
+import crossingHoncho from '@/assets/articles/tokyo/crossing-honcho-street.webp';
+import fujisanStation from '@/assets/articles/tokyo/fujisan-station-mount-fuji.webp';
+import fujisanStationView from '@/assets/articles/tokyo/mount-fuji-view-from-fujisan-station.webp';
+import ramenHachiyo from '@/assets/articles/tokyo/ramen-hachiyo-kawaguchiko.webp';
+import lawsonKawaguchiko from '@/assets/articles/tokyo/lawson-mount-fuji-kawaguchiko.webp';
+import manholeCover from '@/assets/articles/tokyo/mount-fuji-manhole-cover-fujiyoshida.webp';
 
 const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
 const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]';
+const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
 ---
 
 <section id="section-0" class="scroll-mt-nav">
@@ -25,11 +37,12 @@ const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f
   </div>
   <div class={prose}>
     <p>If you want to visit Mount Fuji independently, one of the easiest ways is to take the highway bus from Busta Shinjuku toward Kawaguchiko Station. If your first stop is Chureito Pagoda, you can get off at Chuodo Shimo Yoshida, which is about a 30-minute walk from the pagoda area.</p>
-    
+    <div class={twoColGrid}>
+      <ArticleImage src={fujisanStation} alt="Fujisan Station with Mount Fuji in the background" caption="Fujisan Station" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={fujisanStationView} alt="Mount Fuji viewed from Fujisan Station" caption="Mount Fuji from Fujisan Station" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
     <p>I recommend booking both your outbound and return bus tickets in advance, especially if you are visiting during a busy season or on a weekend. For my own trip, I bought my tickets one day before, after checking the weather forecast, and chose a return time for late afternoon so I had enough time to explore without rushing.</p>
-    
     <p>If you prefer a more relaxed option with less planning, you can also book an organized Mount Fuji day trip from Tokyo. This is especially useful if you want to visit several viewpoints in one day without worrying about bus schedules, local transport, or getting between stops on your own.</p>
-    
     <p class="mt-6"><a href="https://gyg.me/kJKUZBsy" target="_blank" rel="noopener noreferrer" class={mapLink}>
       🎟️ Book your Mount Fuji day trip from Tokyo here
     </a></p>
@@ -65,6 +78,10 @@ const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f
   </div>
   <div class={prose}>
     <p>Chureito Pagoda is one of the most iconic Mount Fuji viewpoints and one of the main reasons many travelers visit Fujiyoshida. From the viewpoint at Arakurayama Sengen Park, you can see the red pagoda, the city below, and Mount Fuji in the background on a clear day. The view is especially famous during cherry blossom season, although when I visited in spring, the blossoms had not opened yet and bloomed about ten days after my trip. Just keep in mind that reaching the viewpoint involves a climb, so wear comfortable shoes and be prepared for stairs.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={chureitoPagoda} alt="Chureito Pagoda with Mount Fuji at Arakurayama Sengen Park" caption="Chureito Pagoda and Mount Fuji" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={trainTracks} alt="Mount Fuji viewed from the train tracks in Fujiyoshida" caption="Train tracks viewpoint in Fujiyoshida" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
   </div>
 </section>
 
@@ -74,6 +91,10 @@ const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f
   </div>
   <div class={prose}>
     <p>Honcho 2-chome Shopping District is one of the most famous Mount Fuji photo spots in Fujiyoshida. The view is popular because Mount Fuji appears at the end of a traditional-looking shopping street, rising dramatically behind the town. It is a beautiful spot, but it is also a real street with cars, shops, and local life, not a closed photo area, so be respectful: stay on the sidewalk, do not block traffic, and avoid standing in the road for photos.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={honchoStreet} alt="Mount Fuji rising behind Honcho 2-chome shopping street in Fujiyoshida" caption="Honcho 2-chome shopping street" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={crossingHoncho} alt="Crossing Honcho street with Mount Fuji in the background" caption="Crossing Honcho street" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
   </div>
 </section>
 
@@ -83,6 +104,7 @@ const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f
   </div>
   <div class={prose}>
     <p>Ramen Hachiyo was a great lunch stop during my Mount Fuji day trip. It is located relatively close to Kawaguchiko Station, which makes it a convenient place to eat before continuing with the rest of the day. There may be a wait during busy hours, but if you are lucky, you might get a window seat with a view of Mount Fuji.</p>
+    <ArticleImage src={ramenHachiyo} alt="Ramen at Ramen Hachiyo near Kawaguchiko" caption="Lunch at Ramen Hachiyo" imgClass="aspect-[4/5] object-cover" />
   </div>
 </section>
 
@@ -92,6 +114,10 @@ const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f
   </div>
   <div class={prose}>
     <p>The area around Kawaguchiko Station is a good place to add a few quick Mount Fuji photo stops to your day. This is where you'll find the famous Lawson photo spot with Mount Fuji behind the convenience store, along with a few nearby streets and railway crossings that can also make beautiful photo stops when the mountain is visible.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={lawsonKawaguchiko} alt="Famous Lawson convenience store with Mount Fuji behind it near Kawaguchiko Station" caption="Lawson with Mount Fuji" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={manholeCover} alt="Mount Fuji manhole cover in Fujiyoshida" caption="Mount Fuji manhole cover" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
     <p>The Lawson stop is fun to see if you are already in the area, but I would treat it as a quick stop rather than a main highlight of the day. The area can get crowded, so be respectful: stay on the sidewalk, do not block traffic, and avoid disturbing local businesses or residents.</p>
     <p>If you have extra time, you can also continue toward Lake Kawaguchiko for more open views of Mount Fuji. I did not visit the lake on this trip, so I would treat it as an optional add-on rather than an essential stop for this route.</p>
   </div>
@@ -127,7 +153,7 @@ const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f
   <div class={prose}>
     <ArticleClosingNote label="Before you go">
       <p>If you are planning a Mount Fuji day trip from Tokyo, I recommend keeping this day as flexible as possible. Choose the main viewpoints you care about most, check the weather before you go, and avoid trying to fit in too many stops if visibility is not on your side.</p>
-      <p>I've pinned the places mentioned in this guide, along with extra viewpoints, food spots, cafés, attractions, and day trip ideas, on my Ultimate Tokyo Map. You can find it inside my 5-day Tokyo itinerary, save it for your trip, and use it to plan your route more easily.</p>
+      <p>I've pinned the places mentioned in this guide, along with extra viewpoints, food spots, cafés, attractions, and day trip ideas, on my Ultimate Tokyo Map. You can find it inside my <a href={articleHref('tokyo-5-day-itinerary')} class={mapLink}>5-day Tokyo itinerary</a>, save it for your trip, and use it to plan your route more easily.</p>
     </ArticleClosingNote>
   </div>
 </section>

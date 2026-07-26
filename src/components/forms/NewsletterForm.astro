@@ -3,11 +3,41 @@ import { apiUrl, pageUrl } from '@/lib/site';
 
 interface Props {
   class?: string;
+  variant?: 'footer' | 'banner';
 }
 
-const { class: className = "" } = Astro.props;
+const { class: className = '', variant = 'footer' } = Astro.props;
+const isBanner = variant === 'banner';
 const formId = `newsletter-${crypto.randomUUID().slice(0, 8)}`;
 const apiPath = apiUrl('subscribe');
+
+const inputClass = isBanner
+  ? 'w-full px-4 py-2.5 placeholder:text-neutral-400 bg-white border border-[#E5DFD4] rounded-md text-neutral-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#69746E]/25 focus:border-[#69746E] transition-all disabled:opacity-50'
+  : 'w-full px-4 py-2.5 placeholder-white/60 bg-[#4a534f] border border-white/30 rounded-md text-white text-sm focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all disabled:opacity-50';
+
+const submitClass = isBanner
+  ? 'px-6 py-2.5 text-sm font-medium tracking-wide bg-[#69746E] text-white rounded-md hover:opacity-80 transition-opacity duration-200 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed w-full sm:mt-0 sm:w-auto'
+  : 'px-6 py-2.5 text-xs tracking-[0.2em] uppercase bg-[#F4F1EA] text-[#2D2D2D] rounded-md hover:bg-white/90 transition-all duration-300 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed';
+
+const checkboxClass = isBanner
+  ? 'mt-0.5 w-4 h-4 rounded border-[#E5DFD4] bg-white text-[#69746E] focus:ring-[#69746E]/30 cursor-pointer'
+  : 'mt-0.5 w-4 h-4 rounded border-white/40 bg-[#4a534f] text-white focus:ring-white/50 cursor-pointer';
+
+const labelClass = isBanner
+  ? 'text-xs text-black/70 leading-relaxed cursor-pointer'
+  : 'text-xs text-white/90 leading-relaxed cursor-pointer';
+
+const linkClass = isBanner
+  ? 'underline underline-offset-2 text-[#69746E] hover:text-[#4a534f]'
+  : 'underline hover:text-white/90';
+
+const emailErrorClass = isBanner
+  ? 'text-red-600 text-xs mt-1 hidden'
+  : 'text-red-300 text-xs mt-1 hidden';
+
+const consentErrorClass = isBanner
+  ? 'text-red-600 text-xs ml-7 hidden'
+  : 'text-red-300 text-xs ml-7 hidden';
 ---
 
 <form
@@ -16,6 +46,7 @@ const apiPath = apiUrl('subscribe');
   lang="en"
   novalidate
   data-newsletter-form
+  data-variant={variant}
 >
   <div class="flex flex-col sm:flex-row gap-3">
     <div class="flex-1 relative">
@@ -23,16 +54,16 @@ const apiPath = apiUrl('subscribe');
         type="email"
         name="email"
         autocomplete="email"
-        placeholder="Enter your email"
+        placeholder={isBanner ? 'Enter your email address' : 'Enter your email'}
         required
-        class="w-full px-4 py-2.5 placeholder-white/60 bg-[#4a534f] border border-white/30 rounded-md text-white text-sm focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all disabled:opacity-50"
+        class={inputClass}
         data-newsletter-email
       />
-      <p class="text-red-300 text-xs mt-1 hidden" data-newsletter-email-error />
+      <p class={emailErrorClass} data-newsletter-email-error />
     </div>
     <button
       type="submit"
-      class="px-6 py-2.5 text-xs tracking-[0.2em] uppercase bg-[#F4F1EA] text-[#2D2D2D] rounded-md hover:bg-white/90 transition-all duration-300 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+      class={submitClass}
       data-newsletter-submit
       disabled
     >
@@ -47,16 +78,16 @@ const apiPath = apiUrl('subscribe');
       name="consent"
       autocomplete="off"
       required
-      class="mt-0.5 w-4 h-4 rounded border-white/40 bg-[#4a534f] text-white focus:ring-white/50 cursor-pointer"
+      class={checkboxClass}
       data-newsletter-consent
     />
-    <label for={`${formId}-consent`} class="text-xs text-white/90 leading-relaxed cursor-pointer">
+    <label for={`${formId}-consent`} class={labelClass}>
       I agree to the{" "}
-      <a href={pageUrl('privacy-policy')} class="underline hover:text-white/90">Privacy Policy</a>{" "}
+      <a href={pageUrl('privacy-policy')} class={linkClass}>Privacy Policy</a>{" "}
       and consent to receive emails.
     </label>
   </div>
-  <p class="text-red-300 text-xs ml-7 hidden" data-newsletter-consent-error />
+  <p class={consentErrorClass} data-newsletter-consent-error />
 
   <p class="text-xs hidden" data-newsletter-message />
 </form>
@@ -95,9 +126,20 @@ const apiPath = apiUrl('subscribe');
 
       const setMessage = (text, type) => {
         if (!message) return;
+        const isBannerForm = form.dataset.variant === "banner";
         message.textContent = text;
-        message.classList.remove("hidden", "text-green-300", "text-red-300");
-        message.classList.add(type === "success" ? "text-green-300" : "text-red-300");
+        message.classList.remove(
+          "hidden",
+          "text-green-300",
+          "text-red-300",
+          "text-emerald-700",
+          "text-red-600"
+        );
+        if (type === "success") {
+          message.classList.add(isBannerForm ? "text-emerald-700" : "text-green-300");
+        } else {
+          message.classList.add(isBannerForm ? "text-red-600" : "text-red-300");
+        }
       };
 
       form.addEventListener("submit", async (event) => {

@@ -1,9 +1,22 @@
 ---
 import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
-import kenCoffeeCats from '@/assets/articles/tokyo/best-cafe-tokyo-1.webp';
+import ArticleShareBar from '@/components/articles/ArticleShareBar.astro';
+import ArticlePinSaveSection from '@/components/articles/ArticlePinSaveSection.astro';
+import kenCoffeeCats from '@/assets/articles/tokyo/kens-coffee-cat-latte-art-tokyo.webp';
+import hatCoffeeArt from '@/assets/articles/tokyo/hatcoffee-3d-latte-art-tokyo.webp';
+import hatCoffeeMaking from '@/assets/articles/tokyo/hatcoffee-3d-latte-art-making-tokyo.webp';
+import latteArtManiaMaking from '@/assets/articles/tokyo/latte-art-mania-latte-art-making-tokyo.webp';
+import latteArtManiaDrink from '@/assets/articles/tokyo/latte-art-mania-latte-art-tokyo.webp';
+import turretCoffeeCups from '@/assets/articles/tokyo/turret-coffee-espresso-cups-tokyo.webp';
+import turretCoffeeExterior from '@/assets/articles/tokyo/turret-coffee-exterior-tokyo.webp';
+import turretCoffeeSignature from '@/assets/articles/tokyo/turret-coffee-signature-coffee-tokyo.webp';
+import starbuckVideo from '@/assets/articles/tokyo/starbuck-roastery-tokyo-video.MP4';
+import tokyoCafeGuidePin from '@/assets/articles/tokyo/tokyo-cafe-guide.png';
 
 const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
+const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
+const threeColGrid = 'my-5 grid grid-cols-1 items-start gap-3 sm:grid-cols-3 md:my-8 md:gap-4';
 ---
 
 <section id="section-0" class="scroll-mt-nav">
@@ -13,6 +26,22 @@ const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
   <div class={prose}>
     <p>HATCOFFEE was one of the most fun café experiences I had in Tokyo. It is located just a short walk from Sensō-ji Temple, which makes it an easy stop if you are already exploring Asakusa.</p>
     <p>What makes this place special is the personalized latte art. You can either show them a photo of the design you want or choose one of the options available on the menu. I decided to choose one of their designs, and the result was honestly adorable — so cute that I almost felt bad drinking it. The coffee itself was also good, so it did not feel like a stop that was only worth visiting for the photo.</p>
+    <div class={twoColGrid}>
+      <ArticleImage
+        src={hatCoffeeMaking}
+        alt="Barista creating 3D latte art at HATCOFFEE in Asakusa, Tokyo"
+        caption="3D latte art being made"
+        figureClass="m-0"
+        imgClass="aspect-[3/4]"
+      />
+      <ArticleImage
+        src={hatCoffeeArt}
+        alt="3D animal latte art in a HATCOFFEE takeaway cup in Asakusa, Tokyo"
+        caption="Finished 3D latte art at HATCOFFEE"
+        figureClass="m-0"
+        imgClass="aspect-[3/4]"
+      />
+    </div>
     <p><span class="font-medium text-black">Best for:</span> personalized latte art, cute photos, and an easy stop near Sensō-ji Temple.</p>
   </div>
 </section>
@@ -24,6 +53,22 @@ const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
   <div class={prose}>
     <p>Latte Art Mania Ginza was another highlight of my Tokyo café hopping day. This café focuses on creative drinks and detailed latte art, making it a great stop if you want something that feels a little different from a classic coffee order.</p>
     <p>Matcha is not usually my first choice, but I like trying new things when I travel. I asked the barista for a recommendation, and he suggested the hojicha latte. Hojicha has a lighter, milder flavor than matcha, which made it a better choice for me. It was beautifully prepared, had a unique flavor, and I ended up really enjoying it.</p>
+    <div class={twoColGrid}>
+      <ArticleImage
+        src={latteArtManiaMaking}
+        alt="Barista pouring latte art into a dark specialty latte at Latte Art Mania Ginza in Tokyo"
+        caption="Latte art being poured"
+        figureClass="m-0"
+        imgClass="aspect-[3/4]"
+      />
+      <ArticleImage
+        src={latteArtManiaDrink}
+        alt="Charcoal latte with floral and leaf latte art at Latte Art Mania Ginza in Tokyo"
+        caption="Finished latte art at Latte Art Mania"
+        figureClass="m-0"
+        imgClass="aspect-[3/4]"
+      />
+    </div>
     <p><span class="font-medium text-black">Best for:</span> creative drinks, latte art, and trying something different in Ginza.</p>
   </div>
 </section>
@@ -39,7 +84,7 @@ const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
       alt="3D cat latte art in a pink teacup at Ken’s Coffee Shop in Tokyo"
       caption="Cat latte art at Ken’s Coffee Shop"
       figureClass="my-5 md:my-8"
-      imgClass="aspect-[5/4] object-cover"
+      imgClass="aspect-[3/4]"
     />
     <p>One of the cutest details was the latte art with little cats on top, which added such a sweet and memorable touch to the visit. If you want to make the stop feel even more like a treat, you can also pair your coffee with something sweet from the menu.</p>
     <p><span class="font-medium text-black">Best for:</span> a relaxed coffee break, cozy vintage atmosphere, and cute cat latte art.</p>
@@ -53,6 +98,29 @@ const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
   <div class={prose}>
     <p>Turret Coffee is a small specialty coffee shop in the Tsukiji area and a great stop if you appreciate strong, well-made coffee. It has a completely different feeling from the more playful latte art cafés on this list, which is exactly why I liked it.</p>
     <p>My recommendation is to try their signature drink, especially if you enjoy coffee with a rich, bold flavor. One important thing to know before visiting is that Turret Coffee has strict photography rules. Make sure to respect their guidelines and ask before taking photos inside the café.</p>
+    <div class={threeColGrid}>
+      <ArticleImage
+        src={turretCoffeeExterior}
+        alt="Exterior entrance of Turret Coffee in Tsukiji, Tokyo with a Monstera plant and red bench"
+        caption="Turret Coffee exterior"
+        figureClass="m-0"
+        imgClass="aspect-[4/5]"
+      />
+      <ArticleImage
+        src={turretCoffeeSignature}
+        alt="Signature latte with detailed rosetta art in a Turret Coffee cup in Tsukiji, Tokyo"
+        caption="Signature coffee"
+        figureClass="m-0"
+        imgClass="aspect-[4/5]"
+      />
+      <ArticleImage
+        src={turretCoffeeCups}
+        alt="Turret Coffee branded ceramic espresso and flat white cups on display in Tsukiji, Tokyo"
+        caption="Turret Coffee cups"
+        figureClass="m-0"
+        imgClass="aspect-[4/5]"
+      />
+    </div>
     <p><span class="font-medium text-black">Best for:</span> specialty coffee, bold flavors, and a more serious coffee experience.</p>
   </div>
 </section>
@@ -63,6 +131,21 @@ const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
   </div>
   <div class={prose}>
     <p>I know — including Starbucks in a list of the best cafés in Tokyo might sound strange. But Starbucks Reserve Roastery Tokyo is not a regular Starbucks, and I honestly think it is worth visiting even if you are not usually a big Starbucks fan. The building itself is massive, with multiple floors and a different experience on each level, from specialty coffee drinks and desserts to savory options, teas, and terrace seating during the warmer months.</p>
+    
+    <video
+      class="pointer-events-none my-5 md:my-8 w-full rounded-lg aspect-[5/4] object-cover"
+      src={starbuckVideo}
+      autoplay
+      muted
+      loop
+      playsinline
+      disablepictureinpicture
+      controlslist="nodownload nofullscreen noremoteplayback"
+      aria-hidden="true"
+      tabindex="-1"
+    >
+      Your browser does not support the video tag.
+    </video>
     <p>I visited Tokyo in spring, which is one of the busiest seasons in the city, and the Roastery was extremely crowded around midday. There was a reservation system for entry, and I would have had to wait almost an hour, so I decided to come back the next morning shortly after opening. That ended up being a much better choice, as the space was still calm enough to explore and enjoy without feeling overwhelmed.</p>
     <p><span class="font-medium text-black">Best for:</span> a bigger café experience, specialty drinks, desserts, tea, and terrace seating.</p>
   </div>
@@ -74,5 +157,20 @@ const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
       <p>If you love coffee, make sure to leave a little room in your Tokyo itinerary for at least a few cafés. Tokyo has countless coffee spots, so this list is just a small starting point for planning your own café stops.</p>
       <p>I’ve pinned all five cafés from this guide on my Ultimate Tokyo Map, along with extra coffee spots, food places, attractions, photo locations, hotel areas, and day trip ideas. You can find the map inside my 5-day Tokyo itinerary, save it for your trip, and use it to see which cafés fit best into the area you are exploring that day.</p>
     </ArticleClosingNote>
+
+    <ArticlePinSaveSection>
+      <ArticleImage
+        src={tokyoCafeGuidePin}
+        alt="Tokyo cafe guide — cute lattes and must-visit cafés"
+        figureClass="m-0"
+        pinOnHover
+      />
+
+      <ArticleShareBar
+        title="5 Best Cafés in Tokyo to Add to Your Itinerary"
+        pinImage={tokyoCafeGuidePin}
+        class="mt-6 md:mt-8"
+      />
+    </ArticlePinSaveSection>
   </div>
 </section>
