@@ -1,0 +1,21 @@
+---
+import { getStay22LmaId } from '@/lib/stay22';
+
+const lmaId = getStay22LmaId();
+---
+
+{
+  lmaId && (
+    <script is:inline define:vars={{ lmaId }}>
+      (function (s, t, a, y, twenty, two) {
+        s.Stay22 = s.Stay22 || {};
+        s.Stay22.params = { lmaID: lmaId };
+        twenty = t.createElement(a);
+        two = t.getElementsByTagName(a)[0];
+        twenty.async = 1;
+        twenty.src = y;
+        two.parentNode.insertBefore(twenty, two);
+      })(window, document, 'script', 'https://scripts.stay22.com/letmeallez.js');
+    </script>
+  )
+}

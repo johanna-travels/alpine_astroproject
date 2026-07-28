@@ -4,6 +4,8 @@ import articleBaliItinerary from '@/assets/articles/bali/bali-itinerary-card.web
 import articleBaliBelly from '@/assets/articles/bali/bali-belly-card-square.webp';
 import articleBaliTips from '@/assets/articles/bali/bali-travel-tips-aricle.webp';
 import articleBaliWhereToStay from '@/assets/articles/bali/bali-the-udaya-resort.webp';
+import articleMundukModingReviewCard from '@/assets/articles/bali/munduk-moding-plantation-review-card.webp';
+import articleMundukModingReviewHero from '@/assets/articles/bali/munduk-moding-plantation-infinity-pool-sunset.webp';
 import articleBruges from '@/assets/articles/cards/bruges.webp';
 import articleGreece from '@/assets/articles/cards/greece.webp';
 import articleHongKong from '@/assets/articles/hong-kong/hong-kong.webp';
@@ -24,7 +26,7 @@ import articleParga from '@/assets/articles/parga/parga-from-above.webp';
 import type { DestinationSlug } from '@/domains/destinations/catalog';
 import { pageUrl } from '@/lib/site';
 
-export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bali-where-to-stay' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'mt-fuji-day-trip-from-tokyo' | 'kamakura-day-trip-from-tokyo' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary' | 'tokyo-cafes' | 'tokyo-parks' | 'tokyo-temples' | 'tokyo-5-day-itinerary';
+export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bali-where-to-stay' | 'munduk-moding-plantation-review' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'mt-fuji-day-trip-from-tokyo' | 'kamakura-day-trip-from-tokyo' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary' | 'tokyo-cafes' | 'tokyo-parks' | 'tokyo-temples' | 'tokyo-5-day-itinerary';
 
 export interface Article {
   slug: ArticleSlug;
@@ -40,6 +42,8 @@ export interface Article {
   dateLabel?: string;
   intro: readonly string[];
   lead?: string;
+  /** Optional custom paragraphs for article announcement emails (overrides lead/excerpt). */
+  newsletterBody?: readonly string[];
   seoTitle?: string;
   seoDescription?: string;
   lcpImage?: ImageMetadata;
@@ -319,6 +323,27 @@ export const articles: readonly Article[] = [
       'In this guide, you will find my favorite areas to stay in Bali, along with the resorts I would personally recommend in each one. I have also included a few extra hotels that stand out for their location, atmosphere, or overall experience, so you can choose the area that best fits your trip.',
     ],
     lead: 'A guide to the best areas to stay in Bali, from Ubud and Seminyak to Nusa Dua and beyond, with tips on choosing the right base for your trip.',
+  },
+  {
+    slug: 'munduk-moding-plantation-review',
+    destinationSlug: 'bali',
+    category: 'BALI',
+    title: "Munduk Moding Plantation Review: Bali's Iconic Infinity Pool & Luxury Nature Resort",
+    carouselTitle: "Munduk Moding Plantation Review: Bali's Iconic Infinity Pool & Luxury Nature Resort",
+    breadcrumbTitle: 'Munduk Moding Review',
+    metaLabel: 'Bali',
+    alt: "Munduk Moding Plantation infinity pool and luxury nature resort in North Bali",
+    image: articleMundukModingReviewCard,
+    lcpImage: articleMundukModingReviewHero,
+    publishedDate: '28 July 2026',
+    intro: [
+      'Many hotels in Bali describe themselves as eco-friendly, but very few actually make you feel that sustainability is part of the experience. After spending almost two months in Bali and staying at several different resorts, I quickly realized that the word eco is used everywhere—but Munduk Moding Plantation was the first place where I truly understood what an eco-resort should be.',
+    ],
+    lead: 'Many hotels in Bali call themselves eco-friendly — Munduk Moding Plantation was the first place where I truly felt what an eco-resort should be.',
+    newsletterBody: [
+      'Hi there,',
+      'I just published my full review of Munduk Moding Plantation, one of the most unforgettable stays I experienced in Bali. Surrounded by coffee plantations and tropical forest, this luxury resort in North Bali is known for its breathtaking mountain views, iconic infinity pool, and peaceful atmosphere.',
+    ],
   },
   {
     slug: 'rhodes-itinerary',

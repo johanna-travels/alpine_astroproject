@@ -1,10 +1,13 @@
 ---
 import '../styles/global.css';
+import Stay22LetMeAllez from '@/components/affiliate/Stay22LetMeAllez.astro';
 import BgLayer from '@/components/layout/bg-layer/BgLayer.astro';
 import CookieConsent from '@/components/layout/CookieConsent.astro';
 import { googleAnalyticsCsp, getGaMeasurementId, isGoogleAnalyticsEnabled } from '@/lib/analytics';
+import { instagramCsp } from '@/lib/instagram';
 import { googleMapsCsp } from '@/lib/maps';
 import { getYourGuideCsp } from '@/lib/getyourguide';
+import { stay22Csp, isStay22Enabled } from '@/lib/stay22';
 import { homeUrl } from '@/lib/site';
 
 interface Props {
@@ -31,6 +34,7 @@ const isDev = import.meta.env.DEV;
 const fb = import.meta.env.BASE_URL;
 const gaMeasurementId = getGaMeasurementId();
 const googleAnalyticsEnabled = isGoogleAnalyticsEnabled();
+const stay22Enabled = isStay22Enabled();
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? homeUrl).href;
 const siteOrigin = Astro.site ?? homeUrl;
 const logoUrl = new URL(`${fb}icon-512.png`, siteOrigin).href;
@@ -49,13 +53,13 @@ const csp = [
   "default-src 'self'",
   "base-uri 'self'",
   "object-src 'none'",
-  `img-src 'self' data: blob: ${getYourGuideCsp.imgSrc}${googleAnalyticsEnabled ? ` ${googleAnalyticsCsp.imgSrc}` : ''}`,
+  `img-src 'self' data: blob: ${getYourGuideCsp.imgSrc}${stay22Enabled ? ` ${stay22Csp.imgSrc}` : ''}${googleAnalyticsEnabled ? ` ${googleAnalyticsCsp.imgSrc}` : ''} ${instagramCsp.imgSrc}`,
   "media-src 'self' blob:",
   "font-src 'self' data:",
   "style-src 'self' 'unsafe-inline'",
-  `script-src 'self' 'unsafe-inline' ${getYourGuideCsp.scriptSrc}${isDev ? " 'unsafe-eval'" : ''}${googleAnalyticsEnabled ? ` ${googleAnalyticsCsp.scriptSrc}` : ''}`,
-  `connect-src 'self' ${getYourGuideCsp.connectSrc}${isDev ? " ws://localhost:* wss://localhost:*" : ''}${googleAnalyticsEnabled ? ` ${googleAnalyticsCsp.connectSrc}` : ''}`,
-  `frame-src 'self' ${googleMapsCsp.frameSrc} ${getYourGuideCsp.frameSrc}`,
+  `script-src 'self' 'unsafe-inline' ${getYourGuideCsp.scriptSrc}${stay22Enabled ? ` ${stay22Csp.scriptSrc}` : ''}${isDev ? " 'unsafe-eval'" : ''}${googleAnalyticsEnabled ? ` ${googleAnalyticsCsp.scriptSrc}` : ''} ${instagramCsp.scriptSrc}`,
+  `connect-src 'self' ${getYourGuideCsp.connectSrc}${stay22Enabled ? ` ${stay22Csp.connectSrc}` : ''}${isDev ? " ws://localhost:* wss://localhost:*" : ''}${googleAnalyticsEnabled ? ` ${googleAnalyticsCsp.connectSrc}` : ''} ${instagramCsp.connectSrc}`,
+  `frame-src 'self' ${googleMapsCsp.frameSrc} ${getYourGuideCsp.frameSrc} ${instagramCsp.frameSrc}${stay22Enabled ? ` ${stay22Csp.frameSrc}` : ''}`,
   `form-action ${googleMapsCsp.formAction}`,
   "upgrade-insecure-requests",
 ].join('; ');
@@ -66,7 +70,7 @@ const permissionsPolicy = [
   "geolocation=()",
   "payment=()",
   "usb=()",
-  'fullscreen=(self "https://www.google.com")',
+  'fullscreen=(self "https://www.google.com" "https://www.instagram.com")',
 ].join(', ');
 
 ---
@@ -152,6 +156,7 @@ const permissionsPolicy = [
       }
     </style>`} />
     <slot name="head" />
+    {stay22Enabled && <Stay22LetMeAllez />}
   </head>
   <body>
     <BgLayer />

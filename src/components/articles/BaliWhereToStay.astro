@@ -3,6 +3,7 @@ import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
 import ArticleShareBar from '@/components/articles/ArticleShareBar.astro';
 import ArticlePinSaveSection from '@/components/articles/ArticlePinSaveSection.astro';
+import { articleHref } from '@/domains/articles/catalog';
 
 import udayaGarden from '@/assets/articles/bali/udaya-resorts-garden.webp';
 import breakfastAtTheUdaya from '@/assets/articles/bali/breakfast-at-the-udaya.webp';
@@ -20,6 +21,8 @@ const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
 const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
 const hotelLink =
   'font-medium text-[#5B6560] underline underline-offset-2 hover:text-[#3d4441]';
+const articleLink =
+  'underline underline-offset-2 text-[#5B6560] hover:text-[#3d4441]';
 
 /** Direct Booking.com hotel pages — no affiliate / aid / label params. */
 const booking = {
@@ -174,6 +177,7 @@ const booking = {
     <h4 class="mt-8 mb-2 text-black">Where to Stay in Munduk</h4>
     <h5 class="mt-6 mb-2 text-black">Luxury</h5>
     <p><a href={booking.mundukModing} class={hotelLink} target="_blank" rel="noopener noreferrer">Munduk Moding Plantation Nature Resort & Spa</a> — One of the most unforgettable resorts I stayed at in Bali. Famous for its award-winning infinity pool overlooking the mountains, this luxury resort is surrounded by coffee plantations and tropical forest, creating one of the most peaceful settings on the island. If you are looking for a unique stay in North Bali, this would be my first recommendation.</p>
+    <p>👉 <a href={articleHref('munduk-moding-plantation-review')} class={articleLink}>You can read my full Munduk Moding Plantation review here</a>.</p>
     <ArticleImage
       src={mundukModingPlantation}
       alt="Munduk Moding Plantation Nature Resort & Spa infinity pool overlooking the mountains in Bali"

@@ -131,6 +131,7 @@ export const POST: APIRoute = async ({ request }) => {
           recipients: recipients.length,
           subscribers: subscriberStats,
           previewUrl: articleUrl,
+          bodyParagraphs: emailContent.bodyParagraphs ?? [emailContent.excerpt],
           dryRun: true,
         }),
         { status: 200, headers: { 'Content-Type': 'application/json' } },

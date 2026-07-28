@@ -1,6 +1,8 @@
 ---
 import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
+import ArticlePinSaveSection from '@/components/articles/ArticlePinSaveSection.astro';
+import ArticleShareBar from '@/components/articles/ArticleShareBar.astro';
 import { articleHref } from '@/domains/articles/catalog';
 
 import gokurakujiStation from '@/assets/articles/tokyo/gokurakuji-station-kamakura.webp';
@@ -13,6 +15,7 @@ import hasederaBamboo from '@/assets/articles/tokyo/hasedera-bamboo-grove.webp';
 import greatBuddha from '@/assets/articles/tokyo/great-buddha-kamakura.webp';
 import komachiStreet from '@/assets/articles/tokyo/komachi-street-kamakura.webp';
 import buddhaCake from '@/assets/articles/tokyo/buddha-cake-komachi-street.webp';
+import kamakuraDayTripGuidePin from '@/assets/articles/tokyo/kamakura-day-trip-guide-pin.png';
 
 const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
 const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]';
@@ -131,7 +134,22 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
   <div class={prose}>
     <ArticleClosingNote label="Before you go">
       <p>If you are planning your own Kamakura day trip, I recommend choosing your main stops first, then adding any optional places depending on your time, energy, and the weather. That way, the day feels manageable instead of rushed.</p>
-      <p>I've pinned the places mentioned in this guide, along with extra cafés, food spots, attractions, and day trip ideas, on my Ultimate Tokyo Map. You can find it inside my <a href={articleHref('tokyo-5-day-itinerary')} class={mapLink}>5-day Tokyo itinerary</a>, save it for your trip, and use it to see where everything is located so you can plan your route more easily.</p>
+      <p>I've pinned the places mentioned in this guide, along with extra cafés, food spots, attractions, and day trip ideas, on my Ultimate Tokyo Map. You can find it inside my <a href={articleHref('tokyo-5-day-itinerary')} class={mapLink}>5-day Tokyo itinerary</a>. Save it for your trip, and use it to see where everything is located so you can plan your route more easily.</p>
     </ArticleClosingNote>
+
+    <ArticlePinSaveSection>
+      <ArticleImage
+        src={kamakuraDayTripGuidePin}
+        alt="Kamakura travel guide — Enoden train day trip from Tokyo"
+        figureClass="m-0"
+        pinOnHover
+      />
+
+      <ArticleShareBar
+        title="Kamakura Day Trip from Tokyo: Temples, Hidden Gems & Seaside Views"
+        pinImage={kamakuraDayTripGuidePin}
+        class="mt-6 md:mt-8"
+      />
+    </ArticlePinSaveSection>
   </div>
 </section>

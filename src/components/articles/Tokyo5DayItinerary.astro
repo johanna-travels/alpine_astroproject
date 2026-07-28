@@ -1,6 +1,8 @@
 ---
 import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
+import ArticlePinSaveSection from '@/components/articles/ArticlePinSaveSection.astro';
+import ArticleShareBar from '@/components/articles/ArticleShareBar.astro';
 import { articleHref } from '@/domains/articles/catalog';
 
 import benizuruChocolate from '@/assets/articles/tokyo/benizuru-chocolate-banana-pancakes.webp';
@@ -46,6 +48,7 @@ import kamakuraKomachi from '@/assets/articles/tokyo/kamakura-komachi-dori-stree
 import fujiHoncho from '@/assets/articles/tokyo/mount-fuji-honcho-2-chome-shopping-street-fujiyoshida.webp';
 import fujiChureito from '@/assets/articles/tokyo/chureito-pagoda-mount-fuji-arakurayama-sengen-park.webp';
 import fujiTrainTracks from '@/assets/articles/tokyo/mount-fuji-train-tracks-arakurayama-sengen-park.webp';
+import tokyo5DayItineraryPin from '@/assets/articles/tokyo/tokyo-5-day-itinerary-pin.png';
 
 const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
 const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]';
@@ -374,5 +377,20 @@ const infoBox =
       <p>Use this itinerary as a starting point, not a strict schedule. Some days may take longer than expected, some places may be busier than planned, and you may find yourself wanting to spend more time in one neighborhood instead of rushing to the next stop.</p>
       <p>The best way to enjoy Tokyo is to stay flexible, plan by area, and leave a little room for the unexpected moments — a quiet shrine, a great meal, a small side street, or a view that makes you stop for longer than you planned.</p>
     </ArticleClosingNote>
+
+    <ArticlePinSaveSection>
+      <ArticleImage
+        src={tokyo5DayItineraryPin}
+        alt="Your dream Tokyo trip — read my 5-day itinerary"
+        figureClass="m-0"
+        pinOnHover
+      />
+
+      <ArticleShareBar
+        title="5 Days in Tokyo: The Perfect Itinerary for First-Time Visitors"
+        pinImage={tokyo5DayItineraryPin}
+        class="mt-6 md:mt-8"
+      />
+    </ArticlePinSaveSection>
   </div>
 </section>

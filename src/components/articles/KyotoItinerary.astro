@@ -2,6 +2,8 @@
 import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
 import ArticleGoogleMap from '@/components/articles/ArticleGoogleMap.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
+import ArticlePinSaveSection from '@/components/articles/ArticlePinSaveSection.astro';
+import ArticleShareBar from '@/components/articles/ArticleShareBar.astro';
 import { articleHref } from '@/domains/articles/catalog';
 
 import bambooGrove from '@/assets/articles/kyoto/japan-kyoto-arashiyama-bamboo-grove.webp';
@@ -20,6 +22,7 @@ import fushimiInari from '@/assets/articles/kyoto/japan-kyoto-fushimi-inari-tori
 import naraDeer from '@/assets/articles/kyoto/japan-nara-deer-temple.webp';
 import nishikiFoodStalls from '@/assets/articles/kyoto/japan-kyoto-nishiki-market-food-stalls.webp';
 import nishikiStreetFood from '@/assets/articles/kyoto/japan-kyoto-nishiki-market-street-food.webp';
+import kyotoItineraryPin from '@/assets/articles/kyoto/3-day-kyoto-itinerary-pin.png';
 
 const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
 const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]';
@@ -200,5 +203,20 @@ const mapId = '1yt4Y8HLHzCnHDUs_gYwY-G_cjAb8xhw';
       <p>If I could give you one piece of advice, it would be not to try to see everything. Some of my favourite memories from Kyoto came from the moments between the famous landmarks—watching the sunrise in Arashiyama, wandering through the streets of Higashiyama and sitting on the terrace at Yusa-tei while the rain fell outside.</p>
       <p>Before your trip, don't forget to save <a href="#section-google-map" class={mapLink}>the interactive map</a> so you can easily follow this itinerary while you're in Kyoto. Have an amazing trip, and I hope Kyoto leaves you wanting to come back, just as it did for me.</p>
     </ArticleClosingNote>
+
+    <ArticlePinSaveSection>
+      <ArticleImage
+        src={kyotoItineraryPin}
+        alt="3-day Kyoto itinerary — temples, hidden gems and local experiences"
+        figureClass="m-0"
+        pinOnHover
+      />
+
+      <ArticleShareBar
+        title="Kyoto 3-Day Itinerary for First-Time Visitors"
+        pinImage={kyotoItineraryPin}
+        class="mt-6 md:mt-8"
+      />
+    </ArticlePinSaveSection>
   </div>
 </section>

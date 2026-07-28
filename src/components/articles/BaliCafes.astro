@@ -1,6 +1,8 @@
 ---
 import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
+import ArticlePinSaveSection from '@/components/articles/ArticlePinSaveSection.astro';
+import ArticleShareBar from '@/components/articles/ArticleShareBar.astro';
 
 import brunchClub from '@/assets/articles/bali/bali-brunch-club-pererenan.webp';
 import brunchClubInterior from '@/assets/articles/bali/bali-restaurant-plant-interior-brunch-club.webp';
@@ -21,6 +23,7 @@ import uluwatuPool from '@/assets/articles/bali/bali-uluwatu-restaurant-pool-eve
 import wedjaEntrance from '@/assets/articles/bali/ubud-wedja-restaurant-balinese-entrance.webp';
 import wedjaWaterGarden from '@/assets/articles/bali/ubud-wedja-water-garden-lotus-path.webp';
 import wedjaDining from '@/assets/articles/bali/wedja-restaurant-ubud-dining-experience.webp';
+import bestCafesInBaliPin from '@/assets/articles/bali/best-cafes-in-bali-pin.png';
 
 const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
 const imageGrid = 'my-5 grid grid-cols-1 items-start gap-3 sm:grid-cols-3 md:my-8 md:gap-4';
@@ -207,5 +210,20 @@ const otherCafeGallery = otherCafes.flatMap((cafe) =>
       <p>If I were planning another trip to Bali tomorrow, these are the places I'd add straight back to my list.</p>
       <p>Some earned their place on this list because of the food, others because of the atmosphere, the views, or the overall experience. Either way, they're the spots I would happily revisit and recommend to friends visiting Bali for the first time.</p>
     </ArticleClosingNote>
+
+    <ArticlePinSaveSection>
+      <ArticleImage
+        src={bestCafesInBaliPin}
+        alt="Best cafés in Bali — brunch, coffee and sweet finds"
+        figureClass="m-0"
+        pinOnHover
+      />
+
+      <ArticleShareBar
+        title="Best Cafés in Bali After 2 Months on the Island"
+        pinImage={bestCafesInBaliPin}
+        class="mt-6 md:mt-8"
+      />
+    </ArticlePinSaveSection>
   </div>
 </section>

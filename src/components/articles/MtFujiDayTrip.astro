@@ -1,6 +1,8 @@
 ---
 import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
+import ArticlePinSaveSection from '@/components/articles/ArticlePinSaveSection.astro';
+import ArticleShareBar from '@/components/articles/ArticleShareBar.astro';
 import { articleHref } from '@/domains/articles/catalog';
 
 import chureitoPagoda from '@/assets/articles/tokyo/chureito-pagoda-mount-fuji.webp';
@@ -12,6 +14,7 @@ import fujisanStationView from '@/assets/articles/tokyo/mount-fuji-view-from-fuj
 import ramenHachiyo from '@/assets/articles/tokyo/ramen-hachiyo-kawaguchiko.webp';
 import lawsonKawaguchiko from '@/assets/articles/tokyo/lawson-mount-fuji-kawaguchiko.webp';
 import manholeCover from '@/assets/articles/tokyo/mount-fuji-manhole-cover-fujiyoshida.webp';
+import mountFujiDayTripGuidePin from '@/assets/articles/tokyo/mount-fuji-day-trip-guide-pin.png';
 
 const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
 const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]';
@@ -153,7 +156,22 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
   <div class={prose}>
     <ArticleClosingNote label="Before you go">
       <p>If you are planning a Mount Fuji day trip from Tokyo, I recommend keeping this day as flexible as possible. Choose the main viewpoints you care about most, check the weather before you go, and avoid trying to fit in too many stops if visibility is not on your side.</p>
-      <p>I've pinned the places mentioned in this guide, along with extra viewpoints, food spots, cafés, attractions, and day trip ideas, on my Ultimate Tokyo Map. You can find it inside my <a href={articleHref('tokyo-5-day-itinerary')} class={mapLink}>5-day Tokyo itinerary</a>, save it for your trip, and use it to plan your route more easily.</p>
+      <p>I've pinned the places mentioned in this guide, along with extra viewpoints, food spots, cafés, attractions, and day trip ideas, on my Ultimate Tokyo Map. You can find it inside my <a href={articleHref('tokyo-5-day-itinerary')} class={mapLink}>5-day Tokyo itinerary</a>. Save it for your trip, and use it to plan your route more easily.</p>
     </ArticleClosingNote>
+
+    <ArticlePinSaveSection>
+      <ArticleImage
+        src={mountFujiDayTripGuidePin}
+        alt="Mount Fuji guide — the perfect day trip from Tokyo"
+        figureClass="m-0"
+        pinOnHover
+      />
+
+      <ArticleShareBar
+        title="Mount Fuji Day Trip from Tokyo"
+        pinImage={mountFujiDayTripGuidePin}
+        class="mt-6 md:mt-8"
+      />
+    </ArticlePinSaveSection>
   </div>
 </section>

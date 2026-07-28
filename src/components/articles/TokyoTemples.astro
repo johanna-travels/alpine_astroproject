@@ -1,6 +1,8 @@
 ---
 import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
+import ArticlePinSaveSection from '@/components/articles/ArticlePinSaveSection.astro';
+import ArticleShareBar from '@/components/articles/ArticleShareBar.astro';
 import hozomonGate from '@/assets/articles/tokyo/senso-ji-hozomon-gate-asakusa.webp';
 import templeInterior from '@/assets/articles/tokyo/senso-ji-temple-interior-details.webp';
 import fiveStoryPagoda from '@/assets/articles/tokyo/senso-ji-five-story-pagoda-asakusa.webp';
@@ -11,6 +13,7 @@ import hieToriiStairs from '@/assets/articles/tokyo/hie-shrine-torii-stairs-toky
 import hieToriiGates from '@/assets/articles/tokyo/walking-through-hie-shrine-torii-gates-tokyo.webp';
 import gotokujiTemple from '@/assets/articles/tokyo/gotokuji-temple-tokyo.webp';
 import gotokujiCats from '@/assets/articles/tokyo/gotokuji-temple-lucky-cat-statues.webp';
+import tokyoTempleGuidePin from '@/assets/articles/tokyo/tokyo-temple-guide-pin.png';
 
 const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
 ---
@@ -148,5 +151,20 @@ const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
       <p>One small thing to keep in mind: temples and shrines in Japan are not just sightseeing spots, but active places of worship. Be respectful, follow any signs about photography, and keep the atmosphere peaceful while you visit.</p>
       <p>👉 <a href="/articles/tokyo-5-day-itinerary/" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Read my 5-day Tokyo itinerary and get the Ultimate Tokyo Map here</a>.</p>
     </ArticleClosingNote>
+
+    <ArticlePinSaveSection>
+      <ArticleImage
+        src={tokyoTempleGuidePin}
+        alt="Tokyo temple guide — best shrines and temples to visit in Tokyo"
+        figureClass="m-0"
+        pinOnHover
+      />
+
+      <ArticleShareBar
+        title="Best Temples and Shrines in Tokyo to Add to Your Itinerary"
+        pinImage={tokyoTempleGuidePin}
+        class="mt-6 md:mt-8"
+      />
+    </ArticlePinSaveSection>
   </div>
 </section>

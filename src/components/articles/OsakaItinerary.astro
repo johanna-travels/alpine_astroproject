@@ -1,6 +1,8 @@
 ---
 import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
+import ArticlePinSaveSection from '@/components/articles/ArticlePinSaveSection.astro';
+import ArticleShareBar from '@/components/articles/ArticleShareBar.astro';
 import { articleHref } from '@/domains/articles/catalog';
 import nambaYasakaShrine from '@/assets/articles/osaka/osaka-namba-yasaka-shrine.webp';
 import springColours from '@/assets/articles/osaka/spring-colours-at-katsuoji-temple.webp';
@@ -14,6 +16,7 @@ import dotonboriAfterSunset from '@/assets/articles/osaka/osaka-dotonbori-after-
 import tenYenSnack from '@/assets/articles/osaka/osaka-the-famous-10-yen-coin-snack.webp';
 import takoyaki from '@/assets/articles/osaka/osaka-takoyaki.webp';
 import uniqueStorefronts from '@/assets/articles/osaka/osaka-unique-storefronts.webp';
+import oneDayOsakaItineraryPin from '@/assets/articles/osaka/one-day-osaka-itinerary-pin.png';
 import ArticleGoogleMap from '@/components/articles/ArticleGoogleMap.astro';
 
 const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
@@ -137,5 +140,20 @@ const mapId = '1DIvaJpYXYGz4VNKzcCK100oeSaBFc6E';
       <p>If you only have one day in Osaka, don't feel like you have to fit everything in. Some of my favourite memories came from places like Namba Yasaka Shrine and Katsuoji Temple rather than the city's busiest attractions. I hope this itinerary helps you discover a side of Osaka that stays with you long after your trip.</p>
       <p>Before your trip, don't forget to save the interactive map so you can easily follow this itinerary once you're in Osaka. Have an amazing trip, and I hope you create some unforgettable memories of your own.</p>
     </ArticleClosingNote>
+
+    <ArticlePinSaveSection>
+      <ArticleImage
+        src={oneDayOsakaItineraryPin}
+        alt="One day in Osaka — what to see, eat and explore"
+        figureClass="m-0"
+        pinOnHover
+      />
+
+      <ArticleShareBar
+        title="Osaka 1-Day Itinerary"
+        pinImage={oneDayOsakaItineraryPin}
+        class="mt-6 md:mt-8"
+      />
+    </ArticlePinSaveSection>
   </div>
 </section>

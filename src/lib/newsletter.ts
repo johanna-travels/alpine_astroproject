@@ -6,15 +6,25 @@ export type ArticleEmailContent = {
   title: string;
   category: string;
   excerpt: string;
+  bodyParagraphs?: readonly string[];
   articleUrl: string;
   imageUrl?: string;
 };
+
+function escapeHtml(text: string): string {
+  return text
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;');
+}
 
 export function buildArticleEmailContent(article: Article, articleUrl: string, imageUrl?: string): ArticleEmailContent {
   return {
     title: article.title,
     category: article.category,
     excerpt: article.lead ?? article.intro[0] ?? '',
+    bodyParagraphs: article.newsletterBody,
     articleUrl,
     imageUrl,
   };
@@ -45,9 +55,16 @@ export function articleAnnouncementEmailHtml(content: ArticleEmailContent, token
         ${content.title}
       </h2>
       ${imageBlock}
-      <p style="margin: 0 0 24px; font-size: 16px; line-height: 1.6; color: #444;">
-        ${content.excerpt}
-      </p>
+      ${
+        content.bodyParagraphs?.length
+          ? content.bodyParagraphs
+              .map(
+                (paragraph) =>
+                  `<p style="margin: 0 0 16px; font-size: 16px; line-height: 1.6; color: #444;">${escapeHtml(paragraph)}</p>`,
+              )
+              .join('')
+          : `<p style="margin: 0 0 24px; font-size: 16px; line-height: 1.6; color: #444;">${escapeHtml(content.excerpt)}</p>`
+      }
       <a
         href="${content.articleUrl}"
         style="display: inline-block; padding: 12px 24px; background-color: #69746E; color: white; text-decoration: none; border-radius: 4px;"

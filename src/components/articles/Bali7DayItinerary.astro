@@ -1,6 +1,8 @@
 ---
 import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
+import ArticlePinSaveSection from '@/components/articles/ArticlePinSaveSection.astro';
+import ArticleShareBar from '@/components/articles/ArticleShareBar.astro';
 
 import nusaDuaBeach from '@/assets/articles/bali/nusa-dua-the-ayodya-palace-beach.webp';
 import ayodyaLobby from '@/assets/articles/bali/bali-the-ayodya-resort-lobby.webp';
@@ -25,6 +27,7 @@ import tisCafeView from '@/assets/articles/bali/tis-cafe-rice-terraces-view.webp
 import tisCafeTerrace from '@/assets/articles/bali/bali-tis-cafe-rice-terrace-view.webp';
 import wedjaWaterGarden from '@/assets/articles/bali/ubud-wedja-water-garden-lotus-path.webp';
 import wedjaRestaurant from '@/assets/articles/bali/ubud-wedja-restaurant.webp';
+import bali7DayItineraryPin from '@/assets/articles/bali/bali-7-day-itinerary-pin.webp';
 
 const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
 const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]';
@@ -214,5 +217,20 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
     <ArticleClosingNote label="Final thoughts">
       <p>Bali has a way of leaving an imprint on your heart. From tranquil beaches and lush rice fields to vibrant cafés and unforgettable sunsets, every moment feels like a discovery. I hope this itinerary helps you embrace Bali's many sides, while leaving space for your own discoveries. As you pack your bags, remember—Bali isn't just a destination, it's an invitation to return.</p>
     </ArticleClosingNote>
+
+    <ArticlePinSaveSection>
+      <ArticleImage
+        src={bali7DayItineraryPin}
+        alt="The perfect 7-day Bali itinerary for first-time visitors"
+        figureClass="m-0"
+        pinOnHover
+      />
+
+      <ArticleShareBar
+        title="The Perfect 7-Day Bali Itinerary for First-Time Visitors (2026)"
+        pinImage={bali7DayItineraryPin}
+        class="mt-6 md:mt-8"
+      />
+    </ArticlePinSaveSection>
   </div>
 </section>

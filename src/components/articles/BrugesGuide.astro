@@ -1,6 +1,8 @@
 ---
 import ArticleClosingNote from "@/components/articles/ArticleClosingNote.astro";
 import ArticleImage from "@/components/ui/ArticleImage.astro";
+import ArticlePinSaveSection from "@/components/articles/ArticlePinSaveSection.astro";
+import ArticleShareBar from "@/components/articles/ArticleShareBar.astro";
 import BentoGrid from "@/components/ui/BentoGrid.astro";
 
 import belfryTower from "@/assets/articles/bruges/belfry-tower-of-bruges.webp";
@@ -23,6 +25,7 @@ import chocolateLineDisplay from "@/assets/articles/bruges/the-chocolate-line-br
 import oldChocolateHouse from "@/assets/articles/bruges/the-old-chocolate-house-bruges.webp";
 import casselbergh from "@/assets/articles/bruges/grand-hotel-casselbergh.webp";
 import casselberghBreakfast from "@/assets/articles/bruges/breakfast-grand-hotel-casselbergh.webp";
+import brugesTravelGuidePin from "@/assets/articles/bruges/bruges-travel-guide-pin.png";
 
 const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0";
 ---
@@ -231,5 +234,20 @@ const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
     <ArticleClosingNote label="Before you go">
       <p>I hope this guide helps you plan an unforgettable first visit to Bruges. And who knows? Maybe, like me, you'll already be thinking about coming back before you even leave.</p>
     </ArticleClosingNote>
+
+    <ArticlePinSaveSection>
+      <ArticleImage
+        src={brugesTravelGuidePin}
+        alt="Explore Bruges — fairytale streets and timeless beauty"
+        figureClass="m-0"
+        pinOnHover
+      />
+
+      <ArticleShareBar
+        title="Best Things to Do in Bruges: A First-Time Visitor's Guide"
+        pinImage={brugesTravelGuidePin}
+        class="mt-6 md:mt-8"
+      />
+    </ArticlePinSaveSection>
   </div>
 </section>

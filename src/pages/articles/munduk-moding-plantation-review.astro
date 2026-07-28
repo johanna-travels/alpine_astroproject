@@ -1,0 +1,27 @@
+---
+import ArticlePage from '@/components/articles/ArticlePage.astro';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import MundukModingPlantationReviewContent from '@/components/articles/MundukModingPlantationReview.astro';
+import BaliBeforeFooter from '@/components/articles/BaliBeforeFooter.astro';
+import { mundukModingPlantationReviewNav } from '@/domains/articles/munduk-moding-plantation-review-nav';
+import { getArticle } from '@/domains/articles/catalog';
+import { buildArticleLcpSrcSet } from '@/lib/images';
+import mundukModingHero from '@/assets/articles/bali/munduk-moding-plantation-infinity-pool-sunset.webp';
+
+const article = getArticle('munduk-moding-plantation-review')!;
+const lcpImageSrcSet = await buildArticleLcpSrcSet(mundukModingHero);
+---
+
+<ArticlePage article={article} sections={mundukModingPlantationReviewNav} lcpImageSrcSet={lcpImageSrcSet}>
+  <ArticleImage
+    slot="title-media"
+    src={mundukModingHero}
+    alt="Infinity pool at Munduk Moding Plantation reflecting a sunset sky above the clouds in North Bali"
+    caption="Sunset at the infinity pool, Munduk Moding Plantation"
+    figureClass="mb-6 max-w-3xl md:mb-8"
+    imgClass="aspect-[5/4] object-cover"
+    priority
+  />
+  <MundukModingPlantationReviewContent />
+  <BaliBeforeFooter slot="before-footer" currentSlug={article.slug} />
+</ArticlePage>

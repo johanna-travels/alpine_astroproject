@@ -1,6 +1,8 @@
 ---
 import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
+import ArticlePinSaveSection from '@/components/articles/ArticlePinSaveSection.astro';
+import ArticleShareBar from '@/components/articles/ArticleShareBar.astro';
 
 import viewFromBus from '@/assets/articles/hong-kong/view-from-the-bus-to-victoria-peak.webp';
 import bakehouseCoffeePeakTram from '@/assets/articles/hong-kong/bakehouse-coffee-the-peak-tram-view.webp';
@@ -19,6 +21,7 @@ import chiLinMainHall from '@/assets/articles/hong-kong/chi-lin-nunnery-main-hal
 import chiLinCourtyard from '@/assets/articles/hong-kong/chi-lin-nunnery-courtyard.webp';
 import victoriaHarbourView from '@/assets/articles/hong-kong/hong-kong-victoria-harbour-view.webp';
 import monsterBuildings from '@/assets/articles/hong-kong/hong-kong-monster-buildings.webp';
+import hongKongTravelGuidePin from '@/assets/articles/hong-kong/hong-kong-travel-guide-pin.png';
 
 const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
 const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]';
@@ -226,5 +229,20 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
       <p>If you have any questions that aren't covered in this guide, feel free to send me an email. I'll be happy to help if I can.</p>
       <p>Have a wonderful trip!</p>
     </ArticleClosingNote>
+
+    <ArticlePinSaveSection>
+      <ArticleImage
+        src={hongKongTravelGuidePin}
+        alt="Hong Kong travel guide — iconic views, food and local spots"
+        figureClass="m-0"
+        pinOnHover
+      />
+
+      <ArticleShareBar
+        title="Places You Shouldn't Miss on Your First Trip to Hong Kong"
+        pinImage={hongKongTravelGuidePin}
+        class="mt-6 md:mt-8"
+      />
+    </ArticlePinSaveSection>
   </div>
 </section>

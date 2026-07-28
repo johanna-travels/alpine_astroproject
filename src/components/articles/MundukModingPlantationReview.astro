@@ -1,0 +1,144 @@
+---
+import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import BentoMediaGrid from '@/components/ui/BentoMediaGrid.astro';
+import type { BentoMediaItem } from '@/components/ui/BentoMediaGrid.astro';
+import InstagramReelEmbed from '@/components/embeds/InstagramReelEmbed.astro';
+import candlesUsedCookingOil from '@/assets/articles/bali/munduk-moding-candles-used-cooking-oil.webp';
+import recycledArtworkWorkshop from '@/assets/articles/bali/munduk-moding-recycled-artwork-workshop.webp';
+import recycledPlasticHangers from '@/assets/articles/bali/munduk-moding-recycled-plastic-hangers.webp';
+import mundukModingPlantation from '@/assets/articles/bali/munduk-moding-plantation.webp';
+import arakBaliVillaTour from '@/assets/articles/bali/arak-bali-villa-tour.MP4';
+import mundukFloatingBreakfastPool from '@/assets/articles/bali/munduk-floating-breakfast-pool.MP4';
+import coffeeCherriesOnTree from '@/assets/articles/bali/munduk-coffee-plantation-coffee-cherries-on-tree.webp';
+import coffeePlantationMountainView from '@/assets/articles/bali/munduk-coffee-plantation-mountain-view-bali.webp';
+import coffeeTastingExperience from '@/assets/articles/bali/munduk-coffee-plantation-coffee-tasting-experience.webp';
+
+const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
+const threeColGrid = 'my-5 grid grid-cols-1 items-start gap-3 sm:grid-cols-3 md:my-8 md:gap-4';
+
+/** Villa bento — middle cell: optional Instagram reel */
+const villaStayReelPermalink = '';
+
+const infinityPoolReelPermalink =
+  'https://www.instagram.com/reel/Da-znLTsRHI/?igsh=MW5iMGYxczhldnV4Mw==';
+
+const villaBentoItems: BentoMediaItem[] = [
+  {
+    kind: 'video',
+    src: arakBaliVillaTour,
+    poster: mundukModingPlantation,
+    alt: 'Aerial tour of the Arak Bali Villa at Munduk Moding Plantation Nature Resort in North Bali',
+    title: 'Arak Bali Villa',
+  },
+  {
+    kind: 'instagram',
+    permalink: villaStayReelPermalink || undefined,
+    poster: mundukModingPlantation,
+    alt: 'Video tour of the Arak Bali Villa at Munduk Moding Plantation',
+    title: 'Inside the villa',
+  },
+  {
+    kind: 'video',
+    src: mundukFloatingBreakfastPool,
+    alt: 'Floating breakfast by the pool at Munduk Moding Plantation',
+    title: 'Floating breakfast',
+  },
+];
+---
+
+<section id="section-0" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>Sustainability at the Resort</h3>
+  </div>
+  <div class={prose}>
+    <p>From the reusable glass water bottles in the villa instead of single-use plastic, to the on-site workshop where recycled glass, plastic, and other materials are transformed into beautiful works of art, every detail reflects the resort's commitment to sustainability. They even recycle used cooking oil to create handmade candles, proving that sustainability here goes far beyond simply reducing plastic.</p>
+    <div class={threeColGrid}>
+      <ArticleImage
+        src={recycledArtworkWorkshop}
+        alt="Recycled-material furniture and artwork on display at Munduk Moding Plantation workshop in Bali"
+        caption="Recycled art and furniture at the workshop"
+        figureClass="m-0"
+        imgClass="aspect-[4/5] object-cover"
+      />
+      <ArticleImage
+        src={recycledPlasticHangers}
+        alt="Staff crafting blue clothes hangers from recycled plastic at Munduk Moding Plantation"
+        caption="Hangers made from recycled plastic"
+        figureClass="m-0"
+        imgClass="aspect-[4/5] object-cover"
+      />
+      <ArticleImage
+        src={candlesUsedCookingOil}
+        alt="Colorful handmade candles made from recycled cooking oil at Munduk Moding Plantation"
+        caption="Candles made from used cooking oil"
+        figureClass="m-0"
+        imgClass="aspect-[4/5] object-cover"
+      />
+    </div>
+  </div>
+</section>
+
+<section id="section-1" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>The Infinity Pool</h3>
+  </div>
+  <div class={prose}>
+    <p>Most people know Munduk Moding Plantation for its award-winning infinity pool, and it absolutely lives up to the hype. But if you're lucky enough to catch a clear sunset, the sky puts on an incredible show. The warm colors reflecting on the pool make it one of those moments you'll want to have your camera ready for.</p>
+    <InstagramReelEmbed
+      permalink={infinityPoolReelPermalink}
+      title="Munduk Moding Plantation infinity pool — Instagram reel"
+    />
+  </div>
+</section>
+
+<section id="section-2" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>My Villa Stay</h3>
+  </div>
+  <div class={prose}>
+    <p>I stayed for two nights in the Arak Bali Villa – One Bedroom Pool Villa with Jacuzzi, and if I could change one thing about my trip, it would be staying longer. The villa offered complete privacy, a private pool, an outdoor jacuzzi, and butler service that made the whole experience feel incredibly personal. It was the kind of place where you actually wanted to spend time at the resort instead of exploring. I also had my first floating breakfast here, and I don't think I could have chosen a more beautiful place to experience it.</p>
+  </div>
+  <BentoMediaGrid items={villaBentoItems} />
+</section>
+
+<section id="section-3" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>Coffee Plantation Tour</h3>
+  </div>
+  <div class={prose}>
+    <p>One of the most memorable experiences during our stay was the complimentary coffee plantation tour. As a coffee lover and someone who worked as a barista for several years, I've learned a lot about coffee through both hands-on experience and training. However, seeing the entire process firsthand—from the coffee plants to the final cup—was something completely different and made me appreciate it even more.</p>
+    <p>At the end of the tour, we were invited to taste a selection of coffees, including their Luwak coffee. What impressed me the most, though, was learning about their approach to producing it. Unlike many coffee plantations in Bali, they don't keep civets in cages. Instead, they only collect coffee beans naturally found in the wild, as they strongly believe in animal welfare. Knowing this made the experience even more special and was something I truly appreciated.</p>
+    <div class={threeColGrid}>
+      <ArticleImage
+        src={coffeeCherriesOnTree}
+        alt="Red coffee cherries on the branch at Munduk Moding Plantation in Bali"
+        caption="Coffee cherries on the tree"
+        figureClass="m-0"
+        imgClass="aspect-[4/5] object-cover"
+      />
+      <ArticleImage
+        src={coffeePlantationMountainView}
+        alt="Coffee plants and mountain views at Munduk Moding Plantation in North Bali"
+        caption="Plantation views in the mountains"
+        figureClass="m-0"
+        imgClass="aspect-[4/5] object-cover"
+      />
+      <ArticleImage
+        src={coffeeTastingExperience}
+        alt="Coffee tasting at the end of the plantation tour at Munduk Moding Plantation"
+        caption="Coffee tasting at the end of the tour"
+        figureClass="m-0"
+        imgClass="aspect-[4/5] object-cover"
+      />
+    </div>
+  </div>
+</section>
+
+<section id="section-4" class="scroll-mt-nav">
+  <div class={prose}>
+    <ArticleClosingNote label="Before you go">
+      <p>If you're considering booking one of the private villas, I'd recommend planning at least two or three nights here. Munduk Moding Plantation isn't just a hotel where you sleep after sightseeing—it's a destination that deserves to be experienced.</p>
+    </ArticleClosingNote>
+  </div>
+</section>

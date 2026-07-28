@@ -3,6 +3,7 @@ import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
 import ArticleShareBar from '@/components/articles/ArticleShareBar.astro';
 import ArticlePinSaveSection from '@/components/articles/ArticlePinSaveSection.astro';
+import { articleHref } from '@/domains/articles/catalog';
 import kenCoffeeCats from '@/assets/articles/tokyo/kens-coffee-cat-latte-art-tokyo.webp';
 import hatCoffeeArt from '@/assets/articles/tokyo/hatcoffee-3d-latte-art-tokyo.webp';
 import hatCoffeeMaking from '@/assets/articles/tokyo/hatcoffee-3d-latte-art-making-tokyo.webp';
@@ -15,6 +16,7 @@ import starbuckVideo from '@/assets/articles/tokyo/starbuck-roastery-tokyo-video
 import tokyoCafeGuidePin from '@/assets/articles/tokyo/tokyo-cafe-guide.png';
 
 const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
+const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]';
 const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
 const threeColGrid = 'my-5 grid grid-cols-1 items-start gap-3 sm:grid-cols-3 md:my-8 md:gap-4';
 ---
@@ -155,7 +157,7 @@ const threeColGrid = 'my-5 grid grid-cols-1 items-start gap-3 sm:grid-cols-3 md:
   <div class={prose}>
     <ArticleClosingNote label="Before you go">
       <p>If you love coffee, make sure to leave a little room in your Tokyo itinerary for at least a few cafés. Tokyo has countless coffee spots, so this list is just a small starting point for planning your own café stops.</p>
-      <p>I’ve pinned all five cafés from this guide on my Ultimate Tokyo Map, along with extra coffee spots, food places, attractions, photo locations, hotel areas, and day trip ideas. You can find the map inside my 5-day Tokyo itinerary, save it for your trip, and use it to see which cafés fit best into the area you are exploring that day.</p>
+      <p>I’ve pinned all five cafés from this guide on my Ultimate Tokyo Map, along with extra coffee spots, food places, attractions, photo locations, hotel areas, and day trip ideas. You can find the map inside my <a href={articleHref('tokyo-5-day-itinerary')} class={mapLink}>5-day Tokyo itinerary</a>. Save it for your trip, and use it to plan your route more easily.</p>
     </ArticleClosingNote>
 
     <ArticlePinSaveSection>
