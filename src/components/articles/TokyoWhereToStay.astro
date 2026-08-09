@@ -1,0 +1,556 @@
+---
+import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
+import InstagramReelEmbed from '@/components/embeds/InstagramReelEmbed.astro';
+
+const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
+const hotelLink =
+	'font-medium text-[#5B6560] underline underline-offset-2 hover:text-[#3d4441]';
+
+const ceruleanTowerReelPermalink =
+	'https://www.instagram.com/reel/C8wH5hst7Y8/?igsh=MXEyYXppMXI4enJtNA==';
+const fairmontTokyoPostPermalink =
+	'https://www.instagram.com/p/DbVx0UOlnWT/?img_index=2&igsh=MTZ6aDNoc2t1ZWFreQ==';
+const blossomHibiyaPostPermalink =
+	'https://www.instagram.com/p/DU2ZBNrE7iM/?img_index=4&igsh=aDBuZ25jYjYyZTF1';
+const kimptonShinjukuPostPermalink =
+	'https://www.instagram.com/p/DaSD8MBE8Ph/?img_index=2&igsh=NnNpdDNtbzl5eXVl';
+const tokyoStationHotelPostPermalink =
+	'https://www.instagram.com/p/DbcyRgrkgjH/?img_index=6&igsh=MWxrNXcwdXJzY2oweA==';
+const gateKaminarimonReelPermalink =
+	'https://www.instagram.com/reel/DaNfRftzZe9/?igsh=enkzZ2NtcWR0cmRh';
+const trunkYoyogiPostPermalink =
+	'https://www.instagram.com/p/DHxbt-rTIj_/?igsh=djBkajJ2NmQyZW9o';
+const nohgaAkihabaraReelPermalink =
+	'https://www.instagram.com/reel/DZFL9dkDvIk/?igsh=YTdvMXUxbmo4enpk';
+const chinzansoPostPermalink =
+	'https://www.instagram.com/p/DaPsqABAUnZ/?igsh=MWl3cHR2ZXZ4dW11ZA==';
+const gateRyogokuPostPermalink =
+	'https://www.instagram.com/p/DS8guu-jekI/?igsh=aWF3d29sOWw1ZWg1';
+
+/** Direct Booking.com hotel pages — no affiliate params. Stay22 rewrites these in production. */
+const booking = {
+	ceruleanTowerTokyu: 'https://www.booking.com/hotel/jp/cerulean-tower-tokyu-hotel.html',
+	shibuyaStream: 'https://www.booking.com/hotel/jp/shibuya-stream-excel-hotel-tokyu.html',
+	hotelIndigoShibuya: 'https://www.booking.com/hotel/jp/hotel-indigo-tokyo-shibuya.html',
+	fairmontTokyo: 'https://www.booking.com/hotel/jp/fairmont-tokyo.html',
+	januTokyo: 'https://www.booking.com/hotel/jp/janu-tokyo.html',
+	princeParkTower: 'https://www.booking.com/hotel/jp/the-prince-park-tower-tokyo.html',
+	imperialHotelTokyo: 'https://www.booking.com/hotel/jp/imperial-hotel-tokyo.html',
+	blossomHibiya: 'https://www.booking.com/hotel/jp/jr-kyushu-hotel-blossom-hibiya.html',
+	editionGinza: 'https://www.booking.com/hotel/jp/the-tokyo-edition-sm-ginza.html',
+	hotelGrooveShinjuku: 'https://www.booking.com/hotel/jp/hotel-groove-shinjuku-a-parkroyal-hotel.html',
+	keioPlaza: 'https://www.booking.com/hotel/jp/keio-plaza-hotel-tokyo.html',
+	kimptonShinjuku: 'https://www.booking.com/hotel/jp/kimpton-shinjuku-tokyo.html',
+	tokyoStationHotel: 'https://www.booking.com/hotel/jp/tokyo-station-hotel.html',
+	hoshinoyaTokyo: 'https://www.booking.com/hotel/jp/hoshinoya-tokyo.html',
+	fourSeasonsOtemachi: 'https://www.booking.com/hotel/jp/four-seasons-hotel-tokyo-at-otemachi.html',
+	gateKaminarimon: 'https://www.booking.com/hotel/jp/the-gate-hotel-by-hulic.html',
+	onyadoNonoAsakusa: 'https://www.booking.com/hotel/jp/onyado-nono-asakusa-natural-hot-spring.html',
+	asakusaTobu: 'https://www.booking.com/hotel/jp/asakusa-tobu-hotel.html',
+	trunkYoyogi: 'https://www.booking.com/hotel/jp/trunk-yoyogi-park.html',
+	dormyInnShibuya: 'https://www.booking.com/hotel/jp/dormy-inn-premium-shibuya-jingumae.html',
+	allDayPlaceShibuya: 'https://www.booking.com/hotel/jp/all-day-place-shibuya.html',
+	nohgaAkihabara: 'https://www.booking.com/hotel/jp/nohga-akihabara-tokyo.html',
+	metsAkihabara: 'https://www.booking.com/hotel/jp/hotel-mets-akihabara.html',
+	remmAkihabara: 'https://www.booking.com/hotel/jp/remm-akihabara.html',
+	chinzanso: 'https://www.booking.com/hotel/jp/hotel-chinzanso-tokyo.html',
+	tokyoDomeHotel: 'https://www.booking.com/hotel/jp/tokyo-dome-hotel.html',
+	dormyInnKorakuen: 'https://www.booking.com/hotel/jp/dormy-inn-korakuen.html',
+	gateRyogoku: 'https://www.booking.com/hotel/jp/the-gate-hotel-ryogoku-by-hulic.html',
+	oneTokyo: 'https://www.booking.com/hotel/jp/oneat-tokyo.html',
+	richmondSchole: 'https://www.booking.com/hotel/jp/richmond-hotel-premier-tokyo-schole.html',
+} as const;
+
+const glanceAreas = [
+	{
+		name: 'Shibuya',
+		bestFor: 'first timers, shopping, nightlife, and a lively atmosphere',
+	},
+	{
+		name: 'Minato City',
+		bestFor: 'luxury hotels, Tokyo Tower, Roppongi, and upscale experiences',
+	},
+	{
+		name: 'Ginza',
+		bestFor: 'luxury shopping, fine dining, and a central location',
+	},
+	{
+		name: 'Shinjuku',
+		bestFor: 'nightlife, entertainment, restaurants, and convenient transportation',
+	},
+	{
+		name: 'Chiyoda City',
+		bestFor: 'a quieter central stay, Tokyo Station, and the Imperial Palace',
+	},
+	{
+		name: 'Asakusa',
+		bestFor: 'traditional Tokyo, historic attractions, and a relaxed atmosphere',
+	},
+	{
+		name: 'Harajuku',
+		bestFor: 'fashion, cafés, creative culture, and easy access to Meiji Jingu',
+	},
+	{
+		name: 'Akihabara',
+		bestFor: 'anime, manga, gaming, electronics, and Japanese pop culture',
+	},
+	{
+		name: 'Bunkyo',
+		bestFor: 'families, gardens, culture, and quieter surroundings',
+	},
+	{
+		name: 'Sumida City',
+		bestFor: 'Tokyo Skytree, families, river views, and good value',
+	},
+] as const;
+---
+
+<section id="section-0" class="scroll-mt-nav">
+	<div class="article-panel max-w-3xl rounded-2xl border !border-[#E5DFD4] !bg-[#F5F2EB] px-6 py-5 text-md leading-relaxed text-black/80 md:px-8 md:py-6">
+		<h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Tokyo’s Best Areas at a Glance</h2>
+		<ul class="list-none space-y-3 pl-0">
+			{
+				glanceAreas.map((area) => (
+					<li>
+						<span class="font-medium text-black">{area.name}</span>
+						{' — Best for '}
+						{area.bestFor}
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>
+
+<section id="section-1" class="scroll-mt-nav">
+	<div class="mb-5 max-w-3xl text-black md:mb-6">
+		<h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Shibuya</h2>
+	</div>
+	<div class={prose}>
+		<p>
+			If this is your first time in Tokyo, Shibuya is one of the easiest places to start. It puts you right in
+			the middle of the city’s famous energy, with neon-lit streets, endless shopping, incredible dining
+			options, and some of Tokyo’s best viewpoints and nightlife just steps away.
+		</p>
+		<p>
+			The area is ideal for first-time visitors, couples, younger travelers, shoppers, and anyone who enjoys a
+			lively atmosphere. Thanks to Shibuya Station, one of Tokyo’s major transport hubs, it’s also easy to
+			reach other popular areas, including Shinjuku, Harajuku, Ginza, and Tokyo Station.
+		</p>
+		<p><span class="font-medium text-black">Best for:</span> First timers, shopping, nightlife, couples, and younger travelers.</p>
+		<p>
+			<span class="font-medium text-black">Top Things to See and Do:</span> Shibuya Crossing, Shibuya Sky, the
+			Hachiko Memorial Statue, and Shibuya Center-gai.
+		</p>
+		<p>
+			<a href={booking.ceruleanTowerTokyu} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">Cerulean Tower Tokyu Hotel</a>
+			— A refined luxury hotel with spacious rooms, panoramic views of the Tokyo skyline, and a quieter
+			atmosphere within walking distance of Shibuya Station.
+		</p>
+		<InstagramReelEmbed
+			permalink={ceruleanTowerReelPermalink}
+			title="Cerulean Tower Tokyu Hotel — Instagram reel"
+		/>
+		<p>
+			<a href={booking.shibuyaStream} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">Shibuya Stream Hotel</a>
+			— A stylish and contemporary hotel in an excellent location near the station, surrounded by restaurants,
+			shops, and some of Shibuya’s most popular attractions.
+		</p>
+		<p>
+			<a href={booking.hotelIndigoShibuya} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">Hotel Indigo Tokyo Shibuya</a>
+			— A design-focused hotel inspired by the neighborhood’s creative energy, with colorful interiors, modern
+			rooms, and impressive views over the city.
+		</p>
+	</div>
+</section>
+
+<section id="section-2" class="scroll-mt-nav">
+	<div class="mb-5 max-w-3xl text-black md:mb-6">
+		<h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Minato City (Roppongi, Tokyo Tower &amp; Azabudai Hills)</h2>
+	</div>
+	<div class={prose}>
+		<p>
+			Minato City ended up being one of my favorite areas in Tokyo, and I honestly wasn't expecting that before
+			my trip. While most visitors choose neighborhoods like Shibuya or Shinjuku, I completely fell in love with
+			the atmosphere around Tokyo Tower. As someone who loves Paris, seeing it illuminated every evening gave me
+			similar feelings to walking past the Eiffel Tower at night. There wasn't a single evening when I walked
+			back to my hotel without stopping to take another photo or video.
+		</p>
+		<p>
+			Beyond Tokyo Tower, Minato City is home to neighborhoods such as Roppongi, Akasaka, Toranomon, Azabudai,
+			and Shiba. You'll find luxury hotels, excellent restaurants, modern attractions like teamLab Borderless,
+			and a quieter atmosphere than some of Tokyo's busier districts, while still staying well connected to the
+			rest of the city.
+		</p>
+		<p><span class="font-medium text-black">Best for:</span> Luxury travelers, couples, business travelers, and visitors looking for an upscale stay.</p>
+		<p>
+			<span class="font-medium text-black">Top Things to See and Do:</span> Tokyo Tower, teamLab Borderless,
+			Azabudai Hills, and Roppongi Hills.
+		</p>
+		<p>
+			<a href={booking.fairmontTokyo} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">Fairmont Tokyo</a>
+			— A sophisticated luxury hotel with spacious rooms, panoramic views of Tokyo and Tokyo Bay, excellent
+			dining, and convenient access to the city’s rail network.
+		</p>
+		<InstagramReelEmbed
+			permalink={fairmontTokyoPostPermalink}
+			title="Fairmont Tokyo — Instagram post"
+		/>
+		<p>
+			📖 For a closer look at the experience, read the detailed{' '}
+			<a href="https://livetosee.ca/fairmont-tokyo-review/" class={hotelLink} target="_blank" rel="noopener noreferrer">Fairmont Tokyo review</a>
+			{' '}by Live to See.
+		</p>
+		<p>
+			<a href={booking.januTokyo} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">Janu Tokyo</a>
+			— A contemporary luxury hotel in Azabudai Hills, known for its elegant design, exceptional wellness
+			facilities, spacious rooms, and vibrant dining scene.
+		</p>
+		<p>
+			<a href={booking.princeParkTower} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">The Prince Park Tower Tokyo</a>
+			— A classic luxury hotel near Tokyo Tower, offering large rooms, peaceful surroundings, and impressive
+			views of the city skyline.
+		</p>
+	</div>
+</section>
+
+<section id="section-3" class="scroll-mt-nav">
+	<div class="mb-5 max-w-3xl text-black md:mb-6">
+		<h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Ginza</h2>
+	</div>
+	<div class={prose}>
+		<p>
+			If luxury shopping, world-class dining, and a central location are at the top of your list, Ginza is one of
+			the best areas to stay in Tokyo. Known for its elegant streets, designer boutiques, department stores, and
+			refined atmosphere, it offers a quieter and more sophisticated alternative to the energy of Shibuya or
+			Shinjuku.
+		</p>
+		<p>
+			The area is ideal for couples, luxury travelers, food lovers, and anyone who wants a central base with easy
+			access to Tokyo Station, the Imperial Palace, and Tokyo’s waterfront.
+		</p>
+		<p><span class="font-medium text-black">Best for:</span> Luxury travelers, couples, shopping, dining, and a central location.</p>
+		<p>
+			<span class="font-medium text-black">Top Things to See and Do:</span> Chuo-dori Avenue, Ginza Six, Kabukiza
+			Theatre, and the Godzilla Statue.
+		</p>
+		<p>
+			<a href={booking.imperialHotelTokyo} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">Imperial Hotel Tokyo</a>
+			— One of Tokyo’s most iconic hotels, combining historic elegance, exceptional service, and a prestigious
+			location near Ginza, Hibiya, and the Imperial Palace.
+		</p>
+		<p>
+			<a href={booking.blossomHibiya} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">THE BLOSSOM HIBIYA</a>
+			— A stylish modern hotel with elegant rooms, impressive city views, and a convenient location within
+			walking distance of Ginza and Tokyo Station.
+		</p>
+		<InstagramReelEmbed
+			permalink={blossomHibiyaPostPermalink}
+			title="THE BLOSSOM HIBIYA — Instagram post"
+		/>
+		<p>
+			<a href={booking.editionGinza} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">The Tokyo EDITION, Ginza</a>
+			— A sophisticated boutique luxury hotel with distinctive design, intimate spaces, and a fashionable
+			atmosphere that reflects the character of the neighborhood.
+		</p>
+	</div>
+</section>
+
+<section id="section-4" class="scroll-mt-nav">
+	<iframe
+		id="stay22-widget-shinjuku"
+		title="Find hotels in Shinjuku"
+		width="100%"
+		height="428"
+		src="https://stay22.com/embed/6a786ecb810a3d69a6e38c1d"
+		loading="lazy"
+		class="mb-5 max-w-3xl md:mb-8"
+	></iframe>
+	<div class="mb-5 max-w-3xl text-black md:mb-6">
+		<h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Shinjuku</h2>
+	</div>
+	<div class={prose}>
+		<p>
+			Shinjuku is one of the most convenient and exciting places to stay in Tokyo. The neighborhood is known for
+			its enormous train station, lively nightlife, endless dining options, department stores, entertainment
+			venues, and bright neon streets.
+		</p>
+		<p>
+			It is an excellent choice for first-time visitors who want easy access to the rest of the city. Just keep
+			in mind that some parts of Shinjuku, especially around Kabukicho, can be busy and noisy well into the
+			night.
+		</p>
+		<p><span class="font-medium text-black">Best for:</span> First timers, nightlife, entertainment, shopping, and convenient transportation.</p>
+		<p>
+			<span class="font-medium text-black">Top Things to See and Do:</span> Shinjuku Gyoen National Garden,
+			Omoide Yokocho, Golden Gai, and the Tokyo Metropolitan Government Building Observation Deck.
+		</p>
+		<p>
+			<a href={booking.hotelGrooveShinjuku} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">HOTEL GROOVE SHINJUKU, A PARKROYAL Hotel</a>
+			— A stylish contemporary hotel inside Kabukicho Tower, offering striking city views and direct access to
+			Shinjuku’s entertainment and nightlife.
+		</p>
+		<p>
+			<a href={booking.keioPlaza} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">Keio Plaza Hotel Tokyo</a>
+			— A large and well-established hotel near Shinjuku Station, with spacious accommodations, extensive
+			facilities, and a particularly convenient location for families.
+		</p>
+		<p>
+			<a href={booking.kimptonShinjuku} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">Kimpton Shinjuku Tokyo</a>
+			— A fashionable boutique-style hotel with contemporary interiors, personalized service, and a more intimate
+			atmosphere than many of Shinjuku’s larger properties.
+		</p>
+		<InstagramReelEmbed
+			permalink={kimptonShinjukuPostPermalink}
+			title="Kimpton Shinjuku Tokyo — Instagram post"
+		/>
+	</div>
+</section>
+
+<section id="section-5" class="scroll-mt-nav">
+	<div class="mb-5 max-w-3xl text-black md:mb-6">
+		<h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Chiyoda City</h2>
+	</div>
+	<div class={prose}>
+		<p>
+			For travelers who prefer a quieter yet central location, Chiyoda City is an excellent choice. Home to Tokyo
+			Station, the Imperial Palace, and some of Tokyo’s most prestigious hotels, it offers the perfect balance
+			between convenience, history, and a more relaxed atmosphere.
+		</p>
+		<p><span class="font-medium text-black">Best for:</span> First-time visitors, couples, business travelers, and travelers who prefer a quieter central location.</p>
+		<p>
+			<span class="font-medium text-black">Top Things to See and Do:</span> The Imperial Palace, the Imperial
+			Palace East Gardens, Tokyo Station, and Hie Shrine.
+		</p>
+		<p>
+			<a href={booking.tokyoStationHotel} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">The Tokyo Station Hotel</a>
+			— A historic luxury hotel located inside the beautifully restored Tokyo Station, combining classic elegance
+			with one of the most convenient locations in the city.
+		</p>
+		<InstagramReelEmbed
+			permalink={tokyoStationHotelPostPermalink}
+			title="The Tokyo Station Hotel — Instagram post"
+		/>
+		<p>
+			<a href={booking.hoshinoyaTokyo} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">HOSHINOYA Tokyo</a>
+			— A unique urban retreat that blends the atmosphere of a traditional Japanese ryokan with contemporary
+			luxury, private floors, and a peaceful setting in central Tokyo.
+		</p>
+		<p>
+			<a href={booking.fourSeasonsOtemachi} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">Four Seasons Hotel Tokyo at Otemachi</a>
+			— An elegant luxury hotel with spacious rooms, exceptional service, a high-end spa, and panoramic views of
+			the Imperial Palace and Tokyo skyline.
+		</p>
+	</div>
+</section>
+
+<section id="section-6" class="scroll-mt-nav">
+	<div class="mb-5 max-w-3xl text-black md:mb-6">
+		<h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Asakusa</h2>
+	</div>
+	<div class={prose}>
+		<p>
+			Asakusa is one of Tokyo's most traditional neighborhoods and one of the best places to experience the
+			city's historic side. Home to Sensō-ji Temple, Tokyo's oldest and most famous Buddhist temple, the area is
+			filled with traditional streets, local restaurants, family-run shops, and cultural landmarks that preserve
+			the atmosphere of old Tokyo. Staying here gives you the chance to start your mornings exploring temple
+			grounds before the crowds arrive, browse Nakamise Shopping Street for traditional snacks and souvenirs, and
+			enjoy a slower, more authentic side of the city that many visitors come to Tokyo hoping to experience.
+		</p>
+		<p><span class="font-medium text-black">Best for:</span> Traditional Tokyo experiences, families, culture lovers, and travelers looking for a quieter atmosphere.</p>
+		<p>
+			<span class="font-medium text-black">Top Things to See and Do:</span> Senso-ji Temple, Kaminarimon Gate,
+			Nakamise-dori Shopping Street, and the Sumida River.
+		</p>
+		<p>
+			<a href={booking.gateKaminarimon} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">The Gate Hotel Kaminarimon by HULIC</a>
+			— A stylish boutique hotel near Senso-ji Temple, with contemporary rooms, a rooftop terrace, and excellent
+			views over Asakusa.
+		</p>
+		<InstagramReelEmbed
+			permalink={gateKaminarimonReelPermalink}
+			title="The Gate Hotel Kaminarimon by HULIC — Instagram reel"
+		/>
+		<p>
+			<a href={booking.onyadoNonoAsakusa} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">Onyado Nono Asakusa Natural Hot Spring</a>
+			— A Japanese-inspired hotel with tatami-style interiors and natural hot spring baths, offering a relaxing
+			stay close to the neighborhood’s main attractions.
+		</p>
+		<p>
+			<a href={booking.asakusaTobu} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">Asakusa Tobu Hotel</a>
+			— A modern and highly convenient hotel near Asakusa Station, with comfortable rooms and a practical
+			location for families and first-time visitors.
+		</p>
+	</div>
+</section>
+
+<section id="section-7" class="scroll-mt-nav">
+	<div class="mb-5 max-w-3xl text-black md:mb-6">
+		<h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Harajuku</h2>
+	</div>
+	<div class={prose}>
+		<p>
+			If fashion, trendy cafés, and creative culture are your thing, Harajuku is the perfect place to stay.
+			Famous for its colorful streets, independent boutiques, street food, and youthful energy, it offers a
+			completely different side of Tokyo from nearby Shibuya.
+		</p>
+		<p>
+			Although Meiji Jingu Shrine and Yoyogi Park are officially located within Shibuya City, they’re directly
+			next to Harajuku and are easiest to reach from Harajuku Station. If you’re staying in Harajuku, both should
+			be at the top of your list.
+		</p>
+		<p><span class="font-medium text-black">Best for:</span> Fashion, shopping, cafés, couples, younger travelers, and creative city experiences.</p>
+		<p>
+			<span class="font-medium text-black">Top Things to See and Do:</span> Meiji Jingu Shrine, Yoyogi Park,
+			Takeshita Street, and Omotesando.
+		</p>
+		<p>
+			<a href={booking.trunkYoyogi} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">TRUNK(HOTEL) YOYOGI PARK</a>
+			— A stylish boutique hotel near Yoyogi Park, combining contemporary Japanese design, a relaxed atmosphere,
+			and easy access to Harajuku and Shibuya.
+		</p>
+		<InstagramReelEmbed
+			permalink={trunkYoyogiPostPermalink}
+			title="TRUNK(HOTEL) YOYOGI PARK — Instagram post"
+		/>
+		<p>
+			<a href={booking.dormyInnShibuya} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">Dormy Inn Premium Shibuya-jingumae</a>
+			— A comfortable and convenient hotel close to Harajuku, Omotesando, and Shibuya, with a relaxing public bath
+			and practical amenities.
+		</p>
+		<p>
+			<a href={booking.allDayPlaceShibuya} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">all day place shibuya</a>
+			— A modern lifestyle hotel within walking distance of Harajuku and Shibuya, offering a casual atmosphere,
+			stylish interiors, and an excellent location for exploring both neighborhoods.
+		</p>
+	</div>
+</section>
+
+<section id="section-8" class="scroll-mt-nav">
+	<div class="mb-5 max-w-3xl text-black md:mb-6">
+		<h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Akihabara</h2>
+	</div>
+	<div class={prose}>
+		<p>
+			Akihabara is one of the best areas to stay in Tokyo if you are an anime fan, gamer, or tech enthusiast.
+			Known as the heart of Japanese pop culture, the neighborhood is packed with multi-story electronics stores,
+			anime shops, gaming arcades, themed cafés, and colorful streets that are attractions in their own right.
+		</p>
+		<p><span class="font-medium text-black">Best for:</span> Anime and manga fans, gamers, electronics enthusiasts, and pop-culture travelers.</p>
+		<p>
+			<span class="font-medium text-black">Top Things to See and Do:</span> Akihabara Electric Town, Yodobashi
+			Akiba, anime and gaming stores, and themed cafés and arcades.
+		</p>
+		<p>
+			<a href={booking.nohgaAkihabara} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">NOHGA HOTEL AKIHABARA TOKYO</a>
+			— A stylish boutique hotel inspired by music, art, and the creative culture of Akihabara, with thoughtfully
+			designed rooms and a more distinctive atmosphere than a typical business hotel.
+		</p>
+		<InstagramReelEmbed
+			permalink={nohgaAkihabaraReelPermalink}
+			title="NOHGA HOTEL AKIHABARA TOKYO — Instagram reel"
+		/>
+		<p>
+			<a href={booking.metsAkihabara} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">JR-East Hotel Mets Akihabara</a>
+			— A modern and highly convenient hotel next to Akihabara Station, making it an excellent choice for
+			travelers who prioritize easy transportation.
+		</p>
+		<p>
+			<a href={booking.remmAkihabara} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">remm Akihabara</a>
+			— A practical contemporary hotel with compact, comfortable rooms and a location directly beside the
+			station, ideal for short stays and busy sightseeing itineraries.
+		</p>
+	</div>
+</section>
+
+<section id="section-9" class="scroll-mt-nav">
+	<div class="mb-5 max-w-3xl text-black md:mb-6">
+		<h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Bunkyo</h2>
+	</div>
+	<div class={prose}>
+		<p>
+			Often overlooked by first-time visitors, Bunkyo is a quieter and more residential side of central Tokyo.
+			Known for its beautiful gardens, historic shrines, universities, and cultural attractions, it offers a more
+			relaxed experience while remaining well connected to major areas such as Ueno, Akihabara, and Tokyo Station.
+		</p>
+		<p><span class="font-medium text-black">Best for:</span> Families, quieter stays, gardens, culture, and visitors attending events at Tokyo Dome.</p>
+		<p>
+			<span class="font-medium text-black">Top Things to See and Do:</span> Nezu Shrine, Rikugien Gardens, Yushima
+			Tenjin Shrine, and Tokyo Dome City.
+		</p>
+		<p>
+			<a href={booking.chinzanso} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">Hotel Chinzanso Tokyo</a>
+			— A luxurious urban retreat surrounded by a historic Japanese garden, offering spacious rooms, elegant
+			dining, and a peaceful atmosphere away from Tokyo’s busiest streets.
+		</p>
+		<InstagramReelEmbed
+			permalink={chinzansoPostPermalink}
+			title="Hotel Chinzanso Tokyo — Instagram post"
+		/>
+		<p>
+			<a href={booking.tokyoDomeHotel} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">Tokyo Dome Hotel</a>
+			— A large and convenient hotel next to Tokyo Dome City, with extensive facilities and easy access to
+			entertainment, restaurants, and public transportation.
+		</p>
+		<p>
+			<a href={booking.dormyInnKorakuen} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">Dormy Inn Korakuen</a>
+			— A comfortable value-focused hotel with a relaxing public bath, making it a practical choice for travelers
+			who want a quieter base near Tokyo Dome.
+		</p>
+	</div>
+</section>
+
+<section id="section-10" class="scroll-mt-nav">
+	<div class="mb-5 max-w-3xl text-black md:mb-6">
+		<h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Sumida City</h2>
+	</div>
+	<div class={prose}>
+		<p>
+			For travelers who want a quieter side of Tokyo with some of the city’s best skyline views, Sumida City is
+			an excellent choice. Home to Tokyo Skytree, the Sumida River, and scenic riverside areas, it offers a more
+			relaxed and residential atmosphere while still being close to popular attractions such as Asakusa.
+		</p>
+		<p><span class="font-medium text-black">Best for:</span> Families, Tokyo Skytree, quieter stays, and travelers looking for good value.</p>
+		<p>
+			<span class="font-medium text-black">Top Things to See and Do:</span> Tokyo Skytree, Sumida Aquarium, Tokyo
+			Solamachi, and the Sumida River Walk.
+		</p>
+		<p>
+			<a href={booking.gateRyogoku} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">The Gate Hotel Ryogoku by HULIC</a>
+			— A stylish riverside hotel with contemporary rooms, attractive views, and a quieter location near
+			Ryogoku’s cultural attractions.
+		</p>
+		<InstagramReelEmbed
+			permalink={gateRyogokuPostPermalink}
+			title="The Gate Hotel Ryogoku by HULIC — Instagram post"
+		/>
+		<p>
+			<a href={booking.oneTokyo} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">ONE@Tokyo</a>
+			— A design-forward hotel near Tokyo Skytree, featuring modern interiors and a rooftop terrace with views
+			across the neighborhood.
+		</p>
+		<p>
+			<a href={booking.richmondSchole} class={hotelLink} target="_blank" rel="noopener noreferrer sponsored">Richmond Hotel Premier Tokyo Schole</a>
+			— A comfortable and family-friendly hotel near Tokyo Skytree and Tokyo Solamachi, with spacious
+			accommodations and a convenient location for sightseeing.
+		</p>
+	</div>
+</section>
+
+<section id="section-11" class="scroll-mt-nav">
+	<div class={prose}>
+		<ArticleClosingNote label="Before you go">
+			<p>
+				Choosing where to stay in Tokyo doesn’t have to be complicated. Whether you prefer being surrounded by
+				the city’s energy, staying close to historic landmarks, or enjoying a quieter neighborhood away from
+				the crowds, there is an area that fits every type of traveler.
+			</p>
+			<p>
+				With Tokyo’s excellent transportation system, you’ll be able to explore the city easily from any of
+				these neighborhoods. The most important thing is choosing a place that makes you feel excited to come
+				back to after a day of exploring — your hotel is not just where you sleep, but your base for
+				experiencing Tokyo.
+			</p>
+		</ArticleClosingNote>
+	</div>
+</section>

@@ -1,4 +1,5 @@
 ---
+import type { ImageMetadata } from 'astro:assets';
 import { instagramPermalink } from '@/lib/instagram';
 
 interface Props {
@@ -6,11 +7,14 @@ interface Props {
   permalink: string;
   title?: string;
   class?: string;
+  /** Kept for call-site compatibility; official embed shows Instagram’s own preview. */
+  poster?: ImageMetadata;
+  posterAlt?: string;
 }
 
 const {
   permalink,
-  title = 'View this reel on Instagram',
+  title = 'View this post on Instagram',
   class: className = 'my-6 max-w-md md:my-8',
 } = Astro.props;
 

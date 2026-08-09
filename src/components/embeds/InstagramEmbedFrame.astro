@@ -1,0 +1,135 @@
+---
+import { Image, type ImageMetadata } from 'astro:assets';
+import { instagramPermalink } from '@/lib/instagram';
+
+interface Props {
+  permalink: string;
+  label: string;
+  layout?: 'card' | 'fill';
+  class?: string;
+  poster?: ImageMetadata;
+  showCta?: boolean;
+}
+
+const {
+  permalink,
+  label,
+  layout = 'card',
+  class: className = '',
+  poster,
+  showCta = layout === 'card',
+} = Astro.props;
+
+const reelUrl = instagramPermalink(permalink);
+---
+
+{
+  layout === 'card' ? (
+    <figure class:list={['instagram-embed-frame', className]}>
+      <a
+        href={reelUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="instagram-embed-frame__link"
+        aria-label={`${label} — open on Instagram`}
+      >
+        {poster ? (
+          <Image
+            src={poster}
+            alt=""
+            class="instagram-embed-frame__poster"
+            widths={[400, 540, 720]}
+            sizes="(max-width: 767px) 100vw, 540px"
+            loading="lazy"
+            decoding="async"
+          />
+        ) : (
+          <span class="instagram-embed-frame__placeholder" aria-hidden="true" />
+        )}
+        {showCta && (
+          <span class="instagram-embed-frame__cta">
+            <span class="instagram-embed-frame__play" aria-hidden="true" />
+            Watch on Instagram
+          </span>
+        )}
+      </a>
+    </figure>
+  ) : (
+    <a
+      href={reelUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="absolute inset-0 z-[3]"
+      aria-label={`${label} — open on Instagram`}
+    />
+  )
+}
+
+<style>
+  .instagram-embed-frame {
+    margin: 0;
+  }
+
+  .instagram-embed-frame__link {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow:
+      0 0 1px 0 rgb(0 0 0 / 0.5),
+      0 1px 10px 0 rgb(0 0 0 / 0.15);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .instagram-embed-frame__poster,
+  .instagram-embed-frame__placeholder {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+
+  .instagram-embed-frame__placeholder {
+    background: linear-gradient(145deg, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285aeb 100%);
+    min-height: 280px;
+  }
+
+  .instagram-embed-frame__cta {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    background: rgb(0 0 0 / 0.35);
+    font-family: var(--font-heading);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 0 1px 3px rgb(0 0 0 / 0.5);
+  }
+
+  .instagram-embed-frame__play {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 9999px;
+    background: rgb(255 255 255 / 0.92);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.25);
+  }
+
+  .instagram-embed-frame__play::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    margin-left: 0.2rem;
+    border-style: solid;
+    border-width: 0.55rem 0 0.55rem 0.95rem;
+    border-color: transparent transparent transparent rgb(30 30 30);
+  }
+</style>

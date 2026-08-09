@@ -16,10 +16,16 @@ function isAuthorized(request: Request): boolean {
   const secret = getServerEnv('NEWSLETTER_ADMIN_SECRET');
   if (!secret) return false;
 
-  const authorization = request.headers.get('authorization');
-  if (authorization === `Bearer ${secret}`) return true;
+  const authorization = request.headers.get('authorization')?.trim();
+  if (authorization?.toLowerCase().startsWith('bearer ')) {
+    const token = authorization.slice(7).trim();
+    if (token && token === secret) return true;
+  }
 
-  return request.headers.get('x-newsletter-secret') === secret;
+  const headerSecret = request.headers.get('x-newsletter-secret')?.trim();
+  if (headerSecret && headerSecret === secret) return true;
+
+  return false;
 }
 
 function unauthorized() {
@@ -37,7 +43,7 @@ function serviceUnavailable(message: string) {
 }
 
 function articleImageUrl(article: NonNullable<ReturnType<typeof getArticle>>): string | undefined {
-  const src = article.image.src;
+  const src = article.image?.src;
   if (!src) return undefined;
   return new URL(src, absoluteUrl()).href;
 }

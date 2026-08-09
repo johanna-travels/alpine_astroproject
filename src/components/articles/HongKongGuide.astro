@@ -28,6 +28,12 @@ const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f
 const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
 ---
 
+<section id="section-best-things" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Top Things to Do in Hong Kong</h2>
+  </div>
+</section>
+
 <section id="section-0" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
     <h3>The Victoria Peak</h3>
@@ -161,23 +167,32 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
 
 <section id="section-9" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>Where to Stay in Hong Kong</h3>
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Where to Stay in Hong Kong</h2>
   </div>
   <div class={prose}>
     <p>For most first-time visitors, Hong Kong Island and Kowloon are the two most convenient areas to stay. Both offer excellent public transport, plenty of restaurants, and easy access to many of the city's main attractions.</p>
     <p>I personally stayed in Wan Chai, on Hong Kong Island, and I'd happily stay there again. It was easy to reach from the airport by direct bus, and both the MTR and the historic tram were just a short walk away, making it incredibly easy to explore the city.</p>
     <p>To make planning a little easier, I've also pinned a few hotels on <a href="#section-google-map" class={mapLink}>the interactive map</a> at the beginning of this guide. They're all located in areas I'd consider for a future trip.</p>
-    <h4 class="mt-8 mb-2 text-black">Luxury</h4>
+    <iframe
+      id="stay22-widget-hong-kong"
+      title="Find hotels in Hong Kong"
+      width="100%"
+      height="428"
+      src="https://stay22.com/embed/6a7870a6810a3d69a6e3981d"
+      loading="lazy"
+      class="my-5 max-w-3xl md:my-8"
+    ></iframe>
+    <h3 class="mt-8 mb-2 text-black">Luxury</h3>
     <ul class="list-disc pl-5 space-y-2 marker:text-black/40">
       <li class="prose-body"><a href="https://www.booking.com/searchresults.html?ss=The+Upper+House+Hong+Kong" target="_blank" rel="noopener noreferrer" class={mapLink}>The Upper House</a> – Panoramic harbour views and exceptional service.</li>
     </ul>
-    <h4 class="mt-8 mb-2 text-black">Mid-range</h4>
+    <h3 class="mt-8 mb-2 text-black">Mid-range</h3>
     <ul class="list-disc pl-5 space-y-2 marker:text-black/40">
       <li class="prose-body"><a href="https://www.booking.com/searchresults.html?ss=Novotel+Century+Hong+Kong" target="_blank" rel="noopener noreferrer" class={mapLink}>Novotel Century Hong Kong</a> – Great location with excellent transport links.</li>
       <li class="prose-body"><a href="https://www.booking.com/searchresults.html?ss=The+Royal+Garden+Hong+Kong" target="_blank" rel="noopener noreferrer" class={mapLink}>The Royal Garden</a> – An elegant hotel in Tsim Sha Tsui with a rooftop pool and an excellent location.</li>
       <li class="prose-body"><a href="https://www.booking.com/searchresults.html?ss=The+Fleming+Hong+Kong" target="_blank" rel="noopener noreferrer" class={mapLink}>The Fleming</a> – Beautiful boutique hotel with unique design.</li>
     </ul>
-    <h4 class="mt-8 mb-2 text-black">Budget</h4>
+    <h3 class="mt-8 mb-2 text-black">Budget</h3>
     <ul class="list-disc pl-5 space-y-2 marker:text-black/40">
       <li class="prose-body"><a href="https://www.booking.com/searchresults.html?ss=iclub+Fortress+Hill+Hotel+Hong+Kong" target="_blank" rel="noopener noreferrer" class={mapLink}>iclub Fortress Hill</a> – Modern rooms close to the MTR.</li>
       <li class="prose-body"><a href="https://www.booking.com/searchresults.html?ss=Booth+Lodge+Hong+Kong" target="_blank" rel="noopener noreferrer" class={mapLink}>Booth Lodge</a> – Excellent value in a central location.</li>
@@ -187,11 +202,11 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
 
 <section id="section-10" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>FAQ</h3>
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">FAQ</h2>
   </div>
   <div class={`${prose} space-y-6`}>
     <div id="faq-0" class="scroll-mt-nav">
-      <h4 class="mb-2 text-black">1. How Do You Get Around Hong Kong?</h4>
+      <h3 class="mb-2 text-black">1. How Do You Get Around Hong Kong?</h3>
       <p>One of the things that impressed me most about Hong Kong was how easy it was to get around. The city has an excellent public transport system, and I never felt the need to use a taxi.</p>
       <p>Most visitors choose to buy an Octopus Card, which can be used on the MTR, buses, trams, ferries, and even in some shops.</p>
       <p>Personally, I used my phone with my Revolut card added to my mobile wallet throughout the entire trip. It worked perfectly on buses, trams, and the MTR. Just look for the contactless payment gates, tap your phone, and you're good to go.</p>
@@ -199,23 +214,23 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
       <p>Whether you choose an Octopus Card or contactless payments, getting around Hong Kong is incredibly easy. In fact, it's one of the best public transport systems I've ever used.</p>
     </div>
     <div id="faq-1" class="scroll-mt-nav">
-      <h4 class="mb-2 text-black">2. Do You Need Cash in Hong Kong?</h4>
+      <h3 class="mb-2 text-black">2. Do You Need Cash in Hong Kong?</h3>
       <p>The local currency is the Hong Kong Dollar (HKD).</p>
       <p>I'd recommend carrying a small amount of cash, just in case, even though you'll probably use your card most of the time.</p>
       <p>During my trip, I was able to pay by card almost everywhere, including on public transport. However, I did come across a few cafés, restaurants, and small local businesses that only accepted cash. There's no need to carry a large amount, but having a few Hong Kong dollars with you will make things much easier whenever card payments aren't available.</p>
     </div>
     <div id="faq-2" class="scroll-mt-nav">
-      <h4 class="mb-2 text-black">3. What is the Best Time to Visit Hong Kong?</h4>
+      <h3 class="mb-2 text-black">3. What is the Best Time to Visit Hong Kong?</h3>
       <p>Hong Kong is known for its high humidity, especially from late spring through summer, so if you're planning to spend a lot of time exploring the city on foot, I'd recommend visiting between October and December or March and April. These months usually offer the most comfortable temperatures and are much more enjoyable for sightseeing.</p>
       <p>I visited in April and found the weather ideal for exploring the city. It was warm enough to spend the entire day outside without the intense heat and humidity that Hong Kong is known for later in the year.</p>
     </div>
     <div id="faq-3" class="scroll-mt-nav">
-      <h4 class="mb-2 text-black">4. How Many Days Do You Need in Hong Kong?</h4>
+      <h3 class="mb-2 text-black">4. How Many Days Do You Need in Hong Kong?</h3>
       <p>I'd absolutely recommend spending at least three full days in Hong Kong. That gives you enough time to visit the main attractions at a relaxed pace and really enjoy everything the city has to offer.</p>
       <p>I made the mistake of underestimating just how beautiful and unique Hong Kong is, so I only planned to stay for two days. I still managed to see many of the places on my list, but looking back, one more day would have made the trip feel complete.</p>
     </div>
     <div id="faq-4" class="scroll-mt-nav">
-      <h4 class="mb-2 text-black">5. Is Hong Kong Safe?</h4>
+      <h3 class="mb-2 text-black">5. Is Hong Kong Safe?</h3>
       <p>From my personal experience, yes. Hong Kong is one of the safest cities I've ever visited, and I felt comfortable walking around both during the day and at night. The public transport is excellent, the streets are well lit, and I never found myself in a situation where I felt unsafe. Hong Kong is also widely regarded as having a very low rate of violent crime.</p>
       <p>That said, it's always worth taking the same precautions you would in any major city. Keep an eye on your belongings in crowded areas, especially on public transport and in busy markets, and you'll most likely have a very enjoyable trip.</p>
     </div>

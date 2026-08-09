@@ -1,5 +1,6 @@
 ---
 import ArticleClosingNote from "@/components/articles/ArticleClosingNote.astro";
+import GetYourGuideActivities from "@/components/articles/GetYourGuideActivities.astro";
 import ArticleImage from "@/components/ui/ArticleImage.astro";
 import ArticlePinSaveSection from "@/components/articles/ArticlePinSaveSection.astro";
 import ArticleShareBar from "@/components/articles/ArticleShareBar.astro";
@@ -28,18 +29,35 @@ import casselberghBreakfast from "@/assets/articles/bruges/breakfast-grand-hotel
 import brugesTravelGuidePin from "@/assets/articles/bruges/bruges-travel-guide-pin.png";
 
 const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0";
+const mapLink = "text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]";
 ---
+
+<section id="section-how-to-get" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">How to Get to Bruges</h2>
+  </div>
+  <div class={prose}>
+    <p>The easiest way to get to Bruges is by train, especially if you're traveling from Brussels. There are frequent connections throughout the day, and the journey usually takes around one hour.</p>
+    <p>If you're traveling by train, I'd recommend checking routes and booking your tickets through <a href="https://www.omio.com/?clickid=yVuTIZyRnxyZW5uwC2xuzTIBUkuQEoxW%3AUJ7040&irgwc=1&afsrc=1&utm_campaign=1141115&utm_source=affiliate_ir_Adpump&irmptype=mediapartner&ircid=7385&iradname=Homepage%3A+EN%28US%29+GoEuro&utm_id=274922&subId1=&gad_source=1" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Omio</a>, as it lets you compare different train options in one place. If you're traveling on a budget, it's also worth checking whether <a href="https://global.flixbus.com/bus" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">FlixBus</a> operates on your route.</p>
+    <p>Once you arrive at Bruges train station, the historic center is about a 20-minute walk away. If you're traveling with luggage, you can also take a taxi or use a local bus to reach your accommodation.</p>
+  </div>
+</section>
+
+<section id="section-best-things" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Best Things to Do in Bruges</h2>
+  </div>
+</section>
 
 <section id="section-0" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
     <h3>1. Explore Markt Square & Climb the Belfry Tower of Bruges</h3>
   </div>
   <div class={prose}>
-    <p>The Markt is the heart of Bruges and one of the first places you'll come across when exploring the city.</p>
-    <p>Surrounded by colourful historic buildings, cafés, and the iconic Belfry Tower, it's the perfect place to start your day. No matter where I was heading, I somehow always found myself back here.</p>
-    <p>If you're planning to climb the Belfry, I'd recommend booking your ticket through the <a href="https://www.museabrugge.be/en" target="_blank" rel="noopener noreferrer" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">official Musea Brugge website</a> before your visit. During busy periods, tickets can sell out quickly, and choosing an early morning time slot is one of the best ways to avoid the longest queues.</p>
+    <p>It’s very difficult to miss Markt Square when you’re in Bruges. Surrounded by colorful historic buildings, cafés, and the iconic Belfry Tower, it’s the heart of the city — and you’ll probably find yourself coming back to this square more than once during your visit. I certainly did.</p>
+    <p>If you're planning to climb the Belfry, I'd recommend booking your ticket through the <a href="https://www.museabrugge.be/en" target="_blank" rel="noopener noreferrer" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">official Musea Brugge website</a> before your visit. During busy periods, tickets can sell out quickly, and choosing an early morning time slot is one of the best ways to avoid the longest lines.</p>
     <div class="grid grid-cols-2 gap-3 md:gap-4">
-      <ArticleImage src={marktSquare} alt="Markt Square in Bruges with colourful guild houses" caption="Markt Square, the beating heart of Bruges" />
+      <ArticleImage src={marktSquare} alt="Markt Square in Bruges with colorful guild houses" caption="Markt Square, the beating heart of Bruges" />
       <ArticleImage src={belfryTower} alt="The Belfry Tower of Bruges rising above Markt Square" caption="The Belfry Tower — 366 steps to panoramic views" />
     </div>
   </div>
@@ -47,15 +65,11 @@ const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
 
 <section id="section-1" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>
-      2. Don't miss the most beautiful canal view in Bruges at Rozenhoedkaai
-      </h3>
+    <h3>2. Admire the Views at Rozenhoedkaai</h3>
       </div>
   <div class={prose}>
-    <p>If you've ever seen a postcard of Bruges, there's a good chance it was taken here.</p>
-    <p>Rozenhoedkaai is one of the city's most photographed spots, and it's easy to see why. The canal, the historic buildings, and their reflections on the water create one of the most iconic views in Bruges.</p>
-    <p>I visited at sunrise on my first morning in Bruges and came back again around sunset. Seeing the same place at two completely different times of the day gave it a totally different atmosphere.</p>
-    <p>I've included both sunrise and sunset photos below because I think they show two very different sides of Rozenhoedkaai. If you have the time, I'd recommend visiting twice. But if I had to choose, sunrise was easily my favourite!</p>
+    <p>If you’ve ever seen a postcard of Bruges, there’s a good chance it was taken here. Rozenhoedkaai is one of those places that looks almost too perfect to be real, with the canal, historic buildings, and their reflections on the water creating one of the most beautiful views in the city. It’s also one of the first places I’d recommend visiting, especially if it’s your first time in Bruges.</p>
+    <p>I visited at sunrise on my first morning and came back again around sunset, and seeing the same view at two completely different times of the day made me appreciate it even more. Sunrise was easily my favorite — the streets were quiet, the light was beautiful, and for a few minutes, Bruges felt almost completely still. If you have the time, I’d definitely recommend seeing Rozenhoedkaai at both times of day.</p>
   </div>
     <BentoGrid items={[
       { src: rozenhoedkaaiSunrise, alt: "Rozenhoedkaai canal view at sunrise in Bruges", title: "Sunrise" },
@@ -65,103 +79,103 @@ const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
 
 <section id="section-2" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>3. Experience the Magic of Boniface Bridge</h3>
+    <h3>3. Experience Belgian Hot Chocolate at The Old Chocolate House</h3>
   </div>
   <div class={prose}>
-    <p>Boniface Bridge is one of those places that instantly made me stop and take out my camera.</p>
-    <div class="max-w-md">
-      <ArticleImage src={bonifaceBridge} alt="Boniface Bridge over the canal in Bruges" caption="Boniface Bridge — hidden, yet one of the most beautiful spots in Bruges" />
-    </div>
-    <p>Hidden just below the Church of Our Lady, this small bridge offers one of the most beautiful canal views in Bruges. Even though it's a popular spot, it still feels surprisingly peaceful, especially early in the morning.</p>
-    <div class="max-w-md">
-      <ArticleImage src={bonifaceChurchView} alt="Church of Our Lady reflected in the canal at Boniface Bridge at sunrise" caption="First light on the Church of Our Lady — one of my favourite photography moments in Bruges" />
-    </div>
-    <p>I arrived just before sunrise and watched the first light hit the Church of Our Lady in the background. Photos do this place justice, but seeing the light change is something else. I've shared a short video on <a href="https://www.instagram.com/reel/DT-XCCZDFIu/?igsh=MW16Y2hhcDNjM2JvcA==" target="_blank" rel="noopener noreferrer" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Instagram</a> if you'd like to see it for yourself.</p>
-    <p>If you're planning to visit, I'd definitely recommend coming around sunrise. Not only will you avoid the crowds, but you'll also experience this place at its most beautiful.</p>
+    <p>Hands down, this was one of my favorite experiences in Bruges. I wasn’t expecting a cup of hot chocolate to become such a memorable part of my trip, but that’s exactly what happened. What makes The Old Chocolate House so special is that you don’t simply order a hot chocolate — you get to make it yourself. Depending on the flavor you choose, you’re served hot milk alongside a handmade chocolate cup filled with matching chocolates and toppings. You simply pour everything into the milk, stir, and watch it melt into your own Belgian hot chocolate.</p>
+    <ArticleImage src={oldChocolateHouse} alt="The Old Chocolate House in Bruges" caption="The Old Chocolate House — one of the most popular spots in Bruges" />
+    <p>I chose the praline version, while my husband went for the Baileys hot chocolate, and by the time we left, we were already talking about coming back to try another flavor.</p>
+    <aside class="mt-6 max-w-3xl rounded-lg bg-[#F5F2EB] px-4 py-3 text-md leading-relaxed text-black/80">
+      <span class="font-medium text-black">💡 Tip:</span> Before you leave, don’t miss the chocolate shop next door, where you can pick up many of the same handmade chocolates to take home.
+    </aside>
   </div>
 </section>
 
 <section id="section-3" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>4. Explore Bruges' Canals on Foot</h3>
+    <h3>4. Experience the Magic of Boniface Bridge</h3>
   </div>
   <div class={prose}>
-    <p>One of the best things to do in Bruges is simply walk along its canals.</p>
-    <p>Beyond the main squares, you'll discover quiet streets, historic houses, charming stone bridges, and some of the city's most beautiful views. I never followed a specific route and instead wandered wherever the canals led me. Looking back, I wouldn't have explored Bruges any other way.</p>
-    <BentoGrid items={[
-      { src: canalView, alt: "Walking along the canals in Bruges", title: "Canal-side streets" },
-      { src: bonifaceCanalView, alt: "A stone bridge over a canal in Bruges with historic houses", title: "Stone bridges" },
-      { src: canalViews, alt: "Canal boat tour passing under a bridge in Bruges", title: "Canal boat tours" },
-    ]} />
-    <p>If you enjoy seeing a city from the water, I'd also recommend taking a canal cruise. It offers a completely different perspective of Bruges and lets you admire parts of the historic centre you wouldn't normally see on foot. I'd recommend <a href="https://gyg.me/XCbuGbet" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">booking your canal cruise in advance</a>, especially during the busier months.</p>
+    <p>Boniface Bridge is one of those places that instantly made me stop and take out my camera. Tucked just below the Church of Our Lady, this small stone bridge offers one of the most beautiful canal views in Bruges. Even though it’s a popular spot, it can feel surprisingly peaceful early in the morning.</p>
+    <div class="max-w-md">
+      <ArticleImage src={bonifaceBridge} alt="Boniface Bridge over the canal in Bruges" caption="Boniface Bridge — hidden, yet one of the most beautiful spots in Bruges" />
+    </div>
+    <p>I arrived just before sunrise and watched the first light hit the Church of Our Lady in the background. It was one of my favorite photography moments in Bruges, and while the photos turned out beautifully, seeing the light slowly change in person was even more special.</p>
+    <div class="max-w-md">
+      <ArticleImage src={bonifaceChurchView} alt="Church of Our Lady reflected in the canal at Boniface Bridge at sunrise" caption="First light on the Church of Our Lady — one of my favorite photography moments in Bruges" />
+    </div>
+    <p>If you’re planning to visit, I’d definitely recommend coming around sunrise. You’ll not only avoid most of the crowds, but you’ll also get to experience the bridge at its most peaceful. I’ve also shared a short video on <a href="https://www.instagram.com/reel/DT-XCCZDFIu/?igsh=MW16Y2hhcDNjM2JvcA==" target="_blank" rel="noopener noreferrer" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Instagram</a> if you’d like to see what it looked like that morning.</p>
   </div>
 </section>
 
 <section id="section-4" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>5. Take a Walk Around Minnewater, the Lake of Love</h3>
+    <h3>5. Try Traditional Belgian Food at De Gastro</h3>
   </div>
   <div class={prose}>
-    <p>If you're looking for a quieter side of Bruges, make some time for a walk around Minnewater, also known as the Lake of Love. Surrounded by trees, walking paths, and calm water, it feels completely different from the busy streets of the historic centre and is one of the most peaceful places to visit in the city.</p>
-    <ArticleImage src={minnewater} alt="Minnewater Lake in Bruges, the Lake of Love" caption="Minnewater Lake — one of the most peaceful spots in Bruges" />
-    <p>It's only a short walk from the centre, making it an easy stop to add to your itinerary. Take your time, enjoy the views, and if you're lucky, you might even spot a few of Bruges' famous swans along the way.</p>
+    <p>Whenever I visit a new place, I always try to find restaurants serving traditional local dishes. When I found <a href="https://www.degastro.be/" target="_blank" rel="noopener noreferrer" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">De Gastro</a> and saw that the Flemish beef stew was one of the dishes everyone recommended, I knew I had to add it to my list and give it a try. It definitely lived up to my expectations. I ordered the Flemish beef stew, while my husband went for the steak tartare, and we both loved our meals. The atmosphere was warm and welcoming, the portions were generous, and the service was great. If you’re planning to have dinner here, I’d recommend making a reservation in advance, especially during the busier months.</p>
+    <div class="grid grid-cols-2 gap-3 md:gap-4">
+      <ArticleImage src={deGastroFood} alt="Flemish beef stew with fries at De Gastro in Bruges" caption="De Gastro" />
+      <ArticleImage src={deGastroExterior} alt="De Gastro restaurant in Bruges" caption="Flemish beef stew" />
+    </div>
   </div>
 </section>
 
 <section id="section-5" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>6. Step into Bruges' History at Burg Square</h3>
+    <h3>6. Explore Bruges' Canals</h3>
   </div>
   <div class={prose}>
-    <p>Just a short walk from the Markt, Burg Square is home to some of Bruges' most important landmarks, including the impressive City Hall and the Basilica of the Holy Blood.</p>
-    <div class="max-w-sm">
-      <ArticleImage src={burgSquare} alt="Burg Square in Bruges with the City Hall" caption="Burg Square — home to some of Bruges' most significant historic buildings" />
-    </div>
-    <p>Even if you're not planning to visit the buildings, it's well worth stopping here for a few minutes. The square has a completely different feel from the Markt, making it one of the best places to admire Bruges' beautiful architecture and history.</p>
+    <p>One of the best things to do in Bruges is simply explore its beautiful canals. It’s also the best way to understand why the city is often called the Venice of the North.</p>
+    <p>I never followed a specific route and simply wandered wherever the canals led me. Along the way, I found quiet streets, beautiful old houses, and some of my favorite views in Bruges. My advice? Don’t worry too much about following a plan — just explore and see where you end up.</p>
+    <BentoGrid items={[
+      { src: canalView, alt: "Walking along the canals in Bruges", title: "Canal-side streets" },
+      { src: bonifaceCanalView, alt: "A stone bridge over a canal in Bruges with historic houses", title: "Stone bridges" },
+      { src: canalViews, alt: "Canal boat tour passing under a bridge in Bruges", title: "Canal boat tours" },
+    ]} />
+    <p>If you’d like to see the city from the water as well, I’d also recommend taking a canal cruise. It gives you a completely different perspective of Bruges and is a great way to see parts of the historic center you might otherwise miss.</p>
+    <p>🎟️ <a href="https://gyg.me/XCbuGbet" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Book your Bruges canal cruise here</a>.</p>
+    <GetYourGuideActivities
+      tourIds="453315"
+      numberOfItems={1}
+      poweredByHref="https://www.getyourguide.com/bruges-l854/"
+    />
   </div>
 </section>
 
 <section id="section-6" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>7. Enjoy a Waffle by the Canal at Otto Waffle Atelier</h3>
+    <h3>7. Take a Walk Around Minnewater, the Lake of Love</h3>
   </div>
   <div class={prose}>
-    <p>If you're only planning to try one waffle in Bruges, I'd make it this one.</p>
-    <p>There are plenty of waffle shops across the city, but Otto Waffle Atelier was the one I kept recommending after my trip. Located right beside the canal, it's the perfect place to stop for breakfast or a coffee break while watching the boats pass by.</p>
-    <div class="grid grid-cols-2 gap-3 md:gap-4">
-      <ArticleImage src={ottoExterior} alt="Otto Waffle Atelier beside the canal in Bruges" caption="Otto Waffle Atelier" />
-      <ArticleImage src={ottoWaffle} alt="A Belgian waffle from Otto Waffle Atelier in Bruges" caption="Belgian waffle" />
-    </div>
-    <p>Just keep in mind that this isn't the classic Belgian waffle you'll find elsewhere in Bruges. Otto has created its own take on the traditional waffle using oat flour, giving it a unique twist that's well worth trying.</p>
-    <p>If you'd like to try more than one waffle during your trip, you'll also find a few more of my favourite waffle spots <a href="#section-google-map" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">on the map</a>.</p>
+    <p>If you’re looking for a quieter side of Bruges, take a walk around Minnewater, also known as the Lake of Love. Just a short walk from the historic center, it’s a peaceful place to slow down, enjoy the views, and escape the busier streets for a while. If you’re lucky, you might even spot some of Bruges’ famous swans along the way.</p>
+    <ArticleImage src={minnewater} alt="Minnewater Lake in Bruges, the Lake of Love" caption="Minnewater Lake — one of the most peaceful spots in Bruges" />
   </div>
 </section>
 
 <section id="section-7" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>8. Try Traditional Belgian Food at De Gastro</h3>
+    <h3>8. Step into Bruges' History at Burg Square</h3>
   </div>
   <div class={prose}>
-    <p>If I had to recommend just one restaurant in Bruges, it would be <a href="https://www.degastro.be/" target="_blank" rel="noopener noreferrer" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">De Gastro</a>.</p>
-    <div class="grid grid-cols-2 gap-3 md:gap-4">
-      <ArticleImage src={deGastroFood} alt="Flemish beef stew with fries at De Gastro in Bruges" caption="De Gastro" />
-      <ArticleImage src={deGastroExterior} alt="De Gastro restaurant in Bruges" caption="Flemish beef stew" />
+    <p>Just a short walk from the Markt, Burg Square is one of the most important historic squares in Bruges and home to some of the city’s most impressive buildings, including the City Hall and the Basilica of the Holy Blood. Even if you don’t plan to visit the buildings inside, I’d still recommend stopping here for a few minutes to take in the architecture and get a feel for the history of the city.</p>
+    <div class="max-w-sm">
+      <ArticleImage src={burgSquare} alt="Burg Square in Bruges with the City Hall" caption="Burg Square — home to some of Bruges' most significant historic buildings" />
     </div>
-    <p>I ordered the Flemish beef stew, while my husband went for the steak tartare. Both dishes were excellent and exactly what we were hoping to try during our trip to Belgium.</p>
-    <p>The atmosphere is warm, the service was great, and the portions are generous. If you're planning to have dinner here, I'd recommend making a reservation in advance, especially during the busier months.</p>
   </div>
 </section>
 
 <section id="section-8" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>9. Experience Belgian Hot Chocolate at The Old Chocolate House</h3>
+    <h3>9. Enjoy a Waffle by the Canal at Otto Waffle Atelier</h3>
   </div>
   <div class={prose}>
-    <p>I wasn't expecting a cup of hot chocolate to become one of my favourite memories from Bruges, but that's exactly what happened.</p>
-    <p>What makes this place so special is that you don't simply order a hot chocolate – you get to make it yourself. Depending on the flavour you choose, you'll be served a cup of hot milk alongside a handmade chocolate cup filled with matching chocolates and toppings. Simply pour everything into the milk, stir, and watch it melt into your own rich Belgian hot chocolate.</p>
-    <ArticleImage src={oldChocolateHouse} alt="The Old Chocolate House in Bruges" caption="The Old Chocolate House — one of the most popular spots in Bruges" />
-    <p>I chose the praline version, while my husband went for the Baileys hot chocolate. By the time we left, we were already talking about coming back to try another flavour.</p>
-    <p>Before you leave, don't miss the chocolate shop next door, where you can pick up many of the same handmade chocolates to take home.</p>
+    <p>If you’re only planning to try one waffle in Bruges, I’d make it this one. Otto Waffle Atelier is right beside the canal, making it a great place to stop for breakfast or a coffee while watching the boats go by. It was one of my favorite spots for a relaxed break during my visit.</p>
+    <div class="grid grid-cols-2 gap-3 md:gap-4">
+      <ArticleImage src={ottoExterior} alt="Otto Waffle Atelier beside the canal in Bruges" caption="Otto Waffle Atelier" />
+      <ArticleImage src={ottoWaffle} alt="A Belgian waffle from Otto Waffle Atelier in Bruges" caption="Belgian waffle" />
+    </div>
+    <p>Just keep in mind that Otto’s waffles are a little different from the classic Belgian waffles you might be expecting. They’re made with oat flour and have their own unique twist, which is exactly what makes them worth trying. If you’d like to try a few more waffles during your trip, I’ve also pinned some of my other favorites <a href="#section-google-map" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">on the map</a>.</p>
   </div>
 </section>
 
@@ -170,69 +184,92 @@ const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
     <h3>10. Treat Yourself to Belgian Pralines at The Chocolate Line</h3>
   </div>
   <div class={prose}>
-    <p>Don't leave Bruges without stopping by The Chocolate Line.</p>
+    <p>Don't leave Bruges without stopping by The Chocolate Line. Unlike many traditional chocolate shops, this one is known for experimenting with unexpected flavors while staying true to Belgian chocolate craftsmanship. One of the things I loved most was that you can build your own box of pralines, making it easy to try a variety of flavors.</p>
     <div class="grid grid-cols-2 gap-3 md:gap-4">
       <ArticleImage src={chocolateLineShop} alt="The Chocolate Line shop in Bruges" caption="The Chocolate Line" />
       <ArticleImage src={chocolateLineDisplay} alt="Display of pralines at The Chocolate Line in Bruges" caption="Praline selection" />
     </div>
-    <p>Unlike many traditional chocolate shops, this one is known for experimenting with unexpected flavours while staying true to Belgian chocolate craftsmanship. One of the things I loved most was that you can build your own box of pralines, making it easy to try a variety of flavours.</p>
-    <p>My favourite was the Defender praline, filled with hazelnut praline and popping candy. The crackling texture instantly reminded me of the sweets I used to eat as a child, and it ended up being one of the most memorable chocolates I tried in Bruges.</p>
-    <p>If you'd like to bring home more Belgian chocolates, you'll also find a few more of my favourite chocolate shops <a href="#section-google-map" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">on the map</a>. If you're curious about the different praline flavours, you can browse their full collection on the <a href="https://www.thechocolateline.be/nl/p/assortiment" target="_blank" rel="noopener noreferrer" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">official Chocolate Line website</a> before your visit.</p>
+    <p>My favorite was the Defender praline, filled with hazelnut praline and popping candy. The crackling texture instantly reminded me of the sweets I used to eat as a child, and it ended up being one of the most memorable chocolates I tried in Bruges.</p>
+    <p>If you'd like to bring home more Belgian chocolates, you'll also find a few more of my favorite chocolate shops <a href="#section-google-map" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">on the map</a>. If you're curious about the different praline flavors, you can browse their full collection on the <a href="https://www.thechocolateline.be/nl/p/assortiment" target="_blank" rel="noopener noreferrer" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">official Chocolate Line website</a> before your visit.</p>
   </div>
 </section>
 
 <section id="section-10" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>Where to Stay in Bruges</h3>
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Where to Stay in Bruges</h2>
   </div>
   <div class={prose}>
-    <p>If it's your first time in Bruges, I'd recommend staying within walking distance of the historic centre. The city is very walkable, and you'll be able to reach all the places mentioned in this guide on foot.</p>
-    <p>During my stay, I chose <a href="https://www.booking.com/hotel/be/grand-casselbergh.en.html?aid=311984;label=grand-casselbergh-BWTXYVHV7pczflfS2SWgCwS162166631654:pl:ta:p1:p2:ac:ap:neg:fi:tiaud-2382347442848:kwd-2462194784567:lp9215685:li:dec:dm:ppccp=UmFuZG9tSVYkc2RlIyh9YTQUGSsRwx9_3qo3uPTHyoo;ws=&gad_source=1&gad_campaignid=345377325&gbraid=0AAAAAD_Ls1JcJoKGv-bDO_xEUyR_8jo-l&gclid=Cj0KCQjwjIPSBhCCARIsABGyK7v3GppakHjcNeySmO3LRUw8hkUb9FhWuWQq6_BStOGHKGqIImHCIjIaAocJEALw_wcB" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Grand Hotel Casselbergh</a> and would happily stay there again. Its location made it incredibly easy to explore Bruges on foot, while the beautifully decorated lounges gave the hotel so much character. The breakfast buffet was excellent, and the spa became my favourite place to unwind after a full day of exploring Bruges.</p>
+    <p>If it's your first time in Bruges, I recommend staying near the historic centre, where you can easily explore the city's main sights on foot. Bruges is a very walkable city, and choosing a central hotel will make your visit much more enjoyable.</p>
+    <iframe
+      id="stay22-widget"
+      title="Find hotels in Bruges"
+      width="100%"
+      height="428"
+      src="https://stay22.com/embed/6a786c6d810a3d69a6e37f60"
+      loading="lazy"
+      class="my-5 max-w-3xl md:my-8"
+    ></iframe>
+    <h3 class="mb-2 mt-6 text-black">Luxury Stay</h3>
+    <p><a href="https://www.booking.com/hotel/be/grand-casselbergh.en.html?aid=311984;label=grand-casselbergh-BWTXYVHV7pczflfS2SWgCwS162166631654:pl:ta:p1:p2:ac:ap:neg:fi:tiaud-2382347442848:kwd-2462194784567:lp9215685:li:dec:dm:ppccp=UmFuZG9tSVYkc2RlIyh9YTQUGSsRwx9_3qo3uPTHyoo;ws=&gad_source=1&gad_campaignid=345377325&gbraid=0AAAAAD_Ls1JcJoKGv-bDO_xEUyR_8jo-l&gclid=Cj0KCQjwjIPSBhCCARIsABGyK7v3GppakHjcNeySmO3LRUw8hkUb9FhWuWQq6_BStOGHKGqIImHCIjIaAocJEALw_wcB" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Grand Hotel Casselbergh</a> – A beautifully decorated luxury hotel in the heart of Bruges, combining historic charm, excellent breakfast, and a relaxing spa experience.</p>
     <div class="grid grid-cols-2 gap-3 md:gap-4">
       <ArticleImage src={casselbergh} alt="The elegant lobby of Grand Hotel Casselbergh in Bruges" caption="The beautifully decorated lobby at Grand Hotel Casselbergh" imgClass="aspect-[4/5] object-cover" />
       <ArticleImage src={casselberghBreakfast} alt="The breakfast buffet spread at Grand Hotel Casselbergh in Bruges" caption="The excellent breakfast buffet at Grand Hotel Casselbergh" imgClass="aspect-[4/5] object-cover" />
     </div>
-    <p>If you're looking for a few more options, here are a few other hotels I'd consider staying at on my next visit to Bruges.</p>
-    <h4 class="mb-2 text-black">Luxury Stay</h4>
     <p><a href="https://www.booking.com/searchresults.el.html?aid=311101&label=kempinski-dukes-palace-yAEHdS4i_JAJlfQrt_iTGgS393787235460%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atiaud-2382347442848%3Akwd-11459642348%3Alp9215685%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tSVYkc2RlIyh9YdK51rZczkDIIFcISQDJ03M&highlighted_hotels=21393&redirected=1&city=-1955473&hlrd=no_dates&source=hotel&expand_sb=1&keep_landing=1&sid=4549fda57178532c9550e5b777971968" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Dukes' Palace</a> – One of the most iconic luxury hotels in Bruges, housed in a former ducal palace just a short walk from the Markt.</p>
-    <h4 class="mb-2 mt-6 text-black">Boutique Hotel</h4>
-    <p><a href="https://www.booking.com/searchresults.en-gb.html?aid=318615&label=New_English_EN_NO_26744719105-hJSJBYG5rTOeQWxicwzesAS634117826769%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atidsa-64415224945%3Alp9215685%3Ali%3Adec%3Adm%3Aag26744719105%3Acmp394170865&gclid=Cj0KCQjwjIPSBhCCARIsABGyK7u4r2ZQLzxR4YVab0_P0CthQsm3WcZVKt4wCnQYJuIiSuaRFVeV9iMaArChEALw_wcB&highlighted_hotels=20221&redirected=1&city=-1955473&hlrd=no_dates&source=hotel&expand_sb=1&keep_landing=1&sid=4549fda57178532c9550e5b777971968" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">The Pand Hotel</a> – An elegant boutique hotel in the heart of Bruges, known for its cosy atmosphere, personalised service, and beautifully designed rooms.</p>
-    <h4 class="mb-2 mt-6 text-black">Romantic Canal Stay</h4>
-    <p><a href="https://www.booking.com/searchresults.html?aid=318615&label=New_English_EN_NO_26744719945-majgVF6O8AS2_zovx7raAgS640874750395%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi55287309551%3Atidsa-355815316927%3Alp9215685%3Ali%3Adec%3Adm%3Aag26744719945%3Acmp394170865&gclid=Cj0KCQjwjIPSBhCCARIsABGyK7tBWiz-BKDzH0JYn_pfzNipODJ6WQKnHN09Me3jIHMXPbjytNG1ltsaAhFuEALw_wcB&highlighted_hotels=21399&redirected=1&city=-1955473&hlrd=no_dates&source=hotel&expand_sb=1&keep_landing=1&sid=4549fda57178532c9550e5b777971968" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Hotel De Orangerie</a> – A charming canal-side boutique hotel that's perfect for couples looking for a romantic stay in one of Bruges' most picturesque locations.</p>
+    <h3 class="mb-2 mt-6 text-black">Boutique Hotel</h3>
+    <p><a href="https://www.booking.com/searchresults.en-gb.html?aid=318615&label=New_English_EN_NO_26744719105-hJSJBYG5rTOeQWxicwzesAS634117826769%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atidsa-64415224945%3Alp9215685%3Ali%3Adec%3Adm%3Aag26744719105%3Acmp394170865&gclid=Cj0KCQjwjIPSBhCCARIsABGyK7u4r2ZQLzxR4YVab0_P0CthQsm3WcZVKt4wCnQYJuIiSuaRFVeV9iMaArChEALw_wcB&highlighted_hotels=20221&redirected=1&city=-1955473&hlrd=no_dates&source=hotel&expand_sb=1&keep_landing=1&sid=4549fda57178532c9550e5b777971968" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">The Pand Hotel</a> – An elegant boutique hotel in the heart of Bruges, known for its cozy atmosphere, personalized service, and beautifully designed rooms.</p>
+    <h3 class="mb-2 mt-6 text-black">Romantic Canal Stay</h3>
+    <p><a href="https://www.booking.com/searchresults.html?aid=318615&label=New_English_EN_NO_26744719945-majgVF6O8AS2_zovx7raAgS640874750395%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi55287309551%3Atidsa-355815316927%3Alp9215685%3Ali%3Adec%3Adm%3Aag26744719945%3Acmp394170865&gclid=Cj0KCQjwjIPSBhCCARIsABGyK7tBWiz-BKDzH0JYn_pfzNipODJ6WQKnHN09Me3jIHMXPbjytNG1ltsaAhFuEALw_wcB&highlighted_hotels=21399&redirected=1&city=-1955473&hlrd=no_dates&source=hotel&expand_sb=1&keep_landing=1&sid=4549fda57178532c9550e5b777971968" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Hotel De Orangerie by CW Hotel Collection</a> – A charming canal-side boutique hotel that's perfect for couples looking for a romantic stay in one of Bruges' most picturesque locations.</p>
   </div>
 </section>
 
 <section id="section-11" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>FAQ</h3>
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Where to Eat in Bruges</h2>
   </div>
-  <div class={`${prose} space-y-6`}>
-    <div id="faq-0" class="scroll-mt-nav">
-      <h4 class="mb-2 text-black">1. How to get to Bruges?</h4>
-      <p>The easiest way to get to Bruges is by train, especially if you're travelling from Brussels. There are frequent connections throughout the day, and the journey usually takes around one hour.</p>
-      <p>If you're travelling by train, I'd recommend checking routes and booking your tickets through <a href="https://www.omio.com/?clickid=yVuTIZyRnxyZW5uwC2xuzTIBUkuQEoxW%3AUJ7040&irgwc=1&afsrc=1&utm_campaign=1141115&utm_source=affiliate_ir_Adpump&irmptype=mediapartner&ircid=7385&iradname=Homepage%3A+EN%28US%29+GoEuro&utm_id=274922&subId1=&gad_source=1" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Omio</a>, as it lets you compare different train options in one place. If you're travelling on a budget, it's also worth checking whether <a href="https://global.flixbus.com/bus" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">FlixBus</a> operates on your route.</p>
-      <p>Once you arrive at Bruges train station, the historic centre is about a 20-minute walk away. If you're travelling with luggage, you can also take a taxi or use a local bus to reach your accommodation.</p>
-    </div>
-    <div id="faq-1" class="scroll-mt-nav">
-      <h4 class="mb-2 text-black">2. What is the best time to visit Bruges?</h4>
-      <p>Bruges is a beautiful destination year-round, and the best time to visit really depends on the kind of experience you're looking for. Spring (April–June) and early autumn (September–October) are ideal if you prefer pleasant weather and fewer crowds, while winter brings a magical atmosphere with festive lights and Christmas decorations.</p>
-      <p>I visited during the Christmas season, and the Christmas atmosphere made the city feel even more magical. If you're planning a winter trip, Bruges at Christmas is something I'd happily recommend.</p>
-    </div>
-    <div id="faq-2" class="scroll-mt-nav">
-      <h4 class="mb-2 text-black">3. How many days do you need in Bruges?</h4>
-      <p>I'd recommend spending 2 days in Bruges. You can see the main attractions in a single day, but I think you'd be missing part of what makes the city so special. Having an extra day lets you slow down, revisit your favourite places, and enjoy Bruges without feeling like you're constantly checking your watch.</p>
-    </div>
-    <div id="faq-3" class="scroll-mt-nav">
-      <h4 class="mb-2 text-black">4. Is Bruges worth visiting?</h4>
-      <p>Absolutely. If you enjoy historic cities, canals, beautiful architecture, and exploring on foot, Bruges is one of the most charming destinations in Europe. What I loved most about Bruges is that you don't need to rush from one attraction to another — some of my favourite moments were simply walking around, discovering quiet streets, stopping by the canals, and finding beautiful corners along the way.</p>
-    </div>
+  <div class={prose}>
+    <p><a href="https://www.google.com/maps/search/?api=1&query=De+Gastro,+Braambergstraat+6,+8000+Brugge,+Belgium" target="_blank" rel="noopener noreferrer" class={mapLink}>De Gastro</a> – A favourite of mine in Bruges, this restaurant is perfect for trying traditional Belgian cuisine with quality ingredients in a cosy and elegant setting.</p>
+    <p><a href="https://www.google.com/maps/search/?api=1&query=ONE+Restaurant,+Arsenaalstraat+55,+8000+Brugge,+Belgium" target="_blank" rel="noopener noreferrer" class={mapLink}>One Restaurant</a> – A great choice for a special dinner, offering a refined take on Belgian cuisine with seasonal ingredients and a modern touch.</p>
+    <p><a href="https://www.google.com/maps/search/?api=1&query=Cambrinus,+Philipstockstraat+19,+8000+Brugge,+Belgium" target="_blank" rel="noopener noreferrer" class={mapLink}>Cambrinus</a> – A classic Bruges spot for authentic Belgian dishes, famous for its traditional food and impressive selection of local beers.</p>
+    <p><a href="https://www.google.com/maps/search/?api=1&query=The+Republic,+Sint-Jakobsstraat+36,+8000+Brugge,+Belgium" target="_blank" rel="noopener noreferrer" class={mapLink}>The Republic</a> – A relaxed local favourite with a cosy atmosphere, ideal for lunch, drinks or a casual meal away from the busiest tourist spots.</p>
+    <p><a href="https://www.google.com/maps/search/?api=1&query=That%27s+Toast,+Dweersstraat+4,+8000+Brugge,+Belgium" target="_blank" rel="noopener noreferrer" class={mapLink}>That's Toast</a> – One of the best brunch places in Bruges, serving delicious breakfast plates, coffee and a welcoming atmosphere to start your day.</p>
+    <p><a href="https://www.google.com/maps/search/?api=1&query=MARO,+Westmeers+9,+8000+Brugge,+Belgium" target="_blank" rel="noopener noreferrer" class={mapLink}>MARO</a> – A stylish café perfect for coffee, brunch or a light lunch, combining fresh dishes with a cosy and modern vibe.</p>
   </div>
 </section>
 
 <section id="section-12" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">FAQ</h2>
+  </div>
+  <div class={`${prose} space-y-6`}>
+    <div id="faq-0" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">1. What Is the Best Time to Visit Bruges?</h3>
+      <p>Bruges is a beautiful destination year-round, and the best time to visit really depends on the kind of experience you’re looking for. Spring (April–June) and early autumn (September–October) are great if you prefer pleasant weather and fewer crowds, while winter brings a completely different atmosphere, with festive lights and Christmas decorations making the city feel even more magical.</p>
+      <p>I visited Bruges during the Christmas season, and I loved seeing the city at this time of year. If you’re planning a winter trip, Bruges at Christmas is something I’d happily recommend — especially if you enjoy festive markets, beautiful decorations, and a cozy atmosphere.</p>
+    </div>
+    <div id="faq-1" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">2. How Many Days Do You Need in Bruges?</h3>
+      <p>Many travelers choose to spend just one day in Bruges, and it is absolutely possible to see the city’s main highlights in a single day. Most of the places I’ve mentioned in this guide — from Markt Square and the Belfry to Rozenhoedkaai, Boniface Bridge, the canals, and Burg Square — are close enough to explore on foot, so you can fit a lot into one day.</p>
+      <p>Personally, though, I’d recommend staying for a weekend in Bruges if you have the time. Two days give you the chance to see the main sights while also experiencing the city at a slower pace, especially in the early morning and evening when the day-trippers have left. And if you’re traveling as a couple, Bruges makes a lovely destination for a romantic weekend, with its canals, beautiful architecture, cozy restaurants, and charming streets.</p>
+      <p>If you’re short on time, don’t worry — one day in Bruges is enough to see a lot. But if you can stay a little longer, I think you’ll appreciate the city even more.</p>
+    </div>
+    <div id="faq-2" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">3. What Should I Not Miss in Bruges?</h3>
+      <p>If you’re still wondering what you really shouldn’t miss in Bruges, I’d narrow it down to three places: Markt Square, Rozenhoedkaai, and Boniface Bridge.</p>
+      <p>Markt Square gives you that classic Bruges experience, with its colorful historic buildings and the iconic Belfry. Rozenhoedkaai is the canal view you’ll probably recognize from photos of Bruges, while Boniface Bridge was one of my personal favorites, especially around sunrise.</p>
+      <p>Of course, there’s much more to see and do in Bruges, but if you’re short on time and can only choose three, these would be my picks.</p>
+    </div>
+    <div id="faq-3" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">4. What Is Bruges Famous For?</h3>
+      <p>Bruges isn’t famous for just one thing. It’s best known for its beautiful medieval architecture, which makes you feel like you’ve stepped back in time, its picturesque canals — one of the reasons it’s often called the Venice of the North — and, of course, its Belgian waffles and chocolate. It’s hard to leave this beautiful city without taking home a box of Belgian chocolates, especially with so many tempting chocolate shops around the city. Bruges is also home to the iconic Belfry Tower overlooking Markt Square, and Belgian beer is another local specialty you’ll find throughout the city.</p>
+    </div>
+  </div>
+</section>
+
+<section id="section-13" class="scroll-mt-nav">
   <div class={prose}>
     <ArticleClosingNote label="Before you go">
-      <p>I hope this guide helps you plan an unforgettable first visit to Bruges. And who knows? Maybe, like me, you'll already be thinking about coming back before you even leave.</p>
+      <p>If you’re looking for a place that will make you feel like you’ve stepped back in time, with beautiful medieval architecture, handmade chocolate, delicious traditional food, and Belgian waffles, then you’ve found the right destination. Bruges has all of this and more, and I have a feeling it will leave you wanting to come back again someday. So whether you’re planning a short day trip from Brussels or a romantic weekend away, just book those tickets — and I’d love to hear what you think, so don’t hesitate to send me a message and share your experience with me.</p>
     </ArticleClosingNote>
 
     <ArticlePinSaveSection>

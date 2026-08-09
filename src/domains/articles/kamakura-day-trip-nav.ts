@@ -5,7 +5,8 @@ export const kamakuraDayTripNav: readonly TocGroup[] = [
   { navTitle: '2. Kamakura Day Trip Overview', target: 'section-0' },
   { navTitle: '3. How to Get to Kamakura from Tokyo', target: 'section-1' },
   {
-    navTitle: '4. What to do in Kamakura',
+    navTitle: '4. What to Do in Kamakura',
+    target: 'section-best-things',
     children: [
       { navTitle: '4.1 Breakfast at Yoridokoro', target: 'section-2' },
       { navTitle: '4.2 Goryo Shrine', target: 'section-3' },

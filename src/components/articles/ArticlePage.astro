@@ -1,6 +1,10 @@
 ---
 import PageShell from '@/components/layout/PageShell.astro';
 import ArticleMobileBack from '@/components/articles/ArticleMobileBack.astro';
+import ArticleAuthorMeta from '@/components/articles/ArticleAuthorMeta.astro';
+import EntryHeaderMeta from '@/components/ui/EntryHeaderMeta.astro';
+import AuthorBioCallout from '@/components/articles/AuthorBioCallout.astro';
+import ArticleSubscribeCallout from '@/components/articles/ArticleSubscribeCallout.astro';
 import StickyArticleLayout from '@/components/articles/StickyArticleLayout.astro';
 import ArticleTocNav from '@/components/articles/ArticleTocNav.astro';
 import type { Article } from '@/domains/articles/catalog';
@@ -45,9 +49,16 @@ const shareImage = await getSocialShareImage(article.lcpImage ?? article.image);
           {article.title}
         </h1>
 
-        <p class="meta text-neutral-500 mb-4">
-          {article.dateLabel ?? 'Published'} · {article.publishedDate}
-        </p>
+        <EntryHeaderMeta class="max-w-3xl">
+          <slot name="date" slot="date">
+            <div class="post-meta post-date">
+              <span class="label">{article.dateLabel ?? 'Published'} · {article.publishedDate}</span>
+            </div>
+          </slot>
+          <slot name="author" slot="author">
+            <ArticleAuthorMeta />
+          </slot>
+        </EntryHeaderMeta>
 
         <slot name="title-media" />
 
@@ -111,6 +122,21 @@ This article may contain affiliate links, meaning I may earn a small commission 
       </Fragment>
 
       <slot />
+
+      <div
+        class="article-subscribe-anchor max-w-3xl hidden w-full"
+        data-article-subscribe
+      >
+        <slot name="subscribe">
+          <ArticleSubscribeCallout />
+        </slot>
+      </div>
+
+      <div class="max-w-3xl">
+        <slot name="author-bio">
+          <AuthorBioCallout />
+        </slot>
+      </div>
     </StickyArticleLayout>
   </main>
   <Fragment slot="before-footer"><slot name="before-footer" /></Fragment>
@@ -150,6 +176,28 @@ This article may contain affiliate links, meaning I may earn a small commission 
 
   initToTopButton();
   document.addEventListener("astro:page-load", initToTopButton);
+</script>
+
+<script>
+  function placeArticleSubscribe() {
+    const anchor = document.querySelector("[data-article-subscribe]");
+    const main = document.querySelector(".article-layout__main");
+    if (!anchor || !main) return;
+
+    const sections = [...main.querySelectorAll(":scope > section.scroll-mt-nav")];
+    anchor.classList.remove("hidden");
+
+    if (sections.length === 0) return;
+
+    const midIndex = Math.floor((sections.length - 1) / 2);
+    const target = sections[midIndex];
+    if (!target || anchor.parentElement === target) return;
+
+    target.appendChild(anchor);
+  }
+
+  placeArticleSubscribe();
+  document.addEventListener("astro:page-load", placeArticleSubscribe);
 </script>
 
 <style>

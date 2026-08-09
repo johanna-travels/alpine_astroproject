@@ -3,41 +3,60 @@ import { apiUrl, pageUrl } from '@/lib/site';
 
 interface Props {
   class?: string;
-  variant?: 'footer' | 'banner';
+  variant?: 'footer' | 'banner' | 'article';
 }
 
 const { class: className = '', variant = 'footer' } = Astro.props;
 const isBanner = variant === 'banner';
+const isArticle = variant === 'article';
 const formId = `newsletter-${crypto.randomUUID().slice(0, 8)}`;
 const apiPath = apiUrl('subscribe');
 
-const inputClass = isBanner
+const inputClass = isArticle
+  ? 'block w-full px-4 py-3 mt-3 text-neutral-800 placeholder-neutral-500 bg-white border border-[#E5DFD4] rounded-md appearance-none sm:max-w-xs focus:outline-none focus:ring-2 focus:ring-[#69746E]/25 focus:border-[#69746E] transition-all disabled:opacity-50'
+  : isBanner
   ? 'w-full px-4 py-2.5 placeholder:text-neutral-400 bg-white border border-[#E5DFD4] rounded-md text-neutral-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#69746E]/25 focus:border-[#69746E] transition-all disabled:opacity-50'
   : 'w-full px-4 py-2.5 placeholder-white/60 bg-[#4a534f] border border-white/30 rounded-md text-white text-sm focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all disabled:opacity-50';
 
-const submitClass = isBanner
+const submitClass = isArticle
+  ? 'block w-full py-3 mt-3 text-sm font-bold tracking-wide rounded shadow bg-[#F4F1EA] text-[#2D2D2D] hover:bg-white/90 transition-all duration-300 md:w-52 disabled:opacity-50 disabled:cursor-not-allowed'
+  : isBanner
   ? 'px-6 py-2.5 text-sm font-medium tracking-wide bg-[#69746E] text-white rounded-md hover:opacity-80 transition-opacity duration-200 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed w-full sm:mt-0 sm:w-auto'
   : 'px-6 py-2.5 text-xs tracking-[0.2em] uppercase bg-[#F4F1EA] text-[#2D2D2D] rounded-md hover:bg-white/90 transition-all duration-300 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed';
 
-const checkboxClass = isBanner
+const checkboxClass = isArticle
+  ? 'mt-0.5 w-4 h-4 rounded border-white/40 bg-[#4a534f] text-white focus:ring-white/50 cursor-pointer'
+  : isBanner
   ? 'mt-0.5 w-4 h-4 rounded border-[#E5DFD4] bg-white text-[#69746E] focus:ring-[#69746E]/30 cursor-pointer'
   : 'mt-0.5 w-4 h-4 rounded border-white/40 bg-[#4a534f] text-white focus:ring-white/50 cursor-pointer';
 
-const labelClass = isBanner
+const labelClass = isArticle
+  ? 'text-xs text-white/90 leading-relaxed cursor-pointer text-left'
+  : isBanner
   ? 'text-xs text-black/70 leading-relaxed cursor-pointer'
   : 'text-xs text-white/90 leading-relaxed cursor-pointer';
 
-const linkClass = isBanner
+const linkClass = isArticle
+  ? 'underline hover:text-white/90'
+  : isBanner
   ? 'underline underline-offset-2 text-[#69746E] hover:text-[#4a534f]'
   : 'underline hover:text-white/90';
 
-const emailErrorClass = isBanner
+const emailErrorClass = isArticle
+  ? 'text-red-300 text-xs mt-1 hidden text-left'
+  : isBanner
   ? 'text-red-600 text-xs mt-1 hidden'
   : 'text-red-300 text-xs mt-1 hidden';
 
-const consentErrorClass = isBanner
+const consentErrorClass = isArticle
+  ? 'text-red-300 text-xs ml-7 hidden text-left'
+  : isBanner
   ? 'text-red-600 text-xs ml-7 hidden'
   : 'text-red-300 text-xs ml-7 hidden';
+
+const rowClass = isArticle
+  ? 'newsletter-article-row my-4 sm:flex sm:flex-row sm:items-start sm:gap-2'
+  : 'flex flex-col sm:flex-row gap-3';
 ---
 
 <form
@@ -48,13 +67,13 @@ const consentErrorClass = isBanner
   data-newsletter-form
   data-variant={variant}
 >
-  <div class="flex flex-col sm:flex-row gap-3">
-    <div class="flex-1 relative">
+  <div class={rowClass}>
+    <div class:list={['relative', isArticle ? 'flex-1 sm:max-w-xs' : 'flex-1']}>
       <input
         type="email"
         name="email"
         autocomplete="email"
-        placeholder={isBanner ? 'Enter your email address' : 'Enter your email'}
+        placeholder={isArticle ? 'Enter your email' : isBanner ? 'Enter your email address' : 'Enter your email'}
         required
         class={inputClass}
         data-newsletter-email
@@ -67,11 +86,11 @@ const consentErrorClass = isBanner
       data-newsletter-submit
       disabled
     >
-      Subscribe
+      {isArticle ? <span class="block">Subscribe</span> : 'Subscribe'}
     </button>
   </div>
 
-  <div class="flex items-start gap-3">
+  <div class:list={['flex items-start gap-3', isArticle && 'newsletter-article-consent']}>
     <input
       type="checkbox"
       id={`${formId}-consent`}
@@ -81,16 +100,41 @@ const consentErrorClass = isBanner
       class={checkboxClass}
       data-newsletter-consent
     />
-    <label for={`${formId}-consent`} class={labelClass}>
-      I agree to the{" "}
-      <a href={pageUrl('privacy-policy')} class={linkClass}>Privacy Policy</a>{" "}
-      and consent to receive emails.
-    </label>
+    {isArticle ? (
+      <div class="newsletter-article-consent-labels flex min-w-0 flex-col gap-0.5">
+        <label for={`${formId}-consent`} class={labelClass}>
+          I agree to the{" "}
+          <a href={pageUrl('privacy-policy')} class={linkClass}>Privacy Policy</a>{" "}
+          and consent to receive emails.
+        </label>
+        <label class="text-xs text-white/90 leading-relaxed text-left">
+          Unsubscribe anytime.
+        </label>
+      </div>
+    ) : (
+      <label for={`${formId}-consent`} class={labelClass}>
+        I agree to the{" "}
+        <a href={pageUrl('privacy-policy')} class={linkClass}>Privacy Policy</a>{" "}
+        and consent to receive emails.
+      </label>
+    )}
   </div>
   <p class={consentErrorClass} data-newsletter-consent-error />
 
   <p class="text-xs hidden" data-newsletter-message />
 </form>
+
+{isArticle && (
+  <style>
+    @media (min-width: 800px) {
+      .newsletter-article-consent-labels {
+        flex-direction: row !important;
+        align-items: baseline;
+        gap: 0.375rem;
+      }
+    }
+  </style>
+)}
 
 <script define:vars={{ apiPath }}>
   function initNewsletterForms() {

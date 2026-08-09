@@ -1,0 +1,80 @@
+---
+import { Image } from 'astro:assets';
+import authorPhoto from '@/assets/marketing/author-joanna.png';
+import { pageUrl } from '@/lib/site';
+
+interface Props {
+  name?: string;
+  aboutHref?: string;
+}
+
+const { name = 'Joanna', aboutHref = pageUrl('about') } = Astro.props;
+---
+
+<div class="post-meta post-author grid-3-column-row">
+  <span class="author-img">
+    <Image
+      src={authorPhoto}
+      alt={name}
+      width={50}
+      height={50}
+      densities={[1, 2]}
+      loading="eager"
+      decoding="async"
+    />
+  </span>
+  <span class="label">Author:</span>
+  <span class="post-author-link">
+    <a href={aboutHref}>{name}</a>
+  </span>
+</div>
+
+<style>
+  .post-meta.post-author {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 50px;
+    color: rgb(115 115 115);
+  }
+
+  .grid-3-column-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .author-img {
+    display: block;
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+  }
+
+  .author-img :global(img) {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+  }
+
+  .label {
+    margin: 0 3px 0 0;
+  }
+
+  .post-author-link a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .post-author-link a:hover,
+  .post-author-link a:focus-visible {
+    color: rgb(64 64 64);
+  }
+</style>

@@ -1,0 +1,114 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class:list={['entry-header-meta-wrap', className]}>
+  <div class="entry-header-meta">
+    <div class="entry-header-meta__author">
+      <slot name="author" />
+    </div>
+    <div class="entry-header-meta__date">
+      <slot name="date" />
+    </div>
+  </div>
+  <hr class="entry-header-meta__separator" aria-hidden="true" />
+</div>
+
+<style>
+  .entry-header-meta-wrap {
+    width: 100%;
+  }
+
+  .entry-header-meta {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 1rem 1.5rem;
+    min-height: 50px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .entry-header-meta__author {
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    min-width: 0;
+    min-height: 50px;
+  }
+
+  .entry-header-meta__date {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    min-width: 0;
+    min-height: 50px;
+  }
+
+  .entry-header-meta :global(.post-meta) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    min-height: 50px;
+    color: rgb(115 115 115);
+  }
+
+  .entry-header-meta :global(.post-meta.post-date) {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .entry-header-meta :global(.post-meta.post-date .label) {
+    white-space: nowrap;
+  }
+
+  .entry-header-meta :global(.label) {
+    margin: 0 3px 0 0;
+    font-family: var(--font-logo);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 0.03em;
+    color: rgb(115 115 115);
+  }
+
+  .entry-header-meta :global(.post-author-link) {
+    font-family: var(--font-logo);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.03em;
+    color: rgb(115 115 115);
+  }
+
+  .entry-header-meta :global(.post-author-link a) {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .entry-header-meta :global(.post-author-link a:hover),
+  .entry-header-meta :global(.post-author-link a:focus-visible) {
+    color: rgb(64 64 64);
+  }
+
+  .entry-header-meta__separator {
+    height: 17px;
+    margin: 0;
+    padding-top: 26px;
+    padding-bottom: 6px;
+    border: 0;
+    border-top: 1px solid rgb(245 245 245);
+    box-sizing: content-box;
+  }
+</style>

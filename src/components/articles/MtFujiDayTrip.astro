@@ -1,5 +1,6 @@
 ---
 import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
+import GetYourGuideActivities from '@/components/articles/GetYourGuideActivities.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
 import ArticlePinSaveSection from '@/components/articles/ArticlePinSaveSection.astro';
 import ArticleShareBar from '@/components/articles/ArticleShareBar.astro';
@@ -23,7 +24,7 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
 
 <section id="section-0" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>Mount Fuji Day Trip Overview</h3>
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Mount Fuji Day Trip Overview</h2>
   </div>
   <div class="max-w-3xl rounded-lg bg-[#F5F2EB] px-6 py-5 text-md leading-relaxed text-black/80">
     <p class="mb-3"><span class="font-medium text-black">📍 Destination:</span> Fujiyoshida & Kawaguchiko</p>
@@ -36,7 +37,7 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
 
 <section id="section-1" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>How to Get to Mount Fuji from Tokyo</h3>
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">How to Get to Mount Fuji from Tokyo</h2>
   </div>
   <div class={prose}>
     <p>If you want to visit Mount Fuji independently, one of the easiest ways is to take the highway bus from Busta Shinjuku toward Kawaguchiko Station. If your first stop is Chureito Pagoda, you can get off at Chuodo Shimo Yoshida, which is about a 30-minute walk from the pagoda area.</p>
@@ -49,12 +50,17 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
     <p class="mt-6"><a href="https://gyg.me/kJKUZBsy" target="_blank" rel="noopener noreferrer" class={mapLink}>
       🎟️ Book your Mount Fuji day trip from Tokyo here
     </a></p>
+    <GetYourGuideActivities
+      tourIds="173031"
+      numberOfItems={1}
+      poweredByHref="https://www.getyourguide.com/tokyo-l193/"
+    />
   </div>
 </section>
 
 <section id="section-2" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>When Is the Best Time to Visit Mount Fuji?</h3>
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">When Is the Best Time to Visit Mount Fuji?</h2>
   </div>
   <div class={prose}>
     <p>The best time to visit Mount Fuji for clear views is usually during the colder months, especially from November to February, when the air tends to be clearer and visibility is often better. Early morning is also one of the best times of day to see the mountain before clouds or haze build up.</p>
@@ -66,7 +72,7 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
 
 <section id="section-3" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>Best Mount Fuji Day Trip Route</h3>
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Best Mount Fuji Day Trip Route</h2>
   </div>
   <div class={prose}>
     <p>For a first Mount Fuji day trip from Tokyo, I would keep the route simple and focus on a few key stops:</p>
@@ -128,7 +134,7 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
 
 <section id="section-8" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>Independent or Organized Mount Fuji Day Trip?</h3>
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Independent or Organized Mount Fuji Day Trip?</h2>
   </div>
   <div class={prose}>
     <p>Visiting Mount Fuji independently gives you more freedom, but it also means you need to plan your own transport and be realistic about timing. An organized day trip is easier if you want to see several viewpoints in one day without worrying about bus schedules, local transport, or how to get between stops.</p>
@@ -138,7 +144,7 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
 
 <section id="section-9" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>Tips for Visiting Mount Fuji from Tokyo</h3>
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Tips for Visiting Mount Fuji from Tokyo</h2>
   </div>
   <div class={prose}>
     <ul class="list-disc pl-5 space-y-2 marker:text-black/40">

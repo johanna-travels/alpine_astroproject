@@ -1,0 +1,25 @@
+---
+import ArticlePage from '@/components/articles/ArticlePage.astro';
+import JapanBeforeFooter from '@/components/articles/JapanBeforeFooter.astro';
+import TokyoWhereToStayContent from '@/components/articles/TokyoWhereToStay.astro';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import { tokyoWhereToStayNav } from '@/domains/articles/tokyo-where-to-stay-nav';
+import { getArticle } from '@/domains/articles/catalog';
+import heroImage from '@/assets/articles/tokyo/tokyo-tower-view-hills-house-sky-room.webp';
+
+const article = getArticle('tokyo-where-to-stay')!;
+---
+
+<ArticlePage article={article} sections={tokyoWhereToStayNav}>
+  <ArticleImage
+    slot="title-media"
+    src={heroImage}
+    alt="Tokyo Tower and Minato City skyline viewed from Hills House Sky Room Café & Bar"
+    caption="Tokyo Tower from Hills House Sky Room"
+    figureClass="mb-6 max-w-3xl md:mb-8"
+    imgClass="aspect-[5/4] object-cover"
+    priority
+  />
+  <TokyoWhereToStayContent />
+  <JapanBeforeFooter slot="before-footer" currentSlug={article.slug} />
+</ArticlePage>

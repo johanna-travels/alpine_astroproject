@@ -21,12 +21,14 @@ import articleTokyoCafes from '@/assets/articles/tokyo/best-cafe-tokyo-1.webp';
 import articleTokyoParks from '@/assets/articles/tokyo/greenery-areas-tokyo.webp';
 import articleTokyoTemples from '@/assets/articles/tokyo/tokyo-temples-shrines.webp';
 import articleTokyoItinerary from '@/assets/articles/tokyo/tokyo-5-day-itinerary.webp';
+import articleTokyoWhereToStay from '@/assets/articles/tokyo/tokyo-tower-japan-card.webp';
+import articleTokyoThingsToDo from '@/assets/articles/tokyo/teamlab-borderless-tokyo.webp';
 import rhodesLcpImage from '@/assets/articles/rhodes/rhodes-old-town-cobblestone-street.webp';
 import articleParga from '@/assets/articles/parga/parga-from-above.webp';
 import type { DestinationSlug } from '@/domains/destinations/catalog';
 import { pageUrl } from '@/lib/site';
 
-export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bali-where-to-stay' | 'munduk-moding-plantation-review' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'mt-fuji-day-trip-from-tokyo' | 'kamakura-day-trip-from-tokyo' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary' | 'tokyo-cafes' | 'tokyo-parks' | 'tokyo-temples' | 'tokyo-5-day-itinerary';
+export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bali-where-to-stay' | 'munduk-moding-plantation-review' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'mt-fuji-day-trip-from-tokyo' | 'kamakura-day-trip-from-tokyo' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary' | 'tokyo-cafes' | 'tokyo-parks' | 'tokyo-temples' | 'tokyo-5-day-itinerary' | 'tokyo-where-to-stay' | 'tokyo-things-to-do';
 
 export interface Article {
   slug: ArticleSlug;
@@ -37,7 +39,9 @@ export interface Article {
   breadcrumbTitle: string;
   metaLabel: string;
   alt: string;
-  image: ImageMetadata;
+  image?: ImageMetadata;
+  /** Shown on destination hubs before the article page is live. */
+  comingSoon?: boolean;
   publishedDate: string;
   dateLabel?: string;
   intro: readonly string[];
@@ -233,6 +237,40 @@ export const articles: readonly Article[] = [
     lead: 'Famous Tokyo temples and quieter hidden gems — from Sensō-ji and Meiji Jingu to Hie Shrine and Gotokuji.',
   },
   {
+    slug: 'tokyo-where-to-stay',
+    destinationSlug: 'japan',
+    category: 'JAPAN',
+    title: 'Where to Stay in Tokyo: The Best Areas and Hotels',
+    carouselTitle: 'Where to Stay in Tokyo: The Best Areas and Hotels',
+    breadcrumbTitle: 'Where to Stay in Tokyo',
+    metaLabel: 'Japan',
+    alt: 'Tokyo Tower and Minato City skyline',
+    image: articleTokyoWhereToStay,
+    publishedDate: '9 August 2026',
+    intro: [
+      'Choosing where to stay in Tokyo can feel overwhelming. With a city this huge, hundreds of neighborhoods, and one of the world’s most complex train networks, finding the right area can make the difference between spending your trip exploring and wasting valuable time commuting.',
+      'The good news? You don’t need to figure it out alone. In this guide, I’ll help you find the best areas to stay in Tokyo based on your travel style, whether you’re visiting for the first time, looking for nightlife, shopping, luxury, a quieter local atmosphere, or the most convenient location for exploring the city.',
+      'By the end of this guide, choosing where to stay in Tokyo will feel much easier, giving you more time to focus on the exciting parts of your trip and start getting ready for your Tokyo adventure.',
+    ],
+    lead: 'A guide to the best areas and hotels in Tokyo, from Shinjuku and Shibuya to Ginza, Asakusa, and beyond.',
+  },
+  {
+    slug: 'tokyo-things-to-do',
+    destinationSlug: 'japan',
+    category: 'JAPAN',
+    title: 'Best Things to Do in Tokyo',
+    carouselTitle: 'Best Things to Do in Tokyo',
+    breadcrumbTitle: 'Best Things to Do in Tokyo',
+    metaLabel: 'Japan',
+    alt: 'Immersive digital art installation at teamLab Borderless in Tokyo',
+    image: articleTokyoThingsToDo,
+    publishedDate: '9 August 2026',
+    intro: [
+      'Tokyo is huge and one of those cities where you could spend weeks exploring and still feel like you’ve only seen a small part of it. I could easily write a long list with more than 30 things to do, but the goal of this article isn’t to overwhelm you. Instead, I want to highlight the places and experiences that truly deserve a spot on your Tokyo itinerary.',
+    ],
+    lead: 'The best things to do in Tokyo for first-time visitors, from iconic landmarks to quieter neighborhoods worth slowing down for.',
+  },
+  {
     slug: 'bali-cafes',
     hideAffiliateDisclaimer: true,
     destinationSlug: 'bali',
@@ -247,7 +285,8 @@ export const articles: readonly Article[] = [
     intro: [
       'After spending almost two months in Bali, eating out nearly every day became part of my routine. Between cafés, brunch spots, and restaurants, I ended up visiting far more places than I ever expected.',
       "If you've researched Bali before, you've probably come across countless viral cafés on social media. But for a place to make it onto this list, it needed more than just a beautiful setting. Great food, a relaxed atmosphere, and a place I'd genuinely want to return to all mattered just as much.",
-      'These are the places that stood out most during my time on the island — from cafés overlooking rice terraces and some of my favourite brunch spots to the restaurant that served the best meal I had in Bali.',
+      'These are the places that stood out most during my time on the island — from cafés overlooking rice terraces and some of my favorite brunch spots to the restaurant that served the best meal I had in Bali.',
+      "Whether you're planning your first trip to Bali or looking for new places to add to your itinerary, these cafés are perfect additions to your Bali adventure. If you're planning a shorter visit, you can also check out my <a href='/articles/bali-7-day-itinerary/' class='underline underline-offset-2 text-[#5B6560] hover:text-[#3d4441]'>7-day Bali itinerary</a> for ideas on how to explore the island.",
     ],
     lead: "Bali's café culture is one of the best in the world — thoughtfully designed spaces, excellent coffee and slow mornings that set the tone for the whole day. These are the spots I keep coming back to.",
   },
@@ -274,19 +313,19 @@ export const articles: readonly Article[] = [
     slug: 'bali-travel-tips',
     destinationSlug: 'bali',
     category: 'BALI',
-    title: 'What to Know Before Travelling to Bali',
-    carouselTitle: 'What to Know Before Travelling to Bali',
+    title: 'What to Know Before Traveling to Bali',
+    carouselTitle: 'What to Know Before Traveling to Bali',
     breadcrumbTitle: 'Bali Travel Tips',
     metaLabel: 'Bali',
-    alt: 'What to Know Before Travelling to Bali',
+    alt: 'What to Know Before Traveling to Bali',
     image: articleBaliTips,
-    publishedDate: '6 July 2026',
+    publishedDate: '9 August 2026',
     dateLabel: 'Last updated',
     intro: [
-      "I spent almost two months travelling around Bali, and by the end of my trip there were a few things I was really glad I'd done.",
-      "In this guide, I'll share a few practical tips that I think are worth knowing before travelling to Bali, from getting your Visa on Arrival and choosing an eSIM to the travel essentials I always pack and a few things I'd do exactly the same way again.",
+      "I spent almost two months traveling around Bali, and by the end of my trip there were a few things I was really glad I'd done.",
+      "In this guide, I'll share a few practical tips that I think are worth knowing before traveling to Bali, from getting your Visa on Arrival and choosing an eSIM to the travel essentials I always pack and a few things I'd do exactly the same way again.",
     ],
-    lead: 'A few practical tips worth knowing before travelling to Bali — from your Visa on Arrival and eSIM to the travel essentials I always pack.',
+    lead: 'A few practical tips worth knowing before traveling to Bali — from your Visa on Arrival and eSIM to the travel essentials I always pack.',
   },
   {
     slug: 'bali-7-day-itinerary',
@@ -302,7 +341,7 @@ export const articles: readonly Article[] = [
     intro: [
       "Bali is one of those places that's almost impossible to experience in just one trip. Between ancient temples, lush rice terraces, beautiful beaches and incredible cafés, there's far more to see than most first-time visitors expect. The biggest mistake people make is trying to fit everything into one itinerary. Bali is much larger than it looks on a map, and getting around often takes longer than Google Maps suggests. Instead of constantly moving hotels, I'd recommend choosing just two bases and exploring from there.",
       "That's exactly how this 7-day itinerary is designed. You'll split your stay between Nusa Dua and Ubud, with a few carefully planned day trips along the way. It's the same approach I followed during my own trip, and it made exploring Bali far more enjoyable.",
-      "Before you start planning, I'd also recommend reading my <a href='/articles/bali-travel-tips/' class='underline underline-offset-2 text-[#5B6560] hover:text-[#3d4441]'>What to Know Before Travelling to Bali</a> guide. And before you leave this article, don't forget to check the <a href='#section-faq' class='underline underline-offset-2 text-[#5B6560] hover:text-[#3d4441]'>FAQ section</a> at the end, where I've answered some of the most common questions first-time visitors have - such as the best way to get around Bali, the best time to visit and whether 7 days are enough to explore the island.",
+      "Before you start planning, I'd also recommend reading my <a href='/articles/bali-travel-tips/' class='underline underline-offset-2 text-[#5B6560] hover:text-[#3d4441]'>What to Know Before Traveling to Bali</a> guide. And before you leave this article, don't forget to check the <a href='#section-faq' class='underline underline-offset-2 text-[#5B6560] hover:text-[#3d4441]'>FAQ section</a> at the end, where I've answered some of the most common questions first-time visitors have - such as the best way to get around Bali, the best time to visit and whether 7 days are enough to explore the island.",
     ],
     lead: 'A complete 7-day Bali itinerary for first-time visitors, split between Nusa Dua and Ubud with carefully planned day trips along the way.',
   },
@@ -416,12 +455,13 @@ export const articles: readonly Article[] = [
     metaLabel: 'Belgium',
     alt: 'Bruges travel guide',
     image: articleBruges,
-    publishedDate: '28 June 2026',
+    publishedDate: '9 August 2026',
     dateLabel: 'Last updated',
     intro: [
-      "Bruges is one of the most beautiful medieval cities I've visited in Europe. With its charming canals, historic buildings, cobblestone streets, and peaceful atmosphere, it's easy to see why it's often called the \"Venice of the North.\" Whether you're visiting for a day or spending a weekend here, Bruges is a city that's best explored on foot.",
-      "In this guide, I've included the places I highly recommend visiting if it's your first time in Bruges. You'll also find a map below with all the places mentioned in this guide, along with extra restaurant recommendations, waffle shops, cafés, and a selection of hotels and B&Bs to make planning your trip even easier.",
-      "Before you leave, don't miss the <a href='#section-11' class='underline underline-offset-2 text-[#5B6560] hover:text-[#3d4441]'>FAQ section</a> at the end of this guide, where I've answered some of the most common questions about visiting Bruges.",
+      "I never expected a little town in Belgium, just an hour from Brussels, to steal my heart the way Bruges did. I’ve always loved medieval cities, cobblestone streets that make you feel like you’ve stepped back in time, and that cozy feeling you get when you’re surrounded by beautiful old buildings rather than the busy, sometimes impersonal atmosphere of a big city. And if you’re anything like me, I have a feeling Bruges won’t disappoint you either.",
+      "So, if you’re still wondering whether Bruges is worth visiting and whether you should book those tickets, my answer is simple:",
+      "Just book them!",
+      "Whether you’re planning to spend one day in Bruges or enjoy a relaxed weekend, I’ve put together a list of my favorite things to do in this charming city — the places I loved most during my visit and would happily return to the next time I’m there.",
     ],
     seoTitle: 'Bruges Travel Guide — Voyaflair',
     seoDescription:

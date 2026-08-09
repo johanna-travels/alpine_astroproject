@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Stay22LetMeAllez from '@/components/affiliate/Stay22LetMeAllez.astro';
+import GetYourGuideProvider from '@/components/affiliate/GetYourGuideProvider.astro';
 import BgLayer from '@/components/layout/bg-layer/BgLayer.astro';
 import CookieConsent from '@/components/layout/CookieConsent.astro';
 import { googleAnalyticsCsp, getGaMeasurementId, isGoogleAnalyticsEnabled } from '@/lib/analytics';
@@ -53,13 +54,13 @@ const csp = [
   "default-src 'self'",
   "base-uri 'self'",
   "object-src 'none'",
-  `img-src 'self' data: blob: ${getYourGuideCsp.imgSrc}${stay22Enabled ? ` ${stay22Csp.imgSrc}` : ''}${googleAnalyticsEnabled ? ` ${googleAnalyticsCsp.imgSrc}` : ''} ${instagramCsp.imgSrc}`,
+  `img-src 'self' data: blob: ${getYourGuideCsp.imgSrc} ${stay22Csp.imgSrc}${googleAnalyticsEnabled ? ` ${googleAnalyticsCsp.imgSrc}` : ''} ${instagramCsp.imgSrc}`,
   "media-src 'self' blob:",
   "font-src 'self' data:",
   "style-src 'self' 'unsafe-inline'",
   `script-src 'self' 'unsafe-inline' ${getYourGuideCsp.scriptSrc}${stay22Enabled ? ` ${stay22Csp.scriptSrc}` : ''}${isDev ? " 'unsafe-eval'" : ''}${googleAnalyticsEnabled ? ` ${googleAnalyticsCsp.scriptSrc}` : ''} ${instagramCsp.scriptSrc}`,
-  `connect-src 'self' ${getYourGuideCsp.connectSrc}${stay22Enabled ? ` ${stay22Csp.connectSrc}` : ''}${isDev ? " ws://localhost:* wss://localhost:*" : ''}${googleAnalyticsEnabled ? ` ${googleAnalyticsCsp.connectSrc}` : ''} ${instagramCsp.connectSrc}`,
-  `frame-src 'self' ${googleMapsCsp.frameSrc} ${getYourGuideCsp.frameSrc} ${instagramCsp.frameSrc}${stay22Enabled ? ` ${stay22Csp.frameSrc}` : ''}`,
+  `connect-src 'self' ${getYourGuideCsp.connectSrc} ${stay22Csp.connectSrc}${isDev ? " ws://localhost:* wss://localhost:*" : ''}${googleAnalyticsEnabled ? ` ${googleAnalyticsCsp.connectSrc}` : ''} ${instagramCsp.connectSrc}`,
+  `frame-src 'self' ${googleMapsCsp.frameSrc} ${getYourGuideCsp.frameSrc} ${instagramCsp.frameSrc} ${stay22Csp.frameSrc}`,
   `form-action ${googleMapsCsp.formAction}`,
   "upgrade-insecure-requests",
 ].join('; ');
@@ -159,8 +160,10 @@ const permissionsPolicy = [
     {stay22Enabled && <Stay22LetMeAllez />}
   </head>
   <body>
-    <BgLayer />
-    <slot />
-    <CookieConsent gaMeasurementId={googleAnalyticsEnabled ? gaMeasurementId : undefined} />
+    <GetYourGuideProvider>
+      <BgLayer />
+      <slot />
+      <CookieConsent gaMeasurementId={googleAnalyticsEnabled ? gaMeasurementId : undefined} />
+    </GetYourGuideProvider>
   </body>
 </html>

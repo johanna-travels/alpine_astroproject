@@ -1,4 +1,4 @@
-export type SocialIcon = 'instagram' | 'pinterest' | 'tiktok';
+export type SocialIcon = 'facebook' | 'instagram' | 'pinterest' | 'tiktok';
 
 export interface SocialLink {
   label: string;
@@ -8,6 +8,12 @@ export interface SocialLink {
 }
 
 export const socialLinks: readonly SocialLink[] = [
+  {
+    label: 'Facebook',
+    href: 'https://www.facebook.com/voyaflair',
+    icon: 'facebook',
+    ariaLabel: 'Voyaflair on Facebook',
+  },
   {
     label: 'Instagram',
     href: 'https://www.instagram.com/voyaflair',

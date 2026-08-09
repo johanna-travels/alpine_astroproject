@@ -1,0 +1,25 @@
+---
+import ArticlePage from '@/components/articles/ArticlePage.astro';
+import JapanBeforeFooter from '@/components/articles/JapanBeforeFooter.astro';
+import TokyoThingsToDo from '@/components/articles/TokyoThingsToDo.astro';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import { tokyoThingsToDoNav } from '@/domains/articles/tokyo-things-to-do-nav';
+import { getArticle } from '@/domains/articles/catalog';
+import heroImage from '@/assets/articles/tokyo/teamlab-borderless-tokyo.webp';
+
+const article = getArticle('tokyo-things-to-do')!;
+---
+
+<ArticlePage article={article} sections={tokyoThingsToDoNav}>
+  <ArticleImage
+    slot="title-media"
+    src={heroImage}
+    alt={article.alt}
+    caption="Immersive digital art at teamLab Borderless"
+    figureClass="mb-6 max-w-3xl md:mb-8"
+    imgClass="aspect-[4/5] object-cover"
+    priority
+  />
+  <TokyoThingsToDo />
+  <JapanBeforeFooter slot="before-footer" currentSlug={article.slug} />
+</ArticlePage>

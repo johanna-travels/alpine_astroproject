@@ -1,0 +1,121 @@
+---
+import NewsletterForm from '@/components/forms/NewsletterForm.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  class?: string;
+}
+
+const {
+  title = 'Be part of the Voyaflair journey!',
+  description =
+    'Join a community of curious travelers and discover inspiring destinations, hidden gems, and stories from around the world.',
+  class: className = '',
+} = Astro.props;
+---
+
+<div class:list={['block-area block-area-subscribe', className]}>
+  <aside
+    id="callout-subscribe-banner"
+    class="callout-subscribe-banner"
+    aria-labelledby="callout-subscribe-banner-title"
+  >
+    <div class="subscribe-banner__intro">
+      <div class="subscribe-banner__inner">
+        <slot name="title">
+          <h4 id="callout-subscribe-banner-title" class="subscribe-banner__title">{title}</h4>
+        </slot>
+
+        <slot name="description">
+          <p class="subscribe-banner__description">{description}</p>
+        </slot>
+
+        <div class="subscribe-banner__footer">
+          <slot name="form">
+            <NewsletterForm variant="article" class="subscribe-banner__form" />
+          </slot>
+        </div>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<style>
+  .block-area-subscribe {
+    width: 100%;
+    padding: 0 0 16px;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: hidden;
+  }
+
+  .callout-subscribe-banner {
+    width: 100%;
+  }
+
+  .subscribe-banner__intro {
+    display: flex;
+    justify-content: center;
+    margin-top: 56px;
+    margin-bottom: 26px;
+    padding-inline: 0.5rem;
+    background: #fff;
+  }
+
+  .subscribe-banner__inner {
+    width: 100%;
+    max-width: 42rem;
+    padding: 1.25rem 0.75rem;
+    border-radius: 1rem;
+    background: #69746e;
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .subscribe-banner__inner {
+      padding: 1.75rem 2rem;
+    }
+  }
+
+  .subscribe-banner__title {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: 0.02em;
+    color: #fff;
+  }
+
+  @media (min-width: 1024px) {
+    .subscribe-banner__title {
+      font-size: 1.875rem;
+    }
+  }
+
+  .subscribe-banner__description {
+    max-width: 36rem;
+    margin: 0.5rem auto 0;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgb(219 234 254);
+  }
+
+  @media (min-width: 1024px) {
+    .subscribe-banner__description {
+      font-size: 1.125rem;
+    }
+  }
+
+  .subscribe-banner__footer {
+    margin-top: 1rem;
+    text-align: left;
+  }
+
+  .subscribe-banner__form :global(form) {
+    gap: 1rem;
+  }
+</style>

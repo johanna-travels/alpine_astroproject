@@ -3,7 +3,7 @@ import { Image, getImage } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import { getBentoCellClass, isBentoFeatured } from '@/lib/bento-grid';
 import { bentoImageSizes, bentoImageWidths } from '@/lib/images';
-import { instagramEmbedSrc } from '@/lib/instagram';
+import InstagramEmbedFrame from '@/components/embeds/InstagramEmbedFrame.astro';
 
 export type BentoMediaItem =
   | {
@@ -131,14 +131,12 @@ const overlayClass =
                   aria-hidden={item.permalink ? true : undefined}
                 />
                 {item.permalink && (
-                  <iframe
-                    src={instagramEmbedSrc(item.permalink)}
-                    title={item.alt}
-                    class={`${mediaClass} z-[2] border-0`}
-                    loading="lazy"
-                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                    allowfullscreen
-                  ></iframe>
+                  <InstagramEmbedFrame
+                    permalink={item.permalink}
+                    label={item.alt}
+                    layout="fill"
+                    showCta={false}
+                  />
                 )}
                 {title && (
                   <div class={`${overlayClass} pointer-events-none`}>

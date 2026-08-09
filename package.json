@@ -12,7 +12,10 @@
     "format": "prettier --write .",
     "generate:favicons": "node scripts/generate-favicons.mjs",
     "test": "vitest run",
-    "test:ui": "vitest --ui"
+    "test:ui": "vitest --ui",
+    "env:push-netlify": "bash scripts/push-env-to-netlify.sh",
+    "newsletter:dry-run": "DRY_RUN=true bash scripts/newsletter-curl.sh",
+    "newsletter:send": "DRY_RUN=false bash scripts/newsletter-curl.sh"
   },
   "dependencies": {
     "@astrojs/netlify": "^7.0.13",

@@ -3,41 +3,88 @@ import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 
 interface Props {
-  href: string;
-  image: ImageMetadata;
+  href?: string;
+  image?: ImageMetadata;
   category: string;
   title: string;
-  alt: string;
+  alt?: string;
+  comingSoon?: boolean;
   /** First visible row — eager load; set fetchPriority="high" on the LCP candidate only. */
   priority?: boolean;
   fetchPriority?: 'high' | 'auto' | 'low';
 }
 
-const { href, image, category, title, alt, priority = false, fetchPriority } = Astro.props;
+const { href, image, category, title, alt = '', comingSoon = false, priority = false, fetchPriority } = Astro.props;
+const isLink = Boolean(href) && !comingSoon;
 ---
 
-<a href={href} class="group block">
-  <div class="relative aspect-square w-full overflow-hidden rounded-xl">
-    <Image
-      src={image}
-      alt={alt}
-      width={image.width}
-      height={image.height}
-      widths={[640, 750, 800]}
-      sizes="(min-width: 800px) 800px, 100vw"
-      loading={priority ? 'eager' : 'lazy'}
-      fetchpriority={fetchPriority}
-      decoding="async"
-      class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-    />
-    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent pointer-events-none z-10" />
-  </div>
-  <div class="pt-4">
-    <span class="meta block text-black mb-1">{category}</span>
-    <h3 class="text-[#1e1e1e] mb-2">{title}</h3>
-    <span class="text-[0.875rem] font-medium text-black inline-flex items-center gap-2 transition-all">
-      Read more
-      <span class="leading-none transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">→</span>
-    </span>
-  </div>
-</a>
+{
+  isLink ? (
+    <article class="group block">
+      <a href={href} class="block" aria-label={title}>
+        <div class="relative aspect-square w-full overflow-hidden rounded-xl">
+          <Image
+            src={image!}
+            alt={alt}
+            width={image!.width}
+            height={image!.height}
+            widths={[640, 750, 800]}
+            sizes="(min-width: 800px) 800px, 100vw"
+            loading={priority ? 'eager' : 'lazy'}
+            fetchpriority={fetchPriority}
+            decoding="async"
+            class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent pointer-events-none z-10" />
+        </div>
+      </a>
+      <div class="pt-4">
+        <span class="meta block text-black mb-1">{category}</span>
+        <h3 class="text-[#1e1e1e] mb-2">
+          <a
+            href={href}
+            class="group-hover:underline group-active:underline underline-offset-4 decoration-1"
+          >
+            {title}
+          </a>
+        </h3>
+        <a
+          href={href}
+          class="text-[0.875rem] font-medium text-black inline-flex items-center gap-2 transition-all"
+        >
+          Read more
+          <span class="leading-none transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">→</span>
+        </a>
+      </div>
+    </article>
+  ) : (
+    <div class="group block">
+      <div class="relative aspect-square w-full overflow-hidden rounded-xl">
+        {image ? (
+          <Image
+            src={image}
+            alt={alt}
+            width={image.width}
+            height={image.height}
+            widths={[640, 750, 800]}
+            sizes="(min-width: 800px) 800px, 100vw"
+            loading={priority ? 'eager' : 'lazy'}
+            fetchpriority={fetchPriority}
+            decoding="async"
+            class="absolute inset-0 h-full w-full object-cover"
+          />
+        ) : (
+          <div class="absolute inset-0 flex items-center justify-center bg-[#E5DFD4] px-6 text-center text-sm font-medium text-[#69746E]">
+            Image coming soon
+          </div>
+        )}
+        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent pointer-events-none z-10" />
+      </div>
+      <div class="pt-4">
+        <span class="meta block text-black mb-1">{category}</span>
+        <h3 class="text-[#1e1e1e] mb-2">{title}</h3>
+        <span class="text-[0.875rem] font-medium text-[#69746E]">Coming soon</span>
+      </div>
+    </div>
+  )
+}

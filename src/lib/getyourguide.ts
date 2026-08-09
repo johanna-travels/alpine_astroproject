@@ -9,3 +9,15 @@ export const getYourGuideCsp = {
   /** Activity thumbnails served from the GetYourGuide CDN. */
   imgSrc: 'https://cdn.getyourguide.com https://images.getyourguide.com',
 } as const;
+
+const DEFAULT_PARTNER_ID = 'VMRSHXF';
+
+/** Partner id from GetYourGuide (Analytics + widgets). */
+export function getYourGuidePartnerId(): string | undefined {
+  const id = import.meta.env.PUBLIC_GETYOURGUIDE_PARTNER_ID?.trim();
+  return id || DEFAULT_PARTNER_ID;
+}
+
+export function isGetYourGuideEnabled(): boolean {
+  return Boolean(getYourGuidePartnerId());
+}

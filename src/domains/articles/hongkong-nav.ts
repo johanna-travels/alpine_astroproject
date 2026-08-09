@@ -5,6 +5,7 @@ export const hongKongNav: readonly TocGroup[] = [
   { navTitle: '2. Google Map of Hong Kong', target: 'section-google-map' },
   {
     navTitle: '3. Top Things to Do in Hong Kong',
+    target: 'section-best-things',
     children: [
       { navTitle: '3.1 The Victoria Peak', target: 'section-0' },
       { navTitle: '3.2 Bakehouse', target: 'section-1' },

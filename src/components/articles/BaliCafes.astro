@@ -26,6 +26,7 @@ import wedjaDining from '@/assets/articles/bali/wedja-restaurant-ubud-dining-exp
 import bestCafesInBaliPin from '@/assets/articles/bali/best-cafes-in-bali-pin.png';
 
 const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
+const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]';
 const imageGrid = 'my-5 grid grid-cols-1 items-start gap-3 sm:grid-cols-3 md:my-8 md:gap-4';
 const cafeGallery = 'mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 md:mt-10 md:gap-4';
 
@@ -41,7 +42,7 @@ const otherCafes = [
   {
     title: 'KYND Community (Seminyak, Canggu & Uluwatu)',
     description:
-      "One of Bali's most Instagrammable cafés, known for its colourful smoothie bowls, creative presentation, and fully plant-based menu. Fortunately, the food is just as enjoyable as the photos.",
+      "One of Bali's most Instagrammable cafés, known for its colorful smoothie bowls, creative presentation, and fully plant-based menu. Fortunately, the food is just as enjoyable as the photos.",
     image: kyndCafe,
     alt: 'KYND Community café in Bali',
     caption: 'KYND Community',
@@ -87,7 +88,7 @@ const otherCafeGallery = otherCafes.flatMap((cafe) =>
 
 <section id="section-0" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>1. Tis Café (Tegallalang)</h3>
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">1. Tis Café (Tegallalang)</h2>
   </div>
   <div class={prose}>
     <p>If you're looking for a breakfast spot with a view, Tis Café is one of the places I remember most from Bali. Located near the rice terraces of Tegallalang, it offers a peaceful setting surrounded by greenery and makes a great place to start the day.</p>
@@ -106,7 +107,7 @@ const otherCafeGallery = otherCafes.flatMap((cafe) =>
 
 <section id="section-1" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>2. Wedja Restaurant (Ubud)</h3>
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">2. Wedja Restaurant (Ubud)</h2>
   </div>
   <div class={prose}>
     <p>If I had to choose just one place to revisit in Bali, it would probably be Wedja. The atmosphere alone makes it worth visiting, with traditional Balinese design, lush surroundings, and a setting that feels completely different from most cafés and restaurants on the island.</p>
@@ -125,18 +126,19 @@ const otherCafeGallery = otherCafes.flatMap((cafe) =>
 
 <section id="section-2" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>3. Blend Café (Ubud)</h3>
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">3. Blend Café (Ubud)</h2>
   </div>
   <div class={prose}>
-    <p>Despite being located right in the centre of Ubud, Blend Café feels surprisingly peaceful once you're inside. It became one of the places I found myself returning to whenever I was in Ubud, whether for breakfast, coffee, or one of their beautifully presented smoothie bowls.</p>
+    <p>Despite being located right in the center of Ubud, Blend Café feels surprisingly peaceful once you're inside. It became one of the places I found myself returning to whenever I was in Ubud, whether for breakfast, coffee, or one of their beautifully presented smoothie bowls.</p>
     <ArticleImage src={blendCafe} alt="Blend Café in Ubud, Bali" caption="Blend Café — peaceful even in the heart of Ubud" figureClass="my-5 md:my-8" imgClass="aspect-[5/4] object-cover" />
     <p>The café feels completely removed from the busy streets outside, making it an easy place to spend an hour or two before continuing your day.</p>
+    <p>Ubud quickly became one of my favorite areas in Bali, not only because of its cafés and restaurants, but also because of its culture, nature, and unique atmosphere. If you're deciding where to base yourself in Bali, I've shared more details in my <a href="/articles/bali-where-to-stay/" class={mapLink}>Where to Stay in Bali</a> guide.</p>
   </div>
 </section>
 
 <section id="section-3" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>4. Single Fin (Uluwatu)</h3>
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">4. Single Fin (Uluwatu)</h2>
   </div>
   <div class={prose}>
     <p>One of the things I appreciated most about Single Fin was that I managed to get a table without a reservation — something that isn't always easy at popular sunset spots in Bali. Perched on the cliffs of Uluwatu, it's one of the best places to watch the sunset while overlooking the ocean and the surfers below.</p>
@@ -155,7 +157,7 @@ const otherCafeGallery = otherCafes.flatMap((cafe) =>
 
 <section id="section-4" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>5. Brunch Club Pererenan (Pererenan)</h3>
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">5. Brunch Club Pererenan (Pererenan)</h2>
   </div>
   <div class={prose}>
     <p>The fluffy pancakes were the reason I first visited Brunch Club, but they ended up being much bigger than I expected. If I were ordering them again, I would probably choose the smaller stack, especially if you're planning to order anything else.</p>
@@ -174,15 +176,15 @@ const otherCafeGallery = otherCafes.flatMap((cafe) =>
 
 <section id="section-5" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>Other Cafés Worth Visiting in Bali</h3>
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Other Cafés Worth Visiting in Bali</h2>
   </div>
   <div class={prose}>
-    <p>While the places above were my personal favourites, there are a few other cafés and restaurants that I also enjoyed during my time in Bali and would happily recommend if you have extra time.</p>
+    <p>While the places above were my personal favorites, there are a few other cafés and restaurants that I also enjoyed during my time in Bali and would happily recommend if you have extra time.</p>
     <div class="mt-6 divide-y divide-neutral-100">
       {
         otherCafes.map((cafe) => (
           <div class="py-5 first:pt-0 last:pb-0">
-            <h4 class="mb-2 text-black">{cafe.title}</h4>
+            <h3 class="mb-2 text-black">{cafe.title}</h3>
             <p class="!mb-0">{cafe.description}</p>
           </div>
         ))

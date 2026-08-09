@@ -1,11 +1,17 @@
 ---
+/**
+ * GetYourGuide activity embed. Place inside GetYourGuideProvider (after the loader script).
+ * Partner id comes from the provider / PUBLIC_GETYOURGUIDE_PARTNER_ID unless overridden.
+ */
+import { getYourGuidePartnerId } from '@/lib/getyourguide';
+
 interface Props {
   /** GetYourGuide tour id (e.g. 123935). */
   tourId: string;
   /** GetYourGuide location id (e.g. 347 for Bali). */
   locationId: string;
-  /** Your GetYourGuide partner id. */
-  partnerId: string;
+  /** Override partner id (optional). */
+  partnerId?: string;
   /** Locale code shown in the widget. */
   localeCode?: string;
   /** Optional wrapper classes. */
@@ -15,28 +21,25 @@ interface Props {
 const {
   tourId,
   locationId,
-  partnerId,
+  partnerId: partnerIdProp,
   localeCode = 'en-US',
   class: className = 'my-6 max-w-3xl md:my-8',
 } = Astro.props;
+
+const partnerId = partnerIdProp ?? getYourGuidePartnerId();
 ---
 
-<div class={className}>
-  <div
-    data-gyg-href="https://widget.getyourguide.com/default/activity.frame"
-    data-gyg-widget="activity"
-    data-gyg-tour-id={tourId}
-    data-gyg-location-id={locationId}
-    data-gyg-locale-code={localeCode}
-    data-gyg-partner-id={partnerId}
-  >
-  </div>
-</div>
-
-<script
-  is:inline
-  async
-  defer
-  src="https://widget.getyourguide.com/dist/pa.umd.production.min.js"
-  data-gyg-partner-id={partnerId}
-></script>
+{
+  partnerId && (
+    <div class={className}>
+      <div
+        data-gyg-href="https://widget.getyourguide.com/default/activity.frame"
+        data-gyg-widget="activity"
+        data-gyg-tour-id={tourId}
+        data-gyg-location-id={locationId}
+        data-gyg-locale-code={localeCode}
+        data-gyg-partner-id={partnerId}
+      />
+    </div>
+  )
+}

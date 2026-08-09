@@ -17,7 +17,7 @@ export interface FooterLegalLink {
 
 export const primaryNavLinks: NavLink[] = [
   { label: 'Home', href: pageUrl() },
-  { label: 'About Me', href: pageUrl('about') },
+  { label: 'About', href: pageUrl('about') },
   { label: 'Services', href: pageUrl('services') },
   {
     label: 'Destinations',

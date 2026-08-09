@@ -1,0 +1,41 @@
+---
+/**
+ * Loads GetYourGuide Analytics once, then renders child widgets / markup.
+ * Site-wide: wrap the main layout body (see Layout.astro).
+ * Per section: wrap only the widgets on that page — use a single provider per page.
+ */
+import { getYourGuidePartnerId, isGetYourGuideEnabled } from '@/lib/getyourguide';
+
+interface Props {
+  /** Override partner id (default: PUBLIC_GETYOURGUIDE_PARTNER_ID or VMRSHXF). */
+  partnerId?: string;
+  class?: string;
+}
+
+const { partnerId: partnerIdProp, class: className } = Astro.props;
+const partnerId = partnerIdProp ?? getYourGuidePartnerId();
+const enabled = Boolean(partnerId) && isGetYourGuideEnabled();
+---
+
+{
+  enabled && (
+    <div class:list={['getyourguide-provider', className]} data-getyourguide-provider>
+      <script
+        is:inline
+        async
+        defer
+        src="https://widget.getyourguide.com/dist/pa.umd.production.min.js"
+        data-gyg-partner-id={partnerId}
+      />
+      <slot />
+    </div>
+  )
+}
+
+{
+  !enabled && (
+    <div class:list={className}>
+      <slot />
+    </div>
+  )
+}

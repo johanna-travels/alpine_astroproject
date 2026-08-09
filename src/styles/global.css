@@ -128,9 +128,9 @@
     letter-spacing: 0.03em;
   }
 
-  /* Hero title — lighter than the default h1 (700 → 500 Medium, nearest available weight) */
+  /* Hero title — regular weight (not bold) */
   .hero-title {
-    font-weight: 500;
+    font-weight: 400;
   }
 
   /* Article page title — lighter than default h1 hero */

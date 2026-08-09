@@ -10,7 +10,6 @@ interface Props {
   imageSizes?: string;
   imageAlt?: string;
   imageClass?: string;
-  showScrollHint?: boolean;
 }
 
 const {
@@ -22,7 +21,6 @@ const {
   imageSizes = heroImageSizes,
   imageAlt = '',
   imageClass = 'object-center',
-  showScrollHint = false,
 } = Astro.props;
 
 const desktopBgPosition = imageClass.includes('lg:object-right')
@@ -55,23 +53,9 @@ const mobileImageClass = imageClass.replace(/\blg:\S+/g, '').trim() || 'object-c
 
   <div class="relative z-10 flex h-full w-full flex-col justify-end">
     <div class="w-full max-w-[1300px] pl-4 pr-4 pb-6 text-white md:pl-6 md:pr-6 lg:pl-16 lg:pr-16 xl:pl-20 xl:pr-20 lg:pb-12">
-      <h1 class:list={['hero-title text-white', subtitle ? 'mb-2 lg:mb-4' : 'mb-4']}>{title}</h1>
-      {subtitle && <p class="prose-body text-white/80">{subtitle}</p>}
+      <h1 class:list={['hero-title text-white', subtitle ? 'mb-2 md:mb-4' : 'mb-4']}>{title}</h1>
+      {subtitle && <p class="prose-body text-white/80 md:hidden">{subtitle}</p>}
       <slot />
-      {showScrollHint && (
-        <div class="mt-8 hidden flex-col items-center justify-center lg:flex">
-          <div class="flex flex-col items-center gap-2 group animate-bounce" aria-hidden="true">
-            <svg
-              class="h-10 w-10 text-white transition-colors group-hover:text-white/80"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-            </svg>
-          </div>
-        </div>
-      )}
     </div>
   </div>
 </div>

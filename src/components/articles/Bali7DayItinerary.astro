@@ -1,8 +1,10 @@
 ---
 import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
+import GetYourGuideActivities from '@/components/articles/GetYourGuideActivities.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
 import ArticlePinSaveSection from '@/components/articles/ArticlePinSaveSection.astro';
 import ArticleShareBar from '@/components/articles/ArticleShareBar.astro';
+import { articleHref } from '@/domains/articles/catalog';
 
 import nusaDuaBeach from '@/assets/articles/bali/nusa-dua-the-ayodya-palace-beach.webp';
 import ayodyaLobby from '@/assets/articles/bali/bali-the-ayodya-resort-lobby.webp';
@@ -34,15 +36,33 @@ const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f
 const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
 ---
 
+<section id="section-travel-tips" class="scroll-mt-nav">
+  <div class="max-w-3xl rounded-lg bg-[#F5F2EB] px-6 py-5 text-md leading-relaxed text-black/80">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">A Few Things to Know Before Your Bali Trip</h2>
+    <p class="mb-4">Before we get into the day-by-day itinerary, here are a few practical things that will make planning your trip a little easier:</p>
+    <ul class="list-disc space-y-3 pl-5 marker:text-black/40">
+      <li><strong>Visa on Arrival:</strong> Depending on your nationality, you may be eligible for a Visa on Arrival. You can arrange it after landing or apply for an e-VOA before your trip.</li>
+      <li>
+        <strong>Get an eSIM Before You Arrive:</strong> I use Airalo whenever I travel abroad, and having mobile data from the moment I landed made it easy to access this itinerary, use Google Maps, book transport, and navigate around Bali.
+        <p class="mt-2 mb-0">👉 <a href="https://airalo.pxf.io/c/7435210/1268485/15608" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Check Airalo's latest eSIM plans here</a>.</p>
+      </li>
+      <li><strong>Cash or Card?</strong> You can pay by card at many cafés, restaurants, hotels, and tourist attractions, but I'd still recommend carrying some cash for smaller local businesses and places where card payments may not be available.</li>
+      <li><strong>Getting Around Bali:</strong> Grab and GoJek are useful for shorter journeys, while hiring a private driver is one of the easiest ways to explore the island on longer day trips. Bali is much bigger than it looks on a map, and traffic can make journeys take longer than expected.</li>
+    </ul>
+    <p class="mt-4 mb-0">👉 For more practical information about traveling to Bali, including visas, transport, travel insurance, and what to pack, <a href={articleHref('bali-travel-tips')} class={mapLink}>read my complete Bali travel tips guide here</a>.</p>
+  </div>
+</section>
+
 <section id="section-0" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>Day 1: Arrive in Bali &amp; Nusa Dua</h3>
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Day 1: Arrive in Bali &amp; Nusa Dua</h2>
   </div>
   <div class={prose}>
     <ArticleImage src={nusaDuaBeach} alt="The white-sand beach at the Ayodya Palace in Nusa Dua, Bali" caption="The white-sand beach at the Ayodya Palace in Nusa Dua" imgClass="aspect-[5/4] object-cover" />
     <p>Your first few hours in Bali will shape the rest of your trip. That's exactly why I'd begin in Nusa Dua, where long stretches of white-sand beach and a slower pace of life give you the chance to recover from the journey before the adventure truly begins.</p>
-    <h4 class="mt-8 mb-2 text-black">Where to Stay in Nusa Dua</h4>
-    <p>Imagine arriving at a resort surrounded by tropical gardens, peaceful lagoons and traditional Balinese architecture before you've even visited your first temple. That's exactly what awaits you at Ayodya Bali.</p>
+    <h3 class="mt-8 mb-2 text-black">Where to Stay in Nusa Dua</h3>
+    <p>Imagine arriving at a resort surrounded by tropical gardens, peaceful lagoons and traditional Balinese architecture before you've even visited your first temple. That's exactly what awaits you at <a href="https://www.booking.com/hotel/id/ayodya-resort-bali.html" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Ayodya Bali</a>.</p>
+    <p>Looking for more hotel options in Nusa Dua and other areas of Bali? Check out my complete guide on <a href="/articles/bali-where-to-stay/" class={mapLink}>where to stay in Bali</a>.</p>
     <ArticleImage src={ayodyaLobby} alt="The open-air lobby at the Ayodya Resort in Nusa Dua, Bali" caption="The grand open-air lobby at the Ayodya Resort" imgClass="aspect-[5/4] object-cover" />
     <div class={twoColGrid}>
       <ArticleImage src={ayodyaLagoon} alt="The peaceful lagoon winding through the Ayodya Resort grounds in Nusa Dua, Bali" caption="The resort's tranquil lagoon" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
@@ -55,30 +75,35 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
 
 <section id="section-1" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>Day 2: Nusa Penida Day Trip</h3>
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Day 2: Nusa Penida Day Trip</h2>
   </div>
   <div class={prose}>
     <p>Few places have put Bali on the map quite like Nusa Penida. With dramatic cliffs, crystal-clear water and some of Indonesia's most iconic viewpoints, it's easy to see why this island has become one of the most popular day trips from Bali. If the weather is on your side, I genuinely think it's an experience worth adding to your itinerary.</p>
     {/* PHOTO */}
     <p>I had originally planned to visit Nusa Penida myself, but after checking the weather forecast, I decided to postpone it. The crossing is by speedboat, and when the sea gets rough, the journey can be far less enjoyable than the destination itself. Rather than risk spending the day feeling seasick, I chose to save it for my next visit—and it's already the first thing on my list when I return to Bali.</p>
-    <p>The easiest way to visit Nusa Penida is by joining an organised day tour. It includes hotel transfers, return speedboat tickets and transport around the island, so you won't have to worry about organising any of the logistics yourself. I'd also recommend booking in advance, especially if you're travelling during the busy season. Most tours offer free cancellation, so if the weather forecast changes, you can usually adjust your plans without any stress.</p>
+    <GetYourGuideActivities
+      tourIds="123935"
+      numberOfItems={1}
+      poweredByHref="https://www.getyourguide.com/bali-l347/"
+    />
+    <p>The easiest way to visit Nusa Penida is by joining an organized day tour. It includes hotel transfers, return speedboat tickets and transport around the island, so you won't have to worry about organizing any of the logistics yourself. I'd also recommend booking in advance, especially if you're traveling during the busy season. Most tours offer free cancellation, so if the weather forecast changes, you can usually adjust your plans without any stress.</p>
     <p>🎟️ <a href="https://gyg.me/WThkfJqn" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Book your Nusa Penida day trip here</a>.</p>
   </div>
 </section>
 
 <section id="section-2" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>Day 3: Uluwatu</h3>
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Day 3: Uluwatu</h2>
   </div>
   <div class={prose}>
     <p>Towering limestone cliffs, crashing waves and one of Bali's most famous sunsets—Uluwatu is the perfect place to spend your final afternoon in southern Bali before heading inland.</p>
     <div class={twoColGrid}>
       <ArticleImage src={uluwatuMonkeys} alt="A macaque monkey perched on a Balinese temple shrine draped with checkered cloth in Uluwatu, Bali" caption="A macaque snacking on the daily offerings left by locals" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
-      <ArticleImage src={uluwatuStreets} alt="Monkeys sitting on power lines above a busy Uluwatu street with scooters and cafés below in Bali" caption="Monkeys watching over Uluwatu's lively streets" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={uluwatuStreets} alt="Monkeys sitting on power lines above a busy Uluwatu street with scooters and cafes below in Bali" caption="Monkeys watching over Uluwatu's lively streets" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
     </div>
     <p>Don't be surprised if you come across monkeys wandering freely along the roadside and around the cliffs as you explore Uluwatu. Before my trip, I'd heard plenty of stories about them, but what surprised me most was how little attention they paid to visitors. During my visit, they mostly kept to themselves and seemed far more interested in the daily offerings left by locals than in the people walking past.</p>
     {/* PHOTOS */}
-    <h4 class="mt-8 mb-2 text-black">Sunset at Single Fin</h4>
+    <h3 class="mt-8 mb-2 text-black">Sunset at Single Fin</h3>
     <p>If there's one place you shouldn't miss in Uluwatu, it's Single Fin. Perched high above the ocean, it's one of the best spots in Bali to watch surfers riding the waves as the sun slowly disappears below the horizon. Even if you don't surf yourself, it's a view you'll probably remember long after your trip.</p>
     <ArticleImage src={singleFinSunset} alt="Crowds gathered on the clifftop at Single Fin in Uluwatu watching the sun set over the ocean, Bali" caption="Sunset views over the ocean from the Single Fin clifftop in Uluwatu" imgClass="aspect-[5/4] object-cover" />
     <p>I'd recommend arriving a little before sunset to make the most of the experience. Order a drink, relax by the pool and soak up the atmosphere before settling in for dinner. I visited without a reservation and was pleasantly surprised to find that they keep a number of tables available for walk-ins, although I'd still recommend booking ahead if you're visiting during the busy season.</p>
@@ -86,79 +111,81 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
       <ArticleImage src={singleFinDinner} alt="A table set for dinner overlooking the ocean at Single Fin in Uluwatu, Bali" caption="Dinner with ocean views at Single Fin" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
       <ArticleImage src={singleFinSunsetViews} alt="Golden sunset light over the ocean and cliffs at Single Fin in Uluwatu, Bali" caption="Golden-hour views as the sun sets over Uluwatu" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
     </div>
-    <p>If you're looking for more cafés and restaurants around the island, don't miss my <a href="/articles/bali-cafes/" class={mapLink}>Best Cafés in Bali</a> guide.</p>
+    <p>If you're looking for more cafes and restaurants around the island, don't miss my <a href="/articles/bali-cafes/" class={mapLink}>Best Cafes in Bali</a> guide.</p>
   </div>
 </section>
 
 <section id="section-3" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>Day 4: Ubud</h3>
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Day 4: Ubud</h2>
   </div>
   <div class={prose}>
     <p>If you've been dreaming of Bali's lush rice terraces, jungle temples and tropical landscapes, this is the day you've been waiting for. Ubud is where many of the island's most iconic landscapes come to life, and it's the perfect place to experience a slower, more traditional side of Bali.</p>
     {/* PHOTO — hero */}
-    <h4 class="mt-8 mb-2 text-black">Where to Stay in Ubud</h4>
-    <p>Surrounded by tropical gardens and tucked away from Ubud's busy streets, The Udaya Resorts &amp; Spa feels more like a traditional Balinese retreat than a hotel. Peaceful enough to completely switch off, yet only a short drive from the town centre, it offers the perfect balance between exploring Ubud and escaping the crowds.</p>
+    <h3 class="mt-8 mb-2 text-black">Where to Stay in Ubud</h3>
+    <p>Surrounded by tropical gardens and tucked away from Ubud's busy streets, <a href="https://www.booking.com/hotel/id/the-udaya-resorts-and-spa.html" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>The Udaya Resorts &amp; Spa</a> feels more like a traditional Balinese retreat than a hotel. Peaceful enough to completely switch off, yet only a short drive from the town center, it offers the perfect balance between exploring Ubud and escaping the crowds.</p>
+    <p>Looking for more hotel options in Ubud and other areas of Bali? Check out my complete guide on <a href="/articles/bali-where-to-stay/" class={mapLink}>where to stay in Bali</a>.</p>
     <div class={twoColGrid}>
       <ArticleImage src={udayaResort} alt="Aerial view of the thatched-roof buildings and pool at The Udaya Resorts & Spa surrounded by jungle in Ubud, Bali" caption="The Udaya's thatched pavilions tucked into the Ubud jungle" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
       <ArticleImage src={udayaGarden} alt="Lush tropical gardens with palm trees, stepping stones and a plunge pool at The Udaya Resorts & Spa in Ubud, Bali" caption="The resort's tropical gardens and plunge pool" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
     </div>
     <ArticleImage src={udayaPool} alt="Sun loungers and a parasol beside the jungle-fringed swimming pool at The Udaya Resorts & Spa in Ubud, Bali" caption="The tropical pool surrounded by lush gardens at The Udaya Resorts & Spa" imgClass="aspect-[5/4] object-cover" />
-    <h4 class="mt-8 mb-2 text-black">Your First Taste of Ubud</h4>
+    <h3 class="mt-8 mb-2 text-black">Your First Taste of Ubud</h3>
     <p>There's no better place in Bali to experience a traditional Balinese massage than Ubud. Known for its spa and wellness culture, it's something I'd recommend making time for—even if you only book one massage during your entire trip. I chose Samana Aksata Spa, a peaceful spa surrounded by tropical greenery, and it was the perfect introduction to Ubud's slower, more mindful way of life.</p>
-    <p>After your massage, make your way to the centre of Ubud, just a short drive from the resort. Around Ubud Palace, you'll discover the side of Bali that many people fall in love with—small boutiques, family-run cafés, local artisan shops and temples tucked between lively streets. It's the perfect place to spend your first evening, giving you a glimpse of Ubud's atmosphere before exploring its famous rice terraces and temples over the next couple of days.</p>
+    <p>After your massage, make your way to the center of Ubud, just a short drive from the resort. Around Ubud Palace, you'll discover the side of Bali that many people fall in love with—small boutiques, family-run cafes, local artisan shops and temples tucked between lively streets. It's the perfect place to spend your first evening, giving you a glimpse of Ubud's atmosphere before exploring its famous rice terraces and temples over the next couple of days.</p>
   </div>
 </section>
 
 <section id="section-4" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>Day 5: Bali Beyond the Beaches</h3>
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Day 5: Bali Beyond the Beaches</h2>
   </div>
   <div class={prose}>
-    <p>This is the day Bali starts to feel bigger than you expected. Leave Ubud behind for a few hours and head towards the island's cooler highlands, where the beaches disappear and the landscape gives way to endless rice terraces, winding mountain roads and lakeside temples.</p>
-    <h4 class="mt-8 mb-2 text-black">Walk Through Jatiluwih Rice Terraces</h4>
+    <p>This is the day Bali starts to feel bigger than you expected. Leave Ubud behind for a few hours and head toward the island's cooler highlands, where the beaches disappear and the landscape gives way to endless rice terraces, winding mountain roads and lakeside temples.</p>
+    <h3 class="mt-8 mb-2 text-black">Walk Through Jatiluwih Rice Terraces</h3>
     <div class={twoColGrid}>
       <ArticleImage src={jatiluwihWalking} alt="A person walking along a path through the lush green Jatiluwih rice terraces in Bali" caption="Walking one of the trails through the Jatiluwih rice terraces" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
       <ArticleImage src={jatiluwihFields} alt="Endless emerald rice fields stretching across the hills at Jatiluwih in Bali" caption="The UNESCO-listed rice fields stretching across the hills" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
     </div>
     <p>Jatiluwih is one of the most impressive rice terrace landscapes in Bali and part of the island's UNESCO World Heritage cultural landscape. What makes it truly special is its scale. Unlike the smaller rice terraces around Ubud, the fields stretch endlessly across the hills, making the whole area feel far more open and peaceful.</p>
     <p>Take your time walking one of the trails rather than simply stopping for a photo. This is one of those places where the experience is just as much about the quiet surroundings as it is about the view.</p>
-    <h4 class="mt-8 mb-2 text-black">Visit Ulun Danu Beratan Temple</h4>
+    <h3 class="mt-8 mb-2 text-black">Visit Ulun Danu Beratan Temple</h3>
     <div class={twoColGrid}>
       <ArticleImage src={ulunDanuTemple} alt="The tiered shrine of Ulun Danu Beratan Temple appearing to float on the calm waters of Lake Beratan in Bali" caption="Ulun Danu Beratan Temple reflected on the still waters of Lake Beratan" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
       <ArticleImage src={ulunDanuGardens} alt="Manicured gardens and lakeside pavilions in the grounds of Ulun Danu Beratan Temple in Bali" caption="The temple's manicured lakeside gardens" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
     </div>
     <p>While many of Bali's temples are known for their dramatic cliffside or jungle settings, Ulun Danu Beratan Temple is different. When the lake is calm, it appears to float on the water, creating one of the island's most iconic and photographed views.</p>
     <p>Less than an hour from Jatiluwih, the scenery changes once again. Set on the shores of Lake Beratan and surrounded by cool mountain air, the temple feels unlike anywhere else you'll visit in Bali. It's a refreshing change from the tropical coastline and a side of the island that many first-time visitors don't expect—which is exactly what makes the drive worthwhile.</p>
+    <p>🚗 <a href="https://www.getyourguide.com/el-gr/s/?cmp=Bali&partner_id=VMRSHXF&q=bali+private+driver&searchSource=3&src=search_bar" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Book your private driver in Bali here</a>.</p>
   </div>
 </section>
 
 <section id="section-5" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>Day 6: The Ubud You've Been Waiting For</h3>
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Day 6: The Ubud You've Been Waiting For</h2>
   </div>
   <div class={prose}>
     <p>This is the day that finally feels like the Bali you've been imagining. Ancient temples, peaceful rice terraces and jungle views all come together, making it one of the most memorable days of this itinerary.</p>
     <ArticleImage src={mancinganHero} alt="Palm trees and lush green rice terraces stretching across the hills at Mancingan in Ubud, Bali" caption="The peaceful rice terraces of Mancingan near Ubud" imgClass="aspect-[5/4] object-cover" />
-    <h4 class="mt-8 mb-2 text-black">Visit Tirta Empul Temple</h4>
-    <p>Start your morning at Tirta Empul, one of Bali's most important Hindu temples. Best known for its sacred spring water, it's a place where locals come to take part in purification rituals that have been practised for centuries. Even if you don't plan to join the ceremony yourself, it's a fascinating place to experience Balinese culture beyond the beaches and cafés.</p>
+    <h3 class="mt-8 mb-2 text-black">Visit Tirta Empul Temple</h3>
+    <p>Start your morning at Tirta Empul, one of Bali's most important Hindu temples. Best known for its sacred spring water, it's a place where locals come to take part in purification rituals that have been practiced for centuries. Even if you don't plan to join the ceremony yourself, it's a fascinating place to experience Balinese culture beyond the beaches and cafes.</p>
     {/* PHOTOS — temple */}
-    <h4 class="mt-8 mb-2 text-black">Walk Through Mancingan Rice Terrace</h4>
+    <h3 class="mt-8 mb-2 text-black">Walk Through Mancingan Rice Terrace</h3>
     <div class={twoColGrid}>
       <ArticleImage src={mancinganTrail} alt="A narrow trail winding through the lush green Mancingan rice terrace lined with palm trees in Bali" caption="The quiet trail through the Mancingan rice terrace" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
       <ArticleImage src={mancinganSunrise} alt="Soft sunrise light over the palm-fringed Mancingan rice terrace in Bali" caption="Sunrise over the Mancingan rice terrace" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
     </div>
-    <p>Most visitors head straight to Tegallalang Rice Terrace, but if you're looking for a quieter experience, I'd recommend visiting Mancingan Rice Terrace instead. It ended up being one of my favourite discoveries in Bali and one of the few places where I could simply enjoy the scenery without the crowds.</p>
-    <p>Walking through the narrow paths surrounded by rice fields and towering palm trees felt incredibly peaceful. There was no rush to queue for photos or compete for the best viewpoint—just the sound of nature and endless shades of green. It's the kind of place that reminds you why Bali is known as the Island of the Gods.</p>
+    <p>Most visitors head straight to Tegallalang Rice Terrace, but if you're looking for a quieter experience, I'd recommend visiting Mancingan Rice Terrace instead. It ended up being one of my favorite discoveries in Bali and one of the few places where I could simply enjoy the scenery without the crowds.</p>
+    <p>Walking through the narrow paths surrounded by rice fields and towering palm trees felt incredibly peaceful. There was no rush to wait in line for photos or compete for the best viewpoint—just the sound of nature and endless shades of green. It's the kind of place that reminds you why Bali is known as the Island of the Gods.</p>
     {/* PHOTOS — Mancingan */}
-    <h4 class="mt-8 mb-2 text-black">Lunch at TIS Café</h4>
+    <h3 class="mt-8 mb-2 text-black">Lunch at TIS Café</h3>
     <div class={twoColGrid}>
       <ArticleImage src={tisCafeView} alt="A table at TIS Café overlooking the tiered Tegallalang rice terraces in Bali" caption="Lunch with a view over the Tegallalang rice terraces at TIS Café" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
       <ArticleImage src={tisCafeTerrace} alt="The lush green Tegallalang rice terraces seen from TIS Café in Bali" caption="The Tegallalang rice terraces viewed from TIS Café" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
     </div>
     <p>After your walk, make your way to TIS Café. Perched above the famous Tegallalang Rice Terraces, it's one of the best places to enjoy lunch with a view. Whether you stop for coffee or a meal, the panoramic scenery alone makes it worth the visit—and after exploring the quieter side of Bali at Mancingan, it's the perfect opportunity to admire Tegallalang from above without necessarily walking through it.</p>
     {/* PHOTOS — TIS Café */}
-    <h4 class="mt-8 mb-2 text-black">Dinner at Wedja</h4>
+    <h3 class="mt-8 mb-2 text-black">Dinner at Wedja</h3>
     <div class={twoColGrid}>
       <ArticleImage src={wedjaWaterGarden} alt="A stone path crossing a lotus-filled water garden at Wedja restaurant in Ubud, Bali" caption="The lotus water garden and stepping-stone path at Wedja" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
       <ArticleImage src={wedjaRestaurant} alt="Traditional Balinese dining pavilions surrounded by tropical gardens at Wedja restaurant in Ubud, Bali" caption="Wedja's Balinese dining pavilions set among tropical gardens" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
@@ -171,43 +198,70 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
 
 <section id="section-6" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>Day 7: One Last Morning in Bali</h3>
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Day 7: One Last Morning in Bali</h2>
   </div>
   <div class={prose}>
-    <p>Before heading to the airport, make the most of your final morning in Bali. Enjoy breakfast at your hotel or stop by one of Ubud's beautiful cafés for one last coffee before your flight. If you're looking for ideas, you'll find all of my favourites in my <a href="/articles/bali-cafes/" class={mapLink}>Best Cafés in Bali</a> guide.</p>
+    <p>Before heading to the airport, make the most of your final morning in Bali. Enjoy breakfast at your hotel or stop by one of Ubud's beautiful cafes for one last coffee before your flight. If you're looking for ideas, you'll find all of my favorites in my <a href="/articles/bali-cafes/" class={mapLink}>Best Cafes in Bali</a> guide.</p>
     <p>Then, all that's left to do is start planning your next trip back.</p>
+  </div>
+</section>
+
+<section id="section-where-to-stay" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Where to Stay in Bali</h2>
+  </div>
+  <div class={prose}>
+    <p>After spending almost two months exploring Bali and staying in several different areas and resorts, I found a few places that truly stood out. Whether you're looking for a peaceful jungle escape, a stylish stay close to Bali's best cafés, a mountain retreat surrounded by nature, or a relaxing beachfront resort, these are a few hotels worth considering.</p>
+    <iframe
+      id="stay22-widget"
+      title="Find hotels in Bali"
+      width="100%"
+      height="428"
+      src="https://stay22.com/embed/6a787313810a3d69a6e3a546"
+      loading="lazy"
+      class="my-5 max-w-3xl md:my-8"
+    ></iframe>
+    <h3 class="mb-2 mt-6 text-black"><a href="https://www.booking.com/hotel/id/the-udaya-resorts-and-spa.html" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>The Udaya Resorts &amp; Spa</a> – Ubud</h3>
+    <p>Surrounded by lush greenery, The Udaya Resorts &amp; Spa is a beautiful choice if you want to experience the peaceful and spiritual side of Ubud while still being close to cafés, restaurants, temples, and some of Bali's most popular attractions. The resort feels like a quiet escape after a busy day of exploring, making it a great option for travelers who want to combine sightseeing with time to relax.</p>
+    <h3 class="mb-2 mt-6 text-black"><a href="https://www.booking.com/hotel/id/la-reserve-1785-canggu.html" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>La Reserve 1785 Canggu Beach</a> – Canggu</h3>
+    <p>La Reserve 1785 Canggu Beach offers a more intimate and peaceful side of Canggu. With its elegant design, tropical surroundings, and relaxed atmosphere, it feels removed from the area's busiest streets while still being close to the cafés, restaurants, beaches, and nightlife that make Canggu so popular.</p>
+    <h3 class="mb-2 mt-6 text-black"><a href="https://www.booking.com/hotel/id/munduk-moding-plantation-nature-resort.html" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Munduk Moding Plantation</a> – Munduk</h3>
+    <p>If you want to experience a completely different side of Bali, Munduk Moding Plantation is one of the most memorable places to stay. Surrounded by mountains, jungle, and coffee plantations, the resort is best known for its award-winning infinity pool overlooking the hills. It is the kind of place where you may find yourself wanting to spend more time at the resort instead of rushing to the next attraction.</p>
+    <h3 class="mb-2 mt-6 text-black"><a href="https://www.booking.com/hotel/id/ayodya-resort-bali.html" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Ayodya Resort Bali</a> – Nusa Dua</h3>
+    <p>For a relaxing beachfront stay, Ayodya Resort Bali is a great choice. Located in Nusa Dua, the resort offers direct beach access, large tropical grounds, several restaurants, and plenty of space to slow down and enjoy Bali at a more relaxed pace. It is especially lovely if you want to end your trip with a few peaceful days by the ocean.</p>
+    <p>👉 For more hotel recommendations and a detailed guide to Bali's best areas, <a href={articleHref('bali-where-to-stay')} class={mapLink}>read my complete Where to Stay in Bali guide here</a>.</p>
   </div>
 </section>
 
 <section id="section-faq" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
-    <h3>FAQ</h3>
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">FAQ</h2>
   </div>
   <div class={`${prose} space-y-6`}>
     <div id="faq-0" class="scroll-mt-nav">
-      <h4 class="mb-2 text-black">1. What should I know before travelling to Bali?</h4>
-      <p>Before your trip, I'd highly recommend reading my <a href="/articles/bali-travel-tips/" class={mapLink}>What to Know Before Travelling to Bali</a> guide. It's where I've gathered everything I wish I'd known before visiting the island—from visa requirements and eSIMs to getting around, Bali Belly and plenty of practical tips that will make your trip much easier.</p>
+      <h3 class="mb-2 text-black">1. What should I know before traveling to Bali?</h3>
+      <p>Before your trip, I'd highly recommend reading my <a href="/articles/bali-travel-tips/" class={mapLink}>What to Know Before Traveling to Bali</a> guide. It's where I've gathered everything I wish I'd known before visiting the island—from visa requirements and eSIMs to getting around, Bali Belly and plenty of practical tips that will make your trip much easier.</p>
     </div>
     <div id="faq-1" class="scroll-mt-nav">
-      <h4 class="mb-2 text-black">2. Is 7 days enough to explore Bali?</h4>
-      <p>Yes—but it's important to set realistic expectations.</p>
-      <p>Bali is much bigger than many first-time visitors expect, and getting around the island often takes longer than Google Maps suggests. Traffic around popular areas like Ubud and Canggu can add a significant amount of time to your journey, while many roads are narrow and winding.</p>
-      <p>Seven days are enough to experience Bali's highlights, but not enough to see everything the island has to offer. That's exactly why this itinerary focuses on a few carefully chosen areas instead of trying to squeeze the whole island into one trip.</p>
+      <h3 class="mb-2 text-black">2. Is 7 days enough to explore Bali?</h3>
+      <p>It's important to set realistic expectations. Seven days are enough to experience Bali's highlights, but they're not enough to see everything the island has to offer. That's exactly why this itinerary focuses on a few carefully chosen areas instead of trying to squeeze the whole island into one trip.</p>
+      <p>Instead of rushing from one place to the next, you'll have enough time to enjoy each destination at a more relaxed pace while still experiencing some of Bali's best temples, waterfalls, rice terraces, beaches, and sunsets.</p>
     </div>
     <div id="faq-2" class="scroll-mt-nav">
-      <h4 class="mb-2 text-black">3. What's the best way to get around Bali?</h4>
-      <p>If you're not an experienced scooter rider, I'd recommend avoiding renting one for your first trip. Bali's roads can be much busier than they appear online, especially around the island's most popular areas.</p>
-      <p>For shorter journeys, Grab and GoJek are usually the easiest and most affordable options. For longer day trips, hiring a private driver offers excellent value and lets you explore at your own pace without worrying about navigation or parking.</p>
-      <p>If you prefer having complete flexibility, renting a car is another option. Just keep in mind that traffic can be heavy, roads are often narrower than you might expect, and driving in Bali can feel quite different from driving at home—especially if it's your first time visiting the island.</p>
+      <h3 class="mb-2 text-black">3. What's the best way to get around Bali?</h3>
+      <p>If you're not an experienced scooter rider, I'd recommend avoiding renting one for your first trip. Bali's roads can be much busier and more chaotic than they appear online, especially around the island's most popular areas.</p>
+      <p>For shorter journeys, Grab and GoJek are usually the easiest and most affordable options. For longer day trips, hiring a private driver is often the best choice, offering great value while allowing you to explore at your own pace without worrying about navigation, traffic, or parking.</p>
+      <p>🚗 <a href="https://www.getyourguide.com/el-gr/s/?cmp=Bali&partner_id=VMRSHXF&q=bali+private+driver&searchSource=3&src=search_bar" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Book your private driver in Bali here</a>.</p>
     </div>
     <div id="faq-3" class="scroll-mt-nav">
-      <h4 class="mb-2 text-black">4. When is the best time to visit Bali?</h4>
-      <p>Bali can be visited all year round, but the dry season (roughly April to October) is generally the best time for sightseeing, beaches and day trips like Nusa Penida. If you're travelling during the rainy season, I'd recommend keeping your itinerary flexible, as tropical showers can occasionally affect outdoor activities and boat crossings.</p>
+      <h3 class="mb-2 text-black">4. When is the best time to visit Bali?</h3>
+      <p>Bali can be visited all year round, but the dry season (roughly April to October) is generally the best time for sightseeing, beaches and day trips like Nusa Penida. If you're traveling during the rainy season, I'd recommend keeping your itinerary flexible, as tropical showers can occasionally affect outdoor activities and boat crossings.</p>
     </div>
     <div id="faq-4" class="scroll-mt-nav">
-      <h4 class="mb-2 text-black">5. How much time should I spend in each area of Bali?</h4>
+      <h3 class="mb-2 text-black">5. How much time should I spend in each area of Bali?</h3>
       <p>One of the biggest mistakes first-time visitors make is changing hotels every day.</p>
-      <p>I'd recommend choosing two or three bases and exploring from there instead. For this itinerary, I found that three nights in Nusa Dua and three nights in Ubud offered the perfect balance between sightseeing and having enough time to actually enjoy each destination without constantly packing and unpacking.</p>
+      <p>I'd recommend choosing two or three bases and spending at least two to three nights in each area instead. This allows you to explore more comfortably without constantly packing and unpacking or spending too much time on the road.</p>
+      <p>For this itinerary, which is designed around five full days in Bali, I've chosen two main bases: Nusa Dua and Ubud. This gives you a good balance between sightseeing and having enough time to actually enjoy each destination. If you're planning a longer trip, such as 10 days or more, you can simply add more areas while keeping the same approach of allowing at least a few nights in each place.</p>
     </div>
   </div>
 </section>
@@ -215,7 +269,7 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
 <section id="section-final-thoughts" class="scroll-mt-nav">
   <div class={prose}>
     <ArticleClosingNote label="Final thoughts">
-      <p>Bali has a way of leaving an imprint on your heart. From tranquil beaches and lush rice fields to vibrant cafés and unforgettable sunsets, every moment feels like a discovery. I hope this itinerary helps you embrace Bali's many sides, while leaving space for your own discoveries. As you pack your bags, remember—Bali isn't just a destination, it's an invitation to return.</p>
+      <p>Bali has a way of leaving an imprint on your heart. From tranquil beaches and lush rice fields to vibrant cafes and unforgettable sunsets, every moment feels like a discovery. I hope this itinerary helps you embrace Bali's many sides, while leaving space for your own discoveries. As you pack your bags, remember—Bali isn't just a destination, it's an invitation to return.</p>
     </ArticleClosingNote>
 
     <ArticlePinSaveSection>
