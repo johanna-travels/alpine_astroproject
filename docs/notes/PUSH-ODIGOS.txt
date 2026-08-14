@@ -1,66 +1,115 @@
 🟦🟦🟦 VOYAFLAIR — ΤΙ ΚΑΝΩ ΚΑΘΕ ΦΟΡΑ 🟦🟦🟦
-(γράψ' το σαν checklist — ένα βήμα τη φορά)
+(checklist — ένα βήμα τη φορά)
 
 
-🔑 ΤΟ ΚΛΕΙΔΙ ΣΟΥ (μην το χάσεις):
-7ed8b5e17586396290fac5a3c4bbcdecc1f68ae669cb3cba181a5ecaf73d6efa
+🔑 SECRET
+Το NEWSLETTER_ADMIN_SECRET ζει ΜΟΝΟ στο αρχείο .env
+(ποτέ μέσα σε αυτό το σημείωμα, ποτέ στο chat).
+
+Project folder:
+   /Users/johanna/Desktop/alpine_astroproject-main
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🟣 ΒΗΜΑ 0 — ΓΡΗΓΟΡΟ CHECK (πριν όλα)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+cd /Users/johanna/Desktop/alpine_astroproject-main
+curl -s https://voyaflair.com/api/health/
+
+Πρέπει να δεις:
+   "connected": true
+
+Αν "connected": false → ΜΗΝ στείλεις newsletter.
+Δες «ΑΝ ΚΑΤΙ ΧΑΛΑΣΕΙ» στο τέλος.
+
+✅ Τέλος βήμα 0.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🟢 ΒΗΜΑ 1 — ΒΑΛΕ ΤΟ ARTICLE ΣΤΟ SITE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Άνοιξε Terminal. Copy-paste ΟΛΟ αυτό:
+1) Άλλαξε / πρόσθεσε το article στον κώδικα.
+2) Commit αν χρειάζεται.
+3) Deploy:
 
-cd /Users/johanna/Desktop/alpine_astroproject
-npx netlify-cli deploy --prod
+cd /Users/johanna/Desktop/alpine_astroproject-main
+npx netlify deploy --prod
 
-Περίμενε μέχρι να δεις:
+Περίμενε μέχρι:
    Deploy is live!
 
 ✅ Τέλος βήμα 1.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🟡 ΒΗΜΑ 2 — ΔΕΣ ΠΟΣΟΥΣ ΘΑ ΠΑΡΟΥΝ EMAIL
-         (ΔΕΝ ΣΤΕΛΝΕΙ ΤΙΠΟΤΑ ΑΚΟΜΑ!)
+🟡 ΒΗΜΑ 2 — DRY RUN (ΔΕΝ ΣΤΕΛΝΕΙ ΤΙΠΟΤΑ)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Άλλαξε ΜΟΝΟ το όνομα μέσα στα quotes:
+Άλλαξε ΜΟΝΟ το SLUG (όχι τίτλο, όχι URL):
 
-   "nara-day-trip-from-kyoto"   ← Nara
-   "kyoto-itinerary"            ← Kyoto
-   "rhodes-itinerary"           ← Rhodes
-   "bali-cafes"                 ← Bali
-   "bruges-guide"               ← Bruges
+   tokyo-things-to-do
+   tokyo-where-to-stay
+   tokyo-5-day-itinerary
+   tokyo-cafes
+   tokyo-parks
+   tokyo-temples
+   mt-fuji-day-trip-from-tokyo
+   kamakura-day-trip-from-tokyo
+   kyoto-itinerary
+   nara-day-trip-from-kyoto
+   osaka-1-day-itinerary
+   katsuoji-temple-from-osaka
+   bali-cafes
+   bali-7-day-itinerary
+   bali-where-to-stay
+   bali-belly
+   bali-travel-tips
+   munduk-moding-plantation-review
+   rhodes-itinerary
+   parga-1-day
+   hong-kong-first-trip
+   bruges-guide
 
 Copy-paste (βάλε το σωστό slug):
 
-curl -X POST https://voyaflair.com/api/send-newsletter/ -H "Authorization: Bearer 7ed8b5e17586396290fac5a3c4bbcdecc1f68ae669cb3cba181a5ecaf73d6efa" -H "Content-Type: application/json" -d '{"articleSlug":"nara-day-trip-from-kyoto","dryRun":true}'
+cd /Users/johanna/Desktop/alpine_astroproject-main
+SLUG=tokyo-things-to-do npm run newsletter:dry-run
 
-Καλό = βλέπεις:
+Καλό:
    "Dry run complete"
-   "recipients": 4   (ή όσοι active)
+   "recipients": 22   (ή όσοι active)
+   "subscribers": { "active": ..., "newsletterEligible": ... }
 
-Κακό = βλέπεις:
-   "Unauthorized"   → λάθος secret ή ξέχασες deploy
+Κακό:
+   "Unauthorized"              → λάθος NEWSLETTER_ADMIN_SECRET στο .env
+   "Unknown article slug"      → λάθος slug (όχι τίτλος άρθρου)
+   "recipients": 0 + null stats → Supabase δεν συνδέεται (βήμα 0)
+   "API key is invalid"        → Resend key / domain (βλέπε κάτω)
 
 ✅ Τέλος βήμα 2.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🔴 ΒΗΜΑ 3 — ΣΤΕΙΛΕ ΤΟ EMAIL (ΓΙΑ ΠΡΑΓΜΑ!)
+🔴 ΒΗΜΑ 3 — ΣΤΕΙΛΕ ΤΟ EMAIL (ΓΙΑ ΠΡΑΓΜΑ)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Copy-paste (ίδιο slug, ΧΩΡΙΣ dryRun):
+Ίδιο slug, χωρίς dryRun:
 
-curl -X POST https://voyaflair.com/api/send-newsletter/ -H "Authorization: Bearer 7ed8b5e17586396290fac5a3c4bbcdecc1f68ae669cb3cba181a5ecaf73d6efa" -H "Content-Type: application/json" -d '{"articleSlug":"nara-day-trip-from-kyoto"}'
+cd /Users/johanna/Desktop/alpine_astroproject-main
+SLUG=tokyo-things-to-do npm run newsletter:send
 
-Καλό = βλέπεις:
+Καλό:
    "Newsletter sent successfully."
-   "sent": 4
+   "sent": 22   (ίδιο περίπου με recipients)
 
-✅ ΤΕΛΟΣ! Έφυγαν τα emails.
+Κακό:
+   "API key is invalid"                         → Resend API key
+   "domain ... is not verified"                 → Resend Domains + DNS
+   "No active subscribers..."                   → κανείς active / DB issue
+
+✅ ΤΕΛΟΣ — έφυγαν τα emails.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -68,26 +117,51 @@ curl -X POST https://voyaflair.com/api/send-newsletter/ -H "Authorization: Beare
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ❌ Μην βάζεις link (https://...) — μόνο slug
-❌ Μην γράφεις YOUR_NEWSLETTER_ADMIN_SECRET
+❌ Μην βάζεις τίτλο άρθρου μέσα στο JSON
+❌ Μην κάνεις paste Bearer secret σε chat / σε αυτό το αρχείο
 ❌ Publish στο site ≠ email — χρειάζεσαι και βήμα 3
 ❌ Pending subscribers ΔΕΝ παίρνουν — μόνο active
+❌ Μην πειράζεις .env / Netlify env χωρίς λόγο
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🟣 ΓΡΗΓΟΡΟ CHECK
+🛠️ ΑΝ ΚΑΤΙ ΧΑΛΑΣΕΙ (τα σημερινά μαθήματα)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-curl -s https://voyaflair.com/api/health/
+1) Health fail / "connected": false
+   - SUPABASE_URL πρέπει να είναι το σωστό project
+     (π.χ. https://xxxxx.supabase.co) — χωρίς typo
+   - SUPABASE_SERVICE_ROLE_KEY = sb_secret_...
+     (ΟΧΙ eyJ... legacy JWT αν τα legacy keys είναι off)
+   - Μετά:
+        npm run env:push-netlify
+        npx netlify deploy --prod
+   - Ξανα:
+        curl -s https://voyaflair.com/api/health/
 
-Πρέπει: "connected": true
+2) Resend "API key is invalid"
+   - Νέο key από resend.com/api-keys → .env → env:push-netlify → deploy
+
+3) Resend "domain is not verified"
+   - resend.com/domains → add voyaflair.com
+   - Netlify DNS (NS1) → TXT @ =
+        resend-domain-verification=...
+   - Έλεγχος:
+        dig TXT voyaflair.com +short
+   - Όταν φαίνεται το record → Verify στο Resend → ξανά send
+
+4) Unauthorized στο newsletter
+   - Το Bearer πρέπει να ταιριάζει με NEWSLETTER_ADMIN_SECRET
+     στο Netlify (ίδιο με .env μετά από env:push-netlify + deploy)
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📋 CHECKLIST (τσεκάρε με το χέρι)
+📋 CHECKLIST
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-[ ] Βήμα 1 deploy
-[ ] Βήμα 2 dry run — είδα recipients
-[ ] Βήμα 3 send — είδα sent successfully
+[ ] Βήμα 0 — health connected: true
+[ ] Βήμα 1 — deploy live
+[ ] Βήμα 2 — dry run, είδα recipients
+[ ] Βήμα 3 — send, είδα sent successfully
 
-Done! 🎉
+Done.
