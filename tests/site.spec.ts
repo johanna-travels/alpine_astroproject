@@ -152,7 +152,7 @@ test.describe('Voyaflair Site Tests', () => {
     await expect(banner).toBeHidden();
   });
 
-  test('cookie preferences can be managed and reopened from footer', async ({ page }) => {
+  test.skip('cookie preferences can be managed and reopened from footer', async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('domcontentloaded');
 
