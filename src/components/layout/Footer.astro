@@ -39,6 +39,7 @@ import { pageUrl } from '@/lib/site';
                       <button
                         type="button"
                         id="cookie-preferences-link"
+                        data-testid="cookie-preferences-link"
                         class="text-white/90 text-xs hover:text-white transition-colors duration-300 text-[0.875rem]"
                       >
                         Cookie Preferences
@@ -56,6 +57,11 @@ import { pageUrl } from '@/lib/site';
     if (!link || link.dataset.bound === 'true') return;
     link.dataset.bound = 'true';
     link.addEventListener('click', () => {
+      if (typeof window.__voyaflairOpenCookiePreferences === 'function') {
+        window.__voyaflairOpenCookiePreferences();
+        return;
+      }
+
       document.dispatchEvent(new CustomEvent('voyaflair:open-cookie-preferences'));
     });
   }

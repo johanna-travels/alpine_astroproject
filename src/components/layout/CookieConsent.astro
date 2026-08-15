@@ -56,7 +56,7 @@ const cookiePolicyUrl = pageUrl('cookie-policy');
     </div>
   </div>
 
-  <div id="cookie-preferences-view" class="hidden border-t border-gray-100">
+  <div id="cookie-preferences-view" class="hidden border-t border-gray-100" data-testid="cookie-preferences-view">
     <div class="mx-auto max-w-7xl px-4 py-4 sm:px-6 sm:py-5">
       <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-8">
         <div class="min-w-0 flex-1">
@@ -191,6 +191,10 @@ const cookiePolicyUrl = pageUrl('cookie-policy');
     }
   }
 
+  function openCookiePreferences() {
+    showBanner(true);
+  }
+
   function hideBanner() {
     const banner = getBanner();
     if (!banner) return;
@@ -263,9 +267,8 @@ const cookiePolicyUrl = pageUrl('cookie-policy');
     saveBtn?.addEventListener('click', savePreferences);
     backBtn?.addEventListener('click', showBannerView);
 
-    document.addEventListener('voyaflair:open-cookie-preferences', () => {
-      showBanner(true);
-    });
+    document.addEventListener('voyaflair:open-cookie-preferences', openCookiePreferences);
+    window.__voyaflairOpenCookiePreferences = openCookiePreferences;
 
     if (hasStoredChoice()) {
       hideBanner();

@@ -22,6 +22,9 @@ export default defineConfig({
   base: process.env.BASE_PATH ?? '/',
   trailingSlash: 'always',
   compressHTML: true,
+  devToolbar: {
+    enabled: process.env.PLAYWRIGHT !== '1',
+  },
   integrations: [react(), tailwind(), ...(isProduction ? [sentry()] : []), ...(!isProduction ? [spotlightjs()] : []), sitemap({
     filter: (page) => !page.includes('/preferences/'),
   })],

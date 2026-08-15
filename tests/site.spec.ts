@@ -49,8 +49,10 @@ test.describe('Voyaflair Site Tests', () => {
   test('contact form validation works', async ({ page, browserName }) => {
     test.skip(browserName === 'webkit', 'webkit dev-mode form event quirk — works in real Safari');
     await page.goto('/contact/');
-    // disabled={!hydrated} ensures click waits until React has mounted
-    await page.click('button[type="submit"]', { timeout: 15000 });
+    await page.waitForLoadState('domcontentloaded');
+    const contactForm = page.getByTestId('contact-form-ready');
+    await expect(contactForm).toBeVisible({ timeout: 15000 });
+    await contactForm.getByRole('button', { name: 'Submit' }).click();
     await expect(page.locator('#name[aria-invalid="true"]')).toBeVisible({ timeout: 10000 });
     await expect(page.locator('#email[aria-invalid="true"]')).toBeVisible({ timeout: 10000 });
   });
@@ -154,12 +156,17 @@ test.describe('Voyaflair Site Tests', () => {
     await page.goto('/');
     await page.waitForLoadState('domcontentloaded');
 
-    await page.getByRole('button', { name: 'Manage', exact: true }).click();
-    await expect(page.getByTestId('cookie-banner').getByText('Cookie preferences')).toBeVisible();
+    const banner = page.getByTestId('cookie-banner');
+    await expect(banner).toBeVisible();
 
-    await page.locator('#cookie-analytics-toggle').check();
+    await page.getByRole('button', { name: 'Manage', exact: true }).click();
+    const preferencesView = page.getByTestId('cookie-preferences-view');
+    await expect(preferencesView).toBeVisible();
+    await expect(preferencesView.getByText('Cookie preferences', { exact: true })).toBeVisible();
+
+    await page.locator('#cookie-analytics-toggle').check({ force: true });
     await page.getByRole('button', { name: 'Save', exact: true }).click();
-    await expect(page.getByTestId('cookie-banner')).toBeHidden();
+    await expect(banner).toBeHidden();
 
     const stored = await page.evaluate(() => ({
       consent: localStorage.getItem('voyaflair_cookie_consent'),
@@ -168,7 +175,10 @@ test.describe('Voyaflair Site Tests', () => {
     expect(stored.consent).toBe('custom');
     expect(stored.preferences).toBe(JSON.stringify({ analytics: true }));
 
-    await page.getByRole('button', { name: 'Cookie Preferences' }).click();
-    await expect(page.getByTestId('cookie-banner').getByText('Cookie preferences')).toBeVisible();
+    const reopenBtn = page.getByTestId('cookie-preferences-link');
+    await reopenBtn.scrollIntoViewIfNeeded();
+    await reopenBtn.click();
+    await expect(preferencesView).toBeVisible({ timeout: 10000 });
+    await expect(preferencesView.getByText('Cookie preferences', { exact: true })).toBeVisible();
   });
 });

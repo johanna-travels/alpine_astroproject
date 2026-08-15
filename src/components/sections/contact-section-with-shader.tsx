@@ -3,7 +3,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import contactImage from "@/assets/heroes/contact.webp";
 import { sanitizeInput, sanitizeContactForm, isRateLimited } from "@/lib/security";
 import { apiUrl, pageUrl } from "@/lib/site";
@@ -65,6 +65,11 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [rateLimited, setRateLimited] = useState(false);
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -175,7 +180,7 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
                   Thanks! Your message has been sent.
                 </div>
               ) : (
-              <form onSubmit={handleSubmit} noValidate className="space-y-4">
+              <form onSubmit={handleSubmit} noValidate className="space-y-4" data-testid={hydrated ? "contact-form-ready" : undefined}>
                 {submitError && (
                   <div className="rounded-md bg-red-50 p-4 text-sm font-medium text-red-700 dark:bg-red-900/30 dark:text-red-300">
                     {submitError}
@@ -254,7 +259,7 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
                 <div className="mt-8">
                   <button
                     type="submit"
-                    disabled={submitting}
+                    disabled={submitting || !hydrated}
                     className="relative z-10 flex w-full items-center justify-center rounded-full bg-black px-4 py-4 text-sm font-medium text-white transition duration-200 hover:bg-black/90 disabled:cursor-not-allowed disabled:opacity-60 md:text-sm dark:bg-white dark:text-black dark:hover:bg-neutral-100 dark:hover:shadow-xl"
                   >
                     {submitting ? "Sending…" : "Submit"}
