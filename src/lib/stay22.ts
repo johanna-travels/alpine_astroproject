@@ -5,6 +5,8 @@ export const stay22Csp = {
   /** Embeds use stay22.com; Let Me Allez may frame www.stay22.com */
   frameSrc: 'https://stay22.com https://www.stay22.com',
   imgSrc: 'https://www.stay22.com https://scripts.stay22.com https://stay22.com',
+  /** Let Me Allez creates blob: Workers for link rewriting. */
+  workerSrc: "'self' blob:",
 } as const;
 
 const DEFAULT_LMA_ID = '6a689d736b84bf57841c7582';

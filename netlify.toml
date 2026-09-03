@@ -37,6 +37,8 @@
 
 # HTML: revalidate on every visit so deploys show up immediately.
 # Hashed assets keep long-lived cache rules in public/_headers.
+# HTML: revalidate on every visit so deploys show up immediately.
+# Hashed assets keep long-lived cache rules in public/_headers.
 [[headers]]
   for = "/*"
   [headers.values]

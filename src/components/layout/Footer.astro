@@ -6,16 +6,16 @@ import { pageUrl } from '@/lib/site';
 ---
 
 <footer class="w-full">
-<header class="pt-16 pb-8 w-full bg-[#69746E] rounded-t-3xl">
-    <div class="mx-auto w-full max-w-7xl px-6 sm:px-10">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 pb-12 border-b border-white/10">
+<header class="w-full pb-8 pt-16 bg-[#69746E] rounded-t-3xl">
+    <div class="max-w-7xl w-full mx-auto px-6 sm:px-10">
+            <div class="grid gap-12 pb-12 border-b border-white/10 grid-cols-1 md:grid-cols-3">
                 <div class="flex flex-col gap-5">
-                    <a href={pageUrl()} class="text-2xl tracking-wide text-[0.875rem]" style="color: white; font-family: var(--font-logo);">VF</a>
-                    <p class="text-white text-sm leading-relaxed">Voyaflair is a travel journal by Joanna.</p>
+                    <a href={pageUrl()} class="text-[0.875rem] text-2xl tracking-wide" style="color: white; font-family: var(--font-logo);">VF</a>
+                    <p class="leading-relaxed text-sm text-white">Voyaflair is a travel journal by Joanna.</p>
                 </div>
                 <div class="flex flex-col gap-5">
                     <p class="text-white text-xs tracking-[0.3em] uppercase">Follow Me</p>
-                    <ul class="flex gap-6 items-center">
+                    <ul class="flex items-center gap-6">
                         <SocialLinks
                           class="gap-6"
                           linkClass="flex items-center gap-2 text-white/90 hover:text-white transition-all duration-300 text-sm group text-[0.875rem]"
@@ -23,24 +23,24 @@ import { pageUrl } from '@/lib/site';
                         />
                     </ul>
                 </div>
-                <div class="flex flex-col gap-5 relative">
+                <div class="flex flex-col relative gap-5">
                     <p class="text-white text-xs tracking-[0.3em] uppercase">Newsletter</p>
-                    <p class="text-white text-sm leading-relaxed">Curated places, beautiful stays &amp; stories worth remembering — straight to your inbox.</p>
+                    <p class="leading-relaxed text-sm text-white">Curated places, beautiful stays &amp; stories worth remembering — straight to your inbox.</p>
                     <NewsletterForm />
                 </div>
             </div>
-                <div class="pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div class="flex flex-col md:flex-row items-start justify-between md:items-center gap-4 pt-8">
                     <p class="text-white text-xs">© 2026 Voyaflair — All rights reserved.</p>
-                <ul class="flex flex-wrap gap-6 items-center">
+                <ul class="flex flex-wrap items-center gap-6">
                     {footerLegalLinks.map((link) => (
-                      <li><a href={link.href} class="text-white/90 text-xs hover:text-white transition-colors duration-300 text-[0.875rem]">{link.label}</a></li>
+                      <li><a href={link.href} class="text-[0.875rem] text-white/90 text-xs hover:text-white duration-300 transition-colors">{link.label}</a></li>
                     ))}
                     <li>
                       <button
                         type="button"
                         id="cookie-preferences-link"
                         data-testid="cookie-preferences-link"
-                        class="text-white/90 text-xs hover:text-white transition-colors duration-300 text-[0.875rem]"
+                        class="text-[0.875rem] text-white/90 text-xs hover:text-white duration-300 transition-colors"
                       >
                         Cookie Preferences
                       </button>
@@ -52,19 +52,17 @@ import { pageUrl } from '@/lib/site';
 </footer>
 
 <script>
-  function bindCookiePreferencesLink() {
-    const link = document.getElementById('cookie-preferences-link');
-    if (!link || link.dataset.bound === 'true') return;
-    link.dataset.bound = 'true';
-    link.addEventListener('click', () => {
-      if (typeof window.__voyaflairOpenCookiePreferences === 'function') {
-        window.__voyaflairOpenCookiePreferences();
-        return;
-      }
-
-      document.dispatchEvent(new CustomEvent('voyaflair:open-cookie-preferences'));
-    });
-  }
-
-  bindCookiePreferencesLink();
+ function bindCookiePreferencesLink() {
+  const link = document.getElementById('cookie-preferences-link');
+  if (!link || link.dataset.bound === 'true') return;
+  link.dataset.bound = 'true';
+  link.addEventListener('click', () => {
+    if (typeof window.__voyaflairOpenCookiePreferences === 'function') {
+      window.__voyaflairOpenCookiePreferences();
+      return;
+    }
+    document.dispatchEvent(new CustomEvent('voyaflair:open-cookie-preferences'));
+  });
+}
+bindCookiePreferencesLink();
 </script>

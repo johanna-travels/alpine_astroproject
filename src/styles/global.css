@@ -101,6 +101,13 @@
   }
 }
 
+/* ΔΙΟΡΘΩΘΗΚΕ: Μεταφέρθηκε εκτός του @layer base */
+@layer utilities {
+  .global-text {
+    @apply text-[clamp(1.125rem,4.2vw,1.5rem)] antialiased;
+  }
+}
+
 @layer components {
   /* Long-form body copy — DoulosSIL, Regular, 17 / 18 / 19, lh 1.8 */
   .prose-body,
@@ -249,4 +256,3 @@
 .article-panel__divider {
   border-color: #E5DFD4 !important;
 }
-

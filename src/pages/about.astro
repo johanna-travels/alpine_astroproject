@@ -1,93 +1,186 @@
 ---
-import PageShell from '@/components/layout/PageShell.astro';
-import PageBreadcrumbHero from '@/components/sections/PageBreadcrumbHero.astro';
-import ContactSectionWithShader from '@/components/sections/contact-section-with-shader.tsx';
-import { Image } from 'astro:assets';
-import heroImg from '@/assets/heroes/about-me.webp';
-import verticalImg from '@/assets/heroes/about-me-vertical.webp';
-import { getResponsiveHero, getSocialShareImage, heroImageSizes } from '@/lib/images';
-import { pageUrl } from '@/lib/site';
+import { Image } from "astro:assets";
 
-const hero = await getResponsiveHero(heroImg);
-const shareImage = await getSocialShareImage(heroImg);
+import Layout from "@/layouts/Layout.astro";
+import PageNav from "@/components/layout/PageNav.astro";
+import Footer from "@/components/layout/Footer.astro";
+import galleryAbout from "@/assets/heroes/GalleryAbout.webp";
+
+import BeatifulBeachBali from "@/assets/heroes/BeatifulBeachBali.jpg";
 ---
 
-<PageShell
+<Layout
   title="About — Voyaflair"
   description="Meet Joanna, creator of Voyaflair — a personal travel journal sharing destinations, stays, and experiences worth remembering."
-  image={shareImage.src}
-  imageAlt="Joanna at a scenic travel destination — About Voyaflair"
-  imageWidth={shareImage.width}
-  imageHeight={shareImage.height}
 >
-  <Fragment slot="head">
-    <link
-      rel="preload"
-      as="image"
-      href={hero.src}
-      imagesrcset={hero.srcSet}
-      imagesizes={heroImageSizes}
-      fetchpriority="high"
-    />
-  </Fragment>
+  <PageNav />
 
-  <PageBreadcrumbHero
-    title="About Me"
-    currentPage="About Me"
-    currentHref={pageUrl('about')}
-    imageSrc={hero.src}
-    desktopImageSrc={hero.largeSrc}
-    imageSrcSet={hero.srcSet}
-    imageSizes={hero.sizes}
-    imageClass="object-right lg:object-center"
-    imageAlt="Joanna at a scenic travel destination — About Voyaflair"
-  />
-
-  <main class="relative z-10 bg-white text-neutral-900">
-    <div class="flex flex-col gap-8 pb-16 pt-8 md:gap-8 md:pb-16 md:pt-10 lg:gap-12 lg:pb-24 lg:pt-12 xl:gap-16 xl:pt-16">
-      <section>
-        <div class="section-gutter">
-          <div class="grid w-full grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-x-12 xl:gap-x-[100px]">
-            <div class="relative aspect-[3/4] min-h-0 overflow-hidden bg-neutral-100 lg:aspect-auto lg:h-full">
-              <Image
-                class="h-full w-full object-cover transition-transform duration-700 hover:scale-105 lg:absolute lg:inset-0"
-                  src={verticalImg}
-                  alt="Profile"
-                  loading="lazy"
-                  decoding="async"
-                  widths={[480, 720, 900]}
-                  sizes="(min-width: 1024px) 50vw, 100vw"
-                  format="webp"
-                  quality={75}
-                />
-            </div>
-
-            <article class="flex w-full flex-col gap-y-4 lg:gap-y-5">
-              <div class="h-[1px] w-10 bg-neutral-900 opacity-20"></div>
-              <p class="meta text-neutral-500">About Me</p>
-              <h2>My Little Story</h2>
-              <p class="prose-body border-l-2 border-white pl-4 italic text-neutral-600">
-                Hi, I’m Joanna — originally from Greece and now based in Oslo.
-              </p>
-              <p class="prose-body text-neutral-700">
-                I started traveling abroad almost ten years ago, and since then, travel has become a big part of my life. I’ve been fortunate enough to visit more than 20 countries — and I’ve returned to many of them more than once. While I love discovering new places, I also enjoy returning to destinations I already love. There is always something new to discover — a different neighborhood, a hidden café, a local experience I missed the first time, or simply a new way of seeing a familiar place. And if you’re wondering what makes a destination one of my favorites, it’s never just one thing. It’s the combination of many things: the food, the atmosphere, the people you meet, the adventures you have, and all those small moments that stay with you long after you return home.
-              </p>
-              <p class="prose-body text-neutral-700">
-                Long before I began sharing my travels online, I was the person who would spend hours researching destinations, comparing places to stay, saving beautiful cafés and restaurants, and putting together detailed itineraries. I genuinely enjoyed the planning process almost as much as the trip itself. After every trip, friends would often ask me about my experiences: Which places did I love? Where should they stay? What was worth adding to their itinerary? What would I do differently next time? Over time, I realized that all the research and planning I enjoyed so much could also be useful to other people.
-              </p>
-              <p class="prose-body text-neutral-700">
-                So, years later, I created my <a href="https://www.instagram.com/voyaflair?igsh=eTc2YnVldXlneHB2&utm_source=qr" target="_blank" rel="noopener noreferrer" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Instagram</a> account as a place to share beautiful destinations that I genuinely believe are worth experiencing, along with practical travel tips — especially the kind of advice I wish someone had given me before some of my own trips. But there was always more I wanted to share than could fit into a post. More details, more recommendations, more context, and, of course, complete itineraries that could help make travel planning feel a little easier. That’s how this blog began.
-              </p>
-              <p class="prose-body text-neutral-700">
-                This is where I share carefully chosen destinations, meaningful stays, memorable experiences, useful travel tips, and thoughtfully planned itineraries. Some guides are here to help you plan a trip from start to finish; others are simply meant to inspire your next journey. My hope is that Voyaflair can save you some time, help you discover places you might not have found otherwise, and make planning your trip feel more enjoyable — leaving you with a little more time to look forward to the journey… and pack your suitcase.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <ContactSectionWithShader client:idle stacked />
+  <header
+    class="flex flex-col relative items-center justify-center max-w-none min-h-[600px] w-auto mx-0 px-1.5"
+  >
+    <div class="flex flex-col items-center h-full w-full gap-[30px]">
+      <h1>My Little Story</h1>
+      <p
+        class="max-w-[70ch] leading-[1.5] text-[clamp(1.125rem,4.2vw,1.5rem)] text-center"
+      >
+        Hi, I’m Joanna — originally from Greece and now based in
+        Oslo.
+      </p>
+      <p
+        class="max-w-[70ch] w-full leading-[1.5] text-[clamp(1.125rem,4.2vw,1.5rem)] text-center"
+      >
+        I started traveling abroad almost ten years ago, and since then, travel
+        has become a big part of my life. I’ve been fortunate enough to visit
+        more than 20 countries — and I’ve returned to many of them more than
+        once.
+      </p>
     </div>
-  </main>
+  </header>
 
-</PageShell>
+  <section class="relative min-h-[500px] w-full p-4 box-border z-0">
+    <div
+      class="flex flex-col lg:flex-row items-center justify-center lg:items-start lg:justify-center w-full gap-10 overflow-visible parallax-layers"
+    >
+      <div
+        class="h-[50svh] max-w-full w-full lg:max-w-[560px] md:h-[512px] md:max-w-[520px] back overflow-hidden md:flex-1"
+      >
+        <Image
+          class="block h-full w-full bg-[#e8e8e8] object-cover white-placeholder"
+          src={BeatifulBeachBali}
+          alt="Beautiful beach in Bali"
+          widths={[400, 800, 1120]}
+          sizes="(max-width: 768px) calc(100vw - 32px), 560px"
+        />
+      </div>
+      <div
+        class="flex items-center justify-center md:items-start md:justify-start max-w-full w-full lg:max-w-[560px] md:h-[612px] md:max-w-[520px] box-border cinematic-copy md:flex-1"
+      >
+        <blockquote class="flex flex-col w-full py-4">
+          <p class="leading-[1.5] text-[clamp(1.125rem,4.2vw,1.5rem)]">
+            While I love discovering new places, I also enjoy returning to
+            destinations I already love. There is always something new to
+            discover — a different neighborhood, a hidden café, a local
+            experience I missed the first time, or simply a new way of seeing a
+            familiar place.
+          </p>
+          <p
+            class="pt-8 leading-[1.5] text-[clamp(1.125rem,4.2vw,1.5rem)] text-start"
+          >
+            And if you’re wondering what makes a destination one of my
+            favorites, it’s never just one thing. It’s the combination of many
+            things: the food, the atmosphere, the people you meet, the
+            adventures you have, and all those small moments that stay with you
+            long after you return home.
+          </p>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative mb-16 px-4 lg:px-24 md:mt-10 md:mx-auto container-3 z-10">
+    <p
+      class="w-full leading-snug text-[clamp(1.125rem,4.2vw,1.5rem)] text-center lg:text-[1.35rem] md:text-[1.25rem] scaleUp-3"
+      data-scale-from="0.6"
+    >
+      Long before I began sharing my travels online, I was the person who would
+      spend hours researching destinations, comparing places to stay, saving
+      beautiful cafés and restaurants, and putting together detailed
+      itineraries. I genuinely enjoyed the planning process almost as much as
+      the trip itself. After every trip, friends would often ask me about my
+      experiences: Which places did I love? Where should they stay? What was
+      worth adding to their itinerary? What would I do differently next time?
+      Over time, I realized that all the research and planning I enjoyed so much
+      could also be useful to other people.
+    </p>
+  </section>
+
+  <section
+    class="container grid relative items-center min-h-screen w-full gap-6 p-4 lg:gap-12 md:p-8 grid-cols-1 md:grid-cols-2"
+  >
+    <div class="flex flex-col justify-center w-full md:h-[600px] py-6 md:py-12">
+      <blockquote
+        class="flex flex-col justify-center h-full space-y-4 leading-[1.5] text-[clamp(1.25rem,3.5vw,1.5rem)] scaleUp"
+        data-scale-from="0.6"
+      >
+        <p
+          class="leading-[1.5] text-[clamp(1.125rem,4.2vw,1.5rem)] tracking-tight"
+        >
+          So, years later, I created my Instagram account as a place to share
+          beautiful destinations that I genuinely believe are worth
+          experiencing, along with practical travel tips — especially the kind
+          of advice I wish someone had given me before some of my own trips.
+        </p>
+        <p
+          class="leading-[1.5] text-[clamp(1.125rem,4.2vw,1.5rem)] tracking-tight"
+        >
+          But there was always more I wanted to share than could fit into a
+          post. More details, more recommendations, more context, and, of
+          course, complete itineraries that could help make travel planning feel
+          a little easier. That’s how this blog began.
+        </p>
+      </blockquote>
+    </div>
+
+    <div
+      class="h-[300px] w-full md:h-[600px] container-title overflow-hidden"
+    >
+      <Image
+        class="h-full w-full bg-[#e8e8e8] object-cover"
+        data-scale-from="0.6"
+        src={galleryAbout}
+        alt="Beautiful beach in Bali"
+        widths={[400, 800, 1120]}
+        sizes="(max-width: 768px) 100vw, 50vw"
+      />
+    </div>
+  </section>
+
+  <section
+    class="relative mb-16 px-4 lg:px-24 md:mt-10 md:mx-auto container-last z-10"
+  >
+    <p
+      class="w-full leading-snug text-[clamp(1.125rem,4.2vw,1.5rem)] text-center lg:text-[1.35rem] md:text-[1.25rem] container-title"
+      data-scale-from="0.6"
+    >
+      This is where I share carefully chosen destinations, meaningful stays,
+      memorable experiences, useful travel tips, and thoughtfully planned
+      itineraries. Some guides are here to help you plan a trip from start to
+      finish; others are simply meant to inspire your next journey. My hope is
+      that Voyaflair can save you some time, help you discover places you might
+      not have found otherwise, and make planning your trip feel more enjoyable
+      — leaving you with a little more time to look forward to the journey… and
+      pack your suitcase.
+    </p>
+  </section>
+
+  <Footer />
+
+  <script>
+    import gsap from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    (gsap.utils.toArray("[data-scale-from]") as HTMLElement[]).forEach(
+      (el) => {
+        gsap.fromTo(
+          el,
+          {
+            scale: Number(el.dataset.scaleFrom) || 0.6,
+            transformOrigin: "top center",
+          },
+          {
+            scale: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: el.parentElement,
+              start: "top bottom",
+              end: "center center",
+              scrub: 1,
+            },
+          },
+        );
+      },
+    );
+  </script>
+</Layout>

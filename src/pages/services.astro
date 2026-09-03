@@ -1,93 +1,384 @@
 ---
-import PageShell from '@/components/layout/PageShell.astro';
-import PageBreadcrumbHero from '@/components/sections/PageBreadcrumbHero.astro';
-import ContactSectionWithShader from '@/components/sections/contact-section-with-shader.tsx';
-import { Image } from 'astro:assets';
-import heroImg from '@/assets/heroes/services-img.webp';
-import verticalImg from '@/assets/heroes/services-vertical.webp';
-import { getResponsiveHero, heroImageSizes } from '@/lib/images';
-import { pageUrl } from '@/lib/site';
+import type { ImageMetadata } from "astro";
 
-const hero = await getResponsiveHero(heroImg);
+import PageNav from "@/components/layout/PageNav.astro";
+import heroImage from "@/assets/heroes/services-img.webp";
+import galleryImageA from "@/assets/heroes/services-vertical.webp";
+import galleryImageB from "@/assets/marketing/services-4x3.webp";
+import mundukSERVISESmoding from "@/assets/mundukSERVISESmoding-.webp";
+import rhodesanthonyServicesquinnbay from "@/assets/rhodesanthonyServicesquinn-bay copy.webp";
+import tokyoJapancopy from "@/assets/tokyojapancopy.webp";
+import TheUdayaResort from "@/assets/TheUdayaResort.webp";
+import BeachBaliFoto from "@/assets/BeachBaliFoto.webp";
+
+import ContactSectionWithShader from "@/components/sections/contact-section-with-shader.tsx";
+import Footer from "@/components/layout/Footer.astro";
+import src from "gsap/src";
+
+interface GalleryImage {
+  src: ImageMetadata | string;
+  alt: string;
+}
+
+const galleryImages: [GalleryImage, GalleryImage] = [
+  { src: galleryImageA, alt: "Vertical services photography" },
+  { src: galleryImageB, alt: "Travel brand visual content" },
+];
+
+const galleryTone: "white" | "light" = "white";
+
+// Both class names spelled out as literals. Tailwind scans this file as plain
+// text, so a name assembled at runtime — `bg-${tone}` — would never be found
+// and the utility would not be generated.
+const galleryToneClass = galleryTone === "light" ? "bg-[#f8f4e7]" : "bg-white";
+
+const gallerySrcOf = (image: GalleryImage) =>
+  typeof image.src === "string" ? image.src : image.src.src;
+
+const galleryDimsOf = (image: GalleryImage) =>
+  typeof image.src === "string"
+    ? {}
+    : { width: image.src.width, height: image.src.height };
 ---
 
-<PageShell
-  title="Services — Voyaflair"
-  description="Collaborate with Voyaflair on photography, video, and editorial content for hotels, tourism boards, and travel brands."
->
-  <Fragment slot="head">
-    <link
-      rel="preload"
-      as="image"
-      href={hero.src}
-      imagesrcset={hero.srcSet}
-      imagesizes={heroImageSizes}
+<header class="relative min-h-[100vh] w-full">
+  <PageNav overlay={true} />
+
+  <div class="fixed inset-0 pointer-events-none z-0">
+    <img
+      class="h-full w-full hero-img object-center object-cover"
+      src={heroImage.src}
+      alt="Hero Background"
+      width={1200}
+      height={800}
+      loading="eager"
       fetchpriority="high"
     />
-  </Fragment>
+  </div>
 
-  <PageBreadcrumbHero
-    title="Services"
-    currentPage="Services"
-    currentHref={pageUrl('services')}
-    imageSrc={hero.src}
-    desktopImageSrc={hero.largeSrc}
-    imageSrcSet={hero.srcSet}
-    imageSizes={hero.sizes}
-    imageAlt="Visual storytelling for hotels and travel brands — Voyaflair services"
-  />
+  <div class="absolute bg-gray-900/70 inset-0 pointer-events-none z-[1]"></div>
 
-  <main class="relative z-10 bg-white text-neutral-900">
-    <div class="flex flex-col gap-8 pb-16 pt-8 md:gap-8 md:pb-16 md:pt-10 lg:gap-12 lg:pb-24 lg:pt-12 xl:gap-16 xl:pt-16">
-      <section>
-        <div class="section-gutter">
-          <div class="grid w-full grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-x-12 xl:gap-x-[100px]">
-            <div class="relative aspect-[3/4] min-h-0 overflow-hidden bg-neutral-100 lg:aspect-auto lg:h-full">
-              <Image
-                class="h-full w-full object-cover transition-transform duration-700 hover:scale-105 lg:absolute lg:inset-0"
-                src={verticalImg}
-                alt="Services"
-                loading="lazy"
-                decoding="async"
-                widths={[480, 720, 900]}
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                format="webp"
-                quality={75}
-              />
+  <div
+    class="flex flex-col relative items-center justify-center min-h-[100vh] p-6 sm:pb-12 sm:pt-24 sm:px-4 text-center pointer-events-none z-20">
+    <h1
+      class="text-4xl text-white lg:leading-[1] lg:text-[6.625rem] sm:text-7xl hero-title">
+      Work With Me
+    </h1>
+    <p
+      class="max-w-2xl mt-4 text-white lg:leading-[1.1] lg:text-[1.8rem] sm:text-2xl">
+      Voyaflair partners with hotels, tourism boards, travel brands, and
+      hospitality businesses to create thoughtful visual content that captures
+      the essence of a destination.
+    </p>
+  </div>
+</header>
+
+<main class="relative text-neutral-900 overflow-x-hidden z-10">
+  <section
+    class="relative w-full lg:min-h-[1000px] bg-transparent overflow-hidden">
+    <div class="absolute bg-gray-900/70 inset-0 pointer-events-none z-[1]">
+    </div>
+    <div class="relative z-10 px-6 pb-[80vh] pt-[20vh]">
+      <p class="mx-auto max-w-3xl text-center text-[24.6px] text-white lg:text-[28.6px]">
+        &ldquo;With a focus on atmosphere, design, and storytelling, each
+        collaboration is crafted to highlight what makes a place memorable
+        &mdash; from boutique hotels and unique stays to immersive travel
+        experiences and local culture.
+      </p>
+      <p
+        class="mx-auto mt-6 max-w-3xl text-center text-[24.6px] text-white lg:text-[28.6px]">
+        Through photography, video, and editorial-style content, I help brands
+        connect with travelers in a way that feels authentic, inspiring, and
+        visually engaging.&rdquo;
+      </p>
+    </div>
+  </section>
+
+  <section
+    class="block relative min-h-[400px] w-full px-6 py-16 bg-[#f5f5f5] overflow-hidden z-[1]">
+    <!-- Content Wrapper: relative, so it paints above the backdrop -->
+    <div class="relative max-w-full w-full mx-auto">
+      <div
+        class="md:h-[600px] md:w-[800px] md:pl-6 col col-lg-8 col-md-11 col-sm-12">
+        <p
+          class="w-full md:h-[300px] md:min-h-0 md:w-[700px] sm:min-h-[578px]  leading-[1.2] text-[32px] sm:text-5xl -indent-2 uppercase">
+          Authentic promotion across Instagram, TikTok, and other digital
+          platforms through carefully curated content, including reels, stories,
+          and more.
+        </p>
+      </div>
+
+      <div class="justify-end row">
+        <div class="col col-lg-8 col-md-10 col-sm-12">
+          <!-- Text Row (Brother) -->
+          <div class="row">
+            <!-- Image Row. -mt-[140px] = 20% of the 700px image, pulling it up
+                 into the beige. Percentage margins resolve against width, so px. -->
+            <div class="relative -mt-[140px] z-10">
+              <!-- Colour split, anchored to the image itself: the line falls
+                   300px down the 1000px image, so 30% sits on beige and 70% on
+                   white. Full-bleed sideways; the tail is clipped by the section. -->
+              <div
+                aria-hidden="true"
+                class="absolute h-[9999px] w-screen bg-white -translate-x-1/2 -z-10 left-1/2 top-[300px]">
+              </div>
+
+              <!-- Image box, straddling the split. No padding, so the image fills all 900x1000 -->
+              <div
+                class="flex flex-col relative items-center justify-center h-[1000px] w-[900px] text-center bg-transparent rounded-2xl img-wrapper">
+                <img
+                  class="relative h-full w-full rounded-lg img object-cover z-10"
+                  src={TheUdayaResort.src}
+                  alt="The Udaya Resort"
+                  width={TheUdayaResort.width}
+                  height={TheUdayaResort.height}
+                  loading="eager"
+                  fetchpriority="high"
+                />
+              </div>
             </div>
 
-            <article class="flex w-full flex-col gap-y-4 lg:gap-y-5">
-              <div class="mb-2 h-[1px] w-full bg-neutral-900 opacity-20 lg:w-20"></div>
-              <p class="meta text-neutral-500">LET'S CREATE SOMETHING BEAUTIFUL</p>
-              <h2>Work With Me</h2>
-              <p class="prose-body border-l-2 border-white pl-4 italic text-neutral-600">
-                Voyaflair partners with hotels, tourism boards, travel brands, and hospitality businesses to create thoughtful visual content that captures the essence of a destination.
+            <div
+              class="flex flex-col relative items-start justify-center h-[400px] w-full gap-4 p-6 md:pl-0 lg:pl-12 z-20 text-black">
+              <h3 class="leading-[1.2] text-black text-[24px]">
+                Content Creation
+              </h3>
+              <p
+                class="-indent-4 text-[clamp(1.125rem,4.2vw,1.5rem)] leading-[1.4] text-black lg:w-[800px] md:pb-6 md:pl-0"
+                data-scale-from="0.6">
+                Professional photography and video content
+                created for hotels, travel brands, and tourism campaigns. Designed
+                to elevate your visual presence across
+                websites, social media, marketing materials, and
+                digital platforms.
               </p>
-              <p class="prose-body text-neutral-700">
-                With a focus on atmosphere, design, and storytelling, each collaboration is crafted to highlight what makes a place memorable — from boutique hotels and unique stays to immersive travel experiences and local culture.
-              </p>
-              <p class="prose-body text-neutral-700">
-                Through photography, video, and editorial-style content, I help brands connect with travelers in a way that feels authentic, inspiring, and visually engaging.
-              </p>
-              <div class="pt-4">
-                <h3 class="mb-3">Social Media Collaboration</h3>
-                <p class="prose-body text-neutral-600">
-                  Authentic promotion across Instagram, TikTok, and other digital platforms through carefully curated content, including reels, stories, and posts designed to inspire travel and showcase destinations in a meaningful way.
-                </p>
-              </div>
-              <div class="pt-2">
-                <h3 class="mb-3">Content Creation</h3>
-                <p class="prose-body text-neutral-600">
-                  Professional photography and video content created for hotels, travel brands, and tourism campaigns. Designed to elevate your visual presence across websites, social media, marketing materials, and digital platforms.
-                </p>
-              </div>
-            </article>
+            </div>
           </div>
         </div>
-      </section>
 
-      <ContactSectionWithShader client:idle stacked />
+        <!-- Typography -->
+      </div>
     </div>
-  </main>
 
-</PageShell>
+    <section
+      class:list={[
+        "gallery-section mx-auto mt-0 max-w-6xl border-t-[72px] border-t-white px-4 pt-[60px] pb-0 sm:mt-6 md:mx-8 md:mt-8 md:h-auto md:min-h-[700px] md:border-t-0 md:pt-2 md:pb-8",
+        galleryToneClass,
+      ]}>
+      <div class="grid min-w-0 gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2">
+        {
+          galleryImages.map((image) => (
+            <div class="flex flex-col relative items-center justify-center max-w-full min-h-[260px] min-w-0 w-full md:w-[500px] sm:min-h-0 bg-transparent aspect-[4/3] gallery-img-wrapper overflow-hidden sm:aspect-[3/4]">
+              <img
+                class="relative h-full max-w-full w-full rounded-lg gallery-img object-cover z-10"
+                src={gallerySrcOf(image)}
+                alt={image.alt}
+                {...galleryDimsOf(image)}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  </section>
+
+  <!-- Frames: text 240 + 3×400 + gap1 35.2 + 2×70.4 + pt56 + pb48 → H 1720 -->
+  <section class="relative h-auto bg-white pb-12 pt-14 px-4 mt-[0px] z-[2]">
+    <div
+      class="flex flex-col relative items-start justify-center h-[400px] w-full gap-4 p-6 md:pl-0 lg:pl-12 z-20 text-black"
+      style="padding-left:16px">
+      <h3 class="leading-[1.2] text-black text-[clamp(1.125rem,4.2vw,1.5rem)]">
+        Social Media Collaboration
+      </h3>
+      <p
+        class="-indent-2 text-[clamp(1.125rem,4.2vw,1.5rem)] leading-[1.4] md:w-[750px] md:pb-6 md:pl-0"
+        data-scale-from="0.6"
+        style="translate:none;rotate:none;scale:none;transform-origin:50% 0;transform:translate(0px,0px)">
+        Authentic promotion across Instagram, TikTok, and other digital
+        platforms through carefully curated content, including reels, stories,
+        and posts designed to inspire travel and showcase destinations in a
+        meaningful way.
+      </p>
+    </div>
+
+    <div class="max-w-6xl mt-[35.2px] mx-auto">
+      <!-- Left-aligned, so the frame sits against the column's start edge. -->
+      <div class="h-[400px] w-[600px]">
+        <img
+             class="h-full w-full rounded-lg object-cover"
+          data-scale-from="0.6"
+          src={BeachBaliFoto.src}
+          alt="Destination atmosphere photography"
+          width={BeachBaliFoto.width}
+          height={BeachBaliFoto.height}
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+
+      <!-- Centred in the column. -->
+      <div class="h-[400px] w-[300px] mt-[70.4px] mx-auto">
+        <img
+           class="h-full w-full rounded-lg object-cover"
+          data-scale-from="0.6"
+          src={tokyoJapancopy.src}
+          alt="Destination atmosphere photography"
+          width={tokyoJapancopy.width}
+          height={tokyoJapancopy.height}
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+
+      <!-- Right-aligned; reuses heroImage already imported in this file. -->
+      <div class="h-[400px] w-[600px] ml-auto mt-[70.4px]">
+        <img
+          class="h-full w-full rounded-lg object-cover"
+          data-scale-from="0.6"
+          src={rhodesanthonyServicesquinnbay.src}
+          alt="Destination atmosphere photography"
+          width={rhodesanthonyServicesquinnbay.width}
+          height={rhodesanthonyServicesquinnbay.height}
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact: text 380 + img 438.4 + pb 60 → H 878.4 -->
+  <section class="px-4 bg-[#f5f5f5] box-border contact-section">
+    <div class="flex flex-col h-full max-w-6xl mx-auto gap-10 py-20 h-full">
+      <div class="md:min-w-[648px] px-6">
+        <p
+          class=" leading-[1.4] text-[clamp(1.125rem,4.2vw,1.5rem)] text-black -indent-4"
+          data-scale-from="0.6">
+         
+            Professional photography and video content
+          
+          created for hotels, travel brands, and tourism campaigns. Designed to elevate
+          your visual presence across
+          websites, social media,marketing materials, and digital
+          platforms.
+        </p>
+      </div>
+
+      <div
+        class="flex flex-col relative items-center justify-center max-w-[900px] w-full mt-0 text-center bg-transparent rounded-2xl img-wrapper">
+        <img
+          class="relative h-full w-full rounded-lg img object-cover z-10"
+          src={mundukSERVISESmoding.src}
+          alt="Beach in Bali"
+          width={mundukSERVISESmoding.width}
+          height={mundukSERVISESmoding.height}
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+  </section>
+  <ContactSectionWithShader client:idle showImage={false} stacked />
+  <Footer />
+</main>
+
+<!-- JAVASCRIPT FOR GSAP ANIMATIONS -->
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { SplitText } from "gsap/SplitText";
+
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+
+  document.fonts?.ready.then(() => ScrollTrigger.refresh());
+
+  const galleryScale = gsap.matchMedia();
+  galleryScale.add("(min-width: 768px)", () => {
+    (gsap.utils.toArray(".gallery-img") as HTMLElement[]).forEach((image) => {
+      gsap.fromTo(
+        image,
+        {
+          scale: 0.6,
+          transformOrigin: "top center",
+        },
+        {
+          scale: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: image.parentElement,
+            start: "top bottom",
+            end: "center center",
+            scrub: 1,
+            markers: false,
+          },
+        },
+      );
+    });
+  });
+
+  (gsap.utils.toArray("[data-scale-from]") as HTMLElement[]).forEach(
+    (image) => {
+      const fromScale = Number(image.dataset.scaleFrom) || 0.6;
+
+      gsap.fromTo(
+        image,
+        {
+          scale: fromScale,
+          transformOrigin: "top center",
+        },
+        {
+          scale: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: image.parentElement,
+            start: "top bottom",
+            end: "center center",
+            scrub: 1,
+            markers: false,
+          },
+        },
+      );
+    },
+  );
+
+  (gsap.utils.toArray(".reveal-section") as Element[]).forEach((section) => {
+    const children = section.querySelectorAll("article *");
+
+    if (children.length > 0) {
+      gsap.from(children, {
+        opacity: 0,
+        y: 30,
+        duration: 1,
+        ease: "power2.out",
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: section,
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      });
+    }
+  });
+
+  (gsap.utils.toArray(".img") as HTMLElement[]).forEach((image) => {
+    gsap.fromTo(
+      image,
+      {
+        scale: 0.6,
+      },
+      {
+        scale: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: image.parentElement,
+          start: "top bottom",
+          end: "center center",
+          scrub: 1,
+          markers: false,
+        },
+      },
+    );
+  });
+</script>

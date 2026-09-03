@@ -5,7 +5,58 @@ import { primaryNavLinks } from '@/domains/site/navigation';
 import { socialLinks } from '@/domains/site/social';
 import type { SocialIcon } from '@/domains/site/social';
 
+interface Props {
+  overlay?: boolean;
+}
+
+// 1. Αρχικοποίηση Props & URL
+const { overlay = false } = Astro.props;
 const { pathname } = Astro.url;
+const isHeroOverlayPage = isActivePath(pathname, [pageUrl('services')]);
+const isStickyPage = isActivePath(pathname, [pageUrl('about')]);
+const overlayNav = overlay || isHeroOverlayPage;
+
+// 2. Δυναμικό Θέμα Χρωμάτων βάσει URL
+const getTheme = () => {
+  // Overlay nav for /services (dark hero); about uses the default light nav
+  if (isHeroOverlayPage) {
+    return {
+      // Background: Transparent -> Sticky White στο scroll
+      nav: "bg-transparent data-[scrolled=true]:bg-white transition-colors duration-300 h-auto min-h-[120px] md:min-h-[140px]",
+      
+      // Logo: Λευκό -> Μαύρο στο scroll
+      logo: "text-white group-data-[scrolled=true]:text-black transition-colors duration-300",
+      
+      // Mobile Logo Border/Text: Λευκό -> Μαύρο στο scroll
+      mobileLogo: "text-white border-white group-data-[scrolled=true]:text-black group-data-[scrolled=true]:border-black transition-colors duration-300",
+      
+      // Links: Λευκά -> Μαύρα στο scroll
+      links: "text-white hover:text-white/80 group-data-[scrolled=true]:text-black group-data-[scrolled=true]:hover:text-gray-700",
+      
+      // Hamburger Icon (3-bars): Λευκό -> Μαύρο στο scroll
+      hamburgerWrapper: "text-white group-data-[scrolled=true]:text-black transition-colors duration-300"
+    };
+  }
+
+  // Default εμφάνιση για όλες τις υπόλοιπες σελίδες
+  return {
+    nav: overlay 
+      ? "md:bg-transparent md:text-white data-[scrolled=true]:md:bg-white data-[scrolled=true]:md:text-black transition-colors duration-300" 
+      : "bg-white text-gray-900",
+    logo: overlay 
+      ? "text-white group-data-[scrolled=true]:text-black transition-colors duration-300" 
+      : "text-[#1a1a1a]",
+    mobileLogo: "text-[#1a1a1a] border-gray-500",
+    links: overlay 
+      ? "text-white/80 hover:text-white group-data-[scrolled=true]:text-gray-600 group-data-[scrolled=true]:hover:text-gray-900" 
+      : "text-gray-600 hover:text-gray-900",
+    hamburgerWrapper: overlay
+      ? "text-white group-data-[scrolled=true]:text-black transition-colors duration-300"
+      : "text-black"
+  };
+};
+
+const theme = getTheme();
 
 interface DropdownSection {
   title: string;
@@ -36,21 +87,58 @@ const links: NavLink[] = [
 const isActive = (link: NavLink) => isActivePath(pathname, [link.href, ...(link.match ?? [])]);
 ---
 
-<nav class="site-nav w-full text-gray-900 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20" style="background-color: #ffffff;">
+<nav
+  id={overlayNav ? "navbar" : undefined}
+  data-scrolled="false"
+  class:list={[
+    "site-nav group w-full px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20",
+    theme.nav,
+    overlayNav && !isHeroOverlayPage && "site-nav--overlay md:fixed md:inset-x-0 md:top-0 md:z-50",
+    isHeroOverlayPage && "site-nav--overlay fixed inset-x-0 top-0 z-50",
+    isStickyPage && "sticky top-0 z-50",
+  ]}
+>
   <div class="w-full md:max-w-[1500px] mx-auto flex items-center justify-between min-h-[120px] md:min-h-[140px] gap-4 md:gap-8">
+    
     <!-- Mobile decorative logo -->
-    <a href={pageUrl()} data-testid="mobile-logo" class="md:hidden inline-flex items-center justify-center w-12 h-12 rounded-full border border-gray-500 text-xl sm:text-2xl font-bold tracking-wider" style="color: #1a1a1a; font-family: var(--font-logo); border-width: 1.5px;">VF</a>
-    <!-- Desktop simple logo -->
-    <a href={pageUrl()} data-testid="desktop-logo" class="hidden md:block text-[calc(1.35rem*0.9)] md:text-[calc(1.6875rem*0.9)] font-normal tracking-wider" style="color: #1a1a1a; font-family: var(--font-logo);">VOYAFLAIR</a>
+   <a 
+      href={pageUrl()} 
+      data-testid="mobile-logo" 
+      class:list={[
+        "md:hidden inline-flex items-center justify-center w-12 h-12 rounded-full border border-[1.5px] text-xl sm:text-2xl font-bold tracking-wider",
+        theme.mobileLogo
+      ]} 
+      style="font-family: var(--font-logo);"
+    >
+      VF
+    </a>
 
-    <div class="hidden md:flex items-center gap-8 font-medium text-gray-600">
+    <!-- Desktop simple logo -->
+    <a 
+      href={pageUrl()} 
+      data-testid="desktop-logo" 
+      class:list={[
+        "hidden md:block text-[calc(1.35rem*0.9)] md:text-[calc(1.6875rem*0.9)] font-normal tracking-wider",
+        theme.logo
+      ]} 
+      style="font-family: var(--font-logo);"
+    >
+      VOYAFLAIR
+    </a>
+
+    <!-- Nav Links (Desktop) -->
+    <div class="nav-links hidden md:flex items-center gap-8 font-medium">
       {links.filter(link => link.variant !== 'social').map((link) => (
         <div class="relative group">
           <a
             href={link.href}
             class:list={[
-              "site-nav__link text-[1.51875rem] flex items-center gap-1 pb-1 text-gray-600 hover:text-gray-900",
-              isActive(link) && "text-gray-900 is-active",
+              "site-nav__link relative text-[1.51875rem] flex items-center gap-1 pb-1 transition-colors duration-[450ms] ease-[cubic-bezier(0.4,0,0.2,1)]",
+              "after:absolute after:left-0 after:right-0 after:bottom-0 after:h-[2px] after:bg-current after:scale-x-0 after:origin-left after:transition-transform after:duration-[450ms] after:ease-[cubic-bezier(0.4,0,0.2,1)]",
+              "hover:after:scale-x-100 aria-[current=page]:after:scale-x-100 [&.is-active]:after:scale-x-100",
+              "motion-reduce:transition-none motion-reduce:after:transition-none",
+              theme.links,
+              isActive(link) && "is-active",
             ]}
             aria-current={isActive(link) ? "page" : undefined}
             aria-haspopup={link.hasDropdown ? "true" : undefined}
@@ -65,7 +153,7 @@ const isActive = (link: NavLink) => isActivePath(pathname, [link.href, ...(link.
           </a>
           
           {link.hasDropdown && (
-            <div class="absolute left-0 top-full mt-2 w-full max-w-[600px] bg-white shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 p-6">
+            <div class="absolute left-0 top-full mt-2 w-full max-w-[600px] bg-white shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 p-6 text-gray-900">
               <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {link.dropdownItems?.map((section) => (
                   <div class="col-span-1">
@@ -129,58 +217,42 @@ const isActive = (link: NavLink) => isActivePath(pathname, [link.href, ...(link.
       ))}
     </div>
 
-    <div class="block md:hidden">
+    <!-- Mobile Hamburger Menu Wrapper -->
+    <div class:list={["pointer-events-auto flex shrink-0 md:hidden", theme.hamburgerWrapper]}>
       <HamburgerMenuOverlay
-        client:idle
+        client:load
         activePathname={pathname}
         items={links}
         buttonSize="lg"
         buttonColor="transparent"
-        iconColor="#000000"
+        iconColor="currentColor"
         overlayBackground="#F5F2EB"
         textColor="#111827"
         fontSize="xl"
-        fontFamily="ScheherazadeNew, Georgia, serif"
+        fontFamily=""
         fontWeight="normal"
         animationDuration={0.6}
         staggerDelay={0.05}
         menuAlignment="left"
         enableBlur={false}
         ariaLabel="Navigation menu"
+        zIndex={4000}
       />
     </div>
   </div>
 </nav>
 
-<style>
-  .site-nav__link {
-    position: relative;
-    transition: color 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .site-nav__link::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 2px;
-    background-color: rgb(17 24 39);
-    transform: scaleX(0);
-    transform-origin: left center;
-    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .site-nav__link:hover::after,
-  .site-nav__link.is-active::after,
-  .site-nav__link[aria-current='page']::after {
-    transform: scaleX(1);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .site-nav__link,
-    .site-nav__link::after {
-      transition: none;
-    }
-  }
-</style>
+{overlayNav && (
+  <script>
+    window.addEventListener("scroll", function () {
+      const navbar = document.getElementById("navbar");
+      if (!navbar) return;
+      
+      if (window.scrollY > 50) {
+        navbar.setAttribute("data-scrolled", "true");
+      } else {
+        navbar.setAttribute("data-scrolled", "false");
+      }
+    });
+  </script>
+)}

@@ -1,8 +1,5 @@
 import { getSupabaseAdmin } from '@/lib/supabaseAdmin';
 import { getServerEnv } from '@/lib/serverEnv';
-import { emailFooterHtml, emailListUnsubscribeHeaders, getResendSender } from '@/lib/email';
-import { absoluteUrl, contactEmail } from '@/lib/site';
-import { Resend } from 'resend';
 import type { APIRoute } from 'astro';
 import crypto from 'crypto';
 
@@ -87,13 +84,16 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const confirmationToken = crypto.randomBytes(32).toString('hex');
+    const now = new Date().toISOString();
 
     const { error } = await supabaseAdmin.from('subscribers').insert({
       email,
       consent: true,
-      status: 'pending',
+      status: 'active',
       confirmation_token: confirmationToken,
-      subscribed_at: new Date().toISOString(),
+      subscribed_at: now,
+      confirmed_at: now,
+      preferences: { updates: true, promotions: false },
     });
 
     if (error) {
@@ -126,52 +126,10 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    const resendApiKey = getServerEnv('RESEND_API_KEY');
-    const resendSender = getResendSender();
-    const resend = resendApiKey ? new Resend(resendApiKey) : null;
-
-    let emailSent = false;
-    let emailSendError: { message: string } | null = null;
-
-    if (resend && resendSender) {
-      const confirmUrl = `${absoluteUrl('api/confirm')}?token=${confirmationToken}`;
-
-      const { error } = await resend.emails.send({
-        from: resendSender,
-        to: email,
-        replyTo: contactEmail,
-        subject: 'Confirm your subscription to Voyaflair',
-        headers: emailListUnsubscribeHeaders(confirmationToken),
-        html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-            <h2 style="color: #69746E;">Welcome to Voyaflair</h2>
-            <p>Thank you for subscribing to our newsletter! Please confirm your email address by clicking the button below:</p>
-            <a href="${confirmUrl}" style="display: inline-block; padding: 12px 24px; background-color: #69746E; color: white; text-decoration: none; border-radius: 4px; margin: 20px 0;">Confirm Subscription</a>
-            <p style="color: #666; font-size: 14px;">Or copy and paste this link into your browser:</p>
-            <p style="color: #666; font-size: 12px; word-break: break-all;">${confirmUrl}</p>
-            <p style="color: #999; font-size: 12px; margin-top: 30px;">If you didn't subscribe to Voyaflair, you can safely ignore this email.</p>
-            ${emailFooterHtml(confirmationToken)}
-          </div>
-        `,
-      });
-
-      if (error) {
-        emailSendError = error;
-        console.error('Email sending error:', error);
-      } else {
-        emailSent = true;
-      }
-    } else {
-      console.error('Resend is not configured (RESEND_API_KEY or RESEND_FROM_EMAIL missing).');
-    }
-
     return new Response(
       JSON.stringify({
-        message: emailSent
-          ? 'Successfully subscribed! Please check your email for confirmation.'
-          : 'Subscribed, but the confirmation email could not be sent. Please try again later or contact us.',
-        emailSent,
-        ...(emailSendError ? { detail: emailSendError.message } : {}),
+        message: 'Successfully subscribed! You are on the list.',
+        emailSent: true,
       }),
       { status: 201, headers: { 'Content-Type': 'application/json' } }
     );
