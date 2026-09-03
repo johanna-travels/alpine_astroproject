@@ -17,7 +17,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 export default defineConfig({
   output: 'static',
-  adapter: netlify(),
+  adapter: isProduction ? netlify() : undefined,
   site: process.env.SITE_URL || 'https://voyaflair.com',
   base: process.env.BASE_PATH ?? '/',
   trailingSlash: 'always',

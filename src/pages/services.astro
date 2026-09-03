@@ -1,6 +1,7 @@
 ---
 import type { ImageMetadata } from "astro";
 
+import Layout from "@/layouts/Layout.astro";
 import PageNav from "@/components/layout/PageNav.astro";
 import heroImage from "@/assets/heroes/services-img.webp";
 import galleryImageA from "@/assets/heroes/services-vertical.webp";
@@ -13,7 +14,6 @@ import BeachBaliFoto from "@/assets/BeachBaliFoto.webp";
 
 import ContactSectionWithShader from "@/components/sections/contact-section-with-shader.tsx";
 import Footer from "@/components/layout/Footer.astro";
-import src from "gsap/src";
 
 interface GalleryImage {
   src: ImageMetadata | string;
@@ -41,6 +41,10 @@ const galleryDimsOf = (image: GalleryImage) =>
     : { width: image.src.width, height: image.src.height };
 ---
 
+<Layout
+  title="Services — Voyaflair"
+  description="Visual storytelling for hotels, tourism boards, and travel brands — photography, video, and social content by Voyaflair."
+>
 <header class="relative min-h-[100vh] w-full">
   <PageNav overlay={true} />
 
@@ -79,14 +83,14 @@ const galleryDimsOf = (image: GalleryImage) =>
     <div class="absolute bg-gray-900/70 inset-0 pointer-events-none z-[1]">
     </div>
     <div class="relative z-10 px-6 pb-[80vh] pt-[20vh]">
-      <p class="mx-auto max-w-3xl text-center text-[24.6px] text-white lg:text-[28.6px]">
+      <p class="mx-auto max-w-3xl text-center text-lg text-white lg:text-xl">
         &ldquo;With a focus on atmosphere, design, and storytelling, each
         collaboration is crafted to highlight what makes a place memorable
         &mdash; from boutique hotels and unique stays to immersive travel
         experiences and local culture.
       </p>
       <p
-        class="mx-auto mt-6 max-w-3xl text-center text-[24.6px] text-white lg:text-[28.6px]">
+        class="mx-auto mt-6 max-w-3xl text-center text-lg text-white lg:text-xl">
         Through photography, video, and editorial-style content, I help brands
         connect with travelers in a way that feels authentic, inspiring, and
         visually engaging.&rdquo;
@@ -101,7 +105,7 @@ const galleryDimsOf = (image: GalleryImage) =>
       <div
         class="md:h-[600px] md:w-[800px] md:pl-6 col col-lg-8 col-md-11 col-sm-12">
         <p
-          class="w-full md:h-[300px] md:min-h-0 md:w-[700px] sm:min-h-[578px]  leading-[1.2] text-[32px] sm:text-5xl -indent-2 uppercase">
+          class="w-full md:h-[300px] md:min-h-0 md:w-[700px] sm:min-h-[578px]  leading-[1.2] text-2xl sm:text-4xl lg:text-5xl -indent-2 uppercase">
           Authentic promotion across Instagram, TikTok, and other digital
           platforms through carefully curated content, including reels, stories,
           and more.
@@ -140,11 +144,11 @@ const galleryDimsOf = (image: GalleryImage) =>
 
             <div
               class="flex flex-col relative items-start justify-center h-[400px] w-full gap-4 p-6 md:pl-0 lg:pl-12 z-20 text-black">
-              <h3 class="leading-[1.2] text-black text-[24px]">
+              <h3 class="text-xl lg:text-2xl text-black">
                 Content Creation
               </h3>
               <p
-                class="-indent-4 text-[clamp(1.125rem,4.2vw,1.5rem)] leading-[1.4] text-black lg:w-[800px] md:pb-6 md:pl-0"
+                class="prose-body -indent-4 text-black lg:w-[800px] md:pb-6 md:pl-0"
                 data-scale-from="0.6">
                 Professional photography and video content
                 created for hotels, travel brands, and tourism campaigns. Designed
@@ -189,13 +193,12 @@ const galleryDimsOf = (image: GalleryImage) =>
     <div
       class="flex flex-col relative items-start justify-center h-[400px] w-full gap-4 p-6 md:pl-0 lg:pl-12 z-20 text-black"
       style="padding-left:16px">
-      <h3 class="leading-[1.2] text-black text-[clamp(1.125rem,4.2vw,1.5rem)]">
+      <h3 class="text-xl lg:text-2xl text-black">
         Social Media Collaboration
       </h3>
       <p
-        class="-indent-2 text-[clamp(1.125rem,4.2vw,1.5rem)] leading-[1.4] md:w-[750px] md:pb-6 md:pl-0"
-        data-scale-from="0.6"
-        style="translate:none;rotate:none;scale:none;transform-origin:50% 0;transform:translate(0px,0px)">
+        class="prose-body -indent-2 md:w-[750px] md:pb-6 md:pl-0"
+        data-scale-from="0.6">
         Authentic promotion across Instagram, TikTok, and other digital
         platforms through carefully curated content, including reels, stories,
         and posts designed to inspire travel and showcase destinations in a
@@ -253,14 +256,12 @@ const galleryDimsOf = (image: GalleryImage) =>
     <div class="flex flex-col h-full max-w-6xl mx-auto gap-10 py-20 h-full">
       <div class="md:min-w-[648px] px-6">
         <p
-          class=" leading-[1.4] text-[clamp(1.125rem,4.2vw,1.5rem)] text-black -indent-4"
+          class="prose-body text-black -indent-4"
           data-scale-from="0.6">
-         
-            Professional photography and video content
-          
+          Professional photography and video content
           created for hotels, travel brands, and tourism campaigns. Designed to elevate
           your visual presence across
-          websites, social media,marketing materials, and digital
+          websites, social media, marketing materials, and digital
           platforms.
         </p>
       </div>
@@ -318,15 +319,37 @@ const galleryDimsOf = (image: GalleryImage) =>
     });
   });
 
-  (gsap.utils.toArray("[data-scale-from]") as HTMLElement[]).forEach(
-    (image) => {
-      const fromScale = Number(image.dataset.scaleFrom) || 0.6;
+  galleryScale.add("(min-width: 768px)", () => {
+    (gsap.utils.toArray("[data-scale-from]") as HTMLElement[]).forEach(
+      (image) => {
+        const fromScale = Number(image.dataset.scaleFrom) || 0.6;
 
+        gsap.fromTo(
+          image,
+          {
+            scale: fromScale,
+            transformOrigin: "top center",
+          },
+          {
+            scale: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: image.parentElement,
+              start: "top bottom",
+              end: "center center",
+              scrub: 1,
+              markers: false,
+            },
+          },
+        );
+      },
+    );
+
+    (gsap.utils.toArray(".img") as HTMLElement[]).forEach((image) => {
       gsap.fromTo(
         image,
         {
-          scale: fromScale,
-          transformOrigin: "top center",
+          scale: 0.6,
         },
         {
           scale: 1,
@@ -340,8 +363,8 @@ const galleryDimsOf = (image: GalleryImage) =>
           },
         },
       );
-    },
-  );
+    });
+  });
 
   (gsap.utils.toArray(".reveal-section") as Element[]).forEach((section) => {
     const children = section.querySelectorAll("article *");
@@ -361,24 +384,5 @@ const galleryDimsOf = (image: GalleryImage) =>
       });
     }
   });
-
-  (gsap.utils.toArray(".img") as HTMLElement[]).forEach((image) => {
-    gsap.fromTo(
-      image,
-      {
-        scale: 0.6,
-      },
-      {
-        scale: 1,
-        ease: "none",
-        scrollTrigger: {
-          trigger: image.parentElement,
-          start: "top bottom",
-          end: "center center",
-          scrub: 1,
-          markers: false,
-        },
-      },
-    );
-  });
 </script>
+</Layout>
