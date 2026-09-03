@@ -4,31 +4,7 @@ import type { ImageMetadata } from 'astro';
 import { getBentoCellClass, isBentoFeatured } from '@/lib/bento-grid';
 import { bentoImageSizes, bentoImageWidths } from '@/lib/images';
 import InstagramEmbedFrame from '@/components/embeds/InstagramEmbedFrame.astro';
-
-export type BentoMediaItem =
-  | {
-      kind: 'image';
-      src: ImageMetadata;
-      alt: string;
-      title?: string;
-      description?: string;
-    }
-  | {
-      kind: 'video';
-      /** Resolved URL from `import clip from '...MP4'` */
-      src: string;
-      alt: string;
-      title?: string;
-      poster?: ImageMetadata;
-    }
-  | {
-      kind: 'instagram';
-      /** Reel/post URL; when empty, poster image is shown instead */
-      permalink?: string;
-      poster: ImageMetadata;
-      alt: string;
-      title?: string;
-    };
+import type { BentoMediaItem } from '@/types/bento';
 
 interface Props {
   items: BentoMediaItem[];
