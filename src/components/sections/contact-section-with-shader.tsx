@@ -162,11 +162,14 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
               <h1 className="m-0 text-black dark:text-white" style={{ fontSize: "clamp(24px, 4vw, 48px)" }}>
                 Let's Talk
               </h1>
-              <p className="mt-4 max-w-sm text-sm text-neutral-600 dark:text-neutral-400">
-                Let's start a conversation by filling out the form below or sending an email to{" "}
-                <a href="mailto:voyaflair@gmail.com" className="text-blue-600 dark:text-red-400 font-medium">
-                  voyaflair@gmail.com
-                </a>
+              <p className="mt-4 min-w-[screen] text-md text-neutral-600 dark:text-neutral-400">
+               Have a collaboration in mind or an idea you’d 
+               like to explore? Ι’d love to hear from you and create something
+                beautiful together.
+              
+                  Start a conversation by filling out the form below or sending us an email at 
+                   <a href="mailto:voyaflair@gmail.com" className="text-blue-600 dark:text-red-400 font-medium">voyaflair@gmail.com</a>
+                
               </p>
             </div>
 

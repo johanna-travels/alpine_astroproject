@@ -1,18 +1,17 @@
 ---
-import PageShell from '@/components/layout/PageShell.astro';
-import PageBreadcrumbHero from '@/components/sections/PageBreadcrumbHero.astro';
-import ContactSectionWithShader from '@/components/sections/contact-section-with-shader.tsx';
-import heroImg from '@/assets/heroes/contact.webp';
-import { getResponsiveHero, heroImageSizes } from '@/lib/images';
-import { pageUrl } from '@/lib/site';
+import PageShell from "@/components/layout/PageShell.astro";
+import PageBreadcrumbHero from "@/components/sections/PageBreadcrumbHero.astro";
+import ContactSectionWithShader from "@/components/sections/contact-section-with-shader.tsx";
+import heroImg from "@/assets/heroes/contact.webp";
+import { getResponsiveHero, heroImageSizes } from "@/lib/images";
+import { pageUrl } from "@/lib/site";
 
 const hero = await getResponsiveHero(heroImg);
 ---
 
 <PageShell
   title="Contact — Voyaflair"
-  description="Contact Voyaflair for collaborations, travel questions, or general enquiries."
->
+  description="Contact Voyaflair for collaborations, travel questions, or general enquiries.">
   <Fragment slot="head">
     <link
       rel="preload"
@@ -27,7 +26,7 @@ const hero = await getResponsiveHero(heroImg);
   <PageBreadcrumbHero
     title="Contact"
     currentPage="Contact"
-    currentHref={pageUrl('contact')}
+    currentHref={pageUrl("contact")}
     imageSrc={hero.src}
     desktopImageSrc={hero.largeSrc}
     imageSrcSet={hero.srcSet}
@@ -36,7 +35,9 @@ const hero = await getResponsiveHero(heroImg);
   />
 
   <main class="relative z-10 bg-white text-neutral-900">
-    <div class="flex flex-col gap-8 pb-16 pt-8 md:gap-8 md:pb-16 md:pt-10 lg:gap-12 lg:pb-24 lg:pt-12 xl:gap-16 xl:pt-16">
+   
+    <div
+      class="flex flex-col gap-8 pb-16 pt-8 md:gap-8 md:pb-16 md:pt-10 lg:gap-12 lg:pb-24 lg:pt-12 xl:gap-16 xl:pt-16">
       <ContactSectionWithShader client:idle showImage={false} stacked />
     </div>
   </main>

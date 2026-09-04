@@ -11,7 +11,7 @@ import rhodesanthonyServicesquinnbay from "@/assets/rhodesanthonyServicesquinn-b
 import tokyoJapancopy from "@/assets/tokyojapancopy.webp";
 import TheUdayaResort from "@/assets/TheUdayaResort.webp";
 import BeachBaliFoto from "@/assets/BeachBaliFoto.webp";
-
+import { Image } from 'astro:assets';
 import ContactSectionWithShader from "@/components/sections/contact-section-with-shader.tsx";
 import Footer from "@/components/layout/Footer.astro";
 
@@ -27,10 +27,8 @@ const galleryImages: [GalleryImage, GalleryImage] = [
 
 const galleryTone: "white" | "light" = "white";
 
-// Both class names spelled out as literals. Tailwind scans this file as plain
-// text, so a name assembled at runtime — `bg-${tone}` — would never be found
-// and the utility would not be generated.
-const galleryToneClass = galleryTone === "light" ? "bg-[#f8f4e7]" : "bg-white";
+
+const galleryToneClass = (galleryTone as "white" | "light") === "light" ? "bg-[#f8f4e7]" : "bg-white";
 
 const gallerySrcOf = (image: GalleryImage) =>
   typeof image.src === "string" ? image.src : image.src.src;
@@ -49,15 +47,16 @@ const galleryDimsOf = (image: GalleryImage) =>
   <PageNav overlay={true} />
 
   <div class="fixed inset-0 pointer-events-none z-0">
-    <img
-      class="h-full w-full hero-img object-center object-cover"
-      src={heroImage.src}
-      alt="Hero Background"
-      width={1200}
-      height={800}
-      loading="eager"
-      fetchpriority="high"
-    />
+
+<Image 
+  src={heroImage}
+  alt="Hero Background"
+  class="h-full w-full hero-img object-center object-cover"
+  loading="eager"
+  fetchpriority="high"
+  format="webp"
+  sizes="100vw"
+/>
   </div>
 
   <div class="absolute bg-gray-900/70 inset-0 pointer-events-none z-[1]"></div>
@@ -82,15 +81,15 @@ const galleryDimsOf = (image: GalleryImage) =>
     class="relative w-full lg:min-h-[1000px] bg-transparent overflow-hidden">
     <div class="absolute bg-gray-900/70 inset-0 pointer-events-none z-[1]">
     </div>
-    <div class="relative z-10 px-6 pb-[80vh] pt-[20vh]">
-      <p class="mx-auto max-w-3xl text-center text-lg text-white lg:text-xl">
+    <div class="relative pb-[80vh] pt-[20vh] px-6 z-10">
+      <p class="max-w-3xl mx-auto text-center text-lg text-white lg:text-xl">
         &ldquo;With a focus on atmosphere, design, and storytelling, each
         collaboration is crafted to highlight what makes a place memorable
         &mdash; from boutique hotels and unique stays to immersive travel
         experiences and local culture.
       </p>
       <p
-        class="mx-auto mt-6 max-w-3xl text-center text-lg text-white lg:text-xl">
+        class="max-w-3xl mt-6 mx-auto text-center text-lg text-white lg:text-xl">
         Through photography, video, and editorial-style content, I help brands
         connect with travelers in a way that feels authentic, inspiring, and
         visually engaging.&rdquo;
@@ -99,13 +98,13 @@ const galleryDimsOf = (image: GalleryImage) =>
   </section>
 
   <section
-    class="block relative min-h-[400px] w-full px-6 py-16 bg-[#f5f5f5] overflow-hidden z-[1]">
+    class="block relative min-h-0 w-full md:min-h-[400px] pb-10 pt-6 px-6 md:py-16 bg-[#f5f5f5] overflow-hidden z-[1]">
     <!-- Content Wrapper: relative, so it paints above the backdrop -->
     <div class="relative max-w-full w-full mx-auto">
       <div
         class="md:h-[600px] md:w-[800px] md:pl-6 col col-lg-8 col-md-11 col-sm-12">
         <p
-          class="w-full md:h-[300px] md:min-h-0 md:w-[700px] sm:min-h-[578px]  leading-[1.2] text-2xl sm:text-4xl lg:text-5xl -indent-2 uppercase">
+          class="min-h-0 w-full md:h-[300px] md:min-h-0 md:w-[700px] pb-8 md:pb-0 leading-[1.2] text-2xl lg:text-5xl sm:text-4xl -indent-2 uppercase">
           Authentic promotion across Instagram, TikTok, and other digital
           platforms through carefully curated content, including reels, stories,
           and more.
@@ -118,20 +117,20 @@ const galleryDimsOf = (image: GalleryImage) =>
           <div class="row">
             <!-- Image Row. -mt-[140px] = 20% of the 700px image, pulling it up
                  into the beige. Percentage margins resolve against width, so px. -->
-            <div class="relative -mt-[140px] z-10">
+            <div class="relative mt-0 z-10 md:-mt-[140px]">
               <!-- Colour split, anchored to the image itself: the line falls
                    300px down the 1000px image, so 30% sits on beige and 70% on
                    white. Full-bleed sideways; the tail is clipped by the section. -->
               <div
                 aria-hidden="true"
-                class="absolute h-[9999px] w-screen bg-white -translate-x-1/2 -z-10 left-1/2 top-[300px]">
+                class="absolute h-[9999px] w-screen bg-white -translate-x-1/2 -z-10 left-1/2 top-[40%] md:top-[300px]">
               </div>
 
-              <!-- Image box, straddling the split. No padding, so the image fills all 900x1000 -->
+              <!-- Image box, straddling the split. Desktop stays 900x1000. -->
               <div
-                class="flex flex-col relative items-center justify-center h-[1000px] w-[900px] text-center bg-transparent rounded-2xl img-wrapper">
+                class="flex flex-col relative items-center justify-center max-w-full w-full md:h-[1000px] md:min-h-[700px] md:w-[900px] text-center bg-transparent rounded-2xl aspect-[2/3] img-wrapper md:aspect-auto">
                 <img
-                  class="relative h-full w-full rounded-lg img object-cover z-10"
+                  class="relative h-full w-full rounded-lg img img-mobile object-cover z-10"
                   src={TheUdayaResort.src}
                   alt="The Udaya Resort"
                   width={TheUdayaResort.width}
@@ -143,12 +142,12 @@ const galleryDimsOf = (image: GalleryImage) =>
             </div>
 
             <div
-              class="flex flex-col relative items-start justify-center h-[400px] w-full gap-4 p-6 md:pl-0 lg:pl-12 z-20 text-black">
-              <h3 class="text-xl lg:text-2xl text-black">
+              class="flex flex-col relative items-start justify-center h-auto w-full md:h-[400px] gap-4 px-0 py-8 lg:pl-12 md:p-6 md:pl-0 text-black img-mobile z-20">
+              <h3 class="text-black text-xl lg:text-2xl">
                 Content Creation
               </h3>
               <p
-                class="prose-body -indent-4 text-black lg:w-[800px] md:pb-6 md:pl-0"
+                class="lg:w-[800px] md:pb-6 md:pl-0 text-black -indent-4 prose-body"
                 data-scale-from="0.6">
                 Professional photography and video content
                 created for hotels, travel brands, and tourism campaigns. Designed
@@ -166,7 +165,7 @@ const galleryDimsOf = (image: GalleryImage) =>
 
     <section
       class:list={[
-        "gallery-section mx-auto mt-0 max-w-6xl border-t-[72px] border-t-white px-4 pt-[60px] pb-0 sm:mt-6 md:mx-8 md:mt-8 md:h-auto md:min-h-[700px] md:border-t-0 md:pt-2 md:pb-8",
+        "gallery-section mx-auto mt-6 max-w-6xl border-t-0 px-0 pt-4 pb-0 sm:mt-6 md:mx-8 md:mt-8 md:h-auto md:min-h-[700px] md:px-4 md:pt-2 md:pb-8",
         galleryToneClass,
       ]}>
       <div class="grid min-w-0 gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2">
@@ -189,15 +188,14 @@ const galleryDimsOf = (image: GalleryImage) =>
   </section>
 
   <!-- Frames: text 240 + 3×400 + gap1 35.2 + 2×70.4 + pt56 + pb48 → H 1720 -->
-  <section class="relative h-auto bg-white pb-12 pt-14 px-4 mt-[0px] z-[2]">
+  <section class=" min-h-[200px] h-auto pb-12 pt-10 px-4 md:pt-14 bg-white  z-[2]">
     <div
-      class="flex flex-col relative items-start justify-center h-[400px] w-full gap-4 p-6 md:pl-0 lg:pl-12 z-20 text-black"
-      style="padding-left:16px">
-      <h3 class="text-xl lg:text-2xl text-black">
+      class="flex flex-col relative items-start justify-center h-auto w-full md:h-[400px] gap-4 px-0 py-6 lg:pl-12 md:p-6 md:pl-0 text-black z-20">
+      <h3 class="text-black text-xl lg:text-2xl">
         Social Media Collaboration
       </h3>
       <p
-        class="prose-body -indent-2 md:w-[750px] md:pb-6 md:pl-0"
+        class="md:w-[750px] md:pb-6 md:pl-0 -indent-2 prose-body"
         data-scale-from="0.6">
         Authentic promotion across Instagram, TikTok, and other digital
         platforms through carefully curated content, including reels, stories,
@@ -206,11 +204,11 @@ const galleryDimsOf = (image: GalleryImage) =>
       </p>
     </div>
 
-    <div class="max-w-6xl mt-[35.2px] mx-auto">
+    <div class="max-w-6xl mt-8 mx-auto md:mt-[35.2px]">
       <!-- Left-aligned, so the frame sits against the column's start edge. -->
-      <div class="h-[400px] w-[600px]">
+      <div class="max-w-full w-full md:h-[400px] md:w-[600px] aspect-[3/2] md:aspect-auto">
         <img
-             class="h-full w-full rounded-lg object-cover"
+          class="h-full w-full rounded-lg img-mobile object-cover" 
           data-scale-from="0.6"
           src={BeachBaliFoto.src}
           alt="Destination atmosphere photography"
@@ -222,9 +220,9 @@ const galleryDimsOf = (image: GalleryImage) =>
       </div>
 
       <!-- Centred in the column. -->
-      <div class="h-[400px] w-[300px] mt-[70.4px] mx-auto">
+      <div class="max-w-[280px] w-full md:h-[400px] md:max-w-none md:w-[300px] mt-10 mx-auto md:mt-[70.4px] aspect-[3/4] md:aspect-auto">
         <img
-           class="h-full w-full rounded-lg object-cover"
+          class="h-full w-full rounded-lg img-mobile object-cover"
           data-scale-from="0.6"
           src={tokyoJapancopy.src}
           alt="Destination atmosphere photography"
@@ -236,9 +234,9 @@ const galleryDimsOf = (image: GalleryImage) =>
       </div>
 
       <!-- Right-aligned; reuses heroImage already imported in this file. -->
-      <div class="h-[400px] w-[600px] ml-auto mt-[70.4px]">
+      <div class="max-w-full w-full md:h-[400px] md:w-[600px] ml-0 mt-10 md:ml-auto md:mt-[70.4px] aspect-[3/2] md:aspect-auto">
         <img
-          class="h-full w-full rounded-lg object-cover"
+          class="h-full w-full rounded-lg img-mobile object-cover"
           data-scale-from="0.6"
           src={rhodesanthonyServicesquinnbay.src}
           alt="Destination atmosphere photography"
@@ -253,10 +251,10 @@ const galleryDimsOf = (image: GalleryImage) =>
 
   <!-- Contact: text 380 + img 438.4 + pb 60 → H 878.4 -->
   <section class="px-4 bg-[#f5f5f5] box-border contact-section">
-    <div class="flex flex-col h-full max-w-6xl mx-auto gap-10 py-20 h-full">
+    <div class="flex flex-col h-full max-w-6xl gap-10 mx-auto py-20">
       <div class="md:min-w-[648px] px-6">
         <p
-          class="prose-body text-black -indent-4"
+          class="text-black -indent-4 prose-body"
           data-scale-from="0.6">
           Professional photography and video content
           created for hotels, travel brands, and tourism campaigns. Designed to elevate
@@ -269,7 +267,7 @@ const galleryDimsOf = (image: GalleryImage) =>
       <div
         class="flex flex-col relative items-center justify-center max-w-[900px] w-full mt-0 text-center bg-transparent rounded-2xl img-wrapper">
         <img
-          class="relative h-full w-full rounded-lg img object-cover z-10"
+          class="relative h-full w-full rounded-lg img-mobile object-cover z-10"
           src={mundukSERVISESmoding.src}
           alt="Beach in Bali"
           width={mundukSERVISESmoding.width}
@@ -319,6 +317,57 @@ const galleryDimsOf = (image: GalleryImage) =>
     });
   });
 
+
+  // mobile-below(768px)
+
+  galleryScale.add("(max-width: 767px)", () => {
+  (gsap.utils.toArray(".gallery-img") as HTMLElement[]).forEach((image) => {
+    gsap.fromTo(
+      image,
+      {
+        scale: 0.8, // Less dramatic scale for mobile
+        transformOrigin: "center center",
+      },
+      {
+        scale: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: image.parentElement,
+          start: "top 85%", // Adjusted for mobile viewport
+          end: "center 60%",
+          scrub: true,
+        }
+      }
+    );
+  });
+});
+
+galleryScale.add("(max-width: 767px)", () => {
+  (gsap.utils.toArray(".img-mobile") as HTMLElement[]).forEach((image) => {
+    const fromScale = Number(image.dataset.scaleFrom) || 0.8;
+    
+    gsap.fromTo(
+      image,
+      {
+        scale: fromScale,
+        transformOrigin: "center center",
+      },
+      {
+        scale: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: image.parentElement,
+          start: "top 85%",
+          end: "center 60%",
+          scrub: true,
+        }
+      }
+    );
+  });
+});
+ 
+
+
   galleryScale.add("(min-width: 768px)", () => {
     (gsap.utils.toArray("[data-scale-from]") as HTMLElement[]).forEach(
       (image) => {
@@ -365,6 +414,13 @@ const galleryDimsOf = (image: GalleryImage) =>
       );
     });
   });
+   
+
+  
+
+
+
+
 
   (gsap.utils.toArray(".reveal-section") as Element[]).forEach((section) => {
     const children = section.querySelectorAll("article *");

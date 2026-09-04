@@ -79,7 +79,7 @@ import BeatifulBeachBali from "@/assets/heroes/BeatifulBeachBali.jpg";
 
   <section class="relative mb-16 px-4 lg:px-24 md:mt-10 md:mx-auto container-3 z-10">
     <p
-      class="w-full leading-snug text-[clamp(1.125rem,4.2vw,1.5rem)] text-center lg:text-[1.35rem] md:text-[1.25rem] scaleUp-3"
+      class="w-full leading-snug text-[clamp(1.125rem,4.2vw,1.5rem)] text-start lg:text-[1.35rem] md:text-[1.25rem] scaleUp-3"
       data-scale-from="0.6"
     >
       Long before I began sharing my travels online, I was the person who would
@@ -139,7 +139,7 @@ import BeatifulBeachBali from "@/assets/heroes/BeatifulBeachBali.jpg";
     class="relative mb-16 px-4 lg:px-24 md:mt-10 md:mx-auto container-last z-10"
   >
     <p
-      class="w-full leading-snug text-[clamp(1.125rem,4.2vw,1.5rem)] text-center lg:text-[1.35rem] md:text-[1.25rem] container-title"
+      class="w-full leading-snug text-[clamp(1.125rem,4.2vw,1.5rem)] sm:text-start md:text-center lg:text-[1.35rem] md:text-[1.25rem] container-title"
       data-scale-from="0.6"
     >
       This is where I share carefully chosen destinations, meaningful stays,
@@ -160,27 +160,24 @@ import BeatifulBeachBali from "@/assets/heroes/BeatifulBeachBali.jpg";
     import { ScrollTrigger } from "gsap/ScrollTrigger";
 
     gsap.registerPlugin(ScrollTrigger);
-
-    (gsap.utils.toArray("[data-scale-from]") as HTMLElement[]).forEach(
-      (el) => {
-        gsap.fromTo(
-          el,
-          {
-            scale: Number(el.dataset.scaleFrom) || 0.6,
-            transformOrigin: "top center",
+    (gsap.utils.toArray("[data-scale-from]") as HTMLElement[]).forEach((el) => {
+      gsap.fromTo(
+        el,
+        {
+          scale: Number(el.dataset.scaleFrom) || 0.6,
+          transformOrigin: "top center",
+        },
+        {
+          scale: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: el.parentElement,
+            start: "top bottom",
+            end: "center center",
+            scrub: 1,
           },
-          {
-            scale: 1,
-            ease: "none",
-            scrollTrigger: {
-              trigger: el.parentElement,
-              start: "top bottom",
-              end: "center center",
-              scrub: 1,
-            },
-          },
-        );
-      },
-    );
+        },
+      );
+    });
   </script>
 </Layout>

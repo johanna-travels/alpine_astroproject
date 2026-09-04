@@ -51,7 +51,14 @@ import { pageUrl } from '@/lib/site';
     </header>
 </footer>
 
+
 <script>
+declare global {
+  interface Window {
+    __voyaflairOpenCookiePreferences?: () => void;
+  }
+}
+
  function bindCookiePreferencesLink() {
   const link = document.getElementById('cookie-preferences-link');
   if (!link || link.dataset.bound === 'true') return;
@@ -59,9 +66,10 @@ import { pageUrl } from '@/lib/site';
   link.addEventListener('click', () => {
     if (typeof window.__voyaflairOpenCookiePreferences === 'function') {
       window.__voyaflairOpenCookiePreferences();
-      return;
+    } else {
+      // Fallback to custom event
+      document.dispatchEvent(new CustomEvent('voyaflair:open-cookie-preferences'));
     }
-    document.dispatchEvent(new CustomEvent('voyaflair:open-cookie-preferences'));
   });
 }
 bindCookiePreferencesLink();
