@@ -3,6 +3,7 @@ import ArticleGoogleMap from '@/components/articles/ArticleGoogleMap.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
 import ArticlePage from '@/components/articles/ArticlePage.astro';
 import BrugesGuideContent from '@/components/articles/BrugesGuide.astro';
+import BelgiumBeforeFooter from '@/components/articles/BelgiumBeforeFooter.astro';
 import { brugesNav } from '@/domains/articles/bruges-nav';
 import { getArticle } from '@/domains/articles/catalog';
 import brugesFromAbove from '@/assets/articles/bruges/bruges-from-above.webp';
@@ -26,4 +27,5 @@ const article = getArticle('bruges-guide')!;
     mapId="1iAQBn9oFqf07nux65Qzy7vn0s028Mb8"
   />
   <BrugesGuideContent />
+  <BelgiumBeforeFooter slot="before-footer" currentSlug={article.slug} />
 </ArticlePage>

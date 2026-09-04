@@ -1,0 +1,30 @@
+---
+import ArticlePage from '@/components/articles/ArticlePage.astro';
+import { getArticle } from '@/domains/articles/catalog';
+import brugesChristmasMarketMarkt from '@/assets/articles/bruges/bruges-christmas-market-markt.webp';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import ChristmasMarketsBruges from '@/components/articles/ChristmasMarketsBruges.astro';
+import BelgiumBeforeFooter from '@/components/articles/BelgiumBeforeFooter.astro';
+import { christmasMarketsNav } from '@/domains/articles/christmas-markets-nav';
+
+const article = getArticle('bruges-christmas-markets')!;
+---
+
+<ArticlePage article={article} sections={christmasMarketsNav}>
+  <figure slot="title-media">
+    <ArticleImage
+      src={brugesChristmasMarketMarkt}
+      alt="Christmas Magic in Bruges' Market Square"
+      caption="Christmas Magic in Bruges' Market Square"
+      imgClass="aspect-[5/4] object-cover"
+    />
+  </figure>
+  <aside
+    slot="intro-media"
+    class="mt-6 max-w-3xl rounded-lg bg-[#F5F2EB] px-4 py-3 text-md leading-relaxed text-black/80"
+  >
+    <span class="font-medium text-black">💡 Pro Tip:</span> Before your trip, I'd recommend setting up an eSIM so you'll have internet access as soon as you arrive. I use <a href="https://airalo.pxf.io/c/7435210/1268485/15608" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Airalo</a> whenever I travel abroad, and having mobile data made it easy to access this map, use Google Maps, and navigate the city from the moment I landed.
+  </aside>
+  <ChristmasMarketsBruges />
+  <BelgiumBeforeFooter slot="before-footer" currentSlug={article.slug} />
+</ArticlePage>

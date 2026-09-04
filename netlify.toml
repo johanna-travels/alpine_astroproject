@@ -35,6 +35,16 @@
   to = "/sitemap-index.xml"
   status = 301
 
+[[redirects]]
+  from = "/articles/belgium-coming-soon/"
+  to = "/articles/bruges-christmas-markets/"
+  status = 301
+
+[[redirects]]
+  from = "/articles/christmas-markets-in-bruges/"
+  to = "/articles/bruges-christmas-markets/"
+  status = 301
+
 # HTML: revalidate on every visit so deploys show up immediately.
 # Hashed assets keep long-lived cache rules in public/_headers.
 # HTML: revalidate on every visit so deploys show up immediately.

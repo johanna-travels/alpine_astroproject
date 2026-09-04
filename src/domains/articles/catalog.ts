@@ -7,6 +7,7 @@ import articleBaliWhereToStay from '@/assets/articles/bali/bali-the-udaya-resort
 import articleMundukModingReviewCard from '@/assets/articles/bali/munduk-moding-plantation-review-card.webp';
 import articleMundukModingReviewHero from '@/assets/articles/bali/munduk-moding-plantation-infinity-pool-sunset.webp';
 import articleBruges from '@/assets/articles/cards/bruges.webp';
+import articleBrugesComingSoon from '@/assets/articles/bruges/shared574.webp';
 import articleGreece from '@/assets/articles/cards/greece.webp';
 import articleHongKong from '@/assets/articles/hong-kong/hong-kong.webp';
 import articleKyoto from '@/assets/articles/kyoto/kyoto-five-story-pagoda.webp';
@@ -28,7 +29,8 @@ import articleParga from '@/assets/articles/parga/parga-from-above.webp';
 import type { DestinationSlug } from '@/domains/destinations/catalog';
 import { pageUrl } from '@/lib/site';
 
-export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bali-where-to-stay' | 'munduk-moding-plantation-review' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'mt-fuji-day-trip-from-tokyo' | 'kamakura-day-trip-from-tokyo' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary' | 'tokyo-cafes' | 'tokyo-parks' | 'tokyo-temples' | 'tokyo-5-day-itinerary' | 'tokyo-where-to-stay' | 'tokyo-things-to-do';
+
+export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bali-where-to-stay' | 'bruges-christmas-markets' | 'munduk-moding-plantation-review' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'mt-fuji-day-trip-from-tokyo' | 'kamakura-day-trip-from-tokyo' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary' | 'tokyo-cafes' | 'tokyo-parks' | 'tokyo-temples' | 'tokyo-5-day-itinerary' | 'tokyo-where-to-stay' | 'tokyo-things-to-do';
 
 export interface Article {
   slug: ArticleSlug;
@@ -466,6 +468,24 @@ export const articles: readonly Article[] = [
     seoTitle: 'Bruges Travel Guide — Voyaflair',
     seoDescription:
       'Top things to do in Bruges — favorite cafés, chocolate spots, scenic walks, and hidden gems from a personal travel guide.',
+  },
+  {
+    slug: 'bruges-christmas-markets',
+    destinationSlug: 'belgium',
+    category: 'BELGIUM',
+    title: 'Christmas Markets in Bruges 2026',
+    carouselTitle: 'Christmas Markets in Bruges 2026',
+    breadcrumbTitle: 'Christmas Markets',
+    metaLabel: 'Belgium',
+    alt: 'Christmas Markets in Bruges',
+    image: articleBrugesComingSoon,
+    publishedDate: '4 September 2026',
+    dateLabel: 'Published',
+    intro: [
+      "The coziest season of the year is almost here, and you're probably already dreaming of Christmassy things to do this winter in Europe. I totally get you because I do exactly the same thing, and if you're thinking of spending some time in Bruges this Christmas, I'll tell you that it's one of the most magical destinations you can choose. Imagine medieval streets, cobblestone streets, cozy cafés, Belgian hot chocolate and fresh waffles, not to mention two Christmas markets in this little charming city.",
+      "I visited Bruges in November last year for my birthday, and I feel so lucky I was able to experience it with all the Christmas decorations and at its coziest. Before I give you all the details about the two Christmas markets in Bruges, I will mention some things that I truly believe will help you plan your trip.",
+    ],
+    lead: 'A guide to Christmas markets in Bruges 2026 — medieval streets, cozy cafés, Belgian hot chocolate and fresh waffles.',
   },
 ] as const;
 

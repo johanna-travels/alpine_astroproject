@@ -1,0 +1,173 @@
+---
+import ArticleImage from "@/components/ui/ArticleImage.astro";
+import ArticleClosingNote from "@/components/articles/ArticleClosingNote.astro";
+import ArticlePinSaveSection from "@/components/articles/ArticlePinSaveSection.astro";
+import ArticleShareBar from "@/components/articles/ArticleShareBar.astro";
+import GetYourGuideActivities from "@/components/articles/GetYourGuideActivities.astro";
+import oldChocolateHouse from "@/assets/articles/bruges/the-old-chocolate-house-bruges.webp";
+import ottoWaffleChristmas from "@/assets/articles/bruges/otto-waffle-atelier-bruges-christmas.webp";
+import ottoBelgianWaffle from "@/assets/articles/bruges/otto-waffle-atelier-bruges-belgian-waffle.webp";
+import rozenhoedkaaiSunset from "@/assets/articles/bruges/bruges-rozenhoedkaai-sunset.webp";
+import christmasMarketPin from "@/assets/articles/bruges/christmas-market-bruges.webp";
+import chocolateLineChristmasDisplay from "@/assets/articles/bruges/christmas-display-at-the -chocolate-line-bruges.webp";
+import chocolateLinePralines from "@/assets/articles/bruges/the-chocolate-line-bruges-chocolate-pralines.webp";
+import christmasMarketHotDrink from "@/assets/articles/bruges/hot-drink-christmas-market-bruges.webp";
+import marketSquareBuildings from "@/assets/articles/bruges/colorful-buildings-around-market-square-bruges .webp";
+import burgSquareChristmas from "@/assets/articles/bruges/bruges-burg-square-christmas.webp";
+
+const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0";
+---
+
+<section id="section-0" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">How to get to Bruges?</h2>
+  </div>
+  <div class={prose}>
+    <ArticleImage src={rozenhoedkaaiSunset} alt="Rozenhoedkaai canal view at sunset in Bruges" caption="Sunset at Rozenhoedkaai" imgClass="aspect-[5/4] object-cover" />
+    <p>There are many ways to get to Bruges, and it depends on where you're traveling from. If you're not too close to Belgium and need to take a plane like me, then you need to go to Brussels Airport, and from there, you have two options: either by train or by bus. It depends on your budget, and the journey takes about an hour. Otherwise, if you're traveling from Paris, London or maybe another nearby European city, you can easily take the train. For my train routes around Europe, I trust the OMIO app, which is so reliable and makes my trips easier.</p>
+  </div>
+</section>
+
+<section id="section-1" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Where to stay in Bruges?</h2>
+  </div>
+  <div class={prose}>
+    <p>One of the things I really love about Bruges at Christmas is that the hotels don't disappoint you. On the contrary, they are decorated so beautifully and make you feel even cozier at the best time of the year. Here are my top 3 recommendations:</p>
+    <iframe
+      id="stay22-widget"
+      title="Find hotels in Bruges"
+      width="100%"
+      height="428"
+      src="https://stay22.com/embed/6a786c6d810a3d69a6e37f60"
+      loading="lazy"
+      class="my-5 max-w-3xl md:my-8"
+    ></iframe>
+    <p><a href="https://www.booking.com/hotel/be/grand-casselbergh.en.html?aid=311984;label=grand-casselbergh-BWTXYVHV7pczflfS2SWgCwS162166631654:pl:ta:p1:p2:ac:ap:neg:fi:tiaud-2382347442848:kwd-2462194784567:lp9215685:li:dec:dm:ppccp=UmFuZG9tSVYkc2RlIyh9YTQUGSsRwx9_3qo3uPTHyoo;ws=&amp;gad_source=1&amp;gad_campaignid=345377325&amp;gbraid=0AAAAAD_Ls1JcJoKGv-bDO_xEUyR_8jo-l&amp;gclid=Cj0KCQjwjIPSBhCCARIsABGyK7v3GppakHjcNeySmO3LRUw8hkUb9FhWuWQq6_BStOGHKGqIImHCIjIaAocJEALw_wcB" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Grand Hotel Casselbergh</a> – It's the hotel I chose to stay at during my visit, and I really loved its historic charm, the beautifully decorated lobbies, the breakfast hall and the spa area, which became my favorite place to unwind after exploring the city.</p>
+    <p><a href="https://www.booking.com/searchresults.el.html?aid=311101&amp;label=kempinski-dukes-palace-yAEHdS4i_JAJlfQrt_iTGgS393787235460%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atiaud-2382347442848%3Akwd-11459642348%3Alp9215685%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tSVYkc2RlIyh9YdK51rZczkDIIFcISQDJ03M&amp;highlighted_hotels=21393&amp;redirected=1&amp;city=-1955473&amp;hlrd=no_dates&amp;source=hotel&amp;expand_sb=1&amp;keep_landing=1&amp;sid=4549fda57178532c9550e5b777971968" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Hotel Dukes' Palace</a> – one of the most iconic hotels in Bruges, perfect if you're looking for a luxurious stay in the heart of the city, with elegant interiors, a beautiful garden, and a relaxing spa.</p>
+    <p><a href="https://www.booking.com/searchresults.html?aid=318615&amp;label=New_English_EN_NO_26744719945-majgVF6O8AS2_zovx7raAgS640874750395%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi55287309551%3Atidsa-355815316927%3Alp9215685%3Ali%3Adec%3Adm%3Aag26744719945%3Acmp394170865&amp;gclid=Cj0KCQjwjIPSBhCCARIsABGyK7tBWiz-BKDzH0JYn_pfzNipODJ6WQKnHN09Me3jIHMXPbjytNG1ltsaAhFuEALw_wcB&amp;highlighted_hotels=21399&amp;redirected=1&amp;city=-1955473&amp;hlrd=no_dates&amp;source=hotel&amp;expand_sb=1&amp;keep_landing=1&amp;sid=4549fda57178532c9550e5b777971968" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Hotel De Orangerie by CW Hotel Collection</a> – A charming boutique hotel with romantic canal views, elegant interiors and a cozy atmosphere that feels especially magical during the Christmas season.</p>
+  </div>
+</section>
+
+<section id="section-2" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">What to do in Bruges?</h2>
+  </div>
+  <div class={prose}>
+    <p>I have already written an article about my 10 best things to do in Bruges. Here is a short list of them:</p>
+    <p>1. Explore Markt (Market Square) and climb the Belfry Tower of Bruges</p>
+    <p>2. Admire the views at Rozenhoedkaai</p>
+    <p>3. Experience Belgian hot chocolate at the Old Chocolate House</p>
+    <p>4. Experience the magic of Boniface Bridge</p>
+    <p>5. Try traditional Belgian food at De Gastro</p>
+    <p>6. Explore Bruges' canals</p>
+    <p>7. Take a walk around Minnewater, the Lake of Love</p>
+    <p>8. Step into Bruges' history at Burg Square</p>
+    <p>9. Enjoy a waffle by the canal at Otto Waffle Atelier</p>
+    <p>10. Treat yourself to Belgian pralines at The Chocolate Line</p>
+    <p>📖 You can read my full Bruges guide <a href="/articles/bruges-guide/" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">here</a>.</p>
+    <GetYourGuideActivities
+      tourIds="453315"
+      numberOfItems={1}
+      poweredByHref="https://www.getyourguide.com/bruges-l854/"
+    />
+  </div>
+</section>
+
+<section id="section-3" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">What are the best Christmassy things to do in Bruges?</h2>
+  </div>
+  <div class={prose}>
+    <p>Of course, one of the most Christmassy things you can do in Bruges is visit one of its Christmas markets. But beyond the markets, if I had to pick my three favorite festive things to do in the city, these are the ones I wouldn't want to miss.</p>
+    <h3 class="mt-8 mb-2 text-black">1. Warm up with Belgian hot chocolate at The Old Chocolate House</h3>
+    <ArticleImage src={oldChocolateHouse} alt="The Old Chocolate House in Bruges" caption="The Old Chocolate House — one of the most popular spots in Bruges" />
+    <p>I can't think of a better way to take a little break from exploring Bruges' charming cobblestone streets than to cozy up with a cup of rich hot chocolate. We all know that cold weather and hot chocolate are already a match made in heaven, but everything tastes even better when it's Christmas time, and when that hot chocolate is made with Belgian chocolate!</p>
+    <p>At The Old Chocolate House, you don't simply order a hot chocolate — you get to make it yourself. Depending on the flavor you choose, you're served hot milk alongside a handmade chocolate cup filled with matching chocolates and toppings. You simply pour everything into the milk, stir, and watch it melt into your own Belgian hot chocolate.</p>
+    <h3 class="mt-8 mb-2 text-black">2. Enjoy a fresh Belgian waffle</h3>
+    <div class="grid grid-cols-2 gap-3 md:gap-4">
+      <ArticleImage src={ottoWaffleChristmas} alt="Otto Waffle Atelier decorated for Christmas in Bruges" caption="Otto Waffle Atelier at Christmas" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={ottoBelgianWaffle} alt="A Belgian waffle from Otto Waffle Atelier in Bruges" caption="Belgian waffle at Otto Waffle Atelier" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <p>One of the things Bruges is most known for is Belgian waffles, and there are plenty of places to try them. You'll find some of the best waffles at House of Waffles, Chez Albert and Otto Waffle Atelier. Personally, I loved the waffles at Otto Waffle Atelier, as you can enjoy a healthier version that is gluten- and lactose-free, with canal views and boats passing by.</p>
+    <h3 class="mt-8 mb-2 text-black">3. Take home the sweetest souvenir from Bruges</h3>
+    <div class="grid grid-cols-2 gap-3 md:gap-4">
+      <ArticleImage src={chocolateLineChristmasDisplay} alt="Christmas display at The Chocolate Line in Bruges" caption="Christmas display at The Chocolate Line" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={chocolateLinePralines} alt="Belgian chocolate pralines at The Chocolate Line in Bruges" caption="Pralines at The Chocolate Line" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <p>One of the best souvenirs you can bring home from Bruges is a box of authentic Belgian pralines. If you're looking for a traditional Belgian chocolaterie, you can visit Dumon, but my favorite by far was The Chocolate Line. I especially loved the Defender Praline, filled with hazelnut praline and popping candy, and the Gingerbread Praline, which felt especially festive and made it the perfect Christmas treat.</p>
+  </div>
+</section>
+
+<section id="section-4" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Christmas Markets in Bruges</h2>
+  </div>
+  <div class={prose}>
+    <p>Even though Bruges is a small city, it is home to two Christmas markets, making this already charming destination feel even cozier during this special time of the year. Both markets are located in the heart of the historic city centre, but each has its own atmosphere and something different to offer.</p>
+    <p>The Christmas markets will be open from Friday, 20 November 2026, to Sunday, 3 January 2027.</p>
+    <h3 class="mt-8 mb-2 text-black">Simon Stevinplein – artisan crafts and local treats</h3>
+    <p>If you're looking for the smaller and more intimate Christmas market in Bruges, head to Simon Stevinplein. It's just a two-minute walk from The Old Chocolate House and right next to my favorite chocolaterie, The Chocolate Line.</p>
+    <p>Wander around the stalls showcasing handmade gifts and Christmas decorations, and you'll also find a good selection of food stalls offering festive treats and warm drinks.</p>
+    <h3 class="mt-8 mb-2 text-black">Market Square (Markt) – festive stalls and Christmas trees</h3>
+    <div class="grid grid-cols-2 gap-3 md:gap-4">
+      <ArticleImage src={christmasMarketHotDrink} alt="A hot drink at the Christmas market in Bruges" caption="A hot drink at the Bruges Christmas market" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={marketSquareBuildings} alt="Colorful historic buildings around Market Square in Bruges" caption="Colorful buildings around Market Square" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <p>This is absolutely my favorite Christmas market in Bruges. It's the main and largest Christmas market in the city, and it takes place in Markt Square, surrounded by some of the most picturesque and photogenic historic buildings in Bruges. Here, you'll find festive wooden chalets selling everything from food and drinks to Christmas decorations, gifts and souvenirs, all creating a magical Christmas atmosphere.</p>
+    <p>The highlight, of course, is the iconic Belfry of Bruges rising above the Christmas market.</p>
+    <p>Just a short walk away, you'll also find Burg Square, where you can see the largest Christmas tree in Bruges. It's definitely worth a quick stop, especially if you're looking for a beautiful spot for Christmas photos.</p>
+    <ArticleImage src={burgSquareChristmas} alt="The Christmas tree at Burg Square in Bruges" caption="The Christmas tree at Burg Square" imgClass="aspect-[4/5] object-cover" />
+  </div>
+</section>
+
+<section id="section-5" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">FAQ</h2>
+  </div>
+  <div class={`${prose} space-y-6`}>
+    <div id="faq-0" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">1. When do the Christmas markets in Bruges open?</h3>
+      <p>The Christmas markets in Bruges will be open from Friday, 20 November 2026, to Sunday, 3 January 2027.</p>
+    </div>
+    <div id="faq-1" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">2. How many Christmas markets are there in Bruges?</h3>
+      <p>There are two Christmas markets in Bruges: one at Markt Square and a smaller one at Simon Stevinplein.</p>
+    </div>
+    <div id="faq-2" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">3. Are the Christmas markets in Bruges free to enter?</h3>
+      <p>Yes, both Christmas markets are free to enter.</p>
+    </div>
+    <div id="faq-3" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">4. Are the Christmas markets in Bruges worth visiting?</h3>
+      <p>Absolutely! Don't expect huge Christmas markets like those in Germany, as Bruges is a small city. Personally, I love that the markets are smaller and more intimate, which makes the whole experience feel extra cozy.</p>
+    </div>
+    <div id="faq-4" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">5. How long do you need to visit the Christmas markets in Bruges?</h3>
+      <p>You can comfortably visit both markets in a few hours, especially as they are located close to each other in the city centre.</p>
+    </div>
+  </div>
+</section>
+
+<section id="section-6" class="scroll-mt-nav">
+  <div class={prose}>
+    <ArticleClosingNote label="Before you go">
+      <p>After experiencing Bruges during the festive season, I can honestly say it's a place I would happily return to. Seeing this charming city dressed in Christmas lights, with its cozy markets and festive atmosphere, is an unforgettable experience. So, if you're looking for a magical European getaway this Christmas, I wouldn't think twice about choosing Bruges. It's a place that truly deserves to be experienced during the most wonderful time of the year.</p>
+    </ArticleClosingNote>
+
+    <ArticlePinSaveSection>
+      <ArticleImage
+        src={christmasMarketPin}
+        alt="Christmas Markets in Bruges 2026 — save this festive guide"
+        figureClass="m-0"
+        pinOnHover
+      />
+
+      <ArticleShareBar
+        title="Christmas Markets in Bruges 2026"
+        pinImage={christmasMarketPin}
+        class="mt-6 md:mt-8"
+      />
+    </ArticlePinSaveSection>
+  </div>
+</section>

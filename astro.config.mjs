@@ -21,6 +21,10 @@ export default defineConfig({
   site: process.env.SITE_URL || 'https://voyaflair.com',
   base: process.env.BASE_PATH ?? '/',
   trailingSlash: 'always',
+  redirects: {
+    '/articles/belgium-coming-soon': '/articles/bruges-christmas-markets',
+    '/articles/christmas-markets-in-bruges': '/articles/bruges-christmas-markets',
+  },
   compressHTML: true,
   devToolbar: {
     enabled: process.env.PLAYWRIGHT !== '1',
