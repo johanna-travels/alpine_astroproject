@@ -168,7 +168,7 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
                 beautiful together.
               
                   Start a conversation by filling out the form below or sending us an email at 
-                   <a href="mailto:voyaflair@gmail.com" className="text-blue-600 dark:text-red-400 font-medium">voyaflair@gmail.com</a>
+                   <a href="mailto:voyaflair@gmail.com" className="text-blue-600 dark:text-red-400 font-medium"> voyaflair@gmail.com</a>
                 
               </p>
             </div>
