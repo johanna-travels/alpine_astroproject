@@ -16,6 +16,6 @@ fi
 
 echo "Using: $(pwd)/.env"
 echo "Importing .env into Netlify (linked site)..."
-npx netlify env:import .env --replace-existing
+npx --yes netlify-cli env:import .env --replace-existing
 echo "Done. If API still returns Unauthorized, trigger one Netlify deploy (Deploys → Trigger deploy)."
 echo "Test with: npm run newsletter:dry-run"
