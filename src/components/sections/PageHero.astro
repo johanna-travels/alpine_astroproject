@@ -23,23 +23,21 @@ const {
   imageClass = 'object-center',
 } = Astro.props;
 
-const desktopBgPosition = imageClass.includes('lg:object-right')
-  ? 'right center'
-  : imageClass.includes('lg:object-left')
-    ? 'left center'
-    : imageClass.includes('object-right') && !imageClass.includes('lg:object-center')
-      ? 'right center'
-      : imageClass.includes('object-left') && !imageClass.includes('lg:object-center')
-        ? 'left center'
-        : 'center';
+// const desktopBgPosition = imageClass.includes('lg:object-right')
+//   ? 'right center'
+//   : imageClass.includes('lg:object-left')
+//     ? 'left center'
+//     : imageClass.includes('object-right') && !imageClass.includes('lg:object-center')
+//       ? 'right center'
+//       : imageClass.includes('object-left') && !imageClass.includes('lg:object-center')
+//         ? 'left center'
+//         : 'center';
 
 const mobileImageClass = imageClass.replace(/\blg:\S+/g, '').trim() || 'object-center';
 ---
 
 <div
-  class="page-hero relative mx-[10px] flex min-h-[300px] h-[50vw] max-h-[500px] flex-col justify-end overflow-hidden rounded-[30px] bg-cover bg-no-repeat lg:aspect-[21/9] lg:h-auto lg:max-h-[710px] lg:bg-fixed"
-  style={`--hero-desktop-image: url('${desktopImageSrc}'); --hero-desktop-position: ${desktopBgPosition};`}
->
+  class="page-hero relative mx-[10px] flex min-h-[300px] h-[50vw] max-h-[500px] flex-col justify-end overflow-hidden rounded-[30px] bg-cover bg-no-repeat lg:aspect-[21/9] lg:h-auto lg:max-h-[710px] lg:bg-fixed">
   <img
     src={imageSrc}
     srcset={imageSrcSet}
@@ -47,7 +45,15 @@ const mobileImageClass = imageClass.replace(/\blg:\S+/g, '').trim() || 'object-c
     alt={imageAlt}
     fetchpriority="high"
     decoding="async"
+    loading="eager"
     class:list={['pointer-events-none absolute inset-0 z-0 h-full w-full object-cover lg:hidden', mobileImageClass]}
+  />
+  <img
+    src={desktopImageSrc}
+    alt=""
+    loading="eager"
+    fetchpriority="high"
+    class="hidden lg:block absolute inset-0 z-0 h-full w-full object-cover pointer-events-none"
   />
   <div class="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
 
@@ -61,11 +67,11 @@ const mobileImageClass = imageClass.replace(/\blg:\S+/g, '').trim() || 'object-c
 </div>
 
 <style>
-  @media (min-width: 1024px) {
+  /* @media (min-width: 1024px) {
     .page-hero {
       background-image: var(--hero-desktop-image);
       background-size: cover;
       background-position: var(--hero-desktop-position);
     }
-  }
+  } */
 </style>

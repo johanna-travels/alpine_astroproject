@@ -141,7 +141,7 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
   return (
     <div className={`w-full dark:bg-neutral-900 ${className}`} style={{ backgroundColor: '#F5F2EB' }}>
       <div
-        className={`mx-auto grid max-w-[1300px] gap-8 px-0 md:px-6 md:py-8 lg:gap-12 lg:px-16 lg:py-16 xl:gap-16 xl:px-20 ${stacked ? 'pb-10 pt-0' : 'py-10'} ${showImage ? 'grid-cols-1 lg:grid-cols-2' : 'grid-cols-1 place-items-center'}`}
+        className={`mx-auto grid max-w-[1300px] gap-8 px-0 md:px-6 md:py-8 lg:gap-12 lg:px-16 lg:py-16 xl:gap-16 xl:px-20 ${stacked ? 'pb-16 pt-0' : 'py-10'} ${showImage ? 'grid-cols-1 lg:grid-cols-2' : 'grid-cols-1 place-items-center'}`}
       >
         {/* Left Column - Single static image */}
         {showImage && (
