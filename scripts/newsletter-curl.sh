@@ -7,6 +7,7 @@ cd "$ROOT"
 ENV_FILE="${ENV_FILE:-.env}"
 DRY_RUN="${DRY_RUN:-true}"
 SLUG="${SLUG:-munduk-moding-plantation-review}"
+# Προεπιλογή: production. Τα newsletter:*-local στο package.json περνάνε localhost:4321.
 SITE="${SITE:-https://voyaflair.com}"
 
 if [[ ! -f "$ENV_FILE" ]]; then

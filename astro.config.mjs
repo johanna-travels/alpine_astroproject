@@ -1,3 +1,4 @@
+import { getAstroCspConfig } from './src/lib/csp.ts';
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
@@ -17,7 +18,8 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 export default defineConfig({
   output: 'static',
-  adapter: isProduction ? netlify() : undefined,
+  // staticHeaders: το Astro στέλνει το CSP ως HTTP header (hashes ανά σελίδα), όχι μόνο meta.
+  adapter: isProduction ? netlify({ staticHeaders: true }) : undefined,
   site: process.env.SITE_URL || 'https://voyaflair.com',
   base: process.env.BASE_PATH ?? '/',
   trailingSlash: 'always',
@@ -26,6 +28,10 @@ export default defineConfig({
     '/articles/christmas-markets-in-bruges': '/articles/bruges-christmas-markets',
   },
   compressHTML: true,
+  // Hashes στα bundled scripts — χωρίς 'unsafe-inline' στο script-src.
+  security: {
+    csp: getAstroCspConfig(),
+  },
   devToolbar: {
     enabled: process.env.PLAYWRIGHT !== '1',
   },

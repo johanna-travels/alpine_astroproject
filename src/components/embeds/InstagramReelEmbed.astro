@@ -33,7 +33,8 @@ const cleanPermalink = instagramPermalink(permalink);
   </blockquote>
 </figure>
 
-<script is:inline>
+<script>
+  // Χωρίς is:inline ώστε το Astro να βάλει hash· το embed.js μένει στο script-src allowlist.
   (function () {
     const EMBED_SRC = 'https://www.instagram.com/embed.js';
 

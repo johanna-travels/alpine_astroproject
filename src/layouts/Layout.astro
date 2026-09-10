@@ -4,11 +4,9 @@ import Stay22LetMeAllez from '@/components/affiliate/Stay22LetMeAllez.astro';
 import GetYourGuideProvider from '@/components/affiliate/GetYourGuideProvider.astro';
 import BgLayer from '@/components/layout/bg-layer/BgLayer.astro';
 import CookieConsent from '@/components/layout/CookieConsent.astro';
-import { googleAnalyticsCsp, getGaMeasurementId, isGoogleAnalyticsEnabled } from '@/lib/analytics';
-import { instagramCsp } from '@/lib/instagram';
-import { googleMapsCsp } from '@/lib/maps';
-import { getYourGuideCsp } from '@/lib/getyourguide';
-import { stay22Csp, isStay22Enabled } from '@/lib/stay22';
+import { getGaMeasurementId, isGoogleAnalyticsEnabled } from '@/lib/analytics';
+import { buildContentSecurityPolicy } from '@/lib/csp';
+import { isStay22Enabled } from '@/lib/stay22';
 import { homeUrl } from '@/lib/site';
 
 interface Props {
@@ -52,21 +50,12 @@ const organizationSchema = JSON.stringify({
   logo: logoUrl,
 });
 
-const csp = [
-  "default-src 'self'",
-  "base-uri 'self'",
-  "object-src 'none'",
-  `img-src 'self' data: blob: ${getYourGuideCsp.imgSrc} ${stay22Csp.imgSrc}${googleAnalyticsEnabled ? ` ${googleAnalyticsCsp.imgSrc}` : ''} ${instagramCsp.imgSrc}`,
-  "media-src 'self' blob:",
-  "font-src 'self' data:",
-  "style-src 'self' 'unsafe-inline'",
-  `script-src 'self' 'unsafe-inline' ${getYourGuideCsp.scriptSrc}${stay22Enabled ? ` ${stay22Csp.scriptSrc}` : ''}${isDev ? " 'unsafe-eval'" : ''}${googleAnalyticsEnabled ? ` ${googleAnalyticsCsp.scriptSrc}` : ''} ${instagramCsp.scriptSrc}`,
-  `connect-src 'self' ${getYourGuideCsp.connectSrc} ${stay22Csp.connectSrc}${isDev ? " ws://localhost:* wss://localhost:*" : ''}${googleAnalyticsEnabled ? ` ${googleAnalyticsCsp.connectSrc}` : ''} ${instagramCsp.connectSrc}`,
-  `worker-src ${stay22Csp.workerSrc}`,
-  `frame-src 'self' ${googleMapsCsp.frameSrc} ${getYourGuideCsp.frameSrc} ${instagramCsp.frameSrc} ${stay22Csp.frameSrc}`,
-  `form-action ${googleMapsCsp.formAction}`,
-  "upgrade-insecure-requests",
-].join('; ');
+// Ίδια πολιτική με πριν· εδώ μόνο τα flags (dev / Analytics / Stay22).
+const csp = buildContentSecurityPolicy({
+  isDev,
+  googleAnalyticsEnabled,
+  stay22Enabled,
+});
 
 const permissionsPolicy = [
   "camera=()",
@@ -74,7 +63,7 @@ const permissionsPolicy = [
   "geolocation=()",
   "payment=()",
   "usb=()",
-  'fullscreen=(self "https://www.google.com" "https://www.instagram.com")',
+  'fullscreen=(self "https://www.google.com" "https://www.instagram.com")', 
 ].join(', ');
 
 ---
@@ -84,7 +73,8 @@ const permissionsPolicy = [
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="Content-Security-Policy" content={csp} />
+    {/* Στο production το Astro βάζει hashes + HTTP header· εδώ μόνο για local Vite. */}
+    {isDev && <meta http-equiv="Content-Security-Policy" content={csp} />}
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta http-equiv="Permissions-Policy" content={permissionsPolicy} />

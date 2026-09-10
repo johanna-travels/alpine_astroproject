@@ -1,6 +1,6 @@
 import { articles, getArticle, articleHref, type ArticleSlug } from '@/domains/articles/catalog';
 import { buildArticleEmailContent, buildOutgoingNewsletterEmail } from '@/lib/newsletter';
-import { getResendSender } from '@/lib/email';
+import { getResendSender, isBlockedNewsletterRecipient } from '@/lib/email'; // Φιλτράρουμε blocked test emails πριν το Resend.
 import { getServerEnv } from '@/lib/serverEnv';
 import { getSupabaseAdmin } from '@/lib/supabaseAdmin';
 import { getActiveSubscribersForNewsletter, getSubscriberStats } from '@/lib/subscribers';
@@ -9,8 +9,6 @@ import { Resend } from 'resend';
 import type { APIRoute } from 'astro';
 
 export const prerender = false;
-
-const BATCH_SIZE = 50;
 
 function isAuthorized(request: Request): boolean {
   const secret = getServerEnv('NEWSLETTER_ADMIN_SECRET');
@@ -109,18 +107,22 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    const recipients = await getActiveSubscribersForNewsletter(supabaseAdmin);
+    const allRecipients = await getActiveSubscribersForNewsletter(supabaseAdmin);
+    // Χωρίζουμε αληθινούς παραλήπτες από blocked test domains (π.χ. example.com).
+    const skippedBlocked = allRecipients.filter((row) => isBlockedNewsletterRecipient(row.email));
+    const recipients = allRecipients.filter((row) => !isBlockedNewsletterRecipient(row.email));
     const subscriberStats = await getSubscriberStats(supabaseAdmin);
     const articleUrl = new URL(articleHref(article.slug as ArticleSlug), absoluteUrl()).href;
     const emailContent = buildArticleEmailContent(article, articleUrl, articleImageUrl(article));
 
-    if (recipients.length === 0) {
+    if (allRecipients.length === 0) {
       return new Response(
         JSON.stringify({
           message: 'No active subscribers with travel updates enabled.',
           article: article.slug,
           sent: 0,
           recipients: 0,
+          skippedBlockedRecipients: 0, // Πόσοι κόπηκαν ως test/blocked domains.
           subscribers: subscriberStats,
           dryRun,
         }),
@@ -135,12 +137,25 @@ export const POST: APIRoute = async ({ request }) => {
           article: article.slug,
           subject: emailContent.title,
           recipients: recipients.length,
+          skippedBlockedRecipients: skippedBlocked.length, // Δεν στάλθηκαν· ήταν test domains.
           subscribers: subscriberStats,
           previewUrl: articleUrl,
           bodyParagraphs: emailContent.bodyParagraphs ?? [emailContent.excerpt],
           dryRun: true,
         }),
         { status: 200, headers: { 'Content-Type': 'application/json' } },
+      );
+    }
+
+    // Όλοι οι ενεργοί είναι blocked — σταματάμε πριν καλέσουμε το Resend.
+    if (recipients.length === 0) {
+      return new Response(
+        JSON.stringify({
+          error: 'No sendable recipient addresses',
+          detail: 'Every active subscriber uses a blocked test domain (for example example.com).',
+          skippedBlockedRecipients: skippedBlocked.length,
+        }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } },
       );
     }
 
@@ -157,17 +172,15 @@ export const POST: APIRoute = async ({ request }) => {
     let sent = 0;
     const failures: string[] = [];
 
-    for (let index = 0; index < outgoing.length; index += BATCH_SIZE) {
-      const batch = outgoing.slice(index, index + BATCH_SIZE);
-      const { data, error } = await resend.batch.send(batch);
-
+    // Ένα-ένα αντί για batch: ένα κακό email δεν πρέπει να ρίξει όλη την αποστολή.
+    for (const message of outgoing) {
+      const { error } = await resend.emails.send(message);
       if (error) {
-        console.error('Newsletter batch error:', error);
+        console.error('Newsletter send error:', error);
         failures.push(error.message);
         continue;
       }
-
-      sent += data?.data?.length ?? batch.length;
+      sent += 1;
     }
 
     if (sent === 0 && failures.length > 0) {
@@ -175,6 +188,8 @@ export const POST: APIRoute = async ({ request }) => {
         JSON.stringify({
           error: 'Failed to send newsletter',
           detail: failures[0],
+          failed: failures.length,
+          skippedBlockedRecipients: skippedBlocked.length, // Blocked δεν μετράνε ως αποτυχία Resend.
         }),
         { status: 500, headers: { 'Content-Type': 'application/json' } },
       );
@@ -186,7 +201,8 @@ export const POST: APIRoute = async ({ request }) => {
         article: article.slug,
         subject: emailContent.title,
         sent,
-        failedBatches: failures.length,
+        failed: failures.length,
+        skippedBlockedRecipients: skippedBlocked.length, // Πόσοι παραλήπτες κόπηκαν πριν την αποστολή.
       }),
       { status: 200, headers: { 'Content-Type': 'application/json' } },
     );

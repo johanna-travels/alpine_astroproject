@@ -15,7 +15,9 @@
     "test:ui": "vitest --ui",
     "env:push-netlify": "bash scripts/push-env-to-netlify.sh",
     "newsletter:dry-run": "DRY_RUN=true bash scripts/newsletter-curl.sh",
-    "newsletter:send": "DRY_RUN=false bash scripts/newsletter-curl.sh"
+    "newsletter:send": "DRY_RUN=false bash scripts/newsletter-curl.sh",
+    "newsletter:dry-run-local": "SITE=http://localhost:4321 DRY_RUN=true bash scripts/newsletter-curl.sh",
+    "newsletter:send-local": "SITE=http://localhost:4321 DRY_RUN=false bash scripts/newsletter-curl.sh"
   },
   "dependencies": {
     "@astrojs/netlify": "^7.0.13",

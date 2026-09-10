@@ -10,6 +10,24 @@ export function parseSenderEmail(raw: string): string {
   return (match ? match[1] : trimmed).trim();
 }
 
+/** Τομείς που το Resend απορρίπτει — αν μπουν στη λίστα, αποτυγχάνει όλη η αποστολή. */
+const BLOCKED_RECIPIENT_DOMAINS = new Set([
+  'example.com',
+  'example.net',
+  'example.org',
+  'test.com',
+  'test.net',
+  'test.org',
+  'invalid',
+  'localhost',
+]);
+
+/** Ελέγχει αν το email είναι δοκιμαστικό/blocked, ώστε να μην το στείλουμε στο Resend. */
+export function isBlockedNewsletterRecipient(email: string): boolean {
+  const domain = email.trim().toLowerCase().split('@').pop() ?? '';
+  return BLOCKED_RECIPIENT_DOMAINS.has(domain);
+}
+
 /** Resend "from" — always shows "Voyaflair" in the inbox. */
 export function formatResendSender(fromEmail: string): string {
   return `${SENDER_DISPLAY_NAME} <${parseSenderEmail(fromEmail)}>`;
