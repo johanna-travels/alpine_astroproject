@@ -245,19 +245,16 @@ const cookiePolicyUrl = pageUrl('cookie-policy');
 
     window.__voyaflairGaLoaded = true;
     window.dataLayer = window.dataLayer || [];
-    window.gtag =
-      window.gtag ||
-      function gtag(...args: unknown[]) {
-        window.dataLayer?.push(args);
-      };
+    // arguments, όπως το επίσημο snippet: array στην ουρά → το gtag.js δεν στέλνει hit.
+    window.gtag = function gtag() {
+      window.dataLayer?.push(arguments as unknown);
+    };
+    window.gtag('js', new Date());
+    window.gtag('config', gaMeasurementId, { anonymize_ip: true });
 
     const script = document.createElement('script');
     script.async = true;
     script.src = `https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`;
-    script.onload = () => {
-      window.gtag('js', new Date());
-      window.gtag('config', gaMeasurementId, { anonymize_ip: true });
-    };
     document.head.appendChild(script);
   }
 

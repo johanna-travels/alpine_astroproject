@@ -23,18 +23,16 @@ const { measurementId } = Astro.props;
 
   if (measurementId) {
     window.dataLayer = window.dataLayer || [];
-    function gtag(...args: unknown[]) {
-      window.dataLayer?.push(args);
+    function gtag() {
+      window.dataLayer?.push(arguments as unknown);
     }
     window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', measurementId, { anonymize_ip: true });
 
     const loader = document.createElement('script');
     loader.async = true;
     loader.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-    loader.onload = () => {
-      gtag('js', new Date());
-      gtag('config', measurementId, { anonymize_ip: true });
-    };
     document.head.appendChild(loader);
 
     document.addEventListener('astro:page-load', () => {

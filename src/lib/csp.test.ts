@@ -3,11 +3,20 @@ import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import {
   getAstroCspConfig,
+  getCspDirectives,
   getCspScriptResources,
   PRODUCTION_CSP_OPTIONS,
 } from '@/lib/csp';
 
 describe('production CSP', () => {
+  it('allows GA4 collect endpoints so Accept can show in Realtime', () => {
+    const connect = getCspDirectives(PRODUCTION_CSP_OPTIONS).find((row) =>
+      row.startsWith('connect-src'),
+    );
+    expect(connect).toContain('https://www.googletagmanager.com');
+    expect(connect).toContain('https://*.analytics.google.com');
+  });
+
   it('does not allow script unsafe-inline (Astro hashes instead)', () => {
     expect(getCspScriptResources(PRODUCTION_CSP_OPTIONS)).not.toContain("'unsafe-inline'");
     expect(getAstroCspConfig().scriptDirective.resources).not.toContain("'unsafe-inline'");
