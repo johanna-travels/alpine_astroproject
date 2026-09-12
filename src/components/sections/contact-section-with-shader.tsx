@@ -16,6 +16,8 @@ type ContactSectionProps = {
   className?: string;
   /** Homepage stack: skip top padding — parent flex gap handles section spacing */
   stacked?: boolean;
+  /** Dedicated contact page: no stacked pb-16, otherwise the page bg shows above the footer on phones. */
+  flushBottom?: boolean;
 };
 
 const defaultImage = contactImage.src;
@@ -52,7 +54,7 @@ function validate(values: FormValues): FormErrors {
 
 // --- MAIN EXPORT COMPONENT ---
 // Connect with the locals
-export default function ContactSectionWithShader({ image = defaultImage, showImage = true, className = '', stacked = false }: ContactSectionProps) {
+export default function ContactSectionWithShader({ image = defaultImage, showImage = true, className = '', stacked = false, flushBottom = false }: ContactSectionProps) {
   const [values, setValues] = useState<FormValues>({
     name: "",
     email: "",
@@ -138,10 +140,17 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
         : "ring-black/10 focus:ring-neutral-400 dark:ring-white/5"
     }`;
 
+  // Ξεχωριστά pt/pb ώστε το md:py-8 να μην ξανανοίγει κενό πάνω από το footer.
+  const padClass = stacked
+    ? flushBottom
+      ? "pt-0 pb-0 md:pt-8 md:pb-0 lg:pt-16 lg:pb-0"
+      : "pt-0 pb-16 md:py-8 lg:py-16"
+    : "py-10 md:py-8 lg:py-16";
+
   return (
     <div className={`w-full dark:bg-neutral-900 ${className}`} style={{ backgroundColor: '#F5F2EB' }}>
       <div
-        className={`mx-auto grid max-w-[1300px] gap-8 px-0 md:px-6 md:py-8 lg:gap-12 lg:px-16 lg:py-16 xl:gap-16 xl:px-20 ${stacked ? 'pb-16 pt-0' : 'py-10'} ${showImage ? 'grid-cols-1 lg:grid-cols-2' : 'grid-cols-1 place-items-center'}`}
+        className={`mx-auto grid max-w-[1300px] gap-8 px-0 md:px-6 lg:gap-12 lg:px-16 xl:gap-16 xl:px-20 ${padClass} ${showImage ? 'grid-cols-1 lg:grid-cols-2' : 'grid-cols-1 place-items-center'}`}
       >
         {/* Left Column - Single static image */}
         {showImage && (
@@ -157,7 +166,8 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
 
         {/* Right Column - Contact Form */}
         <div className={`flex items-center justify-center ${!showImage ? 'w-full' : ''}`}>
-          <div className={`${!showImage ? 'w-full rounded-[10px] bg-white px-[35px] pb-[35px] pt-8 shadow-sm md:px-6 lg:px-8 xl:px-10' : 'max-w-lg rounded-3xl px-4 pb-8 pt-8 md:px-6 lg:px-8 xl:px-10'}`}>
+          {/* Κάτω γωνίες ίσιες όταν ακουμπάει το footer — αλλιώς φαίνεται το cream bg. */}
+          <div className={`${!showImage ? `w-full bg-white px-[35px] pb-[35px] pt-8 shadow-sm md:px-6 lg:px-8 xl:px-10 ${flushBottom ? 'rounded-t-[10px] rounded-b-none' : 'rounded-[10px]'}` : 'max-w-lg rounded-3xl px-4 pb-8 pt-8 md:px-6 lg:px-8 xl:px-10'}`}>
             <div>
               <h1 className="m-0 text-black dark:text-white" style={{ fontSize: "clamp(24px, 4vw, 48px)" }}>
                 Let's Talk

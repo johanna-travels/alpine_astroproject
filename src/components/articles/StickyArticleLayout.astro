@@ -10,7 +10,11 @@ const { sections } = Astro.props;
 const tocTargets = flattenTocTargets(sections);
 ---
 
-<div class="article-layout mx-auto w-full max-w-6xl" data-article-toc>
+<div
+  class="article-layout mx-auto w-full max-w-6xl"
+  data-article-toc
+  data-toc-targets={JSON.stringify(tocTargets)}
+>
   <div class="article-layout__body">
     <!-- Desktop: slim sticky sidebar -->
     <aside class="article-layout__aside hidden lg:block">
@@ -209,16 +213,27 @@ const tocTargets = flattenTocTargets(sections);
   }
 </style>
 
-<script define:vars={{ tocTargets }}>
+<script>
+  // IDs στο data-toc-targets: define:vars έκανε inline script χωρίς hash και το CSP το έκοβε.
   function initArticleToc() {
     const root = document.querySelector("[data-article-toc]");
-    if (!root || root.dataset.bound === "true") return;
+    if (!(root instanceof HTMLElement) || root.dataset.bound === "true") return;
     root.dataset.bound = "true";
+
+    let tocTargets: string[] = [];
+    try {
+      const parsed = JSON.parse(root.getAttribute("data-toc-targets") ?? "[]") as unknown;
+      tocTargets = Array.isArray(parsed)
+        ? parsed.filter((id): id is string => typeof id === "string")
+        : [];
+    } catch {
+      tocTargets = [];
+    }
 
     const mobileRoot = root.querySelector("[data-toc-mobile-root]");
     const expandBtn = root.querySelector("[data-toc-expand]");
     const collapseBtn = root.querySelector("[data-toc-collapse]");
-    const setPanelOpen = (open) => {
+    const setPanelOpen = (open: boolean) => {
       mobileRoot?.classList.toggle("is-expanded", open);
       expandBtn?.classList.toggle("hidden", open);
       collapseBtn?.classList.toggle("hidden", !open);
@@ -226,15 +241,17 @@ const tocTargets = flattenTocTargets(sections);
       collapseBtn?.setAttribute("aria-expanded", String(open));
     };
 
-    const setActive = (targetId) => {
-      root.querySelectorAll("[data-toc-target]").forEach((link) => {
+    const setActive = (targetId: string) => {
+      root.querySelectorAll<HTMLElement>("[data-toc-target]").forEach((link) => {
         const isActive = link.dataset.tocTarget === targetId;
         link.setAttribute("aria-current", isActive ? "true" : "false");
       });
     };
 
     root.addEventListener("click", (event) => {
-      const link = event.target.closest("[data-toc-target]");
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+      const link = target.closest<HTMLElement>("[data-toc-target]");
       if (!link) return;
 
       const targetId = link.dataset.tocTarget;
@@ -250,7 +267,7 @@ const tocTargets = flattenTocTargets(sections);
 
     const observed = tocTargets
       .map((id) => document.getElementById(id))
-      .filter(Boolean);
+      .filter((section): section is HTMLElement => section instanceof HTMLElement);
 
     if (observed.length === 0) return;
 

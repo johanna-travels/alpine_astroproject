@@ -4,17 +4,28 @@ import { getStay22LmaId } from '@/lib/stay22';
 const lmaId = getStay22LmaId() ?? '';
 ---
 
-{/* Top-level script ώστε το Astro να το κάνει hash· χωρίς lmaId δεν φορτώνει τίποτα. */}
-<script define:vars={{ lmaId }}>
-  if (lmaId) {
-    (function (s, t, a, y, twenty, two) {
-      s.Stay22 = s.Stay22 || {};
-      s.Stay22.params = { lmaID: lmaId };
-      twenty = t.createElement(a);
-      two = t.getElementsByTagName(a)[0];
-      twenty.async = 1;
-      twenty.src = y;
-      two.parentNode.insertBefore(twenty, two);
-    })(window, document, 'script', 'https://scripts.stay22.com/letmeallez.js');
-  }
-</script>
+{lmaId && (
+  <>
+    {/* ID στο HTML, όχι στο script: το define:vars έκανε inline χωρίς hash και το CSP έκοβε το Stay22 (άρα τις προμήθειες). */}
+    <meta name="stay22-lma-id" content={lmaId} />
+    <script>
+      declare global {
+        interface Window {
+          Stay22?: { params?: { lmaID: string } };
+        }
+      }
+
+      const lmaId =
+        document.querySelector('meta[name="stay22-lma-id"]')?.getAttribute('content') ?? '';
+
+      if (lmaId) {
+        window.Stay22 = window.Stay22 || {};
+        window.Stay22.params = { lmaID: lmaId };
+        const stay22Loader = document.createElement('script');
+        stay22Loader.async = true;
+        stay22Loader.src = 'https://scripts.stay22.com/letmeallez.js';
+        document.head.appendChild(stay22Loader);
+      }
+    </script>
+  </>
+)}

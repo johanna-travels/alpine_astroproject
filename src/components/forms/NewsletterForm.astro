@@ -66,6 +66,7 @@ const rowClass = isArticle
   novalidate
   data-newsletter-form
   data-variant={variant}
+  data-api-path={apiPath}
 >
   <div class={rowClass}>
     <div class:list={['relative', isArticle ? 'flex-1 sm:max-w-xs' : 'flex-1']}>
@@ -136,18 +137,21 @@ const rowClass = isArticle
   </style>
 )}
 
-<script define:vars={{ apiPath }}>
+<script>
+  // Path στο data-api-path: define:vars έκανε inline script χωρίς hash και το CSP έκοβε την εγγραφή.
   function initNewsletterForms() {
     document.querySelectorAll("[data-newsletter-form]").forEach((form) => {
+      if (!(form instanceof HTMLFormElement)) return;
       if (form.dataset.bound === "true") return;
       form.dataset.bound = "true";
 
-      const emailInput = form.querySelector("[data-newsletter-email]");
-      const consentInput = form.querySelector("[data-newsletter-consent]");
-      const submitBtn = form.querySelector("[data-newsletter-submit]");
-      const emailError = form.querySelector("[data-newsletter-email-error]");
-      const consentError = form.querySelector("[data-newsletter-consent-error]");
-      const message = form.querySelector("[data-newsletter-message]");
+      const apiPath = form.getAttribute("data-api-path") ?? "";
+      const emailInput = form.querySelector<HTMLInputElement>("[data-newsletter-email]");
+      const consentInput = form.querySelector<HTMLInputElement>("[data-newsletter-consent]");
+      const submitBtn = form.querySelector<HTMLButtonElement>("[data-newsletter-submit]");
+      const emailError = form.querySelector<HTMLElement>("[data-newsletter-email-error]");
+      const consentError = form.querySelector<HTMLElement>("[data-newsletter-consent-error]");
+      const message = form.querySelector<HTMLElement>("[data-newsletter-message]");
 
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -168,7 +172,7 @@ const rowClass = isArticle
       emailInput?.addEventListener("input", updateSubmitState);
       consentInput?.addEventListener("change", updateSubmitState);
 
-      const setMessage = (text, type) => {
+      const setMessage = (text: string, type: string) => {
         if (!message) return;
         const isBannerForm = form.dataset.variant === "banner";
         message.textContent = text;
@@ -218,6 +222,7 @@ const rowClass = isArticle
           valid = false;
         }
         if (!valid) return;
+        if (!submitBtn || !apiPath) return;
 
         submitBtn.disabled = true;
         submitBtn.textContent = "Subscribing...";

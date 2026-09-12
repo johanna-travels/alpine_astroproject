@@ -34,11 +34,12 @@ const hero = await getResponsiveHero(heroImg);
     imageAlt="Scenic travel landscape — contact Voyaflair"
   />
 
-  <main class="relative z-10 bg-white text-neutral-900 sm:-mb-4">
+  {/* -mb-4 σε όλα τα breakpoints: το sm: άφηνε κενό στο πραγματικό κινητό, φαίνεται το page bg. */}
+  <main class="relative z-10 bg-white text-neutral-900 -mb-4">
 
     <div
-      class="flex flex-col gap-8 pb-0 pt-8 md:gap-8 md:pb-16 md:pt-10 lg:gap-12 lg:pb-24 lg:pt-12 xl:gap-16 xl:pt-16">
-      <ContactSectionWithShader client:idle showImage={false} stacked />
+      class="flex flex-col gap-8 pb-0 pt-8 md:gap-8 md:pt-10 lg:gap-12 lg:pt-12 xl:gap-16 xl:pt-16">
+      <ContactSectionWithShader client:idle showImage={false} stacked flushBottom />
     </div>
   </main>
 </PageShell>

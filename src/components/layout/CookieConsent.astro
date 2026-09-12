@@ -16,6 +16,7 @@ const cookiePolicyUrl = pageUrl('cookie-policy');
   aria-labelledby="cookie-banner-title"
   aria-describedby="cookie-banner-description"
   data-testid="cookie-banner"
+  data-ga-measurement-id={gaMeasurementId ?? ''}
 >
   <div id="cookie-banner-view" class="mx-auto max-w-7xl px-4 py-3 sm:px-6 sm:py-4">
     <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
@@ -103,7 +104,17 @@ const cookiePolicyUrl = pageUrl('cookie-policy');
   </div>
 </div>
 
-<script define:vars={{ gaMeasurementId }}>
+<script>
+  // Χωρίς define:vars: αλλιώς το script μένει inline χωρίς hash και το CSP κόβει cookies + Analytics.
+  declare global {
+    interface Window {
+      __voyaflairGaLoaded?: boolean;
+      __voyaflairOpenCookiePreferences?: () => void;
+      dataLayer?: unknown[];
+      gtag?: (...args: unknown[]) => void;
+    }
+  }
+
   const CONSENT_KEY = 'voyaflair_cookie_consent';
   const PREFERENCES_KEY = 'voyaflair_cookie_preferences';
   const CONSENT_ACCEPTED = 'accepted';
@@ -123,7 +134,7 @@ const cookiePolicyUrl = pageUrl('cookie-policy');
   }
 
   function getAnalyticsToggle() {
-    return document.getElementById('cookie-analytics-toggle');
+    return document.getElementById('cookie-analytics-toggle') as HTMLInputElement | null;
   }
 
   function readPreferences() {
@@ -229,14 +240,15 @@ const cookiePolicyUrl = pageUrl('cookie-policy');
   }
 
   function loadGoogleAnalytics() {
+    const gaMeasurementId = getBanner()?.getAttribute('data-ga-measurement-id')?.trim() ?? '';
     if (!gaMeasurementId || window.__voyaflairGaLoaded) return;
 
     window.__voyaflairGaLoaded = true;
     window.dataLayer = window.dataLayer || [];
     window.gtag =
       window.gtag ||
-      function gtag() {
-        window.dataLayer.push(arguments);
+      function gtag(...args: unknown[]) {
+        window.dataLayer?.push(args);
       };
 
     const script = document.createElement('script');

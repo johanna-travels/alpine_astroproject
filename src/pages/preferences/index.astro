@@ -12,7 +12,13 @@ import { apiUrl, pageUrl } from '@/lib/site';
     <div class="max-w-2xl mx-auto">
       <h1 class="mb-8 text-neutral-900">Subscription Preferences</h1>
 
-      <div id="preferences-root" class="hidden">
+      <div
+        id="preferences-root"
+        class="hidden"
+        data-preferences-api={apiUrl('preferences')}
+        data-subscriber-api={apiUrl('subscriber')}
+        data-home-path={pageUrl()}
+      >
         <div id="preferences-unsubscribed" class="hidden mb-6 rounded-lg border border-gray-200 bg-gray-50 p-4 text-gray-800">
           <p class="font-medium">You have been unsubscribed.</p>
           <p class="mt-1 text-sm">You will no longer receive emails from Voyaflair.</p>
@@ -85,8 +91,18 @@ import { apiUrl, pageUrl } from '@/lib/site';
   </div>
 </PageShell>
 
-<script define:vars={{ preferencesApi: apiUrl('preferences'), subscriberApi: apiUrl('subscriber'), homePath: pageUrl() }}>
-  function showError(message) {
+<script>
+  // APIs στο HTML: define:vars έκανε inline script χωρίς hash και το CSP έκοβε την σελίδα προτιμήσεων.
+  function readPreferencesConfig() {
+    const root = document.getElementById('preferences-root');
+    return {
+      preferencesApi: root?.getAttribute('data-preferences-api') ?? '',
+      subscriberApi: root?.getAttribute('data-subscriber-api') ?? '',
+      homePath: root?.getAttribute('data-home-path') ?? '/',
+    };
+  }
+
+  function showError(message: string) {
     document.getElementById('preferences-root')?.classList.add('hidden');
     document.getElementById('preferences-empty')?.classList.add('hidden');
     const errorBox = document.getElementById('preferences-error');
@@ -95,7 +111,15 @@ import { apiUrl, pageUrl } from '@/lib/site';
     errorBox?.classList.remove('hidden');
   }
 
-  function renderSubscriber(subscriber, confirmed, unsubscribed) {
+  function renderSubscriber(
+    subscriber: {
+      email: string;
+      status: string;
+      preferences?: { updates?: boolean; promotions?: boolean };
+    },
+    confirmed: boolean,
+    unsubscribed: boolean,
+  ) {
     document.getElementById('preferences-error')?.classList.add('hidden');
     document.getElementById('preferences-empty')?.classList.add('hidden');
     document.getElementById('preferences-root')?.classList.remove('hidden');
@@ -113,8 +137,8 @@ import { apiUrl, pageUrl } from '@/lib/site';
     if (statusEl) statusEl.textContent = subscriber.status;
 
     const form = document.getElementById('preferences-form');
-    const updates = form?.querySelector('[name="updates"]');
-    const promotions = form?.querySelector('[name="promotions"]');
+    const updates = form?.querySelector<HTMLInputElement>('[name="updates"]');
+    const promotions = form?.querySelector<HTMLInputElement>('[name="promotions"]');
     if (updates) updates.checked = Boolean(subscriber.preferences?.updates);
     if (promotions) promotions.checked = Boolean(subscriber.preferences?.promotions);
   }
@@ -147,6 +171,8 @@ import { apiUrl, pageUrl } from '@/lib/site';
       return;
     }
 
+    const { preferencesApi, subscriberApi, homePath } = readPreferencesConfig();
+
     try {
       const response = await fetch(`${subscriberApi}?token=${encodeURIComponent(token)}`);
       const result = await response.json();
@@ -167,6 +193,7 @@ import { apiUrl, pageUrl } from '@/lib/site';
 
     form?.addEventListener('submit', async (event) => {
       event.preventDefault();
+      if (!(form instanceof HTMLFormElement)) return;
       const formData = new FormData(form);
       const preferences = {
         updates: formData.get('updates') === 'on',

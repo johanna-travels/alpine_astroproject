@@ -6,19 +6,41 @@ interface Props {
 const { measurementId } = Astro.props;
 ---
 
-<script async src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}></script>
-<!-- Χωρίς is:inline ώστε το Astro να βάλει hash στο script-src. -->
-<script define:vars={{ measurementId }}>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
+{/* ID στο HTML: define:vars + inline config κόβονταν από τα CSP hashes. Το gtag.js μένει στη λίστα domains. */}
+<meta name="ga-measurement-id" content={measurementId} />
+<script>
+  declare global {
+    interface Window {
+      dataLayer?: unknown[];
+      gtag?: (...args: unknown[]) => void;
+    }
   }
-  gtag('js', new Date());
-  gtag('config', measurementId, { anonymize_ip: true });
 
-  document.addEventListener('astro:page-load', () => {
-    gtag('config', measurementId, {
-      page_path: window.location.pathname + window.location.search,
+  const measurementId = document
+    .querySelector('meta[name="ga-measurement-id"]')
+    ?.getAttribute('content')
+    ?.trim();
+
+  if (measurementId) {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(...args: unknown[]) {
+      window.dataLayer?.push(args);
+    }
+    window.gtag = gtag;
+
+    const loader = document.createElement('script');
+    loader.async = true;
+    loader.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+    loader.onload = () => {
+      gtag('js', new Date());
+      gtag('config', measurementId, { anonymize_ip: true });
+    };
+    document.head.appendChild(loader);
+
+    document.addEventListener('astro:page-load', () => {
+      window.gtag?.('config', measurementId, {
+        page_path: window.location.pathname + window.location.search,
+      });
     });
-  });
+  }
 </script>
