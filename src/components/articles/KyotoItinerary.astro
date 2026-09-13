@@ -4,6 +4,7 @@ import ArticleGoogleMap from '@/components/articles/ArticleGoogleMap.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
 import ArticlePinSaveSection from '@/components/articles/ArticlePinSaveSection.astro';
 import ArticleShareBar from '@/components/articles/ArticleShareBar.astro';
+import KlookWidget from '@/components/articles/KlookWidget.astro';
 import { articleHref } from '@/domains/articles/catalog';
 
 import bambooGrove from '@/assets/articles/kyoto/japan-kyoto-arashiyama-bamboo-grove.webp';
@@ -64,6 +65,9 @@ const mapId = '1yt4Y8HLHzCnHDUs_gYwY-G_cjAb8xhw';
   </div>
 </section>
 
+{/* Ξεχωριστό Klook Kyoto ad (cid 30, tid 3) πάνω από το Day 2. */}
+<KlookWidget adid="1429475" currency="USD" cid="30" tid="3" amount="3" />
+
 <section id="section-1" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
     <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Day 2: Kiyomizu-dera, Yasaka Pagoda & Gion</h2>
@@ -90,6 +94,9 @@ const mapId = '1yt4Y8HLHzCnHDUs_gYwY-G_cjAb8xhw';
     <p>Rather than rushing from one landmark to the next, take your time and simply wander around. Some of my favourite moments in Gion came from exploring the quieter streets, away from the busiest areas, where the atmosphere felt even more special.</p>
   </div>
 </section>
+
+{/* Ίδιο Klook Kyoto widget με τις FAQ, πάνω από το Day 3. */}
+<KlookWidget adid="1429475" currency="USD" cid="28" tid="1" amount="3" />
 
 <section id="section-2" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
@@ -170,6 +177,9 @@ const mapId = '1yt4Y8HLHzCnHDUs_gYwY-G_cjAb8xhw';
     </ul>
   </div>
 </section>
+
+{/* Ξεχωριστό Klook Kyoto ad πάνω από τις FAQ (cid 28, 6 κάρτες). */}
+<KlookWidget adid="1429475" currency="USD" cid="28" tid="21" amount="6" />
 
 <section id="section-5" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">

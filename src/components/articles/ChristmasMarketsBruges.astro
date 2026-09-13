@@ -4,6 +4,7 @@ import ArticleClosingNote from "@/components/articles/ArticleClosingNote.astro";
 import ArticlePinSaveSection from "@/components/articles/ArticlePinSaveSection.astro";
 import ArticleShareBar from "@/components/articles/ArticleShareBar.astro";
 import GetYourGuideActivities from "@/components/articles/GetYourGuideActivities.astro";
+import GetYourGuideCity from "@/components/articles/GetYourGuideCity.astro";
 import oldChocolateHouse from "@/assets/articles/bruges/the-old-chocolate-house-bruges.webp";
 import ottoWaffleChristmas from "@/assets/articles/bruges/otto-waffle-atelier-bruges-christmas.webp";
 import ottoBelgianWaffle from "@/assets/articles/bruges/otto-waffle-atelier-bruges-belgian-waffle.webp";
@@ -46,6 +47,8 @@ const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
     <p><a href="https://www.booking.com/hotel/be/grand-casselbergh.en.html?aid=311984;label=grand-casselbergh-BWTXYVHV7pczflfS2SWgCwS162166631654:pl:ta:p1:p2:ac:ap:neg:fi:tiaud-2382347442848:kwd-2462194784567:lp9215685:li:dec:dm:ppccp=UmFuZG9tSVYkc2RlIyh9YTQUGSsRwx9_3qo3uPTHyoo;ws=&amp;gad_source=1&amp;gad_campaignid=345377325&amp;gbraid=0AAAAAD_Ls1JcJoKGv-bDO_xEUyR_8jo-l&amp;gclid=Cj0KCQjwjIPSBhCCARIsABGyK7v3GppakHjcNeySmO3LRUw8hkUb9FhWuWQq6_BStOGHKGqIImHCIjIaAocJEALw_wcB" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Grand Hotel Casselbergh</a> – It's the hotel I chose to stay at during my visit, and I really loved its historic charm, the beautifully decorated lobbies, the breakfast hall and the spa area, which became my favorite place to unwind after exploring the city.</p>
     <p><a href="https://www.booking.com/searchresults.el.html?aid=311101&amp;label=kempinski-dukes-palace-yAEHdS4i_JAJlfQrt_iTGgS393787235460%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atiaud-2382347442848%3Akwd-11459642348%3Alp9215685%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tSVYkc2RlIyh9YdK51rZczkDIIFcISQDJ03M&amp;highlighted_hotels=21393&amp;redirected=1&amp;city=-1955473&amp;hlrd=no_dates&amp;source=hotel&amp;expand_sb=1&amp;keep_landing=1&amp;sid=4549fda57178532c9550e5b777971968" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Hotel Dukes' Palace</a> – one of the most iconic hotels in Bruges, perfect if you're looking for a luxurious stay in the heart of the city, with elegant interiors, a beautiful garden, and a relaxing spa.</p>
     <p><a href="https://www.booking.com/searchresults.html?aid=318615&amp;label=New_English_EN_NO_26744719945-majgVF6O8AS2_zovx7raAgS640874750395%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi55287309551%3Atidsa-355815316927%3Alp9215685%3Ali%3Adec%3Adm%3Aag26744719945%3Acmp394170865&amp;gclid=Cj0KCQjwjIPSBhCCARIsABGyK7tBWiz-BKDzH0JYn_pfzNipODJ6WQKnHN09Me3jIHMXPbjytNG1ltsaAhFuEALw_wcB&amp;highlighted_hotels=21399&amp;redirected=1&amp;city=-1955473&amp;hlrd=no_dates&amp;source=hotel&amp;expand_sb=1&amp;keep_landing=1&amp;sid=4549fda57178532c9550e5b777971968" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Hotel De Orangerie by CW Hotel Collection</a> – A charming boutique hotel with romantic canal views, elegant interiors and a cozy atmosphere that feels especially magical during the Christmas season.</p>
+    {/* Ίδιο Bruges city widget μετά τα ξενοδοχεία, όπως στο άλλο άρθρο. */}
+    <GetYourGuideCity locationId="854" />
   </div>
 </section>
 
@@ -122,6 +125,8 @@ const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]
 </section>
 
 <section id="section-5" class="scroll-mt-nav">
+  {/* Ίδιο Bruges city widget πάνω από τις FAQ, όπως στον άλλο οδηγό. */}
+  <GetYourGuideCity locationId="854" />
   <div class="mb-5 max-w-3xl text-black md:mb-6">
     <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">FAQ</h2>
   </div>

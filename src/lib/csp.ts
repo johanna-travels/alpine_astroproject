@@ -1,6 +1,7 @@
 import { googleAnalyticsCsp } from './analytics';
 import { getYourGuideCsp } from './getyourguide';
 import { instagramCsp } from './instagram';
+import { klookCsp } from './klook';
 import { googleMapsCsp } from './maps';
 import { stay22Csp } from './stay22';
 
@@ -36,6 +37,7 @@ export function getCspDirectives({
       'blob:',
       getYourGuideCsp.imgSrc,
       stay22Csp.imgSrc,
+      klookCsp.imgSrc,
       googleAnalyticsEnabled && googleAnalyticsCsp.imgSrc,
       instagramCsp.imgSrc,
     )}`,
@@ -45,6 +47,7 @@ export function getCspDirectives({
       "'self'",
       getYourGuideCsp.connectSrc,
       stay22Csp.connectSrc,
+      klookCsp.connectSrc,
       isDev && 'ws://localhost:* wss://localhost:*',
       googleAnalyticsEnabled && googleAnalyticsCsp.connectSrc,
       instagramCsp.connectSrc,
@@ -56,6 +59,7 @@ export function getCspDirectives({
       getYourGuideCsp.frameSrc,
       instagramCsp.frameSrc,
       stay22Csp.frameSrc,
+      klookCsp.frameSrc,
     )}`,
     `form-action ${googleMapsCsp.formAction}`,
     "frame-ancestors 'self'",
@@ -71,6 +75,7 @@ export function getCspScriptResources({
   return [
     "'self'",
     getYourGuideCsp.scriptSrc,
+    klookCsp.scriptSrc,
     stay22Enabled ? stay22Csp.scriptSrc : undefined,
     isDev ? "'unsafe-eval'" : undefined,
     googleAnalyticsEnabled ? googleAnalyticsCsp.scriptSrc : undefined,

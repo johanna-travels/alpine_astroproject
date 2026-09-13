@@ -4,6 +4,7 @@ import GetYourGuideActivities from '@/components/articles/GetYourGuideActivities
 import ArticleImage from '@/components/ui/ArticleImage.astro';
 import ArticlePinSaveSection from '@/components/articles/ArticlePinSaveSection.astro';
 import ArticleShareBar from '@/components/articles/ArticleShareBar.astro';
+import KlookWidget from '@/components/articles/KlookWidget.astro';
 import { articleHref } from '@/domains/articles/catalog';
 
 import benizuruChocolate from '@/assets/articles/tokyo/benizuru-chocolate-banana-pancakes.webp';
@@ -184,6 +185,9 @@ const infoBox =
   </div>
 </section>
 
+{/* Klook Tokyo widget πάνω από το Day 3 (cid 28). */}
+<KlookWidget adid="1429445" currency="USD" cid="28" tid="2" amount="6" />
+
 <section id="section-2" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
     <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Day 3: Harajuku, Meiji Shrine & Shibuya</h2>
@@ -238,6 +242,17 @@ const infoBox =
     <p>🏎️ <a href="https://affiliate.klook.com/redirect?aid=130608&aff_adid=1378502&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F109089-go-kart-experience-shibuya-tokyo%2F" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Book your Shibuya street kart experience here</a>.</p>
   </div>
 </section>
+
+{/* Klook mul_act πάνω από το Day 4 (Shibuya Sky / Fuji δραστηριότητες). */}
+<KlookWidget
+  adid="1429472"
+  prod="mul_act"
+  wid="130608"
+  actids="70672,116875,20707"
+  currency="USD"
+  width="336"
+  height="280"
+/>
 
 <section id="section-3" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
@@ -349,6 +364,9 @@ const infoBox =
     </p>
   </div>
 </section>
+
+{/* Klook Tokyo widget πάνω από τις FAQ (cid 28, 3 κάρτες). */}
+<KlookWidget adid="1429475" currency="USD" cid="28" tid="1" amount="3" />
 
 <section id="section-6" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">

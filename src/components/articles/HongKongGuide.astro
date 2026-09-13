@@ -3,6 +3,9 @@ import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
 import ArticlePinSaveSection from '@/components/articles/ArticlePinSaveSection.astro';
 import ArticleShareBar from '@/components/articles/ArticleShareBar.astro';
+import GetYourGuideCity from '@/components/articles/GetYourGuideCity.astro';
+import GetYourGuideAvailability from '@/components/articles/GetYourGuideAvailability.astro';
+import KlookWidget from '@/components/articles/KlookWidget.astro';
 
 import viewFromBus from '@/assets/articles/hong-kong/view-from-the-bus-to-victoria-peak.webp';
 import bakehouseCoffeePeakTram from '@/assets/articles/hong-kong/bakehouse-coffee-the-peak-tram-view.webp';
@@ -75,6 +78,8 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
     <p>The famous Monster Building (listed as Montane Mansion on Google Maps) is actually a residential complex made up of five connected buildings that's home to more than 10,000 people. It's only when you stand beneath these towering buildings that you truly understand how it got its name.</p>
     <ArticleImage src={monsterBuildings} alt="Looking up at the densely packed Monster Building in Hong Kong" caption="Standing beneath the towering Monster Building" imgClass="aspect-[4/3] object-cover" />
     <p>If you decide to visit, remember that people actually live here. Be respectful, keep the noise down, and follow any signs or rules around the building to respect the residents' privacy.</p>
+    {/* Klook widget αμέσως μετά την υπενθύμιση για τους κατοίκους, όπως ζητήθηκε. */}
+    <KlookWidget adid="1429407" currency="HKD" />
   </div>
 </section>
 
@@ -108,6 +113,9 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
     <p>My advice? Wait for a tram that isn't too crowded, head upstairs, and grab one of the front seats if you can. Watching the city pass by while trams travel just inches from each other is something that's hard to describe until you experience it yourself.</p>
   </div>
 </section>
+
+{/* City widget πάνω από το Hong Kong Park, με location 169041 αντί για Bruges. */}
+<GetYourGuideCity locationId="169041" />
 
 <section id="section-5" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
@@ -164,6 +172,14 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
     <p>If your schedule allows, visit around sunset. Watching the skyline slowly light up as day turns into night is an experience that's hard to forget.</p>
   </div>
 </section>
+
+{/* Availability widget πάνω από Where to Stay, με το Hong Kong tour 194756. */}
+<GetYourGuideAvailability
+  tourId="194756"
+  currency="HKD"
+  variant="horizontal"
+  poweredByHref="https://www.getyourguide.com/hong-kong-l174/"
+/>
 
 <section id="section-9" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
@@ -236,6 +252,9 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
     </div>
   </div>
 </section>
+
+{/* Ίδιο Hong Kong city widget πάνω από το Before you go, όπως πριν το Park. */}
+<GetYourGuideCity locationId="169041" />
 
 <section id="section-11" class="scroll-mt-nav">
   <div class={prose}>

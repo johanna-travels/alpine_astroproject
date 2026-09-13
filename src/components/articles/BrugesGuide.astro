@@ -1,6 +1,7 @@
 ---
 import ArticleClosingNote from "@/components/articles/ArticleClosingNote.astro";
 import GetYourGuideActivities from "@/components/articles/GetYourGuideActivities.astro";
+import GetYourGuideCity from "@/components/articles/GetYourGuideCity.astro";
 import ArticleImage from "@/components/ui/ArticleImage.astro";
 import ArticlePinSaveSection from "@/components/articles/ArticlePinSaveSection.astro";
 import ArticleShareBar from "@/components/articles/ArticleShareBar.astro";
@@ -40,6 +41,8 @@ const mapLink = "text-[#69746E] underline underline-offset-2 hover:text-[#4a534f
     <p>The easiest way to get to Bruges is by train, especially if you're traveling from Brussels. There are frequent connections throughout the day, and the journey usually takes around one hour.</p>
     <p>If you're traveling by train, I'd recommend checking routes and booking your tickets through <a href="https://www.omio.com/?clickid=yVuTIZyRnxyZW5uwC2xuzTIBUkuQEoxW%3AUJ7040&irgwc=1&afsrc=1&utm_campaign=1141115&utm_source=affiliate_ir_Adpump&irmptype=mediapartner&ircid=7385&iradname=Homepage%3A+EN%28US%29+GoEuro&utm_id=274922&subId1=&gad_source=1" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Omio</a>, as it lets you compare different train options in one place. If you're traveling on a budget, it's also worth checking whether <a href="https://global.flixbus.com/bus" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">FlixBus</a> operates on your route.</p>
     <p>Once you arrive at Bruges train station, the historic center is about a 20-minute walk away. If you're traveling with luggage, you can also take a taxi or use a local bus to reach your accommodation.</p>
+    {/* Widget αμέσως μετά την άφιξη στον σταθμό, ώστε να φαίνονται δραστηριότητες Bruges πριν το υπόλοιπο άρθρο. */}
+    <GetYourGuideCity locationId="854" />
   </div>
 </section>
 
@@ -238,6 +241,8 @@ const mapLink = "text-[#69746E] underline underline-offset-2 hover:text-[#4a534f
 </section>
 
 <section id="section-12" class="scroll-mt-nav">
+  {/* Ίδιο Bruges city widget πάνω από τις FAQ, ώστε να ξαναφαίνεται πριν τις ερωτήσεις. */}
+  <GetYourGuideCity locationId="854" />
   <div class="mb-5 max-w-3xl text-black md:mb-6">
     <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">FAQ</h2>
   </div>

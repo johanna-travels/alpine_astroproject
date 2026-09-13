@@ -1,0 +1,38 @@
+---
+/**
+ * GetYourGuide city embed (location activities). Place under GetYourGuideProvider.
+ */
+import { getYourGuidePartnerId } from '@/lib/getyourguide';
+
+interface Props {
+  /** GetYourGuide location id (e.g. 854 for Bruges). */
+  locationId: string;
+  partnerId?: string;
+  localeCode?: string;
+  class?: string;
+}
+
+const {
+  locationId,
+  partnerId: partnerIdProp,
+  localeCode = 'en-US',
+  class: className = 'my-6 max-w-3xl md:my-8',
+} = Astro.props;
+
+const partnerId = partnerIdProp ?? getYourGuidePartnerId();
+---
+
+{
+  partnerId && (
+    <div class={className}>
+      {/* City widget ώστε να δείχνει δραστηριότητες του τόπου, όχι ένα μόνο tour. */}
+      <div
+        data-gyg-href="https://widget.getyourguide.com/default/city.frame"
+        data-gyg-location-id={locationId}
+        data-gyg-locale-code={localeCode}
+        data-gyg-widget="city"
+        data-gyg-partner-id={partnerId}
+      />
+    </div>
+  )
+}

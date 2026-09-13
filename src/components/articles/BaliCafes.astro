@@ -3,6 +3,7 @@ import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
 import ArticlePinSaveSection from '@/components/articles/ArticlePinSaveSection.astro';
 import ArticleShareBar from '@/components/articles/ArticleShareBar.astro';
+import KlookWidget from '@/components/articles/KlookWidget.astro';
 
 import brunchClub from '@/assets/articles/bali/bali-brunch-club-pererenan.webp';
 import brunchClubInterior from '@/assets/articles/bali/bali-restaurant-plant-interior-brunch-club.webp';
@@ -173,6 +174,9 @@ const otherCafeGallery = otherCafes.flatMap((cafe) =>
     <p>Beyond the food, I loved the interior, which is filled with plants and natural details that make the whole space feel bright and welcoming.</p>
   </div>
 </section>
+
+{/* Klook widget πάνω από τα Other Cafés, με USD και τα ids του Bali snippet. */}
+<KlookWidget adid="1429407" currency="USD" cid="8" amount="6" />
 
 <section id="section-5" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">

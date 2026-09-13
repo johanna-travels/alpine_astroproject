@@ -1,0 +1,88 @@
+---
+/**
+ * Klook affiliate embed. Loads fetch-iframe-init.js once per instance.
+ */
+interface Props {
+  adid: string;
+  lang?: string;
+  currency?: string;
+  cardH?: string;
+  padding?: string;
+  lgH?: string;
+  edgeValue?: string;
+  cid?: string;
+  tid?: string;
+  amount?: string;
+  prod?: string;
+  /** Affiliate widget id από το επίσημο snippet της Klook. */
+  wid?: string;
+  /** Λίστα activity ids για το mul_act widget. */
+  actids?: string;
+  price?: string;
+  width?: string;
+  height?: string;
+  class?: string;
+}
+
+const {
+  adid,
+  lang = 'en-US',
+  currency = 'USD',
+  cardH = '126',
+  padding = '92',
+  lgH = '470',
+  edgeValue = '655',
+  cid = '2',
+  tid = '21',
+  amount = '4',
+  prod = 'dynamic_widget',
+  wid,
+  actids,
+  price = 'true',
+  width = '336',
+  height = '280',
+  class: className = 'my-6 max-w-3xl md:my-8',
+} = Astro.props;
+
+// Το mul_act θέλει άλλα data-*· τα attrs των καρτών χαλούν το iframe.
+const isMulAct = prod === 'mul_act';
+---
+
+<div class={className}>
+  {/* ins + loader όπως στο επίσημο snippet της Klook, για να γεμίσει το iframe. */}
+  {isMulAct ? (
+    <ins
+      class="klk-aff-widget"
+      data-wid={wid}
+      data-adid={adid}
+      data-actids={actids}
+      data-prod={prod}
+      data-price={price}
+      data-lang={lang}
+      data-width={width}
+      data-height={height}
+      data-currency={currency}
+    >
+      <a href="https://www.klook.com/" target="_blank" rel="noopener noreferrer sponsored">Klook.com</a>
+    </ins>
+  ) : (
+    <ins
+      class="klk-aff-widget"
+      data-adid={adid}
+      data-lang={lang}
+      data-currency={currency}
+      data-cardH={cardH}
+      data-padding={padding}
+      data-lgH={lgH}
+      data-edgeValue={edgeValue}
+      data-cid={cid}
+      data-tid={tid}
+      data-amount={amount}
+      data-prod={prod}
+    >
+      <a href="https://www.klook.com/" target="_blank" rel="noopener noreferrer sponsored">Klook.com</a>
+    </ins>
+  )}
+</div>
+
+<script is:inline async src="https://affiliate.klook.com/widget/fetch-iframe-init.js"></script>

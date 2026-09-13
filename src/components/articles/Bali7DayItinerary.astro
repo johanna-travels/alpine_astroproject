@@ -4,6 +4,7 @@ import GetYourGuideActivities from '@/components/articles/GetYourGuideActivities
 import ArticleImage from '@/components/ui/ArticleImage.astro';
 import ArticlePinSaveSection from '@/components/articles/ArticlePinSaveSection.astro';
 import ArticleShareBar from '@/components/articles/ArticleShareBar.astro';
+import KlookWidget from '@/components/articles/KlookWidget.astro';
 import { articleHref } from '@/domains/articles/catalog';
 
 import nusaDuaBeach from '@/assets/articles/bali/nusa-dua-the-ayodya-palace-beach.webp';
@@ -136,6 +137,9 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
   </div>
 </section>
 
+{/* Ίδιο Klook widget με το Bali cafes, πάνω από το Day 5. */}
+<KlookWidget adid="1429407" currency="USD" cid="8" amount="6" />
+
 <section id="section-4" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">
     <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Day 5: Bali Beyond the Beaches</h2>
@@ -232,6 +236,9 @@ const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
     <p>👉 For more hotel recommendations and a detailed guide to Bali's best areas, <a href={articleHref('bali-where-to-stay')} class={mapLink}>read my complete Where to Stay in Bali guide here</a>.</p>
   </div>
 </section>
+
+{/* Ίδιο Bali Klook widget με το Day 5, ώστε να ξαναφαίνεται πάνω από τις FAQ. */}
+<KlookWidget adid="1429407" currency="USD" cid="8" amount="6" />
 
 <section id="section-faq" class="scroll-mt-nav">
   <div class="mb-5 max-w-3xl text-black md:mb-6">

@@ -1,0 +1,53 @@
+---
+/**
+ * GetYourGuide availability embed (calendar / book dates for one tour).
+ */
+import { getYourGuidePartnerId } from '@/lib/getyourguide';
+
+interface Props {
+  /** GetYourGuide tour id (e.g. 194756). */
+  tourId: string;
+  partnerId?: string;
+  localeCode?: string;
+  currency?: string;
+  variant?: string;
+  poweredByHref?: string;
+  class?: string;
+}
+
+const {
+  tourId,
+  partnerId: partnerIdProp,
+  localeCode = 'en-US',
+  currency = 'USD',
+  variant = 'horizontal',
+  poweredByHref = 'https://www.getyourguide.com/',
+  class: className = 'my-6 max-w-3xl md:my-8',
+} = Astro.props;
+
+const partnerId = partnerIdProp ?? getYourGuidePartnerId();
+---
+
+{
+  partnerId && (
+    <div class={className}>
+      {/* Availability widget ώστε να δείχνει ημερομηνίες/τιμές ενός συγκεκριμένου tour. */}
+      <div
+        data-gyg-href="https://widget.getyourguide.com/default/availability.frame"
+        data-gyg-tour-id={tourId}
+        data-gyg-locale-code={localeCode}
+        data-gyg-currency={currency}
+        data-gyg-widget="availability"
+        data-gyg-variant={variant}
+        data-gyg-partner-id={partnerId}
+      >
+        <span>
+          Powered by{' '}
+          <a target="_blank" rel="sponsored" href={poweredByHref}>
+            GetYourGuide
+          </a>
+        </span>
+      </div>
+    </div>
+  )
+}
