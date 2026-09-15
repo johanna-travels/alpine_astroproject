@@ -8,6 +8,8 @@ import articleMundukModingReviewCard from '@/assets/articles/bali/munduk-moding-
 import articleMundukModingReviewHero from '@/assets/articles/bali/munduk-moding-plantation-infinity-pool-sunset.webp';
 import articleBruges from '@/assets/articles/cards/bruges.webp';
 import articleBrugesComingSoon from '@/assets/articles/bruges/shared574.webp';
+import articleChristmasInParisCard from '@/assets/articles/paris/christmas-in-paris-card.webp';
+import articleChristmasInParisHero from '@/assets/articles/paris/christmas-in-paris-cafe-hero.webp';
 import articleGreece from '@/assets/articles/cards/greece.webp';
 import articleHongKong from '@/assets/articles/hong-kong/hong-kong.webp';
 import articleKyoto from '@/assets/articles/kyoto/kyoto-five-story-pagoda.webp';
@@ -30,7 +32,7 @@ import type { DestinationSlug } from '@/domains/destinations/catalog';
 import { pageUrl } from '@/lib/site';
 
 
-export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bali-where-to-stay' | 'bruges-christmas-markets' | 'munduk-moding-plantation-review' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'mt-fuji-day-trip-from-tokyo' | 'kamakura-day-trip-from-tokyo' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary' | 'tokyo-cafes' | 'tokyo-parks' | 'tokyo-temples' | 'tokyo-5-day-itinerary' | 'tokyo-where-to-stay' | 'tokyo-things-to-do';
+export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bali-where-to-stay' | 'bruges-christmas-markets' | 'christmas-in-paris' | 'munduk-moding-plantation-review' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'mt-fuji-day-trip-from-tokyo' | 'kamakura-day-trip-from-tokyo' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary' | 'tokyo-cafes' | 'tokyo-parks' | 'tokyo-temples' | 'tokyo-5-day-itinerary' | 'tokyo-where-to-stay' | 'tokyo-things-to-do';
 
 export interface Article {
   slug: ArticleSlug;
@@ -486,6 +488,25 @@ export const articles: readonly Article[] = [
       "I visited Bruges in November last year for my birthday, and I feel so lucky I was able to experience it with all the Christmas decorations and at its coziest. Before I give you all the details about the two Christmas markets in Bruges, I will mention some things that I truly believe will help you plan your trip.",
     ],
     lead: 'A guide to Christmas markets in Bruges 2026 — medieval streets, cozy cafés, Belgian hot chocolate and fresh waffles.',
+  },
+  {
+    slug: 'christmas-in-paris',
+    destinationSlug: 'france',
+    category: 'FRANCE',
+    title: 'Christmas in Paris (Your Ultimate Guide)',
+    carouselTitle: 'Christmas in Paris (Your Ultimate Guide)',
+    breadcrumbTitle: 'Christmas in Paris',
+    metaLabel: 'France',
+    alt: 'Christmas in Paris',
+    image: articleChristmasInParisCard,
+    publishedDate: '15 September 2026',
+    dateLabel: 'Published',
+    intro: [
+      "If you ask me which season is my favorite, I will tell you Christmas. And if you ask me about my favorite city in the world, I will tell you Paris. So, sooner or later, experiencing Paris at Christmas was bound to happen. I first visited Paris almost nine years ago, and I have to confess that I fell in love with it. Since then, Paris has remained my favorite city, and somehow, I never stopped thinking about going back. Last year, I finally decided to return \u2014 this time at what I consider the most beautiful time of the year: Christmas. I won\u2019t hide that I was a little afraid I wouldn\u2019t feel the same way. What if the city didn\u2019t impress me as much as it did the first time? But guess what? The opposite happened. Somehow, Christmas in Paris gave me the chance to fall in love with the city all over again.",
+      "And if you\u2019re thinking about visiting Paris during the festive season, I can tell you one thing: you\u2019re in for a treat. From twinkling lights and Christmas markets to beautiful decorations, cozy caf\u00e9s and, of course, plenty of hot chocolate, Paris has a special kind of magic at this time of year. And in this guide, I\u2019ll share everything you need to know so you can experience that magic for yourself.",
+    ],
+    lead: 'Christmas markets, festive lights, hot chocolate and the coziest time to fall in love with Paris all over again.',
+    lcpImage: articleChristmasInParisHero,
   },
 ] as const;
 

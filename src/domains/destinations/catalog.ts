@@ -1,12 +1,13 @@
 import type { ImageMetadata } from 'astro';
 import baliHero from '@/assets/heroes/destination-bali.webp';
 import belgiumHero from '@/assets/heroes/destination-belgium.webp';
+import franceHero from '@/assets/heroes/destination-france.webp';
 import greeceHero from '@/assets/heroes/destination-greece.webp';
 import japanHero from '@/assets/heroes/destination-japan.webp';
 import hongKongHero from '@/assets/articles/hong-kong/hong-kong-victoria.webp';
 import { pageUrl } from '@/lib/site';
 
-export type DestinationSlug = 'bali' | 'belgium' | 'greece' | 'hong-kong' | 'japan';
+export type DestinationSlug = 'bali' | 'belgium' | 'france' | 'greece' | 'hong-kong' | 'japan';
 
 export interface Destination {
   slug: DestinationSlug;
@@ -43,6 +44,18 @@ export const destinations: readonly Destination[] = [
     seoTitle: 'Belgium — Voyaflair',
     seoDescription:
       'Travel guides and notes from Belgium — medieval Bruges, canals, chocolate, and quiet corners worth discovering.',
+  },
+  {
+    slug: 'france',
+    name: 'France',
+    region: 'Europe',
+    cardDescription: 'Romantic charm, iconic landmarks and festive magic',
+    description:
+      "France is a country that never really lets me go, especially when it comes to Paris. My time there has been shaped by cozy cafés, iconic landmarks and a particular soft spot for experiencing the city during the Christmas season. This page focuses mainly on Paris for now, with more destinations coming as I continue exploring the country.",
+    heroImage: franceHero,
+    seoTitle: 'France — Voyaflair',
+    seoDescription:
+      'Travel guides and notes from France — Paris at Christmas, iconic landmarks, and festive magic worth experiencing.',
   },
   {
     slug: 'greece',

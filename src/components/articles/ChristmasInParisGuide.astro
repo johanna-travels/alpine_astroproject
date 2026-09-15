@@ -1,0 +1,239 @@
+---
+import ArticleImage from "@/components/ui/ArticleImage.astro";
+import ArticleClosingNote from "@/components/articles/ArticleClosingNote.astro";
+import ArticlePinSaveSection from "@/components/articles/ArticlePinSaveSection.astro";
+import ArticleShareBar from "@/components/articles/ArticleShareBar.astro";
+import christmasInParisCard from "@/assets/articles/paris/christmas-in-paris-card.webp";
+import GetYourGuideCity from "@/components/articles/GetYourGuideCity.astro";
+import GetYourGuideAvailability from "@/components/articles/GetYourGuideAvailability.astro";
+import carretteHotChocolate from "@/assets/articles/paris/christmas-in-paris-carette-hot-chocolate.webp";
+import angelinaHotChocolate from "@/assets/articles/paris/christmas-in-paris-angelina-hot-chocolate.webp";
+import ritzHotChocolate from "@/assets/articles/paris/christmas-in-paris-ritz-hot-chocolate.webp";
+import tuileriesFerrisWheel from "@/assets/articles/paris/christmas-in-paris-tuileries-ferris-wheel.webp";
+import tuileriesFood from "@/assets/articles/paris/christmas-in-paris-tuileries-food.webp";
+import notreDameMarket from "@/assets/articles/paris/christmas-in-paris-notre-dame-market.webp";
+import montmartreMetro from "@/assets/articles/paris/christmas-in-paris-montmartre-metro.webp";
+import montmartreCarousel from "@/assets/articles/paris/christmas-in-paris-montmartre-carousel.webp";
+import diorChristmas from "@/assets/articles/paris/christmas-in-paris-dior.webp";
+import diorChristmas2 from "@/assets/articles/paris/christmas-in-paris-dior-2.webp";
+import placeVendome from "@/assets/articles/paris/christmas-in-paris-place-vendome.webp";
+import chanelChristmas from "@/assets/articles/paris/christmas-in-paris-chanel.webp";
+import villageRoyal1 from "@/assets/articles/paris/christmas-in-paris-village-royal-1.webp";
+import villageRoyal2 from "@/assets/articles/paris/christmas-in-paris-village-royal-2.webp";
+import champsElysees from "@/assets/articles/paris/christmas-in-paris-champs-elysees.webp";
+import galeriesLafayette from "@/assets/articles/paris/christmas-in-paris-galeries-lafayette.webp";
+import thingsToDoHero from "@/assets/articles/paris/christmas-in-paris-things-to-do-hero.webp";
+
+const prose = "article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0";
+---
+
+<section id="section-0" class="scroll-mt-nav">
+  <GetYourGuideCity locationId="16" />
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Why Visit Paris at Christmas?</h2>
+  </div>
+  <div class={prose}>
+    <p>Okay, let’s be honest. Paris is beautiful any time of year, but Christmas gives the city an extra sparkle — perhaps even enough to make Scrooge forget about his famous “Bah, humbug!”</p>
+    <p>The shorter winter days, the twinkling lights, the decorated streets and shop windows, and the cozy cafés all come together and make you experience Paris in a different way.</p>
+    <p>And that’s probably my favorite thing about Christmas in Paris: you still get to experience all the things that make Paris, well, Paris — but with a little extra magic!</p>
+  </div>
+</section>
+
+<section id="section-1" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Best Things to Do in Paris at Christmas</h2>
+  </div>
+  <div class={prose}>
+    <h3 class="mt-8 mb-2 text-black">1. Visit a Christmas Market</h3>
+    <ArticleImage src={thingsToDoHero} alt="A festive ferris wheel at a Christmas market in Paris" caption="A ferris wheel at one of Paris' Christmas markets" imgClass="aspect-[5/4] object-cover" />
+    <p>One thing you should know before visiting Paris at Christmas is that there are a lot of Christmas markets to choose from. They’re spread across the city, and each one has its own atmosphere, location and character. But that doesn’t mean you need to visit them all to get into the Christmas spirit.</p>
+    <p>I decided to visit just three during my trip, mainly because I wanted to combine them with the places I already had on my itinerary. I’ll tell you more about the three I chose, and why, further down in this guide.</p>
+    <h3 class="mt-8 mb-2 text-black">2. Experience Christmas at Galeries Lafayette</h3>
+    <ArticleImage src={galeriesLafayette} alt="The giant Christmas tree under the glass dome at Galeries Lafayette in Paris" caption="The Christmas tree at Galeries Lafayette" imgClass="aspect-[2/3] object-cover" />
+    <p>Galeries Lafayette is a must during the festive season. One of the highlights is the giant Christmas tree underneath the beautiful glass dome, which is different every year. If you want to take a photo from the Glasswalk, you’ll need to book a time slot in advance on the official Galeries Lafayette website. Also, during the Christmas season, the rooftop is transformed into an ice skating rink. So, if you want to skate there, you’ll need to book a time slot and purchase a ticket in advance.</p>
+    <p>And don’t leave Galeries Lafayette without trying a macaron from Pierre Hermé. They were honestly the best macarons I’ve ever tasted — and believe me, I’ve tried a lot of macarons in Paris.</p>
+    <h3 class="mt-8 mb-2 text-black">3. See Paris’ Christmas Lights After Dark</h3>
+    <ArticleImage src={champsElysees} alt="The Champs-Élysées lit up with Christmas lights in Paris" caption="Christmas lights on the Champs-Élysées" imgClass="aspect-[4/5] object-cover" />
+    <p>Paris is at its prettiest once the Christmas lights come on. Head to places like the Champs-Élysées, Place Vendôme and Avenue Montaigne to see some of the city’s most beautiful festive decorations and enjoy Paris after dark.</p>
+    <h3 class="mt-8 mb-2 text-black">4. Take a Festive Seine Cruise</h3>
+    <p>If you want to see Paris from a different perspective, a festive Seine cruise is a lovely option, especially in the evening when the city’s landmarks are beautifully lit up. You can choose from different dinner and sightseeing cruises, depending on what kind of experience you’re looking for.</p>
+    <GetYourGuideAvailability
+      tourId="405257"
+      currency="EUR"
+      variant="horizontal"
+      poweredByHref="https://www.getyourguide.com/paris-l16/"
+    />
+    <h3 class="mt-8 mb-2 text-black">5. Spend a Day at Disneyland Paris</h3>
+    <p>If you’re traveling with kids or simply a Disney fan, you can add a little extra Christmas magic to your trip by spending a day at Disneyland Paris. During the festive season, known as Disney Enchanted Christmas, the parks are filled with festive decorations, shows, Disney characters and Christmas celebrations. Keep in mind that Disneyland Paris is located outside the city, so it’s best to plan it as a full-day trip from Paris. It’s easily accessible by RER A, with the journey taking around 35–40 minutes.</p>
+    <GetYourGuideAvailability
+      tourId="395320"
+      currency="EUR"
+      variant="horizontal"
+      poweredByHref="https://www.getyourguide.com/paris-l16/"
+    />
+  </div>
+</section>
+
+<section id="section-2" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Best Christmas Markets in Paris</h2>
+  </div>
+  <div class={prose}>
+    <p>One thing that I found surprisingly difficult when planning my Christmas trip to Paris was deciding which Christmas markets were actually worth visiting. Paris doesn’t have just one or two — there are so many different markets around the city, from small local ones to huge Christmas villages like the one at La Défense. In the end, I decided to visit only three, mainly because I wanted to combine them with places I had loved during my first trip to Paris, including Notre-Dame and Montmartre.</p>
+    <p>So, here are the three Christmas markets I visited in Paris and would recommend adding to your itinerary.</p>
+    <h3 class="mt-8 mb-2 text-black">1. Tuileries Christmas Market</h3>
+    <div class="grid grid-cols-2 gap-3 md:gap-4">
+      <ArticleImage src={tuileriesFerrisWheel} alt="The Ferris wheel and Christmas pyramid at the Tuileries Christmas Market" caption="The Tuileries Christmas Market at dusk" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={tuileriesFood} alt="A hot dog and cheese fries from a food stall at the Tuileries Christmas Market" caption="Festive market food at the Tuileries" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <p>The Tuileries Christmas Market was the one I liked the most, and I actually visited it twice during my trip. It’s one of the largest Christmas markets in central Paris, with plenty of food, drinks, Christmas stalls and festive entertainment. The food was good and it had pretty much everything you would expect from a traditional Christmas market.</p>
+    <p>One thing to keep in mind, though: it gets busier and busier as the day goes on, so if you prefer a more relaxed experience, I’d recommend going earlier.</p>
+    <p><em>2026 dates: November 15 – December 31</em></p>
+    <h3 class="mt-8 mb-2 text-black">2. Notre-Dame Christmas Market</h3>
+    <ArticleImage src={notreDameMarket} alt="A Christmas market stall in front of Notre-Dame Cathedral in Paris" caption="The Christmas market by Notre-Dame" imgClass="aspect-[2/3] object-cover" />
+    <p>The Notre-Dame Christmas Market is much smaller and has a more intimate feel. You’ll find French crafts, local creators and regional food, so it’s a nice place to stop for a little browsing while exploring the area.</p>
+    <p>I mainly visited this one because I wanted to see Notre-Dame again. After the cathedral reopened following its restoration, I simply couldn’t visit Paris without going inside — and combining it with a little Christmas market stop made it even better.</p>
+    <p><em>2026 dates: November 26 – December 27</em></p>
+    <h3 class="mt-8 mb-2 text-black">3. Montmartre Christmas Market</h3>
+    <div class="grid grid-cols-2 gap-3 md:gap-4">
+      <ArticleImage src={montmartreMetro} alt="The Art Nouveau Metropolitain sign near the Montmartre Christmas Market" caption="Near Abbesses, by the Montmartre Christmas Market" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={montmartreCarousel} alt="A carousel at the Montmartre Christmas Market" caption="The carousel at the Montmartre Christmas Market" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <p>The Montmartre Christmas Market is located right by Place des Abbesses, just outside the metro station, so you can’t really miss it when you arrive. It’s a much smaller market, but it’s a nice little stop before exploring Montmartre.</p>
+    <p>I visited in the morning, and one of my favorite little moments was grabbing a fresh baguette for breakfast before continuing my walk around Montmartre. Honestly, that’s exactly the kind of simple Parisian moment I was hoping for.</p>
+  </div>
+</section>
+
+<section id="section-3" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Best Photo Spots in Paris at Christmas</h2>
+  </div>
+  <div class={prose}>
+    <h3 class="mt-8 mb-2 text-black">1. Dior, Avenue Montaigne</h3>
+    <div class="grid grid-cols-2 gap-3 md:gap-4">
+      <ArticleImage src={diorChristmas} alt="The Dior storefront decorated for Christmas on Avenue Montaigne in Paris" caption="Dior’s Christmas decorations on Avenue Montaigne" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={diorChristmas2} alt="A close-up of Dior's Christmas decorations on Avenue Montaigne in Paris" caption="Dior Christmas lights on Avenue Montaigne in the evening" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <p>One of the prettiest Christmas photo spots in Paris. Go in the afternoon, when the lights start to come on and Dior looks even more impressive.</p>
+    <h3 class="mt-8 mb-2 text-black">2. Chanel, Rue Cambon</h3>
+    <ArticleImage src={chanelChristmas} alt="The Chanel storefront decorated with a giant lit bow for Christmas in Paris" caption="Chanel’s Christmas bow on Rue Cambon" imgClass="aspect-[4/5] object-cover" />
+    <p>Another Instagrammable Christmas photo spot is the iconic Chanel storefront on Rue Cambon, which looks even more magical at Christmas when the lights are on.</p>
+    <h3 class="mt-8 mb-2 text-black">3. Le Village Royal</h3>
+    <div class="grid grid-cols-2 gap-3 md:gap-4">
+      <ArticleImage src={villageRoyal1} alt="A giant lit teddy bear Christmas decoration at Le Village Royal in Paris" caption="The Christmas teddy bear at Le Village Royal" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={villageRoyal2} alt="Lit balloon and teddy bear Christmas decorations at Le Village Royal in Paris" caption="Festive decorations at Le Village Royal" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <p>A little Parisian gem that gets a beautiful Christmas makeover. Definitely worth stopping by if you’re looking for something a little different.</p>
+    <h3 class="mt-8 mb-2 text-black">4. Place Vendôme</h3>
+    <ArticleImage src={placeVendome} alt="Giant Christmas trees at Place Vendôme in Paris" caption="Christmas trees at Place Vendôme" imgClass="aspect-[4/5] object-cover" />
+    <p>Place Vendôme feels very Parisian and especially magical at Christmas, with its beautiful Christmas trees and lights. You can combine your visit with a stop at the Ritz Paris for a hot chocolate.</p>
+  </div>
+</section>
+
+<section id="section-4" class="scroll-mt-nav">
+  <GetYourGuideCity locationId="16" />
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Best Hot Chocolate in Paris</h2>
+  </div>
+  <div class={prose}>
+    <p>You can’t really visit Paris in winter without having a proper hot chocolate at least once. I tried quite a few during my Christmas trip, but these are the four places I enjoyed the most — including a couple of unexpected favorites.</p>
+    <h3 class="mt-8 mb-2 text-black">1. Carette</h3>
+    <ArticleImage src={carretteHotChocolate} alt="Hot chocolate from Carette in front of the Arc de Triomphe" caption="Hot chocolate from Carette" imgClass="aspect-[4/5] object-cover" />
+    <p>Carette is one of my favorite places for hot chocolate in Paris. It was actually the first place where I ever tried hot chocolate in Paris, so there was no way I was going to skip it on my second visit.</p>
+    <h3 class="mt-8 mb-2 text-black">2. Angelina</h3>
+    <ArticleImage src={angelinaHotChocolate} alt="Hot chocolate and a pastry at Angelina in Paris" caption="Hot chocolate at Angelina" imgClass="aspect-[4/5] object-cover" />
+    <p>Angelina is probably one of the most talked-about places for hot chocolate in Paris, and opinions are definitely divided. Some call it too touristy because of the long queues, while others swear it’s the best in Paris. Personally, I really enjoyed it — it was exactly the rich, indulgent hot chocolate I expected from a classic Parisian spot.</p>
+    <h3 class="mt-8 mb-2 text-black">3. Ritz Paris</h3>
+    <ArticleImage src={ritzHotChocolate} alt="Hot chocolate cups from the Ritz Paris Christmas pop-up" caption="Hot chocolate at the Ritz Paris" imgClass="aspect-[4/5] object-cover" />
+    <p>I actually decided to try the hot chocolate at the Ritz because of its Christmas pop-up. The festive setup is adorable, with hot chocolate, marshmallows and little teddy bears that you can even take home as a souvenir — and yes, the hot chocolate was just as good as I hoped.</p>
+    <h3 class="mt-8 mb-2 text-black">4. Lindt</h3>
+    <p>Okay, I know Lindt isn’t exactly a traditional Parisian hot chocolate spot, but hear me out. Lindt has always been one of my favorite chocolate brands, and trying their hazelnut hot chocolate for the first time was honestly heavenly.</p>
+  </div>
+</section>
+
+<section id="section-5" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Where to Stay in Paris at Christmas</h2>
+  </div>
+  <div class={prose}>
+    <iframe
+      id="stay22-widget"
+      title="Find hotels in Paris"
+      width="100%"
+      height="428"
+      src="https://www.stay22.com/embed/6aa94916da41f0b09451cf10"
+      loading="lazy"
+      class="my-5 max-w-3xl md:my-8"
+    ></iframe>
+    <ul class="list-disc space-y-2 pl-5">
+      <li><strong><a href="https://www.booking.com/hotel/fr/de-la-tamise-paris.html" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Hôtel La Tamise</a></strong> — Stay here for a central location close to the Louvre, Tuileries and Place Vendôme.</li>
+      <li><strong><a href="https://www.booking.com/hotel/fr/duminy-vendome.html" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Hôtel Duminy-Vendôme</a></strong> — A great choice if you want to be close to the Tuileries Christmas Market.</li>
+      <li><strong><a href="https://www.booking.com/hotel/fr/saintpetersbourg.html" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Hotel Saint-Petersbourg Opera &amp; SPA</a></strong> — Perfect for Christmas shopping, Galeries Lafayette and Printemps.</li>
+      <li><strong><a href="https://www.booking.com/hotel/fr/duquesneeiffel.html" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Hôtel Duquesne Eiffel</a></strong> — Choose this one for beautiful Eiffel Tower views.</li>
+      <li><strong><a href="https://www.booking.com/hotel/fr/le-pavillon-de-la-reine.html" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Le Pavillon de la Reine</a></strong> — A lovely option for a romantic and charming Christmas stay.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="section-6" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Where to Eat in Paris</h2>
+  </div>
+  <div class={prose}>
+    <ul class="list-disc space-y-2 pl-5">
+      <li><strong><a href="https://www.google.com/maps/search/?api=1&query=Bistrot+des+Tournelles,+6+Rue+des+Tournelles,+75004+Paris,+France" target="_blank" rel="noopener noreferrer" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Bistrot des Tournelles</a></strong> — for a classic French bistro experience in Le Marais.</li>
+      <li><strong><a href="https://www.google.com/maps/search/?api=1&query=La+Jacobine,+59-61+Rue+Saint-Andr%C3%A9+des+Arts,+75006+Paris,+France" target="_blank" rel="noopener noreferrer" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">La Jacobine</a></strong> — for traditional French food in Saint-Germain-des-Prés.</li>
+      <li><strong><a href="https://www.google.com/maps/search/?api=1&query=Brasserie+des+Pr%C3%A9s,+6+Cour+du+Commerce+Saint-Andr%C3%A9,+75006+Paris,+France" target="_blank" rel="noopener noreferrer" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Brasserie des Prés</a></strong> — for a stylish and lively Parisian brasserie.</li>
+      <li><strong><a href="https://www.google.com/maps/search/?api=1&query=La+Tour+de+Montlh%C3%A9ry+-+Chez+Denise,+5+Rue+Prouvaires,+75001+Paris,+France" target="_blank" rel="noopener noreferrer" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">La Tour Montlhéry – Chez Denise</a></strong> — for old-school French comfort food.</li>
+      <li><strong><a href="https://www.google.com/maps/search/?api=1&query=Sacr%C3%A9e+Fleur,+50+Rue+de+Clignancourt,+75018+Paris,+France" target="_blank" rel="noopener noreferrer" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Sacrée Fleur Montmartre</a></strong> — for a French dinner after exploring Montmartre.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="section-8" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">FAQ</h2>
+  </div>
+  <div class={`${prose} space-y-6`}>
+    <div id="faq-0" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">1. Is Christmas in Paris worth it?</h3>
+      <p>Absolutely. Paris is beautiful any time of year, but I honestly think Christmas gives the city something extra. The Christmas lights, decorated streets and shop windows, cozy cafés and festive atmosphere make you experience Paris in a completely different way. I was a little worried that I wouldn’t feel the same way about the city after almost nine years, but visiting at Christmas actually made me fall in love with Paris all over again. So, if you love Christmas as much as I do, I’d definitely say it’s worth it.</p>
+    </div>
+    <div id="faq-1" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">2. Is Christmas in Paris expensive?</h3>
+      <p>It can be, especially if you’re visiting during the busiest part of December. Accommodation and popular experiences can get more expensive around Christmas, so I’d recommend booking in advance if you already know your dates. That said, you don’t need to spend a lot of money to enjoy Christmas in Paris. Walking around the beautifully decorated streets, visiting the Christmas markets and seeing the lights are some of my favorite things to do, and they don’t cost much — or anything at all.</p>
+    </div>
+    <div id="faq-2" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">3. When does Christmas in Paris start?</h3>
+      <p>There isn’t one exact date when Christmas starts in Paris. You’ll usually start seeing Christmas decorations, lights and festive displays around the city from November, with more and more places getting into the Christmas spirit as December approaches. The exact timing can vary from one place to another, especially when it comes to department stores, Christmas markets and individual decorations.</p>
+    </div>
+    <div id="faq-3" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">4. When do Christmas markets in Paris start?</h3>
+      <p>The Christmas markets in Paris don’t all start on the same date, so it really depends on which ones you want to visit. Some open in November, while others start later in the season. For example, the Tuileries Christmas Market starts on November 15 in 2026, while the Notre-Dame Christmas Market starts on November 26. If you have a specific market in mind, I’d recommend checking its dates before your trip, as they can change from year to year.</p>
+    </div>
+  </div>
+</section>
+
+<section id="section-7" class="scroll-mt-nav">
+  <GetYourGuideCity locationId="16" />
+  <div class={prose}>
+    <ArticleClosingNote label="Before you go">
+      <p>Before you head to Paris for Christmas, there are a few things worth keeping in mind. Book your accommodation and any popular experiences in advance, especially if you’re visiting in December, and remember that the city can get very busy around the festive season. Also, pack a warm coat and comfortable shoes — you’ll probably be doing a lot of walking!</p>
+    </ArticleClosingNote>
+
+    <ArticlePinSaveSection>
+      <ArticleImage
+        src={christmasInParisCard}
+        alt="Christmas in Paris — save this festive guide"
+        figureClass="m-0"
+        pinOnHover
+      />
+
+      <ArticleShareBar
+        title="Christmas in Paris (Your Ultimate Guide)"
+        pinImage={christmasInParisCard}
+        class="mt-6 md:mt-8"
+      />
+    </ArticlePinSaveSection>
+  </div>
+</section>

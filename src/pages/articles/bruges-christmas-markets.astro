@@ -1,13 +1,26 @@
 ---
 import ArticlePage from '@/components/articles/ArticlePage.astro';
-import { getArticle } from '@/domains/articles/catalog';
+import { getArticle, articleHref, articlesForDestination } from '@/domains/articles/catalog';
 import brugesChristmasMarketMarkt from '@/assets/articles/bruges/bruges-christmas-market-markt.webp';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
+import ArticlePreviewCard from '@/components/ui/ArticlePreviewCard.astro';
 import ChristmasMarketsBruges from '@/components/articles/ChristmasMarketsBruges.astro';
-import BelgiumBeforeFooter from '@/components/articles/BelgiumBeforeFooter.astro';
 import { christmasMarketsNav } from '@/domains/articles/christmas-markets-nav';
 
 const article = getArticle('bruges-christmas-markets')!;
+const christmasInParis = getArticle('christmas-in-paris')!;
+
+const relatedArticles = [
+  ...articlesForDestination('belgium').filter((a) => a.slug !== article.slug),
+  christmasInParis,
+].map((a) => ({
+  href: articleHref(a.slug),
+  image: a.image,
+  category: a.category,
+  title: a.title,
+  alt: a.alt,
+  comingSoon: a.comingSoon,
+}));
 ---
 
 <ArticlePage article={article} sections={christmasMarketsNav}>
@@ -26,5 +39,12 @@ const article = getArticle('bruges-christmas-markets')!;
     <span class="font-medium text-black">💡 Pro Tip:</span> Before your trip, I'd recommend setting up an eSIM so you'll have internet access as soon as you arrive. I use <a href="https://airalo.pxf.io/c/7435210/1268485/15608" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Airalo</a> whenever I travel abroad, and having mobile data made it easy to access this map, use Google Maps, and navigate the city from the moment I landed.
   </aside>
   <ChristmasMarketsBruges />
-  <BelgiumBeforeFooter slot="before-footer" currentSlug={article.slug} />
+  <section slot="before-footer" class="mx-auto w-full max-w-6xl px-4 md:pr-10 md:pl-0 pb-16 md:pb-20">
+    <h2 class="mb-8 md:mb-10">You may also like</h2>
+    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3">
+      {relatedArticles.map((related) => (
+        <ArticlePreviewCard {...related} />
+      ))}
+    </div>
+  </section>
 </ArticlePage>
