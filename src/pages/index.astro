@@ -19,7 +19,9 @@ import headerLightImg from '@/assets/heroes/header-light.webp';
 const hero = await getResponsiveHero(headerLightImg);
 const shareImage = await getSocialShareImage(headerLightImg);
 
-const homeDestinationCards = destinations.map((destination) => ({
+const homeDestinationCards = destinations
+  .filter((destination) => destination.featured !== false)
+  .map((destination) => ({
   title: destination.name,
   subtitle: destination.region,
   description: destination.cardDescription,

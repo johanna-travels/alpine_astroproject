@@ -1,0 +1,293 @@
+---
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
+import ArticlePinSaveSection from '@/components/articles/ArticlePinSaveSection.astro';
+import ArticleShareBar from '@/components/articles/ArticleShareBar.astro';
+import GetYourGuideCity from '@/components/articles/GetYourGuideCity.astro';
+import articleOsloCard from '@/assets/articles/norway/oslo-akershus-fortress-card.webp';
+import articleOsloHero from '@/assets/articles/norway/oslo-akershus-fortress-hero.webp';
+import articleOsloEkebergparken from '@/assets/articles/norway/oslo-ekebergparken-view.webp';
+import articleOsloOperaHarborView from '@/assets/articles/norway/oslo-opera-house-harbor-view.webp';
+import articleOsloOperaCityView from '@/assets/articles/norway/oslo-opera-house-city-view.webp';
+import articleOsloVigeland from '@/assets/articles/norway/oslo-vigeland-sculpture-park.webp';
+import articleOsloRoyalPalace from '@/assets/articles/norway/oslo-royal-palace.webp';
+import articleOsloMunch from '@/assets/articles/norway/oslo-munch-museum.webp';
+import articleOsloDeichman from '@/assets/articles/norway/oslo-deichman-bjorvika.webp';
+import articleOsloAkerBrygge from '@/assets/articles/norway/oslo-aker-brygge-tjuvholmen.webp';
+import articleOsloDamstredet from '@/assets/articles/norway/oslo-damstredet-street.webp';
+import articleOsloTelthusbakken from '@/assets/articles/norway/oslo-telthusbakken-house.webp';
+
+const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
+const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]';
+---
+
+<GetYourGuideCity locationId="38" />
+
+<section id="section-0" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">How to Get to Oslo</h2>
+  </div>
+  <div class={prose}>
+    <p>Most visitors arriving in Oslo will fly into Oslo Airport, Gardermoen (OSL), around 50 km from the city center. From the airport, I definitely recommend taking the train. There's also a bus option, but it takes considerably longer.</p>
+    <p>There are two main train options: Flytoget and Vy. Flytoget is more expensive, but it runs more frequently and takes around 19 minutes to reach Oslo Central Station. Vy takes around 23 minutes, so the difference in travel time is minimal, but the tickets are considerably cheaper.</p>
+    <p><em>Pro tip: Unless you're in a hurry, I'd go with Vy. You'll get to the city almost as quickly for a much lower price. You can easily find and buy Vy tickets through the Ruter app — just enter "Oslo lufthavn" as your starting point when searching for your journey.</em></p>
+  </div>
+</section>
+
+<section id="section-1" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">How to Get Around Oslo</h2>
+  </div>
+  <div class={prose}>
+    <p>Oslo is a very walkable city, especially around the city center, and many of the main attractions are close enough to explore on foot. For places that are further away, you can easily use the metro, trams, buses, trains and ferries.</p>
+    <p><em>Pro tip: Download the Ruter app and use Google Maps during your trip. Ruter is great for checking public transport routes, departures and tickets, while Google Maps makes it easy to see exactly how to get somewhere, including which metro or bus stop to use.</em></p>
+  </div>
+</section>
+
+<div
+  data-gyg-href="https://widget.getyourguide.com/default/activities.frame"
+  data-gyg-locale-code="en-US"
+  data-gyg-widget="activities"
+  data-gyg-number-of-items="1"
+  data-gyg-cmp="oslo_guide_tour"
+  data-gyg-partner-id="VMRSHXF"
+  data-gyg-q="https://www.getyourguide.com/oslo-l38/oslo-guided-walking-tour-of-central-oslo-with-local-guide-t767034/?ranking_uuid=ead92660-4f8e-4b43-80d2-bd00772f0096&referral_redirect=1"
+  class="my-6 max-w-3xl md:my-8"
+>
+  <span>Powered by <a target="_blank" rel="sponsored" href="https://www.getyourguide.com/">GetYourGuide</a></span>
+</div>
+
+<section id="section-best-things" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Best Things to Do in Oslo</h2>
+  </div>
+</section>
+
+<section id="section-2" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>1. Oslo Opera House</h3>
+  </div>
+  <div class={prose}>
+    <div class="grid grid-cols-2 gap-3 md:gap-4">
+      <ArticleImage src={articleOsloOperaHarborView} alt="A cruise ship docked in Oslo harbor near the Opera House" caption="The harbor near the Opera House" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={articleOsloOperaCityView} alt="View over Oslo's rooftops and the harbor from the Opera House roof" caption="The view from the Opera House roof" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <p>The Oslo Opera House is one of the most iconic buildings in the city, and you don't need to attend a performance to enjoy it. Make sure to walk up the roof — it's free and offers beautiful views over the Oslofjord, the city and Akershus Fortress.</p>
+  </div>
+</section>
+
+<section id="section-3" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>2. MUNCH</h3>
+  </div>
+  <div class={prose}>
+    <ArticleImage src={articleOsloMunch} alt="View of the MUNCH Museum and colorful buildings" caption="View of the MUNCH Museum and colorful buildings" imgClass="aspect-[4/5] object-cover" />
+    <p>If you're interested in art, don't miss MUNCH, home to one of the world's largest collections of works by Edvard Munch. Of course, The Scream is the star of the show, but there's much more to see inside the museum.</p>
+  </div>
+</section>
+
+<section id="section-4" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>3. Akershus Fortress</h3>
+  </div>
+  <div class={prose}>
+    <ArticleImage src={articleOsloHero} alt="View across the Oslofjord towards Akershus Fortress" caption="Akershus Fortress, seen from across the harbor" imgClass="aspect-[5/4] object-cover" />
+    <p>Overlooking the Oslofjord, Akershus Fortress is one of the best places to combine a little history with beautiful views. You can walk around the fortress grounds for free and enjoy one of the best viewpoints over the harbor.</p>
+  </div>
+</section>
+
+<section id="section-5" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>4. Frogner Park & Vigeland Sculpture Park</h3>
+  </div>
+  <div class={prose}>
+    <ArticleImage src={articleOsloVigeland} alt="The Monolith surrounded by sculptures at Vigeland Sculpture Park in Frogner Park" caption="The Monolith at Vigeland Sculpture Park" imgClass="aspect-[4/5] object-cover" />
+    <p>One of my favorite places in Oslo is Frogner Park, home to the famous Vigeland Sculpture Park. The park is filled with more than 200 sculptures by Gustav Vigeland, making it one of those places that's worth visiting even if you're not particularly into art.</p>
+  </div>
+</section>
+
+<section id="section-6" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>5. Deichman Bjørvika</h3>
+  </div>
+  <div class={prose}>
+    <ArticleImage src={articleOsloDeichman} alt="Interior of Deichman Bjørvika library with its open floors and bookshelves" caption="Inside Deichman Bjørvika" imgClass="aspect-[4/5] object-cover" />
+    <p>Right next to the Opera House, you'll find Deichman Bjørvika, Oslo's main public library. Even if you're not a big library person like I am, it's worth stepping inside to see the impressive modern architecture and head up to the top floor for beautiful views over the Oslofjord.</p>
+  </div>
+</section>
+
+<section id="section-7" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>6. The Royal Palace & National Theatre</h3>
+  </div>
+  <div class={prose}>
+    <ArticleImage src={articleOsloRoyalPalace} alt="The Royal Palace in Oslo" caption="The Royal Palace in Oslo" imgClass="aspect-[4/5] object-cover" />
+    <p>Take a walk along Karl Johans gate towards the Royal Palace, passing the National Theatre along the way. It's one of the easiest areas to explore on foot and gives you a feel for Oslo's historic city center.</p>
+  </div>
+</section>
+
+<section id="section-8" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>7. Aker Brygge & Tjuvholmen</h3>
+  </div>
+  <div class={prose}>
+    <ArticleImage src={articleOsloAkerBrygge} alt="View from the bridge at Aker Brygge towards Akershus Fortress" caption="Aker Brygge, with Akershus Fortress in the background" imgClass="aspect-[4/5] object-cover" />
+    <p>If you want somewhere to walk, grab a coffee or sit down for a meal by the water, head to Aker Brygge and Tjuvholmen. The waterfront is lined with restaurants, shops, galleries and modern architecture, making it one of my favorite areas to spend some time in Oslo.</p>
+  </div>
+</section>
+
+<GetYourGuideCity locationId="4240" />
+
+<section id="section-9" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>8. Bygdøy</h3>
+  </div>
+  <div class={prose}>
+    <p>Bygdøy is a beautiful peninsula just outside the city center, known for its museums, beaches and walking trails. You'll find several museums here, including the Fram Museum and the Kon-Tiki Museum, but you can also come simply to enjoy the nature, walk along the trails or spend some time by the water.</p>
+  </div>
+</section>
+
+<section id="section-10" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>9. Damstredet & Telthusbakken</h3>
+  </div>
+  <div class={prose}>
+    <div class="grid grid-cols-2 gap-3 md:gap-4">
+      <ArticleImage src={articleOsloDamstredet} alt="A cobblestone street lined with colorful wooden houses in Damstredet" caption="The cobblestone street at Damstredet" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={articleOsloTelthusbakken} alt="A green wooden house with a stone wall and flowers in Telthusbakken" caption="A wooden house in Telthusbakken" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <p>Here you'll find charming streets lined with beautifully preserved wooden houses dating back to the 18th and 19th centuries. Take a walk around the area if you want to step back in time and enjoy a lovely little escape from the modern side of Oslo.</p>
+  </div>
+</section>
+
+<section id="section-11" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>10. Ekebergparken</h3>
+  </div>
+  <div class={prose}>
+    <ArticleImage src={articleOsloEkebergparken} alt="View over the Oslofjord from Ekebergparken" caption="The view over the Oslofjord from Ekebergparken" imgClass="aspect-[4/5] object-cover" />
+    <p>Ekebergparken combines art, nature and beautiful views over Oslo, but in winter, the paths can become very icy and slippery, especially on the steeper sections. I'd honestly skip this one if you're not used to walking on ice and snow.</p>
+  </div>
+</section>
+
+<section id="section-12" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>11. Akerselva & Grünerløkka</h3>
+  </div>
+  <div class={prose}>
+    <p>For a more local side of Oslo, head to Akerselva and Grünerløkka. You can walk along the river, discover small waterfalls and then continue into one of the city's liveliest neighborhoods for cafés, shops and restaurants.</p>
+  </div>
+</section>
+
+<div
+  data-gyg-href="https://widget.getyourguide.com/default/activities.frame"
+  data-gyg-locale-code="en-US"
+  data-gyg-widget="activities"
+  data-gyg-number-of-items="1"
+  data-gyg-cmp="oslo_guide_tour"
+  data-gyg-partner-id="VMRSHXF"
+  data-gyg-q="https://www.getyourguide.com/oslo-l38/oslo-guided-walking-tour-of-central-oslo-with-local-guide-t767034/?ranking_uuid=ead92660-4f8e-4b43-80d2-bd00772f0096&referral_redirect=1"
+  class="my-6 max-w-3xl md:my-8"
+>
+  <span>Powered by <a target="_blank" rel="sponsored" href="https://www.getyourguide.com/">GetYourGuide</a></span>
+</div>
+
+<section id="section-13" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Where to Stay in Oslo</h2>
+  </div>
+  <div class={prose}>
+    <ul class="list-disc space-y-2 pl-5">
+      <li><strong><a href="https://www.booking.com/hotel/no/citybox-oslo.html" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Citybox Oslo</a></strong> — A great option if you're looking for something modern and affordable in the heart of Oslo. It's only a five-minute walk from Oslo Central Station, with a very convenient location for exploring the city.</li>
+      <li><strong><a href="https://www.booking.com/hotel/no/radisson-blu-plaza-oslo.html" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Radisson Blu Plaza Hotel, Oslo</a></strong> — Stay here for a central location, beautiful city views and easy access to Oslo's main transport connections. The hotel also has a rooftop restaurant and bar with panoramic views.</li>
+      <li><strong><a href="https://www.booking.com/hotel/no/thon-rosenkrantz-oslo.html" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Thon Hotel Rosenkrantz Oslo</a></strong> — A stylish option right in the city center, close to Karl Johans gate, restaurants and many of Oslo's main sights.</li>
+      <li><strong><a href="https://www.booking.com/hotel/no/scandic-oslo.html" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Scandic Oslo City</a></strong> — A practical choice if you want to be right in the center. It's next to Oslo Central Station and close to Karl Johans gate, the Opera House, restaurants and shopping.</li>
+      <li><strong><a href="https://www.booking.com/hotel/no/continental.html" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Hotel Continental Oslo</a></strong> — If you're looking for something more upscale, this classic five-star hotel is right in the city center, close to the National Theatre, Royal Palace and Aker Brygge.</li>
+    </ul>
+  </div>
+</section>
+
+<iframe
+  id="stay22-widget"
+  title="Find hotels in Oslo"
+  width="100%"
+  height="428"
+  src="https://www.stay22.com/embed/6aaffdc9886cad74740051c3"
+  loading="lazy"
+  class="my-5 max-w-3xl md:my-8"
+></iframe>
+
+<section id="section-14" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Where to Eat in Oslo</h2>
+  </div>
+  <div class={prose}>
+    <ul class="list-disc space-y-2 pl-5">
+      <li><strong><a href="https://www.google.com/maps/search/?api=1&query=Mamma+Pizza+Oslo" target="_blank" rel="noopener noreferrer" class={mapLink}>Mamma Pizza</a></strong> — One of my favorite Italian restaurants in Oslo. Its central location makes it perfect for a lunch break after exploring the Opera House, Deichman and the surrounding area. The restaurant is known for its Italian-style pizza and pasta, and it's also a popular choice among visitors.</li>
+      <li><strong><a href="https://www.google.com/maps/search/?api=1&query=Ostebutikken+Grunerlokka+Oslo" target="_blank" rel="noopener noreferrer" class={mapLink}>Ostebutikken</a></strong> — A small and cozy French bistro in Grünerløkka, perfect if you're looking for something a little more intimate. It's especially known for its French-inspired food, cheese and cozy atmosphere.</li>
+      <li><strong><a href="https://www.google.com/maps/search/?api=1&query=Cr%C3%AAperie+de+Mari+Oslo" target="_blank" rel="noopener noreferrer" class={mapLink}>Crêperie de Mari</a></strong> — If you're in the mood for a crêpe, keep this little spot in Grünerløkka in mind. It's a great option for a casual lunch, sweet treat or a quick stop while exploring the neighborhood.</li>
+      <li><strong><a href="https://www.google.com/maps/search/?api=1&query=Nedre+Foss+Gaard+Oslo" target="_blank" rel="noopener noreferrer" class={mapLink}>Nedre Foss Gård</a></strong> — A lovely option in Grünerløkka, set in a historic farm building right by Akerselva. If you're already exploring the neighborhood, it's a nice place to stop for a meal or a drink.</li>
+      <li><strong><a href="https://www.google.com/maps/search/?api=1&query=Village+Tandoori+Oslo" target="_blank" rel="noopener noreferrer" class={mapLink}>Village Tandoori</a></strong> — If you're craving Indian food, this is one to have on your list. It's known for its flavorful Indian dishes and has received plenty of positive reviews from both locals and visitors.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="section-15" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Best Cafés in Oslo</h2>
+  </div>
+  <div class={prose}>
+    <p><strong><a href="https://www.google.com/maps/search/?api=1&query=Tim+Wendelboe+Oslo" target="_blank" rel="noopener noreferrer" class={mapLink}>Tim Wendelboe</a></strong> — If you love coffee, don't miss Tim Wendelboe. Ranked #2 among the world's best coffee shops in 2026, this small specialty coffee spot in Grünerløkka is definitely worth adding to your Oslo itinerary.</p>
+    <p><strong><a href="https://www.google.com/maps/search/?api=1&query=Supreme+Roastworks+Oslo" target="_blank" rel="noopener noreferrer" class={mapLink}>Supreme Roastworks</a></strong> — Another great stop for specialty coffee, located in the heart of Grünerløkka. It's a relaxed spot where you can enjoy carefully roasted coffee while exploring the neighborhood.</p>
+    <p><strong><a href="https://www.google.com/maps/search/?api=1&query=About+Contrasts+Oslo" target="_blank" rel="noopener noreferrer" class={mapLink}>About Contrasts</a></strong> — A stylish spot in central Oslo that works as a café and brunch place during the day and a cocktail bar in the evening. It's a good choice if you're looking for somewhere a little different, with great coffee, creative food and a beautiful atmosphere.</p>
+  </div>
+</section>
+
+<section id="section-bakeries" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Best Bakeries in Oslo</h2>
+  </div>
+  <div class={prose}>
+    <p><strong><a href="https://www.google.com/maps/search/?api=1&query=W.B.+Samson+Oslo" target="_blank" rel="noopener noreferrer" class={mapLink}>W.B. Samson</a></strong> — If there's one thing to try here, make it the kanelbolle. Their cinnamon buns were named Oslo's best by Aftenposten in both 2022 and 2023, so this is definitely one I'd add to your list.</p>
+    <p><strong><a href="https://www.google.com/maps/search/?api=1&query=Baker+Hansen+Oslo" target="_blank" rel="noopener noreferrer" class={mapLink}>Baker Hansen</a></strong> — Founded in 1861, Baker Hansen is Norway's oldest bakery still in continuous operation. And if you ask me, don't leave without trying their carrot cake, it's one of my favorite cakes.</p>
+    <p><strong><a href="https://www.google.com/maps/search/?api=1&query=Apent+Bakeri+Oslo" target="_blank" rel="noopener noreferrer" class={mapLink}>Åpent Bakeri</a></strong> — Known for its bread and traditional baking, Åpent Bakeri is a great place to stop for both sweet and savory treats. My personal favorite is the Lille Tøyen location, which has a particularly cozy neighborhood feel. Everything I've tried there has been delicious, so honestly, this is one where I'd say: just pick whatever looks good.</p>
+  </div>
+</section>
+
+<GetYourGuideCity locationId="4240" />
+
+<section id="section-faq" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">FAQ</h2>
+  </div>
+  <div class={`${prose} space-y-6`}>
+    <div id="faq-0" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">1. Is Oslo a walkable city?</h3>
+      <p>Yes, Oslo is a very walkable city, especially around the city center. Many of the main attractions are close enough to explore on foot, and you can always use public transport for places that are further away.</p>
+    </div>
+    <div id="faq-1" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">2. Is Oslo expensive?</h3>
+      <p>Yes, Oslo can be expensive, especially when it comes to hotels and eating out. But you can also explore the city on a budget, with plenty of free attractions, parks and outdoor spaces, while public transport is relatively straightforward to use.</p>
+    </div>
+    <div id="faq-2" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">3. Is Oslo worth visiting for three days?</h3>
+      <p>Absolutely. Three days is a good amount of time to experience Oslo, especially if it's your first visit. You'll have enough time to see the main sights while also leaving some room for museums, neighborhoods, cafés and a little time by the fjord.</p>
+    </div>
+    <div id="faq-3" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">4. What is the best time to visit Oslo?</h3>
+      <p>It really depends on what you want from your trip. Summer is a great choice if you want long days, outdoor activities and time by the fjord, while winter offers a completely different experience with snow, cozy cafés and winter activities. Oslo is a year-round destination, so there isn't really one single best time to visit.</p>
+    </div>
+    <div id="faq-4" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">5. Is Oslo worth visiting?</h3>
+      <p>Yes, especially if you enjoy a mix of city and nature. Oslo may not have the dramatic fjord landscapes you might picture when you think of Norway, but you'll find museums, interesting architecture, parks, the waterfront and forests surprisingly close to the city center.</p>
+    </div>
+  </div>
+</section>
+
+<section id="section-16" class="scroll-mt-nav">
+  <div class={prose}>
+    <ArticleClosingNote label="Before you go">
+      <p>As you explore this Nordic city, you'll probably find that there's more to discover than you expected. I hope you find a few favorite places of your own — the kind of places you'll remember long after your trip is over. And trust me, one day in Oslo is not enough.</p>
+    </ArticleClosingNote>
+  </div>
+</section>

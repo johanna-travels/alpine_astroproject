@@ -1,0 +1,47 @@
+---
+import ArticlePage from '@/components/articles/ArticlePage.astro';
+import { getArticle, articleHref } from '@/domains/articles/catalog';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import ArticlePreviewCard from '@/components/ui/ArticlePreviewCard.astro';
+import OsloThingsToDoGuide from '@/components/articles/OsloThingsToDoGuide.astro';
+import articleOsloOperaHouseHero from '@/assets/articles/norway/oslo-opera-house-hero.webp';
+import { osloThingsToDoNav } from '@/domains/articles/oslo-things-to-do-nav';
+
+const article = getArticle('things-to-do-in-oslo')!;
+const brugesGuide = getArticle('bruges-guide')!;
+const hongKongGuide = getArticle('hong-kong-first-trip')!;
+---
+
+<ArticlePage article={article} sections={osloThingsToDoNav}>
+  <figure slot="title-media">
+    <ArticleImage
+      src={articleOsloOperaHouseHero}
+      alt="The Oslo Opera House seen from across the water"
+      caption="The Oslo Opera House"
+      imgClass="aspect-[5/4] object-cover"
+      priority
+    />
+  </figure>
+  <OsloThingsToDoGuide />
+  <section slot="before-footer" class="mx-auto w-full max-w-6xl px-4 md:pr-10 md:pl-0 pb-16 md:pb-20">
+    <h2 class="mb-8 md:mb-10">You may also like</h2>
+    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3">
+      <ArticlePreviewCard
+        href={articleHref(brugesGuide.slug)}
+        image={brugesGuide.image}
+        category={brugesGuide.category}
+        title={brugesGuide.title}
+        alt={brugesGuide.alt}
+        comingSoon={brugesGuide.comingSoon}
+      />
+      <ArticlePreviewCard
+        href={articleHref(hongKongGuide.slug)}
+        image={hongKongGuide.image}
+        category={hongKongGuide.category}
+        title={hongKongGuide.title}
+        alt={hongKongGuide.alt}
+        comingSoon={hongKongGuide.comingSoon}
+      />
+    </div>
+  </section>
+</ArticlePage>

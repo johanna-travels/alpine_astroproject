@@ -28,11 +28,13 @@ import articleTokyoWhereToStay from '@/assets/articles/tokyo/tokyo-tower-japan-c
 import articleTokyoThingsToDo from '@/assets/articles/tokyo/teamlab-borderless-tokyo.webp';
 import rhodesLcpImage from '@/assets/articles/rhodes/rhodes-old-town-cobblestone-street.webp';
 import articleParga from '@/assets/articles/parga/parga-from-above.webp';
+import articleOsloCard from '@/assets/articles/norway/oslo-akershus-fortress-card.webp';
+import articleOsloHero from '@/assets/articles/norway/oslo-opera-house-hero.webp';
 import type { DestinationSlug } from '@/domains/destinations/catalog';
 import { pageUrl } from '@/lib/site';
 
 
-export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bali-where-to-stay' | 'bruges-christmas-markets' | 'christmas-in-paris' | 'munduk-moding-plantation-review' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'mt-fuji-day-trip-from-tokyo' | 'kamakura-day-trip-from-tokyo' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary' | 'tokyo-cafes' | 'tokyo-parks' | 'tokyo-temples' | 'tokyo-5-day-itinerary' | 'tokyo-where-to-stay' | 'tokyo-things-to-do';
+export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bali-where-to-stay' | 'bruges-christmas-markets' | 'christmas-in-paris' | 'munduk-moding-plantation-review' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'mt-fuji-day-trip-from-tokyo' | 'kamakura-day-trip-from-tokyo' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary' | 'tokyo-cafes' | 'tokyo-parks' | 'tokyo-temples' | 'tokyo-5-day-itinerary' | 'tokyo-where-to-stay' | 'tokyo-things-to-do' | 'things-to-do-in-oslo';
 
 export interface Article {
   slug: ArticleSlug;
@@ -507,6 +509,25 @@ export const articles: readonly Article[] = [
     ],
     lead: 'Christmas markets, festive lights, hot chocolate and the coziest time to fall in love with Paris all over again.',
     lcpImage: articleChristmasInParisHero,
+  },
+  {
+    slug: 'things-to-do-in-oslo',
+    destinationSlug: 'norway',
+    category: 'NORWAY',
+    title: 'Best Things to Do in Oslo',
+    carouselTitle: 'Best Things to Do in Oslo',
+    breadcrumbTitle: 'Best Things to Do in Oslo',
+    metaLabel: 'Norway',
+    alt: 'Best things to do in Oslo, Norway',
+    image: articleOsloCard,
+    lcpImage: articleOsloHero,
+    publishedDate: '20 September 2026',
+    dateLabel: 'Published',
+    intro: [
+      "When people hear Oslo, they usually think of Norway \u2014 fjords, mountains and breathtaking nature. But Oslo itself? Opinions seem to be a little more divided. You\u2019ll often hear that it\u2019s a small, quiet capital that you can explore in a day or two, and honestly, I can understand where that comes from. If you\u2019re looking for the dramatic landscapes Norway is famous for, you won\u2019t find them in the middle of Oslo. But that doesn\u2019t mean there\u2019s nothing to discover.",
+      "After living in Oslo for the past five years, one of the things I love most about the city is how much nature is part of everyday life. And beyond the main sights, there are plenty of charming corners that are easy to miss if you only have a few hours. So, if you\u2019re planning your first trip to Oslo, let me show you the places I think are worth knowing about.",
+    ],
+    lead: "Museums, waterfront walks and quiet green corners \u2014 the places worth knowing about on a first trip to Oslo.",
   },
 ] as const;
 

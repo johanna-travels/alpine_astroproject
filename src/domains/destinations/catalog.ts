@@ -5,9 +5,10 @@ import franceHero from '@/assets/heroes/destination-france.webp';
 import greeceHero from '@/assets/heroes/destination-greece.webp';
 import japanHero from '@/assets/heroes/destination-japan.webp';
 import hongKongHero from '@/assets/articles/hong-kong/hong-kong-victoria.webp';
+import norwayHero from '@/assets/articles/norway/norway.webp';
 import { pageUrl } from '@/lib/site';
 
-export type DestinationSlug = 'bali' | 'belgium' | 'france' | 'greece' | 'hong-kong' | 'japan';
+export type DestinationSlug = 'bali' | 'belgium' | 'france' | 'greece' | 'hong-kong' | 'japan' | 'norway';
 
 export interface Destination {
   slug: DestinationSlug;
@@ -18,6 +19,8 @@ export interface Destination {
   heroImage: ImageMetadata;
   seoTitle: string;
   seoDescription: string;
+  /** Set to false to keep this destination off the homepage grid (still listed on the full Destinations page and reachable via its own URL). Defaults to true. */
+  featured?: boolean;
 }
 
 export const destinations: readonly Destination[] = [
@@ -92,6 +95,19 @@ export const destinations: readonly Destination[] = [
     seoTitle: 'Japan — Voyaflair',
     seoDescription:
       'Travel guides and notes from Japan — Kyoto, tradition, and places worth slowing down for.',
+  },
+  {
+    slug: 'norway',
+    name: 'Norway',
+    region: 'Europe',
+    featured: false,
+    cardDescription: 'Dramatic fjords, northern lights and quiet mountain towns',
+    description:
+      'Norway moves between deep fjords, small coastal towns and vast open landscapes that feel untouched by time. My travels here have been shaped by long drives, quiet nature and the kind of scenery that is hard to capture in a single photo. This page gathers guides and travel notes from Norway.',
+    heroImage: norwayHero,
+    seoTitle: 'Norway — Voyaflair',
+    seoDescription:
+      'Travel guides and notes from Norway — fjords, mountain towns, and landscapes worth slowing down for.',
   },
 ] as const;
 
