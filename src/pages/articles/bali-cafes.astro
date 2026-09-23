@@ -3,7 +3,7 @@ import ArticlePage from '@/components/articles/ArticlePage.astro';
 import BaliCafesContent from '@/components/articles/BaliCafes.astro';
 import BaliBeforeFooter from '@/components/articles/BaliBeforeFooter.astro';
 import { baliNav } from '@/domains/articles/bali-nav';
-import { getArticle } from '@/domains/articles/catalog';
+import { getArticle, articleHref } from '@/domains/articles/catalog';
 import ArticleImage from '@/components/ui/ArticleImage.astro';
 import baliCafeScene from '@/assets/articles/bali/a-glimpse-of-bali’s-vibrant-café-scene.webp';
 
@@ -14,6 +14,20 @@ const article = getArticle('bali-cafes')!;
   <figure slot="title-media">
     <ArticleImage src={baliCafeScene} alt="A glimpse of Bali's vibrant café scene" caption="A glimpse of Bali's vibrant café scene" imgClass="aspect-[5/4] object-cover" />
   </figure>
+  <div class="max-w-3xl rounded-lg bg-[#F5F2EB] px-6 py-5 text-md leading-relaxed text-black/80">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">A Few Things to Know Before Your Bali Trip</h2>
+    <p class="mb-4">Before we get into the day-by-day itinerary, here are a few practical things that will make planning your trip a little easier:</p>
+    <ul class="list-disc space-y-3 pl-5 marker:text-black/40">
+      <li><strong>Visa on Arrival:</strong> Depending on your nationality, you may be eligible for a Visa on Arrival. You can arrange it after landing or apply for an e-VOA before your trip.</li>
+      <li>
+        <strong>Get an eSIM Before You Arrive:</strong> I use Airalo whenever I travel abroad, and having mobile data from the moment I landed made it easy to access this itinerary, use Google Maps, book transport, and navigate around Bali.
+        <p class="mt-2 mb-0">👉 <a href="https://airalo.pxf.io/c/7435210/1268485/15608" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Check Airalo's latest eSIM plans here</a>.</p>
+      </li>
+      <li><strong>Cash or Card?</strong> You can pay by card at many cafés, restaurants, hotels, and tourist attractions, but I'd still recommend carrying some cash for smaller local businesses and places where card payments may not be available.</li>
+      <li><strong>Getting Around Bali:</strong> Grab and GoJek are useful for shorter journeys, while hiring a private driver is one of the easiest ways to explore the island on longer day trips. Bali is much bigger than it looks on a map, and traffic can make journeys take longer than expected.</li>
+    </ul>
+    <p class="mt-4 mb-0">👉 For more practical information about traveling to Bali, including visas, transport, travel insurance, and what to pack, <a href={articleHref('bali-travel-tips')} class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">read my complete Bali travel tips guide here</a>.</p>
+  </div>
   <BaliCafesContent />
   <BaliBeforeFooter slot="before-footer" currentSlug={article.slug} />
 </ArticlePage>

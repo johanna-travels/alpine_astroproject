@@ -278,7 +278,6 @@ export const articles: readonly Article[] = [
   },
   {
     slug: 'bali-cafes',
-    hideAffiliateDisclaimer: true,
     destinationSlug: 'bali',
     category: 'BALI',
     title: 'Best Cafés in Bali After 2 Months on the Island',
