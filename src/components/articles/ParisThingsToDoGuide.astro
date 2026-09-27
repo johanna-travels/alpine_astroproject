@@ -1,0 +1,280 @@
+---
+import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import GetYourGuideCity from '@/components/articles/GetYourGuideCity.astro';
+import angelinaHotChocolate from '@/assets/articles/paris/things-to-do-in-paris-angelina-hot-chocolate.webp';
+import caretteArcDeTriomphe from '@/assets/articles/paris/things-to-do-in-paris-carette-arc-de-triomphe.webp';
+import eiffelTowerStreetView from '@/assets/articles/paris/things-to-do-in-paris-eiffel-tower-street-view.webp';
+import arcDeTriompheNight from '@/assets/articles/paris/things-to-do-in-paris-arc-de-triomphe-night.webp';
+import montmartreSacreCoeur from '@/assets/articles/paris/things-to-do-in-paris-montmartre-sacre-coeur.webp';
+import montmartreCarousel from '@/assets/articles/paris/things-to-do-in-paris-montmartre-carousel.webp';
+import operaGarnierGrandFoyer from '@/assets/articles/paris/things-to-do-in-paris-opera-garnier-grand-foyer.webp';
+import palaisRoyalGardens from '@/assets/articles/paris/things-to-do-in-paris-palais-royal-hero.webp';
+import pontAlexandreIII from '@/assets/articles/paris/things-to-do-in-paris-pont-alexandre-iii.webp';
+import GetYourGuideAvailability from '@/components/articles/GetYourGuideAvailability.astro';
+
+const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
+const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]';
+const maps = (query: string) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+---
+
+<GetYourGuideCity locationId="16" />
+
+<section id="section-0" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">How to Get to Paris</h2>
+  </div>
+  <div class={prose}>
+    <p>There are three main airports you can fly into when visiting Paris: Charles de Gaulle Airport (CDG), the city's main international airport, Orly Airport (ORY), which is closer to the city center, and Beauvais Airport (BVA), mainly used by low-cost airlines and located further from Paris.</p>
+    <p>From Charles de Gaulle, the easiest option is usually the RER B train, which takes around 35–50 minutes to reach central Paris, with stops including Gare du Nord and Châtelet–Les Halles. There are also buses and taxis, but for most travelers, and for me, the train is the most straightforward option.</p>
+    <ArticleImage src={montmartreCarousel} alt="Joanna in a black beret looking at the carousel below the Sacré-Cœur in Montmartre" caption="The carousel below the Sacré-Cœur in Montmartre" imgClass="aspect-[4/5] object-cover" />
+  </div>
+</section>
+
+<section id="section-1" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">How to Get Around Paris</h2>
+  </div>
+  <div class={prose}>
+    <p>Paris is a very walkable city, especially in the central areas, and many of the main sights are close enough to explore on foot. For longer distances, the Metro is usually the easiest and fastest option, while buses are also a good choice if you want to see more of the city along the way. For public transport, I recommend using the Bonjour RATP app to check routes and buy tickets.</p>
+    <div data-gyg-href="https://widget.getyourguide.com/default/availability.frame" data-gyg-tour-id="381474" data-gyg-locale-code="en-US" data-gyg-currency="EUR" data-gyg-widget="availability" data-gyg-variant="horizontal" data-gyg-partner-id="VMRSHXF" data-gyg-cmp="paris_things_to_do" class="my-6 md:my-8"><span>Powered by <a target="_blank" rel="sponsored" href="https://www.getyourguide.com/paris-l16/">GetYourGuide</a></span></div>
+  </div>
+</section>
+
+<section id="section-best-things" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Best Things to Do in Paris</h2>
+  </div>
+</section>
+
+<section id="section-2" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>1. Eiffel Tower & Trocadéro</h3>
+  </div>
+  <div class={prose}>
+    <p>Visiting Paris without seeing the Eiffel Tower is a little like visiting Athens without seeing the Acropolis or Rome without seeing the Colosseum. If you want to go up and see Paris from above, make sure to book your ticket in advance. For one of the best views of the tower, head to Trocadéro. And if you want to get a little closer for photos, Rue de l'Université is one of the most popular spots, while Rue Buenos Aires offers a very similar view. Both are great options if you want that classic Eiffel Tower photo.</p>
+    <ArticleImage src={eiffelTowerStreetView} alt="The Eiffel Tower seen from Rue de l'Université in Paris at dusk" caption="The Eiffel Tower from Rue de l'Université" imgClass="aspect-[2/3] object-cover" />
+    <div data-gyg-href="https://widget.getyourguide.com/default/availability.frame" data-gyg-tour-id="62484" data-gyg-locale-code="en-US" data-gyg-currency="EUR" data-gyg-widget="availability" data-gyg-variant="horizontal" data-gyg-partner-id="VMRSHXF" data-gyg-cmp="paris_things_to_do" class="my-6 md:my-8"><span>Powered by <a target="_blank" rel="sponsored" href="https://www.getyourguide.com/paris-l16/">GetYourGuide</a></span></div>
+  </div>
+</section>
+
+<section id="section-opera" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>2. Opéra Garnier</h3>
+  </div>
+  <div class={prose}>
+    <p>One of my absolute must-sees in Paris. The Palais Garnier is one of the most beautiful buildings I've ever seen, and honestly, I think it might be one of the most impressive opera houses in the world. Even if you're not particularly interested in opera, I'd still recommend visiting the inside to see the grand staircase, the Grand Foyer and all the incredible details of the building. Make sure to book your ticket online in advance, as tickets are limited and visits can sell out.</p>
+    <ArticleImage src={operaGarnierGrandFoyer} alt="The golden Grand Foyer of the Opéra Garnier with painted ceilings and chandeliers" caption="The Grand Foyer at the Opéra Garnier" imgClass="aspect-[2/3] object-cover" />
+    <div data-gyg-href="https://widget.getyourguide.com/default/availability.frame" data-gyg-tour-id="81297" data-gyg-locale-code="en-US" data-gyg-currency="EUR" data-gyg-widget="availability" data-gyg-variant="horizontal" data-gyg-partner-id="VMRSHXF" data-gyg-cmp="paris_things_to_do" class="my-6 md:my-8"><span>Powered by <a target="_blank" rel="sponsored" href="https://www.getyourguide.com/paris-l16/">GetYourGuide</a></span></div>
+  </div>
+</section>
+
+<section id="section-3" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>3. Notre-Dame & Île de la Cité</h3>
+  </div>
+  <div class={prose}>
+    <p>Take a walk around Île de la Cité and visit the famous Notre-Dame Cathedral. While you're there, don't miss Sainte-Chapelle, especially if you love beautiful stained-glass windows.</p>
+    <GetYourGuideAvailability
+      tourId="1156458"
+      currency="EUR"
+      variant="horizontal"
+      poweredByHref="https://www.getyourguide.com/paris-l16/"
+    />
+  </div>
+</section>
+
+<section id="section-4" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>4. Arc de Triomphe & Champs-Élysées</h3>
+  </div>
+  <div class={prose}>
+    <p>Walk along the famous Champs-Élysées towards the Arc de Triomphe. If you want to see Paris from above, you can also climb to the top for a beautiful view over the city.</p>
+    <ArticleImage src={arcDeTriompheNight} alt="The Arc de Triomphe lit up at night with traffic around it" caption="The Arc de Triomphe at night" imgClass="aspect-[4/5] object-cover" />
+    <div data-gyg-href="https://widget.getyourguide.com/default/activities.frame" data-gyg-locale-code="en-US" data-gyg-widget="activities" data-gyg-number-of-items="1" data-gyg-cmp="paris_things_to_do" data-gyg-partner-id="VMRSHXF" data-gyg-tour-ids="66157" class="my-6 md:my-8"><span>Powered by <a target="_blank" rel="sponsored" href="https://www.getyourguide.com/paris-l16/">GetYourGuide</a></span></div>
+  </div>
+</section>
+
+<section id="section-5" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>5. Montmartre & Sacré-Cœur</h3>
+  </div>
+  <div class={prose}>
+    <p>I visited this neighborhood both times I've been to Paris, as it's one of my favorite areas of the city. I love its charming little streets, cafés and, of course, the Sacré-Cœur. The view from the steps in front of the basilica is just as impressive in person as it looks in photos — actually, I'd say it's even better. If you want to go inside, the basilica itself is free, although there can be a short wait during the busiest hours. The dome is also open to visitors for an additional fee.</p>
+    <ArticleImage src={montmartreSacreCoeur} alt="The Sacré-Cœur dome rising above Place du Tertre in Montmartre" caption="Montmartre, with the Sacré-Cœur in the background" imgClass="aspect-[2/3] object-cover" />
+    <div data-gyg-href="https://widget.getyourguide.com/default/activities.frame" data-gyg-locale-code="en-US" data-gyg-widget="activities" data-gyg-number-of-items="1" data-gyg-cmp="paris_things_to_do" data-gyg-partner-id="VMRSHXF" data-gyg-tour-ids="512414" class="my-6 md:my-8"><span>Powered by <a target="_blank" rel="sponsored" href="https://www.getyourguide.com/paris-l16/">GetYourGuide</a></span></div>
+  </div>
+</section>
+
+<section id="section-6" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>6. Pont Alexandre III</h3>
+  </div>
+  <div class={prose}>
+    <p>This is one of the most beautiful bridges in Paris, with its golden statues, incredible details and views of the Seine, the Eiffel Tower and Les Invalides.</p>
+    <ArticleImage src={pontAlexandreIII} alt="Joanna on Pont Alexandre III looking towards the Eiffel Tower across the Seine" caption="The view of the Eiffel Tower from Pont Alexandre III" imgClass="aspect-[2/3] object-cover" />
+  </div>
+</section>
+
+<section id="section-7" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h3>7. Jardin du Palais Royal</h3>
+  </div>
+  <div class={prose}>
+    <p>A beautiful and peaceful place to take a break from sightseeing. I visited in winter, so the gardens weren't at their most impressive, but it was still a lovely spot to sit and relax. I'd definitely recommend visiting in spring or summer when the gardens are at their best.</p>
+    <ArticleImage src={palaisRoyalGardens} alt="The fountain and gardens of the Jardin du Palais Royal in Paris" caption="The fountain at the Jardin du Palais Royal" imgClass="aspect-[5/4] object-cover" />
+  </div>
+</section>
+
+<GetYourGuideCity locationId="16" />
+
+<section id="section-8" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Best Day Trips from Paris</h2>
+  </div>
+  <div class={prose}>
+    <p>If you have a little extra time in Paris, there are a few great day trips you can easily add to your itinerary. Here are three of my top recommendations:</p>
+    <p><strong>Versailles</strong> — Just outside Paris, the Palace of Versailles is one of the most popular day trips from the city. Walk through the lavish rooms, the famous Hall of Mirrors and the enormous gardens, and get a glimpse of how the French royal family once lived.</p>
+    <div data-gyg-href="https://widget.getyourguide.com/default/activities.frame" data-gyg-locale-code="en-US" data-gyg-widget="activities" data-gyg-number-of-items="1" data-gyg-cmp="paris_things_to_do" data-gyg-partner-id="VMRSHXF" data-gyg-q="versailles" class="my-6 md:my-8"><span>Powered by <a target="_blank" rel="sponsored" href="https://www.getyourguide.com/palace-of-versailles-l317/">GetYourGuide</a></span></div>
+    <p><strong>Giverny</strong> — If you love art and beautiful gardens, Giverny is a lovely day trip. This is where Claude Monet lived and created his famous gardens, including the water lily pond that inspired some of his most well-known paintings.</p>
+    <div data-gyg-href="https://widget.getyourguide.com/default/activities.frame" data-gyg-locale-code="en-US" data-gyg-widget="activities" data-gyg-number-of-items="1" data-gyg-cmp="paris_things_to_do" data-gyg-partner-id="VMRSHXF" data-gyg-tour-ids="450854" class="my-6 md:my-8"><span>Powered by <a target="_blank" rel="sponsored" href="https://www.getyourguide.com/paris-l16/">GetYourGuide</a></span></div>
+    <p><strong>Disneyland Paris</strong> — Disneyland Paris is one of the easiest day trips from the city. You can take the RER A directly from central Paris, and the journey takes around 40 minutes. It's a fun option if you're traveling with kids — or if, like me, you're still a Disney fan no matter your age.</p>
+    <GetYourGuideAvailability
+      tourId="395320"
+      currency="EUR"
+      variant="horizontal"
+      poweredByHref="https://www.getyourguide.com/paris-l16/"
+    />
+  </div>
+</section>
+
+<section id="section-9" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Best Museums in Paris</h2>
+  </div>
+  <div class={prose}>
+    <p>Paris has some of the most famous museums in the world. I've only visited the Louvre myself so far, but if you're visiting Paris for the first time, these are three museums worth knowing about.</p>
+    <p><strong>The Louvre</strong> — Of course, the Louvre has to be on the list. It's one of the largest museums in the world, so don't expect to see everything in a few hours. I'd recommend choosing the sections or artworks you're most interested in and taking your time. And don't be surprised if the Mona Lisa isn't the artwork that impresses you the most — you definitely won't be the only one!</p>
+    <div data-gyg-href="https://widget.getyourguide.com/default/activities.frame" data-gyg-locale-code="en-US" data-gyg-widget="activities" data-gyg-number-of-items="1" data-gyg-cmp="paris_things_to_do" data-gyg-partner-id="VMRSHXF" data-gyg-tour-ids="430922" class="my-6 md:my-8"><span>Powered by <a target="_blank" rel="sponsored" href="https://www.getyourguide.com/paris-l16/">GetYourGuide</a></span></div>
+    <p><strong>Musée d'Orsay</strong> — If you love Impressionist and Post-Impressionist art, this is one to add to your list. You'll find works by artists including Monet, Van Gogh, Renoir and Cézanne, all displayed inside the beautiful former railway station.</p>
+    <div data-gyg-href="https://widget.getyourguide.com/default/activities.frame" data-gyg-locale-code="en-US" data-gyg-widget="activities" data-gyg-number-of-items="1" data-gyg-cmp="paris_things_to_do" data-gyg-partner-id="VMRSHXF" data-gyg-q="museum Orsay" class="my-6 md:my-8"><span>Powered by <a target="_blank" rel="sponsored" href="https://www.getyourguide.com/s/%3Fq=Paris&amp;lc=16&amp;et=65756&amp;searchSource=3&amp;src=search_bar">GetYourGuide</a></span></div>
+    <p><strong>Musée de l'Orangerie</strong> — This smaller museum is best known for Monet's Water Lilies, displayed across two large oval rooms designed specifically for the monumental paintings. It's a great option if you want to see something special without spending hours in a huge museum.</p>
+    <div data-gyg-href="https://widget.getyourguide.com/default/activities.frame" data-gyg-locale-code="en-US" data-gyg-widget="activities" data-gyg-number-of-items="1" data-gyg-cmp="paris_things_to_do" data-gyg-partner-id="VMRSHXF" data-gyg-tour-ids="97386" class="my-6 md:my-8"><span>Powered by <a target="_blank" rel="sponsored" href="https://www.getyourguide.com/paris-l16/">GetYourGuide</a></span></div>
+  </div>
+</section>
+
+<section id="section-10" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Best Bakeries in Paris</h2>
+  </div>
+  <div class={prose}>
+    <p>As a visitor, I'm sure you'll want to try some of the best croissants and pastries Paris has to offer. And with so many bakeries to choose from, it can be hard to know where to start. So, I've picked four of my top choices, each for a different reason.</p>
+    <p><strong><a href={maps('Maison Louvard, Paris')} target="_blank" rel="noopener noreferrer" class={mapLink}>Maison Louvard</a></strong> — Best known for its famous crookie, a combination of a crispy croissant and chocolate chip cookie dough. If you want to try one of the most talked-about pastries in Paris, this is the place to go.</p>
+    <p><strong><a href={maps("La Maison d'Isabelle, Paris")} target="_blank" rel="noopener noreferrer" class={mapLink}>La Maison d'Isabelle</a></strong> — This little bakery is especially famous for its croissants, and there's almost always a queue outside. Its butter croissant won the award for Best Butter Croissant in Paris and the Île-de-France region in 2018, and I can honestly say I wasn't disappointed when I tried it.</p>
+    <p><strong><a href={maps('Mamiche, Paris')} target="_blank" rel="noopener noreferrer" class={mapLink}>Mamiche</a></strong> — Another bakery that has become very popular, with a long queue often forming outside its small shop. Their croissants are great, but I'd also recommend trying the chocolate babka or cinnamon roll, which are among their most popular pastries.</p>
+    <p><strong><a href={maps('Boulangerie du Champ de Mars, Paris')} target="_blank" rel="noopener noreferrer" class={mapLink}>Boulangerie du Champ de Mars</a></strong> — If you're visiting the Eiffel Tower, this is a convenient spot to grab something before or after your visit. It's just a short walk from the tower, making it a nice option for a quick pastry and coffee break.</p>
+  </div>
+</section>
+
+<section id="section-11" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Best Hot Chocolate in Paris</h2>
+  </div>
+  <div class={prose}>
+    <p>If you love chocolate as much as I do, make sure not to skip trying a proper French hot chocolate. Paris has plenty of places to choose from, but these are my top recommendations:</p>
+    <p><strong><a href={maps('Carette Trocadéro, Paris')} target="_blank" rel="noopener noreferrer" class={mapLink}>Carette</a></strong> — Carette was actually the first hot chocolate I ever tried in Paris, and it's still one of my favorites. Most people know the Trocadéro location, especially because of its views of the Eiffel Tower, but there's also a beautiful location at Place des Vosges in Le Marais. The Trocadéro one has become especially busy in recent years thanks to social media, so if you don't want to wait for a table, you can simply get your hot chocolate to go and enjoy it somewhere near the Eiffel Tower.</p>
+    <p><strong><a href={maps('Angelina, 226 Rue de Rivoli, Paris')} target="_blank" rel="noopener noreferrer" class={mapLink}>Angelina</a></strong> — I'll admit I was a little hesitant to visit Angelina because I'd heard people say it had become too touristy and that the quality wasn't what it used to be. But I was pleasantly surprised — I really enjoyed the hot chocolate. The different locations can get very busy, especially the famous Rue de Rivoli one, so if you find a huge line and simply want to try their hot chocolate, you can always get it to go instead of waiting for a table.</p>
+    <p><strong><a href={maps('Les Deux Magots, Paris')} target="_blank" rel="noopener noreferrer" class={mapLink}>Les Deux Magots</a></strong> — If you want to combine your hot chocolate with a little bit of classic Parisian café history, Les Deux Magots is a great option. It's one of the city's most famous historic cafés, and its hot chocolate is regularly mentioned alongside Carette and Angelina as one of the classic places to try chocolat chaud in Paris.</p>
+    <div class="grid grid-cols-2 gap-3 md:gap-4">
+      <ArticleImage src={angelinaHotChocolate} alt="A cup of Angelina hot chocolate with a pain au chocolat in Paris" caption="Hot chocolate at Angelina" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={caretteArcDeTriomphe} alt="Two Carette hot chocolates to go in front of the Arc de Triomphe" caption="Carette hot chocolate to go" imgClass="aspect-[4/5] object-cover" />
+    </div>
+  </div>
+</section>
+
+<section id="section-12" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Where to Eat in Paris</h2>
+  </div>
+  <div class={prose}>
+    <p>Paris is one of those cities where you could eat somewhere different every day and still barely scratch the surface. If you're looking for some good places to start, these are a few of my recommendations:</p>
+    <ul class="list-disc space-y-2 pl-5">
+      <li><strong><a href={maps('Bistrot des Tournelles, 6 Rue des Tournelles, 75004 Paris, France')} target="_blank" rel="noopener noreferrer" class={mapLink}>Bistrot des Tournelles</a></strong> — A classic French bistro in Le Marais, known for traditional dishes, generous portions and a cozy, old-school atmosphere. It's a great choice if you want to try traditional French food in a more casual setting.</li>
+      <li><strong><a href={maps('La Jacobine, 59-61 Rue Saint-André des Arts, 75006 Paris, France')} target="_blank" rel="noopener noreferrer" class={mapLink}>La Jacobine</a></strong> — Located in the heart of Saint-Germain-des-Prés, La Jacobine is a cozy spot for traditional French food. It's a good option if you're exploring the neighborhood and want somewhere with a classic Parisian atmosphere.</li>
+      <li><strong><a href={maps('Brasserie des Prés, 6 Cour du Commerce Saint-André, 75006 Paris, France')} target="_blank" rel="noopener noreferrer" class={mapLink}>Brasserie des Prés</a></strong> — If you're looking for a lively Parisian brasserie, this is a great one to keep in mind. Located in Saint-Germain-des-Prés, it's a stylish spot for lunch or dinner while exploring the area.</li>
+      <li><strong><a href={maps('La Tour de Montlhéry - Chez Denise, 5 Rue Prouvaires, 75001 Paris, France')} target="_blank" rel="noopener noreferrer" class={mapLink}>La Tour Montlhéry – Chez Denise</a></strong> — A traditional Parisian restaurant near Les Halles, known for hearty French dishes and a more old-school atmosphere. This is a good choice if you want something that feels less polished and more like a classic neighborhood restaurant.</li>
+      <li><strong><a href={maps('Sacrée Fleur, 50 Rue de Clignancourt, 75018 Paris, France')} target="_blank" rel="noopener noreferrer" class={mapLink}>Sacrée Fleur Montmartre</a></strong> — If you're spending the day in Montmartre, this is a good option for dinner. It specializes in French cuisine, particularly meat dishes, and is conveniently located near Sacré-Cœur.</li>
+    </ul>
+  </div>
+</section>
+
+<div data-gyg-href="https://widget.getyourguide.com/default/activities.frame" data-gyg-locale-code="en-US" data-gyg-widget="activities" data-gyg-number-of-items="1" data-gyg-cmp="paris_things_to_do" data-gyg-partner-id="VMRSHXF" data-gyg-tour-ids="90657" class="my-6 max-w-3xl md:my-8"><span>Powered by <a target="_blank" rel="sponsored" href="https://www.getyourguide.com/paris-l16/">GetYourGuide</a></span></div>
+
+<section id="section-13" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Where to Stay in Paris</h2>
+  </div>
+  <div class={prose}>
+    <p>Paris has plenty of great areas to stay, so where you choose will depend a lot on what you want to be close to. These are a few hotels I'd consider for different parts of the city:</p>
+    <ul class="list-disc space-y-2 pl-5">
+      <li><strong><a href="https://www.booking.com/hotel/fr/de-la-tamise-paris.html" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Hôtel La Tamise</a></strong> — A great option if you want to stay right in the heart of Paris. It's close to the Louvre, Tuileries Garden and Place Vendôme, making it very convenient for sightseeing.</li>
+      <li><strong><a href="https://www.booking.com/hotel/fr/duquesneeiffel.html" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Hôtel Duquesne Eiffel</a></strong> — A good choice if being close to the Eiffel Tower is important to you. Located in the 7th arrondissement, some rooms also have direct views of the tower.</li>
+      <li><strong><a href="https://www.booking.com/hotel/fr/le-pavillon-de-la-reine.html" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Le Pavillon de la Reine</a></strong> — A beautiful choice if you want to stay in Le Marais, right on Place des Vosges. It's a more luxurious option, with a peaceful setting, gardens and a spa.</li>
+      <li><strong><a href="https://www.booking.com/hotel/fr/saintpetersbourg.html" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Hotel Saint-Petersbourg Opera &amp; SPA</a></strong> — A convenient choice if you want to be close to Opéra, Galeries Lafayette and Printemps. It's also within walking distance of several major sights.</li>
+      <li><strong><a href="https://www.booking.com/hotel/fr/des-academies-et-des-arts.html" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Hôtel des Académies et des Arts</a></strong> — A charming option in the Montparnasse area, close to Luxembourg Gardens and Saint-Germain-des-Prés. It's a good choice if you want to stay in a quieter part of central Paris with plenty of cafés and restaurants nearby.</li>
+    </ul>
+  </div>
+</section>
+
+<iframe
+  id="stay22-widget"
+  title="Find hotels in Paris"
+  width="100%"
+  height="428"
+  src="https://www.stay22.com/embed/6aa94916da41f0b09451cf10"
+  loading="lazy"
+  class="my-5 max-w-3xl md:my-8"
+></iframe>
+
+<GetYourGuideCity locationId="16" />
+
+<section id="section-faq" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">FAQ</h2>
+  </div>
+  <div class={`${prose} space-y-6`}>
+    <div id="faq-0" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">1. How many days do you need in Paris?</h3>
+      <p>Three days is a good amount of time for a first visit if you want to see the main sights. But if you also want to include a day trip, such as Versailles or Disneyland Paris, or visit some additional museums, I'd say four to five days is a better option.</p>
+    </div>
+    <div id="faq-1" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">2. What is the best time to visit Paris?</h3>
+      <p>Spring and fall are great choices, especially April to June and September to October, when the weather is generally pleasant and crowds can be lighter than during the summer. That said, Paris is a year-round destination, and each season has something different to offer.</p>
+    </div>
+    <div id="faq-2" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">3. Is Paris expensive?</h3>
+      <p>Paris can be expensive, especially when it comes to hotels and eating out, but you don't have to spend a fortune to enjoy the city. There are plenty of free things to do, and you can save money by eating at bakeries and casual cafés, using public transportation and choosing accommodation outside the most expensive areas.</p>
+    </div>
+    <div id="faq-3" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">4. Is Paris easy to explore on foot?</h3>
+      <p>Yes, especially if you enjoy walking. One of my favorite walks I've done in Paris was from the Louvre all the way to the Arc de Triomphe. It was such a lovely route because I could take my time, admire the beautiful buildings along the way and simply enjoy the walk.</p>
+      <p>I would definitely recommend it if you enjoy exploring, want to explore the city at a slower pace and don't like to pack your itinerary with too many things, trying to see everything in just a few days.</p>
+    </div>
+    <div id="faq-4" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">5. Do you need to book attractions in advance?</h3>
+      <p>For some of the most popular attractions, I definitely recommend it. The Eiffel Tower and Louvre can get very busy, especially during peak travel periods, so booking ahead can save you from long waits or finding that your preferred time is sold out.</p>
+    </div>
+    <div id="faq-5" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">6. Do you need to speak French in Paris?</h3>
+      <p>Not really. Paris is such an international city that you'll find plenty of people who speak English, especially in hotels, restaurants and tourist areas. So, don't worry if you don't speak French. But you can always say "bonjour" when you enter a shop or restaurant. It's simply considered polite.</p>
+    </div>
+  </div>
+</section>
+
+<section id="section-14" class="scroll-mt-nav">
+  <div class={prose}>
+    <ArticleClosingNote label="Before you go">
+      <p>Paris is a city where you can easily fill every minute of your itinerary, but I wouldn't recommend trying to see everything in one trip. The best advice I can give you is to leave some time to simply walk around, stop for a coffee or a pastry, sit somewhere and watch the city for a while. And I'm sure some of your favorite moments in Paris will be the ones you never expected!</p>
+    </ArticleClosingNote>
+  </div>
+</section>

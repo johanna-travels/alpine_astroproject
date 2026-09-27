@@ -1,0 +1,38 @@
+---
+import ArticlePage from '@/components/articles/ArticlePage.astro';
+import { getArticle, articleHref } from '@/domains/articles/catalog';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import ArticlePreviewCard from '@/components/ui/ArticlePreviewCard.astro';
+import ParisThingsToDoGuide from '@/components/articles/ParisThingsToDoGuide.astro';
+import parisPalaisRoyalHero from '@/assets/articles/paris/things-to-do-in-paris-palais-royal-hero.webp';
+import { parisThingsToDoNav } from '@/domains/articles/paris-things-to-do-nav';
+
+const article = getArticle('things-to-do-in-paris')!;
+const christmasInParis = getArticle('christmas-in-paris')!;
+---
+
+<ArticlePage article={article} sections={parisThingsToDoNav}>
+  <figure slot="title-media">
+    <ArticleImage
+      src={parisPalaisRoyalHero}
+      alt="The fountain and gardens of the Jardin du Palais Royal in Paris"
+      caption="Jardin du Palais Royal"
+      imgClass="aspect-[5/4] object-cover"
+      priority
+    />
+  </figure>
+  <ParisThingsToDoGuide />
+  <section slot="before-footer" class="mx-auto w-full max-w-6xl px-4 md:pr-10 md:pl-0 pb-16 md:pb-20">
+    <h2 class="mb-8 md:mb-10">You may also like</h2>
+    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3">
+      <ArticlePreviewCard
+        href={articleHref(christmasInParis.slug)}
+        image={christmasInParis.image}
+        category={christmasInParis.category}
+        title={christmasInParis.title}
+        alt={christmasInParis.alt}
+        comingSoon={christmasInParis.comingSoon}
+      />
+    </div>
+  </section>
+</ArticlePage>

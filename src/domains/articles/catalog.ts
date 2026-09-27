@@ -30,11 +30,13 @@ import rhodesLcpImage from '@/assets/articles/rhodes/rhodes-old-town-cobblestone
 import articleParga from '@/assets/articles/parga/parga-from-above.webp';
 import articleOsloCard from '@/assets/articles/norway/oslo-akershus-fortress-card.webp';
 import articleOsloHero from '@/assets/articles/norway/oslo-opera-house-hero.webp';
+import articleParisCard from '@/assets/articles/paris/things-to-do-in-paris-card.webp';
+import articleParisHero from '@/assets/articles/paris/things-to-do-in-paris-palais-royal-hero.webp';
 import type { DestinationSlug } from '@/domains/destinations/catalog';
 import { pageUrl } from '@/lib/site';
 
 
-export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bali-where-to-stay' | 'bruges-christmas-markets' | 'christmas-in-paris' | 'munduk-moding-plantation-review' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'mt-fuji-day-trip-from-tokyo' | 'kamakura-day-trip-from-tokyo' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary' | 'tokyo-cafes' | 'tokyo-parks' | 'tokyo-temples' | 'tokyo-5-day-itinerary' | 'tokyo-where-to-stay' | 'tokyo-things-to-do' | 'things-to-do-in-oslo';
+export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bali-where-to-stay' | 'bruges-christmas-markets' | 'christmas-in-paris' | 'munduk-moding-plantation-review' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'mt-fuji-day-trip-from-tokyo' | 'kamakura-day-trip-from-tokyo' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary' | 'tokyo-cafes' | 'tokyo-parks' | 'tokyo-temples' | 'tokyo-5-day-itinerary' | 'tokyo-where-to-stay' | 'tokyo-things-to-do' | 'things-to-do-in-oslo' | 'things-to-do-in-paris';
 
 export interface Article {
   slug: ArticleSlug;
@@ -527,6 +529,24 @@ export const articles: readonly Article[] = [
       "After living in Oslo for the past five years, one of the things I love most about the city is how much nature is part of everyday life. And beyond the main sights, there are plenty of charming corners that are easy to miss if you only have a few hours. So, if you\u2019re planning your first trip to Oslo, let me show you the places I think are worth knowing about.",
     ],
     lead: "Museums, waterfront walks and quiet green corners \u2014 the places worth knowing about on a first trip to Oslo.",
+  },
+  {
+    slug: 'things-to-do-in-paris',
+    destinationSlug: 'france',
+    category: 'FRANCE',
+    title: 'Best Things to Do in Paris',
+    carouselTitle: 'Best Things to Do in Paris',
+    breadcrumbTitle: 'Best Things to Do in Paris',
+    metaLabel: 'France',
+    alt: 'Best things to do in Paris, France',
+    image: articleParisCard,
+    lcpImage: articleParisHero,
+    publishedDate: '27 September 2026',
+    dateLabel: 'Published',
+    intro: [
+      "We all know Paris, and we\u2019ve all heard about how romantic and beautiful it is, with the Seine running through the city and those beautiful old buildings that make you feel like you\u2019ve been transported to another century. And yes, it really is like that. The first time I visited Paris, I was a little worried that it might be overhyped and that the reality wouldn\u2019t live up to everything I had heard. But once I got there, I understood exactly what everyone had been talking about.",
+    ],
+    lead: "Iconic sights, day trips, museums, bakeries and hot chocolate \u2014 everything worth knowing for your first trip to Paris.",
   },
 ] as const;
 
