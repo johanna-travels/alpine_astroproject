@@ -148,7 +148,7 @@ export default function ContactSectionWithShader({ image = defaultImage, showIma
     : "py-10 md:py-8 lg:py-16";
 
   return (
-    <div className={`w-full dark:bg-neutral-900 ${className}`} style={{ backgroundColor: '#F5F2EB' }}>
+    <div className={`w-full bg-[#F5F2EB] dark:bg-neutral-900 ${className}`}>
       <div
         className={`mx-auto grid max-w-[1300px] gap-8 px-0 md:px-6 lg:gap-12 lg:px-16 xl:gap-16 xl:px-20 ${padClass} ${showImage ? 'grid-cols-1 lg:grid-cols-2' : 'grid-cols-1 place-items-center'}`}
       >
