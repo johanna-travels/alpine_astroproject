@@ -32,11 +32,13 @@ import articleOsloCard from '@/assets/articles/norway/oslo-akershus-fortress-car
 import articleOsloHero from '@/assets/articles/norway/oslo-opera-house-hero.webp';
 import articleParisCard from '@/assets/articles/paris/things-to-do-in-paris-card.webp';
 import articleParisHero from '@/assets/articles/paris/things-to-do-in-paris-palais-royal-hero.webp';
+import articleBangkokCard from '@/assets/articles/thailand/things-to-do-in-bangkok-card.webp';
+import articleBangkokHero from '@/assets/articles/thailand/things-to-do-in-bangkok-wat-benchamabophit.webp';
 import type { DestinationSlug } from '@/domains/destinations/catalog';
 import { pageUrl } from '@/lib/site';
 
 
-export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bali-where-to-stay' | 'bruges-christmas-markets' | 'christmas-in-paris' | 'munduk-moding-plantation-review' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'mt-fuji-day-trip-from-tokyo' | 'kamakura-day-trip-from-tokyo' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary' | 'tokyo-cafes' | 'tokyo-parks' | 'tokyo-temples' | 'tokyo-5-day-itinerary' | 'tokyo-where-to-stay' | 'tokyo-things-to-do' | 'things-to-do-in-oslo' | 'things-to-do-in-paris';
+export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bali-where-to-stay' | 'bruges-christmas-markets' | 'christmas-in-paris' | 'munduk-moding-plantation-review' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'mt-fuji-day-trip-from-tokyo' | 'kamakura-day-trip-from-tokyo' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary' | 'tokyo-cafes' | 'tokyo-parks' | 'tokyo-temples' | 'tokyo-5-day-itinerary' | 'tokyo-where-to-stay' | 'tokyo-things-to-do' | 'things-to-do-in-oslo' | 'things-to-do-in-paris' | 'things-to-do-in-bangkok';
 
 export interface Article {
   slug: ArticleSlug;
@@ -547,7 +549,26 @@ export const articles: readonly Article[] = [
       "We all know Paris, and we\u2019ve all heard about how romantic and beautiful it is, with the Seine running through the city and those beautiful old buildings that make you feel like you\u2019ve been transported to another century. And yes, it really is like that. The first time I visited Paris, I was a little worried that it might be overhyped and that the reality wouldn\u2019t live up to everything I had heard. But once I got there, I understood exactly what everyone had been talking about.",
     ],
     lead: "Iconic sights, day trips, museums, bakeries and hot chocolate \u2014 everything worth knowing for your first trip to Paris.",
+  },  {
+    slug: 'things-to-do-in-bangkok',
+    destinationSlug: 'thailand',
+    category: 'THAILAND',
+    title: 'Things to Do in Bangkok (Your Ultimate Bangkok Guide)',
+    carouselTitle: 'Things to Do in Bangkok',
+    breadcrumbTitle: 'Things to Do in Bangkok',
+    metaLabel: 'Thailand',
+    alt: 'Things to do in Bangkok, Thailand',
+    image: articleBangkokCard,
+    lcpImage: articleBangkokHero,
+    publishedDate: '11 October 2026',
+    dateLabel: 'Published',
+    intro: [
+      "Bangkok is chaotic, loud, busy and, at times, a little overwhelming. I still remember my first visit and how shocked I was by the chaos of the city. Honestly, I left thinking I would probably never come back. And yet, here I am, returning to Bangkok again and again, always finding new temples to visit, new neighborhoods to explore and little corners of the city I hadn\u2019t discovered before.",
+      "The funny thing is that there are still so many other parts of Thailand I\u2019d love to see, especially the north, but somehow, Bangkok keeps drawing me back. There\u2019s always more to discover, and I guess that\u2019s how I got caught in this Bangkok loop.",
+    ],
+    lead: "Temples, street food, rooftop bars and the neighborhoods worth knowing before your next trip to Bangkok.",
   },
+
 ] as const;
 
 export function getArticle(slug: string): Article | undefined {

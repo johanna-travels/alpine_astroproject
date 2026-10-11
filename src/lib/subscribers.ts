@@ -82,6 +82,13 @@ export async function unsubscribeSubscriber(
   return !error;
 }
 
+export class SubscriberQueryError extends Error {
+  constructor(detail: string) {
+    super(`Supabase subscribers query failed: ${detail}`);
+    this.name = 'SubscriberQueryError';
+  }
+}
+
 export async function getActiveSubscribersForNewsletter(
   client: SupabaseClient,
 ): Promise<NewsletterRecipient[]> {
@@ -90,7 +97,11 @@ export async function getActiveSubscribersForNewsletter(
     .select('email, confirmation_token, preferences')
     .eq('status', 'active');
 
-  if (error || !data) return [];
+  // Throw instead of returning [] so a DB/config failure is never reported as "0 subscribers".
+  if (error) {
+    throw new SubscriberQueryError(error.message);
+  }
+  if (!data) return [];
 
   return data
     .filter((row) => {

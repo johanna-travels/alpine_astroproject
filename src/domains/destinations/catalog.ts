@@ -6,9 +6,10 @@ import greeceHero from '@/assets/heroes/destination-greece.webp';
 import japanHero from '@/assets/heroes/destination-japan.webp';
 import hongKongHero from '@/assets/articles/hong-kong/hong-kong-victoria.webp';
 import norwayHero from '@/assets/articles/norway/norway.webp';
+import thailandHero from '@/assets/heroes/destination-thailand.webp';
 import { pageUrl } from '@/lib/site';
 
-export type DestinationSlug = 'bali' | 'belgium' | 'france' | 'greece' | 'hong-kong' | 'japan' | 'norway';
+export type DestinationSlug = 'bali' | 'belgium' | 'france' | 'greece' | 'hong-kong' | 'japan' | 'norway' | 'thailand';
 
 export interface Destination {
   slug: DestinationSlug;
@@ -108,6 +109,18 @@ export const destinations: readonly Destination[] = [
     seoTitle: 'Norway — Voyaflair',
     seoDescription:
       'Travel guides and notes from Norway — fjords, mountain towns, and landscapes worth slowing down for.',
+  },
+  {
+    slug: 'thailand',
+    name: 'Thailand',
+    region: 'Asia',
+    cardDescription: 'Golden temples, bustling markets and laid-back island life',
+    description:
+      "Thailand moves between golden temples, bustling street markets and a slower island rhythm that makes it easy to see why so many travelers fall for the country. From Bangkok's riverside temples to the food, culture and warm hospitality found across the country, this page gathers guides and travel notes from Thailand.",
+    heroImage: thailandHero,
+    seoTitle: 'Thailand — Voyaflair',
+    seoDescription:
+      'Travel guides and notes from Thailand — temples, markets, and island life worth experiencing.',
   },
 ] as const;
 

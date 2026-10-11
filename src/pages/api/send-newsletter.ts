@@ -3,7 +3,12 @@ import { buildArticleEmailContent, buildOutgoingNewsletterEmail } from '@/lib/ne
 import { getResendSender, isBlockedNewsletterRecipient } from '@/lib/email'; // Φιλτράρουμε blocked test emails πριν το Resend.
 import { getServerEnv } from '@/lib/serverEnv';
 import { getSupabaseAdmin } from '@/lib/supabaseAdmin';
-import { getActiveSubscribersForNewsletter, getSubscriberStats } from '@/lib/subscribers';
+import {
+  getActiveSubscribersForNewsletter,
+  getSubscriberStats,
+  SubscriberQueryError,
+  type SubscriberStats,
+} from '@/lib/subscribers';
 import { absoluteUrl } from '@/lib/site';
 import { Resend } from 'resend';
 import type { APIRoute } from 'astro';
@@ -38,6 +43,20 @@ function serviceUnavailable(message: string) {
     status: 503,
     headers: { 'Content-Type': 'application/json' },
   });
+}
+
+/** Human-readable explanation for an empty recipient list, based on subscriber stats. */
+function explainNoRecipients(stats: SubscriberStats | null): string {
+  if (!stats) return 'Could not read subscriber stats from Supabase.';
+  if (stats.total === 0) return 'The subscribers table is empty.';
+  if (stats.active === 0 && stats.pending > 0) {
+    return `${stats.pending} subscriber(s) are still pending — they have not clicked the confirmation link.`;
+  }
+  if (stats.active === 0) return 'No subscriber has status "active".';
+  const parts: string[] = [];
+  if (stats.activeUpdatesDisabled > 0) parts.push(`${stats.activeUpdatesDisabled} active subscriber(s) turned travel updates off`);
+  if (stats.activeMissingToken > 0) parts.push(`${stats.activeMissingToken} active subscriber(s) have no confirmation_token`);
+  return parts.length > 0 ? `${parts.join('; ')}.` : 'Active subscribers exist but none are eligible.';
 }
 
 function articleImageUrl(article: NonNullable<ReturnType<typeof getArticle>>): string | undefined {
@@ -119,6 +138,7 @@ export const POST: APIRoute = async ({ request }) => {
       return new Response(
         JSON.stringify({
           message: 'No active subscribers with travel updates enabled.',
+          reason: explainNoRecipients(subscriberStats),
           article: article.slug,
           sent: 0,
           recipients: 0,
@@ -207,6 +227,10 @@ export const POST: APIRoute = async ({ request }) => {
       { status: 200, headers: { 'Content-Type': 'application/json' } },
     );
   } catch (error) {
+    if (error instanceof SubscriberQueryError) {
+      console.error('Send newsletter error:', error);
+      return serviceUnavailable(error.message);
+    }
     console.error('Send newsletter error:', error);
     return new Response(JSON.stringify({ error: 'Internal server error' }), {
       status: 500,
