@@ -1,0 +1,296 @@
+---
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
+import ArticlePinSaveSection from '@/components/articles/ArticlePinSaveSection.astro';
+import ArticleShareBar from '@/components/articles/ArticleShareBar.astro';
+import { articleHref } from '@/domains/articles/catalog';
+import threeDayBangkokItineraryPin from '@/assets/articles/thailand/3-day-bangkok-itinerary-pin.webp';
+import sookSiamMarket from '@/assets/articles/thailand/3-day-bangkok-itinerary-sooksiam-market.webp';
+import iconsiamRiverView from '@/assets/articles/thailand/3-day-bangkok-itinerary-iconsiam-river-view.webp';
+import iconsiamWaterfall from '@/assets/articles/thailand/things-to-do-in-bangkok-iconsiam.webp';
+import talatNoiMural from '@/assets/articles/thailand/things-to-do-in-bangkok-talat-noi-mural.webp';
+import talatNoiFiat from '@/assets/articles/thailand/3-day-bangkok-itinerary-talat-noi-fiat.webp';
+import naam1608Entrance from '@/assets/articles/thailand/things-to-do-in-bangkok-naam1608-entrance.webp';
+import naam1608Sunset from '@/assets/articles/thailand/things-to-do-in-bangkok-naam1608-sunset.webp';
+import pastelCocktail from '@/assets/articles/thailand/things-to-do-in-bangkok-pastel-cocktail.webp';
+import watBenchamabophitAlone from '@/assets/articles/thailand/3-day-bangkok-itinerary-wat-benchamabophit-alone.webp';
+import goldenBuddha from '@/assets/articles/thailand/wat-paknam-phasi-charoen-big-buddha-bangkok.webp';
+import erawanMuseumStaircase from '@/assets/articles/thailand/3-day-bangkok-itinerary-erawan-museum-staircase.webp';
+import erawanMuseumElephantStatue from '@/assets/articles/thailand/erawan-museum-elephant-statue.webp';
+import terminal21 from '@/assets/articles/thailand/things-to-do-in-bangkok-terminal-21.webp';
+import GetYourGuideCity from '@/components/articles/GetYourGuideCity.astro';
+import watPhoReclining from '@/assets/articles/thailand/things-to-do-in-bangkok-wat-pho.webp';
+import watArunTemple from '@/assets/articles/thailand/things-to-do-in-bangkok-wat-arun-temple.webp';
+import airportStatue from '@/assets/articles/thailand/things-to-do-in-bangkok-airport-statue.webp';
+import skyBarSkyline from '@/assets/articles/thailand/things-to-do-in-bangkok-sky-bar-skyline.webp';
+import riverBoat from '@/assets/articles/thailand/things-to-do-in-bangkok-river-boat.webp';
+
+const prose = 'article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0';
+const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]';
+const twoColGrid = 'my-5 grid grid-cols-2 items-start gap-3 md:my-8 md:gap-4';
+---
+
+<section id="section-airport" class="scroll-mt-nav">
+  <ArticleImage src={airportStatue} alt="A giant guardian statue at Suvarnabhumi Airport in Bangkok" caption="A giant guardian statue at Suvarnabhumi Airport" imgClass="aspect-[2/3] object-cover" />
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">How to Get from the Airport to Bangkok</h2>
+  </div>
+  <div class={prose}>
+    <p>If you&rsquo;re flying into Suvarnabhumi Airport (BKK), getting into central Bangkok is relatively easy, and you don&rsquo;t necessarily need to take a taxi. The Airport Rail Link connects the airport to the city and is a convenient option, especially when traffic is heavy.</p>
+    <p>You&rsquo;ll find the train station on B1, the basement level of the airport terminal. You can buy a ticket at the station before boarding, so there&rsquo;s no need to arrange transport in advance. It&rsquo;s still a good idea to have some Thai baht with you, just in case.</p>
+    <p>The Airport Rail Link connects with other train lines in the city, making it easy to continue your journey to your hotel. Just keep in mind that Suvarnabhumi and Don Mueang are two different airports, so check which one you&rsquo;re arriving at before planning your transfer.</p>
+  </div>
+</section>
+
+<section id="section-day1" class="scroll-mt-nav">
+  <ArticleImage src={skyBarSkyline} alt="Bangkok's skyline at dusk seen from a rooftop bar" caption="Bangkok's skyline at dusk" imgClass="aspect-[5/4] object-cover" />
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Day 1: Bangkok&rsquo;s Famous Temples, ICONSIAM & Chinatown</h2>
+  </div>
+  <div class={prose}>
+    <h3 class="mt-2 mb-2 text-black">Morning: Grand Palace, Wat Pho &amp; Wat Arun</h3>
+    <p>Start your first day early with three of Bangkok&rsquo;s most famous landmarks: the Grand Palace, Wat Pho, and Wat Arun. I&rsquo;d recommend visiting the Grand Palace first, followed by Wat Pho, home to the famous Reclining Buddha. From there, take a short ferry ride across the Chao Phraya River to Wat Arun, known for its beautifully decorated central tower. Starting early will help you make the most of the cooler hours before the midday heat sets in.</p>
+    <div class="grid grid-cols-2 gap-3 md:gap-4">
+      <ArticleImage src={watPhoReclining} alt="The golden Reclining Buddha statue at Wat Pho in Bangkok" caption="The Reclining Buddha at Wat Pho" imgClass="aspect-[2/3] object-cover" />
+      <ArticleImage src={watArunTemple} alt="The ornate spire of Wat Arun temple in Bangkok" caption="The central tower of Wat Arun" imgClass="aspect-[2/3] object-cover" />
+    </div>
+    <p>Remember to dress respectfully when visiting Bangkok&rsquo;s temples, with your shoulders and knees covered. I&rsquo;d also recommend carrying some Thai baht in cash, as you may need it for temple entrance fees, ferry tickets, and other small expenses along the way.</p>
+    <h3 class="mt-8 mb-2 text-black">Midday: Take a Break at ICONSIAM</h3>
+    <p>If there&rsquo;s one shopping mall in Bangkok you shouldn&rsquo;t miss, it&rsquo;s ICONSIAM. Beyond its impressive shops, you&rsquo;ll find SookSiam, an indoor market inspired by Thailand&rsquo;s traditional floating markets, with food stalls, local products, and traditional Thai touches from different regions of the country. It&rsquo;s the perfect place to take a break from the heat, grab lunch, and explore something a little different.</p>
+    <p>Before you leave, head outside to one of the riverside areas to enjoy the views of the Chao Phraya River. With so much more to offer than shopping, it&rsquo;s easy to see why ICONSIAM is one of Bangkok&rsquo;s most impressive malls &mdash; and my personal favorite.</p>
+    <div class={twoColGrid}>
+      <ArticleImage src={sookSiamMarket} alt="The indoor SookSiam floating market at ICONSIAM in Bangkok" caption="SookSiam, the indoor floating market at ICONSIAM" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={iconsiamRiverView} alt="A view of the Chao Phraya River from the riverside area at ICONSIAM in Bangkok" caption="The riverside view at ICONSIAM" figureClass="m-0" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <ArticleImage src={iconsiamWaterfall} alt="The indoor waterfall at ICONSIAM shopping mall in Bangkok" caption="The indoor waterfall at ICONSIAM" imgClass="aspect-[2/3] object-cover" />
+    <h3 class="mt-8 mb-2 text-black">Late Afternoon &amp; Evening: Chinatown</h3>
+    <p>You can end your first day in Chinatown. The area becomes especially lively in the evening, when the neon signs light up and the streets take on a completely different atmosphere. It&rsquo;s a great place to wander around, take photos, and sample some of Bangkok&rsquo;s famous street food if that&rsquo;s something you enjoy.</p>
+  </div>
+</section>
+
+<section id="section-day2" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">The Marble Temple, Talat Noi &amp; Rooftop Views</h2>
+  </div>
+  <div class={prose}>
+    <h3 class="mt-2 mb-2 text-black">Morning: Visit Wat Benchamabophit (The Marble Temple)</h3>
+    <p>Located in the Dusit district, north of Bangkok&rsquo;s Old Town, Wat Benchamabophit is a little farther from the main tourist circuit than temples like Wat Pho and Wat Arun. Also known as the Marble Temple, it&rsquo;s famous for its white Carrara marble imported from Italy, which gives the temple a distinctive look compared to many of Bangkok&rsquo;s more ornate temples. Don&rsquo;t miss the covered gallery lined with 52 Buddha statues, each representing different styles of Buddhist art.</p>
+    <p>Although it&rsquo;s a well-known attraction, the temple generally feels quieter than Bangkok&rsquo;s busiest temple complexes. I visited early in the morning and was surprised to find myself almost completely alone, which made it easy to take photos and appreciate the architecture without the crowds.</p>
+    <ArticleImage src={watBenchamabophitAlone} alt="A woman walking alone toward Wat Benchamabophit, the Marble Temple, in Bangkok" caption="Wat Benchamabophit in the quiet early morning" imgClass="aspect-[5/4] object-cover" />
+    <h3 class="mt-8 mb-2 text-black">Late Morning to Early Afternoon: Explore Talat Noi and Have Lunch by the River</h3>
+    <p>Talat Noi is one of my favorite neighborhoods to explore in Bangkok. Take your time wandering through its narrow streets, discovering colorful street art, old buildings, and little corners that make the area so interesting.</p>
+    <ArticleImage src={talatNoiMural} alt="Colorful street art mural along a street in Talat Noi, Bangkok" caption="Street art in Talat Noi" imgClass="aspect-[5/4] object-cover" />
+    <p>One of the neighborhood&rsquo;s most popular photo spots is the old, rusty Fiat parked outside 32Bar X, a small shop specializing in Thai craft chocolate.</p>
+    <ArticleImage src={talatNoiFiat} alt="An old rusty Fiat parked outside 32Bar X in Talat Noi, Bangkok" caption="The famous rusty Fiat outside 32Bar X" imgClass="aspect-[5/4] object-cover" />
+    <p>After exploring the neighborhood, you can head to NAAM 1608 for lunch. Just a short walk away, this riverside restaurant serves Thai cuisine in a charming old wooden house along the Chao Phraya River. It&rsquo;s a lovely place to enjoy a local meal while watching the boats pass by. The restaurant has excellent reviews, and I&rsquo;d recommend booking ahead, especially if you&rsquo;d like a table by the water.</p>
+    <div class="grid grid-cols-2 gap-3 md:gap-4">
+      <ArticleImage src={naam1608Entrance} alt="The leafy entrance of Naam 1608 restaurant in Bangkok" caption="The entrance of Naam 1608" imgClass="aspect-[4/5] object-cover" />
+      <ArticleImage src={naam1608Sunset} alt="Thai food and drinks on a table overlooking the Chao Phraya River at sunset at Naam 1608" caption="Sunset views at Naam 1608" imgClass="aspect-[4/5] object-cover" />
+    </div>
+    <p>And if you&rsquo;re wondering whether this place is worth a visit, let&rsquo;s just say I never leave Bangkok without stopping here. It&rsquo;s become a little tradition of mine!</p>
+    <h3 class="mt-8 mb-2 text-black">Evening: Choose a Rooftop Bar or a Chao Phraya River Cruise</h3>
+    <p>For your second evening, why not enjoy Bangkok from above? If you&rsquo;re in the mood for a rooftop dinner or drinks, here are two options worth considering, depending on the kind of evening you&rsquo;re looking for.</p>
+    <p>Pastel Rooftop Bar is a great choice if you want sunset views, Mediterranean food, and a lively atmosphere with music. It&rsquo;s a fun spot for a memorable night out.</p>
+    <ArticleImage src={pastelCocktail} alt="A mocktail on a table overlooking the Bangkok skyline at Pastel Rooftop Bar" caption="A mocktail with a view at Pastel Rooftop Bar" imgClass="aspect-[2/3] object-cover" />
+    <p>For something more upscale, Le Du Kaan combines panoramic skyline views from the 56th floor of The Empire with creative Thai cuisine. It&rsquo;s a great option if you&rsquo;d like to make dinner part of the experience, although it&rsquo;s worth budgeting more for this one.</p>
+    <p>Alternatively, you could skip the rooftop and take a dinner cruise along the Chao Phraya River, where you&rsquo;ll see riverside landmarks such as Wat Arun illuminated after dark.</p>
+    <div class="my-6 max-w-3xl md:my-8">
+      <ins class="klk-aff-widget" data-adid="1494012" data-lang="en-US" data-currency="USD" data-cardH="126" data-padding="92" data-lgH="470" data-edgeValue="655" data-prod="static_widget" data-amount="6">
+        <a href="https://www.klook.com/">Klook.com</a>
+      </ins>
+    </div>
+    <script is:inline async src="https://affiliate.klook.com/widget/fetch-iframe-init.js"></script>
+  </div>
+</section>
+
+<section id="section-day3" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Erawan Museum &amp; Wat Paknam Phasi Charoen</h2>
+  </div>
+  <div class={prose}>
+    <h3 class="mt-2 mb-2 text-black">Morning: Visit Erawan Museum</h3>
+    <p>Erawan Museum is located Samut Prakan, just outside central Bangkok. The museum is best known for its enormous three-headed elephant sculpture, which stands above the building. Inside, you&rsquo;ll find colorful stained glass, intricate decorations, and beautifully designed spaces that make this a particularly interesting stop for photography.</p>
+    <div class="grid grid-cols-2 gap-3 md:gap-4">
+      <ArticleImage src={erawanMuseumStaircase} alt="The ornate stained-glass dome and staircase inside Erawan Museum in Bangkok" caption="The stained-glass dome inside Erawan Museum" imgClass="aspect-[2/3] object-cover" />
+      <ArticleImage src={erawanMuseumElephantStatue} alt="The three-headed elephant sculpture above the entrance road at Erawan Museum in Bangkok" caption="The three-headed elephant sculpture at Erawan Museum" imgClass="aspect-[2/3] object-cover" />
+    </div>
+    <h3 class="mt-8 mb-2 text-black">Midday: Take a Break from the Heat</h3>
+    <p>Bangkok&rsquo;s midday heat can be exhausting, so this is a good time to head indoors and take a break. If you feel like exploring a shopping mall, Terminal 21 is an interesting option. Each floor is themed around a different city, with decorations inspired by places such as Tokyo, London, Istanbul, and San Francisco.</p>
+    <ArticleImage src={terminal21} alt="The exterior of Terminal 21 shopping mall in Bangkok" caption="Terminal 21 in Bangkok" imgClass="aspect-[2/3] object-cover" />
+    <p>It&rsquo;s also home to Pier 21, a food court on the fifth floor where you can find a variety of Thai dishes at budget-friendly prices. It&rsquo;s a practical option if you&rsquo;re looking for an affordable lunch while staying out of the heat.</p>
+    <h3 class="mt-8 mb-2 text-black">Wat Paknam Phasi Charoen and the Giant Buddha</h3>
+    <p>Wat Paknam Phasi Charoen is home to Bangkok&rsquo;s enormous bronze Buddha statue, which stands 69 meters tall and has become one of the city&rsquo;s most recognizable modern landmarks. The temple complex is also worth exploring for its white pagoda, which houses an impressive emerald-green glass stupa beneath an intricately painted ceiling.</p>
+    <p>I visited early in the morning, but even then, the heat was already intense. Visiting later in the afternoon may be more comfortable, with softer light that can make the giant Buddha even more striking in photos. If you&rsquo;re planning to explore the pagoda&rsquo;s interior, check the latest opening hours before your visit, as access times may vary.</p>
+    <ArticleImage src={goldenBuddha} alt="A woman looking at the giant golden Buddha statue at Wat Paknam Phasi Charoen in Bangkok" caption="The Big Buddha at Wat Paknam Phasi Charoen" imgClass="aspect-[4/5] object-cover" />
+    <p>After your visit, leave the rest of the evening free to enjoy dinner, return to your hotel, or explore somewhere you didn&rsquo;t have time to visit earlier.</p>
+  </div>
+</section>
+
+<section id="section-extra-day" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Have an Extra Day in Bangkok?</h2>
+  </div>
+  <div class={prose}>
+    <p>If you have four full days in Bangkok, I&rsquo;d recommend adding Ancient City (Muang Boran) to your itinerary. This enormous open-air museum features replicas and reconstructions of temples, palaces, and other important landmarks from across Thailand.</p>
+    <p>You can spend several hours exploring the grounds, and renting a golf cart makes it easier to get around. If you only have three days but Ancient City is high on your list, you could also visit it instead of following the third day of this itinerary.</p>
+  </div>
+</section>
+
+<section id="section-tips" class="scroll-mt-nav">
+  <GetYourGuideCity locationId="169" />
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Important Things to Know Before Visiting Bangkok</h2>
+  </div>
+  <div class={prose}>
+    <p>Before diving into all the exciting things to do in Bangkok, make sure you read through these important tips. Knowing what to expect before your trip will help you avoid common travel surprises and make your time in Bangkok smoother and more enjoyable.</p>
+    <ul class="list-disc space-y-6 pl-5 marker:text-black/40">
+    <li>
+      <strong>Bring Cash and Watch Out for ATM Fees</strong>
+      <p>Although cards are accepted in many places, cash is still useful in Bangkok, especially at street food stalls, local markets and smaller shops. I&rsquo;d recommend bringing some cash with you or exchanging a small amount before your trip, so you have money available when you arrive.</p>
+      <p>If you plan to withdraw Thai baht from ATMs, keep in mind that Thai banks charge a fee for foreign-card withdrawals, and your own bank may charge extra fees on top. Since the local fee applies to each withdrawal, it&rsquo;s worth checking the amount displayed on the screen before confirming and avoiding lots of small withdrawals.</p>
+      <p>And here&rsquo;s one little thing to remember: don&rsquo;t forget your card! This might sound obvious, but it has happened to me, too. Some ATMs return your cash before returning your card, and it&rsquo;s surprisingly easy to grab your money and walk away while waiting for the card to come out.</p>
+    </li>
+    <li>
+      <strong>Stay Hydrated in the Heat</strong>
+      <p>Bangkok can get extremely hot and humid, especially during the hotter months, and walking around sightseeing can be more exhausting than you might expect. Make sure you drink water regularly, take breaks throughout the day and step into an air-conditioned caf&eacute; or shopping mall when you need to cool down.</p>
+      <p>Electrolytes can also be useful if you&rsquo;re sweating heavily, particularly after spending long periods outdoors. Don&rsquo;t underestimate the heat, and try not to squeeze too many outdoor activities into the hottest part of the day.</p>
+    </li>
+    <li>
+      <strong>Wear Comfortable Shoes That Are Easy to Remove</strong>
+      <p>You&rsquo;ll probably do a lot of walking in Bangkok, so comfortable shoes are a must. I&rsquo;d also recommend wearing shoes or sandals that are easy to take off and put back on, as you&rsquo;ll need to remove them before entering many temple buildings.</p>
+      <p>This might seem like a small detail, but when you&rsquo;re visiting several temples in one day, not having to struggle with your shoes every time makes things much easier.</p>
+    </li>
+    <li>
+      <strong>Be Careful with Tap Water</strong>
+      <p>It&rsquo;s best to stick to bottled or otherwise safely treated drinking water in Bangkok rather than drinking straight from the tap. If you prefer to be extra cautious, you can also use bottled water when brushing your teeth, especially if you have a sensitive stomach. Choose sealed bottles and avoid drinking water if you&rsquo;re unsure whether it&rsquo;s safe.</p>
+    </li>
+    <li>
+      <strong>Bring a Face Mask for Air Pollution</strong>
+      <p>You&rsquo;ll probably notice that many locals in Bangkok wear face masks, and during my first visit, I wondered why. I soon experienced just how bad the air pollution could get. The pollution levels were so high that I avoided going outside around midday and planned my days around early morning and late afternoon outings instead.</p>
+      <p>I also remember that public transportation was made free for a week to encourage people to use the trains and buses instead of their own vehicles, as part of an effort to reduce PM2.5 pollution. This was a temporary measure introduced in January 2025, rather than a permanent policy.</p>
+      <p>If you&rsquo;re visiting Bangkok, I&rsquo;d recommend checking the air quality during your stay and bringing a well-fitting N95 or KN95 mask for days when pollution levels are high. These masks help reduce exposure to fine particles. When air quality is poor, try to limit time outdoors and plan indoor activities instead.</p>
+    </li>
+    <li>
+      <strong>Get an eSIM Before You Arrive</strong>
+      <p>One thing I&rsquo;d recommend doing before your trip is setting up an eSIM. Personally, I use <a href="https://airalo.pxf.io/c/7435210/1268485/15608" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Airalo</a>, and it&rsquo;s been really convenient when traveling. Having mobile data as soon as you arrive makes it much easier to look up directions, get around the city, book a Grab, or find your way to your hotel without relying on airport Wi-Fi.</p>
+      <p>I&rsquo;d recommend setting up your eSIM before your flight, so you&rsquo;re ready to go as soon as you land. Just make sure your phone supports eSIMs and check when your data plan becomes active.</p>
+    </li>
+    <li>
+      <strong>Check Your Passport and Complete the Thailand Digital Arrival Card</strong>
+      <p>Before flying to Thailand, make sure your passport meets the entry requirements for your nationality. Some travelers need at least six months of passport validity remaining, so check the current rules before your trip rather than leaving it until the last minute.</p>
+      <p>You&rsquo;ll also need to complete the Thailand Digital Arrival Card (TDAC) before entering the country. It isn&rsquo;t a visa; it&rsquo;s an online arrival form required for foreign travelers entering Thailand. You can submit it within three days before your arrival, including your arrival date, through the official, free website: tdac.immigration.go.th.</p>
+      <p>Make sure you use the official website, and remember that completing the TDAC doesn&rsquo;t replace any visa requirements that may apply to you.</p>
+    </li>
+  </ul>
+  </div>
+</section>
+
+<section id="section-where-to-stay" class="scroll-mt-nav">
+  <GetYourGuideCity locationId="169" />
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Where to Stay in Bangkok</h2>
+  </div>
+  <div class={prose}>
+    <p>Staying in a central area gives you easier access to Bangkok&rsquo;s main attractions, shopping malls, restaurants, and public transportation. Siam and Ratchaprasong are convenient for shopping and sightseeing, while Phloen Chit offers an upscale setting with easy BTS access. Sukhumvit is a good option if you want plenty of restaurants and nightlife nearby.</p>
+    <iframe
+      id="stay22-widget-3day"
+      title="Find hotels in Bangkok"
+      width="100%"
+      height="428"
+      src="https://www.stay22.com/embed/6acbd12ca271e168fb2db0f3"
+      loading="lazy"
+      class="my-5 max-w-3xl md:my-8"
+    ></iframe>
+    <p><a href="https://www.booking.com/searchresults.html?ss=Moxy%20Bangkok%20Ratchaprasong%20Bangkok" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Moxy Bangkok Ratchaprasong</a> &ndash; Located right in the heart of Bangkok, opposite CentralWorld and within easy reach of Siam&rsquo;s shopping malls. It also features a lively rooftop bar with skyline views.</p>
+    <p><a href="https://www.booking.com/searchresults.html?ss=Amara%20Bangkok%20Hotel%20Bangkok" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Amara Bangkok Hotel</a> &ndash; A comfortable hotel in the Silom area, with a rooftop infinity pool overlooking the city. It&rsquo;s also within walking distance of BTS and MRT stations, making it convenient for getting around.</p>
+    <p><a href="https://www.booking.com/searchresults.html?ss=SO/%20Bangkok%20Bangkok" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>SO/ Bangkok</a> &ndash; A stylish design hotel overlooking Lumphini Park, with distinctive interiors and an infinity pool offering impressive city views. It&rsquo;s a great option if you&rsquo;re looking for something a little different while staying close to the MRT.</p>
+    <p><a href="https://www.booking.com/searchresults.html?ss=The%20Okura%20Prestige%20Bangkok%20Bangkok" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>The Okura Prestige Bangkok</a> &ndash; A luxurious hotel in Phloen Chit, directly connected to the BTS Skytrain station. Its standout feature is the striking cantilevered swimming pool on the 25th floor.</p>
+    <p><a href="https://www.booking.com/searchresults.html?ss=Rosewood%20Bangkok%20Bangkok" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Rosewood Bangkok</a> &ndash; A luxury hotel known for its striking architecture, contemporary design, and details inspired by Thai culture. Its direct connection to Phloen Chit BTS makes it a convenient choice for a high-end stay.</p>
+    <p><a href="https://gr.trip.com/hotels/detail/?cityEnName=Bangkok&cityId=359&hotelId=703049&checkIn=2026-10-12&checkOut=2026-10-13&adult=2&children=0&crn=1&ages=&curr=EUR&barcurr=EUR&hoteluniquekey=H4sIAAAAAAAA_-NqZ-FikmCSamDh2HKkZRWrELOhgZHBcmGLxxWOmjH9h7a-3OzgyQACBdsdAnhmMJ78orWRcYdc6-tAox6HHYxMBxiZTjAuYFvAdP_dQ5NTLKwcLXESLJdYupijq5WyUyuVrEx0lEoyS3JSlayUzi07t-DcRCUdpZTU4mQgH8hKzM0vzSsBsk3M9cwMgAIliRWeKWBdyYk5yaU5iSWpIZUFQN1mOkqZxc4lRZkFQam5mSUlqUBVaYk5xakg8aDUYqBMMlhQyQ9oTBFUIDM_D6LdAEUsLDGnNBXiAqCFbqlQOwxrdbC4esm5ted2n9t_vknh3NZz-863nm84t_1847m151uAdDMQN2H3krmRnrkZwkvmA-Il49rYRyxM0bGfWBh-sTA0sTJ0sTJMYmXjWPSRRYJlFyuno6NXgJuPrmGIlIKhgYGBqaGxqamuQaJFqmlysqWuiaW5uYG5rqGxkampkcajlpePJ5kYyZ5ilDI0tzA1NTQ3MrEwNDPWMzQzS3SMLCxy8ct29WAMYnMxMzNxdYmy4WJ29osUBCcfhg_2UsyuoUGKCo4fk8_8lXXQYg7xcDLcz_Xh7rPek_aBTufTrj5_9dE-EiafxJqao-selDFTrICxgZGpi1FQgNGDMYKxAshjfMHI-IGRcRUjwwZGxh2M_2GA8RUjyA4AIatDydUCAAA&masterhotelid_tracelogid=100051355-0a8e5cc9-497707-132552&detailFilters=17%7C1%7E17%7E1*31%7C703049%7E31%7E703049*80%7C2%7C1%7E80%7E2*29%7C1%7E29%7E1%7C2&display=incavg&subStamp=630&isCT=true&isFlexible=F&locale=el-GR" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>The Siam</a> &ndash; For a truly special stay, this exclusive riverside retreat offers lush gardens, art-filled interiors, and a peaceful atmosphere far removed from Bangkok&rsquo;s busy streets. Complimentary shuttle boats connect guests to riverside attractions, making it an experience in itself.</p>
+  </div>
+</section>
+
+<section id="section-where-to-eat" class="scroll-mt-nav">
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Where to Eat in Bangkok</h2>
+  </div>
+  <div class={prose}>
+    <p><a href="https://www.google.com/maps/search/?api=1&query=Naam%201608%2C%20Bangkok%2C%20Thailand" target="_blank" rel="noopener noreferrer" class={mapLink}>Naam 1608</a> &ndash; My favorite restaurant in Bangkok, serving traditional Thai food right by the Chao Phraya River. It&rsquo;s the perfect spot to enjoy a meal while watching the boats pass by, especially around sunset.</p>
+    <p><a href="https://www.google.com/maps/search/?api=1&query=Park%20Sathorn%20Restaurant%2C%20Bangkok%2C%20Thailand" target="_blank" rel="noopener noreferrer" class={mapLink}>PARK SATHORN RESTAURANT</a> &ndash; A hidden garden oasis in the middle of Bangkok, with lush greenery, flowing water, and a peaceful atmosphere. The food is just as impressive as the setting.</p>
+    <p><a href="https://www.google.com/maps/search/?api=1&query=Le%20Du%20Kaan%2C%20The%20Empire%2C%20Bangkok%2C%20Thailand" target="_blank" rel="noopener noreferrer" class={mapLink}>Le Du Kaan</a> &ndash; A rooftop restaurant on the 56th floor of The Empire, serving contemporary Thai cuisine with spectacular 360-degree views of Bangkok&rsquo;s skyline. It&rsquo;s a great choice for a special dinner with a view.</p>
+    <p><a href="https://www.google.com/maps/search/?api=1&query=The%20Sixth%20Bangkok%2C%20near%20Wat%20Pho%2C%20Thailand" target="_blank" rel="noopener noreferrer" class={mapLink}>The Sixth</a> &ndash; A small, cozy restaurant near Wat Pho, known for its Thai food and intimate atmosphere. It&rsquo;s a convenient stop if you&rsquo;re exploring Bangkok&rsquo;s historic temples.</p>
+    <p><a href="https://www.google.com/maps/search/?api=1&query=Mitr%20Street%2C%20Tha%20Tien%2C%20Bangkok%2C%20Thailand" target="_blank" rel="noopener noreferrer" class={mapLink}>MITR STREET</a> &ndash; A colorful, modern restaurant in the Tha Tien area, near Wat Pho, serving Thai-Chinese cuisine. Head up to its rooftop bar for views of Wat Pho and the Chao Phraya River.</p>
+  </div>
+</section>
+
+<section id="section-faq" class="scroll-mt-nav">
+  <ArticleImage src={riverBoat} alt="A long-tail boat on the Chao Phraya River with Wat Ratchanatdaram in the background in Bangkok" caption="A boat on the Chao Phraya River" imgClass="aspect-[5/4] object-cover" />
+  <div class="mb-5 max-w-3xl text-black md:mb-6">
+    <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">FAQ</h2>
+  </div>
+  <div class={`${prose} space-y-6`}>
+    <div id="faq-0" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">1. What is the best time to visit Bangkok?</h3>
+      <p>The best time to visit Bangkok is generally from November to February, when the weather is cooler, less humid, and mostly dry, making it more comfortable to explore the city. March to May is much hotter, while the rainy season typically runs from May to October. Bangkok is a year-round destination, though, so you can still visit outside the peak season if you don&rsquo;t mind the heat or occasional rain.</p>
+    </div>
+    <div id="faq-1" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">2. How many days do you need in Bangkok?</h3>
+      <p>I&rsquo;d recommend spending at least 3 full days in Bangkok to explore its main temples, discover different neighborhoods, try local food, and experience the city beyond its most famous attractions. If you have 4&ndash;5 days, you&rsquo;ll have more time to explore at a relaxed pace or take a day trip outside the city.</p>
+    </div>
+    <div id="faq-2" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">3. Is Bangkok easy to get around?</h3>
+      <p>Bangkok can feel overwhelming at first, especially because of its heavy traffic, but getting around becomes much easier once you know your options. The BTS Skytrain and MRT subway are great for avoiding traffic, while river boats and the Grab app are useful for reaching places that aren&rsquo;t close to a train station. I&rsquo;d recommend using public transportation whenever possible and allowing extra time for journeys by road.</p>
+    </div>
+    <div id="faq-3" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">4. Is Bangkok expensive to visit?</h3>
+      <p>Bangkok can be surprisingly affordable, especially if you eat at local restaurants and street food stalls and use public transportation. At the same time, the city has plenty of upscale hotels, fine-dining restaurants, rooftop bars, and luxury shopping malls if you prefer a more luxurious trip. Your overall budget will depend largely on where you stay and how you choose to spend your time.</p>
+    </div>
+    <div id="faq-4" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">5. Is Bangkok safe for tourists?</h3>
+      <p>Bangkok is a popular destination for tourists, but, as in any major city, it&rsquo;s important to stay aware of your surroundings. Keep an eye on your belongings in crowded areas, use reputable transportation services, and be cautious of common tourist scams, especially offers that seem too good to be true. With sensible precautions, you can enjoy exploring the city while minimizing common travel risks.</p>
+    </div>
+    <div id="faq-5" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">6. What should you wear when visiting temples in Bangkok?</h3>
+      <p>When visiting Bangkok&rsquo;s temples, it&rsquo;s important to dress respectfully. Choose clothing that covers your shoulders and knees, and avoid very short shorts, crop tops, or revealing outfits. Some temples have stricter dress codes than others, so it&rsquo;s a good idea to carry a lightweight scarf or cover-up just in case. You&rsquo;ll also need to remove your shoes before entering many temple buildings.</p>
+    </div>
+    <div id="faq-6" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">7. Do you need cash in Bangkok?</h3>
+      <p>Yes, I&rsquo;d recommend carrying some Thai baht with you, even though cards are accepted at many hotels, shopping malls, and larger restaurants. Cash is still useful for street food stalls, local markets, smaller shops, and some transportation services. You can withdraw money from ATMs throughout the city, but remember that local ATM fees may apply to foreign cards.</p>
+    </div>
+    <div id="faq-7" class="scroll-mt-nav">
+      <h3 class="mb-2 text-black">8. How to Get Around Bangkok?</h3>
+      <p>For the places included in this 3-day Bangkok itinerary, I recommend using a combination of public transport, river boats and Grab rides to get around the city.</p>
+      <ul class="list-disc space-y-2 pl-5 marker:text-black/40">
+        <li><strong>BTS Skytrain:</strong> Bangkok&rsquo;s elevated train system is a convenient way to travel between different parts of the city while avoiding road traffic.</li>
+        <li><strong>MRT:</strong> Bangkok&rsquo;s metro system is another great option for reaching areas that aren&rsquo;t directly connected by the BTS.</li>
+        <li><strong>River boats:</strong> These are especially useful when visiting attractions along the Chao Phraya River, including some of Bangkok&rsquo;s most famous temples.</li>
+        <li><strong>Grab:</strong> Grab is a ride-hailing app similar to Uber. You can book a car directly through the app, see the estimated fare before confirming your ride and pay through the available payment options.</li>
+      </ul>
+      <p>If you&rsquo;d like to learn more about the different transport options, routes and tickets, take a look at my complete <a href={articleHref('things-to-do-in-bangkok')} class={mapLink}>Bangkok Travel Guide</a>, where I cover everything you need to know about getting around the city.</p>
+    </div>
+  </div>
+</section>
+
+<section id="section-final-thoughts" class="scroll-mt-nav">
+  <div class={prose}>
+    <ArticleClosingNote label="Final thoughts">
+      <p>After visiting Bangkok three times, I&rsquo;ve learned that you don&rsquo;t need to see everything in one trip to appreciate what the city has to offer. There&rsquo;s always something new to discover, but trying to fit too much into just a few days can take away from the experience. Take your time, plan your days around the heat, and leave some room for spontaneous discoveries. And if three days leave you wanting more, that&rsquo;s all the more reason to come back.</p>
+    </ArticleClosingNote>
+
+    <ArticlePinSaveSection>
+      <ArticleImage
+        src={threeDayBangkokItineraryPin}
+        alt="A 3-day Bangkok itinerary covering the city's famous temples and highlights"
+        figureClass="m-0"
+        pinOnHover
+      />
+
+      <ArticleShareBar
+        title="3-Day Bangkok Itinerary"
+        pinImage={threeDayBangkokItineraryPin}
+        class="mt-6 md:mt-8"
+      />
+    </ArticlePinSaveSection>
+  </div>
+</section>
+

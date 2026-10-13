@@ -1,7 +1,10 @@
 ---
 import ArticleImage from '@/components/ui/ArticleImage.astro';
 import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
+import ArticlePinSaveSection from '@/components/articles/ArticlePinSaveSection.astro';
+import ArticleShareBar from '@/components/articles/ArticleShareBar.astro';
 import GetYourGuideCity from '@/components/articles/GetYourGuideCity.astro';
+import thingsToDoInBangkokPin from '@/assets/articles/thailand/things-to-do-in-bangkok-pin.webp';
 import watPhoReclining from '@/assets/articles/thailand/things-to-do-in-bangkok-wat-pho.webp';
 import watArunTemple from '@/assets/articles/thailand/things-to-do-in-bangkok-wat-arun-temple.webp';
 import watBenchamabophit from '@/assets/articles/thailand/things-to-do-in-bangkok-wat-benchamabophit.webp';
@@ -18,6 +21,7 @@ import skyBarSkyline from '@/assets/articles/thailand/things-to-do-in-bangkok-sk
 import pastelCocktail from '@/assets/articles/thailand/things-to-do-in-bangkok-pastel-cocktail.webp';
 import airportStatue from '@/assets/articles/thailand/things-to-do-in-bangkok-airport-statue.webp';
 import riverBoat from '@/assets/articles/thailand/things-to-do-in-bangkok-river-boat.webp';
+import erawanMuseumElephantStatue from '@/assets/articles/thailand/erawan-museum-elephant-statue.webp';
 import naam1608Entrance from '@/assets/articles/thailand/things-to-do-in-bangkok-naam1608-entrance.webp';
 import naam1608Sunset from '@/assets/articles/thailand/things-to-do-in-bangkok-naam1608-sunset.webp';
 import bangkokSkyline from '@/assets/articles/thailand/things-to-do-in-bangkok-skyline.webp';
@@ -34,29 +38,45 @@ const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f
   </div>
   <div class={prose}>
     <p>Before diving into all the exciting things to do in Bangkok, make sure you read through these important tips. Knowing what to expect before your trip will help you avoid common travel surprises and make your time in Bangkok smoother and more enjoyable.</p>
-    <h3 class="mt-8 mb-2 text-black">Bring Cash and Watch Out for ATM Fees</h3>
-    <p>Although cards are accepted in many places, cash is still useful in Bangkok, especially at street food stalls, local markets and smaller shops. I&rsquo;d recommend bringing some cash with you or exchanging a small amount before your trip, so you have money available when you arrive.</p>
-    <p>If you plan to withdraw Thai baht from ATMs, keep in mind that Thai banks charge a fee for foreign-card withdrawals, and your own bank may charge extra fees on top. Since the local fee applies to each withdrawal, it&rsquo;s worth checking the amount displayed on the screen before confirming and avoiding lots of small withdrawals.</p>
-    <p>And here&rsquo;s one little thing to remember: don&rsquo;t forget your card! This might sound obvious, but it has happened to me, too. Some ATMs return your cash before returning your card, and it&rsquo;s surprisingly easy to grab your money and walk away while waiting for the card to come out.</p>
-    <h3 class="mt-8 mb-2 text-black">Stay Hydrated in the Heat</h3>
-    <p>Bangkok can get extremely hot and humid, especially during the hotter months, and walking around sightseeing can be more exhausting than you might expect. Make sure you drink water regularly, take breaks throughout the day and step into an air-conditioned caf&eacute; or shopping mall when you need to cool down.</p>
-    <p>Electrolytes can also be useful if you&rsquo;re sweating heavily, particularly after spending long periods outdoors. Don&rsquo;t underestimate the heat, and try not to squeeze too many outdoor activities into the hottest part of the day.</p>
-    <h3 class="mt-8 mb-2 text-black">Wear Comfortable Shoes That Are Easy to Remove</h3>
-    <p>You&rsquo;ll probably do a lot of walking in Bangkok, so comfortable shoes are a must. I&rsquo;d also recommend wearing shoes or sandals that are easy to take off and put back on, as you&rsquo;ll need to remove them before entering many temple buildings.</p>
-    <p>This might seem like a small detail, but when you&rsquo;re visiting several temples in one day, not having to struggle with your shoes every time makes things much easier.</p>
-    <h3 class="mt-8 mb-2 text-black">Be Careful with Tap Water</h3>
-    <p>It&rsquo;s best to stick to bottled or otherwise safely treated drinking water in Bangkok rather than drinking straight from the tap. If you prefer to be extra cautious, you can also use bottled water when brushing your teeth, especially if you have a sensitive stomach. Choose sealed bottles and avoid drinking water if you&rsquo;re unsure whether it&rsquo;s safe.</p>
-    <h3 class="mt-8 mb-2 text-black">Bring a Face Mask for Air Pollution</h3>
-    <p>You&rsquo;ll probably notice that many locals in Bangkok wear face masks, and during my first visit, I wondered why. I soon experienced just how bad the air pollution could get. The pollution levels were so high that I avoided going outside around midday and planned my days around early morning and late afternoon outings instead.</p>
-    <p>I also remember that public transportation was made free for a week to encourage people to use the trains and buses instead of their own vehicles, as part of an effort to reduce PM2.5 pollution. This was a temporary measure introduced in January 2025, rather than a permanent policy.</p>
-    <p>If you&rsquo;re visiting Bangkok, I&rsquo;d recommend checking the air quality during your stay and bringing a well-fitting N95 or KN95 mask for days when pollution levels are high. These masks help reduce exposure to fine particles. When air quality is poor, try to limit time outdoors and plan indoor activities instead.</p>
-    <h3 class="mt-8 mb-2 text-black">Get an eSIM Before You Arrive</h3>
-    <p>One thing I&rsquo;d recommend doing before your trip is setting up an eSIM. Personally, I use <a href="https://airalo.pxf.io/c/7435210/1268485/15608" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Airalo</a>, and it&rsquo;s been really convenient when traveling. Having mobile data as soon as you arrive makes it much easier to look up directions, get around the city, book a Grab, or find your way to your hotel without relying on airport Wi-Fi.</p>
-    <p>I&rsquo;d recommend setting up your eSIM before your flight, so you&rsquo;re ready to go as soon as you land. Just make sure your phone supports eSIMs and check when your data plan becomes active.</p>
-    <h3 class="mt-8 mb-2 text-black">Check Your Passport and Complete the Thailand Digital Arrival Card</h3>
-    <p>Before flying to Thailand, make sure your passport meets the entry requirements for your nationality. Some travelers need at least six months of passport validity remaining, so check the current rules before your trip rather than leaving it until the last minute.</p>
-    <p>You&rsquo;ll also need to complete the Thailand Digital Arrival Card (TDAC) before entering the country. It isn&rsquo;t a visa; it&rsquo;s an online arrival form required for foreign travelers entering Thailand. You can submit it within three days before your arrival, including your arrival date, through the official, free website: tdac.immigration.go.th.</p>
-    <p>Make sure you use the official website, and remember that completing the TDAC doesn&rsquo;t replace any visa requirements that may apply to you.</p>
+    <ul class="list-disc space-y-6 pl-5 marker:text-black/40">
+    <li>
+      <strong>Bring Cash and Watch Out for ATM Fees</strong>
+      <p>Although cards are accepted in many places, cash is still useful in Bangkok, especially at street food stalls, local markets and smaller shops. I&rsquo;d recommend bringing some cash with you or exchanging a small amount before your trip, so you have money available when you arrive.</p>
+      <p>If you plan to withdraw Thai baht from ATMs, keep in mind that Thai banks charge a fee for foreign-card withdrawals, and your own bank may charge extra fees on top. Since the local fee applies to each withdrawal, it&rsquo;s worth checking the amount displayed on the screen before confirming and avoiding lots of small withdrawals.</p>
+      <p>And here&rsquo;s one little thing to remember: don&rsquo;t forget your card! This might sound obvious, but it has happened to me, too. Some ATMs return your cash before returning your card, and it&rsquo;s surprisingly easy to grab your money and walk away while waiting for the card to come out.</p>
+    </li>
+    <li>
+      <strong>Stay Hydrated in the Heat</strong>
+      <p>Bangkok can get extremely hot and humid, especially during the hotter months, and walking around sightseeing can be more exhausting than you might expect. Make sure you drink water regularly, take breaks throughout the day and step into an air-conditioned caf&eacute; or shopping mall when you need to cool down.</p>
+      <p>Electrolytes can also be useful if you&rsquo;re sweating heavily, particularly after spending long periods outdoors. Don&rsquo;t underestimate the heat, and try not to squeeze too many outdoor activities into the hottest part of the day.</p>
+    </li>
+    <li>
+      <strong>Wear Comfortable Shoes That Are Easy to Remove</strong>
+      <p>You&rsquo;ll probably do a lot of walking in Bangkok, so comfortable shoes are a must. I&rsquo;d also recommend wearing shoes or sandals that are easy to take off and put back on, as you&rsquo;ll need to remove them before entering many temple buildings.</p>
+      <p>This might seem like a small detail, but when you&rsquo;re visiting several temples in one day, not having to struggle with your shoes every time makes things much easier.</p>
+    </li>
+    <li>
+      <strong>Be Careful with Tap Water</strong>
+      <p>It&rsquo;s best to stick to bottled or otherwise safely treated drinking water in Bangkok rather than drinking straight from the tap. If you prefer to be extra cautious, you can also use bottled water when brushing your teeth, especially if you have a sensitive stomach. Choose sealed bottles and avoid drinking water if you&rsquo;re unsure whether it&rsquo;s safe.</p>
+    </li>
+    <li>
+      <strong>Bring a Face Mask for Air Pollution</strong>
+      <p>You&rsquo;ll probably notice that many locals in Bangkok wear face masks, and during my first visit, I wondered why. I soon experienced just how bad the air pollution could get. The pollution levels were so high that I avoided going outside around midday and planned my days around early morning and late afternoon outings instead.</p>
+      <p>I also remember that public transportation was made free for a week to encourage people to use the trains and buses instead of their own vehicles, as part of an effort to reduce PM2.5 pollution. This was a temporary measure introduced in January 2025, rather than a permanent policy.</p>
+      <p>If you&rsquo;re visiting Bangkok, I&rsquo;d recommend checking the air quality during your stay and bringing a well-fitting N95 or KN95 mask for days when pollution levels are high. These masks help reduce exposure to fine particles. When air quality is poor, try to limit time outdoors and plan indoor activities instead.</p>
+    </li>
+    <li>
+      <strong>Get an eSIM Before You Arrive</strong>
+      <p>One thing I&rsquo;d recommend doing before your trip is setting up an eSIM. Personally, I use <a href="https://airalo.pxf.io/c/7435210/1268485/15608" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Airalo</a>, and it&rsquo;s been really convenient when traveling. Having mobile data as soon as you arrive makes it much easier to look up directions, get around the city, book a Grab, or find your way to your hotel without relying on airport Wi-Fi.</p>
+      <p>I&rsquo;d recommend setting up your eSIM before your flight, so you&rsquo;re ready to go as soon as you land. Just make sure your phone supports eSIMs and check when your data plan becomes active.</p>
+    </li>
+    <li>
+      <strong>Check Your Passport and Complete the Thailand Digital Arrival Card</strong>
+      <p>Before flying to Thailand, make sure your passport meets the entry requirements for your nationality. Some travelers need at least six months of passport validity remaining, so check the current rules before your trip rather than leaving it until the last minute.</p>
+      <p>You&rsquo;ll also need to complete the Thailand Digital Arrival Card (TDAC) before entering the country. It isn&rsquo;t a visa; it&rsquo;s an online arrival form required for foreign travelers entering Thailand. You can submit it within three days before your arrival, including your arrival date, through the official, free website: tdac.immigration.go.th.</p>
+      <p>Make sure you use the official website, and remember that completing the TDAC doesn&rsquo;t replace any visa requirements that may apply to you.</p>
+    </li>
+  </ul>
   </div>
 </section>
 
@@ -220,6 +240,7 @@ const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f
   <div class={prose}>
     <p>If you&rsquo;re looking for something a little different to add to your Bangkok itinerary, I&rsquo;d recommend visiting the Erawan Museum. It&rsquo;s best known for the enormous three-headed elephant sculpture on top of the building, which makes it stand out from the city&rsquo;s more traditional temples. Inside, you&rsquo;ll find colorful stained glass, intricate decorations, and beautifully designed interiors that are just as interesting to explore as the exterior. It&rsquo;s also a great spot for photography if you enjoy visiting places with unique architecture.</p>
     <p>One of the most popular spots to photograph the museum is from the 7-Eleven across the street, where you can capture the impressive three-headed elephant sculpture above the building.</p>
+    <ArticleImage src={erawanMuseumElephantStatue} alt="The three-headed elephant sculpture above the entrance road at Erawan Museum in Bangkok" caption="The three-headed elephant sculpture at Erawan Museum" imgClass="aspect-[2/3] object-cover" />
   </div>
 </section>
 
@@ -339,5 +360,20 @@ const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f
     <ArticleClosingNote label="Before you go">
       <p>Maybe Bangkok isn&rsquo;t the kind of city you fall in love with at first sight, but one thing is certain: you won&rsquo;t run out of things to be amazed by. From centuries-old temples and vibrant street food scenes to spectacular shopping malls, rooftop bars, and hidden little gems tucked away in its neighborhoods, Bangkok brings together so many different worlds in one city. And that&rsquo;s part of what makes it so fascinating: no matter what you enjoy, there&rsquo;s always something waiting to surprise you.</p>
     </ArticleClosingNote>
+
+    <ArticlePinSaveSection>
+      <ArticleImage
+        src={thingsToDoInBangkokPin}
+        alt="Best things to do in Bangkok travel guide"
+        figureClass="m-0"
+        pinOnHover
+      />
+
+      <ArticleShareBar
+        title="Best Things to Do in Bangkok"
+        pinImage={thingsToDoInBangkokPin}
+        class="mt-6 md:mt-8"
+      />
+    </ArticlePinSaveSection>
   </div>
 </section>

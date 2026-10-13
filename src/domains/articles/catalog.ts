@@ -33,12 +33,14 @@ import articleOsloHero from '@/assets/articles/norway/oslo-opera-house-hero.webp
 import articleParisCard from '@/assets/articles/paris/things-to-do-in-paris-card.webp';
 import articleParisHero from '@/assets/articles/paris/things-to-do-in-paris-palais-royal-hero.webp';
 import articleBangkokCard from '@/assets/articles/thailand/things-to-do-in-bangkok-card.webp';
-import articleBangkokHero from '@/assets/articles/thailand/things-to-do-in-bangkok-wat-benchamabophit.webp';
+import articleBangkokHero from '@/assets/articles/thailand/things-to-do-in-bangkok-wat-arun-river.webp';
+import article3DayBangkokHero from '@/assets/articles/thailand/things-to-do-in-bangkok-wat-benchamabophit.webp';
+import article3DayBangkokCard from '@/assets/articles/thailand/3-day-bangkok-itinerary-card.webp';
 import type { DestinationSlug } from '@/domains/destinations/catalog';
 import { pageUrl } from '@/lib/site';
 
 
-export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bali-where-to-stay' | 'bruges-christmas-markets' | 'christmas-in-paris' | 'munduk-moding-plantation-review' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'mt-fuji-day-trip-from-tokyo' | 'kamakura-day-trip-from-tokyo' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary' | 'tokyo-cafes' | 'tokyo-parks' | 'tokyo-temples' | 'tokyo-5-day-itinerary' | 'tokyo-where-to-stay' | 'tokyo-things-to-do' | 'things-to-do-in-oslo' | 'things-to-do-in-paris' | 'things-to-do-in-bangkok';
+export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bali-where-to-stay' | 'bruges-christmas-markets' | 'christmas-in-paris' | 'munduk-moding-plantation-review' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'mt-fuji-day-trip-from-tokyo' | 'kamakura-day-trip-from-tokyo' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary' | 'tokyo-cafes' | 'tokyo-parks' | 'tokyo-temples' | 'tokyo-5-day-itinerary' | 'tokyo-where-to-stay' | 'tokyo-things-to-do' | 'things-to-do-in-oslo' | 'things-to-do-in-paris' | 'things-to-do-in-bangkok' | '3-day-bangkok-itinerary';
 
 export interface Article {
   slug: ArticleSlug;
@@ -567,6 +569,25 @@ export const articles: readonly Article[] = [
       "The funny thing is that there are still so many other parts of Thailand I\u2019d love to see, especially the north, but somehow, Bangkok keeps drawing me back. There\u2019s always more to discover, and I guess that\u2019s how I got caught in this Bangkok loop.",
     ],
     lead: "Temples, street food, rooftop bars and the neighborhoods worth knowing before your next trip to Bangkok.",
+  },
+  {
+    slug: '3-day-bangkok-itinerary',
+    destinationSlug: 'thailand',
+    category: 'THAILAND',
+    title: '3-Day Bangkok Itinerary',
+    carouselTitle: '3-Day Bangkok Itinerary',
+    breadcrumbTitle: '3-Day Bangkok Itinerary',
+    metaLabel: 'Thailand',
+    alt: '3-day Bangkok itinerary travel guide',
+    image: article3DayBangkokCard,
+    lcpImage: article3DayBangkokHero,
+    publishedDate: '13 October 2026',
+    dateLabel: 'Published',
+    intro: [
+      "Even after visiting Bangkok three times, I still find it difficult to plan my next trip. There are so many beautiful places to see and things to do that it\u2019s tempting to try to fit everything into just a few days. But if there\u2019s one thing I\u2019ve learned from traveling, it\u2019s that trying to see too much can easily take the fun out of a trip.",
+      "Bangkok\u2019s heat doesn\u2019t make things any easier, either. Especially during the hotter months, even a short walk outside can leave you feeling exhausted. So, if you\u2019re visiting Bangkok for the first time and have three days to explore, here\u2019s how I\u2019d plan your itinerary to see the city\u2019s main highlights without trying to fit too much into each day.",
+    ],
+    lead: "A relaxed 3-day Bangkok itinerary covering the city's most famous temples, ICONSIAM, Chinatown, Talat Noi, rooftop views and more.",
   },
 
 ] as const;
