@@ -43,7 +43,7 @@ export const destinations: readonly Destination[] = [
     region: 'Europe',
     cardDescription: 'Medieval charm and culinary delights',
     description:
-      'Belgium is a country of contrasts, where languages, culture and architecture shift noticeably from one region to another. My experience so far has been focused on Bruges, a city defined by its canals and medieval streets, with a slower rhythm that feels removed from bigger cities. This page focuses mainly on Bruges for now, with more destinations coming as I continue exploring the country.',
+      "Medieval towns, grand squares, impressive architecture, and cozy cafés — Belgium has plenty to explore. Here, you'll find travel guides, itineraries, insider tips, and practical advice to help you plan your trip and discover more of what the country has to offer.",
     heroImage: belgiumHero,
     seoTitle: 'Belgium — Voyaflair',
     seoDescription:
@@ -79,7 +79,7 @@ export const destinations: readonly Destination[] = [
     region: 'Asia',
     cardDescription: 'Where skyline views meet buzzing street life',
     description:
-      'Hong Kong moves between towering skylines, busy harbours and quiet corners tucked away from the crowds. From the views over Victoria Harbour to its markets, temples and food, the city packs an incredible amount into a small space. This page gathers guides and travel notes from Hong Kong.',
+      'Hong Kong moves between towering skylines, busy harbors, and quiet corners tucked away from the crowds. From the views over Victoria Harbour to its street markets, temples, and food scene, the city packs an incredible amount into a small space.',
     heroImage: hongKongHero,
     seoTitle: 'Hong Kong — Voyaflair',
     seoDescription:
@@ -104,7 +104,7 @@ export const destinations: readonly Destination[] = [
     featured: false,
     cardDescription: 'Dramatic fjords, northern lights and quiet mountain towns',
     description:
-      'Norway moves between deep fjords, small coastal towns and vast open landscapes that feel untouched by time. My travels here have been shaped by long drives, quiet nature and the kind of scenery that is hard to capture in a single photo. This page gathers guides and travel notes from Norway.',
+      "Dramatic fjords, mountain landscapes, colorful waterfronts, and cities surrounded by nature — Norway has a little bit of everything, from vibrant city life to some of Europe's most striking natural scenery.",
     heroImage: norwayHero,
     seoTitle: 'Norway — Voyaflair',
     seoDescription:
@@ -116,7 +116,7 @@ export const destinations: readonly Destination[] = [
     region: 'Asia',
     cardDescription: 'Golden temples, bustling markets and laid-back island life',
     description:
-      "Thailand moves between golden temples, bustling street markets and a slower island rhythm that makes it easy to see why so many travelers fall for the country. From Bangkok's riverside temples to the food, culture and warm hospitality found across the country, this page gathers guides and travel notes from Thailand.",
+      "Temples, night markets, rooftop views, and tropical islands — Thailand has plenty to spark your wanderlust. Here, you'll find travel guides, itineraries, insider tips, and practical things to know before your trip, starting with Bangkok and hopefully many more places to come.",
     heroImage: thailandHero,
     seoTitle: 'Thailand — Voyaflair',
     seoDescription:
