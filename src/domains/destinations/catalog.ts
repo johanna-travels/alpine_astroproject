@@ -6,10 +6,11 @@ import greeceHero from '@/assets/heroes/destination-greece.webp';
 import japanHero from '@/assets/heroes/destination-japan.webp';
 import hongKongHero from '@/assets/articles/hong-kong/hong-kong-victoria.webp';
 import norwayHero from '@/assets/articles/norway/norway.webp';
+import scotlandHero from '@/assets/articles/edinburgh/calton-hill-scotland.webp';
 import thailandHero from '@/assets/heroes/destination-thailand.webp';
 import { pageUrl } from '@/lib/site';
 
-export type DestinationSlug = 'bali' | 'belgium' | 'france' | 'greece' | 'hong-kong' | 'japan' | 'norway' | 'thailand';
+export type DestinationSlug = 'bali' | 'belgium' | 'france' | 'greece' | 'hong-kong' | 'japan' | 'norway' | 'scotland' | 'thailand';
 
 export interface Destination {
   slug: DestinationSlug;
@@ -101,7 +102,6 @@ export const destinations: readonly Destination[] = [
     slug: 'norway',
     name: 'Norway',
     region: 'Europe',
-    featured: false,
     cardDescription: 'Dramatic fjords, northern lights and quiet mountain towns',
     description:
       "Dramatic fjords, mountain landscapes, colorful waterfronts, and cities surrounded by nature — Norway has a little bit of everything, from vibrant city life to some of Europe's most striking natural scenery.",
@@ -109,6 +109,18 @@ export const destinations: readonly Destination[] = [
     seoTitle: 'Norway — Voyaflair',
     seoDescription:
       'Travel guides and notes from Norway — fjords, mountain towns, and landscapes worth slowing down for.',
+  },
+  {
+    slug: 'scotland',
+    name: 'Scotland',
+    region: 'Europe',
+    cardDescription: 'Historic streets, dramatic landscapes and unforgettable city views',
+    description:
+      'From Edinburgh’s historic streets to dramatic Highland landscapes, Scotland offers a mix of culture, architecture and scenery. This page brings together travel guides and notes from Scotland, starting with Edinburgh.',
+    heroImage: scotlandHero,
+    seoTitle: 'Scotland — Voyaflair',
+    seoDescription:
+      'Travel guides and notes from Scotland — Edinburgh, historic streets, city views and landscapes worth discovering.',
   },
   {
     slug: 'thailand',

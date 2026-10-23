@@ -1,0 +1,278 @@
+---
+import ArticlePage from '@/components/articles/ArticlePage.astro';
+import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
+import { getArticle } from '@/domains/articles/catalog';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import nationalMuseumOfScotland from '@/assets/articles/edinburgh/national-museum-of-scotland.webp';
+import milkmanEdinburgh from '@/assets/articles/edinburgh/milkman-edinburgh.webp';
+import toppingCompanyExterior from '@/assets/articles/edinburgh/topping-company-booksellers-exterior.webp';
+import toppingCompanyInterior from '@/assets/articles/edinburgh/topping-company-booksellers-interior.webp';
+import goldenHareExterior from '@/assets/articles/edinburgh/golden-hare-books-exterior.webp';
+import goldenHareInterior from '@/assets/articles/edinburgh/golden-hare-books-interior.webp';
+import greyfriarsKirkyard from '@/assets/articles/edinburgh/greyfriars-kirkyard-edinburgh.webp';
+import circusLaneEdinburgh from '@/assets/articles/edinburgh/circus-lane-edinburgh.webp';
+import vennelViewpointEdinburgh from '@/assets/articles/edinburgh/the-vennel-viewpoint-edinburgh.webp';
+import victoriaStreetEdinburgh from '@/assets/articles/edinburgh/victoria-street-colorful-buildings.webp';
+import victoriaTerraceEdinburgh from '@/assets/articles/edinburgh/victoria-street-victoria-terrace-view.webp';
+
+const article = getArticle('things-to-do-in-edinburgh-on-a-rainy-day')!;
+const sections = [
+  { navTitle: 'Intro', target: 'section-intro' },
+  {
+    navTitle: '1. Explore a Museum or Art Gallery',
+    target: 'section-0',
+    children: [
+      { navTitle: '1.1 The Writers’ Museum', target: 'writers-museum' },
+      { navTitle: '1.2 Scottish National Gallery', target: 'national-gallery' },
+      { navTitle: '1.3 Scottish National Portrait Gallery', target: 'portrait-gallery' },
+      { navTitle: '1.4 National Museum of Scotland', target: 'museum-of-scotland' },
+    ],
+  },
+  {
+    navTitle: '2. Stay Cozy at a Café',
+    target: 'stay-cozy-at-a-cafe',
+    children: [
+      { navTitle: '2.1 Café W at Waterstones', target: 'cafe-w' },
+      { navTitle: '2.2 The Milkman', target: 'the-milkman' },
+      { navTitle: '2.3 Books N’ Cup', target: 'books-n-cup' },
+    ],
+  },
+  {
+    navTitle: '3. Get Lost in a Bookshop',
+    target: 'get-lost-in-a-bookshop',
+    children: [
+      { navTitle: '3.1 Topping & Company Booksellers', target: 'topping-company' },
+      { navTitle: '3.2 Golden Hare Books', target: 'golden-hare-books' },
+      { navTitle: '3.3 The Gently Mad Bookshop', target: 'gently-mad-bookshop' },
+    ],
+  },
+  {
+    navTitle: '4. Discover Edinburgh on a Rainy Day',
+    target: 'section-1',
+    children: [
+      { navTitle: '4.1 Greyfriars Kirkyard', target: 'greyfriars-kirkyard' },
+      { navTitle: '4.2 Circus Lane', target: 'circus-lane' },
+      { navTitle: '4.3 The Vennel Viewpoint', target: 'vennel-viewpoint' },
+      { navTitle: '4.4 Victoria Street', target: 'victoria-street' },
+    ],
+  },
+  { navTitle: 'Before You Go', target: 'section-2' },
+] as const;
+---
+
+<ArticlePage article={article} sections={sections}>
+  <figure slot="title-media">
+    <ArticleImage
+      src={article.lcpImage!}
+      alt="The Vennel viewpoint looking up towards Edinburgh Castle"
+      caption="The Vennel, with Edinburgh Castle above"
+      imgClass="aspect-[5/4] object-cover"
+      priority
+    />
+  </figure>
+
+  <section id="section-0" class="scroll-mt-nav">
+    <div class="mb-5 max-w-3xl text-black md:mb-6">
+      <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">
+        Explore a Museum or Art Gallery
+      </h2>
+    </div>
+    <div class="article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0">
+      <p>Edinburgh has plenty of museums and art galleries to explore when the weather turns wet. Whether you’re interested in Scottish history, literature, or fine art, these are great places to spend some time indoors.</p>
+
+      <ul class="list-disc space-y-8 pl-5 marker:text-black/40">
+        <li class="pl-1">
+        <h3 id="writers-museum" class="mb-4 scroll-mt-nav">The Writers’ Museum</h3>
+        <p>Edinburgh has a rich literary history, so it’s no surprise that the city has a museum dedicated to some of Scotland’s most celebrated writers. The Writers’ Museum tells the stories of Robert Burns, Sir Walter Scott, and Robert Louis Stevenson through personal belongings, rare books, and original manuscripts. Even if you haven’t read their work, it’s an interesting way to discover the writers who helped shape Scotland’s literary identity.</p>
+        <p><strong>Location:</strong> Lady Stair’s Close, just off the Royal Mile</p>
+        <p><strong>Admission:</strong> Free</p>
+        </li>
+
+        <li class="pl-1">
+        <h3 id="national-gallery" class="mb-4 scroll-mt-nav">Scottish National Gallery</h3>
+        <p>If you enjoy art, the Scottish National Gallery is worth a visit, even if you only have time to see a few rooms. You’ll find paintings by famous artists such as Van Gogh, Monet, and Vermeer, alongside works by some of Scotland’s most important artists. It’s a lovely way to spend some time indoors while exploring a different side of Edinburgh.</p>
+        <p><strong>Location:</strong> The Mound, beside Princes Street Gardens</p>
+        <p><strong>Admission:</strong> Free</p>
+        </li>
+
+        <li class="pl-1">
+        <h3 id="portrait-gallery" class="mb-4 scroll-mt-nav">Scottish National Portrait Gallery</h3>
+        <p>Even if you’re not particularly interested in art, the Scottish National Portrait Gallery is worth visiting for the building alone. This striking red-sandstone, neo-Gothic landmark feels almost like a palace inside, especially when you step into the Great Hall and look up at its incredible painted ceiling, decorated with stars and constellations. And while you’re there, you can explore portraits of some of Scotland’s most famous historical and cultural figures.</p>
+        <p><strong>Location:</strong> 1 Queen Street</p>
+        <p><strong>Admission:</strong> Free</p>
+        </li>
+
+        <li class="pl-1">
+        <h3 id="museum-of-scotland" class="mb-4 scroll-mt-nav">National Museum of Scotland</h3>
+        <ArticleImage
+          src={nationalMuseumOfScotland}
+          alt="The Grand Gallery inside the National Museum of Scotland"
+          caption="The Grand Gallery at the National Museum of Scotland"
+          imgClass="aspect-[2/3] object-cover"
+        />
+        <p>The National Museum of Scotland brings together an eclectic mix of exhibits, from Scottish history and natural history to science, fashion, and objects from around the world. Look out for Dolly the sheep and the famous Lewis Chessmen.</p>
+        <p><strong>Location:</strong> Chambers Street</p>
+        <p><strong>Admission:</strong> Free, although some special exhibitions may charge an entry fee</p>
+        </li>
+      </ul>
+
+      <section class="mt-12">
+        <h2 id="stay-cozy-at-a-cafe" class="mb-4 scroll-mt-nav text-xl font-semibold text-neutral-900 md:text-2xl">Stay Cozy at a Café</h2>
+        <p>One of the things I love about Edinburgh’s cafés is their cozy atmosphere and unique character. From castle views to old stone walls, bookshelves, and window seats, each has its own charm, making them especially inviting on a rainy day.</p>
+      </section>
+
+      <ul class="mt-8 list-disc space-y-8 pl-5 marker:text-black/40">
+        <li class="pl-1">
+        <h3 id="cafe-w" class="mb-4 scroll-mt-nav">Café W at Waterstones</h3>
+        <p>Café W at Waterstones offers one of the best views of Edinburgh Castle, making it a great place to stop for a coffee on a rainy day. The café is located on the second floor of the Waterstones bookshop on Princes Street, and the most popular seats are right by the windows, overlooking the castle. These tend to fill up quickly, but there are more seats throughout the café, so you may still find somewhere to sit and enjoy the view.</p>
+        <p><strong>Location:</strong> 128 Princes Street, inside Waterstones</p>
+        </li>
+
+        <li class="pl-1">
+        <h3 id="the-milkman" class="mb-4 scroll-mt-nav">The Milkman</h3>
+        <ArticleImage
+          src={milkmanEdinburgh}
+          alt="Coffee and a croissant at The Milkman in Edinburgh"
+          caption="Coffee and a croissant at The Milkman"
+          imgClass="aspect-[2/3] object-cover"
+        />
+        <p>The Milkman is a small, charming café on Cockburn Street, with stone walls, vintage details, and a few seats by the window overlooking the street. I visited right when it opened to enjoy a coffee and a croissant before heading out to explore the city center. Both were good, making it a lovely stop to start the day.</p>
+        <p><strong>Location:</strong> 7 Cockburn Street</p>
+        </li>
+
+        <li class="pl-1">
+        <h3 id="books-n-cup" class="mb-4 scroll-mt-nav">Books N’ Cup</h3>
+        <p>With its bookshelves, exposed stone walls, dark wooden details, and comfortable leather armchairs, Books N’ Cup has all the ingredients for a cozy café. The mix of old stone and warm wood gives the place a welcoming feel, making it a lovely spot to take a break from the rain and enjoy a coffee surrounded by books.</p>
+        <p><strong>Location:</strong> 23 Home Street, Tollcross</p>
+        </li>
+      </ul>
+
+      <section class="mt-12">
+        <h2 id="get-lost-in-a-bookshop" class="mb-4 scroll-mt-nav text-xl font-semibold text-neutral-900 md:text-2xl">Get Lost in a Bookshop</h2>
+        <p>Edinburgh feels like a city where you can stumble upon a bookshop around almost every corner. But if you’re not sure where to start, here are three bookshops worth seeking out, each with something different to offer.</p>
+      </section>
+
+      <ul class="mt-8 list-disc space-y-8 pl-5 marker:text-black/40">
+        <li class="pl-1">
+        <h3 id="topping-company" class="mb-4 scroll-mt-nav">Topping &amp; Company Booksellers</h3>
+        <ArticleImage
+          src={toppingCompanyExterior}
+          alt="The Topping & Company Booksellers storefront on a rainy Edinburgh day"
+          caption="Topping & Company Booksellers"
+          imgClass="aspect-[5/4] object-cover"
+        />
+        <p>Topping &amp; Company is a book lover’s dream, with floor-to-ceiling bookshelves, rolling wooden ladders, and books covering almost every subject. It’s the kind of independent bookshop where you can easily lose track of time browsing the shelves and discovering titles you weren’t looking for.</p>
+        <p><strong>Location:</strong> 2 Blenheim Place</p>
+        <ArticleImage
+          src={toppingCompanyInterior}
+          alt="The cozy book-lined interior of Topping & Company Booksellers"
+          caption="Inside Topping & Company Booksellers"
+          imgClass="aspect-[2/3] object-cover"
+        />
+        </li>
+
+        <li class="pl-1">
+        <h3 id="golden-hare-books" class="mb-4 scroll-mt-nav">Golden Hare Books</h3>
+        <p>Golden Hare Books is a small independent bookshop in Stockbridge, known for its carefully curated selection of new releases in fiction and nonfiction. When I visited, the fireplace made the cozy interior feel especially inviting, and the thoughtfully displayed books made it a lovely place to browse for your next read.</p>
+        <p><strong>Location:</strong> 68 St Stephen Street, Stockbridge</p>
+        <div class="grid grid-cols-2 gap-3 md:gap-4">
+          <ArticleImage
+            src={goldenHareExterior}
+            alt="Exterior of Golden Hare Books in Stockbridge, Edinburgh"
+            caption="Golden Hare Books in Stockbridge"
+            imgClass="aspect-[4/5] object-cover"
+          />
+          <ArticleImage
+            src={goldenHareInterior}
+            alt="Book-lined interior of Golden Hare Books"
+            caption="Inside Golden Hare Books"
+            imgClass="aspect-[4/5] object-cover"
+          />
+        </div>
+        </li>
+
+        <li class="pl-1">
+        <h3 id="gently-mad-bookshop" class="mb-4 scroll-mt-nav">The Gently Mad Bookshop</h3>
+        <p>The Gently Mad is the place to look for something with a little history, from antique and rare books to vintage illustrated editions, Scottish-interest titles, and classic fiction. It also has an on-site bookbinding workshop specializing in traditional book repair and restoration, making it particularly interesting for anyone who appreciates old books and the craft behind them.</p>
+        <p><strong>Location:</strong> 2 Summer Place, near the Royal Botanic Garden</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="section-1" class="scroll-mt-nav">
+    <div class="mb-5 max-w-3xl text-black md:mb-6">
+      <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">
+        Discover Edinburgh on a Rainy Day
+      </h2>
+    </div>
+    <div class="article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0">
+      <p>You don’t have to spend the whole day indoors just because it’s raining in Edinburgh. Some of the city’s prettiest streets and most interesting corners are still worth exploring under a grey sky, especially if you don’t mind carrying an umbrella.</p>
+      <ul class="mt-8 list-disc space-y-8 pl-5 marker:text-black/40">
+        <li class="pl-1">
+        <h3 id="greyfriars-kirkyard" class="mb-4 scroll-mt-nav">Greyfriars Kirkyard</h3>
+        <p>If you’re a Harry Potter fan, Greyfriars Kirkyard is worth a wander. Some of the old gravestones bear names that fans have linked to characters in the books, including Thomas Riddell and William McGonagall. Even if you’re not into Harry Potter, it’s an atmospheric place to explore, with old headstones and a glimpse into Edinburgh’s past.</p>
+        <p><strong>Location:</strong> Candlemaker Row, near the National Museum of Scotland</p>
+        <ArticleImage
+          src={greyfriarsKirkyard}
+          alt="Gravestones at Greyfriars Kirkyard in Edinburgh"
+          caption="Greyfriars Kirkyard"
+          imgClass="aspect-[4/5] object-cover"
+        />
+        </li>
+
+        <li class="pl-1">
+        <h3 id="circus-lane" class="mb-4 scroll-mt-nav">Circus Lane</h3>
+        <p>Circus Lane is a charming little cobblestone street lined with old houses and greenery climbing the walls. Don’t let a little drizzle put you off, as the cloudy sky can make the whole scene feel even more atmospheric.</p>
+        <p><strong>Location:</strong> Stockbridge, just off St Vincent Street</p>
+        <ArticleImage
+          src={circusLaneEdinburgh}
+          alt="A rainy view along Circus Lane in Edinburgh"
+          caption="Circus Lane on a rainy day"
+          imgClass="aspect-[2/3] object-cover"
+        />
+        </li>
+
+        <li class="pl-1">
+        <h3 id="vennel-viewpoint" class="mb-4 scroll-mt-nav">The Vennel Viewpoint</h3>
+        <p>For one of Edinburgh’s classic views of the castle, head to The Vennel. The stone steps frame the castle beautifully, making this a lovely spot for photos, and you may find it quieter when the weather keeps some visitors away. Just take care on the steps when they’re wet.</p>
+        <p><strong>Location:</strong> The Vennel, off Grassmarket</p>
+        <ArticleImage
+          src={vennelViewpointEdinburgh}
+          alt="The Vennel steps and Edinburgh Castle on a rainy day"
+          caption="Edinburgh Castle from The Vennel"
+          imgClass="aspect-[5/4] object-cover"
+        />
+        </li>
+
+        <li class="pl-1">
+        <h3 id="victoria-street" class="mb-4 scroll-mt-nav">Victoria Street</h3>
+        <p>With its colorful shopfronts and curved cobblestone street, Victoria Street is worth exploring even on a grey day. For a view from above, head to <strong>Victoria Terrace</strong>, the raised walkway overlooking the street. You can reach it by stairs from Victoria Street or from the Lawnmarket near George IV Bridge.</p>
+        <p><strong>Location:</strong> Victoria Street, Old Town</p>
+        <div class="grid grid-cols-2 gap-3 md:gap-4">
+          <ArticleImage
+            src={victoriaStreetEdinburgh}
+            alt="Colorful buildings along Victoria Street in Edinburgh"
+            caption="Colorful shopfronts on Victoria Street"
+            imgClass="aspect-[4/5] object-cover"
+          />
+          <ArticleImage
+            src={victoriaTerraceEdinburgh}
+            alt="View over Victoria Street from Victoria Terrace"
+            caption="Victoria Street from Victoria Terrace"
+            imgClass="aspect-[4/5] object-cover"
+          />
+        </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="section-2" class="scroll-mt-nav">
+    <div class="article-prose max-w-3xl text-black/80">
+      <ArticleClosingNote label="Before you go">
+        <p>Edinburgh’s weather can change quickly, so it’s worth checking the forecast before heading out. Bring a waterproof jacket and comfortable shoes, and keep a couple of indoor spots in mind in case the rain gets heavier. That way, you can still enjoy the city without having to change your plans completely.</p>
+      </ArticleClosingNote>
+    </div>
+  </section>
+</ArticlePage>

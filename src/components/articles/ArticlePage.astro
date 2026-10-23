@@ -184,16 +184,29 @@ This article may contain affiliate links, meaning I may earn a small commission 
     const main = document.querySelector(".article-layout__main");
     if (!anchor || !main) return;
 
-    const sections = [...main.querySelectorAll(":scope > section.scroll-mt-nav")];
+    const mainTop = main.getBoundingClientRect().top;
+    const authorBio = main.querySelector("#callout-author-bio");
+    const contentBottom = authorBio?.getBoundingClientRect().top ?? main.getBoundingClientRect().bottom;
+    const midpoint = mainTop + (contentBottom - mainTop) / 2;
+    const candidates = [...main.querySelectorAll<HTMLElement>("p, figure")]
+      .filter(
+        (element) =>
+          !anchor.contains(element) &&
+          !authorBio?.contains(element) &&
+          element.getBoundingClientRect().top < contentBottom,
+      );
+    const target = candidates.reduce<HTMLElement | null>((closest, element) => {
+      if (!closest) return element;
+      const elementCenter = element.getBoundingClientRect().top + element.offsetHeight / 2;
+      const closestCenter = closest.getBoundingClientRect().top + closest.offsetHeight / 2;
+      return Math.abs(elementCenter - midpoint) < Math.abs(closestCenter - midpoint) ? element : closest;
+    }, null);
+
+    if (target) {
+      target.insertAdjacentElement("afterend", anchor);
+    }
+
     anchor.classList.remove("hidden");
-
-    if (sections.length === 0) return;
-
-    const midIndex = Math.floor((sections.length - 1) / 2);
-    const target = sections[midIndex];
-    if (!target || anchor.parentElement === target) return;
-
-    target.appendChild(anchor);
   }
 
   placeArticleSubscribe();
@@ -291,4 +304,3 @@ This article may contain affiliate links, meaning I may earn a small commission 
     }
   }
 </style>
-

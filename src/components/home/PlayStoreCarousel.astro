@@ -9,6 +9,7 @@ const carouselArticles = articles
   .filter((article) => article.slug !== 'katsuoji-temple-from-osaka' && article.slug !== 'osaka-1-day-itinerary' && article.slug !== 'bali-belly' && article.slug !== 'bali-travel-tips' && article.slug !== 'bali-7-day-itinerary' && article.slug !== 'hong-kong-first-trip' && article.slug !== 'parga-1-day' && article.slug !== 'tokyo-parks');
 
 const cards = [
+  ...carouselArticles.filter((article) => article.slug === 'things-to-do-in-edinburgh-on-a-rainy-day'),
   ...carouselArticles.filter((article) => article.slug === 'bruges-guide'),
   ...carouselArticles.filter((article) => article.slug === 'tokyo-5-day-itinerary'),
   ...carouselArticles.filter((article) => article.slug === 'bali-where-to-stay'),
@@ -17,6 +18,7 @@ const cards = [
   ...carouselArticles.filter((article) => article.slug === 'rhodes-itinerary'),
   ...carouselArticles.filter(
     (article) =>
+      article.slug !== 'things-to-do-in-edinburgh-on-a-rainy-day' &&
       article.slug !== 'bruges-guide' &&
       article.slug !== 'tokyo-5-day-itinerary' &&
       article.slug !== 'bali-where-to-stay' &&

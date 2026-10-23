@@ -36,11 +36,13 @@ import articleBangkokCard from '@/assets/articles/thailand/things-to-do-in-bangk
 import articleBangkokHero from '@/assets/articles/thailand/things-to-do-in-bangkok-wat-arun-river.webp';
 import article3DayBangkokHero from '@/assets/articles/thailand/things-to-do-in-bangkok-wat-benchamabophit.webp';
 import article3DayBangkokCard from '@/assets/articles/thailand/3-day-bangkok-itinerary-card.webp';
+import articleEdinburghCard from '@/assets/articles/edinburgh/vennel-viewpoint-edinburgh-scotland.webp';
+import articleEdinburghHero from '@/assets/articles/edinburgh/vennel-viewpoint-edinburgh.webp';
 import type { DestinationSlug } from '@/domains/destinations/catalog';
 import { pageUrl } from '@/lib/site';
 
 
-export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bali-where-to-stay' | 'bruges-christmas-markets' | 'christmas-in-paris' | 'munduk-moding-plantation-review' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'mt-fuji-day-trip-from-tokyo' | 'kamakura-day-trip-from-tokyo' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary' | 'tokyo-cafes' | 'tokyo-parks' | 'tokyo-temples' | 'tokyo-5-day-itinerary' | 'tokyo-where-to-stay' | 'tokyo-things-to-do' | 'things-to-do-in-oslo' | 'things-to-do-in-paris' | 'things-to-do-in-bangkok' | '3-day-bangkok-itinerary';
+export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bali-where-to-stay' | 'bruges-christmas-markets' | 'christmas-in-paris' | 'munduk-moding-plantation-review' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'mt-fuji-day-trip-from-tokyo' | 'kamakura-day-trip-from-tokyo' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary' | 'tokyo-cafes' | 'tokyo-parks' | 'tokyo-temples' | 'tokyo-5-day-itinerary' | 'tokyo-where-to-stay' | 'tokyo-things-to-do' | 'things-to-do-in-oslo' | 'things-to-do-in-paris' | 'things-to-do-in-bangkok' | '3-day-bangkok-itinerary' | 'things-to-do-in-edinburgh-on-a-rainy-day';
 
 export interface Article {
   slug: ArticleSlug;
@@ -589,7 +591,24 @@ export const articles: readonly Article[] = [
     ],
     lead: "A relaxed 3-day Bangkok itinerary covering the city's most famous temples, ICONSIAM, Chinatown, Talat Noi, rooftop views and more.",
   },
-
+  {
+    slug: 'things-to-do-in-edinburgh-on-a-rainy-day',
+    destinationSlug: 'scotland',
+    category: 'SCOTLAND',
+    title: 'Things to Do in Edinburgh on a Rainy Day',
+    carouselTitle: 'Things to Do in Edinburgh on a Rainy Day',
+    breadcrumbTitle: 'Things to Do in Edinburgh on a Rainy Day',
+    metaLabel: 'Scotland',
+    alt: 'Edinburgh Castle viewed from The Vennel viewpoint',
+    image: articleEdinburghCard,
+    lcpImage: articleEdinburghHero,
+    publishedDate: '23 October 2026',
+    dateLabel: 'Published',
+    intro: [
+      "Edinburgh isn’t exactly famous for endless sunshine, and the weather here can be rather unpredictable. You might wake up to grey skies and rain, only to see the sun come out a few hours later. And yes, this can happen even in summer! So, if you’re planning a trip to Edinburgh, it’s worth having a few rainy-day ideas up your sleeve. From exploring museums and browsing cozy bookshops to enjoying a coffee with a view of the castle, here are some ways to make the most of a rainy day in Edinburgh.",
+    ],
+    lead: 'Looking for things to do in Edinburgh on a rainy day? Explore museums, galleries, cafés and sheltered spots around the city.',
+  },
 ] as const;
 
 export function getArticle(slug: string): Article | undefined {
