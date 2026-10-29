@@ -74,18 +74,19 @@ export const destinations: readonly Destination[] = [
     seoDescription:
       'Travel guides and notes from Greece — islands, history, and local food worth remembering.',
   },
-  // {
-  //   slug: 'hong-kong',
-  //   name: 'Hong Kong',
-  //   region: 'Asia',
-  //   cardDescription: 'Where skyline views meet buzzing street life',
-  //   description:
-  //     'Hong Kong moves between towering skylines, busy harbors, and quiet corners tucked away from the crowds. From the views over Victoria Harbour to its street markets, temples, and food scene, the city packs an incredible amount into a small space.',
-  //   heroImage: hongKongHero,
-  //   seoTitle: 'Hong Kong — Voyaflair',
-  //   seoDescription:
-  //     'Travel guides and notes from Hong Kong — skyline views, harbour walks, markets, and local food worth discovering.',
-  // },
+  {
+    slug: 'hong-kong',
+    name: 'Hong Kong',
+    region: 'Asia',
+    cardDescription: 'Where skyline views meet buzzing street life',
+    description:
+      'Hong Kong moves between towering skylines, busy harbors, and quiet corners tucked away from the crowds. From the views over Victoria Harbour to its street markets, temples, and food scene, the city packs an incredible amount into a small space.',
+    heroImage: hongKongHero,
+    seoTitle: 'Hong Kong — Voyaflair',
+    seoDescription:
+      'Travel guides and notes from Hong Kong — skyline views, harbour walks, markets, and local food worth discovering.',
+    featured: false,
+  },
   {
     slug: 'japan',
     name: 'Japan',
@@ -98,18 +99,19 @@ export const destinations: readonly Destination[] = [
     seoDescription:
       'Travel guides and notes from Japan — Kyoto, tradition, and places worth slowing down for.',
   },
-  // {
-  //   slug: 'norway',
-  //   name: 'Norway',
-  //   region: 'Europe',
-  //   cardDescription: 'Dramatic fjords, northern lights and quiet mountain towns',
-  //   description:
-  //     "Dramatic fjords, mountain landscapes, colorful waterfronts, and cities surrounded by nature — Norway has a little bit of everything, from vibrant city life to some of Europe's most striking natural scenery.",
-  //   heroImage: norwayHero,
-  //   seoTitle: 'Norway — Voyaflair',
-  //   seoDescription:
-  //     'Travel guides and notes from Norway — fjords, mountain towns, and landscapes worth slowing down for.',
-  // },
+  {
+    slug: 'norway',
+    name: 'Norway',
+    region: 'Europe',
+    cardDescription: 'Dramatic fjords, northern lights and quiet mountain towns',
+    description:
+      "Dramatic fjords, mountain landscapes, colorful waterfronts, and cities surrounded by nature — Norway has a little bit of everything, from vibrant city life to some of Europe's most striking natural scenery.",
+    heroImage: norwayHero,
+    seoTitle: 'Norway — Voyaflair',
+    seoDescription:
+      'Travel guides and notes from Norway — fjords, mountain towns, and landscapes worth slowing down for.',
+    featured: false,
+  },
   {
     slug: 'scotland',
     name: 'Scotland',
@@ -122,18 +124,19 @@ export const destinations: readonly Destination[] = [
     seoDescription:
       'Travel guides and notes from Scotland — Edinburgh, historic streets, city views and landscapes worth discovering.',
   },
-  // {
-  //   slug: 'thailand',
-  //   name: 'Thailand',
-  //   region: 'Asia',
-  //   cardDescription: 'Golden temples, bustling markets and laid-back island life',
-  //   description:
-  //     "Temples, night markets, rooftop views, and tropical islands — Thailand has plenty to spark your wanderlust. Here, you'll find travel guides, itineraries, insider tips, and practical things to know before your trip, starting with Bangkok and hopefully many more places to come.",
-  //   heroImage: thailandHero,
-  //   seoTitle: 'Thailand — Voyaflair',
-  //   seoDescription:
-  //     'Travel guides and notes from Thailand — temples, markets, and island life worth experiencing.',
-  // },
+  {
+    slug: 'thailand',
+    name: 'Thailand',
+    region: 'Asia',
+    cardDescription: 'Golden temples, bustling markets and laid-back island life',
+    description:
+      "Temples, night markets, rooftop views, and tropical islands — Thailand has plenty to spark your wanderlust. Here, you'll find travel guides, itineraries, insider tips, and practical things to know before your trip, starting with Bangkok and hopefully many more places to come.",
+    heroImage: thailandHero,
+    seoTitle: 'Thailand — Voyaflair',
+    seoDescription:
+      'Travel guides and notes from Thailand — temples, markets, and island life worth experiencing.',
+    featured: false,
+  },
 ] as const;
 
 export const destinationSlugs = destinations.map((d) => d.slug);
