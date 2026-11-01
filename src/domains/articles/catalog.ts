@@ -38,11 +38,13 @@ import article3DayBangkokHero from '@/assets/articles/thailand/things-to-do-in-b
 import article3DayBangkokCard from '@/assets/articles/thailand/3-day-bangkok-itinerary-card.webp';
 import articleEdinburghCard from '@/assets/articles/edinburgh/vennel-viewpoint-edinburgh-scotland.webp';
 import articleEdinburghHero from '@/assets/articles/edinburgh/vennel-viewpoint-edinburgh.webp';
+import articleEdinburghGuideCard from '@/assets/articles/edinburgh/ross-fountain-edinburgh-castle.webp';
+import articleEdinburghGuideHero from '@/assets/articles/edinburgh/calton-hill-sunrise-edinburgh.webp';
 import type { DestinationSlug } from '@/domains/destinations/catalog';
 import { pageUrl } from '@/lib/site';
 
 
-export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bali-where-to-stay' | 'bruges-christmas-markets' | 'christmas-in-paris' | 'munduk-moding-plantation-review' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'mt-fuji-day-trip-from-tokyo' | 'kamakura-day-trip-from-tokyo' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary' | 'tokyo-cafes' | 'tokyo-parks' | 'tokyo-temples' | 'tokyo-5-day-itinerary' | 'tokyo-where-to-stay' | 'tokyo-things-to-do' | 'things-to-do-in-oslo' | 'things-to-do-in-paris' | 'things-to-do-in-bangkok' | '3-day-bangkok-itinerary' | 'things-to-do-in-edinburgh-on-a-rainy-day';
+export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bali-where-to-stay' | 'bruges-christmas-markets' | 'christmas-in-paris' | 'munduk-moding-plantation-review' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'mt-fuji-day-trip-from-tokyo' | 'kamakura-day-trip-from-tokyo' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary' | 'tokyo-cafes' | 'tokyo-parks' | 'tokyo-temples' | 'tokyo-5-day-itinerary' | 'tokyo-where-to-stay' | 'tokyo-things-to-do' | 'things-to-do-in-oslo' | 'things-to-do-in-paris' | 'things-to-do-in-bangkok' | '3-day-bangkok-itinerary' | 'things-to-do-in-edinburgh-on-a-rainy-day' | 'things-to-do-in-edinburgh';
 
 export interface Article {
   slug: ArticleSlug;
@@ -612,6 +614,25 @@ export const articles: readonly Article[] = [
       "Edinburgh isn’t exactly famous for endless sunshine, and the weather here can be rather unpredictable. You might wake up to grey skies and rain, only to see the sun come out a few hours later. And yes, this can happen even in summer! So, if you’re planning a trip to Edinburgh, it’s worth having a few rainy-day ideas up your sleeve. From exploring museums and browsing cozy bookshops to enjoying a coffee with a view of the castle, here are some ways to make the most of a rainy day in Edinburgh.",
     ],
     lead: 'Looking for things to do in Edinburgh on a rainy day? Explore museums, galleries, cafés and sheltered spots around the city.',
+  },
+  {
+    slug: 'things-to-do-in-edinburgh',
+    destinationSlug: 'scotland',
+    category: 'SCOTLAND',
+    title: 'Best Things to Do in Edinburgh: Your Ultimate Travel Guide',
+    carouselTitle: 'Best Things to Do in Edinburgh',
+    breadcrumbTitle: 'Best Things to Do in Edinburgh',
+    metaLabel: 'Scotland',
+    alt: 'The Ross Fountain in Princes Street Gardens with Edinburgh Castle behind',
+    image: articleEdinburghGuideCard,
+    lcpImage: articleEdinburghGuideHero,
+    publishedDate: '1 November 2026',
+    dateLabel: 'Published',
+    intro: [
+      "From the moment you start wandering Edinburgh’s narrow medieval streets, surrounded by old stone buildings and impressive Gothic architecture, you get the feeling that you have stepped back in time, as though you’ve found yourself in another era. There’s something about its dark, almost mysterious atmosphere that makes you wonder what stories these old streets could tell. With its hidden alleyways, centuries-old buildings and countless ghost stories, it’s easy to see why Edinburgh is such a popular destination for ghost tours.",
+      "Beyond its darker side, the city has plenty more to discover, from beautiful viewpoints and independent bookshops to cozy cafés and traditional Scottish pubs.",
+    ],
+    lead: 'The best things to do in Edinburgh, from bookshops, museums and photogenic streets to Calton Hill, Harry Potter spots, cafés and where to stay.',
   },
 ] as const;
 
