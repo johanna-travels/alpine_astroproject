@@ -11,6 +11,7 @@ import SectionHeader from '@/components/ui/SectionHeader.astro';
 import PageHero from '@/components/sections/PageHero.astro';
 import SocialLinks from '@/components/ui/SocialLinks.astro';
 import SeasonalHoverCards from '@/components/home/SeasonalHoverCards.astro';
+import DestinationsMobileCarousel from '@/components/home/DestinationsMobileCarousel.astro';
 import { destinations, destinationHref } from '@/domains/destinations/catalog';
 import { getResponsiveHero, getSocialShareImage } from '@/lib/images';
 import { pageUrl } from '@/lib/site';
@@ -24,7 +25,6 @@ const homeDestinationCards = destinations
   .map((destination) => ({
   title: destination.name,
   subtitle: destination.region,
-  description: destination.cardDescription,
   image: destination.heroImage,
   href: destinationHref(destination.slug),
 }));
@@ -94,9 +94,10 @@ const homeDestinationCards = destinations
             <div class="reveal">
                 <InfiniteText />
                 <SectionHeader title="Destinations" href={pageUrl('destinations')} />
-                <div class="section-gutter relative">
+                <div class="section-gutter relative hidden md:block">
                     <SeasonalHoverCards cards={homeDestinationCards} />
                 </div>
+                <DestinationsMobileCarousel cards={homeDestinationCards} />
             </div>
 
             <!-- [3] About + Services -->

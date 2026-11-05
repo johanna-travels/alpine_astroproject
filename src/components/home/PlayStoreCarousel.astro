@@ -6,6 +6,7 @@ import { pageUrl } from '@/lib/site';
 
 // Homepage carousel: only these articles, in this order.
 const carouselSlugs = [
+  'things-to-do-in-edinburgh',
   'bruges-guide',
   'tokyo-5-day-itinerary',
   'bali-cafes',
@@ -37,10 +38,10 @@ const cards = carouselSlugs
               <Image
                 src={card.image}
                 alt={card.alt}
-                width={400}
-                height={400}
-                widths={[320, 400, 640]}
-                sizes="(min-width: 768px) 33vw, 100vw"
+                width={317}
+                height={423}
+                widths={[215, 317, 430, 634]}
+                sizes="(min-width: 768px) 317px, 215px"
                 class="slide-image absolute inset-0"
                 loading="lazy"
                 draggable={false}
@@ -89,129 +90,10 @@ const cards = carouselSlugs
 </div>
 
 <script>
-  function initPlayStoreCarousel() {
-    const carousel = document.getElementById('carousel') as HTMLDivElement | null;
-    const dotsRoot = document.querySelector('[data-carousel-dots]') as HTMLElement | null;
+  import { initCarousels } from '@/components/carousel/initCarousels';
 
-    if (!carousel || carousel.dataset.bound === 'true') return;
-    carousel.dataset.bound = 'true';
-
-    const gap = Number(dotsRoot?.getAttribute('data-carousel-gap') ?? 12);
-    const slides = carousel.querySelectorAll<HTMLElement>('[data-slide]');
-    const dots = dotsRoot?.querySelectorAll('[data-carousel-dot]') ?? [];
-
-    let rafId = 0;
-    let isPointerDown = false;
-    let didDrag = false;
-    let isMouseDrag = false;
-    let startX = 0;
-    let startScrollLeft = 0;
-
-    const getStep = () => {
-      const slide = slides[0];
-      return slide ? slide.clientWidth + gap : 300;
-    };
-
-    const setDotActive = (index: number) => {
-      dots.forEach((dot) => {
-        const i = Number(dot.getAttribute('data-carousel-dot'));
-        const indicator = dot.querySelector('[data-carousel-dot-indicator]');
-        const active = i === index;
-        dot.setAttribute('aria-selected', String(active));
-        indicator?.classList.toggle('bg-black', active);
-        indicator?.classList.toggle('bg-black/20', !active);
-      });
-    };
-
-    const updateActiveSlide = () => {
-      if (!slides.length) return;
-
-      const carouselRect = carousel.getBoundingClientRect();
-      const center = carouselRect.left + carouselRect.width / 2;
-
-      let closest = slides[0];
-      let closestDistance = Number.POSITIVE_INFINITY;
-
-      slides.forEach((slide) => {
-        const rect = slide.getBoundingClientRect();
-        const slideCenter = rect.left + rect.width / 2;
-        const distance = Math.abs(center - slideCenter);
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closest = slide;
-        }
-      });
-
-      slides.forEach((slide) => slide.classList.toggle('is-active', slide === closest));
-
-      const index = Array.from(slides).indexOf(closest);
-      if (index >= 0) setDotActive(index);
-    };
-
-    const onScroll = () => {
-      cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(updateActiveSlide);
-    };
-
-    dots.forEach((dot) => {
-      dot.addEventListener('click', () => {
-        const index = Number(dot.getAttribute('data-carousel-dot'));
-        carousel.scrollTo({ left: index * getStep(), behavior: 'smooth' });
-      });
-    });
-
-    carousel.addEventListener('scroll', onScroll, { passive: true });
-
-    carousel.addEventListener('pointerdown', (event) => {
-      if (event.pointerType === 'mouse' && event.button !== 0) return;
-
-      isPointerDown = true;
-      didDrag = false;
-      isMouseDrag = event.pointerType === 'mouse';
-      startX = event.clientX;
-      startScrollLeft = carousel.scrollLeft;
-
-      window.addEventListener('pointermove', onPointerMove);
-      window.addEventListener('pointerup', onPointerUp);
-      window.addEventListener('pointercancel', onPointerUp);
-    });
-
-    const onPointerMove = (event: PointerEvent) => {
-      if (!isPointerDown) return;
-
-      const deltaX = event.clientX - startX;
-      if (Math.abs(deltaX) > 4) {
-        didDrag = true;
-        if (isMouseDrag) {
-          carousel.classList.add('is-dragging');
-          carousel.scrollLeft = startScrollLeft - deltaX;
-        }
-      }
-    };
-
-    const onPointerUp = () => {
-      isPointerDown = false;
-      isMouseDrag = false;
-      carousel.classList.remove('is-dragging');
-      window.removeEventListener('pointermove', onPointerMove);
-      window.removeEventListener('pointerup', onPointerUp);
-      window.removeEventListener('pointercancel', onPointerUp);
-    };
-
-    carousel.addEventListener('click', (event) => {
-      if (didDrag) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-    }, true);
-
-    carousel.addEventListener('dragstart', (event) => event.preventDefault());
-
-    updateActiveSlide();
-  }
-
-  document.addEventListener('DOMContentLoaded', initPlayStoreCarousel);
-  document.addEventListener('astro:page-load', initPlayStoreCarousel);
+  document.addEventListener('DOMContentLoaded', initCarousels);
+  document.addEventListener('astro:page-load', initCarousels);
 </script>
 
 <style>
@@ -239,7 +121,7 @@ const cards = carouselSlugs
   }
 
   .slide {
-    flex: 0 0 100%;
+    flex: 0 0 215px;
     max-width: 100%;
     user-select: none;
   }
@@ -252,7 +134,7 @@ const cards = carouselSlugs
   .slide-media {
     border-radius: 24px;
     overflow: hidden;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 215 / 287;
     width: 100%;
     max-width: 100%;
   }
@@ -266,7 +148,11 @@ const cards = carouselSlugs
 
   @media (min-width: 768px) {
     .slide {
-      flex: 0 0 33.333%; /* Show 3 slides on desktop */
+      flex-basis: 317px;
+    }
+
+    .slide-media {
+      aspect-ratio: 317 / 423;
     }
   }
 </style>

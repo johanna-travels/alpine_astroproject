@@ -1,0 +1,81 @@
+---
+import { Image } from 'astro:assets';
+import type { DestinationCard } from '@/components/home/SeasonalHoverCards.astro';
+import { cardImageQuality } from '@/lib/images';
+
+interface Props {
+  cards: DestinationCard[];
+}
+
+const { cards } = Astro.props;
+const carouselId = 'destinations-carousel';
+---
+
+<div class="section-gutter relative overflow-hidden md:hidden">
+  <div class="pb-[70px]">
+    <div
+      id={carouselId}
+      class="flex gap-3 overflow-x-auto overflow-y-hidden overscroll-x-contain [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden [&.is-dragging]:cursor-grabbing [&.is-dragging_a]:pointer-events-none"
+    >
+      {cards.map((card) => (
+        <article class="w-[215px] max-w-full flex-none select-none" data-slide>
+          <a href={card.href} class="group block select-none [-webkit-user-drag:none]" draggable={false}>
+            <div class="relative aspect-[215/287] w-full overflow-hidden rounded-[24px]">
+              <Image
+                src={card.image}
+                alt={card.imageAlt ?? card.title}
+                width={215}
+                height={287}
+                widths={[215, 430]}
+                sizes="215px"
+                quality={cardImageQuality}
+                class="pointer-events-none absolute inset-0 h-full w-full object-cover"
+                loading="lazy"
+                decoding="async"
+                draggable={false}
+              />
+              <div class="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+            </div>
+
+            <div class="px-1 pt-4">
+              <h2 class="mb-1 text-[#1e1e1e] decoration-1 underline-offset-4 group-hover:underline group-active:underline">{card.title}</h2>
+              <p class="text-sm text-neutral-600">{card.subtitle}</p>
+            </div>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <div
+    role="tablist"
+    aria-label="Destinations pagination"
+    data-carousel-dots
+    data-carousel-id={carouselId}
+    data-carousel-count={cards.length}
+    data-carousel-gap="12"
+    class="absolute bottom-2 left-1/2 flex -translate-x-1/2 items-center"
+  >
+    {cards.map((_, index) => (
+      <button
+        type="button"
+        role="tab"
+        aria-label={`Go to destination ${index + 1}`}
+        data-carousel-dot={index}
+        class="flex h-[30px] cursor-pointer items-center justify-center border-0 bg-transparent px-[9px]"
+      >
+        <span
+          data-carousel-dot-indicator
+          class="block h-[6px] w-[6px] rounded-full bg-black/20 transition-colors duration-300"
+        />
+      </button>
+    ))}
+  </div>
+</div>
+
+<script>
+  import { initCarousels } from '@/components/carousel/initCarousels';
+
+  document.addEventListener('DOMContentLoaded', initCarousels);
+  document.addEventListener('astro:page-load', initCarousels);
+</script>

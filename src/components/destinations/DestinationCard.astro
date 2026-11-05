@@ -1,0 +1,33 @@
+---
+import { Image } from 'astro:assets';
+import CtaLink from '@/components/ui/CtaLink.astro';
+import { destinationHref, type Destination } from '@/domains/destinations/catalog';
+import { cardImageQuality, cardImageWidths } from '@/lib/images';
+
+interface Props {
+  destination: Destination;
+}
+
+const { destination } = Astro.props;
+const href = destinationHref(destination.slug);
+---
+
+<article class="relative aspect-square w-full overflow-hidden rounded-xl lg:aspect-[317/423]">
+  <Image
+    src={destination.heroImage}
+    alt={destination.name}
+    class="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+    loading="lazy"
+    decoding="async"
+    widths={[...cardImageWidths]}
+    quality={cardImageQuality}
+    sizes="(min-width: 1024px) 317px, (min-width: 640px) 50vw, 100vw"
+  />
+  <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+  <div class="absolute inset-x-0 bottom-0 z-10 flex flex-col items-start gap-2 p-6">
+    <h4>
+      <a href={href} class="text-white transition-opacity hover:opacity-80">{destination.name}</a>
+    </h4>
+    <CtaLink href={href} label="Explore More" class="!px-0 !text-white !opacity-100" />
+  </div>
+</article>

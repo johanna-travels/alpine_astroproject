@@ -6,7 +6,6 @@ import { cardImageQuality, cardImageSizes, cardImageWidths } from '@/lib/images'
 export interface DestinationCard {
   title: string;
   subtitle: string;
-  description: string;
   image: ImageMetadata;
   href: string;
   imageAlt?: string;
@@ -39,11 +38,8 @@ const { cards } = Astro.props;
       />
       <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none z-0" />
       <div class="relative md:absolute md:bottom-20 z-10 space-y-2">
-        <h2 class="text-white">{card.title}</h2>
+        <h2 class="text-white md:max-lg:text-[clamp(19.2px,3.2vw,38.4px)]">{card.title}</h2>
         <p class="text-sm text-gray-300">{card.subtitle}</p>
-      </div>
-      <div class="mt-4 transform translate-y-6 opacity-0 transition-all duration-700 ease-out group-hover:opacity-100 group-hover:translate-y-0">
-        <p class="text-lg text-white">{card.description}</p>
       </div>
     </a>
   ))}

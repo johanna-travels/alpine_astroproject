@@ -9,6 +9,7 @@ import { CarouselDots } from "@/components/carousel";
 ## Files
 
 - `CarouselDots.tsx` — shared pagination dots; used by `PlayStoreCarousel.astro` (Articles)
+- `initCarousels.ts` — swipe, drag and dots script for `PlayStoreCarousel.astro` and `DestinationsMobileCarousel.astro`; import this file directly so React stays out of the bundle
 
 ## External dependencies — DO NOT REMOVE without checking here
 
