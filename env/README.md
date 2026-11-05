@@ -18,9 +18,9 @@ Open `.env` and replace every `PASTE_` value:
 | `RESEND_FROM_EMAIL` | Verified sender (e.g. `hello@voyaflair.com`) |
 | `NEWSLETTER_ADMIN_SECRET` | Run `openssl rand -hex 32` — any long random string |
 
-Use the **same** `NEWSLETTER_ADMIN_SECRET` in curl:
+Use the **same** `NEWSLETTER_ADMIN_SECRET` in the authorization header:
 
-`Authorization: Bearer <that exact value>`
+`Authorization: Bearer <NEWSLETTER_ADMIN_SECRET>`
 
 ## 2. Push to Netlify (all contexts)
 
@@ -62,4 +62,4 @@ Or plain `npm run dev` — API routes read `.env` from disk via `src/lib/serverE
 
 - `.env` is gitignored — never commit it.
 - `netlify.toml` already sets build-only vars (`SITE_URL`, `PUBLIC_GA_MEASUREMENT_ID`, etc.).
-- If curl returns `401 Unauthorized`, the Bearer token does not match `NEWSLETTER_ADMIN_SECRET` on Netlify — re-run `npm run env:push-netlify` after fixing `.env`.
+- If curl returns `401 Unauthorized`, the secret in `.env` does not match `NEWSLETTER_ADMIN_SECRET` on Netlify — re-run `npm run env:push-netlify` after fixing `.env`.
