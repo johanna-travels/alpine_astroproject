@@ -1,0 +1,1 @@
+Missing .env — run: cp env/secrets.template .env and fill PASTE_ values

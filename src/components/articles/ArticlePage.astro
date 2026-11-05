@@ -184,6 +184,14 @@ This article may contain affiliate links, meaning I may earn a small commission 
     const main = document.querySelector(".article-layout__main");
     if (!anchor || !main) return;
 
+    // An article can pick the spot by marking a paragraph with data-subscribe-after
+    const marked = main.querySelector("[data-subscribe-after]");
+    if (marked) {
+      marked.insertAdjacentElement("afterend", anchor);
+      anchor.classList.remove("hidden");
+      return;
+    }
+
     const mainTop = main.getBoundingClientRect().top;
     const authorBio = main.querySelector("#callout-author-bio");
     const contentBottom = authorBio?.getBoundingClientRect().top ?? main.getBoundingClientRect().bottom;

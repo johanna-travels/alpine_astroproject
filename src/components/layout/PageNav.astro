@@ -1,5 +1,5 @@
 ---
-import { HamburgerMenuOverlay } from '@/components/layout/HamburgerMenuOverlay';
+import HamburgerMenu from '@/components/layout/HamburgerMenu.astro';
 import { isActivePath, pageUrl } from '@/lib/site';
 import { primaryNavLinks } from '@/domains/site/navigation';
 import { socialLinks } from '@/domains/site/social';
@@ -210,25 +210,7 @@ const isActive = (link: NavLink) => isActivePath(pathname, [link.href, ...(link.
 
     <!-- Mobile Hamburger Menu Wrapper -->
     <div class:list={["pointer-events-auto flex shrink-0 md:hidden", theme.hamburgerWrapper]}>
-      <HamburgerMenuOverlay
-        client:load
-        activePathname={pathname}
-        items={links}
-        buttonSize="lg"
-        buttonColor="transparent"
-        iconColor="currentColor"
-        overlayBackground="#F5F2EB"
-        textColor="#111827"
-        fontSize="xl"
-        fontFamily=""
-        fontWeight="normal"
-        animationDuration={0.6}
-        staggerDelay={0.05}
-        menuAlignment="left"
-        enableBlur={false}
-        ariaLabel="Navigation menu"
-        zIndex={4000}
-      />
+      <HamburgerMenu />
     </div>
   </div>
 </nav>

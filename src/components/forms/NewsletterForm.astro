@@ -7,262 +7,183 @@ interface Props {
 }
 
 const { class: className = '', variant = 'footer' } = Astro.props;
-const isBanner = variant === 'banner';
-const isArticle = variant === 'article';
 const formId = `newsletter-${crypto.randomUUID().slice(0, 8)}`;
-const apiPath = apiUrl('subscribe');
+const isArticle = variant === 'article';
 
-const inputClass = isArticle
-  ? 'block w-full px-4 py-3 mt-3 text-neutral-800 placeholder-neutral-500 bg-white border border-[#E5DFD4] rounded-md appearance-none sm:max-w-xs focus:outline-none focus:ring-2 focus:ring-[#69746E]/25 focus:border-[#69746E] transition-all disabled:opacity-50'
-  : isBanner
-  ? 'w-full px-4 py-2.5 placeholder:text-neutral-400 bg-white border border-[#E5DFD4] rounded-md text-neutral-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#69746E]/25 focus:border-[#69746E] transition-all disabled:opacity-50'
-  : 'w-full px-4 py-2.5 placeholder-white/60 bg-[#4a534f] border border-white/30 rounded-md text-white text-sm focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all disabled:opacity-50';
-
-const submitClass = isArticle
-  ? 'block w-full py-3 mt-3 text-sm font-bold tracking-wide rounded shadow bg-[#F4F1EA] text-[#2D2D2D] hover:bg-white/90 transition-all duration-300 md:w-52 disabled:opacity-50 disabled:cursor-not-allowed'
-  : isBanner
-  ? 'px-6 py-2.5 text-sm font-medium tracking-wide bg-[#69746E] text-white rounded-md hover:opacity-80 transition-opacity duration-200 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed w-full sm:mt-0 sm:w-auto'
-  : 'px-6 py-2.5 text-xs tracking-[0.2em] uppercase bg-[#F4F1EA] text-[#2D2D2D] rounded-md hover:bg-white/90 transition-all duration-300 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed';
-
-const checkboxClass = isArticle
-  ? 'mt-0.5 w-4 h-4 rounded border-white/40 bg-[#4a534f] text-white focus:ring-white/50 cursor-pointer'
-  : isBanner
-  ? 'mt-0.5 w-4 h-4 rounded border-[#E5DFD4] bg-white text-[#69746E] focus:ring-[#69746E]/30 cursor-pointer'
-  : 'mt-0.5 w-4 h-4 rounded border-white/40 bg-[#4a534f] text-white focus:ring-white/50 cursor-pointer';
-
-const labelClass = isArticle
-  ? 'text-xs text-white/90 leading-relaxed cursor-pointer text-left'
-  : isBanner
-  ? 'text-xs text-black/70 leading-relaxed cursor-pointer'
-  : 'text-xs text-white/90 leading-relaxed cursor-pointer';
-
-const linkClass = isArticle
-  ? 'underline hover:text-white/90'
-  : isBanner
-  ? 'underline underline-offset-2 text-[#69746E] hover:text-[#4a534f]'
-  : 'underline hover:text-white/90';
-
-const emailErrorClass = isArticle
-  ? 'text-red-300 text-xs mt-1 hidden text-left'
-  : isBanner
-  ? 'text-red-600 text-xs mt-1 hidden'
-  : 'text-red-300 text-xs mt-1 hidden';
-
-const consentErrorClass = isArticle
-  ? 'text-red-300 text-xs ml-7 hidden text-left'
-  : isBanner
-  ? 'text-red-600 text-xs ml-7 hidden'
-  : 'text-red-300 text-xs ml-7 hidden';
-
-const rowClass = isArticle
-  ? 'newsletter-article-row my-4 sm:flex sm:flex-row sm:items-start sm:gap-2'
-  : 'flex flex-col sm:flex-row gap-3';
+const styles = {
+  footer: {
+    row: 'flex flex-col sm:flex-row gap-3',
+    field: 'relative flex-1',
+    placeholder: 'Enter your email',
+    input: 'w-full px-4 py-2.5 placeholder-white/60 bg-[#4a534f] border border-white/30 rounded-md text-white text-sm focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all disabled:opacity-50',
+    submit: 'px-6 py-2.5 text-xs tracking-[0.2em] uppercase bg-[#F4F1EA] text-[#2D2D2D] rounded-md hover:bg-white/90 transition-all duration-300 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed',
+    checkbox: 'mt-0.5 w-4 h-4 rounded border-white/40 bg-[#4a534f] text-white focus:ring-white/50 cursor-pointer',
+    labels: 'contents',
+    label: 'text-xs text-white/90 leading-relaxed cursor-pointer',
+    link: 'underline hover:text-white/90',
+    emailError: 'text-red-300 text-xs mt-1 hidden',
+    consentError: 'text-red-300 text-xs ml-7 hidden',
+  },
+  banner: {
+    row: 'flex flex-col sm:flex-row gap-3',
+    field: 'relative flex-1',
+    placeholder: 'Enter your email address',
+    input: 'w-full px-4 py-2.5 placeholder:text-neutral-400 bg-white border border-[#E5DFD4] rounded-md text-neutral-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#69746E]/25 focus:border-[#69746E] transition-all disabled:opacity-50',
+    submit: 'px-6 py-2.5 text-sm font-medium tracking-wide bg-[#69746E] text-white rounded-md hover:opacity-80 transition-opacity duration-200 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed w-full sm:mt-0 sm:w-auto',
+    checkbox: 'mt-0.5 w-4 h-4 rounded border-[#E5DFD4] bg-white text-[#69746E] focus:ring-[#69746E]/30 cursor-pointer',
+    labels: 'contents',
+    label: 'text-xs text-black/70 leading-relaxed cursor-pointer',
+    link: 'underline underline-offset-2 text-[#69746E] hover:text-[#4a534f]',
+    emailError: 'text-red-600 text-xs mt-1 hidden',
+    consentError: 'text-red-600 text-xs ml-7 hidden',
+  },
+  article: {
+    row: 'my-4 sm:flex sm:flex-row sm:items-start sm:gap-2',
+    field: 'relative flex-1 sm:max-w-xs',
+    placeholder: 'Enter your email',
+    input: 'block w-full px-4 py-3 mt-3 text-neutral-800 placeholder-neutral-500 bg-white border border-[#E5DFD4] rounded-md appearance-none sm:max-w-xs focus:outline-none focus:ring-2 focus:ring-[#69746E]/25 focus:border-[#69746E] transition-all disabled:opacity-50',
+    submit: 'block w-full py-3 mt-3 text-sm font-bold tracking-wide rounded shadow bg-[#F4F1EA] text-[#2D2D2D] hover:bg-white/90 transition-all duration-300 md:w-52 disabled:opacity-50 disabled:cursor-not-allowed',
+    checkbox: 'mt-0.5 w-4 h-4 rounded border-white/40 bg-[#4a534f] text-white focus:ring-white/50 cursor-pointer',
+    labels: 'flex min-w-0 flex-col gap-0.5 min-[800px]:flex-row min-[800px]:items-baseline min-[800px]:gap-1.5',
+    label: 'text-xs text-white/90 leading-relaxed cursor-pointer text-left',
+    link: 'underline hover:text-white/90',
+    emailError: 'text-red-300 text-xs mt-1 hidden text-left',
+    consentError: 'text-red-300 text-xs ml-7 hidden text-left',
+  },
+}[variant];
 ---
 
 <form
   id={formId}
-  class:list={["flex flex-col gap-4", className]}
+  class:list={['flex flex-col gap-4', className]}
   lang="en"
   novalidate
   data-newsletter-form
   data-variant={variant}
-  data-api-path={apiPath}
+  data-api-path={apiUrl('subscribe')}
 >
-  <div class={rowClass}>
-    <div class:list={['relative', isArticle ? 'flex-1 sm:max-w-xs' : 'flex-1']}>
+  <div class={styles.row}>
+    <div class={styles.field}>
       <input
         type="email"
         name="email"
         autocomplete="email"
-        placeholder={isArticle ? 'Enter your email' : isBanner ? 'Enter your email address' : 'Enter your email'}
+        placeholder={styles.placeholder}
         required
-        class={inputClass}
+        class={styles.input}
         data-newsletter-email
       />
-      <p class={emailErrorClass} data-newsletter-email-error />
+      <p class={styles.emailError} data-newsletter-email-error />
     </div>
-    <button
-      type="submit"
-      class={submitClass}
-      data-newsletter-submit
-      disabled
-    >
-      {isArticle ? <span class="block">Subscribe</span> : 'Subscribe'}
-    </button>
+    <button type="submit" class={styles.submit} data-newsletter-submit disabled>Subscribe</button>
   </div>
 
-  <div class:list={['flex items-start gap-3', isArticle && 'newsletter-article-consent']}>
+  <div class="flex items-start gap-3">
     <input
       type="checkbox"
       id={`${formId}-consent`}
       name="consent"
       autocomplete="off"
       required
-      class={checkboxClass}
+      class={styles.checkbox}
       data-newsletter-consent
     />
-    {isArticle ? (
-      <div class="newsletter-article-consent-labels flex min-w-0 flex-col gap-0.5">
-        <label for={`${formId}-consent`} class={labelClass}>
-          I agree to the{" "}
-          <a href={pageUrl('privacy-policy')} class={linkClass}>Privacy Policy</a>{" "}
-          and consent to receive emails.
-        </label>
-        <label class="text-xs text-white/90 leading-relaxed text-left">
-          Unsubscribe anytime.
-        </label>
-      </div>
-    ) : (
-      <label for={`${formId}-consent`} class={labelClass}>
-        I agree to the{" "}
-        <a href={pageUrl('privacy-policy')} class={linkClass}>Privacy Policy</a>{" "}
+    <div class={styles.labels}>
+      <label for={`${formId}-consent`} class={styles.label}>
+        I agree to the{' '}
+        <a href={pageUrl('privacy-policy')} class={styles.link}>Privacy Policy</a>{' '}
         and consent to receive emails.
       </label>
-    )}
+      {isArticle && <span class="text-xs text-white/90 leading-relaxed text-left">Unsubscribe anytime.</span>}
+    </div>
   </div>
-  <p class={consentErrorClass} data-newsletter-consent-error />
+  <p class={styles.consentError} data-newsletter-consent-error />
 
   <p class="text-xs hidden" data-newsletter-message />
 </form>
 
-{isArticle && (
-  <style>
-    @media (min-width: 800px) {
-      .newsletter-article-consent-labels {
-        flex-direction: row !important;
-        align-items: baseline;
-        gap: 0.375rem;
-      }
-    }
-  </style>
-)}
-
 <script>
   // Path στο data-api-path: define:vars έκανε inline script χωρίς hash και το CSP έκοβε την εγγραφή.
+  const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const FALLBACK_ERROR = "Something went wrong. Please try again.";
+
+  function showError(element: HTMLElement, text: string) {
+    element.textContent = text;
+    element.classList.toggle("hidden", !text);
+  }
+
+  function emailErrorFor(email: string) {
+    if (!email) return "Email is required";
+    return EMAIL_PATTERN.test(email) ? "" : "Please enter a valid email address";
+  }
+
+  function bindNewsletterForm(form: HTMLFormElement) {
+    const emailInput = form.querySelector<HTMLInputElement>("[data-newsletter-email]")!;
+    const consentInput = form.querySelector<HTMLInputElement>("[data-newsletter-consent]")!;
+    const submitBtn = form.querySelector<HTMLButtonElement>("[data-newsletter-submit]")!;
+    const emailError = form.querySelector<HTMLElement>("[data-newsletter-email-error]")!;
+    const consentError = form.querySelector<HTMLElement>("[data-newsletter-consent-error]")!;
+    const message = form.querySelector<HTMLElement>("[data-newsletter-message]")!;
+    const apiPath = form.dataset.apiPath ?? "";
+    const isBanner = form.dataset.variant === "banner";
+
+    const updateSubmitState = () => {
+      submitBtn.textContent = "Subscribe";
+      submitBtn.disabled = !(EMAIL_PATTERN.test(emailInput.value.trim()) && consentInput.checked);
+    };
+
+    const setMessage = (text: string, isError: boolean) => {
+      const color = isError
+        ? (isBanner ? "text-red-600" : "text-red-300")
+        : (isBanner ? "text-emerald-700" : "text-green-300");
+      message.textContent = text;
+      message.className = `text-xs ${color}`;
+    };
+
+    emailInput.addEventListener("input", updateSubmitState);
+    consentInput.addEventListener("change", updateSubmitState);
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const email = emailInput.value.trim();
+      const consent = consentInput.checked;
+      const emailProblem = emailErrorFor(email);
+
+      showError(emailError, emailProblem);
+      showError(consentError, consent ? "" : "You must agree to the privacy policy");
+      message.classList.add("hidden");
+      if (emailProblem || !consent || !apiPath) return;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Subscribing...";
+
+      try {
+        const response = await fetch(apiPath, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, consent }),
+        });
+        const result = await response.json();
+        const failed = !response.ok || result.emailSent === false;
+
+        if (failed && result.detail) console.error("Subscribe API detail:", result.detail);
+        setMessage((response.ok ? result.message : result.error) || FALLBACK_ERROR, failed);
+        if (!failed) form.reset();
+      } catch {
+        setMessage("Network error. Please try again.", true);
+      }
+      updateSubmitState();
+    });
+
+    updateSubmitState();
+  }
+
   function initNewsletterForms() {
-    document.querySelectorAll("[data-newsletter-form]").forEach((form) => {
-      if (!(form instanceof HTMLFormElement)) return;
+    document.querySelectorAll<HTMLFormElement>("[data-newsletter-form]").forEach((form) => {
       if (form.dataset.bound === "true") return;
       form.dataset.bound = "true";
-
-      const apiPath = form.getAttribute("data-api-path") ?? "";
-      const emailInput = form.querySelector<HTMLInputElement>("[data-newsletter-email]");
-      const consentInput = form.querySelector<HTMLInputElement>("[data-newsletter-consent]");
-      const submitBtn = form.querySelector<HTMLButtonElement>("[data-newsletter-submit]");
-      const emailError = form.querySelector<HTMLElement>("[data-newsletter-email-error]");
-      const consentError = form.querySelector<HTMLElement>("[data-newsletter-consent-error]");
-      const message = form.querySelector<HTMLElement>("[data-newsletter-message]");
-
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-      const isFormReady = () => {
-        const email = emailInput?.value.trim() ?? "";
-        const consent = consentInput?.checked ?? false;
-        return emailPattern.test(email) && consent;
-      };
-
-      const updateSubmitState = () => {
-        if (!submitBtn) return;
-        if (submitBtn.textContent === "Subscribed!") {
-          submitBtn.textContent = "Subscribe";
-        }
-        submitBtn.disabled = !isFormReady();
-      };
-
-      emailInput?.addEventListener("input", updateSubmitState);
-      consentInput?.addEventListener("change", updateSubmitState);
-
-      const setMessage = (text: string, type: string) => {
-        if (!message) return;
-        const isBannerForm = form.dataset.variant === "banner";
-        message.textContent = text;
-        message.classList.remove(
-          "hidden",
-          "text-green-300",
-          "text-red-300",
-          "text-emerald-700",
-          "text-red-600"
-        );
-        if (type === "success") {
-          message.classList.add(isBannerForm ? "text-emerald-700" : "text-green-300");
-        } else {
-          message.classList.add(isBannerForm ? "text-red-600" : "text-red-300");
-        }
-      };
-
-      form.addEventListener("submit", async (event) => {
-        event.preventDefault();
-
-        const email = emailInput?.value.trim() ?? "";
-        const consent = consentInput?.checked ?? false;
-
-        emailError?.classList.add("hidden");
-        consentError?.classList.add("hidden");
-        message?.classList.add("hidden");
-
-        let valid = true;
-        if (!email) {
-          if (emailError) {
-            emailError.textContent = "Email is required";
-            emailError.classList.remove("hidden");
-          }
-          valid = false;
-        } else if (!emailPattern.test(email)) {
-          if (emailError) {
-            emailError.textContent = "Please enter a valid email address";
-            emailError.classList.remove("hidden");
-          }
-          valid = false;
-        }
-        if (!consent) {
-          if (consentError) {
-            consentError.textContent = "You must agree to the privacy policy";
-            consentError.classList.remove("hidden");
-          }
-          valid = false;
-        }
-        if (!valid) return;
-        if (!submitBtn || !apiPath) return;
-
-        submitBtn.disabled = true;
-        submitBtn.textContent = "Subscribing...";
-
-        try {
-          const response = await fetch(apiPath, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, consent }),
-          });
-          const result = await response.json();
-
-          if (response.ok) {
-            if (result.emailSent === false && result.detail) {
-              console.error("Subscribe API detail:", result.detail);
-            }
-
-            const type = result.emailSent === false ? "error" : "success";
-            setMessage(result.message || "Something went wrong. Please try again.", type);
-            submitBtn.textContent = result.emailSent === false ? "Subscribe" : "Subscribed!";
-            submitBtn.disabled = result.emailSent === false;
-            if (result.emailSent !== false) form.reset();
-            if (result.emailSent !== false) updateSubmitState();
-          } else {
-            setMessage(result.error || "Something went wrong. Please try again.", "error");
-            if (result.detail) {
-              console.error("Subscribe API detail:", result.detail);
-            }
-            submitBtn.disabled = false;
-            submitBtn.textContent = "Subscribe";
-            updateSubmitState();
-          }
-        } catch {
-          setMessage("Network error. Please try again.", "error");
-          submitBtn.textContent = "Subscribe";
-          updateSubmitState();
-        }
-      });
-
-      updateSubmitState();
+      bindNewsletterForm(form);
     });
   }
 
