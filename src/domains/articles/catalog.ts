@@ -626,8 +626,8 @@ export const articles: readonly Article[] = [
     alt: 'The Ross Fountain in Princes Street Gardens with Edinburgh Castle behind',
     image: articleEdinburghGuideCard,
     lcpImage: articleEdinburghGuideHero,
-    publishedDate: '1 November 2026',
-    dateLabel: 'Published',
+    publishedDate: '6 November 2026',
+    dateLabel: 'Last updated',
     intro: [
       "From the moment you start wandering Edinburgh’s narrow medieval streets, surrounded by old stone buildings and impressive Gothic architecture, you get the feeling that you have stepped back in time, as though you’ve found yourself in another era. There’s something about its dark, almost mysterious atmosphere that makes you wonder what stories these old streets could tell. With its hidden alleyways, centuries-old buildings and countless ghost stories, it’s easy to see why Edinburgh is such a popular destination for ghost tours.",
       "Beyond its darker side, the city has plenty more to discover, from beautiful viewpoints and independent bookshops to cozy cafés and traditional Scottish pubs.",
