@@ -510,8 +510,8 @@ export const articles: readonly Article[] = [
     metaLabel: 'France',
     alt: 'Christmas in Paris',
     image: articleChristmasInParisCard,
-    publishedDate: '15 September 2026',
-    dateLabel: 'Published',
+    publishedDate: '6 November 2026',
+    dateLabel: 'Last updated',
     intro: [
       "If you ask me which season is my favorite, I will tell you Christmas. And if you ask me about my favorite city in the world, I will tell you Paris. So, sooner or later, experiencing Paris at Christmas was bound to happen. I first visited Paris almost nine years ago, and I have to confess that I fell in love with it. Since then, Paris has remained my favorite city, and somehow, I never stopped thinking about going back. Last year, I finally decided to return \u2014 this time at what I consider the most beautiful time of the year: Christmas. I won\u2019t hide that I was a little afraid I wouldn\u2019t feel the same way. What if the city didn\u2019t impress me as much as it did the first time? But guess what? The opposite happened. Somehow, Christmas in Paris gave me the chance to fall in love with the city all over again.",
       "And if you\u2019re thinking about visiting Paris during the festive season, I can tell you one thing: you\u2019re in for a treat. From twinkling lights and Christmas markets to beautiful decorations, cozy caf\u00e9s and, of course, plenty of hot chocolate, Paris has a special kind of magic at this time of year. And in this guide, I\u2019ll share everything you need to know so you can experience that magic for yourself.",
