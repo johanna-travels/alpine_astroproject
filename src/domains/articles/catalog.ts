@@ -492,8 +492,8 @@ export const articles: readonly Article[] = [
     metaLabel: 'Belgium',
     alt: 'Christmas Markets in Bruges',
     image: articleBrugesComingSoon,
-    publishedDate: '4 September 2026',
-    dateLabel: 'Published',
+    publishedDate: '6 November 2026',
+    dateLabel: 'Last updated',
     intro: [
       "The coziest season of the year is almost here, and you're probably already dreaming of Christmassy things to do this winter in Europe. I totally get you because I do exactly the same thing, and if you're thinking of spending some time in Bruges this Christmas, I'll tell you that it's one of the most magical destinations you can choose. Imagine medieval streets, cobblestone streets, cozy cafés, Belgian hot chocolate and fresh waffles, not to mention two Christmas markets in this little charming city.",
       "I visited Bruges in November last year for my birthday, and I feel so lucky I was able to experience it with all the Christmas decorations and at its coziest. Before I give you all the details about the two Christmas markets in Bruges, I will mention some things that I truly believe will help you plan your trip.",
