@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Stay22LetMeAllez from '@/components/affiliate/Stay22LetMeAllez.astro';
 import GetYourGuideProvider from '@/components/affiliate/GetYourGuideProvider.astro';
+import Travelpayouts from '@/components/affiliate/Travelpayouts.astro';
 import BgLayer from '@/components/layout/bg-layer/BgLayer.astro';
 import CookieConsent from '@/components/layout/CookieConsent.astro';
 import { getGaMeasurementId, isGoogleAnalyticsEnabled } from '@/lib/analytics';
@@ -151,6 +152,7 @@ const permissionsPolicy = [
     </style>`} />
     <slot name="head" />
     {stay22Enabled && <Stay22LetMeAllez />}
+    <Travelpayouts />
   </head>
   <body class:list={[bodyClass]}>
     <GetYourGuideProvider>

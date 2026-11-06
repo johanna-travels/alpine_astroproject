@@ -4,6 +4,7 @@ import { instagramCsp } from './instagram';
 import { klookCsp } from './klook';
 import { googleMapsCsp } from './maps';
 import { stay22Csp } from './stay22';
+import { travelpayoutsCsp } from './travelpayouts';
 
 export interface CspOptions {
   isDev: boolean;
@@ -48,7 +49,8 @@ export function getCspDirectives({
       getYourGuideCsp.connectSrc,
       stay22Csp.connectSrc,
       klookCsp.connectSrc,
-      isDev && 'ws://localhost:* wss://localhost:*',
+      travelpayoutsCsp.connectSrc,
+      isDev &&'ws://localhost:* wss://localhost:*',
       googleAnalyticsEnabled && googleAnalyticsCsp.connectSrc,
       instagramCsp.connectSrc,
     )}`,
@@ -76,6 +78,7 @@ export function getCspScriptResources({
     "'self'",
     getYourGuideCsp.scriptSrc,
     klookCsp.scriptSrc,
+    travelpayoutsCsp.scriptSrc,
     stay22Enabled ? stay22Csp.scriptSrc : undefined,
     isDev ? "'unsafe-eval'" : undefined,
     googleAnalyticsEnabled ? googleAnalyticsCsp.scriptSrc : undefined,
