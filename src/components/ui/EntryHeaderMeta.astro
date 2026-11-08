@@ -26,8 +26,8 @@ const { class: className = '' } = Astro.props;
   .entry-header-meta {
     display: flex;
     flex-direction: row;
-    /* Let a long date ("Last updated · …") drop to its own line on narrow screens */
-    flex-wrap: wrap;
+    /* Author and date stay on one row; a long date wraps inside its own column instead */
+    flex-wrap: nowrap;
     align-items: center;
     gap: 0 1.5rem;
     min-height: 50px;
@@ -35,9 +35,15 @@ const { class: className = '' } = Astro.props;
     padding-bottom: 15px;
   }
 
+  @media (max-width: 359px) {
+    .entry-header-meta {
+      gap: 0 1rem;
+    }
+  }
+
   .entry-header-meta__author {
     display: flex;
-    flex: 0 1 auto;
+    flex: 0 0 auto;
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
@@ -69,7 +75,8 @@ const { class: className = '' } = Astro.props;
     min-width: 0;
   }
 
-  .entry-header-meta :global(.post-meta.post-date .label) {
+  /* "Last updated ·" and the date break onto two lines only when the row is too narrow */
+  .entry-header-meta :global(.post-meta.post-date .label__part) {
     white-space: nowrap;
   }
 

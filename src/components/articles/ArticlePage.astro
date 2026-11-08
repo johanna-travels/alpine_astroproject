@@ -21,6 +21,10 @@ const { article, sections, lcpImageSrcSet } = Astro.props;
 const pageTitle = article.seoTitle ?? article.title;
 const pageDescription = article.seoDescription ?? article.lead;
 const shareImage = await getSocialShareImage(article.lcpImage ?? article.image);
+const dateLabel = article.dateLabel ?? 'Published';
+// Phones: "Updated · 6 Nov 2026" so the date fits on one line beside the author.
+const shortDateLabel = dateLabel === 'Last updated' ? 'Updated' : dateLabel;
+const shortPublishedDate = article.publishedDate.replace(/\b([A-Z][a-z]{2})[a-z]+\b/, '$1');
 ---
 
 <PageShell
@@ -52,7 +56,8 @@ const shareImage = await getSocialShareImage(article.lcpImage ?? article.image);
         <EntryHeaderMeta class="max-w-3xl">
           <slot name="date" slot="date">
             <div class="post-meta post-date">
-              <span class="label">{article.dateLabel ?? 'Published'} · {article.publishedDate}</span>
+              <span class="label sm:hidden"><span class="label__part">{shortDateLabel} ·</span> <span class="label__part">{shortPublishedDate}</span></span>
+              <span class="label hidden sm:inline"><span class="label__part">{dateLabel} ·</span> <span class="label__part">{article.publishedDate}</span></span>
             </div>
           </slot>
           <slot name="author" slot="author">
