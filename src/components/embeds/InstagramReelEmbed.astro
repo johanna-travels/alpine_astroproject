@@ -21,7 +21,8 @@ const {
 const cleanPermalink = instagramPermalink(permalink);
 ---
 
-<figure class:list={[className]} data-instagram-reel-embed>
+<!-- relative: Instagram positions its iframe absolutely at width 100%, so keep it sized to this figure -->
+<figure class:list={[className, 'relative']} data-instagram-reel-embed>
   <blockquote
     class="instagram-media !m-0 !w-full"
     data-instgrm-captioned

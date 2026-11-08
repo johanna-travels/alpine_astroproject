@@ -26,9 +26,10 @@ const { class: className = '' } = Astro.props;
   .entry-header-meta {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    /* Let a long date ("Last updated · …") drop to its own line on narrow screens */
+    flex-wrap: wrap;
     align-items: center;
-    gap: 1rem 1.5rem;
+    gap: 0 1.5rem;
     min-height: 50px;
     padding-top: 15px;
     padding-bottom: 15px;

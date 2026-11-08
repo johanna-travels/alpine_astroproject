@@ -256,3 +256,8 @@
 .article-panel__divider {
   border-color: #E5DFD4 !important;
 }
+
+/* Klook banners set a fixed 728px width inline; keep them inside the screen on mobile */
+.klk-aff-widget iframe {
+  max-width: 100% !important;
+}
