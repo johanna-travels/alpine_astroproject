@@ -11,9 +11,11 @@ const article = getArticle('osaka-1-day-itinerary')!;
 ---
 
 <ArticlePage article={article} sections={osakaItineraryNav}>
-  <figure slot="title-media">
-    <ArticleImage src={experienceOsaka} alt="Experience the best of Osaka in a single day" caption="Experience the best of Osaka in a single day" imgClass="aspect-[5/4] object-cover" />
-  </figure>
+  <ArticleImage
+    slot="title-media"
+    src={experienceOsaka} alt="Experience the best of Osaka in a single day" caption="Experience the best of Osaka in a single day" imgClass="aspect-[5/4] object-cover"
+    figureClass="mb-6 max-w-3xl md:mb-8"
+  />
   <aside
     slot="intro-media"
     class="mt-6 max-w-3xl rounded-lg bg-[#F5F2EB] px-4 py-3 text-md leading-relaxed text-black/80"

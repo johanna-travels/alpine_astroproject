@@ -11,14 +11,14 @@ const article = getArticle('kamakura-day-trip-from-tokyo')!;
 ---
 
 <ArticlePage article={article} sections={kamakuraDayTripNav}>
-  <figure slot="title-media">
-    <ArticleImage
-      src={enodenTrain}
-      alt="The iconic green Enoden train in Kamakura"
-      caption="The iconic green Enoden train in Kamakura"
-      imgClass="aspect-[5/4] object-cover"
-    />
-  </figure>
+  <ArticleImage
+    slot="title-media"
+    src={enodenTrain}
+    alt="The iconic green Enoden train in Kamakura"
+    caption="The iconic green Enoden train in Kamakura"
+    imgClass="aspect-[5/4] object-cover"
+    figureClass="mb-6 max-w-3xl md:mb-8"
+  />
   <KamakuraDayTripContent />
   <JapanBeforeFooter slot="before-footer" currentSlug={article.slug} />
 </ArticlePage>

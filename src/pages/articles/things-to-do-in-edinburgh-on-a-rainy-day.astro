@@ -72,15 +72,15 @@ const sections = [
 ---
 
 <ArticlePage article={article} sections={sections}>
-  <figure slot="title-media">
-    <ArticleImage
-      src={article.lcpImage!}
-      alt="The Vennel viewpoint looking up towards Edinburgh Castle"
-      caption="The Vennel, with Edinburgh Castle above"
-      imgClass="aspect-[5/4] object-cover"
-      priority
-    />
-  </figure>
+  <ArticleImage
+    slot="title-media"
+    src={article.lcpImage!}
+    alt="The Vennel viewpoint looking up towards Edinburgh Castle"
+    caption="The Vennel, with Edinburgh Castle above"
+    imgClass="aspect-[5/4] object-cover"
+    priority
+    figureClass="mb-6 max-w-3xl md:mb-8"
+  />
 
   <section id="section-0" class="scroll-mt-nav">
     <div class="mb-5 max-w-3xl text-black md:mb-6">

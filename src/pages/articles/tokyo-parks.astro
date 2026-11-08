@@ -11,14 +11,14 @@ const article = getArticle('tokyo-parks')!;
 ---
 
 <ArticlePage article={article} sections={tokyoParksNav}>
-  <figure slot="title-media">
-    <ArticleImage
-      src={tokyoParksHero}
-      alt="Pond and cherry blossoms in a green Tokyo park and garden"
-      caption="Greenery in Tokyo"
-      imgClass="aspect-[5/4] object-cover"
-    />
-  </figure>
+  <ArticleImage
+    slot="title-media"
+    src={tokyoParksHero}
+    alt="Pond and cherry blossoms in a green Tokyo park and garden"
+    caption="Greenery in Tokyo"
+    imgClass="aspect-[5/4] object-cover"
+    figureClass="mb-6 max-w-3xl md:mb-8"
+  />
   <TokyoParksContent />
   <JapanBeforeFooter slot="before-footer" currentSlug={article.slug} />
 </ArticlePage>

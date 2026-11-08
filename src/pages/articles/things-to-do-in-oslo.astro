@@ -13,15 +13,15 @@ const hongKongGuide = getArticle('hong-kong-first-trip')!;
 ---
 
 <ArticlePage article={article} sections={osloThingsToDoNav}>
-  <figure slot="title-media">
-    <ArticleImage
-      src={articleOsloOperaHouseHero}
-      alt="The Oslo Opera House seen from across the water"
-      caption="The Oslo Opera House"
-      imgClass="aspect-[5/4] object-cover"
-      priority
-    />
-  </figure>
+  <ArticleImage
+    slot="title-media"
+    src={articleOsloOperaHouseHero}
+    alt="The Oslo Opera House seen from across the water"
+    caption="The Oslo Opera House"
+    imgClass="aspect-[5/4] object-cover"
+    priority
+    figureClass="mb-6 max-w-3xl md:mb-8"
+  />
   <aside
     slot="intro-media"
     class="mt-6 max-w-3xl rounded-lg bg-[#F5F2EB] px-4 py-3 text-md leading-relaxed text-black/80"

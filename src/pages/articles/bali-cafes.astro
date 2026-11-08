@@ -11,9 +11,11 @@ const article = getArticle('bali-cafes')!;
 ---
 
 <ArticlePage article={article} sections={baliNav}>
-  <figure slot="title-media">
-    <ArticleImage src={baliCafeScene} alt="A glimpse of Bali's vibrant café scene" caption="A glimpse of Bali's vibrant café scene" imgClass="aspect-[5/4] object-cover" />
-  </figure>
+  <ArticleImage
+    slot="title-media"
+    src={baliCafeScene} alt="A glimpse of Bali's vibrant café scene" caption="A glimpse of Bali's vibrant café scene" imgClass="aspect-[5/4] object-cover"
+    figureClass="mb-6 max-w-3xl md:mb-8"
+  />
   <div class="max-w-3xl rounded-lg bg-[#F5F2EB] px-6 py-5 text-md leading-relaxed text-black/80">
     <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">A Few Things to Know Before Your Bali Trip</h2>
     <p class="mb-4">Before we get into the day-by-day itinerary, here are a few practical things that will make planning your trip a little easier:</p>

@@ -108,15 +108,15 @@ const sections = [
 ---
 
 <ArticlePage article={article} sections={sections}>
-  <figure slot="title-media">
-    <ArticleImage
-      src={article.lcpImage!}
-      alt="Edinburgh’s Old Town and Edinburgh Castle at sunrise, seen from Calton Hill"
-      caption="Sunrise over Edinburgh from Calton Hill"
-      imgClass="aspect-[5/4] object-cover"
-      priority
-    />
-  </figure>
+  <ArticleImage
+    slot="title-media"
+    src={article.lcpImage!}
+    alt="Edinburgh’s Old Town and Edinburgh Castle at sunrise, seen from Calton Hill"
+    caption="Sunrise over Edinburgh from Calton Hill"
+    imgClass="aspect-[5/4] object-cover"
+    priority
+    figureClass="mb-6 max-w-3xl md:mb-8"
+  />
 
   <GetYourGuideCity locationId="44" />
 

@@ -24,14 +24,14 @@ const relatedArticles = [
 ---
 
 <ArticlePage article={article} sections={christmasMarketsNav}>
-  <figure slot="title-media">
-    <ArticleImage
-      src={brugesChristmasMarketMarkt}
-      alt="Christmas Magic in Bruges' Market Square"
-      caption="Christmas Magic in Bruges' Market Square"
-      imgClass="aspect-[5/4] object-cover"
-    />
-  </figure>
+  <ArticleImage
+    slot="title-media"
+    src={brugesChristmasMarketMarkt}
+    alt="Christmas Magic in Bruges' Market Square"
+    caption="Christmas Magic in Bruges' Market Square"
+    imgClass="aspect-[5/4] object-cover"
+    figureClass="mb-6 max-w-3xl md:mb-8"
+  />
   <aside
     slot="intro-media"
     class="mt-6 max-w-3xl rounded-lg bg-[#F5F2EB] px-4 py-3 text-md leading-relaxed text-black/80"

@@ -11,9 +11,11 @@ const article = getArticle('mt-fuji-day-trip-from-tokyo')!;
 ---
 
 <ArticlePage article={article} sections={mtFujiDayTripNav}>
-  <figure slot="title-media">
-    <ArticleImage src={mtFuji} alt="Mount Fuji" caption="Mount Fuji" imgClass="aspect-[5/4] object-cover" />
-  </figure>
+  <ArticleImage
+    slot="title-media"
+    src={mtFuji} alt="Mount Fuji" caption="Mount Fuji" imgClass="aspect-[5/4] object-cover"
+    figureClass="mb-6 max-w-3xl md:mb-8"
+  />
   <MtFujiDayTripContent />
   <JapanBeforeFooter slot="before-footer" currentSlug={article.slug} />
 </ArticlePage>

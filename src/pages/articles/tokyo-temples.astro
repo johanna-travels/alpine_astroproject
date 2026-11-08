@@ -11,14 +11,14 @@ const article = getArticle('tokyo-temples')!;
 ---
 
 <ArticlePage article={article} sections={tokyoTemplesNav}>
-  <figure slot="title-media">
-    <ArticleImage
-      src={tokyoTemplesHero}
-      alt="Five-story pagoda at Sensō-ji Temple in Asakusa, Tokyo"
-      caption="Sensō-ji pagoda, Asakusa"
-      imgClass="aspect-[5/4] object-cover"
-    />
-  </figure>
+  <ArticleImage
+    slot="title-media"
+    src={tokyoTemplesHero}
+    alt="Five-story pagoda at Sensō-ji Temple in Asakusa, Tokyo"
+    caption="Sensō-ji pagoda, Asakusa"
+    imgClass="aspect-[5/4] object-cover"
+    figureClass="mb-6 max-w-3xl md:mb-8"
+  />
   <TokyoTemplesContent />
   <JapanBeforeFooter slot="before-footer" currentSlug={article.slug} />
 </ArticlePage>

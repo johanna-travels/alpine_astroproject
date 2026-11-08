@@ -11,14 +11,14 @@ const article = getArticle('tokyo-cafes')!;
 ---
 
 <ArticlePage article={article} sections={tokyoCafesNav}>
-  <figure slot="title-media">
-    <ArticleImage
-      src={tokyoCafeHero}
-      alt="3D cat latte art in a pink teacup at a Tokyo café"
-      caption="3D latte art in Tokyo"
-      imgClass="aspect-[5/4] object-cover"
-    />
-  </figure>
+  <ArticleImage
+    slot="title-media"
+    src={tokyoCafeHero}
+    alt="3D cat latte art in a pink teacup at a Tokyo café"
+    caption="3D latte art in Tokyo"
+    imgClass="aspect-[5/4] object-cover"
+    figureClass="mb-6 max-w-3xl md:mb-8"
+  />
   <TokyoCafesContent />
   <JapanBeforeFooter slot="before-footer" currentSlug={article.slug} />
 </ArticlePage>
