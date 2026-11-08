@@ -40,11 +40,13 @@ import articleEdinburghCard from '@/assets/articles/edinburgh/vennel-viewpoint-e
 import articleEdinburghHero from '@/assets/articles/edinburgh/vennel-viewpoint-edinburgh.webp';
 import articleEdinburghGuideCard from '@/assets/articles/edinburgh/ross-fountain-edinburgh-castle.webp';
 import articleEdinburghGuideHero from '@/assets/articles/edinburgh/calton-hill-sunrise-edinburgh.webp';
+import articleEdinburghBookshopsCard from '@/assets/articles/edinburgh/best-bookshops-in-edinburgh-card.webp';
+import articleEdinburghBookshopsHero from '@/assets/articles/edinburgh/waterstones-christmas-staircase.webp';
 import type { DestinationSlug } from '@/domains/destinations/catalog';
 import { pageUrl } from '@/lib/site';
 
 
-export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bali-where-to-stay' | 'bruges-christmas-markets' | 'christmas-in-paris' | 'munduk-moding-plantation-review' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'mt-fuji-day-trip-from-tokyo' | 'kamakura-day-trip-from-tokyo' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary' | 'tokyo-cafes' | 'tokyo-parks' | 'tokyo-temples' | 'tokyo-5-day-itinerary' | 'tokyo-where-to-stay' | 'tokyo-things-to-do' | 'things-to-do-in-oslo' | 'things-to-do-in-paris' | 'things-to-do-in-bangkok' | '3-day-bangkok-itinerary' | 'things-to-do-in-edinburgh-on-a-rainy-day' | 'things-to-do-in-edinburgh';
+export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bali-where-to-stay' | 'bruges-christmas-markets' | 'christmas-in-paris' | 'munduk-moding-plantation-review' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'mt-fuji-day-trip-from-tokyo' | 'kamakura-day-trip-from-tokyo' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary' | 'tokyo-cafes' | 'tokyo-parks' | 'tokyo-temples' | 'tokyo-5-day-itinerary' | 'tokyo-where-to-stay' | 'tokyo-things-to-do' | 'things-to-do-in-oslo' | 'things-to-do-in-paris' | 'things-to-do-in-bangkok' | '3-day-bangkok-itinerary' | 'things-to-do-in-edinburgh-on-a-rainy-day' | 'things-to-do-in-edinburgh' | 'best-bookshops-in-edinburgh';
 
 export interface Article {
   slug: ArticleSlug;
@@ -633,6 +635,25 @@ export const articles: readonly Article[] = [
       "Beyond its darker side, the city has plenty more to discover, from beautiful viewpoints and independent bookshops to cozy cafés and traditional Scottish pubs.",
     ],
     lead: 'The best things to do in Edinburgh, from bookshops, museums and photogenic streets to Calton Hill, Harry Potter spots, cafés and where to stay.',
+  },
+  {
+    slug: 'best-bookshops-in-edinburgh',
+    destinationSlug: 'scotland',
+    category: 'SCOTLAND',
+    title: '11 Bookshops in Edinburgh Every Book Lover Should Visit',
+    carouselTitle: '11 Bookshops in Edinburgh Every Book Lover Should Visit',
+    breadcrumbTitle: 'Best Bookshops in Edinburgh',
+    metaLabel: 'Scotland',
+    alt: 'Books on display beside a fireplace in an Edinburgh bookshop',
+    image: articleEdinburghBookshopsCard,
+    lcpImage: articleEdinburghBookshopsHero,
+    publishedDate: '8 November 2026',
+    dateLabel: 'Published',
+    intro: [
+      "I don’t think I’ve visited another city where bookshops seem to pop up around every corner. Edinburgh’s literary reputation is well deserved: in 2004, it became the world’s first UNESCO City of Literature.",
+      "Part of the fun of exploring its bookshops is discovering just how different they can be. Some invite you to settle in and take your time, others specialize in particular genres or rare editions, and a few have unexpected details that make them memorable. After visiting so many, these are eleven I think book lovers should add to their Edinburgh itinerary.",
+    ],
+    lead: 'Eleven Edinburgh bookshops every book lover should visit, from cozy independents and rare book shops to Waterstones with a castle view.',
   },
 ] as const;
 

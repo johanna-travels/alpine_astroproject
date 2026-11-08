@@ -211,7 +211,9 @@ This article may contain affiliate links, meaning I may earn a small commission 
     }, null);
 
     if (target) {
-      target.insertAdjacentElement("afterend", anchor);
+      // Never split a side-by-side photo grid: place the box after the whole grid
+      const photoGrid = target.closest(".grid");
+      (photoGrid && main.contains(photoGrid) ? photoGrid : target).insertAdjacentElement("afterend", anchor);
     }
 
     anchor.classList.remove("hidden");
