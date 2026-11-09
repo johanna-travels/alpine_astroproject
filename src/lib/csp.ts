@@ -39,6 +39,7 @@ export function getCspDirectives({
       getYourGuideCsp.imgSrc,
       stay22Csp.imgSrc,
       klookCsp.imgSrc,
+      travelpayoutsCsp.imgSrc,
       googleAnalyticsEnabled && googleAnalyticsCsp.imgSrc,
       instagramCsp.imgSrc,
     )}`,
@@ -62,6 +63,7 @@ export function getCspDirectives({
       instagramCsp.frameSrc,
       stay22Csp.frameSrc,
       klookCsp.frameSrc,
+      travelpayoutsCsp.frameSrc,
     )}`,
     `form-action ${googleMapsCsp.formAction}`,
     "frame-ancestors 'self'",
@@ -87,7 +89,7 @@ export function getCspScriptResources({
 }
 
 export function getCspStyleResources(): string[] {
-  return ["'self'", "'unsafe-inline'"];
+  return ["'self'", "'unsafe-inline'", travelpayoutsCsp.styleSrc];
 }
 
 // Production CSP για Astro security.csp — χωρίς script 'unsafe-inline'.
