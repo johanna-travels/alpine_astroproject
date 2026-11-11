@@ -1,0 +1,323 @@
+---
+import ArticlePage from '@/components/articles/ArticlePage.astro';
+import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
+import ArticlePinSaveSection from '@/components/articles/ArticlePinSaveSection.astro';
+import ArticleShareBar from '@/components/articles/ArticleShareBar.astro';
+import glasgowGuidePin from '@/assets/articles/glasgow/glasgow-travel-guide-pin.webp';
+import ArticlePreviewCard from '@/components/ui/ArticlePreviewCard.astro';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import GetYourGuideCity from '@/components/articles/GetYourGuideCity.astro';
+import universityCloisters from '@/assets/articles/glasgow/university-of-glasgow-cloisters.webp';
+import universityTowers from '@/assets/articles/glasgow/university-of-glasgow-towers.webp';
+import kelvingroveAutumn from '@/assets/articles/glasgow/kelvingrove-park-autumn.webp';
+import kelvingroveFountain from '@/assets/articles/glasgow/kelvingrove-park-stewart-fountain.webp';
+import kelvingroveSpitfire from '@/assets/articles/glasgow/kelvingrove-museum-spitfire.webp';
+import kelvingroveHeads from '@/assets/articles/glasgow/kelvingrove-museum-floating-heads.webp';
+import highlandCows from '@/assets/articles/glasgow/pollok-country-park-highland-cows.webp';
+import burrellArmour from '@/assets/articles/glasgow/burrell-collection-armour.webp';
+import burrellGallery from '@/assets/articles/glasgow/burrell-collection-gallery.webp';
+import burrellVase from '@/assets/articles/glasgow/burrell-collection-warwick-vase.webp';
+import { articleHref, articlesForDestination, getArticle } from '@/domains/articles/catalog';
+
+const mapLink = 'text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]';
+const article = getArticle('things-to-do-in-glasgow')!;
+const relatedArticles = articlesForDestination('scotland')
+  .filter((a) => a.slug !== article.slug)
+  .map((a) => ({
+    href: articleHref(a.slug),
+    image: a.image,
+    category: a.category,
+    title: a.title,
+    alt: a.alt,
+    comingSoon: a.comingSoon,
+  }));
+const sections = [
+  { navTitle: 'Intro', target: 'section-intro' },
+  { navTitle: 'How to Get to Glasgow', target: 'getting-there' },
+  { navTitle: 'How to Get Around Glasgow', target: 'getting-around' },
+  {
+    navTitle: 'Things to Do in Glasgow',
+    target: 'things-to-do',
+    children: [
+      { navTitle: '1. University of Glasgow', target: 'thing-1' },
+      { navTitle: '2. Kelvingrove Park', target: 'thing-2' },
+      { navTitle: '3. Kelvingrove Art Gallery and Museum', target: 'thing-3' },
+      { navTitle: '4. Pollok Country Park', target: 'thing-4' },
+      { navTitle: '5. The Burrell Collection', target: 'thing-5' },
+    ],
+  },
+  { navTitle: 'Where to Stay in Glasgow', target: 'where-to-stay' },
+  { navTitle: 'Where to Eat in Glasgow', target: 'where-to-eat' },
+  {
+    navTitle: 'FAQ',
+    target: 'faq',
+    children: [
+      { navTitle: '1. Is Glasgow worth visiting?', target: 'faq-0' },
+      { navTitle: '2. Can you visit Glasgow as a day trip from Edinburgh?', target: 'faq-1' },
+      { navTitle: '3. What is the best time of year to visit Glasgow?', target: 'faq-2' },
+      { navTitle: '4. Is Glasgow a walkable city?', target: 'faq-3' },
+      { navTitle: '5. Is Glasgow expensive to visit?', target: 'faq-4' },
+    ],
+  },
+  { navTitle: 'Final Thoughts', target: 'final-thoughts' },
+] as const;
+---
+
+<ArticlePage article={article} sections={sections}>
+  <ArticleImage
+    slot="title-media"
+    src={article.lcpImage!}
+    alt="The Burrell Collection museum building in Pollok Country Park, Glasgow"
+    caption="The Burrell Collection, Glasgow"
+    figureClass="mb-6 max-w-3xl md:mb-8"
+    imgClass="aspect-[5/4] object-cover"
+    priority
+  />
+
+  <section id="getting-there" class="scroll-mt-nav">
+    <div class="mb-5 max-w-3xl text-black md:mb-6">
+      <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">How to Get to Glasgow</h2>
+    </div>
+    <div class="article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0">
+      <p>Glasgow has its own international airport, with connections to various destinations in the UK and abroad. However, if you’re planning to visit Glasgow as a day trip from Edinburgh, just like I did, I’d definitely recommend taking the train! You can catch one from Edinburgh Waverley to Glasgow Queen Street, and the journey takes around 45–50 minutes. It’s quick, easy, and super convenient!</p>
+      <p>If you’re looking for a more budget-friendly option, there are also regular buses connecting the two cities. And of course, you can always rent a car and drive between Edinburgh and Glasgow, which takes approximately one hour, depending on traffic.</p>
+    </div>
+  </section>
+
+  <section id="getting-around" class="scroll-mt-nav">
+    <div class="mb-5 max-w-3xl text-black md:mb-6">
+      <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">How to Get Around Glasgow</h2>
+    </div>
+    <div class="article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0">
+      <p>Glasgow is quite easy to explore, as many of its main attractions are within walking distance of each other. The city also has a good public transportation network, including buses, trains, and its own underground subway system.</p>
+      <p>During my visit, I mainly used buses to get around, which I found really convenient for reaching different spots around the city.</p>
+    </div>
+  </section>
+
+  <GetYourGuideCity locationId="438" />
+
+  <section id="things-to-do" class="scroll-mt-nav">
+    <div class="mb-5 max-w-3xl text-black md:mb-6">
+      <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Things to Do in Glasgow</h2>
+    </div>
+    <div class="article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0">
+      <section>
+        <h3 id="thing-1" class="mb-4 scroll-mt-nav text-lg font-semibold text-neutral-900 md:text-xl">1. University of Glasgow</h3>
+        <p>This was easily one of my favorite places in Glasgow! The university is absolutely beautiful, with its stunning Gothic architecture, impressive courtyards, and iconic cloisters. It honestly felt like stepping straight into Hogwarts! If you’re a Harry Potter fan, or simply love beautiful architecture, this is definitely a spot you shouldn’t miss.</p>
+        <ArticleImage
+          src={universityCloisters}
+          alt="The vaulted cloisters at the University of Glasgow"
+          caption="The cloisters at the University of Glasgow"
+          imgClass="aspect-[5/4] object-cover"
+        />
+        <ArticleImage
+          src={universityTowers}
+          alt="Gothic towers and spires of the University of Glasgow"
+          caption="The Gothic towers of the University of Glasgow"
+          imgClass="aspect-[2/3] object-cover"
+        />
+      </section>
+      <section class="mt-12">
+        <h3 id="thing-2" class="mb-4 scroll-mt-nav text-lg font-semibold text-neutral-900 md:text-xl">2. Kelvingrove Park</h3>
+        <p>Located right next to the University of Glasgow, Kelvingrove Park is a lovely place for a relaxing walk. It’s a beautiful green space with scenic paths, plenty of nature, and lovely views of the surrounding architecture. It’s also the perfect place to take a little break while exploring this part of the city.</p>
+        <ArticleImage
+          src={kelvingroveAutumn}
+          alt="A tree-lined path covered in autumn leaves in Kelvingrove Park"
+          caption="Autumn in Kelvingrove Park"
+          imgClass="aspect-[5/4] object-cover"
+        />
+        <ArticleImage
+          src={kelvingroveFountain}
+          alt="The Stewart Memorial Fountain in Kelvingrove Park under a blue sky"
+          caption="The Stewart Memorial Fountain in Kelvingrove Park"
+          imgClass="aspect-[4/5] object-cover"
+        />
+      </section>
+      <section class="mt-12">
+        <h3 id="thing-3" class="mb-4 scroll-mt-nav text-lg font-semibold text-neutral-900 md:text-xl">3. Kelvingrove Art Gallery and Museum</h3>
+        <p>Just a short walk from the university, this museum is home to an impressive collection of art, history, and natural history exhibits. Even if museums aren’t usually your thing, I’d still recommend popping in, as there’s quite a lot to see. And the best part? Admission is completely free!</p>
+        <ArticleImage
+          src={kelvingroveSpitfire}
+          alt="A Spitfire hanging above the main hall of Kelvingrove Art Gallery and Museum"
+          caption="The Spitfire in Kelvingrove’s main hall"
+          imgClass="aspect-[5/4] object-cover"
+        />
+        <ArticleImage
+          src={kelvingroveHeads}
+          alt="The Floating Heads installation inside Kelvingrove Art Gallery and Museum"
+          caption="The Floating Heads at Kelvingrove Art Gallery and Museum"
+          imgClass="aspect-[4/5] object-cover"
+        />
+      </section>
+      <GetYourGuideCity locationId="438" class="mt-12 max-w-3xl" />
+
+      <section class="mt-12">
+        <h3 id="thing-4" class="mb-4 scroll-mt-nav text-lg font-semibold text-neutral-900 md:text-xl">4. Pollok Country Park</h3>
+        <p>If there’s one place I’d tell you not to miss in Glasgow, it’s this one! Pollok Country Park is a beautiful green escape from the city, but the real highlight for me was getting to see the famous Highland cows! 🐮</p>
+        <ArticleImage
+          src={highlandCows}
+          alt="Highland cows grazing in Pollok Country Park, Glasgow"
+          caption="Highland cows in Pollok Country Park"
+          imgClass="aspect-[4/5] object-cover"
+        />
+        <p>And the best part? You don’t even have to travel all the way to the Scottish Highlands to see these adorable, fluffy creatures. You can find them right here in Glasgow! Honestly, they’re even cuter in person, and I think this alone makes the park worth visiting.</p>
+      </section>
+      <div data-subscribe-after></div>
+      <section class="mt-12">
+        <h3 id="thing-5" class="mb-4 scroll-mt-nav text-lg font-semibold text-neutral-900 md:text-xl">5. The Burrell Collection</h3>
+        <p>Located within Pollok Country Park, The Burrell Collection is a really interesting museum that’s definitely worth a visit if you have some extra time. It houses an impressive collection of art and historical objects from different parts of the world. I found it surprisingly interesting, and it’s a lovely addition to your visit to the park. And just like Kelvingrove, admission is completely free!</p>
+        <div class="grid grid-cols-2 gap-3 md:gap-4">
+          <ArticleImage
+            src={burrellArmour}
+            alt="Medieval armour and swords on display at The Burrell Collection"
+            caption="Armour and swords at The Burrell Collection"
+            imgClass="aspect-[4/5] object-cover"
+          />
+          <ArticleImage
+            src={burrellVase}
+            alt="The Warwick Vase under the glass roof of The Burrell Collection"
+            caption="The Warwick Vase at The Burrell Collection"
+            imgClass="aspect-[4/5] object-cover"
+          />
+        </div>
+        <ArticleImage
+          src={burrellGallery}
+          alt="Tapestries and paintings on a blue wall inside The Burrell Collection"
+          caption="Tapestries and paintings at The Burrell Collection"
+          imgClass="aspect-[5/4] object-cover"
+        />
+      </section>
+    </div>
+  </section>
+
+  <section id="where-to-stay" class="scroll-mt-nav">
+    <div class="mb-5 max-w-3xl text-black md:mb-6">
+      <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Where to Stay in Glasgow</h2>
+    </div>
+    <div class="article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0">
+      <p>If you’re planning to stay overnight in Glasgow, I’ve put together a few hotel recommendations for you! Whether you’re looking for a luxury stay, a stylish boutique hotel, or something a little more budget-friendly, here are some options worth checking out.</p>
+      <h3 class="mt-8 mb-4 text-lg font-semibold text-neutral-900 md:text-xl">Luxury Hotels</h3>
+      <ul class="list-disc space-y-8 pl-5 marker:text-black/40">
+        <li class="pl-1">
+          <p><strong><a href="https://www.booking.com/hotel/gb/blythswood-square.html" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Kimpton Blythswood Square Hotel &amp; Spa</a>:</strong> A luxurious five-star hotel in the heart of Glasgow, featuring an elegant spa, beautiful interiors, and a relaxing atmosphere.</p>
+        </li>
+        <li class="pl-1">
+          <p><strong><a href="https://www.booking.com/hotel/gb/dakota-glasgow.html" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Dakota Hotel Glasgow</a>:</strong> A stylish luxury hotel known for its elegant rooms, upscale restaurant, and sophisticated cocktail bar.</p>
+        </li>
+        <li class="pl-1">
+          <p><strong><a href="https://www.booking.com/hotel/gb/du-vin-at-one-devonshire-gardens.html" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>One Devonshire Gardens by Hotel du Vin</a>:</strong> A beautiful five-star hotel in Glasgow’s West End, set in elegant Victorian townhouses and offering a charming, luxurious stay.</p>
+        </li>
+      </ul>
+      <h3 class="mt-12 mb-4 text-lg font-semibold text-neutral-900 md:text-xl">Budget-Friendly Hotels</h3>
+      <ul class="list-disc space-y-8 pl-5 marker:text-black/40">
+        <li class="pl-1">
+          <p><strong><a href="https://www.booking.com/hotel/gb/point-a-glasgow.html" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Point A Hotel Glasgow</a>:</strong> A modern, affordable hotel in the city center, offering compact but comfortable rooms and a great location.</p>
+        </li>
+        <li class="pl-1">
+          <p><strong><a href="https://www.booking.com/hotel/gb/ibis-styles-glasgow-centre-west.html" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>ibis Styles Glasgow Central</a>:</strong> A fun, music-inspired hotel with colorful decor, comfortable rooms, and a convenient central location.</p>
+        </li>
+        <li class="pl-1">
+          <p><strong><a href="https://www.booking.com/hotel/gb/premier-inn-glasgow-city-buchanan-galleries.html" target="_blank" rel="noopener noreferrer sponsored" class={mapLink}>Premier Inn Glasgow City Centre Buchanan Galleries</a>:</strong> A reliable budget-friendly option, ideally located near shopping areas, restaurants, and public transportation.</p>
+        </li>
+      </ul>
+      <iframe
+        id="stay22-widget"
+        title="Find hotels in Glasgow"
+        width="100%"
+        height="428"
+        src="https://www.stay22.com/embed/6af4ad3f51c479655f23ea10"
+        loading="lazy"
+        class="my-5 max-w-3xl md:my-8"
+      ></iframe>
+    </div>
+  </section>
+
+  <section id="where-to-eat" class="scroll-mt-nav">
+    <div class="mb-5 max-w-3xl text-black md:mb-6">
+      <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Where to Eat in Glasgow</h2>
+    </div>
+    <div class="article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0">
+      <h3 class="mb-4 text-lg font-semibold text-neutral-900 md:text-xl">Restaurants</h3>
+      <ul class="list-disc space-y-8 pl-5 marker:text-black/40">
+        <li class="pl-1">
+          <p><strong><a href="https://www.google.com/maps/search/?api=1&query=La+Lanterna+Hope+Street+Glasgow" target="_blank" rel="noopener noreferrer" class={mapLink}>La Lanterna</a>:</strong> A lovely Italian restaurant just a short walk from Glasgow Central Station, serving classic Italian dishes, homemade pasta, and seafood. I personally visited and really enjoyed it!</p>
+        </li>
+        <li class="pl-1">
+          <p><strong><a href="https://www.google.com/maps/search/?api=1&query=Green+Gates+Merchant+City+Glasgow" target="_blank" rel="noopener noreferrer" class={mapLink}>Green Gates Merchantcity</a>:</strong> A highly rated Indian restaurant in Merchant City, known for its flavorful dishes and Indian-style small plates, perfect for sharing.</p>
+        </li>
+        <li class="pl-1">
+          <p><strong><a href="https://www.google.com/maps/search/?api=1&query=Ardnamurchan+Scottish+Restaurant+and+Bar+Glasgow" target="_blank" rel="noopener noreferrer" class={mapLink}>Ardnamurchan Scottish Restaurant &amp; Bar</a>:</strong> A relaxed Scottish restaurant serving traditional dishes made with locally sourced ingredients, including Scottish seafood and meat. A great option to try some local flavors.</p>
+        </li>
+      </ul>
+      <h3 class="mt-12 mb-4 text-lg font-semibold text-neutral-900 md:text-xl">Brunch &amp; Coffee</h3>
+      <ul class="list-disc space-y-8 pl-5 marker:text-black/40">
+        <li class="pl-1">
+          <p><strong><a href="https://www.google.com/maps/search/?api=1&query=The+Wilson+Street+Pantry+Glasgow" target="_blank" rel="noopener noreferrer" class={mapLink}>The Wilson Street Pantry</a>:</strong> A popular brunch spot in Merchant City, serving breakfast favorites, eggs, sourdough dishes, and great coffee.</p>
+        </li>
+        <li class="pl-1">
+          <p><strong><a href="https://www.google.com/maps/search/?api=1&query=Cafe+Strange+Brew+Glasgow" target="_blank" rel="noopener noreferrer" class={mapLink}>Cafe Strange Brew</a>:</strong> A much-loved brunch cafe in Glasgow’s Southside, known for its creative breakfast dishes, pancakes, and generous portions. It’s a little farther from the city center, but worth considering.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="faq" class="scroll-mt-nav">
+    <div class="mb-5 max-w-3xl text-black md:mb-6">
+      <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">FAQ</h2>
+    </div>
+    <div class="article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0 space-y-6">
+      <div id="faq-0" class="scroll-mt-nav">
+        <h3 class="mb-2 text-black">1. Is Glasgow worth visiting?</h3>
+        <p>Absolutely! Glasgow has so much to offer, from beautiful architecture and fascinating museums to lovely parks and hidden gems. I was pleasantly surprised by how much I enjoyed exploring the city, and I definitely think it’s worth adding to your Scotland itinerary.</p>
+      </div>
+      <div id="faq-1" class="scroll-mt-nav">
+        <h3 class="mb-2 text-black">2. Can you visit Glasgow as a day trip from Edinburgh?</h3>
+        <p>Definitely! Glasgow is only around 45–50 minutes by train from Edinburgh, making it a perfect day trip. That’s exactly what I did, and I think one day is a great way to get a taste of what the city has to offer.</p>
+      </div>
+      <div id="faq-2" class="scroll-mt-nav">
+        <h3 class="mb-2 text-black">3. What is the best time of year to visit Glasgow?</h3>
+        <p>The best time to visit Glasgow is generally between May and September, when the days are longer and the weather is usually milder. However, Scotland’s weather can be unpredictable, so I’d recommend bringing a light rain jacket no matter when you visit!</p>
+      </div>
+      <div id="faq-3" class="scroll-mt-nav">
+        <h3 class="mb-2 text-black">4. Is Glasgow a walkable city?</h3>
+        <p>Yes, especially if you’re planning to explore the city center, where you can easily visit many attractions on foot. However, keep in mind that some of Glasgow’s main attractions are quite spread out. For example, getting from the University of Glasgow to Pollok Country Park, where you can see the famous Highland cows, requires some extra travel time. If you’re not a big fan of walking or want to visit several places in one day, I’d definitely recommend using public transportation, especially the buses!</p>
+      </div>
+      <div id="faq-4" class="scroll-mt-nav">
+        <h3 class="mb-2 text-black">5. Is Glasgow expensive to visit?</h3>
+        <p>Glasgow can be quite affordable compared to other popular UK destinations. Plus, some of its best attractions, including Kelvingrove Art Gallery and Museum and The Burrell Collection, offer free admission! Your overall budget will mainly depend on accommodation, dining, and transportation.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="final-thoughts" class="scroll-mt-nav">
+    <div class="article-prose max-w-3xl text-black/80">
+      <ArticleClosingNote label="Final thoughts">
+        <p>I think Glasgow is definitely worth adding to your Scotland itinerary! Whether you’re visiting as a day trip from Edinburgh or planning to spend a little more time exploring, there’s plenty to see and do. From its beautiful architecture and fascinating museums to its lovely green spaces, Glasgow has a lot more to offer than you might initially expect. So, if you’re planning a trip to Scotland, don’t make the mistake of skipping it! 😊</p>
+      </ArticleClosingNote>
+
+      <ArticlePinSaveSection>
+        <ArticleImage
+          src={glasgowGuidePin}
+          alt="Glasgow travel guide — 5 things to do"
+          figureClass="m-0"
+          imgClass="aspect-[2/3] object-cover"
+          pinOnHover
+        />
+
+        <ArticleShareBar
+          title="5 Things to Do in Glasgow"
+          pinImage={glasgowGuidePin}
+          class="mt-6 md:mt-8"
+        />
+      </ArticlePinSaveSection>
+    </div>
+  </section>
+  <section slot="before-footer" class="mx-auto w-full max-w-6xl px-4 md:pr-10 md:pl-0 pb-16 md:pb-20">
+    <h2 class="mb-8 md:mb-10">You may also like</h2>
+    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3">
+      {relatedArticles.map((related) => (
+        <ArticlePreviewCard {...related} />
+      ))}
+    </div>
+  </section>
+</ArticlePage>

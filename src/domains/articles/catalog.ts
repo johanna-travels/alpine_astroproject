@@ -42,11 +42,13 @@ import articleEdinburghGuideCard from '@/assets/articles/edinburgh/ross-fountain
 import articleEdinburghGuideHero from '@/assets/articles/edinburgh/calton-hill-sunrise-edinburgh.webp';
 import articleEdinburghBookshopsCard from '@/assets/articles/edinburgh/best-bookshops-in-edinburgh-card.webp';
 import articleEdinburghBookshopsHero from '@/assets/articles/edinburgh/waterstones-christmas-staircase.webp';
+import articleGlasgowCard from '@/assets/articles/glasgow/things-to-do-in-glasgow-card.webp';
+import articleGlasgowHero from '@/assets/articles/glasgow/burrell-collection-glasgow.webp';
 import type { DestinationSlug } from '@/domains/destinations/catalog';
 import { pageUrl } from '@/lib/site';
 
 
-export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bali-where-to-stay' | 'bruges-christmas-markets' | 'christmas-in-paris' | 'munduk-moding-plantation-review' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'mt-fuji-day-trip-from-tokyo' | 'kamakura-day-trip-from-tokyo' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary' | 'tokyo-cafes' | 'tokyo-parks' | 'tokyo-temples' | 'tokyo-5-day-itinerary' | 'tokyo-where-to-stay' | 'tokyo-things-to-do' | 'things-to-do-in-oslo' | 'things-to-do-in-paris' | 'things-to-do-in-bangkok' | '3-day-bangkok-itinerary' | 'things-to-do-in-edinburgh-on-a-rainy-day' | 'things-to-do-in-edinburgh' | 'best-bookshops-in-edinburgh';
+export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bali-where-to-stay' | 'bruges-christmas-markets' | 'christmas-in-paris' | 'munduk-moding-plantation-review' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'mt-fuji-day-trip-from-tokyo' | 'kamakura-day-trip-from-tokyo' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary' | 'tokyo-cafes' | 'tokyo-parks' | 'tokyo-temples' | 'tokyo-5-day-itinerary' | 'tokyo-where-to-stay' | 'tokyo-things-to-do' | 'things-to-do-in-oslo' | 'things-to-do-in-paris' | 'things-to-do-in-bangkok' | '3-day-bangkok-itinerary' | 'things-to-do-in-edinburgh-on-a-rainy-day' | 'things-to-do-in-edinburgh' | 'best-bookshops-in-edinburgh' | 'things-to-do-in-glasgow';
 
 export interface Article {
   slug: ArticleSlug;
@@ -654,6 +656,25 @@ export const articles: readonly Article[] = [
       "Part of the fun of exploring its bookshops is discovering just how different they can be. Some invite you to settle in and take your time, others specialize in particular genres or rare editions, and a few have unexpected details that make them memorable. After visiting so many, these are eleven I think book lovers should add to their Edinburgh itinerary.",
     ],
     lead: 'Eleven Edinburgh bookshops every book lover should visit, from cozy independents and rare book shops to Waterstones with a castle view.',
+  },
+  {
+    slug: 'things-to-do-in-glasgow',
+    destinationSlug: 'scotland',
+    category: 'SCOTLAND',
+    title: '5 Things to Do in Glasgow',
+    carouselTitle: '5 Things to Do in Glasgow',
+    breadcrumbTitle: 'Things to Do in Glasgow',
+    metaLabel: 'Scotland',
+    alt: 'Historic sandstone buildings and a golden clock tower in Glasgow city centre',
+    image: articleGlasgowCard,
+    lcpImage: articleGlasgowHero,
+    publishedDate: '11 November 2026',
+    dateLabel: 'Published',
+    intro: [
+      "Glasgow wasn’t actually part of my original Scotland itinerary! My main plan was to explore Edinburgh, but at the last minute, I decided to squeeze in a day trip to Glasgow as well. And honestly, I’m SO glad I did!",
+      "I wasn’t quite sure what to expect from Glasgow, but after spending a day exploring, I genuinely believe it deserves a spot on your Scotland itinerary. It’s one of those places that might not be at the top of everyone’s list, but it really should be!",
+    ],
+    lead: 'Five things to do in Glasgow, from the University of Glasgow and Kelvingrove to the Highland cows at Pollok Country Park.',
   },
 ] as const;
 
