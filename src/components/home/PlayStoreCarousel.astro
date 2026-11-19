@@ -4,6 +4,16 @@ import SectionHeader from '@/components/ui/SectionHeader.astro';
 import { articles, articleHref } from '@/domains/articles/catalog';
 import { pageUrl } from '@/lib/site';
 
+interface Props {
+  title?: string;
+  /** Show the newest N articles (most recently added to the catalog) instead of the hand-picked list. */
+  latest?: number;
+  /** Unique id when more than one carousel is on the page. */
+  carouselId?: string;
+}
+
+const { title = 'Most Popular Articles', latest, carouselId = 'carousel' } = Astro.props;
+
 // Homepage carousel: only these articles, in this order.
 const carouselSlugs = [
   'bruges-guide',
@@ -15,10 +25,15 @@ const carouselSlugs = [
   'hong-kong-first-trip',
 ] as const;
 
-const cards = carouselSlugs
-  .map((slug) => articles.find((article) => article.slug === slug))
-  .filter((article): article is (typeof articles)[number] => Boolean(article && article.image && !article.comingSoon))
-  .map((article) => ({
+const visible = (article: (typeof articles)[number] | undefined): article is (typeof articles)[number] =>
+  Boolean(article && article.image && !article.comingSoon);
+
+// New articles are appended to the catalog, so its end holds the most recently written ones.
+const selected = latest
+  ? articles.filter(visible).slice(-latest).reverse()
+  : carouselSlugs.map((slug) => articles.find((article) => article.slug === slug)).filter(visible);
+
+const cards = selected.map((article) => ({
   category: article.category,
   title: article.carouselTitle,
   href: articleHref(article.slug),
@@ -27,11 +42,11 @@ const cards = carouselSlugs
 }));
 ---
 
-<SectionHeader title="Articles" href={pageUrl('destinations')} />
+<SectionHeader title={title} href={pageUrl('destinations')} />
 
 <div class="section-gutter relative overflow-hidden">
     <div class="pb-dot-zone">
-    <div id="carousel" class="scroll-wrapper">
+    <div id={carouselId} class="scroll-wrapper">
       {cards.map((card) => (
         <article class="slide" data-slide>
           <a href={card.href} class="slide-link group block" draggable={false}>
@@ -68,7 +83,7 @@ const cards = carouselSlugs
       role="tablist"
       aria-label="Carousel pagination"
       data-carousel-dots
-      data-carousel-id="carousel"
+      data-carousel-id={carouselId}
       data-carousel-count={cards.length}
       data-carousel-gap="12"
       class="absolute bottom-[calc(8px)] left-1/2 flex -translate-x-1/2 items-center"
