@@ -1,0 +1,267 @@
+---
+import ArticlePage from '@/components/articles/ArticlePage.astro';
+import ArticleClosingNote from '@/components/articles/ArticleClosingNote.astro';
+import ArticlePinSaveSection from '@/components/articles/ArticlePinSaveSection.astro';
+import ArticleShareBar from '@/components/articles/ArticleShareBar.astro';
+import harryPotterPin from '@/assets/articles/edinburgh/harry-potter-in-edinburgh-pin.webp';
+import ArticlePreviewCard from '@/components/ui/ArticlePreviewCard.astro';
+import ArticleImage from '@/components/ui/ArticleImage.astro';
+import victoriaStreet from '@/assets/articles/edinburgh/victoria-street-rainy-colorful-shopfronts.webp';
+import greyfriarsThomasRiddell from '@/assets/articles/edinburgh/greyfriars-thomas-riddell-grave.webp';
+import greyfriarsMcGonagall from '@/assets/articles/edinburgh/greyfriars-william-mcgonagall-plaque.webp';
+import elephantHouseSign from '@/assets/articles/edinburgh/elephant-house-birthplace-sign.webp';
+import elephantHouseDesk from '@/assets/articles/edinburgh/elephant-house-writing-desk.webp';
+import rowlingHandprints from '@/assets/articles/edinburgh/jk-rowling-handprints-city-chambers.webp';
+import balmoralHotel from '@/assets/articles/edinburgh/balmoral-hotel-edinburgh.webp';
+import minalimaPopUp from '@/assets/articles/edinburgh/minalima-pop-up-book.webp';
+import minalimaInterior from '@/assets/articles/edinburgh/minalima-shop-interior.webp';
+import minalimaGifts from '@/assets/articles/edinburgh/minalima-harry-potter-gifts.webp';
+import museumContextWands from '@/assets/articles/edinburgh/museum-context-wands.webp';
+import museumContextChess from '@/assets/articles/edinburgh/museum-context-wizard-chess.webp';
+import museumContextShopfront from '@/assets/articles/edinburgh/museum-context-shopfront.webp';
+import { articleHref, articlesForDestination, getArticle } from '@/domains/articles/catalog';
+
+const article = getArticle('harry-potter-in-edinburgh')!;
+const relatedArticles = articlesForDestination('scotland')
+  .filter((a) => a.slug !== article.slug)
+  .map((a) => ({
+    href: articleHref(a.slug),
+    image: a.image,
+    category: a.category,
+    title: a.title,
+    alt: a.alt,
+    comingSoon: a.comingSoon,
+  }));
+const sections = [
+  { navTitle: 'Intro', target: 'section-intro' },
+  {
+    navTitle: 'Harry Potter-Related Places',
+    target: 'places',
+    children: [
+      { navTitle: '1. Victoria Street', target: 'place-1' },
+      { navTitle: '2. Greyfriars Kirkyard', target: 'place-2' },
+      { navTitle: '3. The Elephant House', target: 'place-3' },
+      { navTitle: '4. Edinburgh City Chambers', target: 'place-4' },
+      { navTitle: '5. The Balmoral Hotel', target: 'place-5' },
+    ],
+  },
+  {
+    navTitle: 'More Harry Potter Things to Do',
+    target: 'more-things-to-do',
+    children: [
+      { navTitle: '1. Step Inside House of MinaLima', target: 'more-1' },
+      { navTitle: '2. Explore Museum Context', target: 'more-2' },
+    ],
+  },
+  { navTitle: 'Before You Go', target: 'before-you-go' },
+] as const;
+---
+
+<ArticlePage article={article} sections={sections}>
+  <ArticleImage
+    slot="title-media"
+    src={article.lcpImage!}
+    alt="Victoria Street in Edinburgh at night, decorated with Christmas lights"
+    caption="Victoria Street at night"
+    figureClass="mb-6 max-w-3xl md:mb-8"
+    imgClass="aspect-[5/4] object-cover"
+    priority
+  />
+
+  <section id="places" class="scroll-mt-nav">
+    <div class="mb-5 max-w-3xl text-black md:mb-6">
+      <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">Harry Potter-Related Places in Edinburgh</h2>
+    </div>
+    <div class="article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0">
+      <section>
+        <h3 id="place-1" class="mb-4 scroll-mt-nav text-lg font-semibold text-neutral-900 md:text-xl">1. Victoria Street</h3>
+        <p>Victoria Street is one of the most beautiful and photogenic streets in Edinburgh! Located in the heart of the Old Town, this charming cobblestone street curves its way uphill, lined with colorful storefronts, independent shops, and beautiful buildings in different shades. It’s no surprise that so many Harry Potter fans associate it with Diagon Alley, the famous magical shopping street from the books.</p>
+        <p>But here’s a fun fact! Despite the strong resemblance, J.K. Rowling has actually confirmed that Victoria Street was not the inspiration behind it. In fact, she revealed that she hadn’t even seen the street when she first came up with the idea. But it’s easy to see why so many people make the connection!</p>
+        <ArticleImage
+          src={victoriaStreet}
+          alt="Colorful curved shopfronts along a rainy Victoria Street in Edinburgh"
+          caption="Colorful shopfronts on Victoria Street"
+          imgClass="aspect-[5/4] object-cover"
+        />
+      </section>
+      <section class="mt-12">
+        <h3 id="place-2" class="mb-4 scroll-mt-nav text-lg font-semibold text-neutral-900 md:text-xl">2. Greyfriars Kirkyard</h3>
+        <p>Greyfriars Kirkyard is one of Edinburgh’s oldest and most famous cemeteries, but it’s also a popular stop for Harry Potter fans. As you walk around the historic graveyard, you can spot a few names on the gravestones that might sound surprisingly familiar! The most famous one is Thomas Riddell, whose name reminds many visitors of Tom Riddle, the real name of Lord Voldemort. You can also find the name William McGonagall, which brings Professor McGonagall to mind, as well as Elizabeth Moodie, often associated by fans with Mad-Eye Moody.</p>
+        <p>Although these names have become a popular part of Harry Potter tours around Edinburgh, J.K. Rowling has denied that the characters were inspired by the gravestones at Greyfriars Kirkyard.</p>
+        <p>And here’s something you might not know! Over the years, Harry Potter fans have left flowers and handwritten notes at Thomas Riddell’s grave, almost as a tribute to the fictional character Lord Voldemort. It’s quite fascinating to see how a simple name on a gravestone has attracted so much attention from fans around the world!</p>
+        <div class="grid grid-cols-2 gap-3 md:gap-4">
+          <ArticleImage
+            src={greyfriarsThomasRiddell}
+            alt="The Thomas Riddell gravestone at Greyfriars Kirkyard"
+            caption="Thomas Riddell’s grave"
+            imgClass="aspect-[4/5] object-cover"
+          />
+          <ArticleImage
+            src={greyfriarsMcGonagall}
+            alt="The William McGonagall memorial plaque at Greyfriars Kirkyard"
+            caption="William McGonagall’s plaque"
+            imgClass="aspect-[4/5] object-cover"
+          />
+        </div>
+      </section>
+      <div
+        data-gyg-href="https://widget.getyourguide.com/default/activities.frame"
+        data-gyg-locale-code="en-US"
+        data-gyg-widget="activities"
+        data-gyg-number-of-items="1"
+        data-gyg-cmp="Harry Potter_post"
+        data-gyg-partner-id="VMRSHXF"
+        data-gyg-q="https://www.getyourguide.com/edinburgh-l44/edinburgh-harry-potter-magical-guided-walking-tour-t224262/"
+        class="mt-12 max-w-3xl"
+      >
+        <span>Powered by <a target="_blank" rel="sponsored" href="https://www.getyourguide.com/">GetYourGuide</a></span>
+      </div>
+
+      <section class="mt-12">
+        <h3 id="place-3" class="mb-4 scroll-mt-nav text-lg font-semibold text-neutral-900 md:text-xl">3. The Elephant House</h3>
+        <p>The Elephant House is one of the most famous Harry Potter-related spots in Edinburgh! J.K. Rowling used to write parts of the early Harry Potter books at the original café on George IV Bridge, which is why it became widely known as the “Birthplace of Harry Potter”. Although she had already started writing the books before visiting the café, it still became an important part of the city’s Harry Potter story.</p>
+        <p>Today, you can also visit a second location on Victoria Street, known as The Elephant House Magical Cafe. This is the one I visited, and it’s definitely worth popping in if you’re a Harry Potter fan! Inside, you’ll find plenty of themed details, but one of the highlights is the original wooden table where J.K. Rowling used to write, which was rescued from the fire that damaged the original café in 2021. The table is displayed with a book and a feather quill, making it a particularly special little spot for fans.</p>
+        <div class="grid grid-cols-2 gap-3 md:gap-4">
+          <ArticleImage
+            src={elephantHouseSign}
+            alt="Sign at The Elephant House describing it as the birthplace of Harry Potter"
+            caption="The ‘birthplace’ of Harry Potter sign"
+            imgClass="aspect-[4/5] object-cover"
+          />
+          <ArticleImage
+            src={elephantHouseDesk}
+            alt="The writing desk with a guestbook and quill at The Elephant House"
+            caption="The writing desk at The Elephant House"
+            imgClass="aspect-[4/5] object-cover"
+          />
+        </div>
+      </section>
+      <section class="mt-12">
+        <h3 id="place-4" class="mb-4 scroll-mt-nav text-lg font-semibold text-neutral-900 md:text-xl">4. Edinburgh City Chambers</h3>
+        <p>Located along the Royal Mile, Edinburgh City Chambers is another interesting stop for Harry Potter fans. Inside its beautiful courtyard, you can find J.K. Rowling’s handprints preserved in a stone slab. She received the Edinburgh Award in 2008, in recognition of her contribution to the city, and her handprints were added to the courtyard as part of this honor. It’s a lovely little spot to visit while exploring the Old Town!</p>
+        <ArticleImage
+          src={rowlingHandprints}
+          alt="J.K. Rowling’s handprints in the courtyard of the City Chambers"
+          caption="J.K. Rowling’s handprints"
+          imgClass="aspect-[4/5] object-cover"
+        />
+      </section>
+      <section class="mt-12">
+        <h3 id="place-5" class="mb-4 scroll-mt-nav text-lg font-semibold text-neutral-900 md:text-xl">5. The Balmoral Hotel</h3>
+        <p>The Balmoral Hotel is where J.K. Rowling completed the final book of the Harry Potter series, <em>Harry Potter and the Deathly Hallows</em>, on January 11, 2007. She was staying in Room 552, which has since been renamed the J.K. Rowling Suite in her honor.</p>
+        <p>And here’s a fun fact! After finishing the book, Rowling signed a marble bust of Hermes in the room, leaving a handwritten message to mark the occasion. The bust is still displayed inside the suite today, making it a particularly interesting detail for Harry Potter fans.</p>
+        <p><a href="https://www.booking.com/hotel/gb/the-balmoral-edinburgh.html" target="_blank" rel="noopener noreferrer sponsored" class="text-[#69746E] underline underline-offset-2 hover:text-[#4a534f]">Check availability here</a></p>
+        <ArticleImage
+          src={balmoralHotel}
+          alt="The Balmoral Hotel and its clock tower on Princes Street, Edinburgh"
+          caption="The Balmoral Hotel on Princes Street"
+          imgClass="aspect-[2/3] object-cover"
+        />
+      </section>
+    </div>
+  </section>
+
+  <div data-subscribe-after></div>
+
+  <section id="more-things-to-do" class="scroll-mt-nav">
+    <div class="mb-5 max-w-3xl text-black md:mb-6">
+      <h2 class="text-xl md:text-2xl font-semibold text-neutral-900 mb-4">More Harry Potter Things to Do in Edinburgh</h2>
+    </div>
+    <div class="article-prose max-w-3xl text-black/80 [&_p]:mb-5 [&_p:last-child]:mb-0">
+      <section>
+        <h3 id="more-1" class="mb-4 scroll-mt-nav text-lg font-semibold text-neutral-900 md:text-xl">1. Step Inside House of MinaLima</h3>
+        <p>This unique bookstore was created by Miraphora Mina and Eduardo Lima, the graphic designers behind the Harry Potter films, and is filled with artwork and designs from the wizarding world.</p>
+        <p>Here, you’ll find all kinds of Harry Potter-inspired items, including art prints, stationery, books, and collectibles featuring some of the most recognizable designs from the films. One of the highlights is the beautifully illustrated Harry Potter books, which feature interactive pop-up elements that bring the pages to life. You’ll also find similar editions of other well-known classic stories and fairy tales, making the shop a lovely place to browse for anyone who appreciates creative book design.</p>
+        <div class="grid grid-cols-2 gap-3 md:gap-4">
+          <ArticleImage
+            src={minalimaPopUp}
+            alt="Interactive Harry Potter pop-up book"
+            caption="Interactive Harry Potter pop-up book"
+            imgClass="aspect-[4/5] object-cover"
+          />
+          <ArticleImage
+            src={minalimaInterior}
+            alt="Inside the House of MinaLima"
+            caption="Inside the House of MinaLima"
+            imgClass="aspect-[4/5] object-cover"
+          />
+        </div>
+        <ArticleImage
+          src={minalimaGifts}
+          alt="Harry Potter gifts and collectibles"
+          caption="Harry Potter gifts and collectibles"
+          imgClass="aspect-[2/3] object-cover"
+        />
+      </section>
+      <section class="mt-12">
+        <h3 id="more-2" class="mb-4 scroll-mt-nav text-lg font-semibold text-neutral-900 md:text-xl">2. Explore Museum Context</h3>
+        <p>Museum Context is a must-visit for Harry Potter fans looking to take home a little piece of the wizarding world! Located on George IV Bridge, this themed shop is filled with Harry Potter merchandise, from wands and collectibles to magical accessories and souvenirs. The store itself is also beautifully decorated, with plenty of details inspired by the wizarding world.</p>
+        <div class="grid grid-cols-2 gap-3 md:gap-4">
+          <ArticleImage
+            src={museumContextWands}
+            alt="Harry Potter wands and magical collectibles"
+            caption="Harry Potter wands and magical collectibles"
+            imgClass="aspect-[4/5] object-cover"
+          />
+          <ArticleImage
+            src={museumContextChess}
+            alt="Harry Potter wizard chess set on display"
+            caption="Harry Potter wizard chess set on display"
+            imgClass="aspect-[4/5] object-cover"
+          />
+        </div>
+        <ArticleImage
+          src={museumContextShopfront}
+          alt="Museum Context official Harry Potter shop"
+          caption="Museum Context official Harry Potter shop"
+          imgClass="aspect-[2/3] object-cover"
+        />
+      </section>
+    </div>
+  </section>
+
+  <div
+    data-gyg-href="https://widget.getyourguide.com/default/activities.frame"
+    data-gyg-locale-code="en-US"
+    data-gyg-widget="activities"
+    data-gyg-number-of-items="1"
+    data-gyg-cmp="Harry Potter_post"
+    data-gyg-partner-id="VMRSHXF"
+    data-gyg-q="https://www.getyourguide.com/edinburgh-l44/edinburgh-harry-potter-magical-guided-walking-tour-t224262/"
+    class="my-6 max-w-3xl md:my-8"
+  >
+    <span>Powered by <a target="_blank" rel="sponsored" href="https://www.getyourguide.com/">GetYourGuide</a></span>
+  </div>
+
+  <section id="before-you-go" class="scroll-mt-nav">
+    <div class="article-prose max-w-3xl text-black/80">
+      <ArticleClosingNote label="Before you go">
+        <p>Whether you’re a big fan of the books and films or simply curious about the Harry Potter connection, these spots are definitely worth adding to your Edinburgh itinerary. And don’t be surprised if, after exploring them, you find yourself wanting to go home and have a Harry Potter movie marathon! 🪄</p>
+      </ArticleClosingNote>
+
+      <ArticlePinSaveSection>
+        <ArticleImage
+          src={harryPotterPin}
+          alt="Harry Potter in Edinburgh — magical places and things to do"
+          figureClass="m-0"
+          imgClass="aspect-[2/3] object-cover"
+          pinOnHover
+        />
+
+        <ArticleShareBar
+          title="Harry Potter in Edinburgh: Places to Visit & Magical Things to Do"
+          pinImage={harryPotterPin}
+          class="mt-6 md:mt-8"
+        />
+      </ArticlePinSaveSection>
+    </div>
+  </section>
+  <section slot="before-footer" class="mx-auto w-full max-w-6xl px-4 md:pr-10 md:pl-0 pb-16 md:pb-20">
+    <h2 class="mb-8 md:mb-10">You may also like</h2>
+    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3">
+      {relatedArticles.map((related) => (
+        <ArticlePreviewCard {...related} />
+      ))}
+    </div>
+  </section>
+</ArticlePage>

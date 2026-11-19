@@ -44,11 +44,13 @@ import articleEdinburghBookshopsCard from '@/assets/articles/edinburgh/best-book
 import articleEdinburghBookshopsHero from '@/assets/articles/edinburgh/waterstones-christmas-staircase.webp';
 import articleGlasgowCard from '@/assets/articles/glasgow/things-to-do-in-glasgow-card.webp';
 import articleGlasgowHero from '@/assets/articles/glasgow/burrell-collection-glasgow.webp';
+import articleHarryPotterEdinburghCard from '@/assets/articles/edinburgh/harry-potter-in-edinburgh-card.webp';
+import articleHarryPotterEdinburghHero from '@/assets/articles/edinburgh/victoria-street-christmas-lights-night.webp';
 import type { DestinationSlug } from '@/domains/destinations/catalog';
 import { pageUrl } from '@/lib/site';
 
 
-export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bali-where-to-stay' | 'bruges-christmas-markets' | 'christmas-in-paris' | 'munduk-moding-plantation-review' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'mt-fuji-day-trip-from-tokyo' | 'kamakura-day-trip-from-tokyo' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary' | 'tokyo-cafes' | 'tokyo-parks' | 'tokyo-temples' | 'tokyo-5-day-itinerary' | 'tokyo-where-to-stay' | 'tokyo-things-to-do' | 'things-to-do-in-oslo' | 'things-to-do-in-paris' | 'things-to-do-in-bangkok' | '3-day-bangkok-itinerary' | 'things-to-do-in-edinburgh-on-a-rainy-day' | 'things-to-do-in-edinburgh' | 'best-bookshops-in-edinburgh' | 'things-to-do-in-glasgow';
+export type ArticleSlug = 'bali-7-day-itinerary' | 'bali-cafes' | 'bali-belly' | 'bali-travel-tips' | 'bali-where-to-stay' | 'bruges-christmas-markets' | 'christmas-in-paris' | 'munduk-moding-plantation-review' | 'bruges-guide' | 'hong-kong-first-trip' | 'katsuoji-temple-from-osaka' | 'kyoto-itinerary' | 'mt-fuji-day-trip-from-tokyo' | 'kamakura-day-trip-from-tokyo' | 'nara-day-trip-from-kyoto' | 'osaka-1-day-itinerary' | 'parga-1-day' | 'rhodes-itinerary' | 'tokyo-cafes' | 'tokyo-parks' | 'tokyo-temples' | 'tokyo-5-day-itinerary' | 'tokyo-where-to-stay' | 'tokyo-things-to-do' | 'things-to-do-in-oslo' | 'things-to-do-in-paris' | 'things-to-do-in-bangkok' | '3-day-bangkok-itinerary' | 'things-to-do-in-edinburgh-on-a-rainy-day' | 'things-to-do-in-edinburgh' | 'best-bookshops-in-edinburgh' | 'things-to-do-in-glasgow' | 'harry-potter-in-edinburgh';
 
 export interface Article {
   slug: ArticleSlug;
@@ -675,6 +677,25 @@ export const articles: readonly Article[] = [
       "I wasn’t quite sure what to expect from Glasgow, but after spending a day exploring, I genuinely believe it deserves a spot on your Scotland itinerary. It’s one of those places that might not be at the top of everyone’s list, but it really should be!",
     ],
     lead: 'Five things to do in Glasgow, from the University of Glasgow and Kelvingrove to the Highland cows at Pollok Country Park.',
+  },
+  {
+    slug: 'harry-potter-in-edinburgh',
+    destinationSlug: 'scotland',
+    category: 'SCOTLAND',
+    title: 'Harry Potter in Edinburgh: Places to Visit & Magical Things to Do',
+    carouselTitle: 'Harry Potter in Edinburgh: Places to Visit & Magical Things to Do',
+    breadcrumbTitle: 'Harry Potter in Edinburgh',
+    metaLabel: 'Scotland',
+    alt: 'Victoria Street in Edinburgh at night with Christmas lights',
+    image: articleHarryPotterEdinburghCard,
+    lcpImage: articleHarryPotterEdinburghHero,
+    publishedDate: '19 November 2026',
+    dateLabel: 'Published',
+    intro: [
+      "Edinburgh has become closely associated with the world of Harry Potter, attracting fans from all over the world who want to discover the places connected to the famous wizarding series. And honestly, it’s not hard to see why!",
+      "J.K. Rowling wrote parts of the Harry Potter books while living in Edinburgh, and the city itself seems to have the perfect setting for a magical story. Its medieval streets, centuries-old buildings, Gothic architecture, hidden alleyways, and slightly dark and mysterious atmosphere make you feel as if you’ve stepped back in time. Walking through some parts of the city, it’s easy to imagine yourself in the wizarding world!",
+    ],
+    lead: 'Harry Potter places to visit in Edinburgh, from Victoria Street and Greyfriars Kirkyard to The Elephant House, plus magical shops for fans.',
   },
 ] as const;
 
